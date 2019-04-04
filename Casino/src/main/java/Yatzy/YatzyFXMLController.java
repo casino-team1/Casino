@@ -7,7 +7,9 @@ package Yatzy;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -19,6 +21,15 @@ public class YatzyFXMLController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    private PlayYatzy yatzy;
+    @FXML
+    private Button btnstart;
+    
+    public void setYatzy(PlayYatzy yatzy){
+        this.yatzy = yatzy;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

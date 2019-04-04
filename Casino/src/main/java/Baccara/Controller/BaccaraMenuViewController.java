@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -28,6 +29,14 @@ public class BaccaraMenuViewController implements Initializable, Observer {
     private Button baccaraButton;
     @FXML
     private ImageView spadeIcon;
+    @FXML
+    private Button backToMenuButton;
+    @FXML
+    private Text baccaraText;
+    @FXML
+    private ImageView cardView;
+    @FXML
+    private ImageView cardView1;
 
     /**
      * Initializes the controller class.
@@ -50,6 +59,12 @@ public class BaccaraMenuViewController implements Initializable, Observer {
 
     @FXML
     private void startBaccara(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void backToMenu(ActionEvent event) throws Exception {
+        this.menuModel.backToMainMenu();
     }
 
 }

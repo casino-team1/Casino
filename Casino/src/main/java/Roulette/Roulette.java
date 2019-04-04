@@ -4,16 +4,23 @@
  * For information and contact with the developer please write to
  * Mail: nick.flueckiger@outlook.de
  */
-
 package Roulette;
+
+import com.team1.casino.MainApp;
+import com.team1.casino.Spiel;
 
 /**
  *
  * @author Nick Flückiger
  */
-public class Roulette {
+public class Roulette extends Spiel {
 
-    public Roulette(){
-    
+    public Roulette(MainApp mainApplication) {
+        super(mainApplication);
+    }
+
+    @Override
+    public void startGame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -6,6 +6,9 @@
  */
 package Yatzy;
 
+import com.team1.casino.MainApp;
+import com.team1.casino.Spiel;
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -13,14 +16,18 @@ import javafx.scene.Parent;
  *
  * @author Nick Flückiger
  */
-public class Yatzy {
+public class Yatzy extends Spiel {
 
-    public Yatzy() throws Exception{
+    public Yatzy(MainApp mainApplication) {
+        super(mainApplication);
+    }
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzyFXML.fxml"));
-        
-        
-        PlayYatzy yatzy = new PlayYatzy();   
-        
+    @Override
+    public void startGame() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzyFXML.fxml"));
+            PlayYatzy yatzy = new PlayYatzy();
+        } catch (IOException e) {
+        }
     }
 }

@@ -14,4 +14,9 @@ public abstract class Spiel {
 
     private MainApp mainApplication;
 
+    public Spiel(MainApp mainApplication) {
+        this.mainApplication = mainApplication;
+    }
+
+    public abstract void startGame();
 }

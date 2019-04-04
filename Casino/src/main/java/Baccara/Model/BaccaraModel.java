@@ -6,6 +6,7 @@
  */
 package Baccara.Model;
 
+import Baccara.BaccaraHandler;
 import java.util.Observable;
 
 /**
@@ -14,7 +15,13 @@ import java.util.Observable;
  */
 public class BaccaraModel extends Observable {
 
-    public BaccaraModel() {
+    private BaccaraHandler baccaraGame;
 
+    public BaccaraModel(BaccaraHandler baccaraGame) {
+        this.baccaraGame = baccaraGame;
+    }
+
+    public BaccaraHandler getBaccaraGame() {
+        return this.baccaraGame;
     }
 }

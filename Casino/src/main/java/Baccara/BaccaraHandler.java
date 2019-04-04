@@ -6,8 +6,16 @@
  */
 package Baccara;
 
+import Baccara.Controller.BaccaraMenuViewController;
 import Baccara.Entity.BaccaraDeck;
+import Baccara.Model.BaccaraMenuModel;
+import com.team1.casino.CasinoController;
+import com.team1.casino.CasinoModel;
 import com.team1.casino.MainApp;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -16,17 +24,26 @@ import javafx.stage.Stage;
  */
 public class BaccaraHandler {
 
-    private BaccaraDeck cardDeck;
     private MainApp mainApplication;
     private Stage stage;
+    private BaccaraMenuModel menuModel;
 
     public BaccaraHandler(MainApp mainApplication) {
         this.mainApplication = mainApplication;
         this.stage = mainApplication.getStage();
+        this.menuModel = new BaccaraMenuModel(this);
     }
 
-    public void displayMenu() {
-
+    public void displayMenu() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BaccaraMenuView.fxml"));
+        Parent root = (Parent) loader.load();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/styles/Styles.css");
+        stage.setTitle("Casino Central");
+        stage.setScene(scene);
+        stage.show();
+        BaccaraMenuViewController controller = loader.getController();
+        controller.setMenuModel(this.menuModel);
     }
 
     public void displayGame() {

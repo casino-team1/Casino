@@ -8,6 +8,9 @@ package Baccara;
 
 import com.team1.casino.MainApp;
 import com.team1.casino.Spiel;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,6 +25,10 @@ public class Baccara extends Spiel {
     @Override
     public void startGame() {
         BaccaraHandler game = new BaccaraHandler(super.getMainApp());
-        game.displayMenu();
+        try {
+            game.displayMenu();
+        } catch (IOException ex) {
+            Logger.getLogger(Baccara.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

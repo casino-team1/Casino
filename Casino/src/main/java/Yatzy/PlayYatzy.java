@@ -31,6 +31,11 @@ public class PlayYatzy extends Spiel{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/YatzyFXML.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
+            
+            
+            
+            
+            
             scene.getStylesheets().add("/styles/Styles.css");
             stage.setTitle("Casino Central");
             stage.setScene(scene);
@@ -41,4 +46,6 @@ public class PlayYatzy extends Spiel{
     }
     
     }
+    
+    
 }

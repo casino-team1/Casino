@@ -19,4 +19,8 @@ public abstract class Spiel {
     }
 
     public abstract void startGame();
+    
+    public MainApp getMainApp(){
+        return this.mainApplication;
+    }
 }

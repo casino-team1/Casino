@@ -8,6 +8,7 @@ package Roulette;
 
 import com.team1.casino.MainApp;
 import com.team1.casino.Spiel;
+import javafx.stage.Stage;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Roulette extends Spiel {
 
     @Override
     public void startGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Roulette is working");
+        Stage stageRoulette = super.getMainApp().getStage();
     }
 }

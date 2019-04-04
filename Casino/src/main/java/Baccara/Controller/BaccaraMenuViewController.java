@@ -28,6 +28,8 @@ public class BaccaraMenuViewController implements Initializable, Observer {
     private Button baccaraButton;
     @FXML
     private ImageView spadeIcon;
+    @FXML
+    private Button backToMenuButton;
 
     /**
      * Initializes the controller class.
@@ -50,6 +52,12 @@ public class BaccaraMenuViewController implements Initializable, Observer {
 
     @FXML
     private void startBaccara(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void backToMenu(ActionEvent event) throws Exception {
+        this.menuModel.backToMainMenu();
     }
 
 }

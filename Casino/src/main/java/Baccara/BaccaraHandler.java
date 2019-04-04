@@ -23,17 +23,17 @@ import javafx.stage.Stage;
  * @author Nick Flückiger
  */
 public class BaccaraHandler {
-
+    
     private MainApp mainApplication;
     private Stage stage;
     private BaccaraMenuModel menuModel;
-
+    
     public BaccaraHandler(MainApp mainApplication) {
         this.mainApplication = mainApplication;
         this.stage = mainApplication.getStage();
         this.menuModel = new BaccaraMenuModel(this);
     }
-
+    
     public void displayMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BaccaraMenuView.fxml"));
         Parent root = (Parent) loader.load();
@@ -45,9 +45,13 @@ public class BaccaraHandler {
         BaccaraMenuViewController controller = loader.getController();
         controller.setMenuModel(this.menuModel);
     }
-
+    
     public void displayGame() {
-
+        
     }
-
+    
+    public void displayMainMenu() throws Exception {
+        this.mainApplication.start(stage);
+    }
+    
 }

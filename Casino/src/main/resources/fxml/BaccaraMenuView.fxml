@@ -5,8 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="648.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Baccara.Controller.BaccaraMenuViewController">
+<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraMenuViewController">
    <children>
       <ImageView fitHeight="516.0" fitWidth="794.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -19,5 +18,6 @@
             <Image url="@../images/heartpokerIcon.png" />
          </image>
       </ImageView>
+      <Button fx:id="backToMenuButton" layoutX="543.0" layoutY="21.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="27.0" prefWidth="84.0" text="Go back" />
    </children>
 </AnchorPane>

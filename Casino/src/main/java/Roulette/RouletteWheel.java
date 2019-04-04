@@ -10,5 +10,15 @@ package Roulette;
  * @author Lukas Gilgen Schule
  */
 public class RouletteWheel {
+    private int result;
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
+    }
+    
     
 }

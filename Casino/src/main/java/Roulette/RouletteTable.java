@@ -5,10 +5,26 @@
  */
 package Roulette;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Lukas Gilgen Schule
  */
 public class RouletteTable {
+    private int bet;
+    private ArrayList<Integer> betArray = new ArrayList<>();
+    
+    public void setBet(int b){
+        this.bet = b;
+    }
+    
+    public int getBet(){
+        return bet;
+    }
+    
+    public ArrayList<Integer> getBetArray(){
+        return betArray;
+    }
     
 }

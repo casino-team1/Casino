@@ -31,6 +31,7 @@ public class BaccaraHandler {
     public BaccaraHandler(MainApp mainApplication) {
         this.mainApplication = mainApplication;
         this.stage = mainApplication.getStage();
+        this.stage.setResizable(false);
         this.menuModel = new BaccaraMenuModel(this);
     }
     

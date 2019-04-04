@@ -21,7 +21,7 @@ public class Baccara extends Spiel {
 
     @Override
     public void startGame() {
-        System.out.println("Test");
+        BaccaraHandler game = new BaccaraHandler(super.getMainApp());
+        game.displayMenu();
     }
-
 }

@@ -9,7 +9,18 @@ package Yatzy;
  *
  * @author Erik Hess
  */
-public class PlayYatzy {
+public class Rules {
     
+    private int result;
+    
+    
+    public int getResult() {
+        return result;
+    }
+    
+    public void calculateResult() {
+        
+    }
+
     
 }

@@ -6,6 +6,7 @@
  */
 package Baccara.Controller;
 
+import Baccara.Model.BaccaraGameModel;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
@@ -25,6 +26,11 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+    private BaccaraGameModel gameModel;
+
+    public void setBaccaraGameModel(BaccaraGameModel gameModel) {
+        this.gameModel = gameModel;
     }
 
     @Override

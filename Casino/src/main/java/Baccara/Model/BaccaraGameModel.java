@@ -6,13 +6,16 @@
  */
 package Baccara.Model;
 
+import Baccara.BaccaraHandler;
+
 /**
  *
  * @author Nick Flückiger
  */
 public class BaccaraGameModel extends BaccaraModel {
 
-    public BaccaraGameModel() {
-
+    public BaccaraGameModel(BaccaraHandler baccaraGame) {
+        super(baccaraGame);
     }
+
 }

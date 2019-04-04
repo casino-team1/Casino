@@ -6,13 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="508.0" prefWidth="773.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Baccara.Controller.BaccaraMenuViewController">
+<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="648.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Baccara.Controller.BaccaraMenuViewController">
    <children>
-      <ImageView fitHeight="516.0" fitWidth="773.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="516.0" fitWidth="794.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/tableBackground.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="242.0" layoutY="382.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="289.0" text="Play Baccara" />
+      <Button fx:id="baccaraButton" layoutX="180.0" layoutY="322.0" mnemonicParsing="false" onAction="#startBaccara" prefHeight="55.0" prefWidth="289.0" text="Play Baccara" />
+      <ImageView fx:id="spadeIcon" fitHeight="123.0" fitWidth="146.0" layoutX="44.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/heartpokerIcon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

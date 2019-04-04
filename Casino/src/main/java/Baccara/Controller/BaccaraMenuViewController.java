@@ -6,6 +6,7 @@
  */
 package Baccara.Controller;
 
+import Baccara.Model.BaccaraMenuModel;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
@@ -25,6 +26,12 @@ public class BaccaraMenuViewController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+
+    private BaccaraMenuModel menuModel;
+
+    public void setMenuModel(BaccaraMenuModel menuModel) {
+        this.menuModel = menuModel;
     }
 
     @Override

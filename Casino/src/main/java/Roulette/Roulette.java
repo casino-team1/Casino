@@ -22,14 +22,21 @@ import javafx.stage.Stage;
  */
 public class Roulette extends Spiel {
 
+    
+    
     public Roulette(MainApp mainApplication) {
         super(mainApplication);
     }
 
+    public void displayGame(){
+        PlayRoulette play = new PlayRoulette(super.getMainApp());
+        play.startGame();
+    }    
+    
     @Override
     public void startGame() {
         System.out.println("Main Menu Roulette is working");
-        Stage stageRoulette = super.getMainApp().getStage();
+        Stage mainStageRoulette = super.getMainApp().getStage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainMenuRouletteFXML.fxml"));
         Parent root = null;
         try {
@@ -39,8 +46,10 @@ public class Roulette extends Spiel {
         }
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
-        stageRoulette.setTitle("Roulette Wheel");
-        stageRoulette.setScene(scene);
-        stageRoulette.show();
+        mainStageRoulette.setTitle("Roulette Wheel");
+        mainStageRoulette.setScene(scene);
+        mainStageRoulette.show();
+        MainMenuRouletteFXMLController controller = loader.getController();
+        controller.setPlayRoulette(this);
     }
 }

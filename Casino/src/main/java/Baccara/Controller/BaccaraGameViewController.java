@@ -31,11 +31,16 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     public void setBaccaraGameModel(BaccaraGameModel gameModel) {
         this.gameModel = gameModel;
+        bind();
     }
 
     @Override
     public void update(Observable o, Object arg) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void bind() {
+
     }
 
 }

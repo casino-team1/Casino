@@ -8,9 +8,6 @@ package Baccara;
 
 import com.team1.casino.MainApp;
 import com.team1.casino.Spiel;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

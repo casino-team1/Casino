@@ -7,8 +7,10 @@ import Yatzy.Yatzy;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -51,6 +53,13 @@ public class MainApp extends Application {
     public void startYatzy() {
         Yatzy yatzy = new Yatzy(this);
         yatzy.startGame();
+    }
+
+    public static Stage centerStageInScreen(Stage stage, Scene scene) {
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
+        stage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
+        return stage;
     }
 
     /**

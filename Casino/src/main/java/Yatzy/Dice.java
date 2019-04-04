@@ -10,8 +10,9 @@ package Yatzy;
  * @author Erik Hess
  */
 public class Dice {
-        private int value;
-        private boolean keep;
+
+    private int value;
+    private boolean keep;
 
     public int getValue() {
         return value;
@@ -23,5 +24,5 @@ public class Dice {
 
     public void setKeep(boolean keep) {
         this.keep = keep;
-    }      
+    }
 }

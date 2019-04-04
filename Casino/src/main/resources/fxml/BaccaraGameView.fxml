@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="699.0" prefWidth="949.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Baccara.Controller.BaccaraGameViewController">
-    
+<AnchorPane id="AnchorPane" prefHeight="821.0" prefWidth="1003.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
+   <children>
+      <ImageView fitHeight="821.0" fitWidth="1052.0" layoutX="-8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

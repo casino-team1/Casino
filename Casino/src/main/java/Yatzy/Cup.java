@@ -12,15 +12,14 @@ import java.util.ArrayList;
  * @author Erik Hess
  */
 public class Cup {
-    
+
     ArrayList<Dice> dicearray = new ArrayList<>();
-    
 
     public ArrayList<Dice> getDicearray() {
         return dicearray;
     }
-    
+
     public void trowDices() {
-        
+
     }
 }

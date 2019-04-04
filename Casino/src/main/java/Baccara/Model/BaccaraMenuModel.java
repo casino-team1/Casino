@@ -21,9 +21,8 @@ public class BaccaraMenuModel extends BaccaraModel {
     public void backToMainMenu() throws Exception {
         super.getBaccaraGame().displayMainMenu();
     }
-    
-    public void startBaccara(){
+
+    public void startBaccara() {
         super.getBaccaraGame().displayGame();
     }
-
 }

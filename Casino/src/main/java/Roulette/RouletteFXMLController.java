@@ -95,22 +95,24 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private ImageView rouletteBoard1;
 
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
-    public void placeBet(){
-        
+
     }
-    public void gameEnd(){
-        
+
+    public void placeBet() {
+
     }
-    public void gameStart(){
-        
+
+    public void gameEnd() {
+
+    }
+
+    public void gameStart() {
+
     }
 
     @FXML
@@ -256,5 +258,5 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private void clickPane1(MouseEvent event) {
     }
-    
+
 }

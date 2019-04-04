@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  */
 public class BaccaraHandler {
 
-    private MainApp mainApplication;
+    private final MainApp mainApplication;
     private Stage stage;
     private BaccaraMenuModel menuModel;
     private BaccaraGameModel gameModel;
@@ -34,7 +34,6 @@ public class BaccaraHandler {
         this.stage.setResizable(false);
         this.menuModel = new BaccaraMenuModel(this);
         this.gameModel = new BaccaraGameModel(this);
-
     }
 
     public void displayMenu() {
@@ -42,13 +41,14 @@ public class BaccaraHandler {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BaccaraMenuView.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add("/styles/Styles.css");
+            stage = MainApp.centerStageInScreen(stage, scene);
             stage.setTitle("Baccara Menu");
             stage.setScene(scene);
             stage.show();
             BaccaraMenuViewController controller = loader.getController();
             controller.setMenuModel(this.menuModel);
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -57,13 +57,14 @@ public class BaccaraHandler {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BaccaraGameView.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add("/styles/Styles.css");
             stage.setTitle("Baccara!");
             stage.setScene(scene);
+            stage = MainApp.centerStageInScreen(stage, scene);
             stage.show();
             BaccaraGameViewController controller = loader.getController();
             controller.setBaccaraGameModel(this.gameModel);
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

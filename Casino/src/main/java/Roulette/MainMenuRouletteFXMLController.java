@@ -5,6 +5,7 @@
  */
 package Roulette;
 
+import com.team1.casino.CasinoModel;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,7 +19,14 @@ import javafx.scene.control.Button;
  * @author Lukas Gilgen Schule
  */
 public class MainMenuRouletteFXMLController implements Initializable {
-
+    
+    Roulette play;
+    public void setPlayRoulette(Roulette playing){
+        this.play = playing;
+    }
+    
+    
+    
     @FXML
     private Button rouletteStartButton;
 
@@ -32,7 +40,7 @@ public class MainMenuRouletteFXMLController implements Initializable {
 
     @FXML
     private void rouletteStart(ActionEvent event) {
-        
+        play.displayGame();
     }
     
 }

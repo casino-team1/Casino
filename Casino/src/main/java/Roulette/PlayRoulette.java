@@ -20,8 +20,6 @@ import javafx.stage.Stage;
  * @author Lukas Gilgen Schule
  */
 public class PlayRoulette extends Spiel{
-
-    Stage stage = super.getMainApp().getStage();
     
     public PlayRoulette(MainApp mainApplication) {
         super(mainApplication);
@@ -29,7 +27,6 @@ public class PlayRoulette extends Spiel{
     
     @Override
     public void startGame(){
-        
         System.out.println("Roulette is working");
         Stage stageRoulette = super.getMainApp().getStage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RouletteFXML.fxml"));

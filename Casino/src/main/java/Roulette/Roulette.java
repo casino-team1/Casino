@@ -49,5 +49,7 @@ public class Roulette extends Spiel {
         mainStageRoulette.setTitle("Roulette Wheel");
         mainStageRoulette.setScene(scene);
         mainStageRoulette.show();
+        MainMenuRouletteFXMLController controller = loader.getController();
+        controller.setPlayRoulette(this);
     }
 }

@@ -13,7 +13,7 @@ package Baccara.Entity;
 public class BaccaraCard {
 
     private int cardValue;
-    private String imageLink;
+    private String imageLocation;
     private String cardName;
     private final BaccaraCardColor cardColor;
     private final BaccaraCardType cardType;
@@ -25,12 +25,16 @@ public class BaccaraCard {
         } else {
             this.cardColor = BaccaraCardColor.BLACK;
         }
-        this.cardName = cardName + this.cardType.toString();
+        this.cardName = cardName + " " + this.cardType.toString();
         this.cardValue = cardValue;
     }
 
-    private void evaluateImageLink(){
-        
+    private void evaluateImageLink() {
+
+    }
+
+    public String getImageLocation() {
+        return this.imageLocation;
     }
 
     public String getCardName() {

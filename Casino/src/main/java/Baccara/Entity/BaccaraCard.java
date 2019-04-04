@@ -1,0 +1,39 @@
+/*
+ * This peace of Software has been written by Nick Flückiger
+ * You are free to use and modifiy this software to your needs
+ * For information and contact with the developer please write to
+ * Mail: nick.flueckiger@outlook.de
+ */
+package Baccara.Entity;
+
+/**
+ *
+ * @author Nick Flückiger
+ */
+public class BaccaraCard {
+
+    private int cardValue;
+    private String imageLink;
+    private String cardName;
+    private final BaccaraCardColor cardColor;
+    private final BaccaraCardType cardType;
+
+    public BaccaraCard(BaccaraCardType type, String cardName, int cardValue) {
+        this.cardType = type;
+        if (type == BaccaraCardType.DIAMON || type == BaccaraCardType.HEART) {
+            this.cardColor = BaccaraCardColor.RED;
+        } else {
+            this.cardColor = BaccaraCardColor.BLACK;
+        }
+        this.cardName = cardName + this.cardType.toString();
+        this.cardValue = cardValue;
+    }
+
+    private void evaluateImageLink(){
+        
+    }
+
+    public String getCardName() {
+        return this.cardName;
+    }
+}

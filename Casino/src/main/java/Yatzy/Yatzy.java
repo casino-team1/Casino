@@ -14,7 +14,7 @@ import javafx.scene.Parent;
 
 /**
  *
- * @author Nick Flückiger
+ * @author Erik Hess
  */
 public class Yatzy extends Spiel {
 
@@ -25,9 +25,9 @@ public class Yatzy extends Spiel {
     @Override
     public void startGame() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzyFXML.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzyFXMLMenu.fxml"));
             PlayYatzy yatzy = new PlayYatzy();
-            yatzy.sayYatzy();
+            
         } catch (IOException e) {
         }
     }

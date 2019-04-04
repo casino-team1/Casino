@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class FXMLController implements Initializable, Observer {
+public class CasinoController implements Initializable, Observer {
 
     @FXML
     private Label label;

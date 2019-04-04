@@ -6,7 +6,9 @@
  */
 package Baccara;
 
+import Baccara.Controller.BaccaraGameViewController;
 import Baccara.Controller.BaccaraMenuViewController;
+import Baccara.Model.BaccaraGameModel;
 import Baccara.Model.BaccaraMenuModel;
 import com.team1.casino.MainApp;
 import java.io.IOException;
@@ -24,12 +26,15 @@ public class BaccaraHandler {
     private MainApp mainApplication;
     private Stage stage;
     private BaccaraMenuModel menuModel;
+    private BaccaraGameModel gameModel;
 
     public BaccaraHandler(MainApp mainApplication) {
         this.mainApplication = mainApplication;
         this.stage = mainApplication.getStage();
         this.stage.setResizable(false);
         this.menuModel = new BaccaraMenuModel(this);
+        this.gameModel = new BaccaraGameModel(this);
+
     }
 
     public void displayMenu() {
@@ -56,8 +61,8 @@ public class BaccaraHandler {
             stage.setTitle("Baccara!");
             stage.setScene(scene);
             stage.show();
-            BaccaraMenuViewController controller = loader.getController();
-            controller.setMenuModel(this.menuModel);
+            BaccaraGameViewController controller = loader.getController();
+            controller.setBaccaraGameModel(this.gameModel);
         } catch (IOException e) {
         }
     }

@@ -12,13 +12,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
-    
+
     private Stage stage;
-    
+
     public Stage getStage() {
         return this.stage;
     }
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
@@ -32,22 +32,22 @@ public class MainApp extends Application {
         CasinoController controller = loader.getController();
         controller.setCasinoModel(new CasinoModel(this));
     }
-    
+
     public void startBaccara() {
         Baccara baccara = new Baccara(this);
         baccara.startGame();
     }
-    
+
     public void startBlackJack() {
         Blackjack blackJack = new Blackjack(this);
         blackJack.startGame();
     }
-    
+
     public void startRoulette() {
         Roulette roulette = new Roulette(this);
         roulette.startGame();
     }
-    
+
     public void startYatzy() {
         Yatzy yatzy = new Yatzy(this);
         yatzy.startGame();
@@ -64,5 +64,5 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

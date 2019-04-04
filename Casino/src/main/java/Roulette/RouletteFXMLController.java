@@ -16,6 +16,11 @@ import javafx.fxml.Initializable;
  */
 public class RouletteFXMLController implements Initializable {
 
+    private Roulette roulette;
+    
+    public void setRoulette(Roulette r){
+        this.roulette = roulette;
+    }
     /**
      * Initializes the controller class.
      */

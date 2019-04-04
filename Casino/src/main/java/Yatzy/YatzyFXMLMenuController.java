@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Erik Hess
  */
-public class YatzyFXMLController implements Initializable {
+public class YatzyFXMLMenuController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -22,16 +22,14 @@ public class YatzyFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }  
+    }    
+    
+    public void startYatzy() {
+        
+    }
     
     public void endGame() {
         
     }
-    
-    public void needHelp() {
-        
-    }
-    
-    
     
 }

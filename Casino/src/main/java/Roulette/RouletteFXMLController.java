@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 /**
@@ -90,6 +92,8 @@ public class RouletteFXMLController implements Initializable {
     private Pane pane4;
     @FXML
     private Pane pane1;
+    @FXML
+    private ImageView rouletteBoard1;
 
     
     /**
@@ -97,7 +101,7 @@ public class RouletteFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     public void placeBet(){
         
@@ -107,6 +111,150 @@ public class RouletteFXMLController implements Initializable {
     }
     public void gameStart(){
         
+    }
+
+    @FXML
+    private void clickPane36(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane21(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane33(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane30(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane27(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane24(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane18(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane15(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane12(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane9(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane6(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane3(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane35(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane32(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane29(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane26(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane23(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane20(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane17(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane14(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane11(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane8(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane5(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane2(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane34(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane31(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane28(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane25(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane22(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane19(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane16(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane13(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane10(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane7(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane4(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickPane1(MouseEvent event) {
     }
     
 }

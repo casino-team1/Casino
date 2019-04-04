@@ -27,6 +27,7 @@ public class Yatzy extends Spiel {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzyFXML.fxml"));
             PlayYatzy yatzy = new PlayYatzy();
+            yatzy.sayYatzy();
         } catch (IOException e) {
         }
     }

@@ -6,15 +6,21 @@
  */
 package Yatzy;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
 /**
  *
  * @author Nick Flückiger
  */
 public class Yatzy {
 
-    public Yatzy() {
+    public Yatzy() throws Exception{
 
-         PlayYatzy yatzy = new PlayYatzy();   
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzyFXML.fxml"));
+        
+        
+        PlayYatzy yatzy = new PlayYatzy();   
         
     }
 }

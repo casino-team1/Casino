@@ -16,3 +16,27 @@ this.conf.setImage(new Image("file:../../../../FolderName/SubfolderName/ImageNam
 
 
 
+*Open new window*
+//This code belongs into a class which extends the java class "spiel"
+@Override
+    public void startGame() {
+        System.out.println("Test goes here");
+        Stage stageName = super.getMainApp().getStage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fxmlNameFXML.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent) loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(ClassName.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/styles/Styles.css");
+        stageName.setTitle("Title");
+        stageName.setScene(scene);
+        stageName.show();
+   }
+//The following text NEEDS replacing:
+//stageName in line nr 4, 14, 15, 16
+//fxmlNameFXML.fxml in line 5. Leave the ending ".fxml" be
+
+

@@ -23,5 +23,14 @@ public class RouletteFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    public void placeBet(){
+        
+    }
+    public void gameEnd(){
+        
+    }
+    public void gameStart(){
+        
+    }
     
 }

@@ -11,4 +11,8 @@ package Yatzy;
  */
 public class PlayYatzy {
     
+    public void sayYatzy()
+    {
+        System.out.println("Yatzy");
+    }
 }

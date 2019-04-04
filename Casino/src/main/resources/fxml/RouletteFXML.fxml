@@ -1,11 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Roulette.RouletteFXMLController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="498.0" prefWidth="828.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Roulette.RouletteFXMLController">
+   <children>
+      <ImageView fitHeight="125.0" fitWidth="489.0" layoutX="232.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
+      <Line endX="100.0" layoutX="621.0" layoutY="187.0" startX="-388.0" />
+      <Line endX="100.0" layoutX="621.0" layoutY="228.0" startX="-388.0" startY="-1.0" />
+      <Line endX="100.0" layoutX="621.0" layoutY="269.0" startX="-390.0" />
+      <Line endX="100.0" layoutX="621.0" layoutY="311.0" startX="-389.0" />
+      <Line endX="98.5" endY="41.5" layoutX="623.0" layoutY="146.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="133.0" layoutY="144.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="581.0" layoutY="146.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="540.0" layoutY="146.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="501.0" layoutY="144.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="460.0" layoutY="146.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="419.0" layoutY="146.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="378.0" layoutY="144.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="337.0" layoutY="144.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="296.0" layoutY="144.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="256.0" layoutY="144.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="215.0" layoutY="146.0" startX="98.5" startY="165.5" />
+      <Line endX="98.5" endY="41.5" layoutX="174.0" layoutY="146.0" startX="98.5" startY="165.5" />
+      <Pane fx:id="pane36" layoutX="680.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane21" layoutX="477.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane33" layoutX="639.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane30" layoutX="600.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane27" layoutX="559.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane24" layoutX="518.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane18" layoutX="436.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane15" layoutX="395.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane12" layoutX="355.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane9" layoutX="314.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane6" layoutX="273.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane3" layoutX="233.0" layoutY="187.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane35" layoutX="681.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane32" layoutX="640.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane29" layoutX="601.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane26" layoutX="560.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane23" layoutX="519.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane20" layoutX="478.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane17" layoutX="437.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane14" layoutX="396.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane11" layoutX="356.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane8" layoutX="315.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane5" layoutX="274.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane2" layoutX="234.0" layoutY="228.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane34" layoutX="680.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane31" layoutX="639.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane28" layoutX="600.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane25" layoutX="559.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane22" layoutX="518.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane19" layoutX="477.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane16" layoutX="436.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane13" layoutX="395.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane10" layoutX="355.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane7" layoutX="314.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane4" layoutX="273.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="pane1" layoutX="233.0" layoutY="270.0" prefHeight="40.0" prefWidth="40.0" />
+   </children>
 </AnchorPane>

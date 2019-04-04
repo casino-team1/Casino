@@ -11,7 +11,12 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -19,6 +24,19 @@ import javafx.fxml.Initializable;
  * @author Nick Flückiger
  */
 public class BaccaraMenuViewController implements Initializable, Observer {
+
+    @FXML
+    private Button baccaraButton;
+    @FXML
+    private ImageView spadeIcon;
+    @FXML
+    private Button backToMenuButton;
+    @FXML
+    private Text baccaraText;
+    @FXML
+    private ImageView cardView;
+    @FXML
+    private ImageView cardView1;
 
     /**
      * Initializes the controller class.
@@ -37,6 +55,16 @@ public class BaccaraMenuViewController implements Initializable, Observer {
     @Override
     public void update(Observable o, Object arg) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @FXML
+    private void startBaccara(ActionEvent event) {
+        this.menuModel.startBaccara();
+    }
+
+    @FXML
+    private void backToMenu(ActionEvent event) throws Exception {
+        this.menuModel.backToMainMenu();
     }
 
 }

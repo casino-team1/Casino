@@ -1,0 +1,18 @@
+*New Code Title*
+//Comment
+//Comment
+
+
+
+*Insert and replace images in an imageView*
+//name of the image view from SceneBuilder
+@FXML
+private ImageView conf;
+
+//This code goes into "public void initialize"
+//This method activates upon start of the application
+//FolderName is stored in D:, C: or any other one letter drive
+this.conf.setImage(new Image("file:../../../../FolderName/SubfolderName/ImageName.png"));
+
+
+

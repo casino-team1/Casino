@@ -14,5 +14,7 @@ public class Yatzy {
 
     public Yatzy() {
 
+         PlayYatzy yatzy = new PlayYatzy();   
+        
     }
 }

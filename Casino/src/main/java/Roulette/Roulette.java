@@ -28,9 +28,9 @@ public class Roulette extends Spiel {
 
     @Override
     public void startGame() {
-        System.out.println("Roulette is working");
+        System.out.println("Main Menu Roulette is working");
         Stage stageRoulette = super.getMainApp().getStage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RouletteFXML.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainMenuRouletteFXML.fxml"));
         Parent root = null;
         try {
             root = (Parent) loader.load();

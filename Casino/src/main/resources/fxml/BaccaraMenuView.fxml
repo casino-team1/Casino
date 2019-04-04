@@ -11,19 +11,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraMenuViewController">
    <children>
-      <ImageView fitHeight="516.0" fitWidth="794.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="679.0" fitWidth="873.0" layoutX="-107.0" layoutY="-73.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/tableBackground.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="baccaraButton" layoutX="180.0" layoutY="386.0" mnemonicParsing="false" onAction="#startBaccara" prefHeight="55.0" prefWidth="289.0" text="Play Baccara" />
-      <ImageView fx:id="spadeIcon" fitHeight="123.0" fitWidth="146.0" layoutX="44.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="baccaraButton" layoutX="229.0" layoutY="492.0" mnemonicParsing="false" onAction="#startBaccara" prefHeight="55.0" prefWidth="289.0" text="Play Baccara" />
+      <ImageView fx:id="spadeIcon" fitHeight="123.0" fitWidth="146.0" layoutX="47.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/heartpokerIcon.png" />
          </image>
       </ImageView>
-      <Button fx:id="backToMenuButton" layoutX="543.0" layoutY="21.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="27.0" prefWidth="84.0" text="Go back" />
-      <Text fx:id="baccaraText" layoutX="200.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baccara">
+      <Button fx:id="backToMenuButton" layoutX="624.0" layoutY="22.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="27.0" prefWidth="99.0" text="Go back" />
+      <Text fx:id="baccaraText" layoutX="249.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baccara">
          <font>
             <Font name="Arial Bold" size="64.0" />
          </font>
@@ -38,12 +38,12 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ImageView fx:id="cardView" fitHeight="116.0" fitWidth="123.0" layoutX="44.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" rotate="-24.6">
+      <ImageView fx:id="cardView" fitHeight="116.0" fitWidth="123.0" layoutX="73.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" rotate="-24.6">
          <image>
             <Image url="@../images/Baccara/gamblingCards.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cardView1" fitHeight="116.0" fitWidth="123.0" layoutX="482.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardView1" fitHeight="116.0" fitWidth="123.0" layoutX="566.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/gamblingCards.png" />
          </image>

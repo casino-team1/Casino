@@ -25,10 +25,6 @@ public class Baccara extends Spiel {
     @Override
     public void startGame() {
         BaccaraHandler game = new BaccaraHandler(super.getMainApp());
-        try {
-            game.displayMenu();
-        } catch (IOException ex) {
-            Logger.getLogger(Baccara.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        game.displayMenu();
     }
 }

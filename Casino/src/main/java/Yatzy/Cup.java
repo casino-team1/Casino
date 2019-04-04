@@ -20,7 +20,7 @@ public class Cup {
         return dicearray;
     }
     
-    public void trowDice() {
+    public void trowDices() {
         
     }
 }

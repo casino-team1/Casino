@@ -59,7 +59,7 @@ public class BaccaraMenuViewController implements Initializable, Observer {
 
     @FXML
     private void startBaccara(ActionEvent event) {
-
+        this.menuModel.startBaccara();
     }
 
     @FXML

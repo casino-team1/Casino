@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -23,9 +24,12 @@ public class YatzyFXMLMenuController implements Initializable {
      * Initializes the controller class.
      */
     
+    
     private Yatzy yatzy;
     @FXML
     private Button btnstart;
+    @FXML
+    private AnchorPane menuwindow;
     
     public void setYatzy(Yatzy yatzy){
         this.yatzy = yatzy;
@@ -34,6 +38,7 @@ public class YatzyFXMLMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
     
     public void startYatzy() {

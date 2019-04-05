@@ -5,14 +5,16 @@
  */
 package Blackjack;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  *
  * @author albio
  */
 public class BlackJackSpielerModel {
-    private String[] kartenSpieler = new String[2];
+    Karten k = new Karten();
+    
+    private ArrayList<String> kartenSpieler = new ArrayList<>();
     boolean gewonnen = false;
     
     public void stand(){
@@ -31,8 +33,8 @@ public class BlackJackSpielerModel {
         return gewonnen;
     }
     
-    public HashMap<Integer, String> getKarten(){
-        return null;
+    public ArrayList<String> getKarten(){
+        return kartenSpieler;
     }
 }
 

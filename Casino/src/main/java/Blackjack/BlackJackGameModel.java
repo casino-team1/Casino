@@ -9,6 +9,6 @@ package Blackjack;
  *
  * @author albio
  */
-public class MainBlackJack {
+public class BlackJackGameModel {
     
 }

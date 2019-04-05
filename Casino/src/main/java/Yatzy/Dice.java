@@ -12,17 +12,15 @@ package Yatzy;
 public class Dice {
 
     private int value;
-    private boolean keep;
-
+    
+    
+    public void setValue(int value) {
+        this.value = value;
+    }
+    
     public int getValue() {
         return value;
     }
 
-    public boolean isKeep() {
-        return keep;
-    }
-
-    public void setKeep(boolean keep) {
-        this.keep = keep;
-    }
+    
 }

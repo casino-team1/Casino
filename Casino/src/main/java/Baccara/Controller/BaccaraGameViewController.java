@@ -7,11 +7,16 @@
 package Baccara.Controller;
 
 import Baccara.Model.BaccaraGameModel;
+import java.io.File;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 
 /**
  * FXML Controller class
@@ -20,12 +25,24 @@ import javafx.fxml.Initializable;
  */
 public class BaccaraGameViewController implements Initializable, Observer {
 
+    @FXML
+    private AnchorPane anchro;
+    @FXML
+    private ImageView firstLeftCard;
+    @FXML
+    private HBox playerSide;
+    @FXML
+    private ImageView thirdLeftCard;
+    @FXML
+    private ImageView secondLeftCard;
+    @FXML
+    private HBox dealerSide;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
     private BaccaraGameModel gameModel;
 

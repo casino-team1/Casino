@@ -12,8 +12,13 @@ import java.util.ArrayList;
  * @author Lukas Gilgen Schule
  */
 public class RouletteTable {
-    private int bet;
+    
+    RouletteFXMLController controll = new RouletteFXMLController();
+    private int bet = controll.placeBet();
+    
     private ArrayList<Integer> betArray = new ArrayList<>();
+    
+    
     
     public void setBet(int b){
         this.bet = b;

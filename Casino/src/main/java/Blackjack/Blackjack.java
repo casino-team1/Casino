@@ -6,8 +6,8 @@
  */
 package Blackjack;
 
-import com.team1.casino.CasinoController;
-import com.team1.casino.CasinoModel;
+import com.team1.casino.Controller.CasinoController;
+import com.team1.casino.Model.CasinoModel;
 import com.team1.casino.MainApp;
 import com.team1.casino.Spiel;
 import java.io.IOException;

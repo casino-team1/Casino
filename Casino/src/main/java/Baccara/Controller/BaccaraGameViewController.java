@@ -46,6 +46,10 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private HBox dealerSide;
     @FXML
     private ImageView startGameView;
+    @FXML
+    private ImageView firstRightCard;
+    @FXML
+    private ImageView secondRightCard;
 
     /**
      * Initializes the controller class.
@@ -63,8 +67,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void setCardBacks() {
-        String location = "/images/GameCards/%s";
-        this.firstLeftCard.setImage(new Image("File:" + getClass().getResource(String.format(location, "cardBack.jpeg")).getPath()));
     }
 
     @Override
@@ -89,8 +91,19 @@ public class BaccaraGameViewController implements Initializable, Observer {
         }
          */
         this.gameModel.generateCards();
+        String format = "/images/GameCards/%s";
+        ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
+        ImageView[] dealerView = {this.firstRightCard, this.secondRightCard};
         ArrayList<BaccaraCard> playerCards = this.gameModel.getPlayerCards();
-        String location = "/images/GameCards/%s";
-        this.firstLeftCard.setImage(new Image("file:" + getClass().getResource(String.format(location, playerCards.get(0).getImageLocation())).getPath()));
+        ArrayList<BaccaraCard> dealerCard = this.gameModel.getDealerCards();
+        for (int i = 0; i < 2; i++) {
+            try {
+                playerView[i].setImage(new Image(String.format(format, playerCards.get(i).getImageLocation())));
+                dealerView[i].setImage(new Image(String.format(format, dealerCard.get(i).getImageLocation())));
+            } catch (Exception e) {
+                System.out.println(playerCards.get(i).getImageLocation());
+                System.out.println(dealerCard.get(i).getImageLocation());
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
-package com.team1.casino;
+package com.team1.casino.Controller;
 
+import com.team1.casino.Model.CasinoModel;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;

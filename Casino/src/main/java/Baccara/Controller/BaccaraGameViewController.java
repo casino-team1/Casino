@@ -6,14 +6,18 @@
  */
 package Baccara.Controller;
 
+import Baccara.Entity.BaccaraCard;
 import Baccara.Model.BaccaraGameModel;
 import java.awt.Dimension;
+import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -42,18 +46,27 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private HBox dealerSide;
     @FXML
     private ImageView startGameView;
+    @FXML
+    private ImageView firstRightCard;
+    @FXML
+    private ImageView secondRightCard;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        setCardBacks();
     }
     private BaccaraGameModel gameModel;
 
     public void setBaccaraGameModel(BaccaraGameModel gameModel) {
         this.gameModel = gameModel;
         bind();
+
+    }
+
+    private void setCardBacks() {
     }
 
     @Override
@@ -67,6 +80,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @FXML
     private void startBaccara(MouseEvent event) {
+        /*
         if (this.gameModel.betsAreSet() == false) {
             JDialog dialog = new JDialog();
             dialog.setTitle("No bets placed");
@@ -75,6 +89,21 @@ public class BaccaraGameViewController implements Initializable, Observer {
             dialog.setSize(new Dimension(300, 300));
             dialog.setVisible(true);
         }
+         */
+        this.gameModel.generateCards();
+        String format = "/images/GameCards/%s";
+        ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
+        ImageView[] dealerView = {this.firstRightCard, this.secondRightCard};
+        ArrayList<BaccaraCard> playerCards = this.gameModel.getPlayerCards();
+        ArrayList<BaccaraCard> dealerCard = this.gameModel.getDealerCards();
+        for (int i = 0; i < 2; i++) {
+            try {
+                playerView[i].setImage(new Image(String.format(format, playerCards.get(i).getImageLocation())));
+                dealerView[i].setImage(new Image(String.format(format, dealerCard.get(i).getImageLocation())));
+            } catch (Exception e) {
+                System.out.println(playerCards.get(i).getImageLocation());
+                System.out.println(dealerCard.get(i).getImageLocation());
+            }
+        }
     }
-
 }

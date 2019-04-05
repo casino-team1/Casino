@@ -5,7 +5,7 @@
  */
 package Roulette;
 
-import com.team1.casino.CasinoModel;
+import com.team1.casino.Model.CasinoModel;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;

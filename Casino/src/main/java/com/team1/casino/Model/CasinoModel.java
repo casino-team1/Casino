@@ -4,8 +4,9 @@
  * For information and contact with the developer please write to
  * Mail: nick.flueckiger@outlook.de
  */
-package com.team1.casino;
+package com.team1.casino.Model;
 
+import com.team1.casino.MainApp;
 import java.util.Observable;
 
 /**

@@ -1,5 +1,7 @@
 package com.team1.casino;
 
+import com.team1.casino.Controller.CasinoController;
+import com.team1.casino.Model.CasinoModel;
 import Baccara.Baccara;
 import Blackjack.Blackjack;
 import Roulette.Roulette;
@@ -25,6 +27,7 @@ public class MainApp extends Application {
     public Stage getStage() {
         return this.stage;
     }
+
     private final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
 
     @Override

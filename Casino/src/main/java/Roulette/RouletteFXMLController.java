@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -99,10 +101,10 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private Pane pane0;
     //-------------------------------------------------------------------
-    
+
     @FXML
     private ImageView rouletteBoard1;
-    
+
     //Deklarationen für Zahlengruppen auf dem Roulettetisch
     //-------------------------------------------------------------------
     @FXML
@@ -118,21 +120,30 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private Pane paneBlack;
     //-------------------------------------------------------------------
-    
-    
-    
+
     private boolean isNumber;
     private int betInt;
     ArrayList<Integer> betArray = new ArrayList<>();
-    
+
     ArrayList<Integer> redArray = new ArrayList<>();
     ArrayList<Integer> blackArray = new ArrayList<>();
     @FXML
     private ImageView placeYourBet;
     @FXML
     private ImageView rouletteWheel;
-    
-    
+
+
+    ToggleGroup group = new ToggleGroup();
+
+    @FXML
+    private RadioButton radioTable;
+    @FXML
+    private RadioButton radioThree;
+    @FXML
+    private RadioButton radioFour;
+    @FXML
+    private RadioButton radioFive;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         redArray.add(1);
@@ -143,7 +154,7 @@ public class RouletteFXMLController implements Initializable {
         redArray.add(12);
         redArray.add(14);
         redArray.add(16);
-        redArray.add(18);  
+        redArray.add(18);
         redArray.add(19);
         redArray.add(21);
         redArray.add(23);
@@ -153,22 +164,30 @@ public class RouletteFXMLController implements Initializable {
         redArray.add(32);
         redArray.add(34);
         redArray.add(36);
-        
+
         for (int i = 1; i < 37; i++) {
-            if (redArray.contains(i)){
-            }
-            else{
+            if (redArray.contains(i)) {
+            } else {
                 blackArray.add(i);
             }
         }
+
+        radioTable.setToggleGroup(group);
+        radioTable.setSelected(true);
+
+        radioThree.setToggleGroup(group);
+        
+        radioFour.setToggleGroup(group);
+        
+        radioFive.setToggleGroup(group);
     }
 
     public int placeBet() {
-        return betInt;      
+        return betInt;
     }
-    
-    public ArrayList<Integer> placeBetArray(){
-        return betArray;   
+
+    public ArrayList<Integer> placeBetArray() {
+        return betArray;
     }
 
     public void gameEnd() {
@@ -179,7 +198,6 @@ public class RouletteFXMLController implements Initializable {
 
     }
 
-    
     //Methoden für jedes Feld auf dem Roulettetisch
     //-------------------------------------------------------------------
     @FXML
@@ -441,8 +459,7 @@ public class RouletteFXMLController implements Initializable {
         placeBet();
     }
     //-------------------------------------------------------------------
-    
-    
+
     //Methoden für jede Gruppe von Zahlen auf dem Tisch
     //-------------------------------------------------------------------
     @FXML
@@ -462,7 +479,7 @@ public class RouletteFXMLController implements Initializable {
             System.out.println(i);
         }
     }
-    
+
     @FXML
     private void clickPaneImpair(MouseEvent event) {
         ArrayList<Integer> intArray = new ArrayList<>();
@@ -472,7 +489,7 @@ public class RouletteFXMLController implements Initializable {
             intArray.add(i);
         }
     }
-    
+
     @FXML
     private void clickPanePair(MouseEvent event) {
         ArrayList<Integer> intArray = new ArrayList<>();
@@ -487,7 +504,7 @@ public class RouletteFXMLController implements Initializable {
     private ArrayList<Integer> clickPaneRed(MouseEvent event) {
         for (int i = 0; i < redArray.size(); i++) {
             System.out.println(redArray.get(i));
-            
+
         }
         return redArray;
     }
@@ -496,18 +513,17 @@ public class RouletteFXMLController implements Initializable {
     private ArrayList<Integer> clickPaneBlack(MouseEvent event) {
         for (int i = 0; i < blackArray.size(); i++) {
             System.out.println(blackArray.get(i));
-            
+
         }
         return blackArray;
     }
     //-------------------------------------------------------------------
 
-    
     //Confirm your bet and pass off the numbers
     //-------------------------------------------------------------------
     @FXML
     private void clickPlaceBet(MouseEvent event) {
-        
+
     }
     //-------------------------------------------------------------------
 }

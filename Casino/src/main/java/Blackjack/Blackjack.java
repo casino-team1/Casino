@@ -14,13 +14,25 @@ import com.team1.casino.Spiel;
  * @author Nick Flückiger
  */
 public class Blackjack extends Spiel {
-
+    BlackJackSpielerModel spieler;
+    BlackJackDealerModel dealer;
+    
     public Blackjack(MainApp mainApplication) {
         super(mainApplication);
     }
 
     @Override
     public void startGame() {
-        
+        getDealer();
+        getSpieler();
+        System.out.println("BlackJack");
+    }
+    
+    public BlackJackSpielerModel getSpieler(){
+        return null;  
+    }
+    
+    public BlackJackDealerModel getDealer(){
+        return null;  
     }
 }

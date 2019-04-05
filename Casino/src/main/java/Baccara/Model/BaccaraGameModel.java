@@ -7,10 +7,7 @@
 package Baccara.Model;
 
 import Baccara.BaccaraHandler;
-import Baccara.Entity.BaccaraCard;
-import Baccara.Entity.BaccaraDeckGenerator;
-import java.util.ArrayList;
-import java.util.Collections;
+import Baccara.Entity.BaccaraGame;
 import javafx.beans.property.SimpleBooleanProperty;
 
 /**
@@ -19,39 +16,25 @@ import javafx.beans.property.SimpleBooleanProperty;
  */
 public class BaccaraGameModel extends BaccaraModel {
 
-    private ArrayList<BaccaraCard> cardDecks = new ArrayList<>();
+    private BaccaraGame baccaraGame;
 
     public BaccaraGameModel(BaccaraHandler baccaraGame) {
         super(baccaraGame);
-        this.cardDecks = new BaccaraDeckGenerator().getDecks();
-        Collections.shuffle(this.cardDecks);
+        this.baccaraGame = new BaccaraGame();
     }
 
-    public BaccaraCard getNextCardInStack() {
-        if (this.cardDecks.size() > 0) {
-            BaccaraCard card = cardDecks.get(this.cardDecks.size() - 1);
-            this.cardDecks.remove(this.cardDecks.size() - 1);
-            return card;
+    public boolean betsAreSet() {
+        if (playerBetSet.getValue() == true || dealerBetSet.getValue() == true || tieBetSet.getValue() == true) {
+            return true;
         }
-        return null;
-    }
-
-    public void reshuffleCards() {
-        this.cardDecks = new BaccaraDeckGenerator().getDecks();
-        Collections.shuffle(this.cardDecks);
-    }
-
-    public boolean hasCardInDecks() {
-        if (this.cardDecks.isEmpty() == true) {
-            return false;
-        }
-        return true;
+        return false;
     }
 
     private SimpleBooleanProperty playerBetSet = new SimpleBooleanProperty();
     private SimpleBooleanProperty dealerBetSet = new SimpleBooleanProperty();
     private SimpleBooleanProperty playerDoubleBetSet = new SimpleBooleanProperty();
     private SimpleBooleanProperty dealerDoubleBetSet = new SimpleBooleanProperty();
+    private SimpleBooleanProperty tieBetSet = new SimpleBooleanProperty();
 
     private int playerBet = 0;
     private int dealerBet = 0;

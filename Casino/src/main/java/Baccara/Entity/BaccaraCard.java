@@ -14,6 +14,11 @@ public class BaccaraCard {
 
     private int cardValue;
     private String imageLocation;
+
+    @Override
+    public String toString() {
+        return "BaccaraCard{" + "cardValue=" + cardValue + ", imageLocation=" + imageLocation + ", cardName=" + cardName + ", cardColor=" + cardColor + ", cardType=" + cardType + '}';
+    }
     private String cardName;
     private final BaccaraCardColor cardColor;
     private final BaccaraCardType cardType;

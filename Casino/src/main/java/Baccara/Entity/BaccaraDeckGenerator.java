@@ -14,12 +14,15 @@ import java.util.ArrayList;
  */
 public class BaccaraDeckGenerator {
 
-    private static final int DECKS = 6;
+    private static final int DECKS = 8;
 
     public ArrayList<BaccaraCard> getDecks() {
         ArrayList<BaccaraCard> cards = new ArrayList<>();
         for (int i = 0; i < DECKS; i++) {
-            cards.addAll(generateDeck());
+            ArrayList<BaccaraCard> deck = generateDeck();
+            for (BaccaraCard card : deck) {
+                cards.add(card);
+            }
         }
         return cards;
     }
@@ -27,7 +30,7 @@ public class BaccaraDeckGenerator {
     private ArrayList<BaccaraCard> generateDeck() {
         ArrayList<BaccaraCard> cards = new ArrayList<>();
         BaccaraCardType[] cardTypes = {BaccaraCardType.CLUB, BaccaraCardType.DIAMON, BaccaraCardType.HEART, BaccaraCardType.SPADE};
-        for (int i = 0; i < 10; i++) {
+        for (int i = 2; i <= 10; i++) {
             for (BaccaraCardType type : cardTypes) {
                 cards.add(new BaccaraCard(type, String.valueOf(i), i));
             }

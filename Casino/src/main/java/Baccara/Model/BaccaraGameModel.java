@@ -13,8 +13,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 /**
  * @author Nick Flückiger
  */
-
-
 public class BaccaraGameModel extends BaccaraModel {
 
     private BaccaraGame baccaraGame;

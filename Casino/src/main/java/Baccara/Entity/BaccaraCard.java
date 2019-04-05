@@ -34,6 +34,10 @@ public class BaccaraCard {
         this.cardValue = cardValue;
     }
 
+    public int getCardValue() {
+        return cardValue;
+    }
+
     private void evaluateImageLink() {
 
     }

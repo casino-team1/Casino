@@ -36,12 +36,23 @@ public class BaccaraGame {
         Collections.shuffle(this.baccaraCardDecks);
     }
 
+    private int playerCardCount;
+    private int dealerCardCount;
+
+    public int getPlayerCardCount() {
+        return this.playerCardCount;
+    }
+
+    public int getDealerCardCount() {
+        return this.dealerCardCount;
+    }
+
     private int playerBet = 0;
     private int dealerBet = 0;
     private int tieBet = 0;
 
     private ArrayList<BaccaraCard> dealerCards = new ArrayList<>();
-    private ArrayList<BaccaraCard> playerCard = new ArrayList<>();
+    private ArrayList<BaccaraCard> playerCards = new ArrayList<>();
 
     public int getPlayerBet() {
         return playerBet;
@@ -59,6 +70,36 @@ public class BaccaraGame {
         this.playerBet = playerBet;
     }
 
+    public void generateCards() {
+        for (int i = 0; i < 2; i++) {
+            this.playerCards.add(getNextCardInStack());
+            this.dealerCards.add(getNextCardInStack());
+        }
+        this.playerCardCount = calculateCardCount(playerCards);
+        this.dealerCardCount = calculateCardCount(dealerCards);
+    }
+
+    public void dealerThirdDraw() {
+        this.dealerCards.add(getNextCardInStack());
+        this.dealerCardCount = calculateCardCount(dealerCards);
+    }
+
+    public void playerThirdDraw() {
+        this.playerCards.add(getNextCardInStack());
+        this.playerCardCount = calculateCardCount(playerCards);
+    }
+
+    private int calculateCardCount(ArrayList<BaccaraCard> cards) {
+        int total = 0;
+        for (BaccaraCard card : cards) {
+            total += card.getCardValue();
+        }
+        if (total >= 10) {
+            total %= 10;
+        }
+        return total;
+    }
+
     public void setDealerBet(int dealerBet) {
         this.dealerBet = dealerBet;
     }
@@ -72,7 +113,7 @@ public class BaccaraGame {
     }
 
     public ArrayList<BaccaraCard> getPlayerCards() {
-        return this.playerCard;
+        return this.playerCards;
     }
 
 }

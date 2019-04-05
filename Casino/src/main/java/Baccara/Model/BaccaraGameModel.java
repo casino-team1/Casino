@@ -11,9 +11,10 @@ import Baccara.Entity.BaccaraGame;
 import javafx.beans.property.SimpleBooleanProperty;
 
 /**
- *
  * @author Nick Flückiger
  */
+
+
 public class BaccaraGameModel extends BaccaraModel {
 
     private BaccaraGame baccaraGame;
@@ -30,6 +31,14 @@ public class BaccaraGameModel extends BaccaraModel {
         return false;
     }
 
+    public int getPlayerCardCount() {
+        return this.baccaraGame.getPlayerCardCount();
+    }
+
+    public int getDealerCardCount() {
+        return this.baccaraGame.getDealerCardCount();
+    }
+
     private SimpleBooleanProperty playerBetSet = new SimpleBooleanProperty();
     private SimpleBooleanProperty dealerBetSet = new SimpleBooleanProperty();
     private SimpleBooleanProperty playerDoubleBetSet = new SimpleBooleanProperty();
@@ -43,11 +52,11 @@ public class BaccaraGameModel extends BaccaraModel {
     private int tieBet = 0;
 
     public void setPlayerBet(int betValue) {
-        this.playerBet = betValue;
+        this.baccaraGame.setPlayerBet(betValue);
     }
 
     public void setDealerBet(int betValue) {
-        this.dealerBet = betValue;
+        this.baccaraGame.setDealerBet(betValue);
     }
 
     public void setPlayerDoubleBet(int betValue) {
@@ -59,7 +68,7 @@ public class BaccaraGameModel extends BaccaraModel {
     }
 
     public void setTieBet(int betValue) {
-        this.tieBet = betValue;
+        this.baccaraGame.setTieBet(betValue);
     }
 
     public SimpleBooleanProperty getPlayerBetSet() {
@@ -79,11 +88,11 @@ public class BaccaraGameModel extends BaccaraModel {
     }
 
     public int getPlayerBet() {
-        return playerBet;
+        return this.baccaraGame.getPlayerBet();
     }
 
     public int getDealerBet() {
-        return dealerBet;
+        return this.baccaraGame.getDealerBet();
     }
 
     public int getPlayerDoubleBet() {
@@ -95,7 +104,7 @@ public class BaccaraGameModel extends BaccaraModel {
     }
 
     public int getTieBet() {
-        return tieBet;
+        return this.baccaraGame.getTieBet();
     }
 
     public void resetGame() {

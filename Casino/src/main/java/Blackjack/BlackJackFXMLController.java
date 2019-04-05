@@ -38,6 +38,9 @@ public class BlackJackFXMLController implements Initializable {
     private int karteZweiWert;
     private boolean dealerGewonnen = false;
 
+    private String zufallskarte = "";
+    private int zufallszahl = 0;
+
     private Karten k = new Karten();
 
     private HashMap<String, Integer> karten = new HashMap<>();
@@ -63,7 +66,7 @@ public class BlackJackFXMLController implements Initializable {
     @FXML
     private Label labelEinsatzFehler;
     @FXML
-    private Button buttonStart1;
+    private Button buttonPrüfung;
 
     /**
      * Initializes the controller class.
@@ -85,7 +88,32 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void hit(ActionEvent event) {
-        if (spielerGewonnen) {
+        //Karte ziehen
+        if (anzahlKartenImKartendeck < 1) {
+            this.karten = k.getKarten();
+        }
+        zufallszahl = r.nextInt(51);
+        zufallskarte = kartenWerte.get(zufallszahl);
+
+        kartenWertSpieler += karten.get(zufallskarte);
+
+        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+            kartenWertSpieler += 10;
+        }
+        if (zufallskarte.equals("A")) {
+            kartenWertSpieler += 10;
+        }
+
+        karten.remove(zufallszahl);
+        anzahlKartenImKartendeck--;
+        labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
+
+        //Überprüfung, ob 21 überschritten wurde
+        if (kartenWertSpieler > 21) {
+            dealerGewonnen = true;
+        }
+
+        if (spielerGewonnen) {              
             labelLösung.setText("SPIELER HAT GEWONNEN!!");
         }
         if (dealerGewonnen) {
@@ -95,6 +123,12 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void startGame(ActionEvent event) {
+        //Vorbereitung
+        buttonStart.setDisable(true);
+
+        kartenWertSpieler = 0;
+        kartenWertDealer = 0;
+        karteZweiWert = 0;
 
         spielerGewonnen = false;
         dealerGewonnen = false;
@@ -104,10 +138,9 @@ public class BlackJackFXMLController implements Initializable {
         labelLösung.setText("");
 
         buttonHit.setDisable(true);
+        buttonStand.setDisable(true);
         this.karten = k.getKarten();
         this.kartenWerte = k.getKartenWerte();
-        String zufallskarte = "";
-        int zufallszahl;
 
         //Karten mischen
         Collections.shuffle(kartenWerte);
@@ -116,54 +149,53 @@ public class BlackJackFXMLController implements Initializable {
         for (int i = 0; i < 2; i++) {
             zufallszahl = r.nextInt(51);
             zufallskarte = kartenWerte.get(zufallszahl);
-            try {
-                kartenWertSpieler += Integer.parseInt(zufallskarte);
-            } catch (Exception e) {
-                if (zufallskarte == "J" || zufallskarte == "Q" || zufallskarte == "Q") {
-                    kartenWertSpieler += 10;
-                }
-                if (zufallskarte == "A") {
-                    kartenWertSpieler += 10;
-                }
+
+            kartenWertSpieler += karten.get(zufallskarte);
+
+            if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+                kartenWertSpieler += 10;
             }
-            kartenWerte.remove(zufallszahl);
+            if (zufallskarte.equals("A")) {
+                kartenWertSpieler += 10;
+            }
+
+            karten.remove(zufallszahl);
             anzahlKartenImKartendeck--;
-            labelKartenSpieler.setText(zufallskarte);
+            labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
         }
 
-        //Zufallskarten verteilen an Dealer
+        //Erste Karte an Dealer verteilen
         zufallszahl = r.nextInt(51);
         zufallskarte = kartenWerte.get(zufallszahl);
-        try {
-            kartenWertDealer += Integer.parseInt(zufallskarte);
-        } catch (Exception e) {
-            if (zufallskarte == "J" || zufallskarte == "Q" || zufallskarte == "Q") {
-                kartenWertDealer += 10;
-            }
-            if (zufallskarte == "A") {
-                kartenWertDealer += 10;
-            }
+
+        kartenWertDealer += karten.get(zufallskarte);
+
+        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+            kartenWertDealer += 10;
         }
-        kartenWerte.remove(zufallszahl);
+        if (zufallskarte.equals("A")) {
+            kartenWertDealer += 10;
+        }
+
+        karten.remove(zufallszahl);
         anzahlKartenImKartendeck--;
-        labelKartenDealer.setText(zufallskarte+" + ?"); 
-        
-        //Zweite unbekannte Karte von Dealer
+        labelKartenDealer.setText(zufallskarte + " + ?");
+
+        //Zweite unbekannte Karte an Dealer verteilen
         zufallszahl = r.nextInt(51);
         zufallskarte = kartenWerte.get(zufallszahl);
-        try {
-            kartenWertDealer += Integer.parseInt(zufallskarte);
-        } catch (Exception e) {
-            if (zufallskarte == "J" || zufallskarte == "Q" || zufallskarte == "Q") {
-                kartenWertDealer += 10;
-            }
-            if (zufallskarte == "A") {
-                kartenWertDealer += 10;
-            }
+
+        kartenWertDealer += karten.get(zufallskarte);
+
+        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+            kartenWertDealer += 10;
         }
-        kartenWerte.remove(zufallszahl);
+        if (zufallskarte.equals("A")) {
+            kartenWertDealer += 10;
+        }
+
+        karten.remove(zufallszahl);
         anzahlKartenImKartendeck--;
-        
 
         buttonHit.setDisable(false);
         buttonStand.setDisable(false);

@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackFXMLController">
    <children>
       <Label layoutX="201.0" layoutY="26.0" text="BlackJack">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Label layoutX="100.0" layoutY="294.0" text="Deine Karten" />
+      <Label layoutX="98.0" layoutY="293.0" text="Deine Karten" />
       <Label layoutX="98.0" layoutY="329.0" text="Dealer Karten" />
       <Label fx:id="labelKartenSpieler" layoutX="191.0" layoutY="293.0" prefHeight="18.0" prefWidth="126.0" />
       <Label fx:id="labelKartenDealer" layoutX="199.0" layoutY="329.0" prefHeight="18.0" prefWidth="126.0" />
@@ -23,7 +23,7 @@
       <Label fx:id="labelLösung" layoutX="387.0" layoutY="311.0" prefHeight="18.0" prefWidth="198.0" />
       <Label layoutX="87.0" layoutY="110.0" text="Ihr Einsatz" />
       <TextField fx:id="textfeldEinsatz" layoutX="166.0" layoutY="106.0" />
-      <Label fx:id="labelEinsatzFehler" layoutX="384.0" layoutY="110.0" prefHeight="18.0" prefWidth="211.0" />
-      <Button fx:id="buttonStart1" layoutX="166.0" layoutY="142.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfen" />
+      <Label fx:id="labelEinsatzFehler" layoutX="364.0" layoutY="109.0" prefHeight="18.0" prefWidth="298.0" />
+      <Button fx:id="buttonPrüfung" layoutX="166.0" layoutY="142.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfen" />
    </children>
 </AnchorPane>

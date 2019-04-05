@@ -70,6 +70,7 @@ public class YatzyFXMLController implements Initializable {
         }
         else
         {
+            keeparray = new ArrayList<String>(Arrays.asList(txtkeep.getText().split("")));
             
         }
         

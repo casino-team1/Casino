@@ -21,5 +21,11 @@ public class Cup {
 
     public void trowDices() {
 
+        
+        Dice dice = new Dice();
+        
+        dicearray.add(dice);
+
+        
     }
 }

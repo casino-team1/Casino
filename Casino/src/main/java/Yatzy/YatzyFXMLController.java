@@ -87,15 +87,19 @@ public class YatzyFXMLController implements Initializable {
             }
             cup.setKeep(keep);
             cup.throwDices();
+            
+            
+            Rules rules = new Rules();
+            rules.calculateResult(cup.getDicearray());
+            lbltest.setText("" + rules.getResult());
         }
         String output = "";
         for(int i = 0; i < 5; i++){
         output += cup.getDicearray().get(i).getValue();
+        lbldices.setText(output);
         }
         
-        Rules rules = new Rules();
-        rules.calculateResult(cup.getDicearray());
-        lbldices.setText(output);
+        
     }
         
 

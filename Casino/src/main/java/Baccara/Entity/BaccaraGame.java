@@ -36,6 +36,7 @@ public class BaccaraGame {
         Collections.shuffle(this.baccaraCardDecks);
     }
 
+<<<<<<< Updated upstream
     private int playerCardCount;
     private int dealerCardCount;
 
@@ -47,12 +48,18 @@ public class BaccaraGame {
         return this.dealerCardCount;
     }
 
+=======
+>>>>>>> Stashed changes
     private int playerBet = 0;
     private int dealerBet = 0;
     private int tieBet = 0;
 
     private ArrayList<BaccaraCard> dealerCards = new ArrayList<>();
+<<<<<<< Updated upstream
     private ArrayList<BaccaraCard> playerCards = new ArrayList<>();
+=======
+    private ArrayList<BaccaraCard> playerCard = new ArrayList<>();
+>>>>>>> Stashed changes
 
     public int getPlayerBet() {
         return playerBet;
@@ -70,6 +77,7 @@ public class BaccaraGame {
         this.playerBet = playerBet;
     }
 
+<<<<<<< Updated upstream
     public void generateCards() {
         for (int i = 0; i < 2; i++) {
             this.playerCards.add(getNextCardInStack());
@@ -147,6 +155,8 @@ public class BaccaraGame {
         }
     }
 
+=======
+>>>>>>> Stashed changes
     public void setDealerBet(int dealerBet) {
         this.dealerBet = dealerBet;
     }
@@ -160,7 +170,11 @@ public class BaccaraGame {
     }
 
     public ArrayList<BaccaraCard> getPlayerCards() {
+<<<<<<< Updated upstream
         return this.playerCards;
+=======
+        return this.playerCard;
+>>>>>>> Stashed changes
     }
 
 }

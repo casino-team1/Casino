@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
@@ -50,6 +51,10 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private ImageView firstRightCard;
     @FXML
     private ImageView secondRightCard;
+    @FXML
+    private Text playerCardCountLabel;
+    @FXML
+    private Text dealerCardCountLabel;
 
     /**
      * Initializes the controller class.
@@ -67,11 +72,16 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void setCardBacks() {
+        ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.firstRightCard, this.secondRightCard};
+        String format = "/images/GameCards/cardBack.jpeg";
+        for (ImageView imageView : imageViews) {
+            imageView.setImage(new Image(format));
+        }
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setCardBacks();
     }
 
     public void bind() {
@@ -79,17 +89,21 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     @FXML
-    private void startBaccara(MouseEvent event) {
+    private void startBaccara(MouseEvent event) throws InterruptedException {
         /*
         if (this.gameModel.betsAreSet() == false) {
             JDialog dialog = new JDialog();
             dialog.setTitle("No bets placed");
-            dialog.add(new JLabel("Please place a bet, we can't start without you"));
+            dialog.addnew JLabel("Please place a bet, we can't start without you"));
             dialog.setLocationRelativeTo(null);
             dialog.setSize(new Dimension(300, 300));
             dialog.setVisible(true);
         }
          */
+        ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.thirdLeftCard, this.firstRightCard, this.secondRightCard};
+        for (int i = 0; i < imageViews.length; i++) {
+            imageViews[i] = new ImageView();
+        }
         this.gameModel.generateCards();
         String format = "/images/GameCards/%s";
         ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
@@ -105,5 +119,11 @@ public class BaccaraGameViewController implements Initializable, Observer {
                 System.out.println(dealerCard.get(i).getImageLocation());
             }
         }
+        int playerCardCount = this.gameModel.getPlayerCardCount();
+        int dealerCardCount = this.gameModel.getDealerCardCount();
+        this.playerCardCountLabel.setText("Spieler Kartenwert: " + String.valueOf(playerCardCount));
+        this.dealerCardCountLabel.setText("Dealer Kartenwert: " + String.valueOf(dealerCardCount));
+        this.gameModel.startNewRound();
     }
+
 }

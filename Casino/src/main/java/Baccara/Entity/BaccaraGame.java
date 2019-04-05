@@ -78,6 +78,8 @@ public class BaccaraGame {
 
     public void generateCards() {
         resetGame();
+        this.playerCards.clear();
+        this.dealerCards.clear();
         for (int i = 0; i < 2; i++) {
             this.playerCards.add(getNextCardInStack());
             this.dealerCards.add(getNextCardInStack());

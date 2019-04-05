@@ -6,16 +6,23 @@
  */
 package Blackjack;
 
+import com.team1.casino.CasinoController;
+import com.team1.casino.CasinoModel;
 import com.team1.casino.MainApp;
 import com.team1.casino.Spiel;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Nick Flückiger
  */
 public class Blackjack extends Spiel {
-    BlackJackSpielerModel spieler;
-    BlackJackDealerModel dealer;
     
     public Blackjack(MainApp mainApplication) {
         super(mainApplication);
@@ -23,16 +30,18 @@ public class Blackjack extends Spiel {
 
     @Override
     public void startGame() {
-        getDealer();
-        getSpieler();
-        System.out.println("BlackJack");
-    }
-    
-    public BlackJackSpielerModel getSpieler(){
-        return null;  
-    }
-    
-    public BlackJackDealerModel getDealer(){
-        return null;  
+        Stage stage = super.getMainApp().getStage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackFXML.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent) loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(Blackjack.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/styles/Styles.css");
+        stage.setTitle("Casino Central");
+        stage.setScene(scene);
+        stage.show();
     }
 }

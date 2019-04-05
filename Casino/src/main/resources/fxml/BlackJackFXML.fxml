@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -12,11 +13,17 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <Label layoutX="100.0" layoutY="148.0" text="Deine Karten" />
-      <Label layoutX="100.0" layoutY="235.0" text="Dealer Karten" />
-      <Label layoutX="240.0" layoutY="148.0" text="Label" />
-      <Label layoutX="240.0" layoutY="235.0" text="Label" />
-      <Button fx:id="buttonStand" layoutX="454.0" layoutY="194.0" mnemonicParsing="false" text="Stand" />
-      <Button fx:id="buttonHit" layoutX="454.0" layoutY="144.0" mnemonicParsing="false" text="Hit" />
+      <Label layoutX="100.0" layoutY="294.0" text="Deine Karten" />
+      <Label layoutX="98.0" layoutY="329.0" text="Dealer Karten" />
+      <Label fx:id="labelKartenSpieler" layoutX="191.0" layoutY="293.0" prefHeight="18.0" prefWidth="126.0" />
+      <Label fx:id="labelKartenDealer" layoutX="199.0" layoutY="329.0" prefHeight="18.0" prefWidth="126.0" />
+      <Button fx:id="buttonStand" disable="true" layoutX="217.0" layoutY="246.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
+      <Button fx:id="buttonHit" disable="true" layoutX="339.0" layoutY="246.0" mnemonicParsing="false" onAction="#hit" text="Hit" />
+      <Button fx:id="buttonStart" disable="true" layoutX="261.0" layoutY="200.0" mnemonicParsing="false" onAction="#startGame" text="Neues Spiel" />
+      <Label fx:id="labelLösung" layoutX="387.0" layoutY="311.0" prefHeight="18.0" prefWidth="198.0" />
+      <Label layoutX="87.0" layoutY="110.0" text="Ihr Einsatz" />
+      <TextField fx:id="textfeldEinsatz" layoutX="166.0" layoutY="106.0" />
+      <Label fx:id="labelEinsatzFehler" layoutX="384.0" layoutY="110.0" prefHeight="18.0" prefWidth="211.0" />
+      <Button fx:id="buttonStart1" layoutX="166.0" layoutY="142.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfen" />
    </children>
 </AnchorPane>

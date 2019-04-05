@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -126,6 +127,10 @@ public class RouletteFXMLController implements Initializable {
     
     ArrayList<Integer> redArray = new ArrayList<>();
     ArrayList<Integer> blackArray = new ArrayList<>();
+    @FXML
+    private ImageView placeYourBet;
+    @FXML
+    private ImageView rouletteWheel;
     
     
     @Override
@@ -434,7 +439,6 @@ public class RouletteFXMLController implements Initializable {
         betInt = 0;
         isNumber = true;
         placeBet();
-        System.out.println("all your shit is working dawg");
     }
     //-------------------------------------------------------------------
     
@@ -498,4 +502,12 @@ public class RouletteFXMLController implements Initializable {
     }
     //-------------------------------------------------------------------
 
+    
+    //Confirm your bet and pass off the numbers
+    //-------------------------------------------------------------------
+    @FXML
+    private void clickPlaceBet(MouseEvent event) {
+        
+    }
+    //-------------------------------------------------------------------
 }

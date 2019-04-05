@@ -16,7 +16,8 @@ CREATE TABLE Balance(
 CREATE TABLE Statistic(
     statisticID INTEGER auto_increment,
     gamePlayed varchar(255),
-    result varchar(255)
+    result varchar(255),
+    amount INTEGER
 );
 
 CREATE TABLE Player(
@@ -30,7 +31,7 @@ CREATE TABLE Player(
     FOREIGN KEY (statisticID) REFERENCES Statistic(statisticID)
 );
 
-INSERT INTO Statistic(gamePlayed,result) VALUES("Baccara","Won");
+INSERT INTO Statistic(gamePlayed,result) VALUES("Baccara","Won",100);
 INSERT INTO Balance(Balance,LastUpdated) VALUES(1000.0,CURDATE());
 -- Username == "Muster" -- Password: "1234"
 -- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK

@@ -13,6 +13,7 @@ import java.util.HashMap;
  * @author albio
  */
 public class Karten {
+
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenWerte = new ArrayList<String>();
     private int wert;
@@ -20,71 +21,37 @@ public class Karten {
 
     public Karten() {
         //Kartendeck (für jede Farbe eine Karte)
-        
-        for(int i = 2; i <=10; i++){
+        for (int i = 2; i <= 10; i++) {
             String j = String.valueOf(i);
             karten.put(j, i);
             karten.put(j, i);
             karten.put(j, i);
             karten.put(j, i);
-        }
-        
-        //J, Q, K, A
-        karten.put("J", 10);
-        karten.put("J", 10);
-        karten.put("J", 10);
-        karten.put("J", 10);
-        
-        karten.put("Q", 10);
-        karten.put("Q", 10);
-        karten.put("Q", 10);
-        karten.put("Q", 10);
-        
-        karten.put("K", 10);
-        karten.put("K", 10);
-        karten.put("K", 10);
-        karten.put("K", 10);
-        
-        karten.put("A", 11);
-        karten.put("A", 11);
-        karten.put("A", 11);
-        karten.put("A", 11);
-        
-        //kartenWerte
-        for(int i = 2; i <= 10; i++){
-            String j = String.valueOf(i);
+            //Kartenwerte
             kartenWerte.add(j);
             kartenWerte.add(j);
             kartenWerte.add(j);
             kartenWerte.add(j);
         }
-        
-        //J, Q, K, A
-        kartenWerte.add("J");
-        kartenWerte.add("J");
-        kartenWerte.add("J");
-        kartenWerte.add("J");
-
-        kartenWerte.add("Q");
-        kartenWerte.add("Q");
-        kartenWerte.add("Q");
-        kartenWerte.add("Q");
-        
-        kartenWerte.add("K");
-        kartenWerte.add("K");
-        kartenWerte.add("K");
-        kartenWerte.add("K");
-        
-        kartenWerte.add("A");
-        kartenWerte.add("A");
-        kartenWerte.add("A");
-        kartenWerte.add("A");
+        //Erstellen Karten und Kartenwert
+        String[] special = {"J", "Q", "K"};
+        for (int i = 0; i < 4; i++) {
+            for (String spec : special) {
+                karten.put(spec, 10);
+                kartenWerte.add(spec);
+            }
+        }
+        //A || Kartenwert und Karten
+        for (int i = 0; i < 4; i++) {
+            karten.put("A", 11);
+            kartenWerte.add("A");
+        }
     }
 
     public HashMap<String, Integer> getKarten() {
         return karten;
     }
-    
+
     public ArrayList<String> getKartenWerte() {
         return kartenWerte;
     }
@@ -96,6 +63,5 @@ public class Karten {
     public String getSymbol() {
         return symbol;
     }
-    
-    
+
 }

@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Cup {
 
-    private ArrayList<Dice> dicearray = new ArrayList<>();
+    private final ArrayList<Dice> dicearray = new ArrayList<>();
     private ArrayList<Dice> keep = new ArrayList<>();
 
     public ArrayList<Dice> getDicearray() {

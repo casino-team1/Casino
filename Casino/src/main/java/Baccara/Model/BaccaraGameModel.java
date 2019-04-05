@@ -10,6 +10,8 @@ import Baccara.BaccaraHandler;
 import Baccara.Entity.BaccaraCard;
 import Baccara.Entity.BaccaraGame;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleBooleanProperty;
 
 /**
@@ -18,6 +20,17 @@ import javafx.beans.property.SimpleBooleanProperty;
 public class BaccaraGameModel extends BaccaraModel {
 
     private BaccaraGame baccaraGame;
+
+    public void startNewRound() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+        }
+        resetGame();
+        setChanged();
+        notifyAll();
+
+    }
 
     public BaccaraGameModel(BaccaraHandler baccaraGame) {
         super(baccaraGame);

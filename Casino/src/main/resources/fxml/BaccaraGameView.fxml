@@ -5,6 +5,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="1065.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
    <children>
@@ -62,5 +64,15 @@
             <Image url="@../images/Baccara/startGameButton.png" />
          </image>
       </ImageView>
+      <Text fx:id="playerCardCountLabel" fill="WHITE" layoutX="238.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Card Count: ">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Text>
+      <Text fx:id="dealerCardCountLabel" fill="WHITE" layoutX="756.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dealer Card Count: ">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -7,11 +7,19 @@
 package Baccara.Controller;
 
 import Baccara.Model.BaccaraGameModel;
+import java.awt.Dimension;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 
 /**
  * FXML Controller class
@@ -20,12 +28,26 @@ import javafx.fxml.Initializable;
  */
 public class BaccaraGameViewController implements Initializable, Observer {
 
+    @FXML
+    private AnchorPane anchro;
+    @FXML
+    private ImageView firstLeftCard;
+    @FXML
+    private HBox playerSide;
+    @FXML
+    private ImageView thirdLeftCard;
+    @FXML
+    private ImageView secondLeftCard;
+    @FXML
+    private HBox dealerSide;
+    @FXML
+    private ImageView startGameView;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
     private BaccaraGameModel gameModel;
 
@@ -41,6 +63,18 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     public void bind() {
 
+    }
+
+    @FXML
+    private void startBaccara(MouseEvent event) {
+        if (this.gameModel.betsAreSet() == false) {
+            JDialog dialog = new JDialog();
+            dialog.setTitle("No bets placed");
+            dialog.add(new JLabel("Please place a bet, we can't start without you"));
+            dialog.setLocationRelativeTo(null);
+            dialog.setSize(new Dimension(300, 300));
+            dialog.setVisible(true);
+        }
     }
 
 }

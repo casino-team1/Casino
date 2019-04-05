@@ -5,14 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Yatzy.YatzyFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
    <children>
-      <Button fx:id="btntrowdices" layoutX="91.0" layoutY="172.0" mnemonicParsing="false" onAction="#presstrowdices" prefHeight="55.0" prefWidth="130.0" text="Würfel werfen" />
+      <Button fx:id="btnthrowdices" layoutX="91.0" layoutY="172.0" mnemonicParsing="false" onAction="#pressthrowdices" prefHeight="55.0" prefWidth="130.0" text="Würfel werfen" />
       <Label fx:id="lbldicelbl" layoutX="272.0" layoutY="107.0" text="Würfel: " />
       <Label fx:id="lbldices" layoutX="328.0" layoutY="107.0" text="0" />
       <Label fx:id="lblkeep" layoutX="272.0" layoutY="146.0" text="Behalten: " />
       <TextField fx:id="txtkeep" layoutX="328.0" layoutY="142.0" prefHeight="26.0" prefWidth="92.0" />
-      <Button fx:id="btnconfirmkeep" layoutX="433.0" layoutY="143.0" mnemonicParsing="false" onAction="#pressconfirmkeep" text="Ok" />
+      <Label fx:id="lbltest" layoutX="332.0" layoutY="191.0" text="Label" />
    </children>
 </AnchorPane>

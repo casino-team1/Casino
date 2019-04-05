@@ -40,7 +40,6 @@ public class Yatzy extends Spiel {
             stage.show();
             YatzyFXMLMenuController menu = loader.getController();
             menu.setYatzy(this);
-            
         } catch (IOException e) {
         }
         

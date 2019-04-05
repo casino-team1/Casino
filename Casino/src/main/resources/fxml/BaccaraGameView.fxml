@@ -3,13 +3,48 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="821.0" prefWidth="1003.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
+<AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="1065.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
    <children>
-      <ImageView fitHeight="821.0" fitWidth="1052.0" layoutX="-8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1074.0" fitWidth="1351.0" layoutX="-11.0" layoutY="-9.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="210.0" fitWidth="267.0" layoutX="532.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/BankerBackground.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="148.0" fitWidth="322.0" layoutX="502.0" layoutY="659.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/TieBackground.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="210.0" fitWidth="267.0" layoutX="532.0" layoutY="744.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/PlayerBackground.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="660.0" layoutY="68.0" prefHeight="328.0" prefWidth="9.0" style="-fx-background-color: #DCCC88#DCCC88;" />
+      <ImageView fx:id="firstLeftCard" fitHeight="328.0" fitWidth="171.0" layoutX="310.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox fx:id="playerSide" layoutX="39.0" layoutY="104.0" prefHeight="262.0" prefWidth="551.0">
+         <children>
+            <ImageView fx:id="thirdLeftCard" fitHeight="269.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="secondLeftCard" fitHeight="265.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="firstLeftCard" fitHeight="275.0" fitWidth="200.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Baccara/jackOfAlltraits.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox fx:id="dealerSide" layoutX="820.0" layoutY="94.0" prefHeight="275.0" prefWidth="431.0" />
+      <ImageView fx:id="startGameView" fitHeight="90.0" fitWidth="268.0" layoutX="958.0" layoutY="827.0" onMouseClicked="#startBaccara" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/startGameButton.png" />
          </image>
       </ImageView>
    </children>

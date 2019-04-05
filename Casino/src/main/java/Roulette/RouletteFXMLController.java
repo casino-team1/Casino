@@ -136,15 +136,16 @@ public class RouletteFXMLController implements Initializable {
     ArrayList<Integer> row1Array = new ArrayList<>();
     ArrayList<Integer> row2Array = new ArrayList<>();
     ArrayList<Integer> row3Array = new ArrayList<>();
+    @FXML
+    private Pane row3;
+    @FXML
+    private Pane row2;
+    @FXML
+    private Pane row1;
 
     public boolean getIsNumber() {
         return isNumber;
-    }
-    
-    
-   
-    
-    
+    }    
     
     @FXML
     private ImageView placeYourBet;
@@ -208,7 +209,6 @@ public class RouletteFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        //creating Timer
         
         
         //Creating an arrayList which contains all red numbers
@@ -245,6 +245,7 @@ public class RouletteFXMLController implements Initializable {
         System.out.println("");
         for (int i = 1; i < 37; i++) {
             System.out.println(i);
+            row1Array.add(i);
             i++;
             i++;
         }
@@ -254,6 +255,7 @@ public class RouletteFXMLController implements Initializable {
         for (int i = 1; i < 37; i++) {
             i++;
             System.out.println(i);
+            row2Array.add(i);
             i++;
         }
         //Creating an arrayList that contains all Numbers in row 3
@@ -263,6 +265,7 @@ public class RouletteFXMLController implements Initializable {
             i++;
             i++;
             System.out.println(i);
+            row3Array.add(i);
         }
         
         
@@ -340,6 +343,9 @@ public class RouletteFXMLController implements Initializable {
     }
 
     public ArrayList<Integer> placeBetArray() {
+        for (int i = 0; i < betArray.size(); i++) {
+            System.out.println(betArray.contains(i));
+        }
         return betArray;
     }
 
@@ -385,231 +391,199 @@ public class RouletteFXMLController implements Initializable {
     private void clickPane27(MouseEvent event) {
         betInt = 27;
         isNumber = true;
-        placeBet();
+        
     }
 
     @FXML
     private void clickPane24(MouseEvent event) {
         betInt = 24;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane18(MouseEvent event) {
         betInt = 18;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane15(MouseEvent event) {
         betInt = 15;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane12(MouseEvent event) {
         betInt = 12;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane9(MouseEvent event) {
         betInt = 9;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane6(MouseEvent event) {
         betInt = 6;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane3(MouseEvent event) {
         betInt = 3;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane35(MouseEvent event) {
         betInt = 35;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane32(MouseEvent event) {
         betInt = 32;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane29(MouseEvent event) {
         betInt = 29;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane26(MouseEvent event) {
         betInt = 26;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane23(MouseEvent event) {
         betInt = 23;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane20(MouseEvent event) {
         betInt = 20;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane17(MouseEvent event) {
         betInt = 17;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane14(MouseEvent event) {
         betInt = 14;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane11(MouseEvent event) {
         betInt = 11;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane8(MouseEvent event) {
         betInt = 8;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane5(MouseEvent event) {
         betInt = 5;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane2(MouseEvent event) {
         betInt = 2;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane34(MouseEvent event) {
         betInt = 34;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane31(MouseEvent event) {
         betInt = 31;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane28(MouseEvent event) {
         betInt = 28;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane25(MouseEvent event) {
         betInt = 25;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane22(MouseEvent event) {
         betInt = 22;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane19(MouseEvent event) {
         betInt = 19;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane16(MouseEvent event) {
         betInt = 16;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane13(MouseEvent event) {
         betInt = 13;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane10(MouseEvent event) {
         betInt = 10;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane7(MouseEvent event) {
         betInt = 7;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane4(MouseEvent event) {
         betInt = 4;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane1(MouseEvent event) {
         betInt = 1;
         isNumber = true;
-        placeBet();
     }
 
     @FXML
     private void clickPane0(MouseEvent event) {
         betInt = 0;
         isNumber = true;
-        placeBet();
     }
     //-------------------------------------------------------------------
 
@@ -620,8 +594,10 @@ public class RouletteFXMLController implements Initializable {
         ArrayList<Integer> intArray = new ArrayList<>();
         for (int i = 1; i < 19; i++) {
             intArray.add(i);
-            System.out.println(i);
+//            System.out.println(i);
         }
+        betArray = intArray;
+        isNumber = false;
     }
 
     @FXML
@@ -629,8 +605,10 @@ public class RouletteFXMLController implements Initializable {
         ArrayList<Integer> intArray = new ArrayList<>();
         for (int i = 19; i < 37; i++) {
             intArray.add(i);
-            System.out.println(i);
+//            System.out.println(i);
         }
+        betArray = intArray;
+        isNumber = false;
     }
 
     @FXML
@@ -638,9 +616,11 @@ public class RouletteFXMLController implements Initializable {
         ArrayList<Integer> intArray = new ArrayList<>();
         for (int i = 0; i < 36; i++) {
             i++;
-            System.out.println(i);
+//            System.out.println(i);
             intArray.add(i);
         }
+        betArray = intArray;
+        isNumber = false;
     }
 
     @FXML
@@ -648,27 +628,58 @@ public class RouletteFXMLController implements Initializable {
         ArrayList<Integer> intArray = new ArrayList<>();
         for (int i = 1; i < 37; i++) {
             i++;
-            System.out.println(i);
+//            System.out.println(i);
             intArray.add(i);
         }
+        betArray = intArray;
+        isNumber = false;
     }
 
     @FXML
-    private ArrayList<Integer> clickPaneRed(MouseEvent event) {
+    private void clickPaneRed(MouseEvent event) {
         for (int i = 0; i < redArray.size(); i++) {
             System.out.println(redArray.get(i));
 
         }
-        return redArray;
+        betArray = redArray;
+        isNumber = false;
     }
 
     @FXML
-    private ArrayList<Integer> clickPaneBlack(MouseEvent event) {
-        for (int i = 0; i < blackArray.size(); i++) {
-            System.out.println(blackArray.get(i));
+    private void clickPaneBlack(MouseEvent event) {
+//        for (int i = 0; i < blackArray.size(); i++) {
+//            System.out.println(blackArray.get(i));
+//
+//        }
+        betArray = blackArray;
+        isNumber = false;
+    }
+    
+    @FXML
+    private void clickRow3(MouseEvent event) {
+//        for (int i = 0; i < row3Array.size(); i++) {
+//            System.out.println(row3Array.get(i));
+//        }
+        betArray = row3Array;
+        isNumber = false;
+    }
 
-        }
-        return blackArray;
+    @FXML
+    private void clickRow2(MouseEvent event) {
+//        for (int i = 0; i < row2Array.size(); i++) {
+//            System.out.println(row2Array.get(i));
+//        }
+        betArray = row2Array;
+        isNumber = false;
+    }
+
+    @FXML
+    private void clickRow1(MouseEvent event) {
+//        for (int i = 0; i < row1Array.size(); i++) {
+//            System.out.println(row1Array.get(i));
+//        }
+        isNumber = false;
+        betArray = row1Array;        
     }
     //-------------------------------------------------------------------
 
@@ -681,7 +692,7 @@ public class RouletteFXMLController implements Initializable {
         PauseTransition transition = new PauseTransition(Duration.seconds(3));
         transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
         transition.play();       
-        if(isNumber = true){
+        if(isNumber == true){
             placeBet();
         }
         else {
@@ -689,4 +700,6 @@ public class RouletteFXMLController implements Initializable {
         }
     }
     //-------------------------------------------------------------------
+
+    
 }

@@ -25,7 +25,6 @@ public class BaccaraGameModel extends BaccaraModel {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
-            Logger.getLogger(BaccaraGameModel.class.getName()).log(Level.SEVERE, null, ex);
         }
         resetGame();
         setChanged();

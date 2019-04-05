@@ -56,6 +56,21 @@ public class PlayerUtil {
         return "None";
     }
 
+    public boolean isUniqueUsername(String username) {
+        try {
+            SelectQuery query = new SelectQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
+            ArrayList<String> retreavedHashes = query.runQueryWithReturn("SELECT username FROM Player WHERE username = ?", username);
+            if (retreavedHashes.isEmpty() == true) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     public double loadCurrentBalanceFromGivenUsername(String username) {
         try {
             SelectQuery query = new SelectQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);

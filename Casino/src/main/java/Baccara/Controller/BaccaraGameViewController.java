@@ -73,9 +73,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     private void setCardBacks() {
         ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.firstRightCard, this.secondRightCard};
-        String format = "/images/GameCards/cardBack.jpeg";
         for (ImageView imageView : imageViews) {
-            imageView.setImage(new Image(format));
+            imageView.setImage(new Image("/images/GameCards/cardBack.jpeg"));
         }
     }
 
@@ -90,16 +89,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @FXML
     private void startBaccara(MouseEvent event) throws InterruptedException {
-        /*
-        if (this.gameModel.betsAreSet() == false) {
-            JDialog dialog = new JDialog();
-            dialog.setTitle("No bets placed");
-            dialog.addnew JLabel("Please place a bet, we can't start without you"));
-            dialog.setLocationRelativeTo(null);
-            dialog.setSize(new Dimension(300, 300));
-            dialog.setVisible(true);
-        }
-         */
         ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.thirdLeftCard, this.firstRightCard, this.secondRightCard};
         for (int i = 0; i < imageViews.length; i++) {
             imageViews[i] = new ImageView();
@@ -123,7 +112,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
         int dealerCardCount = this.gameModel.getDealerCardCount();
         this.playerCardCountLabel.setText("Spieler Kartenwert: " + String.valueOf(playerCardCount));
         this.dealerCardCountLabel.setText("Dealer Kartenwert: " + String.valueOf(dealerCardCount));
-        this.gameModel.startNewRound();
+        //this.gameModel.startNewRound();
     }
 
 }

@@ -25,9 +25,14 @@ CREATE TABLE Player(
     username varchar(255),
     password varchar(255),
     balanceID integer,
-    statisticID integer,
     PRIMARY KEY (playerID),
     FOREIGN KEY (balanceID) REFERENCES Balance(balanceID),
+);
+
+CREATE TABLE StatisticToPlayer(
+    playerID INTEGER,
+    statisticID INTEGER,
+    FOREIGN KEY (playerID) REFERENCES Player(playerID),
     FOREIGN KEY (statisticID) REFERENCES Statistic(statisticID)
 );
 

@@ -23,5 +23,9 @@ public class DatabaseConnection {
     public java.sql.Connection getDatabaseConnection() {
         return this.DATABASE_CONNECTION;
     }
+    
+    private void addStatToDatabase(){
+        
+    }
 
 }

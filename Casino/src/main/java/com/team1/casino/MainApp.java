@@ -4,6 +4,8 @@ import Baccara.Baccara;
 import Blackjack.Blackjack;
 import Roulette.Roulette;
 import Yatzy.Yatzy;
+import com.team1.casino.database.DatabaseConnection;
+import com.team1.casino.database.DatabaseConnector;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ public class MainApp extends Application {
     public Stage getStage() {
         return this.stage;
     }
+    private final boolean PRODUCTION_MODE = false;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -27,12 +30,19 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
         Parent root = (Parent) loader.load();
         Scene scene = new Scene(root);
+        if (this.PRODUCTION_MODE == true) {
+            setupForProduction();
+        }
         scene.getStylesheets().add("/styles/Styles.css");
         stage.setTitle("Casino Central");
         stage.setScene(scene);
         stage.show();
         CasinoController controller = loader.getController();
         controller.setCasinoModel(new CasinoModel(this));
+    }
+
+    public void setupForProduction() {
+        DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "Muster", "", false).connectToDatabase();
     }
 
     public void startBaccara() {

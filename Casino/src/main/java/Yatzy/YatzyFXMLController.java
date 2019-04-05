@@ -29,6 +29,11 @@ public class YatzyFXMLController implements Initializable {
     
     private boolean firstthrow = true;
     private ArrayList<String> keeparray = new ArrayList<>();
+    private ArrayList<Dice> keep = new ArrayList<>();
+    
+    Cup cup = new Cup();
+    
+    
     private PlayYatzy yatzy;
     @FXML
     private Label lbldicelbl;
@@ -39,9 +44,9 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private TextField txtkeep;
     @FXML
-    private Button btntrowdices;
+    private Button btnthrowdices;
     @FXML
-    private Button btnconfirmkeep;
+    private Label lbltest;
     
     public void setYatzy(PlayYatzy yatzy){
         this.yatzy = yatzy;
@@ -58,33 +63,43 @@ public class YatzyFXMLController implements Initializable {
     
     public void needHelp() {
         
+    }       
+
+    public ArrayList<String> getkeeparray() {
+        return keeparray;
     }
 
     @FXML
-    private void presstrowdices(ActionEvent event) {
-        if(firstthrow == true) {
-        Cup cup = new Cup();
-        cup.trowDices();
+    private void pressthrowdices(ActionEvent event) {
+        if(firstthrow == true) {   
+        cup.throwDices();
         firstthrow = false;
-        btntrowdices.setText("Zweiter Wurf");
+        btnthrowdices.setText("Zweiter Wurf");
         }
         else
         {
             keeparray = new ArrayList<String>(Arrays.asList(txtkeep.getText().split("")));
             
+            for(int i = 0; i < keeparray.size(); i++) {
+            Dice dice = new Dice();
+            dice.setValue(Integer.parseInt(keeparray.get(i)));
+            keep.add(dice);
+            }
+            cup.setKeep(keep);
+            cup.throwDices();
+        }
+        String output = "";
+        for(int i = 0; i < 5; i++){
+        output += cup.getDicearray().get(i).getValue();
         }
         
+        Rules rules = new Rules();
+        rules.calculateResult(cup.getDicearray());
+        lbldices.setText(output);
+    }
         
-    }
 
-    @FXML
-    private void pressconfirmkeep(ActionEvent event) {
-        keeparray = new ArrayList<String>(Arrays.asList(txtkeep.getText().split("")));
-    }
     
-    public ArrayList<String> getkeeparray() {
-        return keeparray;
-    }
     
     
     

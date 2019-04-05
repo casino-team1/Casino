@@ -14,6 +14,11 @@ public class BaccaraCard {
 
     private int cardValue;
     private String imageLocation;
+
+    @Override
+    public String toString() {
+        return "BaccaraCard{" + "cardValue=" + cardValue + ", imageLocation=" + imageLocation + ", cardName=" + cardName + ", cardColor=" + cardColor + ", cardType=" + cardType + '}';
+    }
     private String cardName;
     private final BaccaraCardColor cardColor;
     private final BaccaraCardType cardType;
@@ -27,6 +32,10 @@ public class BaccaraCard {
         }
         this.cardName = cardName + " " + this.cardType.toString();
         this.cardValue = cardValue;
+    }
+
+    public int getCardValue() {
+        return cardValue;
     }
 
     private void evaluateImageLink() {

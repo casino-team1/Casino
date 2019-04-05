@@ -7,51 +7,41 @@
 package Baccara.Model;
 
 import Baccara.BaccaraHandler;
-import Baccara.Entity.BaccaraCard;
-import Baccara.Entity.BaccaraDeckGenerator;
-import java.util.ArrayList;
-import java.util.Collections;
+import Baccara.Entity.BaccaraGame;
 import javafx.beans.property.SimpleBooleanProperty;
 
 /**
- *
  * @author Nick Flückiger
  */
 public class BaccaraGameModel extends BaccaraModel {
 
-    private ArrayList<BaccaraCard> cardDecks = new ArrayList<>();
+    private BaccaraGame baccaraGame;
 
     public BaccaraGameModel(BaccaraHandler baccaraGame) {
         super(baccaraGame);
-        this.cardDecks = new BaccaraDeckGenerator().getDecks();
-        Collections.shuffle(this.cardDecks);
+        this.baccaraGame = new BaccaraGame();
     }
 
-    public BaccaraCard getNextCardInStack() {
-        if (this.cardDecks.size() > 0) {
-            BaccaraCard card = cardDecks.get(this.cardDecks.size() - 1);
-            this.cardDecks.remove(this.cardDecks.size() - 1);
-            return card;
+    public boolean betsAreSet() {
+        if (playerBetSet.getValue() == true || dealerBetSet.getValue() == true || tieBetSet.getValue() == true) {
+            return true;
         }
-        return null;
+        return false;
     }
 
-    public void reshuffleCards() {
-        this.cardDecks = new BaccaraDeckGenerator().getDecks();
-        Collections.shuffle(this.cardDecks);
+    public int getPlayerCardCount() {
+        return this.baccaraGame.getPlayerCardCount();
     }
 
-    public boolean hasCardInDecks() {
-        if (this.cardDecks.isEmpty() == true) {
-            return false;
-        }
-        return true;
+    public int getDealerCardCount() {
+        return this.baccaraGame.getDealerCardCount();
     }
 
     private SimpleBooleanProperty playerBetSet = new SimpleBooleanProperty();
     private SimpleBooleanProperty dealerBetSet = new SimpleBooleanProperty();
     private SimpleBooleanProperty playerDoubleBetSet = new SimpleBooleanProperty();
     private SimpleBooleanProperty dealerDoubleBetSet = new SimpleBooleanProperty();
+    private SimpleBooleanProperty tieBetSet = new SimpleBooleanProperty();
 
     private int playerBet = 0;
     private int dealerBet = 0;
@@ -60,11 +50,11 @@ public class BaccaraGameModel extends BaccaraModel {
     private int tieBet = 0;
 
     public void setPlayerBet(int betValue) {
-        this.playerBet = betValue;
+        this.baccaraGame.setPlayerBet(betValue);
     }
 
     public void setDealerBet(int betValue) {
-        this.dealerBet = betValue;
+        this.baccaraGame.setDealerBet(betValue);
     }
 
     public void setPlayerDoubleBet(int betValue) {
@@ -76,7 +66,7 @@ public class BaccaraGameModel extends BaccaraModel {
     }
 
     public void setTieBet(int betValue) {
-        this.tieBet = betValue;
+        this.baccaraGame.setTieBet(betValue);
     }
 
     public SimpleBooleanProperty getPlayerBetSet() {
@@ -96,11 +86,11 @@ public class BaccaraGameModel extends BaccaraModel {
     }
 
     public int getPlayerBet() {
-        return playerBet;
+        return this.baccaraGame.getPlayerBet();
     }
 
     public int getDealerBet() {
-        return dealerBet;
+        return this.baccaraGame.getDealerBet();
     }
 
     public int getPlayerDoubleBet() {
@@ -112,7 +102,7 @@ public class BaccaraGameModel extends BaccaraModel {
     }
 
     public int getTieBet() {
-        return tieBet;
+        return this.baccaraGame.getTieBet();
     }
 
     public void resetGame() {

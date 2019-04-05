@@ -13,8 +13,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 /**
  * @author Nick Flückiger
  */
-
-
 public class BaccaraGameModel extends BaccaraModel {
 
     private BaccaraGame baccaraGame;
@@ -29,7 +27,6 @@ public class BaccaraGameModel extends BaccaraModel {
             return true;
         }
         return false;
-<<<<<<< Updated upstream
     }
 
     public int getPlayerCardCount() {
@@ -38,8 +35,6 @@ public class BaccaraGameModel extends BaccaraModel {
 
     public int getDealerCardCount() {
         return this.baccaraGame.getDealerCardCount();
-=======
->>>>>>> Stashed changes
     }
 
     private SimpleBooleanProperty playerBetSet = new SimpleBooleanProperty();

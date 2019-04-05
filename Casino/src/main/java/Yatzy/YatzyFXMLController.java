@@ -28,6 +28,7 @@ public class YatzyFXMLController implements Initializable {
      */
     
     private boolean firstthrow = true;
+    private boolean secondthrow = true;
     private ArrayList<String> keeparray = new ArrayList<>();
     private ArrayList<Dice> keep = new ArrayList<>();
     
@@ -76,7 +77,7 @@ public class YatzyFXMLController implements Initializable {
         firstthrow = false;
         btnthrowdices.setText("Zweiter Wurf");
         }
-        else
+        else if(secondthrow == true && firstthrow == false)
         {
             keeparray = new ArrayList<String>(Arrays.asList(txtkeep.getText().split("")));
             
@@ -88,6 +89,22 @@ public class YatzyFXMLController implements Initializable {
             cup.setKeep(keep);
             cup.throwDices();
             
+            
+            
+            
+            secondthrow = false;
+            btnthrowdices.setText("Dritter Wurf");
+        }
+        else {
+            keeparray = new ArrayList<String>(Arrays.asList(txtkeep.getText().split("")));
+            
+            for(int i = 0; i < keeparray.size(); i++) {
+            Dice dice = new Dice();
+            dice.setValue(Integer.parseInt(keeparray.get(i)));
+            keep.add(dice);
+            }
+            cup.setKeep(keep);
+            cup.throwDices();
             
             Rules rules = new Rules();
             rules.calculateResult(cup.getDicearray());

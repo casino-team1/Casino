@@ -21,7 +21,7 @@
             <Image url="@../images/Roulette/rowSelect.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="rouletteWheel" fitHeight="234.0" fitWidth="293.0" layoutX="86.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rouletteWheel" fitHeight="234.0" fitWidth="293.0" layoutX="136.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/rouletteWheel.png" />
          </image>
@@ -115,7 +115,6 @@
       <Pane fx:id="pane34" layoutX="1027.0" layoutY="251.0" onMouseClicked="#clickPane34" prefHeight="40.0" prefWidth="40.0" />
       <Pane fx:id="pane31" layoutX="986.0" layoutY="251.0" onMouseClicked="#clickPane31" prefHeight="40.0" prefWidth="40.0" />
       <Pane fx:id="pane28" layoutX="947.0" layoutY="251.0" onMouseClicked="#clickPane28" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane25" layoutX="906.0" layoutY="251.0" onMouseClicked="#clickPane25" prefHeight="40.0" prefWidth="40.0" />
       <Pane fx:id="pane22" layoutX="865.0" layoutY="251.0" onMouseClicked="#clickPane22" prefHeight="40.0" prefWidth="40.0" />
       <Pane fx:id="pane19" layoutX="824.0" layoutY="251.0" onMouseClicked="#clickPane19" prefHeight="40.0" prefWidth="40.0" />
       <Pane fx:id="pane16" layoutX="783.0" layoutY="251.0" onMouseClicked="#clickPane16" prefHeight="40.0" prefWidth="40.0" />
@@ -135,29 +134,32 @@
       <Pane fx:id="paneRed" layoutX="907.0" layoutY="106.0" onMouseClicked="#clickPaneRed" prefHeight="60.0" prefWidth="162.0" />
       <Pane fx:id="panePasse" layoutX="580.0" layoutY="291.0" onMouseClicked="#clickPanePasse" prefHeight="60.0" prefWidth="162.0" />
       <Pane fx:id="panePair" layoutX="742.0" layoutY="291.0" onMouseClicked="#clickPanePair" prefHeight="60.0" prefWidth="162.0" />
-      <Pane fx:id="paneBlack" layoutX="907.0" layoutY="291.0" onMouseClicked="#clickPaneBlack" prefHeight="60.0" prefWidth="162.0" />
+      <Pane fx:id="paneBlack" layoutX="907.0" layoutY="291.0" onMouseClicked="#clickPaneBlack" prefHeight="60.0" prefWidth="162.0">
+         <children>
+            <Pane fx:id="pane25" layoutX="-18.0" layoutY="-13.0" onMouseClicked="#clickPane25" prefHeight="40.0" prefWidth="40.0" />
+         </children></Pane>
       <Line endX="-51.0" layoutX="51.0" layoutY="55.0" startX="1124.0" />
       <Line endX="-51.0" layoutX="51.0" layoutY="60.0" startX="1124.0" />
       <Line endX="-51.0" layoutX="51.0" layoutY="677.0" startX="1124.5" />
       <Line endX="-51.0" layoutX="51.0" layoutY="672.0" startX="1124.0" />
-      <Button layoutX="1102.0" layoutY="14.0" mnemonicParsing="false" text="?" />
-      <Button layoutX="14.0" layoutY="684.0" mnemonicParsing="false" text="Den Roulettetisch verlassen" />
+      <Button layoutX="1141.0" layoutY="14.0" mnemonicParsing="false" text="?" />
+      <Button layoutX="14.0" layoutY="694.0" mnemonicParsing="false" text="Den Roulettetisch verlassen" />
       <RadioButton fx:id="radioTable" layoutX="467.0" layoutY="112.0" mnemonicParsing="false" text="Tisch benutzen" />
       <RadioButton fx:id="radioThree" layoutX="467.0" layoutY="408.0" mnemonicParsing="false" text="Drei Nummern" />
       <RadioButton fx:id="radioFour" layoutX="467.0" layoutY="482.0" mnemonicParsing="false" text="Vier Nummern" />
       <RadioButton fx:id="radioFive" layoutX="467.0" layoutY="562.0" mnemonicParsing="false" text="Fünf Nummern" />
-      <Spinner layoutX="601.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="701.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="601.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="701.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="601.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="701.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="801.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="801.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="801.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="901.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="901.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner layoutX="1001.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="threeOne" editable="true" layoutX="601.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="threeTwo" editable="true" layoutX="701.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="fourOne" editable="true" layoutX="601.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="fourTwo" editable="true" layoutX="701.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="fiveOne" editable="true" layoutX="601.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="fiveTwo" editable="true" layoutX="701.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="threeThree" editable="true" layoutX="801.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="fourThree" editable="true" layoutX="801.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="fiveThree" editable="true" layoutX="801.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="fourFour" editable="true" layoutX="901.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="fiveFour" editable="true" layoutX="901.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
+      <Spinner fx:id="fiveFive" editable="true" layoutX="1001.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
       <Line endX="172.0" endY="30.0" layoutX="938.0" layoutY="137.0" startX="172.0" startY="156.0" />
       <Pane layoutX="1070.0" layoutY="170.0" prefHeight="40.0" prefWidth="40.0" />
       <Pane layoutX="1070.0" layoutY="208.0" prefHeight="40.0" prefWidth="40.0" />

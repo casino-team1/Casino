@@ -11,11 +11,16 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import java.util.Date;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -127,6 +132,20 @@ public class RouletteFXMLController implements Initializable {
 
     ArrayList<Integer> redArray = new ArrayList<>();
     ArrayList<Integer> blackArray = new ArrayList<>();
+    
+    ArrayList<Integer> row1Array = new ArrayList<>();
+    ArrayList<Integer> row2Array = new ArrayList<>();
+    ArrayList<Integer> row3Array = new ArrayList<>();
+
+    public boolean getIsNumber() {
+        return isNumber;
+    }
+    
+    
+   
+    
+    
+    
     @FXML
     private ImageView placeYourBet;
     @FXML
@@ -135,6 +154,8 @@ public class RouletteFXMLController implements Initializable {
 
     ToggleGroup group = new ToggleGroup();
 
+    //Radiobuttons to select where you want to place your bets
+    //-------------------------------------------------------------------
     @FXML
     private RadioButton radioTable;
     @FXML
@@ -143,9 +164,54 @@ public class RouletteFXMLController implements Initializable {
     private RadioButton radioFour;
     @FXML
     private RadioButton radioFive;
+    //-------------------------------------------------------------------
+    
+    
+    //Spinners to select three bets
+    //-------------------------------------------------------------------
+    @FXML
+    private Spinner<Integer> threeOne;
+    @FXML
+    private Spinner<Integer> threeTwo;
+    @FXML
+    private Spinner<Integer> threeThree;
+    //-------------------------------------------------------------------
+    
+    //Spinners to select four bets
+    //-------------------------------------------------------------------
+    @FXML
+    private Spinner<Integer> fourOne;
+    @FXML
+    private Spinner<Integer> fourTwo;
+    @FXML
+    private Spinner<Integer> fourThree;
+    @FXML
+    private Spinner<Integer>fourFour;
+    //-------------------------------------------------------------------
+    
+    //Spinners to select five bets
+    //-------------------------------------------------------------------
+    @FXML
+    private Spinner<Integer> fiveOne;
+    @FXML
+    private Spinner<Integer> fiveTwo;
+    @FXML
+    private Spinner<Integer> fiveThree;
+    @FXML
+    private Spinner<Integer> fiveFour;
+    @FXML
+    private Spinner<Integer> fiveFive;
+    //-------------------------------------------------------------------
 
+    private long secs = (new Date().getTime()) / 1000;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        //creating Timer
+        
+        
+        //Creating an arrayList which contains all red numbers
         redArray.add(1);
         redArray.add(3);
         redArray.add(5);
@@ -165,13 +231,46 @@ public class RouletteFXMLController implements Initializable {
         redArray.add(34);
         redArray.add(36);
 
+        //creating an arraylist which contains all black numbers
+        //  !!This is dependant on the red array!!
         for (int i = 1; i < 37; i++) {
             if (redArray.contains(i)) {
             } else {
                 blackArray.add(i);
             }
         }
+        
+        //Creating an arrayList that contains all Numbers in row 1
+        System.out.println("");
+        System.out.println("");
+        for (int i = 1; i < 37; i++) {
+            System.out.println(i);
+            i++;
+            i++;
+        }
+        //Creating an arrayList that contains all Numbers in row 2
+        System.out.println("");
+        System.out.println("");
+        for (int i = 1; i < 37; i++) {
+            i++;
+            System.out.println(i);
+            i++;
+        }
+        //Creating an arrayList that contains all Numbers in row 3
+        System.out.println("");
+        System.out.println("");
+        for (int i = 1; i < 37; i++) {
+            i++;
+            i++;
+            System.out.println(i);
+        }
+        
+        
+        
+        
 
+        
+        //Setting groups for the radioButtons
         radioTable.setToggleGroup(group);
         radioTable.setSelected(true);
 
@@ -180,9 +279,63 @@ public class RouletteFXMLController implements Initializable {
         radioFour.setToggleGroup(group);
         
         radioFive.setToggleGroup(group);
+        
+        
+        
+        
+        
+        
+        //Setting values for three spinners
+        //-------------------------------------------------------------------
+        SpinnerValueFactory<Integer> threeOneSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 12);
+        this.threeOne.setValueFactory(threeOneSpin);
+        
+        SpinnerValueFactory<Integer> threeTwoSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 24);
+        this.threeTwo.setValueFactory(threeTwoSpin);
+        
+        SpinnerValueFactory<Integer> threeThreeSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
+        this.threeThree.setValueFactory(threeThreeSpin);
+        //-------------------------------------------------------------------
+        
+        //Setting values for four spinners
+        //-------------------------------------------------------------------
+        SpinnerValueFactory<Integer> fourOneSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 9);
+        this.fourOne.setValueFactory(fourOneSpin);
+        
+        SpinnerValueFactory<Integer> fourTwoSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 18);
+        this.fourTwo.setValueFactory(fourTwoSpin);
+        
+        SpinnerValueFactory<Integer> fourThreeSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 27);
+        this.fourThree.setValueFactory(fourThreeSpin);
+        
+        SpinnerValueFactory<Integer> fourFourSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
+        this.fourFour.setValueFactory(fourFourSpin);
+        //-------------------------------------------------------------------
+        
+        //Setting values for five spinners
+        //-------------------------------------------------------------------
+        SpinnerValueFactory<Integer> fiveOneSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 0);
+        this.fiveOne.setValueFactory(fiveOneSpin);
+        
+        SpinnerValueFactory<Integer> fiveTwoSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 9);
+        this.fiveTwo.setValueFactory(fiveTwoSpin);
+        
+        SpinnerValueFactory<Integer> fiveThreeSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 18);
+        this.fiveThree.setValueFactory(fiveThreeSpin);
+        
+        SpinnerValueFactory<Integer> fiveFourSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 27);
+        this.fiveFour.setValueFactory(fiveFourSpin);
+        
+        SpinnerValueFactory<Integer> fiveFiveSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
+        this.fiveFive.setValueFactory(fiveFiveSpin);
+        //-------------------------------------------------------------------
+        
+        
+        
     }
 
     public int placeBet() {
+        System.out.println(betInt);
         return betInt;
     }
 
@@ -204,28 +357,28 @@ public class RouletteFXMLController implements Initializable {
     private void clickPane36(MouseEvent event) {
         betInt = 36;
         isNumber = true;
-        placeBet();
+        
     }
 
     @FXML
     private void clickPane21(MouseEvent event) {
         betInt = 21;
         isNumber = true;
-        placeBet();
+        
     }
 
     @FXML
     private void clickPane33(MouseEvent event) {
         betInt = 33;
         isNumber = true;
-        placeBet();
+        
     }
 
     @FXML
     private void clickPane30(MouseEvent event) {
         betInt = 30;
         isNumber = true;
-        placeBet();
+        
     }
 
     @FXML
@@ -523,7 +676,17 @@ public class RouletteFXMLController implements Initializable {
     //-------------------------------------------------------------------
     @FXML
     private void clickPlaceBet(MouseEvent event) {
-
+        rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheelFast.gif"));
+            
+        PauseTransition transition = new PauseTransition(Duration.seconds(3));
+        transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
+        transition.play();       
+        if(isNumber = true){
+            placeBet();
+        }
+        else {
+            placeBetArray();
+        }
     }
     //-------------------------------------------------------------------
 }

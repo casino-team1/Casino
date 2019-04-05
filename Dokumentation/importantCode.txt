@@ -12,7 +12,7 @@ private ImageView conf;
 //This code goes into "public void initialize"
 //This method activates upon start of the application
 //FolderName is stored in D:, C: or any other one letter drive
-this.conf.setImage(new Image("file:../../../../FolderName/SubfolderName/ImageName.png"));
+this.conf.setImage(new Image("file:/Images/Game(Roulette, BlackJack oder ein anderes)/ImageName.png"));
 
 
 

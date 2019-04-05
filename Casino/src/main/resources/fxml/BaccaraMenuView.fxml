@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,7 +24,7 @@
          </image>
       </ImageView>
       <Button fx:id="backToMenuButton" layoutX="624.0" layoutY="22.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="27.0" prefWidth="99.0" text="Go back" />
-      <Text fx:id="baccaraText" layoutX="249.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baccara">
+      <Text fx:id="baccaraText" layoutX="263.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baccara">
          <font>
             <Font name="Arial Bold" size="64.0" />
          </font>
@@ -38,15 +39,25 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ImageView fx:id="cardView" fitHeight="116.0" fitWidth="123.0" layoutX="73.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" rotate="-24.6">
+      <ImageView fx:id="cardView" fitHeight="116.0" fitWidth="123.0" layoutX="64.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true" rotate="21.8">
          <image>
             <Image url="@../images/Baccara/gamblingCards.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cardView1" fitHeight="116.0" fitWidth="123.0" layoutX="566.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardView1" fitHeight="116.0" fitWidth="123.0" layoutX="579.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true" rotate="-31.0">
          <image>
             <Image url="@../images/Baccara/gamblingCards.png" />
          </image>
       </ImageView>
+      <Label fx:id="welcomeMessage" layoutX="301.0" layoutY="104.0" text="PLACEHOLDER" textFill="WHITE" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="296.0">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="currentBalance" layoutX="170.0" layoutY="166.0" prefHeight="29.0" prefWidth="471.0" text="PLACEHOLDER CURRENTBALANCE" textFill="WHITE" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

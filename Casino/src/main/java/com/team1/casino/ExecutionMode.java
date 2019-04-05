@@ -4,15 +4,12 @@
  * For information and contact with the developer please write to
  * Mail: nick.flueckiger@outlook.de
  */
-package Baccara.Entity;
+package com.team1.casino;
 
 /**
  *
  * @author Nick Flückiger
  */
-public class BaccaraDeck {
-
-    public BaccaraDeck() {
-
-    }
+public enum ExecutionMode {
+    DEBUG,PRODUCTION,TESTING,DEVELOPMENT
 }

@@ -142,10 +142,10 @@
       <Line endX="-51.0" layoutX="51.0" layoutY="672.0" startX="1124.0" />
       <Button layoutX="1102.0" layoutY="14.0" mnemonicParsing="false" text="?" />
       <Button layoutX="14.0" layoutY="684.0" mnemonicParsing="false" text="Den Roulettetisch verlassen" />
-      <RadioButton layoutX="467.0" layoutY="112.0" mnemonicParsing="false" text="Tisch benutzen" />
-      <RadioButton layoutX="467.0" layoutY="408.0" mnemonicParsing="false" text="Drei Nummern" />
-      <RadioButton layoutX="467.0" layoutY="482.0" mnemonicParsing="false" text="Vier Nummern" />
-      <RadioButton layoutX="467.0" layoutY="562.0" mnemonicParsing="false" text="Fünf Nummern" />
+      <RadioButton fx:id="radioTable" layoutX="467.0" layoutY="112.0" mnemonicParsing="false" text="Tisch benutzen" />
+      <RadioButton fx:id="radioThree" layoutX="467.0" layoutY="408.0" mnemonicParsing="false" text="Drei Nummern" />
+      <RadioButton fx:id="radioFour" layoutX="467.0" layoutY="482.0" mnemonicParsing="false" text="Vier Nummern" />
+      <RadioButton fx:id="radioFive" layoutX="467.0" layoutY="562.0" mnemonicParsing="false" text="Fünf Nummern" />
       <Spinner layoutX="601.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
       <Spinner layoutX="701.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
       <Spinner layoutX="601.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />

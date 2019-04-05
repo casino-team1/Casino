@@ -24,4 +24,8 @@ public class DatabaseConnection {
         return this.DATABASE_CONNECTION;
     }
 
+    private void addStatToDatabase() {
+
+    }
+
 }

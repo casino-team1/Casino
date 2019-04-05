@@ -7,7 +7,9 @@
 package Baccara.Model;
 
 import Baccara.BaccaraHandler;
+import Baccara.Entity.BaccaraCard;
 import Baccara.Entity.BaccaraGame;
+import java.util.ArrayList;
 import javafx.beans.property.SimpleBooleanProperty;
 
 /**
@@ -35,6 +37,18 @@ public class BaccaraGameModel extends BaccaraModel {
 
     public int getDealerCardCount() {
         return this.baccaraGame.getDealerCardCount();
+    }
+
+    public void generateCards() {
+        this.baccaraGame.generateCards();
+    }
+
+    public ArrayList<BaccaraCard> getPlayerCards() {
+        return this.baccaraGame.getPlayerCards();
+    }
+
+    public ArrayList<BaccaraCard> getDealerCards() {
+        return this.baccaraGame.getDealerCards();
     }
 
     private SimpleBooleanProperty playerBetSet = new SimpleBooleanProperty();

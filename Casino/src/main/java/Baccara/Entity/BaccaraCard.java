@@ -32,6 +32,7 @@ public class BaccaraCard {
         }
         this.cardName = cardName + " " + this.cardType.toString();
         this.cardValue = cardValue;
+        this.imageLocation = String.valueOf(cardName.toLowerCase().toCharArray()[0]) + "" + (type.toString().toLowerCase().toCharArray()[0]) + ".jpg";
     }
 
     public int getCardValue() {

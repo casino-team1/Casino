@@ -6,14 +6,18 @@
  */
 package Baccara.Controller;
 
+import Baccara.Entity.BaccaraCard;
 import Baccara.Model.BaccaraGameModel;
 import java.awt.Dimension;
+import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -48,12 +52,19 @@ public class BaccaraGameViewController implements Initializable, Observer {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        setCardBacks();
     }
     private BaccaraGameModel gameModel;
 
     public void setBaccaraGameModel(BaccaraGameModel gameModel) {
         this.gameModel = gameModel;
         bind();
+
+    }
+
+    private void setCardBacks() {
+        String location = "/images/GameCards/%s";
+        this.firstLeftCard.setImage(new Image("File:" + getClass().getResource(String.format(location, "cardBack.jpeg")).getPath()));
     }
 
     @Override
@@ -67,6 +78,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @FXML
     private void startBaccara(MouseEvent event) {
+        /*
         if (this.gameModel.betsAreSet() == false) {
             JDialog dialog = new JDialog();
             dialog.setTitle("No bets placed");
@@ -75,6 +87,10 @@ public class BaccaraGameViewController implements Initializable, Observer {
             dialog.setSize(new Dimension(300, 300));
             dialog.setVisible(true);
         }
+         */
+        this.gameModel.generateCards();
+        ArrayList<BaccaraCard> playerCards = this.gameModel.getPlayerCards();
+        String location = "/images/GameCards/%s";
+        this.firstLeftCard.setImage(new Image("file:" + getClass().getResource(String.format(location, playerCards.get(0).getImageLocation())).getPath()));
     }
-
 }

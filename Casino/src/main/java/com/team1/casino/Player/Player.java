@@ -33,4 +33,12 @@ public abstract class Player {
         return new PlayerUtil().isValidPlayer(this);
     }
 
+    public double getCurrentBalance() {
+        return this.currentBalance;
+    }
+
+    public void setCurrentBalance(double currentBalance) {
+        this.currentBalance = currentBalance;
+    }
+
 }

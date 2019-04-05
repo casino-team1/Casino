@@ -25,6 +25,7 @@ public class MainApp extends Application {
     public Stage getStage() {
         return this.stage;
     }
+
     private final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
 
     @Override

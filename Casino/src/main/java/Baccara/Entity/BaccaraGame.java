@@ -79,12 +79,12 @@ public class BaccaraGame {
         this.dealerCardCount = calculateCardCount(dealerCards);
     }
 
-    public void dealerThirdDraw() {
+    private void dealerThirdDraw() {
         this.dealerCards.add(getNextCardInStack());
         this.dealerCardCount = calculateCardCount(dealerCards);
     }
 
-    public void playerThirdDraw() {
+    private void playerThirdDraw() {
         this.playerCards.add(getNextCardInStack());
         this.playerCardCount = calculateCardCount(playerCards);
     }
@@ -98,6 +98,53 @@ public class BaccaraGame {
             total %= 10;
         }
         return total;
+    }
+
+    public void checkForAdditionalDraw() {
+        if (this.playerCardCount == 8 || this.playerCardCount == 9 || this.playerCardCount == 6 || this.playerCardCount == 7) {
+            if (this.dealerCardCount >= 0 && this.dealerCardCount <= 5) {
+                this.dealerThirdDraw();
+            }
+        } else {
+            this.playerThirdDraw();
+            int playerCardDrawn = this.playerCards.get(this.playerCards.size() - 1).getCardValue();
+            switch (this.dealerCardCount) {
+                case 0:
+                case 1:
+                case 2:
+                    if (playerCardDrawn >= 1 && playerCardDrawn <= 10) {
+                        this.dealerThirdDraw();
+                    }
+                    break;
+                case 3:
+                    if (playerCardDrawn >= 1 && playerCardDrawn <= 10 && playerCardDrawn != 8) {
+                        this.dealerThirdDraw();
+                    }
+                    break;
+                case 4:
+                    if (playerCardDrawn >= 2 && playerCardDrawn <= 7) {
+                        this.dealerThirdDraw();
+                    }
+                    break;
+                case 5:
+                    if (playerCardDrawn >= 4 && playerCardDrawn <= 7) {
+                        this.dealerThirdDraw();
+                    }
+                    break;
+                case 6:
+                    if (playerCardDrawn == 6 || playerCardDrawn == 7) {
+                        this.dealerThirdDraw();
+                    }
+                    break;
+                case 7:
+                    break;
+                case 8:
+                case 9:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public void setDealerBet(int dealerBet) {

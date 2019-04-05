@@ -7,14 +7,13 @@
 package Baccara.Entity;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author Nick Flückiger
  */
 public class BaccaraGameTest {
-    
+
     public BaccaraGameTest() {
     }
 
@@ -115,5 +114,5 @@ public class BaccaraGameTest {
     @Test
     public void testGetPlayerCards() {
     }
-    
+
 }

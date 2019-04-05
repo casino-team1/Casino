@@ -70,7 +70,14 @@ public class BaccaraGame {
         this.playerBet = playerBet;
     }
 
+    public void resetGame() {
+        this.dealerBet = 0;
+        this.playerBet = 0;
+        this.tieBet = 0;
+    }
+
     public void generateCards() {
+        resetGame();
         for (int i = 0; i < 2; i++) {
             this.playerCards.add(getNextCardInStack());
             this.dealerCards.add(getNextCardInStack());

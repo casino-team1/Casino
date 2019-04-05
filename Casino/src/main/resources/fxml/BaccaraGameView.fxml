@@ -33,15 +33,30 @@
       <HBox fx:id="playerSide" layoutX="39.0" layoutY="104.0" prefHeight="262.0" prefWidth="551.0">
          <children>
             <ImageView fx:id="thirdLeftCard" fitHeight="269.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="secondLeftCard" fitHeight="265.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="firstLeftCard" fitHeight="275.0" fitWidth="200.0" pickOnBounds="true">
+            <ImageView fx:id="secondLeftCard" fitHeight="272.0" fitWidth="192.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/Baccara/jackOfAlltraits.jpg" />
+                  <Image url="@../images/GameCards/cardBack.jpeg" />
                </image>
             </ImageView>
+            <ImageView fx:id="firstLeftCard" fitHeight="272.0" fitWidth="200.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/GameCards/cardBack.jpeg" />
+               </image></ImageView>
          </children>
       </HBox>
-      <HBox fx:id="dealerSide" layoutX="820.0" layoutY="94.0" prefHeight="275.0" prefWidth="431.0" />
+      <HBox fx:id="dealerSide" layoutX="698.0" layoutY="102.0" prefHeight="275.0" prefWidth="431.0">
+         <children>
+            <ImageView fx:id="firstRightCard" fitHeight="276.0" fitWidth="200.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/GameCards/cardBack.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="secondRightCard" fitHeight="277.0" fitWidth="200.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/GameCards/cardBack.jpeg" />
+               </image>
+            </ImageView>
+         </children></HBox>
       <ImageView fx:id="startGameView" fitHeight="90.0" fitWidth="268.0" layoutX="958.0" layoutY="827.0" onMouseClicked="#startBaccara" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/startGameButton.png" />

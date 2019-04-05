@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Yatzy.YatzyFXMLMenuController">
+<AnchorPane id="AnchorPane" fx:id="menuwindow" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLMenuController">
    <children>
-      <Button fx:id="btnstart" layoutX="210.0" layoutY="149.0" mnemonicParsing="false" onAction="#btnstartPress" prefHeight="102.0" prefWidth="180.0" text="start" />
+      <ImageView fitHeight="400.0" fitWidth="641.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Yatzy/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnstart" layoutX="231.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnstartPress" prefHeight="102.0" prefWidth="180.0" text="start">
+         <font>
+            <Font size="38.0" />
+         </font></Button>
+      <ImageView fitHeight="191.0" fitWidth="377.0" layoutX="132.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Yatzy/yatzy_logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

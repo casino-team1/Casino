@@ -96,33 +96,27 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void pressthrowdices(ActionEvent event) {
         if (firstthrow == true) {
-
             firstthrow = false;
             btnthrowdices.setText("Zweiter Wurf");
         } else if (secondthrow == true && firstthrow == false) {
             keeparray = new ArrayList<String>(Arrays.asList(txtkeep.getText().split("")));
-
             for (int i = 0; i < keeparray.size(); i++) {
-                Dice dice = new Dice();
-                dice.setValue(Integer.parseInt(keeparray.get(i)));
+                Dice dice = new Dice(Integer.parseInt(keeparray.get(i)));
                 keep.add(dice);
             }
             cup.setKeep(keep);
             cup.throwDices();
-
             secondthrow = false;
             btnthrowdices.setText("Dritter Wurf");
         } else {
             keeparray = new ArrayList<String>(Arrays.asList(txtkeep.getText().split("")));
 
             for (int i = 0; i < keeparray.size(); i++) {
-                Dice dice = new Dice();
-                dice.setValue(Integer.parseInt(keeparray.get(i)));
+                Dice dice = new Dice(Integer.parseInt(keeparray.get(i)));
                 keep.add(dice);
             }
             cup.setKeep(keep);
             cup.throwDices();
-
             Rules rules = new Rules();
             rules.calculateResult(cup.getDicearray());
             lbltest.setText("" + rules.getResult());
@@ -228,7 +222,6 @@ public class YatzyFXMLController implements Initializable {
             default:
                 break;
         }
-
         return path;
     }
 
@@ -240,28 +233,28 @@ public class YatzyFXMLController implements Initializable {
             this.ge1.setImage(new Image(getImage(gearray.get(0).getValue())));
             ge1.setVisible(true);
         }
-        
+
         if (gearray.size() < 2) {
             ge2.setVisible(false);
         } else {
             this.ge2.setImage(new Image(getImage(gearray.get(1).getValue())));
             ge2.setVisible(true);
         }
-        
+
         if (gearray.size() < 3) {
             ge3.setVisible(false);
         } else {
             this.ge3.setImage(new Image(getImage(gearray.get(2).getValue())));
             ge3.setVisible(true);
         }
-        
+
         if (gearray.size() < 4) {
             ge4.setVisible(false);
         } else {
             this.ge4.setImage(new Image(getImage(gearray.get(3).getValue())));
             ge4.setVisible(true);
         }
-        
+
         if (gearray.size() < 5) {
             ge5.setVisible(false);
         } else {
@@ -269,36 +262,34 @@ public class YatzyFXMLController implements Initializable {
             ge5.setVisible(true);
         }
 
-        
-        
         if (bearray.size() < 1) {
             be1.setVisible(false);
         } else {
             this.be1.setImage(new Image(getImage(bearray.get(0).getValue())));
             be1.setVisible(true);
         }
-        
+
         if (bearray.size() < 2) {
             be2.setVisible(false);
         } else {
             this.be2.setImage(new Image(getImage(bearray.get(1).getValue())));
             be2.setVisible(true);
         }
-        
+
         if (bearray.size() < 3) {
             be3.setVisible(false);
         } else {
             this.be3.setImage(new Image(getImage(bearray.get(2).getValue())));
             be3.setVisible(true);
         }
-        
+
         if (bearray.size() < 4) {
             be4.setVisible(false);
         } else {
             this.be4.setImage(new Image(getImage(bearray.get(3).getValue())));
             be4.setVisible(true);
         }
-        
+
         if (bearray.size() < 5) {
             be5.setVisible(false);
         } else {

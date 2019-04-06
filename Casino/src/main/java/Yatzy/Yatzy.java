@@ -6,12 +6,9 @@
  */
 package Yatzy;
 
-import com.team1.casino.Controller.CasinoController;
-import com.team1.casino.Model.CasinoModel;
 import com.team1.casino.MainApp;
 import com.team1.casino.Spiel;
 import java.io.IOException;
-import java.util.HashSet;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,18 +31,16 @@ public class Yatzy extends Spiel {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/YatzyFXMLMenu.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add("/styles/Styles.css");
-            stage.setTitle("Casino Central");
+            stage.setTitle("Yatzy Menu");
             stage.setScene(scene);
             stage.show();
             YatzyFXMLMenuController menu = loader.getController();
             menu.setYatzy(this);
         } catch (IOException e) {
         }
-        
-        
+
     }
-    
+
     public void displayGame() {
         PlayYatzy play = new PlayYatzy(super.getMainApp());
         play.startGame();

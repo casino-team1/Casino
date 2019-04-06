@@ -89,10 +89,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @FXML
     private void startBaccara(MouseEvent event) throws InterruptedException {
-        ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.thirdLeftCard, this.firstRightCard, this.secondRightCard};
-        for (int i = 0; i < imageViews.length; i++) {
-            imageViews[i] = new ImageView();
-        }
+
         this.gameModel.generateCards();
         String format = "/images/GameCards/%s";
         ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
@@ -108,11 +105,22 @@ public class BaccaraGameViewController implements Initializable, Observer {
                 System.out.println(dealerCard.get(i).getImageLocation());
             }
         }
+
+        //this.gameModel.startNewRound();
+    }
+
+    private void resetImageViews() {
+        ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.thirdLeftCard, this.firstRightCard, this.secondRightCard};
+        for (int i = 0; i < imageViews.length; i++) {
+            imageViews[i] = new ImageView();
+        }
+    }
+
+    private void setCardValues() {
         int playerCardCount = this.gameModel.getPlayerCardCount();
         int dealerCardCount = this.gameModel.getDealerCardCount();
         this.playerCardCountLabel.setText("Spieler Kartenwert: " + String.valueOf(playerCardCount));
         this.dealerCardCountLabel.setText("Dealer Kartenwert: " + String.valueOf(dealerCardCount));
-        //this.gameModel.startNewRound();
     }
 
 }

@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  *
  * @author Erik Hess
  */
-public class PlayYatzy extends Spiel{
+public class PlayYatzy extends Spiel {
 
     public PlayYatzy(MainApp mainApplication) {
         super(mainApplication);
@@ -25,7 +25,7 @@ public class PlayYatzy extends Spiel{
 
     @Override
     public void startGame() {
-        try{
+        try {
             Stage stage = super.getMainApp().getStage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/YatzyFXML.fxml"));
             Parent root = (Parent) loader.load();
@@ -36,11 +36,10 @@ public class PlayYatzy extends Spiel{
             stage.show();
             YatzyFXMLController menu = loader.getController();
             menu.setYatzy(this);
-    } catch (IOException e) {
-        
+        } catch (IOException e) {
+
+        }
+
     }
-    
-    }
-    
-    
+
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,45 +9,45 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="1065.0" prefWidth="1340.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
+<AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="1065.0" prefWidth="1376.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
    <children>
-      <ImageView fitHeight="1074.0" fitWidth="1351.0" layoutX="-11.0" layoutY="-9.0" pickOnBounds="true">
+      <ImageView cache="true" fitHeight="1074.0" fitWidth="1451.0" layoutX="-11.0" layoutY="-9.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Baccara/tableBackground.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="210.0" fitWidth="267.0" layoutX="532.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bankerBet" fitHeight="210.0" fitWidth="267.0" layoutX="564.0" layoutY="423.0" onDragDone="#setBankerBet" onDragDropped="#setBankerBet" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/BankerBackground.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="148.0" fitWidth="322.0" layoutX="502.0" layoutY="659.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tieBet" fitHeight="148.0" fitWidth="322.0" layoutX="534.0" layoutY="655.0" onDragDropped="#setTieBet" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/TieBackground.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="210.0" fitWidth="267.0" layoutX="532.0" layoutY="744.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="playerBet" fitHeight="210.0" fitWidth="267.0" layoutX="564.0" layoutY="740.0" onDragDropped="#setPlayerBet" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/PlayerBackground.png" />
          </image>
       </ImageView>
-      <Pane layoutX="660.0" layoutY="68.0" prefHeight="328.0" prefWidth="9.0" style="-fx-background-color: #DCCC88#DCCC88;" />
-      <ImageView fx:id="firstLeftCard" fitHeight="328.0" fitWidth="171.0" layoutX="310.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-      <HBox fx:id="playerSide" layoutX="39.0" layoutY="104.0" prefHeight="262.0" prefWidth="551.0">
+      <Pane layoutX="687.0" layoutY="54.0" prefHeight="328.0" prefWidth="9.0" style="-fx-background-color: #DCCC88#DCCC88;" />
+      <HBox fx:id="playerSide" layoutX="93.0" layoutY="112.0" prefHeight="272.0" prefWidth="651.0" spacing="10.0">
          <children>
-            <ImageView fx:id="thirdLeftCard" fitHeight="269.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="secondLeftCard" fitHeight="272.0" fitWidth="192.0" pickOnBounds="true">
+            <ImageView fx:id="thirdLeftCard" fitHeight="295.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+            <ImageView fx:id="secondLeftCard" fitHeight="272.0" fitWidth="178.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/GameCards/cardBack.jpeg" />
                </image>
             </ImageView>
-            <ImageView fx:id="firstLeftCard" fitHeight="272.0" fitWidth="200.0" pickOnBounds="true">
+            <ImageView fx:id="firstLeftCard" fitHeight="272.0" fitWidth="186.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/GameCards/cardBack.jpeg" />
-               </image></ImageView>
+               </image>
+            </ImageView>
          </children>
       </HBox>
-      <HBox fx:id="dealerSide" layoutX="698.0" layoutY="102.0" prefHeight="275.0" prefWidth="431.0">
+      <HBox fx:id="dealerSide" layoutX="734.0" layoutY="106.0" prefHeight="277.0" prefWidth="676.0" spacing="10.0">
          <children>
             <ImageView fx:id="firstRightCard" fitHeight="276.0" fitWidth="200.0" pickOnBounds="true">
                <image>
@@ -57,21 +58,35 @@
                <image>
                   <Image url="@../images/GameCards/cardBack.jpeg" />
                </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </ImageView>
+            <ImageView fx:id="thirdRightImage" fitHeight="303.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
          </children></HBox>
-      <ImageView fx:id="startGameView" fitHeight="90.0" fitWidth="268.0" layoutX="958.0" layoutY="827.0" onMouseClicked="#startBaccara" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="startGameView" fitHeight="90.0" fitWidth="268.0" layoutX="990.0" layoutY="823.0" onMouseClicked="#startBaccara" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/startGameButton.png" />
          </image>
       </ImageView>
-      <Text fx:id="playerCardCountLabel" fill="WHITE" layoutX="238.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Card Count: ">
+      <Text fx:id="playerCardCountLabel" fill="WHITE" layoutX="270.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Card Count: ">
          <font>
             <Font name="Arial Bold" size="36.0" />
          </font>
       </Text>
-      <Text fx:id="dealerCardCountLabel" fill="WHITE" layoutX="756.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dealer Card Count: ">
+      <Text fx:id="dealerCardCountLabel" fill="WHITE" layoutX="787.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dealer Card Count: ">
          <font>
             <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="chipImage" fitHeight="140.0" fitWidth="147.0" layoutX="89.0" layoutY="778.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/gameChipImage.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="winner" fill="WHITE" layoutX="219.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Winner">
+         <font>
+            <Font size="36.0" />
          </font>
       </Text>
    </children>

@@ -279,7 +279,7 @@ public class BlackJackFXMLController implements Initializable {
         
         buttonHit.setDisable(false);
         buttonStand.setDisable(false);*/
-        
+
         new BlackJackGameModel().play();
     }
 
@@ -303,6 +303,7 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void zurueck(ActionEvent event) {
+
         /*Stage stage = super.getMainApp().getStage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
         Parent root = null;

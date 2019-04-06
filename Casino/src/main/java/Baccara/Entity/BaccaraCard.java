@@ -33,7 +33,7 @@ public class BaccaraCard {
     }
 
     private String concatinateImageLocation(String cardName, BaccaraCardType type) {
-        return String.valueOf(cardName.toLowerCase().toCharArray()[0]) + "" + (type.toString().toLowerCase().toCharArray()[0]) + ".jpg";
+        return String.valueOf(cardName.toUpperCase().toCharArray()[0]) + "" + (type.toString().toUpperCase().toCharArray()[0]) + ".jpg";
     }
 
     private BaccaraCardColor evaluateCardColor(BaccaraCardType type) {

@@ -6,11 +6,16 @@ import Baccara.Baccara;
 import Blackjack.Blackjack;
 import Roulette.Roulette;
 import Yatzy.Yatzy;
+import com.team1.casino.Controller.LoginController;
+import com.team1.casino.Model.CasinoLoginModel;
 import com.team1.casino.Player.PlayerCentral;
 import com.team1.casino.Player.PlayerUtil;
 import com.team1.casino.Player.Spieler;
 import com.team1.casino.database.DatabaseConnection;
 import com.team1.casino.database.DatabaseConnector;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -33,20 +38,19 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
-        Parent root = (Parent) loader.load();
-        Scene scene = new Scene(root);
+        if (this.executionMode == ExecutionMode.DEBUG) {
+            displayLoginView();
+            setupForDEBUG();
+        } else {
+            displayMainMenu();
+        }
+        /*
         if (this.executionMode == ExecutionMode.PRODUCTION) {
             setupForProduction();
         } else if (this.executionMode == ExecutionMode.DEBUG) {
             setupForDEBUG();
-        }
-        scene.getStylesheets().add("/styles/Styles.css");
-        stage.setTitle("Casino Central");
-        stage.setScene(scene);
-        stage.show();
-        CasinoController controller = loader.getController();
-        controller.setCasinoModel(new CasinoModel(this));
+        }*/
+
     }
 
     public void setupForProduction() {
@@ -55,8 +59,39 @@ public class MainApp extends Application {
 
     public void setupForDEBUG() {
         DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "casinoworker", "", false).connectToDatabase();
-        PlayerCentral.getInstance().setPlayer(new Spieler("Muster", "1234"));
-        PlayerCentral.getInstance().getPlayer().setCurrentBalance(new PlayerUtil().loadCurrentBalanceFromGivenUsername("Muster"));
+    }
+
+    public void displayLoginView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginView.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Casino Login");
+            stage.setScene(scene);
+            stage.show();
+            LoginController controller = loader.getController();
+            controller.setModel(new CasinoLoginModel());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void displayMainMenu() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setTitle("Casino Central");
+            stage.setScene(scene);
+            stage.show();
+            CasinoController controller = loader.getController();
+            controller.setCasinoModel(new CasinoModel(this));
+        } catch (IOException ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void startBaccara() {

@@ -23,11 +23,11 @@ public class CasinoLoginModel {
     private StringProperty username = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
 
-    public StringProperty getUsername() {
+    public StringProperty getUsernameProperty() {
         return username;
     }
 
-    public StringProperty getPassword() {
+    public StringProperty getPasswordProperty() {
         return password;
     }
 

@@ -6,73 +6,69 @@
 package Blackjack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+import javafx.scene.control.Label;
 
 /**
  *
  * @author albio
  */
 public class BlackJackSpielerModel {
+    
     Karten k = new Karten();
-    
+    private int kartenWertSpieler = 0;
     private ArrayList<String> kartenSpieler = new ArrayList<>();
-    boolean gewonnen = false;
-    
-    public void stand(){
-        
-    }
-    
-    public void hit(){
-        /*//Hat es genügend Karten?
+    private boolean gewonnen = false;
+
+    Random r = new Random();
+    int zufallszahl;
+    String zufallskarte = "";
+
+    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenWerte, HashMap<String, Integer> karten, Label labelKartenSpieler, Label labelKartenDealer) {
+        //Hat es genügend Karten?
         if (anzahlKartenImKartendeck < 1) {
-        this.karten = k.getKarten();
+            //dealer.austeilen();
         }
-        
+
         //Spieler zieht Karten
         zufallszahl = r.nextInt(51);
         zufallskarte = kartenWerte.get(zufallszahl);
-        
+
         if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
-        kartenWertSpieler += 10;
+            kartenWertSpieler += 10;
         } else if (zufallskarte.equals("A")) {
-        kartenWertSpieler += 11;
+            kartenWertSpieler += 11;
         } else {
-        kartenWertSpieler += karten.get(zufallskarte);
+            kartenWertSpieler += karten.get(zufallskarte);
         }
         kartenSpieler.add(zufallskarte);
         karten.remove(zufallszahl);
         anzahlKartenImKartendeck--;
         labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
-        
-        //Überprüfung, ob 21 überschritten wurde
-        if (kartenWertSpieler > 21) {
-        dealerGewonnen = true;
-        }
-        
-        //Hat jemand gewonnen?
-        if (spielerGewonnen) {
-        labelLösung.setText("SPIELER HAT GEWONNEN!!");
-        buttonHit.setDisable(true);
-        buttonStand.setDisable(true);
-        }
-        if (dealerGewonnen) {
-        labelLösung.setText("DEALER HAT GEWONNEN!!");
-        buttonHit.setDisable(true);
-        buttonStand.setDisable(true);
-        }*/
-        
-        stand();
     }
-    
-    public void setGewonnen(boolean gewonnen) {
-        this.gewonnen = gewonnen;
+
+    public void setGewonnen(boolean g) {
+        this.gewonnen = g;
     }
 
     public boolean hasGewonnen() {
         return gewonnen;
     }
-    
-    public ArrayList<String> getKarten(){
+
+    public ArrayList<String> getKartenSpieler() {
         return kartenSpieler;
     }
-}
 
+    public void setKartenWertSpieler(int i) {
+        this.kartenWertSpieler += i;
+    }
+
+    public int getKartenWertSpieler() {
+        return kartenWertSpieler;
+    }
+
+    public void addKarte(String zufallskarte) {
+        kartenSpieler.add(zufallskarte);
+    }
+}

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 public class CasinoController implements Initializable, Observer {
 
@@ -40,28 +41,28 @@ public class CasinoController implements Initializable, Observer {
         // TODO
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @FXML
-    private void startBlackJack(ActionEvent event) {
+    private void mouseClickBlackJack(MouseEvent event) {
         this.casinoModel.startBlackJack();
     }
 
     @FXML
-    private void startRoulette(ActionEvent event) {
-        this.casinoModel.startRoulette();
-    }
-
-    @FXML
-    private void startBaccara(ActionEvent event) {
+    private void mouseClickBaccara(MouseEvent event) {
         this.casinoModel.startBaccara();
     }
 
     @FXML
-    private void startYatzy(ActionEvent event) {
-        this.casinoModel.startYatzy();
+    private void clickMouseRoulette(MouseEvent event) {
+        this.casinoModel.startRoulette();
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @FXML
+    private void clickMouseYatzy(MouseEvent event) {
+        this.casinoModel.startYatzy();
     }
 }

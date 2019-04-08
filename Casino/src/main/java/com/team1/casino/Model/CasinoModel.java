@@ -36,5 +36,4 @@ public class CasinoModel extends Observable {
     public void startBlackJack() {
         this.mainApplication.startBlackJack();
     }
-
 }

@@ -29,6 +29,8 @@ import javafx.util.Duration;
  */
 public class RouletteFXMLController implements Initializable {
 
+    RouletteWheel wheel = new RouletteWheel();
+    
     //Deklarationen für jedes Feld auf dem Roulettetisch
     //-------------------------------------------------------------------
     @FXML
@@ -202,8 +204,6 @@ public class RouletteFXMLController implements Initializable {
     private Spinner<Integer> fiveFive;
     //-------------------------------------------------------------------
 
-    private long secs = (new Date().getTime()) / 1000;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Creating an arrayList which contains all red numbers
@@ -235,7 +235,7 @@ public class RouletteFXMLController implements Initializable {
         }
         //Creating an arrayList that contains all Numbers in row 1
         System.out.println("");
-        System.out.println("");
+        System.out.println("Row 1 here");
         for (int i = 1; i < 37; i++) {
             System.out.println(i);
             row1Array.add(i);
@@ -322,8 +322,8 @@ public class RouletteFXMLController implements Initializable {
     }
 
     public ArrayList<Integer> placeBetArray() {
-        for (int i = 0; i < betArray.size(); i++) {
-            System.out.println(betArray.contains(i));
+        for (int i : betArray) {
+            System.out.println(i);
         }
         return betArray;
     }

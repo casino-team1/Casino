@@ -25,12 +25,15 @@ public class BaccaraGameModel extends BaccaraModel {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
-            Logger.getLogger(BaccaraGameModel.class.getName()).log(Level.SEVERE, null, ex);
         }
         resetGame();
         setChanged();
         notifyAll();
 
+    }
+
+    public void checkForCardDraw() {
+        this.baccaraGame.checkForAdditionalDraw();
     }
 
     public BaccaraGameModel(BaccaraHandler baccaraGame) {
@@ -83,6 +86,15 @@ public class BaccaraGameModel extends BaccaraModel {
 
     public void setDealerBet(int betValue) {
         this.baccaraGame.setDealerBet(betValue);
+    }
+
+    public String determineWinner() {
+        if (this.baccaraGame.getPlayerCardCount() > this.baccaraGame.getDealerCardCount()) {
+            return "Player";
+        } else if (this.baccaraGame.getPlayerCardCount() == this.baccaraGame.getDealerCardCount()) {
+            return "Tie";
+        }
+        return "Dealer";
     }
 
     public void setPlayerDoubleBet(int betValue) {

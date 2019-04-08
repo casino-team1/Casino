@@ -19,15 +19,15 @@ import javafx.stage.Stage;
  *
  * @author Lukas Gilgen Schule
  */
-public class PlayRoulette extends Spiel{
-    
+public class PlayRoulette extends Spiel {
+
     public PlayRoulette(MainApp mainApplication) {
         super(mainApplication);
     }
-    
+
     @Override
-    public void startGame(){
-        System.out.println("Roulette is working");
+    public void startGame() {
+        //System.out.println("Roulette is working");
         Stage stageRoulette = super.getMainApp().getStage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RouletteFXML.fxml"));
         Parent root = null;
@@ -37,7 +37,6 @@ public class PlayRoulette extends Spiel{
             Logger.getLogger(Roulette.class.getName()).log(Level.SEVERE, null, ex);
         }
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
         stageRoulette.setTitle("Roulette Wheel");
         stageRoulette.setScene(scene);
         stageRoulette.show();

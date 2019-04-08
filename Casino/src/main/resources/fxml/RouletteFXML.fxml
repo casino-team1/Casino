@@ -161,8 +161,8 @@
       <Spinner fx:id="fiveFour" editable="true" layoutX="901.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
       <Spinner fx:id="fiveFive" editable="true" layoutX="1001.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
       <Line endX="172.0" endY="30.0" layoutX="938.0" layoutY="137.0" startX="172.0" startY="156.0" />
-      <Pane layoutX="1070.0" layoutY="170.0" prefHeight="40.0" prefWidth="40.0" />
-      <Pane layoutX="1070.0" layoutY="208.0" prefHeight="40.0" prefWidth="40.0" />
-      <Pane layoutX="1070.0" layoutY="251.0" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="row3" layoutX="1070.0" layoutY="170.0" onMouseClicked="#clickRow3" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="row2" layoutX="1070.0" layoutY="208.0" onMouseClicked="#clickRow2" prefHeight="40.0" prefWidth="40.0" />
+      <Pane fx:id="row1" layoutX="1070.0" layoutY="251.0" onMouseClicked="#clickRow1" prefHeight="40.0" prefWidth="40.0" />
    </children>
 </AnchorPane>

@@ -37,8 +37,5 @@ public class Cup {
             Dice dice = new Dice(rand.nextInt(5) + 1);
             dicearray.add(dice);
         }
-        keep.forEach((dice) -> {
-            dicearray.add(dice);
-        });
     }
 }

@@ -11,7 +11,7 @@ package Yatzy;
  */
 public class Dice {
 
-    private int value;
+    private final int value;
 
     public Dice(int value) {
         this.value = value;

@@ -13,9 +13,12 @@ import com.team1.casino.Spiel;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
@@ -23,7 +26,7 @@ import javafx.stage.Stage;
  * @author Nick Flückiger
  */
 public class Blackjack extends Spiel {
-    
+
     public Blackjack(MainApp mainApplication) {
         super(mainApplication);
     }
@@ -31,7 +34,7 @@ public class Blackjack extends Spiel {
     @Override
     public void startGame() {
         Stage stage = super.getMainApp().getStage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackFXML.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackMainFXML.fxml"));
         Parent root = null;
         try {
             root = (Parent) loader.load();

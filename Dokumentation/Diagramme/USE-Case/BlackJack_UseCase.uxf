@@ -4,19 +4,20 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>240</x>
-      <y>220</y>
-      <w>80</w>
-      <h>110</h>
+      <x>70</x>
+      <y>290</y>
+      <w>60</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>Benutzer</panel_attributes>
+    <panel_attributes>Spieler
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>900</x>
-      <y>120</y>
+      <x>720</x>
+      <y>190</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -26,8 +27,8 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>570</x>
-      <y>370</y>
+      <x>390</x>
+      <y>440</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -37,8 +38,8 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>430</x>
-      <y>270</y>
+      <x>250</x>
+      <y>340</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -48,8 +49,8 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>480</x>
-      <y>530</y>
+      <x>300</x>
+      <y>600</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -59,8 +60,8 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>670</x>
-      <y>480</y>
+      <x>490</x>
+      <y>550</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -70,8 +71,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>130</y>
+      <x>110</x>
+      <y>200</y>
       <w>630</w>
       <h>130</h>
     </coordinates>
@@ -81,8 +82,8 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>440</x>
-      <y>80</y>
+      <x>260</x>
+      <y>150</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -92,8 +93,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>90</y>
+      <x>110</x>
+      <y>160</y>
       <w>170</w>
       <h>170</h>
     </coordinates>
@@ -103,8 +104,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>230</y>
+      <x>110</x>
+      <y>300</y>
       <w>300</w>
       <h>180</h>
     </coordinates>
@@ -114,8 +115,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>230</y>
+      <x>110</x>
+      <y>300</y>
       <w>410</w>
       <h>280</h>
     </coordinates>
@@ -125,8 +126,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>230</y>
+      <x>110</x>
+      <y>300</y>
       <w>220</w>
       <h>330</h>
     </coordinates>
@@ -136,8 +137,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>230</y>
+      <x>110</x>
+      <y>300</y>
       <w>160</w>
       <h>80</h>
     </coordinates>
@@ -147,8 +148,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>420</x>
-      <y>50</y>
+      <x>240</x>
+      <y>120</y>
       <w>650</w>
       <h>530</h>
     </coordinates>
@@ -159,8 +160,8 @@ halign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>140</y>
+      <x>360</x>
+      <y>210</y>
       <w>390</w>
       <h>170</h>
     </coordinates>
@@ -171,8 +172,8 @@ halign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>150</y>
+      <x>480</x>
+      <y>220</y>
       <w>280</w>
       <h>240</h>
     </coordinates>
@@ -183,8 +184,8 @@ halign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>150</y>
+      <x>590</x>
+      <y>220</y>
       <w>240</w>
       <h>360</h>
     </coordinates>
@@ -195,8 +196,8 @@ halign=center</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>630</x>
-      <y>100</y>
+      <x>450</x>
+      <y>170</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
@@ -206,8 +207,8 @@ halign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>120</y>
+      <x>110</x>
+      <y>190</y>
       <w>360</w>
       <h>140</h>
     </coordinates>
@@ -217,8 +218,8 @@ halign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>100</y>
+      <x>600</x>
+      <y>170</y>
       <w>150</w>
       <h>50</h>
     </coordinates>

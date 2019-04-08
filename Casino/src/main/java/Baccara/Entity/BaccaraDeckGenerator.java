@@ -20,9 +20,9 @@ public class BaccaraDeckGenerator {
         ArrayList<BaccaraCard> cards = new ArrayList<>();
         for (int i = 0; i < DECKS; i++) {
             ArrayList<BaccaraCard> deck = generateDeck();
-            for (BaccaraCard card : deck) {
+            deck.forEach((card) -> {
                 cards.add(card);
-            }
+            });
         }
         return cards;
     }
@@ -35,14 +35,16 @@ public class BaccaraDeckGenerator {
                 cards.add(new BaccaraCard(type, String.valueOf(i), i));
             }
         }
-        final String[] specialCards = {"King", "Queen", "Jack"};
+        //generate cards that are not numeric
+        final String[] specialCards = {"King", "Queen", "Jack", "Ace"};
         for (String cardName : specialCards) {
             for (BaccaraCardType type : cardTypes) {
-                cards.add(new BaccaraCard(type, cardName, 0));
+                int cardValue = 0;
+                if ("Ace".equals(cardName)) {
+                    cardValue = 1;
+                }
+                cards.add(new BaccaraCard(type, cardName, cardValue));
             }
-        }
-        for (BaccaraCardType type : cardTypes) {
-            cards.add(new BaccaraCard(type, "Ace", 1));
         }
         return cards;
     }

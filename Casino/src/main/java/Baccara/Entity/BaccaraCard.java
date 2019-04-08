@@ -13,26 +13,37 @@ package Baccara.Entity;
 public class BaccaraCard {
 
     private int cardValue;
-    private String imageLocation;
+    private final String imageLocation;
 
     @Override
     public String toString() {
         return "BaccaraCard{" + "cardValue=" + cardValue + ", imageLocation=" + imageLocation + ", cardName=" + cardName + ", cardColor=" + cardColor + ", cardType=" + cardType + '}';
     }
-    private String cardName;
+
+    private final String cardName;
     private final BaccaraCardColor cardColor;
     private final BaccaraCardType cardType;
 
     public BaccaraCard(BaccaraCardType type, String cardName, int cardValue) {
         this.cardType = type;
-        if (type == BaccaraCardType.DIAMON || type == BaccaraCardType.HEART) {
-            this.cardColor = BaccaraCardColor.RED;
-        } else {
-            this.cardColor = BaccaraCardColor.BLACK;
-        }
+        this.cardColor = evaluateCardColor(type);
         this.cardName = cardName + " " + this.cardType.toString();
         this.cardValue = cardValue;
-        this.imageLocation = String.valueOf(cardName.toLowerCase().toCharArray()[0]) + "" + (type.toString().toLowerCase().toCharArray()[0]) + ".jpg";
+        this.imageLocation = concatinateImageLocation(cardName, type);
+    }
+
+    private String concatinateImageLocation(String cardName, BaccaraCardType type) {
+        return String.valueOf(cardName.toUpperCase().toCharArray()[0]) + "" + (type.toString().toUpperCase().toCharArray()[0]) + ".jpg";
+    }
+
+    private BaccaraCardColor evaluateCardColor(BaccaraCardType type) {
+        BaccaraCardColor color;
+        if (type == BaccaraCardType.DIAMON || type == BaccaraCardType.HEART) {
+            color = BaccaraCardColor.RED;
+        } else {
+            color = BaccaraCardColor.BLACK;
+        }
+        return color;
     }
 
     public int getCardValue() {

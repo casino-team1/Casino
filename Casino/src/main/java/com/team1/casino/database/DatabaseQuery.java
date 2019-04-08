@@ -4,12 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
-public class SelectQuery extends Query {
+public class DatabaseQuery extends Query {
 
-    public SelectQuery(final Connection DATABASE_CONNECTION, final boolean wrap_in_transaction) {
+    public DatabaseQuery(final Connection DATABASE_CONNECTION, final boolean wrap_in_transaction) {
         super(DATABASE_CONNECTION, wrap_in_transaction);
     }
 

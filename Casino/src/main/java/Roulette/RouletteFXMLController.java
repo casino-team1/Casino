@@ -132,7 +132,7 @@ public class RouletteFXMLController implements Initializable {
 
     ArrayList<Integer> redArray = new ArrayList<>();
     ArrayList<Integer> blackArray = new ArrayList<>();
-    
+
     ArrayList<Integer> row1Array = new ArrayList<>();
     ArrayList<Integer> row2Array = new ArrayList<>();
     ArrayList<Integer> row3Array = new ArrayList<>();
@@ -145,13 +145,12 @@ public class RouletteFXMLController implements Initializable {
 
     public boolean getIsNumber() {
         return isNumber;
-    }    
-    
+    }
+
     @FXML
     private ImageView placeYourBet;
     @FXML
     private ImageView rouletteWheel;
-
 
     ToggleGroup group = new ToggleGroup();
 
@@ -166,8 +165,7 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private RadioButton radioFive;
     //-------------------------------------------------------------------
-    
-    
+
     //Spinners to select three bets
     //-------------------------------------------------------------------
     @FXML
@@ -177,7 +175,7 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private Spinner<Integer> threeThree;
     //-------------------------------------------------------------------
-    
+
     //Spinners to select four bets
     //-------------------------------------------------------------------
     @FXML
@@ -187,9 +185,9 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private Spinner<Integer> fourThree;
     @FXML
-    private Spinner<Integer>fourFour;
+    private Spinner<Integer> fourFour;
     //-------------------------------------------------------------------
-    
+
     //Spinners to select five bets
     //-------------------------------------------------------------------
     @FXML
@@ -205,12 +203,9 @@ public class RouletteFXMLController implements Initializable {
     //-------------------------------------------------------------------
 
     private long secs = (new Date().getTime()) / 1000;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        
         //Creating an arrayList which contains all red numbers
         redArray.add(1);
         redArray.add(3);
@@ -230,7 +225,6 @@ public class RouletteFXMLController implements Initializable {
         redArray.add(32);
         redArray.add(34);
         redArray.add(36);
-
         //creating an arraylist which contains all black numbers
         //  !!This is dependant on the red array!!
         for (int i = 1; i < 37; i++) {
@@ -239,7 +233,6 @@ public class RouletteFXMLController implements Initializable {
                 blackArray.add(i);
             }
         }
-        
         //Creating an arrayList that contains all Numbers in row 1
         System.out.println("");
         System.out.println("");
@@ -267,74 +260,60 @@ public class RouletteFXMLController implements Initializable {
             System.out.println(i);
             row3Array.add(i);
         }
-        
-        
-        
-        
-
-        
         //Setting groups for the radioButtons
         radioTable.setToggleGroup(group);
         radioTable.setSelected(true);
 
         radioThree.setToggleGroup(group);
-        
+
         radioFour.setToggleGroup(group);
-        
+
         radioFive.setToggleGroup(group);
-        
-        
-        
-        
-        
-        
+
         //Setting values for three spinners
         //-------------------------------------------------------------------
         SpinnerValueFactory<Integer> threeOneSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 12);
         this.threeOne.setValueFactory(threeOneSpin);
-        
+
         SpinnerValueFactory<Integer> threeTwoSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 24);
         this.threeTwo.setValueFactory(threeTwoSpin);
-        
+
         SpinnerValueFactory<Integer> threeThreeSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
         this.threeThree.setValueFactory(threeThreeSpin);
         //-------------------------------------------------------------------
-        
+
         //Setting values for four spinners
         //-------------------------------------------------------------------
         SpinnerValueFactory<Integer> fourOneSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 9);
         this.fourOne.setValueFactory(fourOneSpin);
-        
+
         SpinnerValueFactory<Integer> fourTwoSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 18);
         this.fourTwo.setValueFactory(fourTwoSpin);
-        
+
         SpinnerValueFactory<Integer> fourThreeSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 27);
         this.fourThree.setValueFactory(fourThreeSpin);
-        
+
         SpinnerValueFactory<Integer> fourFourSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
         this.fourFour.setValueFactory(fourFourSpin);
         //-------------------------------------------------------------------
-        
+
         //Setting values for five spinners
         //-------------------------------------------------------------------
         SpinnerValueFactory<Integer> fiveOneSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 0);
         this.fiveOne.setValueFactory(fiveOneSpin);
-        
+
         SpinnerValueFactory<Integer> fiveTwoSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 9);
         this.fiveTwo.setValueFactory(fiveTwoSpin);
-        
+
         SpinnerValueFactory<Integer> fiveThreeSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 18);
         this.fiveThree.setValueFactory(fiveThreeSpin);
-        
+
         SpinnerValueFactory<Integer> fiveFourSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 27);
         this.fiveFour.setValueFactory(fiveFourSpin);
-        
+
         SpinnerValueFactory<Integer> fiveFiveSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
         this.fiveFive.setValueFactory(fiveFiveSpin);
         //-------------------------------------------------------------------
-        
-        
-        
     }
 
     public int placeBet() {
@@ -363,35 +342,34 @@ public class RouletteFXMLController implements Initializable {
     private void clickPane36(MouseEvent event) {
         betInt = 36;
         isNumber = true;
-        
     }
 
     @FXML
     private void clickPane21(MouseEvent event) {
         betInt = 21;
         isNumber = true;
-        
+
     }
 
     @FXML
     private void clickPane33(MouseEvent event) {
         betInt = 33;
         isNumber = true;
-        
+
     }
 
     @FXML
     private void clickPane30(MouseEvent event) {
         betInt = 30;
         isNumber = true;
-        
+
     }
 
     @FXML
     private void clickPane27(MouseEvent event) {
         betInt = 27;
         isNumber = true;
-        
+
     }
 
     @FXML
@@ -654,7 +632,7 @@ public class RouletteFXMLController implements Initializable {
         betArray = blackArray;
         isNumber = false;
     }
-    
+
     @FXML
     private void clickRow3(MouseEvent event) {
 //        for (int i = 0; i < row3Array.size(); i++) {
@@ -679,7 +657,7 @@ public class RouletteFXMLController implements Initializable {
 //            System.out.println(row1Array.get(i));
 //        }
         isNumber = false;
-        betArray = row1Array;        
+        betArray = row1Array;
     }
     //-------------------------------------------------------------------
 
@@ -688,18 +666,15 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private void clickPlaceBet(MouseEvent event) {
         rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheelFast.gif"));
-            
         PauseTransition transition = new PauseTransition(Duration.seconds(3));
         transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
-        transition.play();       
-        if(isNumber == true){
+        transition.play();
+        if (isNumber == true) {
             placeBet();
-        }
-        else {
+        } else {
             placeBetArray();
         }
     }
     //-------------------------------------------------------------------
 
-    
 }

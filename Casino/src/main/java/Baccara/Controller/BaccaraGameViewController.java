@@ -8,8 +8,6 @@ package Baccara.Controller;
 
 import Baccara.Entity.BaccaraCard;
 import Baccara.Model.BaccaraGameModel;
-import java.awt.Dimension;
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -19,12 +17,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 
 /**
  * FXML Controller class
@@ -55,6 +55,20 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private Text playerCardCountLabel;
     @FXML
     private Text dealerCardCountLabel;
+    @FXML
+    private ImageView chipImage;
+
+    private Dragboard content;
+    @FXML
+    private ImageView bankerBet;
+    @FXML
+    private ImageView tieBet;
+    @FXML
+    private ImageView playerBet;
+    @FXML
+    private ImageView thirdRightImage;
+    @FXML
+    private Text winner;
 
     /**
      * Initializes the controller class.
@@ -62,6 +76,15 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setCardBacks();
+        this.chipImage.setOnDragDetected((event) -> {
+            System.out.println("Set");
+            content = chipImage.startDragAndDrop(TransferMode.MOVE);
+            ClipboardContent data = new ClipboardContent();
+            Image image = chipImage.getImage();
+            data.putImage(image);
+            content.setContent(data);
+            event.consume();
+        });
     }
     private BaccaraGameModel gameModel;
 
@@ -89,10 +112,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @FXML
     private void startBaccara(MouseEvent event) throws InterruptedException {
-        ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.thirdLeftCard, this.firstRightCard, this.secondRightCard};
-        for (int i = 0; i < imageViews.length; i++) {
-            imageViews[i] = new ImageView();
-        }
         this.gameModel.generateCards();
         String format = "/images/GameCards/%s";
         ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
@@ -108,11 +127,56 @@ public class BaccaraGameViewController implements Initializable, Observer {
                 System.out.println(dealerCard.get(i).getImageLocation());
             }
         }
+        setCardCount();
+        this.gameModel.checkForCardDraw();
+        checkForNewCards(format);
+        this.winner.setText(this.gameModel.determineWinner());
+    }
+
+    private void checkForNewCards(String linkFormat) {
+        ArrayList<BaccaraCard> playerCards = this.gameModel.getPlayerCards();
+        ArrayList<BaccaraCard> dealerCards = this.gameModel.getDealerCards();
+        if (playerCards.size() == 3) {
+            this.thirdLeftCard.setImage(new Image(String.format(linkFormat, playerCards.get(2).getImageLocation())));
+        }
+        if (dealerCards.size() == 3) {
+            this.thirdRightImage.setImage(new Image(String.format(linkFormat, dealerCards.get(2).getImageLocation())));
+        }
+        setCardCount();
+    }
+
+    private void resetImageViews() {
+        ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.thirdLeftCard, this.firstRightCard, this.secondRightCard, this.thirdRightImage};
+        for (int i = 0; i < imageViews.length; i++) {
+            imageViews[i] = new ImageView();
+        }
+        this.thirdRightImage.setRotate(90);
+        this.thirdLeftCard.setRotate(90);
+    }
+
+    private void setCardCount() {
         int playerCardCount = this.gameModel.getPlayerCardCount();
         int dealerCardCount = this.gameModel.getDealerCardCount();
         this.playerCardCountLabel.setText("Spieler Kartenwert: " + String.valueOf(playerCardCount));
         this.dealerCardCountLabel.setText("Dealer Kartenwert: " + String.valueOf(dealerCardCount));
-        //this.gameModel.startNewRound();
+    }
+    private static int betAmont = 0;
+
+    @FXML
+    private void setBankerBet(DragEvent event) {
+        System.out.println("Dragged");
+        ImageView chipContainer = new ImageView(this.content.getImage());
+        chipContainer.localToParent(this.bankerBet.getX(), this.bankerBet.getY());
+        chipContainer.setVisible(true);
+    }
+
+    @FXML
+    private void setTieBet(DragEvent event) {
+
+    }
+
+    @FXML
+    private void setPlayerBet(DragEvent event) {
     }
 
 }

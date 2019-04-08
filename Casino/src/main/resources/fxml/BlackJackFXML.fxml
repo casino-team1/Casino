@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackFXMLController">
    <children>
       <Label layoutX="201.0" layoutY="26.0" text="BlackJack">
          <font>
@@ -25,5 +25,7 @@
       <TextField fx:id="textfeldEinsatz" layoutX="166.0" layoutY="106.0" />
       <Label fx:id="labelEinsatzFehler" layoutX="364.0" layoutY="109.0" prefHeight="18.0" prefWidth="298.0" />
       <Button fx:id="buttonPrüfung" layoutX="166.0" layoutY="142.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfen" />
+      <Button fx:id="buttonVerlassen" layoutX="61.0" layoutY="404.0" mnemonicParsing="false" onAction="#zurueck" text="BlackJack verlassen" />
+      <Button fx:id="buttonHelp" layoutX="651.0" layoutY="13.0" mnemonicParsing="false" onAction="#help" text="?" />
    </children>
 </AnchorPane>

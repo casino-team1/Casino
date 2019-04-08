@@ -6,30 +6,39 @@
 package Roulette;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
  * @author Lukas Gilgen Schule
  */
-public class RouletteWheel {
-
-    RouletteFXMLController control = new RouletteFXMLController();
-    
+public class RouletteWheel {    
+    private int randomNumber;
     private boolean result;
-    private boolean isNumber = control.getIsNumber();
 
+    
+    public void decideResult(int parameterBet){
+        if (parameterBet == randomNumber){
+            System.out.println("Good Job");
+        }
+        else{
+            System.out.println("Better Luck next time");
+        }
+    }
+    public void decideResult(ArrayList<Integer> parameterArrayBet){
+        if (parameterArrayBet.contains(randomNumber)){
+            System.out.println("Good Job");
+        }
+        else{
+            System.out.println("Better Luck next time");
+        }
+    }
+    
     public boolean getResult() {
         return result;
     }
     
-    public void returnResult(){
-        
-    }
-
-    public void setResult() {
-        
-    }
-    public void setResultArray(){
-        
+    public void generateRandom(){
+        this.randomNumber = new Random().nextInt(37);
     }
 }

@@ -19,7 +19,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import java.util.Date;
+import java.util.Random;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
+import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
 /**
@@ -27,9 +30,11 @@ import javafx.util.Duration;
  *
  * @author Lukas Gilgen Schule
  */
+
+
 public class RouletteFXMLController implements Initializable {
 
-    RouletteWheel wheel = new RouletteWheel();
+    
     
     //Deklarationen für jedes Feld auf dem Roulettetisch
     //-------------------------------------------------------------------
@@ -130,6 +135,7 @@ public class RouletteFXMLController implements Initializable {
 
     private boolean isNumber;
     private int betInt;
+    RouletteWheel wheels = new RouletteWheel();
     ArrayList<Integer> betArray = new ArrayList<>();
 
     ArrayList<Integer> redArray = new ArrayList<>();
@@ -206,6 +212,9 @@ public class RouletteFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+        
         //Creating an arrayList which contains all red numbers
         redArray.add(1);
         redArray.add(3);
@@ -316,16 +325,17 @@ public class RouletteFXMLController implements Initializable {
         //-------------------------------------------------------------------
     }
 
-    public int placeBet() {
+    
+    public void placeBet() {
         System.out.println(betInt);
-        return betInt;
+        wheels.decideResult(betInt);
     }
 
-    public ArrayList<Integer> placeBetArray() {
+    public void placeBetArray() {
         for (int i : betArray) {
             System.out.println(i);
         }
-        return betArray;
+        wheels.decideResult(betArray);
     }
 
     public void gameEnd() {
@@ -659,6 +669,7 @@ public class RouletteFXMLController implements Initializable {
         isNumber = false;
         betArray = row1Array;
     }
+    
     //-------------------------------------------------------------------
 
     //Confirm your bet and pass off the numbers
@@ -669,6 +680,9 @@ public class RouletteFXMLController implements Initializable {
         PauseTransition transition = new PauseTransition(Duration.seconds(3));
         transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
         transition.play();
+        
+        wheels.generateRandom();
+        
         if (isNumber == true) {
             placeBet();
         } else {
@@ -676,5 +690,4 @@ public class RouletteFXMLController implements Initializable {
         }
     }
     //-------------------------------------------------------------------
-
 }

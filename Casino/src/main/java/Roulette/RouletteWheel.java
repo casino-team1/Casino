@@ -13,23 +13,23 @@ import java.util.ArrayList;
  */
 public class RouletteWheel {
 
-    private int result;
-    private ArrayList<Integer> resultArray = new ArrayList<>();
-
     RouletteFXMLController control = new RouletteFXMLController();
+    
+    private boolean result;
     private boolean isNumber = control.getIsNumber();
 
-    public int getResult() {
+    public boolean getResult() {
         return result;
     }
-
-    public ArrayList<Integer> getResultArray() {
-        return resultArray;
+    
+    public void returnResult(){
+        
     }
 
-    public void setResult(int result) {
-        if (isNumber == true) {
-            this.result = result;
-        }
+    public void setResult() {
+        
+    }
+    public void setResultArray(){
+        
     }
 }

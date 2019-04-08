@@ -1,36 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="0DC9362B43BBD548">
-  <PROJECT FORMAT="1.00" NAME="BlackJack - Flussdiagramm" AUTHOR="albion" CREATED="2019.04.04 15:03:00" MODIFIED="2019.04.08 09:38:10">
+<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="87A167C43BF2D74A">
+  <PROJECT FORMAT="1.00" NAME="BlackJack - Flussdiagramm" AUTHOR="albion" CREATED="2019.04.04 15:03:00" MODIFIED="2019.04.08 10:44:12">
     <DIAGRAMS>
-      <DIAGRAM FORMAT="1.00" ID="0" NAME="Black Jack" CREATED="2019.04.04 15:03:34" MODIFIED="2019.04.08 09:38:10">
-        <LAYOUT FORMAT="1.00" COLUMNS="7" ROWS="18">
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="Black Jack" CREATED="2019.04.04 15:03:34" MODIFIED="2019.04.08 10:44:12">
+        <LAYOUT FORMAT="1.00" COLUMNS="7" ROWS="22">
           <ENTRIES>
-            <ENTRY COLUMN="0" ROW="4">
+            <ENTRY COLUMN="0" ROW="5">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="193">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="6">
+            <ENTRY COLUMN="0" ROW="7">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="196">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="7">
+            <ENTRY COLUMN="0" ROW="11">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="121">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="9">
+            <ENTRY COLUMN="0" ROW="13">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="208">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="10">
+            <ENTRY COLUMN="0" ROW="14">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="213">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="12">
+            <ENTRY COLUMN="0" ROW="16">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="217">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
@@ -51,178 +51,223 @@
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="1" ROW="3">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="220">
+                <TEXT><![CDATA[Einsatz wird vom Konto abgezogen]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="4">
               <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="7">
                 <TEXT><![CDATA[Spieler bekommt zwei Karten
 Dealer bekommt zwei Karten]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="4">
+            <ENTRY COLUMN="1" ROW="5">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="191">
                 <TEXT><![CDATA[Ist offene Karte von Dealer ein Ass?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="5">
+            <ENTRY COLUMN="1" ROW="6">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="45">
                 <TEXT><![CDATA[Versicherung einsetzen?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="6">
+            <ENTRY COLUMN="1" ROW="7">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="198">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="7">
+            <ENTRY COLUMN="1" ROW="8">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="222">
+                <TEXT><![CDATA[Ist eine Karten vom Spielr ein Ass?]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="10">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="236">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="11">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="9">
                 <TEXT><![CDATA[Will Spieler stehen oder ziehen?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="8">
+            <ENTRY COLUMN="1" ROW="12">
               <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="13">
                 <TEXT><![CDATA[Spieler bekommt eine Karte]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="9">
+            <ENTRY COLUMN="1" ROW="13">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="210">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="10">
+            <ENTRY COLUMN="1" ROW="14">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="82">
                 <TEXT><![CDATA[Hat Dieler unter 17?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="11">
+            <ENTRY COLUMN="1" ROW="15">
               <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="132">
                 <TEXT><![CDATA[Dealer zieht eine Karte]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="12">
+            <ENTRY COLUMN="1" ROW="16">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="149">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="13">
+            <ENTRY COLUMN="1" ROW="17">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="143">
                 <TEXT><![CDATA[Hat Dealer mehr als 21?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="14">
+            <ENTRY COLUMN="1" ROW="18">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="161">
                 <TEXT><![CDATA[Hat Dealer mehr als Spieler?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="15">
+            <ENTRY COLUMN="1" ROW="19">
               <FIGURE SUBTYPE="PapOutput" FORMAT="1.00" ID="166">
                 <TEXT><![CDATA[Dealer gewonnen!
 Spieler verliert Einsatz.]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="16">
+            <ENTRY COLUMN="1" ROW="20">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="101">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="17">
+            <ENTRY COLUMN="1" ROW="21">
               <FIGURE SUBTYPE="PapEnd" FORMAT="1.00" ID="2">
                 <TEXT><![CDATA[Ende]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="7">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="115">
-                <TEXT><![CDATA[]]></TEXT>
+            <ENTRY COLUMN="2" ROW="8">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="224">
+                <TEXT><![CDATA[Will der Spieler, dass das Ass den Wert 1 oder 11 hat?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="8">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="118">
-                <TEXT><![CDATA[]]></TEXT>
+            <ENTRY COLUMN="2" ROW="9">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="226">
+                <TEXT><![CDATA[Wert von Ass wird als 1 festgelegt.]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="2" ROW="10">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="205">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="232">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="2" ROW="11">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="202">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="115">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="12">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="118">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="2" ROW="14">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="205">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="15">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="202">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="18">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="172">
                 <TEXT><![CDATA[Hat der Dealer gleich viel wie der Spieler?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="15">
+            <ENTRY COLUMN="2" ROW="19">
               <FIGURE SUBTYPE="PapOutput" FORMAT="1.00" ID="190">
                 <TEXT><![CDATA[Spieler gewonnen!
 Spieler bekommt Geld im Verhältnis 3:2 zurück.]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="16">
+            <ENTRY COLUMN="2" ROW="20">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="156">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="14">
+            <ENTRY COLUMN="3" ROW="8">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="225">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="9">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="227">
+                <TEXT><![CDATA[Wert von Ass wird als 11 festgelegt.]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="10">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="231">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="18">
               <FIGURE SUBTYPE="PapOutput" FORMAT="1.00" ID="189">
                 <TEXT><![CDATA[Unentschieden!
 Spieler bekommt eingesetztes Geld zurück.]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="16">
+            <ENTRY COLUMN="3" ROW="20">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="178">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="13">
+            <ENTRY COLUMN="4" ROW="17">
               <FIGURE SUBTYPE="PapOutput" FORMAT="1.00" ID="155">
                 <TEXT><![CDATA[Spieler gewonnen!
 Geld im Verhältnis 3:2 zurück.]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="16">
+            <ENTRY COLUMN="4" ROW="20">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="185">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="5" ROW="5">
+            <ENTRY COLUMN="5" ROW="6">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="77">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="5" ROW="7">
+            <ENTRY COLUMN="5" ROW="11">
               <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="49">
                 <TEXT><![CDATA[Versicherung wird eingesetzt]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="5" ROW="8">
+            <ENTRY COLUMN="5" ROW="12">
               <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="53">
                 <TEXT><![CDATA[Dealer öffnet zweite Karte]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="5" ROW="10">
+            <ENTRY COLUMN="5" ROW="14">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="51">
                 <TEXT><![CDATA[Hat der Dealer ein Black Jack?]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="5" ROW="11">
+            <ENTRY COLUMN="5" ROW="15">
               <FIGURE SUBTYPE="PapOutput" FORMAT="1.00" ID="92">
                 <TEXT><![CDATA[Spieler verloren!
 Einstz verloren.]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="5" ROW="16">
+            <ENTRY COLUMN="5" ROW="20">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="99">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="10">
+            <ENTRY COLUMN="6" ROW="14">
               <FIGURE SUBTYPE="PapOutput" FORMAT="1.00" ID="91">
                 <TEXT><![CDATA[Spieler gewonnen!
 Geld im Verhältnis 2:1 zurück.]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="16">
+            <ENTRY COLUMN="6" ROW="20">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="111">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
@@ -231,7 +276,7 @@ Geld im Verhältnis 2:1 zurück.]]></TEXT>
         </LAYOUT>
         <CONNECTIONS>
           <CONNECTION FORMAT="1.00" ID="4" FROM="1" TO="5" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="6" FROM="5" TO="7" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="6" FROM="5" TO="220" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="194" FROM="191" TO="193" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="10" FROM="9" TO="13" TEXT="ziehen" />
           <CONNECTION FORMAT="1.00" ID="116" FROM="115" TO="9" TEXT="" />
@@ -242,7 +287,7 @@ Geld im Verhältnis 2:1 zurück.]]></TEXT>
           <CONNECTION FORMAT="1.00" ID="80" FROM="53" TO="51" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="79" FROM="77" TO="49" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="81" FROM="49" TO="53" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="199" FROM="198" TO="9" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="199" FROM="198" TO="222" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="72" FROM="45" TO="77" TEXT="ja" />
           <CONNECTION FORMAT="1.00" ID="102" FROM="101" TO="2" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="117" FROM="13" TO="118" TEXT="" />
@@ -279,6 +324,17 @@ Geld im Verhältnis 2:1 zurück.]]></TEXT>
           <CONNECTION FORMAT="1.00" ID="212" FROM="210" TO="82" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="219" FROM="217" TO="149" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="216" FROM="213" TO="217" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="221" FROM="220" TO="7" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="237" FROM="236" TO="9" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="228" FROM="224" TO="225" TEXT="11" />
+          <CONNECTION FORMAT="1.00" ID="229" FROM="224" TO="226" TEXT="1" />
+          <CONNECTION FORMAT="1.00" ID="230" FROM="225" TO="227" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="233" FROM="226" TO="232" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="234" FROM="227" TO="231" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="235" FROM="231" TO="232" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="223" FROM="222" TO="236" TEXT="nein" />
+          <CONNECTION FORMAT="1.00" ID="238" FROM="232" TO="236" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="239" FROM="222" TO="224" TEXT="ja" />
         </CONNECTIONS>
       </DIAGRAM>
     </DIAGRAMS>

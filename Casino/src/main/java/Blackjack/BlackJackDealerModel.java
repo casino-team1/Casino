@@ -93,8 +93,8 @@ public class BlackJackDealerModel {
         
     }
 
-    public void setGewonnen(boolean gewonnen) {
-        this.gewonnen = gewonnen;
+    public void setGewonnen(boolean g) {
+        this.gewonnen = g;
     }
 
     public boolean hasGewonnen() {

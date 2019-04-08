@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -8,62 +9,92 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="722.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="2.0" pickOnBounds="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/tableBackground.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="ge1" fitHeight="82.0" fitWidth="82.0" layoutX="103.0" layoutY="34.0" onMouseClicked="#pressGe1" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge1" fitHeight="55.0" fitWidth="52.0" layoutX="103.0" layoutY="60.0" onMouseClicked="#pressGe1" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D1.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="ge2" fitHeight="82.0" fitWidth="82.0" layoutX="191.0" layoutY="34.0" onMouseClicked="#pressGe2" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge2" fitHeight="51.0" fitWidth="66.0" layoutX="161.0" layoutY="60.0" onMouseClicked="#pressGe2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D2.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="ge3" fitHeight="82.0" fitWidth="82.0" layoutX="287.0" layoutY="34.0" onMouseClicked="#pressGe3" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge3" fitHeight="55.0" fitWidth="52.0" layoutX="217.0" layoutY="60.0" onMouseClicked="#pressGe3" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D3.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="ge4" fitHeight="82.0" fitWidth="82.0" layoutX="385.0" layoutY="34.0" onMouseClicked="#pressGe4" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge4" fitHeight="51.0" fitWidth="52.0" layoutX="275.0" layoutY="60.0" onMouseClicked="#pressGe4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D4.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="ge5" fitHeight="82.0" fitWidth="82.0" layoutX="480.0" layoutY="34.0" onMouseClicked="#pressGe5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge5" fitHeight="51.0" fitWidth="52.0" layoutX="335.0" layoutY="60.0" onMouseClicked="#pressGe5" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D5.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="be1" fitHeight="82.0" fitWidth="82.0" layoutX="98.0" layoutY="134.0" onMouseClicked="#pressBe1" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be1" fitHeight="51.0" fitWidth="52.0" layoutX="103.0" layoutY="149.0" onMouseClicked="#pressBe1" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D6.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="be2" fitHeight="82.0" fitWidth="82.0" layoutX="191.0" layoutY="134.0" onMouseClicked="#pressBe2" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be2" fitHeight="67.0" fitWidth="52.0" layoutX="161.0" layoutY="149.0" onMouseClicked="#pressBe2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D1.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="be3" fitHeight="82.0" fitWidth="82.0" layoutX="287.0" layoutY="134.0" onMouseClicked="#pressBe3" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be3" fitHeight="51.0" fitWidth="52.0" layoutX="217.0" layoutY="149.0" onMouseClicked="#pressBe3" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D2.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="be4" fitHeight="82.0" fitWidth="82.0" layoutX="385.0" layoutY="134.0" onMouseClicked="#pressBe4" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be4" fitHeight="55.0" fitWidth="52.0" layoutX="276.0" layoutY="148.0" onMouseClicked="#pressBe4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D3.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="be5" fitHeight="82.0" fitWidth="82.0" layoutX="480.0" layoutY="134.0" onMouseClicked="#pressBe5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be5" fitHeight="55.0" fitWidth="52.0" layoutX="335.0" layoutY="148.0" onMouseClicked="#pressBe5" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D4.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <Button fx:id="btnthrowdices" layoutX="14.0" layoutY="286.0" mnemonicParsing="false" onAction="#pressthrowdices" prefHeight="55.0" prefWidth="130.0" text="Würfel werfen" />
       <Label fx:id="lbldicelbl" layoutX="180.0" layoutY="239.0" text="Würfel: " />
@@ -79,6 +110,227 @@
       <Label layoutX="14.0" layoutY="166.0" text="Behalten:">
          <font>
             <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnhelp" layoutX="738.0" layoutY="14.0" mnemonicParsing="false" onAction="#presshelp" text="?" />
+      <Button fx:id="btnendgame" layoutX="14.0" layoutY="682.0" mnemonicParsing="false" onAction="#pressendgame" text="Spiel Beenden" />
+      <Label fx:id="sclblup1" layoutX="668.0" layoutY="60.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup2" layoutX="668.0" layoutY="90.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup3" layoutX="668.0" layoutY="120.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup4" layoutX="668.0" layoutY="150.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup5" layoutX="668.0" layoutY="180.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup6" layoutX="668.0" layoutY="210.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup7" layoutX="668.0" layoutY="240.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup8" layoutX="668.0" layoutY="270.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup9" layoutX="668.0" layoutY="300.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblup1" layoutX="496.0" layoutY="60.0" onMouseClicked="#presslblup1" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" EINER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup2" layoutX="496.0" layoutY="90.0" onMouseClicked="#presslblup2" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" ZWEIER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup3" layoutX="496.0" layoutY="120.0" onMouseClicked="#presslblup3" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" DREIER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup4" layoutX="496.0" layoutY="150.0" onMouseClicked="#presslblup4" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" VIERER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup5" layoutX="496.0" layoutY="180.0" onMouseClicked="#presslblup5" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" FÜNFER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup6" layoutX="496.0" layoutY="210.0" onMouseClicked="#presslblup6" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" SECHSER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup7" layoutX="496.0" layoutY="240.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" GESAMT">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblup8" layoutX="496.0" layoutY="270.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" WENN MEHR ALS 63">
+         <font>
+            <Font name="Arial Nova Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblup9" layoutX="496.0" layoutY="300.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" GESAMT OBEN">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo1" layoutX="668.0" layoutY="350.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo2" layoutX="668.0" layoutY="380.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo3" layoutX="668.0" layoutY="410.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo4" layoutX="668.0" layoutY="440.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo5" layoutX="668.0" layoutY="470.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo6" layoutX="668.0" layoutY="500.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo7" layoutX="668.0" layoutY="530.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo8" layoutX="668.0" layoutY="560.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbllo1" layoutX="496.0" layoutY="350.0" onMouseClicked="#presslbllo1" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" DREI GLEICHE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo2" layoutX="496.0" layoutY="380.0" onMouseClicked="#presslbllo2" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" VIER GLEICHE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo3" layoutX="496.0" layoutY="410.0" onMouseClicked="#presslbllo3" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" FULL HOUSE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo4" layoutX="496.0" layoutY="440.0" onMouseClicked="#presslbllo4" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" KLEINE STRASSE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo5" layoutX="496.0" layoutY="470.0" onMouseClicked="#presslbllo5" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" GROSSE STRASSE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo6" layoutX="496.0" layoutY="500.0" onMouseClicked="#presslbllo6" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" YATZY">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo7" layoutX="496.0" layoutY="530.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" CHANCE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo8" layoutX="496.0" layoutY="560.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" GESAMT UNTEN">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbllo9" layoutX="496.0" layoutY="604.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" ENDSUMME">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo9" layoutX="668.0" layoutY="604.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
          </font>
       </Label>
    </children>

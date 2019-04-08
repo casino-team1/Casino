@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -32,31 +33,9 @@ import javafx.stage.Stage;
  */
 public class BlackJackFXMLController implements Initializable {
 
-    private ArrayList<String> kartenSpieler = new ArrayList<>();
-    private int kartenWertSpieler;
-    private boolean spielerGewonnen = false;
+    BlackJackGameModel game;
 
     private int einsatz;
-
-    private int anzahlKartenImKartendeck = 52;
-
-    private ArrayList<String> kartenDealer = new ArrayList<>();
-    private int kartenWertDealer;
-    private int karteZweiWert;
-    private boolean dealerGewonnen = false;
-
-    private boolean unentschieden = false;
-
-    private String zufallskarte = "";
-    private int zufallszahl = 0;
-
-    private Karten k = new Karten();
-
-    private HashMap<String, Integer> karten = new HashMap<>();
-
-    private ArrayList<String> kartenWerte = new ArrayList<>();
-
-    Random r = new Random();
 
     @FXML
     private Button buttonStand;
@@ -80,6 +59,8 @@ public class BlackJackFXMLController implements Initializable {
     private Button buttonVerlassen;
     @FXML
     private Button buttonHelp;
+    @FXML
+    private AnchorPane rootPane;
 
     /**
      * Initializes the controller class.
@@ -91,201 +72,29 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void stand(ActionEvent event) {
-        /*//Zweiter Wert von Karte mitberechnen
-        kartenWertDealer += karteZweiWert;
-        
-        //Hat es genügend Karten?
-        if (anzahlKartenImKartendeck < 1) {
-        this.karten = k.getKarten();
-        }
-        
-        //Wenn Dealer unter 17 hat, muss er ziehen
-        if (kartenWertDealer < 17) {
-        while (kartenWertDealer < 17) {
-        zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
-        
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
-        kartenWertDealer += 10;
-        } else if (zufallskarte.equals("A")) {
-        kartenWertDealer += 11;
-        } else {
-        kartenWertDealer += karten.get(zufallskarte);
-        }
-        kartenDealer.add(zufallskarte);
-        karten.remove(zufallszahl);
-        anzahlKartenImKartendeck--;
-        }
-        }
-        
-        //Anzeige leeren
-        labelKartenDealer.setText("");
-        
-        //Alle Karten anzeigen
-        for (String s : kartenDealer) {
-        labelKartenDealer.setText(labelKartenDealer.getText() + "," + s);
-        }
-        
-        //Anzeigen der Karten
-        if (kartenWertDealer > 21) {
-        spielerGewonnen = true;
-        }
-        if (kartenWertDealer > kartenWertSpieler) {
-        dealerGewonnen = true;
-        }
-        if (kartenWertDealer == kartenWertSpieler) {
-        unentschieden = true;
-        }
-        if (kartenWertDealer < kartenWertSpieler) {
-        spielerGewonnen = true;
-        }
-        
-        //Hat jemand gewonnen?
-        if (spielerGewonnen) {
-        labelLösung.setText("SPIELER HAT GEWONNEN!!");
-        buttonHit.setDisable(true);
-        buttonStand.setDisable(true);
-        }
-        if (dealerGewonnen) {
-        labelLösung.setText("DEALER HAT GEWONNEN!!");
-        buttonHit.setDisable(true);
-        buttonStand.setDisable(true);
-        }
-        if (unentschieden) {
-        labelLösung.setText("UNENTSCHIEDEN");
-        buttonHit.setDisable(true);
-        buttonStand.setDisable(true);
-        }*/
+        game.dealerRound(labelLösung, labelKartenDealer, buttonHit, buttonStand);
     }
 
     @FXML
-    private void hit(ActionEvent event
-    ) {
-        /*//Hat es genügend Karten?
-        if (anzahlKartenImKartendeck < 1) {
-        this.karten = k.getKarten();
-        }
-        
-        //Spieler zieht Karten
-        zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
-        
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
-        kartenWertSpieler += 10;
-        } else if (zufallskarte.equals("A")) {
-        kartenWertSpieler += 11;
-        } else {
-        kartenWertSpieler += karten.get(zufallskarte);
-        }
-        kartenSpieler.add(zufallskarte);
-        karten.remove(zufallszahl);
-        anzahlKartenImKartendeck--;
-        labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
-        
-        //Überprüfung, ob 21 überschritten wurde
-        if (kartenWertSpieler > 21) {
-        dealerGewonnen = true;
-        }
-        
-        //Hat jemand gewonnen?
-        if (spielerGewonnen) {
-        labelLösung.setText("SPIELER HAT GEWONNEN!!");
-        buttonHit.setDisable(true);
-        buttonStand.setDisable(true);
-        }
-        if (dealerGewonnen) {
-        labelLösung.setText("DEALER HAT GEWONNEN!!");
-        buttonHit.setDisable(true);
-        buttonStand.setDisable(true);
-        }*/
+    private void hit(ActionEvent event) {
+        game.spielerHit(labelLösung, buttonHit, buttonStand, labelKartenDealer, labelKartenSpieler);
     }
 
     @FXML
     private void startGame(ActionEvent event) {
-        /*//Vorbereitung
-        buttonHit.setDisable(true);
-        buttonStart.setDisable(true);
-        
-        kartenDealer.clear();
-        kartenSpieler.clear();
-        
-        kartenWertSpieler = 0;
-        kartenWertDealer = 0;
-        karteZweiWert = 0;
-        
-        spielerGewonnen = false;
-        dealerGewonnen = false;
-        
-        labelKartenDealer.setText("");
+        //Vorbereitung
         labelKartenSpieler.setText("");
+        labelKartenDealer.setText("");
         labelLösung.setText("");
+        labelEinsatzFehler.setText("");
         
-        buttonHit.setDisable(true);
-        buttonStand.setDisable(true);
-        this.karten = k.getKarten();
-        this.kartenWerte = k.getKartenWerte();
-        
-        //Karten mischen
-        Collections.shuffle(kartenWerte);
-        
-        //Zufallskarten verteilen an Spieler
-        for (int i = 0; i < 2; i++) {
-        zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
-        
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
-        kartenWertSpieler += 10;
-        } else if (zufallskarte.equals("A")) {
-        kartenWertSpieler += 11;
-        } else {
-        kartenWertSpieler += karten.get(zufallskarte);
-        }
-        kartenSpieler.add(zufallskarte);
-        karten.remove(zufallszahl);
-        anzahlKartenImKartendeck--;
-        labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
-        }
-        
-        //Erste Karte an Dealer verteilen
-        zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
-        
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
-        kartenWertDealer += 10;
-        } else if (zufallskarte.equals("A")) {
-        kartenWertDealer += 11;
-        } else {
-        kartenWertDealer += karten.get(zufallskarte);
-        }
-        kartenDealer.add(zufallskarte);
-        karten.remove(zufallszahl);
-        anzahlKartenImKartendeck--;
-        labelKartenDealer.setText(zufallskarte + " + ?");
-        
-        //Zweite unbekannte Karte an Dealer verteilen
-        zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
-        
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
-        karteZweiWert += 10;
-        } else if (zufallskarte.equals("A")) {
-        karteZweiWert += 11;
-        } else {
-        karteZweiWert += karten.get(zufallskarte);
-        }
-        kartenDealer.add(zufallskarte);
-        karten.remove(zufallszahl);
-        anzahlKartenImKartendeck--;
-        
+        game.play(labelKartenSpieler, labelKartenDealer);
         buttonHit.setDisable(false);
-        buttonStand.setDisable(false);*/
-
-        new BlackJackGameModel().play();
+        buttonStand.setDisable(false);
     }
 
     @FXML
-    private void prüfungEinsatz(ActionEvent event
-    ) {
+    private void prüfungEinsatz(ActionEvent event) {
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
         } catch (Exception e) {
@@ -298,28 +107,66 @@ public class BlackJackFXMLController implements Initializable {
             labelEinsatzFehler.setText("Viel Spass beim Spielen!");
             buttonStart.setDisable(false);
         }
-
     }
 
     @FXML
-    private void zurueck(ActionEvent event) {
-
-        /*Stage stage = super.getMainApp().getStage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
-        Parent root = null;
-        try {
-        root = (Parent) loader.load();
-        } catch (IOException ex) {
-        Logger.getLogger(Blackjack.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
-        stage.setTitle("Casino Central");
-        stage.setScene(scene);
-        stage.show();*/
+    private void zurueck(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void help(ActionEvent event) {
     }
+
+    
+    //Für Zugriffe nötig
+    public void setEinsatz(int einsatz) {
+        this.einsatz = einsatz;
+    }
+
+    public void setLabelKartenSpieler(String s) {
+        this.labelKartenSpieler.setText(s);
+    }
+
+    public void setLabelKartenDealer(String s) {
+        this.labelKartenDealer.setText(s);
+    }
+
+    public void setLabelLösung(String s) {
+        this.labelLösung.setText(s);
+    }
+
+    public void setLabelEinsatzFehler(String s) {
+        this.labelEinsatzFehler.setText(s);
+    }
+
+    public int getEinsatz() {
+        return einsatz;
+    }
+
+    public String getLabelKartenSpieler() {
+        return labelKartenSpieler.getText();
+    }
+
+    public String getLabelKartenDealer() {
+        return labelKartenDealer.getText();
+    }
+
+    public String getLabelLösung() {
+        return labelLösung.getText();
+    }
+
+    public String getLabelEinsatzFehler() {
+        return labelEinsatzFehler.getText();
+    }
+
+    public void setButtonStandDisable(boolean b) {
+        this.buttonStand.setDisable(b);
+    }
+
+    public void setButtonHitDisable(boolean b) {
+        this.buttonHit.setDisable(b);
+    }
+
 }

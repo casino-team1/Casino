@@ -16,8 +16,6 @@ public class Karten {
 
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenWerte = new ArrayList<String>();
-    private int wert;
-    private String symbol;
 
     public Karten() {
         //Kartendeck (für jede Farbe eine Karte)
@@ -54,14 +52,6 @@ public class Karten {
 
     public ArrayList<String> getKartenWerte() {
         return kartenWerte;
-    }
-
-    public int getWert() {
-        return wert;
-    }
-
-    public String getSymbol() {
-        return symbol;
     }
 
 }

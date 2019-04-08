@@ -1,15 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="553.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.team1.casino.Controller.CasinoController">
+<AnchorPane id="AnchorPane" prefHeight="591.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.CasinoController">
     <children>
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Button fx:id="blackJack" layoutX="67.0" layoutY="200.0" mnemonicParsing="false" onAction="#startBlackJack" text="BlackJack" />
-      <Button fx:id="roulette" layoutX="176.0" layoutY="200.0" mnemonicParsing="false" onAction="#startRoulette" text="Roulette" />
-      <Button fx:id="baccara" layoutX="277.0" layoutY="200.0" mnemonicParsing="false" onAction="#startBaccara" text="Baccara" />
-      <Button fx:id="yatzy" layoutX="396.0" layoutY="200.0" mnemonicParsing="false" onAction="#startYatzy" text="Yatzy" />
+      <ImageView fitHeight="599.0" fitWidth="811.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/MainScreen/woodenWall.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="198.0" layoutX="18.0" layoutY="14.0" onMouseClicked="#mouseClickBlackJack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MainScreen/blackjackButton.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow height="100.0" radius="49.5" width="100.0" />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="599.0" layoutY="14.0" onMouseClicked="#mouseClickBaccara" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MainScreen/baccaraButton.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow height="100.0" radius="49.5" width="100.0" />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="224.0" fitWidth="224.0" layoutX="18.0" layoutY="353.0" onMouseClicked="#clickMouseRoulette" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MainScreen/roulette_wheel.png" />
+         </image>
+         <effect>
+            <DropShadow height="100.0" radius="49.5" width="100.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="178.0" fitWidth="270.0" layoutX="518.0" layoutY="415.0" onMouseClicked="#clickMouseYatzy" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MainScreen/YatzyButton.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow height="100.0" radius="49.5" width="100.0" />
+         </effect>
+      </ImageView>
+      <Label layoutX="196.0" layoutY="194.0" text="SELECT YOUR GAME" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="Times New Roman" size="42.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
     </children>
 </AnchorPane>

@@ -15,8 +15,9 @@ public class RouletteTable {
 
     RouletteFXMLController controll = new RouletteFXMLController();
     private int bet = controll.placeBet();
-
-    private ArrayList<Integer> betArray = new ArrayList<>();
+    
+    private ArrayList<Integer> arrayBet = new ArrayList<>();
+    private ArrayList<Integer> betArray = controll.placeBetArray();
 
     public void setBet(int b) {
         this.bet = b;

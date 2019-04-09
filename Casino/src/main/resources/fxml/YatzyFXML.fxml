@@ -114,7 +114,7 @@
       </Label>
       <Button fx:id="btnhelp" layoutX="738.0" layoutY="14.0" mnemonicParsing="false" onAction="#presshelp" text="?" />
       <Button fx:id="btnendgame" layoutX="14.0" layoutY="682.0" mnemonicParsing="false" onAction="#pressendgame" text="Spiel Beenden" />
-      <Label fx:id="sclblup1" layoutX="668.0" layoutY="60.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+      <Label fx:id="sclblup1" layoutX="668.0" layoutY="60.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;" text="1">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -129,7 +129,7 @@
             <Font name="Arial Nova" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="sclblup4" layoutX="668.0" layoutY="150.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+      <Label fx:id="sclblup4" layoutX="668.0" layoutY="150.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;" text="wert">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -139,7 +139,7 @@
             <Font name="Arial Nova" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="sclblup6" layoutX="668.0" layoutY="210.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+      <Label fx:id="sclblup6" layoutX="668.0" layoutY="210.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;" text="67">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -159,7 +159,7 @@
             <Font name="Arial Nova" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblup1" layoutX="496.0" layoutY="60.0" onMouseClicked="#presslblup1" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" EINER">
+      <Label fx:id="lblup1" layoutX="496.0" layoutY="60.0" onMouseClicked="#presslblup1" onMouseEntered="#enterlblup1" onMouseExited="#exitlblup1" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" EINER">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -167,7 +167,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lblup2" layoutX="496.0" layoutY="90.0" onMouseClicked="#presslblup2" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" ZWEIER">
+      <Label fx:id="lblup2" layoutX="496.0" layoutY="90.0" onMouseClicked="#presslblup2" onMouseEntered="#enterlblup2" onMouseExited="#exitlblup2" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" ZWEIER">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -175,7 +175,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lblup3" layoutX="496.0" layoutY="120.0" onMouseClicked="#presslblup3" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" DREIER">
+      <Label fx:id="lblup3" layoutX="496.0" layoutY="120.0" onMouseClicked="#presslblup3" onMouseEntered="#enterlblup3" onMouseExited="#exitlblup3" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" DREIER">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -183,7 +183,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lblup4" layoutX="496.0" layoutY="150.0" onMouseClicked="#presslblup4" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" VIERER">
+      <Label fx:id="lblup4" layoutX="496.0" layoutY="150.0" onMouseClicked="#presslblup4" onMouseEntered="#enterlblup4" onMouseExited="#exitlblup4" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" VIERER">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -191,7 +191,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lblup5" layoutX="496.0" layoutY="180.0" onMouseClicked="#presslblup5" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" FÜNFER">
+      <Label fx:id="lblup5" layoutX="496.0" layoutY="180.0" onMouseClicked="#presslblup5" onMouseEntered="#enterlblup5" onMouseExited="#exitlblup5" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" FÜNFER">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -199,7 +199,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lblup6" layoutX="496.0" layoutY="210.0" onMouseClicked="#presslblup6" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" SECHSER">
+      <Label fx:id="lblup6" layoutX="496.0" layoutY="210.0" onMouseClicked="#presslblup6" onMouseEntered="#enterlblup6" onMouseExited="#exitlblup6" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" SECHSER">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -262,7 +262,7 @@
             <Font name="Arial Nova" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lbllo1" layoutX="496.0" layoutY="350.0" onMouseClicked="#presslbllo1" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" DREI GLEICHE">
+      <Label fx:id="lbllo1" layoutX="496.0" layoutY="350.0" onMouseClicked="#presslbllo1" onMouseEntered="#enterlbllo1" onMouseExited="#exitlbllo1" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" DREI GLEICHE">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -270,7 +270,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lbllo2" layoutX="496.0" layoutY="380.0" onMouseClicked="#presslbllo2" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" VIER GLEICHE">
+      <Label fx:id="lbllo2" layoutX="496.0" layoutY="380.0" onMouseClicked="#presslbllo2" onMouseEntered="#enterlbllo2" onMouseExited="#exitlbllo2" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" VIER GLEICHE">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -278,7 +278,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lbllo3" layoutX="496.0" layoutY="410.0" onMouseClicked="#presslbllo3" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" FULL HOUSE">
+      <Label fx:id="lbllo3" layoutX="496.0" layoutY="410.0" onMouseClicked="#presslbllo3" onMouseEntered="#enterlbllo3" onMouseExited="#exitlbllo3" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" FULL HOUSE">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -286,7 +286,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lbllo4" layoutX="496.0" layoutY="440.0" onMouseClicked="#presslbllo4" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" KLEINE STRASSE">
+      <Label fx:id="lbllo4" layoutX="496.0" layoutY="440.0" onMouseClicked="#presslbllo4" onMouseEntered="#enterlbllo4" onMouseExited="#exitlbllo4" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" KLEINE STRASSE">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -294,7 +294,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lbllo5" layoutX="496.0" layoutY="470.0" onMouseClicked="#presslbllo5" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" GROSSE STRASSE">
+      <Label fx:id="lbllo5" layoutX="496.0" layoutY="470.0" onMouseClicked="#presslbllo5" onMouseEntered="#enterlbllo5" onMouseExited="#exitlbllo5" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" GROSSE STRASSE">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -302,7 +302,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lbllo6" layoutX="496.0" layoutY="500.0" onMouseClicked="#presslbllo6" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" YATZY">
+      <Label fx:id="lbllo6" layoutX="496.0" layoutY="500.0" onMouseClicked="#presslbllo6" onMouseEntered="#enterlbllo6" onMouseExited="#exitlbllo6" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" YATZY">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -310,7 +310,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="lbllo7" layoutX="496.0" layoutY="530.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" CHANCE">
+      <Label fx:id="lbllo7" layoutX="496.0" layoutY="530.0" onMouseClicked="#presslbllo7" onMouseEntered="#enterlbllo7" onMouseExited="#exitlbllo7" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black;" text=" CHANCE">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>

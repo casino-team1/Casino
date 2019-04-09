@@ -50,8 +50,8 @@ public class BlackJackMainController implements Initializable {
 
     @FXML
     private void zurueck(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        rootPane.getChildren().setAll(pane);
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+        rootPane.getChildren().setAll(pane);*/
     }
 
 }

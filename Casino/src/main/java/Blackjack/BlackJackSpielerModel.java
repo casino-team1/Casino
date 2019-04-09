@@ -16,26 +16,24 @@ import javafx.scene.control.Label;
  */
 public class BlackJackSpielerModel {
     
-    Karten k = new Karten();
-    private int kartenWertSpieler = 0;
-    private ArrayList<String> kartenSpieler = new ArrayList<>();
     private boolean gewonnen = false;
 
-    Random r = new Random();
-    int zufallszahl;
-    String zufallskarte = "";
+    private Random r = new Random();
+    private int zufallszahl = 0;
+    private String zufallskarte = "";
 
-    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenWerte, HashMap<String, Integer> karten, Label labelKartenSpieler, Label labelKartenDealer) {
-        //Hat es genügend Karten?
+    public void hit(int anzahlKartenImKartendeck, int kartenWertSpieler, ArrayList<String> kartenSpieler, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten, Label labelKartenSpieler) {
+        
+        /*//Hat es genügend Karten?
         if (anzahlKartenImKartendeck < 1) {
-            //dealer.austeilen();
-        }
+        //dealer.austeilen();
+        }*/
 
         //Spieler zieht Karten
         zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
+        zufallskarte = kartenSymbole.get(zufallszahl);
 
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
             kartenWertSpieler += 10;
         } else if (zufallskarte.equals("A")) {
             kartenWertSpieler += 11;
@@ -43,7 +41,7 @@ public class BlackJackSpielerModel {
             kartenWertSpieler += karten.get(zufallskarte);
         }
         kartenSpieler.add(zufallskarte);
-        karten.remove(zufallszahl);
+        karten.remove(zufallskarte);
         anzahlKartenImKartendeck--;
         labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
     }
@@ -54,21 +52,5 @@ public class BlackJackSpielerModel {
 
     public boolean hasGewonnen() {
         return gewonnen;
-    }
-
-    public ArrayList<String> getKartenSpieler() {
-        return kartenSpieler;
-    }
-
-    public void setKartenWertSpieler(int i) {
-        this.kartenWertSpieler += i;
-    }
-
-    public int getKartenWertSpieler() {
-        return kartenWertSpieler;
-    }
-
-    public void addKarte(String zufallskarte) {
-        kartenSpieler.add(zufallskarte);
     }
 }

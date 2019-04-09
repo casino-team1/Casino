@@ -13,31 +13,10 @@ import java.util.ArrayList;
  */
 public class RouletteTable {
 
-//    RouletteFXMLController controll;
-    
-//    public void setController(RouletteFXMLController contoller){
-//        this.controll = contoller;
-//        this.isNumber = controll.getIsNumber();
-//        this.bet = controll.placeBet();
-//        this.betArray = controll.placeBetArray();
-//    }
-//    
-//    private ArrayList<Integer> arrayBet = new ArrayList<>();
-//    
-//    private boolean isNumber;
-//    private int bet;
-//    private ArrayList<Integer> betArray;
-//
-//    public int getBet() {
-//        return bet;
-//    }
-//
-//    public ArrayList<Integer> getBetArray() {
-//        return betArray;
-//    }
-//
-//    public boolean getIsNumber() {
-//        return isNumber;
-//    }
+    public int getAmountOfBet(int parameterInt){
+        int betAmount = 0;
+        
+        return betAmount;
+    }
 
 }

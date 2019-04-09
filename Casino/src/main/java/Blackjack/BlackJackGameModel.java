@@ -18,43 +18,44 @@ import javafx.scene.control.Label;
  */
 public class BlackJackGameModel {
 
-    BlackJackSpielerModel spieler = new BlackJackSpielerModel();
-    BlackJackDealerModel dealer = new BlackJackDealerModel();
-    Karten k;
+    private BlackJackSpielerModel spieler = new BlackJackSpielerModel();
+    private BlackJackDealerModel dealer = new BlackJackDealerModel();
+
+    private Karten k = new Karten();
 
     private ArrayList<String> kartenSpieler = new ArrayList<>();
-    private int kartenWertSpieler;
+    private int kartenWertSpieler = 0;
 
-    private int einsatz;
+    private int einsatz = 0;
 
     private int anzahlKartenImKartendeck = 52;
 
     private ArrayList<String> kartenDealer = new ArrayList<>();
-    private int kartenWertDealer;
-    private int karteZweiWert;
+    private int kartenWertDealer = 0;
+    private int karteZweiWert = 0;
 
     private boolean unentschieden = false;
 
     private String zufallskarte = "";
     private int zufallszahl = 0;
 
-    private HashMap<String, Integer> karten = new HashMap<>();
-    private ArrayList<String> kartenWerte = new ArrayList<>();
+    private HashMap<String, Integer> karten = k.getKarten();
+    private ArrayList<String> kartenSymbole = k.getKartenSymbole();
 
-    Random r = new Random();
+    private Random r = new Random();
 
     public void play(Label labelKartenSpieler, Label labelKartenDealer) {
         //Vorbereitung
         spieler.setGewonnen(false);
         dealer.setGewonnen(false);
-        spieler.getKartenSpieler().clear();
-        dealer.getKartenDealer().clear();
-        
-        dealer.austeilen(anzahlKartenImKartendeck, kartenWertSpieler, kartenWertDealer, karteZweiWert, kartenSpieler, labelKartenSpieler, labelKartenDealer);
+        kartenSpieler.clear();
+        kartenDealer.clear();
+
+        dealer.austeilen(karten, kartenSymbole, anzahlKartenImKartendeck, kartenWertSpieler, kartenWertDealer, karteZweiWert, kartenSpieler, kartenDealer, labelKartenSpieler, labelKartenDealer);
     }
 
-    public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Label labelKartenSpieler, Label labelKartenDealer) {
-        spieler.hit(anzahlKartenImKartendeck, kartenWerte, karten, labelKartenSpieler, labelKartenDealer);
+    public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Label labelKartenDealer, Label labelKartenSpieler) {
+        spieler.hit(anzahlKartenImKartendeck, kartenWertSpieler, kartenSpieler, kartenSymbole, karten, labelKartenSpieler);
 
         //Überprüfung, ob 21 überschritten wurde
         if (kartenWertSpieler > 21) {
@@ -77,7 +78,7 @@ public class BlackJackGameModel {
 
     public void dealerRound(Label labelLösung, Label labelKartenDealer, Button buttonHit, Button buttonStand) {
         //Zweiter Wert von Karte mitberechnen
-        dealer.setKartenWertDealer(dealer.getKarteZweiWert());
+        kartenWertDealer += karteZweiWert;
 
         //Hat es genügend Karten?
         if (anzahlKartenImKartendeck < 1) {
@@ -85,27 +86,27 @@ public class BlackJackGameModel {
         }
 
         //Karte/n ziehen
-        dealer.hit(anzahlKartenImKartendeck, kartenWerte, karten);
+        dealer.hit(anzahlKartenImKartendeck, kartenWertDealer, kartenDealer, kartenSymbole, karten);
 
         //Anzeige leeren
         labelKartenDealer.setText("");
 
         //Alle Karten vom Dealer anzeigen
-        for (String s : dealer.getKartenDealer()) {
+        for (String s : kartenDealer) {
             labelKartenDealer.setText(labelKartenDealer.getText() + "," + s);
         }
 
         //Anzeigen der Karten
-        if (dealer.getKartenWertDealer() > 21) {
+        if (kartenWertDealer > 21) {
             spieler.setGewonnen(true);
         }
-        if (dealer.getKartenWertDealer() > spieler.getKartenWertSpieler()) {
+        if (kartenWertDealer > kartenWertSpieler) {
             dealer.setGewonnen(true);
         }
-        if (dealer.getKartenWertDealer() == spieler.getKartenWertSpieler()) {
+        if (kartenWertDealer == kartenWertSpieler) {
             unentschieden = true;
         }
-        if (dealer.getKartenWertDealer() < spieler.getKartenWertSpieler()) {
+        if (kartenWertDealer < kartenWertSpieler) {
             spieler.setGewonnen(true);
         }
 
@@ -125,22 +126,6 @@ public class BlackJackGameModel {
             buttonHit.setDisable(true);
             buttonStand.setDisable(true);
         }
-    }
-
-    public void setAnzahlKartenImKartendeck(int i) {
-        this.anzahlKartenImKartendeck -= i;
-    }
-
-    public int getAnzahlKartenImKartendeck() {
-        return anzahlKartenImKartendeck;
-    }
-
-    public ArrayList<String> getKartenWerte() {
-        return kartenWerte;
-    }
-
-    public HashMap<String, Integer> getKarten() {
-        return karten;
     }
 
 }

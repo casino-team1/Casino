@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class Karten {
 
     private HashMap<String, Integer> karten = new HashMap<>();
-    private ArrayList<String> kartenWerte = new ArrayList<String>();
+    private ArrayList<String> kartenSymbole = new ArrayList<String>();
 
     public Karten() {
         //Kartendeck (für jede Farbe eine Karte)
@@ -25,24 +25,24 @@ public class Karten {
             karten.put(j, i);
             karten.put(j, i);
             karten.put(j, i);
-            //Kartenwerte
-            kartenWerte.add(j);
-            kartenWerte.add(j);
-            kartenWerte.add(j);
-            kartenWerte.add(j);
+            //kartenSymbole
+            kartenSymbole.add(j);
+            kartenSymbole.add(j);
+            kartenSymbole.add(j);
+            kartenSymbole.add(j);
         }
         //Erstellen Karten und Kartenwert
         String[] special = {"J", "Q", "K"};
         for (int i = 0; i < 4; i++) {
             for (String spec : special) {
                 karten.put(spec, 10);
-                kartenWerte.add(spec);
+                kartenSymbole.add(spec);
             }
         }
         //A || Kartenwert und Karten
         for (int i = 0; i < 4; i++) {
             karten.put("A", 11);
-            kartenWerte.add("A");
+            kartenSymbole.add("A");
         }
     }
 
@@ -50,8 +50,8 @@ public class Karten {
         return karten;
     }
 
-    public ArrayList<String> getKartenWerte() {
-        return kartenWerte;
+    public ArrayList<String> getKartenSymbole() {
+        return kartenSymbole;
     }
 
 }

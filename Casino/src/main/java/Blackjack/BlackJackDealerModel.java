@@ -17,28 +17,21 @@ import javafx.scene.control.Label;
  */
 public class BlackJackDealerModel {
 
-    private int kartenWertDealer = 0;
-    private int karteZweiWert = 0;
-    private ArrayList<String> kartenDealer = new ArrayList<>();
     private boolean gewonnen = false;
 
-    Karten k = new Karten();
+    private Random r = new Random();
+    private int zufallszahl = 0;
+    private String zufallskarte = "";
 
-    private HashMap<String, Integer> karten = new HashMap<>();
-    private ArrayList<String> kartenWerte = new ArrayList<>();
+    public void hit(int anzahlKartenImKartendeck, int kartenWertDealer, ArrayList<String> kartenDealer, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten) {
 
-    Random r = new Random();
-    int zufallszahl;
-    String zufallskarte = "";
-
-    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenWerte, HashMap<String, Integer> karten) {
         //Wenn Dealer unter 17 hat, muss er ziehen
         if (kartenWertDealer < 17) {
             while (kartenWertDealer < 17) {
                 zufallszahl = r.nextInt(51);
-                zufallskarte = kartenWerte.get(zufallszahl);
+                zufallskarte = kartenSymbole.get(zufallszahl);
 
-                if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+                if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
                     kartenWertDealer += 10;
                 } else if (zufallskarte.equals("A")) {
                     kartenWertDealer += 11;
@@ -46,25 +39,23 @@ public class BlackJackDealerModel {
                     kartenWertDealer += karten.get(zufallskarte);
                 }
                 kartenDealer.add(zufallskarte);
-                karten.remove(zufallszahl);
+                karten.remove(zufallskarte);
                 anzahlKartenImKartendeck--;
             }
         }
     }
 
-    public void austeilen(int anzahlKartenImKartendeck, int kartenWertSpieler, int kartenWertDealer, int karteZweiWert, ArrayList<String> kartenSpieler, Label labelKartenSpieler, Label labelKartenDealer) {
-        //neue Karten bekommen
-        this.karten = getAlleKarten();
+    public void austeilen(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, int anzahlKartenImKartendeck, int kartenWertSpieler, int kartenWertDealer, int karteZweiWert, ArrayList<String> kartenSpieler, ArrayList<String> kartenDealer, Label labelKartenSpieler, Label labelKartenDealer) {
 
         //Karten mischen
-        Collections.shuffle(kartenWerte);
+        Collections.shuffle(kartenSymbole);
 
         //Zufallskarten verteilen an Spieler
         for (int i = 0; i < 2; i++) {
             zufallszahl = r.nextInt(51);
-            zufallskarte = kartenWerte.get(zufallszahl);
+            zufallskarte = kartenSymbole.get(zufallszahl);
 
-            if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+            if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
                 kartenWertSpieler += 10;
             } else if (zufallskarte.equals("A")) {
                 kartenWertSpieler += 11;
@@ -72,16 +63,16 @@ public class BlackJackDealerModel {
                 kartenWertSpieler += karten.get(zufallskarte);
             }
             kartenSpieler.add(zufallskarte);
-            karten.remove(zufallszahl);
+            karten.remove(zufallskarte);
             anzahlKartenImKartendeck--;
-            labelKartenSpieler.setText(labelKartenSpieler + "," + zufallskarte);
+            labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
         }
 
         //Erste Karte an Dealer verteilen
         zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
+        zufallskarte = kartenSymbole.get(zufallszahl);
 
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
             kartenWertDealer += 10;
         } else if (zufallskarte.equals("A")) {
             kartenWertDealer += 11;
@@ -89,15 +80,15 @@ public class BlackJackDealerModel {
             kartenWertDealer += karten.get(zufallskarte);
         }
         kartenDealer.add(zufallskarte);
-        karten.remove(zufallszahl);
+        karten.remove(zufallskarte);
         anzahlKartenImKartendeck--;
         labelKartenDealer.setText(zufallskarte + " + ?");
 
         //Zweite unbekannte Karte an Dealer verteilen
         zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
+        zufallskarte = kartenSymbole.get(zufallszahl);
 
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
             karteZweiWert += 10;
         } else if (zufallskarte.equals("A")) {
             karteZweiWert += 11;
@@ -105,7 +96,7 @@ public class BlackJackDealerModel {
             karteZweiWert += karten.get(zufallskarte);
         }
         kartenDealer.add(zufallskarte);
-        karten.remove(zufallszahl);
+        karten.remove(zufallskarte);
         anzahlKartenImKartendeck--;
     }
 
@@ -116,25 +107,4 @@ public class BlackJackDealerModel {
     public boolean hasGewonnen() {
         return gewonnen;
     }
-
-    public int getKarteZweiWert() {
-        return karteZweiWert;
-    }
-
-    public void setKartenWertDealer(int kartenWertDealer) {
-        this.kartenWertDealer = kartenWertDealer;
-    }
-
-    public int getKartenWertDealer() {
-        return kartenWertDealer;
-    }
-
-    public ArrayList<String> getKartenDealer() {
-        return kartenDealer;
-    }
-
-    public HashMap<String, Integer> getAlleKarten() {
-        return k.getKarten();
-    }
-
 }

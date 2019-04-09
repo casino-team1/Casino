@@ -69,7 +69,7 @@ public class BlackJackFXMLController implements Initializable {
     private void startGame(ActionEvent event) {
         Karten k = new Karten();
         this.karten = k.getKarten();
-        this.kartenWerte = k.getKartenWerte();
+        //this.kartenWerte = k.getKartenWerte();
         String zufallskarten = "";
         
         //Zufallskarten verteilen an Spieler

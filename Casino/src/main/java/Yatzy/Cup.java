@@ -34,7 +34,7 @@ public class Cup {
         dicearray.clear();
         Random rand = new Random();
         for (int i = 0; i < 5 - keep.size(); i++) {
-            Dice dice = new Dice(rand.nextInt(5) + 1);
+            Dice dice = new Dice(rand.nextInt(6) + 1);
             dicearray.add(dice);
         }
     }

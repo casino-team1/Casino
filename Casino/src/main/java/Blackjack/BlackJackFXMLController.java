@@ -33,8 +33,8 @@ import javafx.stage.Stage;
  */
 public class BlackJackFXMLController implements Initializable {
 
-    BlackJackGameModel game;
-
+    BlackJackGameModel game = new BlackJackGameModel();
+    
     private int einsatz;
 
     @FXML
@@ -69,9 +69,11 @@ public class BlackJackFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    
     @FXML
     private void stand(ActionEvent event) {
+        buttonHit.setDisable(true);
+        buttonStand.setDisable(true);
         game.dealerRound(labelLösung, labelKartenDealer, buttonHit, buttonStand);
     }
 
@@ -89,6 +91,7 @@ public class BlackJackFXMLController implements Initializable {
         labelEinsatzFehler.setText("");
         
         game.play(labelKartenSpieler, labelKartenDealer);
+        buttonStart.setDisable(true);
         buttonHit.setDisable(false);
         buttonStand.setDisable(false);
     }
@@ -111,62 +114,11 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void zurueck(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        rootPane.getChildren().setAll(pane);
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+        rootPane.getChildren().setAll(pane);*/
     }
 
     @FXML
     private void help(ActionEvent event) {
     }
-
-    
-    //Für Zugriffe nötig
-    public void setEinsatz(int einsatz) {
-        this.einsatz = einsatz;
-    }
-
-    public void setLabelKartenSpieler(String s) {
-        this.labelKartenSpieler.setText(s);
-    }
-
-    public void setLabelKartenDealer(String s) {
-        this.labelKartenDealer.setText(s);
-    }
-
-    public void setLabelLösung(String s) {
-        this.labelLösung.setText(s);
-    }
-
-    public void setLabelEinsatzFehler(String s) {
-        this.labelEinsatzFehler.setText(s);
-    }
-
-    public int getEinsatz() {
-        return einsatz;
-    }
-
-    public String getLabelKartenSpieler() {
-        return labelKartenSpieler.getText();
-    }
-
-    public String getLabelKartenDealer() {
-        return labelKartenDealer.getText();
-    }
-
-    public String getLabelLösung() {
-        return labelLösung.getText();
-    }
-
-    public String getLabelEinsatzFehler() {
-        return labelEinsatzFehler.getText();
-    }
-
-    public void setButtonStandDisable(boolean b) {
-        this.buttonStand.setDisable(b);
-    }
-
-    public void setButtonHitDisable(boolean b) {
-        this.buttonHit.setDisable(b);
-    }
-
 }

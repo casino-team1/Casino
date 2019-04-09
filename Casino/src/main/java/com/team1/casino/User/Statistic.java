@@ -4,7 +4,7 @@
  * For information and contact with the developer please write to
  * Mail: nick.flueckiger@outlook.de
  */
-package com.team1.casino.Player;
+package com.team1.casino.User;
 
 /**
  *

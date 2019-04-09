@@ -18,10 +18,10 @@ import javafx.scene.control.Label;
  */
 public class BlackJackGameModel {
 
-    BlackJackSpielerModel spieler = new BlackJackSpielerModel();
-    BlackJackDealerModel dealer = new BlackJackDealerModel();
+    private BlackJackSpielerModel spieler = new BlackJackSpielerModel();
+    private BlackJackDealerModel dealer = new BlackJackDealerModel();
     
-    Karten k = new Karten();
+    private Karten k = new Karten();
     
     private ArrayList<String> kartenSpieler = new ArrayList<>();
     private int kartenWertSpieler = 0;
@@ -42,7 +42,7 @@ public class BlackJackGameModel {
     private HashMap<String, Integer> karten = k.getKarten();
     private ArrayList<String> kartenSymbole = k.getKartenSymbole();
 
-    Random r = new Random();
+    private Random r = new Random();
 
     public void play(Label labelKartenSpieler, Label labelKartenDealer) {
         //Vorbereitung

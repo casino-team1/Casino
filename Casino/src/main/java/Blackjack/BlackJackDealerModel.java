@@ -19,9 +19,9 @@ public class BlackJackDealerModel {
 
     private boolean gewonnen = false;
 
-    Random r = new Random();
-    int zufallszahl = 0;
-    String zufallskarte = "";
+    private Random r = new Random();
+    private int zufallszahl = 0;
+    private String zufallskarte = "";
 
     public void hit(int anzahlKartenImKartendeck, int kartenWertDealer, ArrayList<String> kartenDealer, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten) {
 

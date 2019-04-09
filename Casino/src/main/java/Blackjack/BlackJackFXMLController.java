@@ -72,6 +72,8 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void stand(ActionEvent event) {
+        buttonHit.setDisable(true);
+        buttonStand.setDisable(true);
         game.dealerRound(labelLösung, labelKartenDealer, buttonHit, buttonStand);
     }
 

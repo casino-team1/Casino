@@ -5,6 +5,8 @@
  */
 package Roulette;
 
+import Baccara.Controller.BaccaraMenuViewController;
+import com.team1.casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,7 +42,6 @@ import javafx.util.Duration;
  */
 public class RouletteFXMLController implements Initializable {
 
-    Stage stage;
     //Deklarationen für jedes Feld auf dem Roulettetisch
     //-------------------------------------------------------------------
     @FXML
@@ -161,6 +162,8 @@ public class RouletteFXMLController implements Initializable {
     private Button rouletteVerlassen;
     @FXML
     private RadioButton radioTable;
+    @FXML
+    private Button getHelp;
 
     public boolean getIsNumber() {
         return isNumber;
@@ -180,7 +183,6 @@ public class RouletteFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        this.stage = stage;
         //Creating an arrayList which contains all red numbers
         redArray.add(1);
         redArray.add(3);
@@ -606,8 +608,25 @@ public class RouletteFXMLController implements Initializable {
         }
     }
     //-------------------------------------------------------------------
-       
+
     @FXML
     private void rouletteVerlassen(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainMenuRouletteFXML.fxml"));
+        Parent root = (Parent) loader.load();
+        Scene scene = new Scene(root);
+        stage = MainApp.centerStageInScreen(stage, scene);
+        stage.setTitle("Baccara Menu");
+        stage.setScene(scene);
+        stage.show();
+        MainMenuRouletteFXMLController controller = loader.getController();
+    }
+    @FXML
+    private void getHelp(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/RouletteHelpFXML.fxml"));
+        Stage stageHelp = new Stage();
+        stageHelp.setTitle("Help");
+        stageHelp.setScene(new Scene(root, 450, 450));
+        stageHelp.show();
     }
 }

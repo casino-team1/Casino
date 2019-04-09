@@ -6,6 +6,7 @@
  */
 package com.team1.casino.Model;
 
+import com.team1.casino.MainApp;
 import com.team1.casino.Player.Player;
 import com.team1.casino.Player.PlayerUtil;
 import com.team1.casino.Player.Spieler;
@@ -19,6 +20,11 @@ import javafx.beans.property.StringProperty;
 public class CasinoLoginModel {
 
     private Player currentPlayer;
+    private MainApp mainApplication;
+
+    public void setMainApplication(MainApp mainApplication) {
+        this.mainApplication = mainApplication;
+    }
 
     private StringProperty username = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
@@ -34,13 +40,17 @@ public class CasinoLoginModel {
     public String loginUser() {
         this.currentPlayer = new Spieler(username.getValue(), password.getValue());
         PlayerUtil playerUtil = new PlayerUtil();
-        if (playerUtil.isUniqueUsername(currentPlayer.getUsername()) == false) {
+        if (playerUtil.isUniqueUsername(currentPlayer.getUsername()) == true) {
             return "Gegebener Nutzernamen ist nicht vergeben";
         }
         if (playerUtil.isValidPlayer(currentPlayer) == false) {
             return "Gegebens Passwort ist ungültig.";
         }
         return "Valid user";
+    }
+
+    public void displayMainMenu() {
+        this.mainApplication.displayMainMenu();
     }
 
 }

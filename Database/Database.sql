@@ -1,4 +1,3 @@
-
 DROP DATABASE Casino;
 CREATE DATABASE Casino;
 Use Casino;
@@ -13,11 +12,20 @@ CREATE TABLE Balance(
     PRIMARY KEY (BalanceID)
 );
 
+CREATE TABLE Game(
+    gameID integer auto_increment,
+    spielName varchar(255),
+    PRIMARY KEY (gameID)
+);  
+
 CREATE TABLE Statistic(
     statisticID INTEGER auto_increment,
-    gamePlayed varchar(255),
+    gameID integer,
+    bet double,
     result varchar(255),
-    amount INTEGER
+    amount double,
+    PRIMARY KEY (statisticID),
+    FOREIGN KEY (gameID) REFERENCES Game(gameID)
 );
 
 CREATE TABLE Player(
@@ -26,7 +34,7 @@ CREATE TABLE Player(
     password varchar(255),
     balanceID integer,
     PRIMARY KEY (playerID),
-    FOREIGN KEY (balanceID) REFERENCES Balance(balanceID),
+    FOREIGN KEY (balanceID) REFERENCES Balance(balanceID)
 );
 
 CREATE TABLE StatisticToPlayer(
@@ -40,5 +48,5 @@ INSERT INTO Statistic(gamePlayed,result) VALUES("Baccara","Won",100);
 INSERT INTO Balance(Balance,LastUpdated) VALUES(1000.0,CURDATE());
 -- Username == "Muster" -- Password: "1234"
 -- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK
-
-INSERT INTO Player(username,password,statisticID,balanceID) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK",1,1);
+INSERT INTO StatisticToPlayer(playerID,statisticID) VALUES(1,1);
+INSERT INTO Player(username,password,balanceID) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK",1);

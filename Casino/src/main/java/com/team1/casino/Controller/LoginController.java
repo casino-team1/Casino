@@ -33,6 +33,7 @@ public class LoginController implements Initializable {
 
     public void setModel(CasinoLoginModel model) {
         this.loginModel = model;
+        bind();
     }
 
     private void bind() {
@@ -51,7 +52,9 @@ public class LoginController implements Initializable {
     @FXML
     private void loginUser(ActionEvent event) {
         String result = this.loginModel.loginUser();
-        System.out.println(result);
+        if (result.equals("Valid user")) {
+            this.loginModel.displayMainMenu();
+        }
     }
 
 }

@@ -35,6 +35,7 @@ public class PlayerUtil {
         if (storedPassword.equals("None")) {
             return false;
         }
+        System.out.println(storedPassword);
         if (validPassword(player.getPassword(), storedPassword) == true) {
             return true;
         }

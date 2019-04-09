@@ -114,7 +114,7 @@
       </Label>
       <Button fx:id="btnhelp" layoutX="738.0" layoutY="14.0" mnemonicParsing="false" onAction="#presshelp" text="?" />
       <Button fx:id="btnendgame" layoutX="14.0" layoutY="682.0" mnemonicParsing="false" onAction="#pressendgame" text="Spiel Beenden" />
-      <Label fx:id="sclblup1" layoutX="668.0" layoutY="60.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+      <Label fx:id="sclblup1" layoutX="668.0" layoutY="60.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;" text="1">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -129,7 +129,7 @@
             <Font name="Arial Nova" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="sclblup4" layoutX="668.0" layoutY="150.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+      <Label fx:id="sclblup4" layoutX="668.0" layoutY="150.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;" text="wert">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -139,7 +139,7 @@
             <Font name="Arial Nova" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="sclblup6" layoutX="668.0" layoutY="210.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;">
+      <Label fx:id="sclblup6" layoutX="668.0" layoutY="210.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black;" text="67">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>

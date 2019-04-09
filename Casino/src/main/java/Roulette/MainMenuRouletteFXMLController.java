@@ -60,4 +60,8 @@ public class MainMenuRouletteFXMLController implements Initializable {
         System.out.println("Button is working");
     }
 
+    @FXML
+    private void endGame(ActionEvent event) {
+    }
+
 }

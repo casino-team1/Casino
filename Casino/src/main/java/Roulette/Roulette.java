@@ -22,6 +22,7 @@ import javafx.stage.Stage;
  */
 public class Roulette extends Spiel {
 
+    Stage stage;
     public Roulette(MainApp mainApplication) {
         super(mainApplication);
     }

@@ -5,6 +5,7 @@
  */
 package Roulette;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,7 +23,14 @@ import java.util.Date;
 import java.util.Random;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -30,12 +38,9 @@ import javafx.util.Duration;
  *
  * @author Lukas Gilgen Schule
  */
-
-
 public class RouletteFXMLController implements Initializable {
 
-    
-    
+    Stage stage;
     //Deklarationen für jedes Feld auf dem Roulettetisch
     //-------------------------------------------------------------------
     @FXML
@@ -134,8 +139,10 @@ public class RouletteFXMLController implements Initializable {
     //-------------------------------------------------------------------
 
     private boolean isNumber;
-    private int betInt;
+    private boolean betIsPlaced = false;
+    private int betInt = 0;
     RouletteWheel wheels = new RouletteWheel();
+    RouletteTable tables = new RouletteTable();
     ArrayList<Integer> betArray = new ArrayList<>();
 
     ArrayList<Integer> redArray = new ArrayList<>();
@@ -150,6 +157,10 @@ public class RouletteFXMLController implements Initializable {
     private Pane row2;
     @FXML
     private Pane row1;
+    @FXML
+    private Button rouletteVerlassen;
+    @FXML
+    private RadioButton radioTable;
 
     public boolean getIsNumber() {
         return isNumber;
@@ -160,61 +171,16 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private ImageView rouletteWheel;
 
-    ToggleGroup group = new ToggleGroup();
-
-    //Radiobuttons to select where you want to place your bets
+    //Spinner to select bet amount
     //-------------------------------------------------------------------
     @FXML
-    private RadioButton radioTable;
-    @FXML
-    private RadioButton radioThree;
-    @FXML
-    private RadioButton radioFour;
-    @FXML
-    private RadioButton radioFive;
-    //-------------------------------------------------------------------
-
-    //Spinners to select three bets
-    //-------------------------------------------------------------------
-    @FXML
-    private Spinner<Integer> threeOne;
-    @FXML
-    private Spinner<Integer> threeTwo;
-    @FXML
-    private Spinner<Integer> threeThree;
-    //-------------------------------------------------------------------
-
-    //Spinners to select four bets
-    //-------------------------------------------------------------------
-    @FXML
-    private Spinner<Integer> fourOne;
-    @FXML
-    private Spinner<Integer> fourTwo;
-    @FXML
-    private Spinner<Integer> fourThree;
-    @FXML
-    private Spinner<Integer> fourFour;
-    //-------------------------------------------------------------------
-
-    //Spinners to select five bets
-    //-------------------------------------------------------------------
-    @FXML
-    private Spinner<Integer> fiveOne;
-    @FXML
-    private Spinner<Integer> fiveTwo;
-    @FXML
-    private Spinner<Integer> fiveThree;
-    @FXML
-    private Spinner<Integer> fiveFour;
-    @FXML
-    private Spinner<Integer> fiveFive;
+    private Spinner<Integer> betragSpinner;
     //-------------------------------------------------------------------
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        
+
+        this.stage = stage;
         //Creating an arrayList which contains all red numbers
         redArray.add(1);
         redArray.add(3);
@@ -269,63 +235,14 @@ public class RouletteFXMLController implements Initializable {
             System.out.println(i);
             row3Array.add(i);
         }
-        //Setting groups for the radioButtons
-        radioTable.setToggleGroup(group);
-        radioTable.setSelected(true);
 
-        radioThree.setToggleGroup(group);
-
-        radioFour.setToggleGroup(group);
-
-        radioFive.setToggleGroup(group);
-
-        //Setting values for three spinners
+        //Setting value for bet spinner
         //-------------------------------------------------------------------
-        SpinnerValueFactory<Integer> threeOneSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 12);
-        this.threeOne.setValueFactory(threeOneSpin);
-
-        SpinnerValueFactory<Integer> threeTwoSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 24);
-        this.threeTwo.setValueFactory(threeTwoSpin);
-
-        SpinnerValueFactory<Integer> threeThreeSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
-        this.threeThree.setValueFactory(threeThreeSpin);
-        //-------------------------------------------------------------------
-
-        //Setting values for four spinners
-        //-------------------------------------------------------------------
-        SpinnerValueFactory<Integer> fourOneSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 9);
-        this.fourOne.setValueFactory(fourOneSpin);
-
-        SpinnerValueFactory<Integer> fourTwoSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 18);
-        this.fourTwo.setValueFactory(fourTwoSpin);
-
-        SpinnerValueFactory<Integer> fourThreeSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 27);
-        this.fourThree.setValueFactory(fourThreeSpin);
-
-        SpinnerValueFactory<Integer> fourFourSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
-        this.fourFour.setValueFactory(fourFourSpin);
-        //-------------------------------------------------------------------
-
-        //Setting values for five spinners
-        //-------------------------------------------------------------------
-        SpinnerValueFactory<Integer> fiveOneSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 0);
-        this.fiveOne.setValueFactory(fiveOneSpin);
-
-        SpinnerValueFactory<Integer> fiveTwoSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 9);
-        this.fiveTwo.setValueFactory(fiveTwoSpin);
-
-        SpinnerValueFactory<Integer> fiveThreeSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 18);
-        this.fiveThree.setValueFactory(fiveThreeSpin);
-
-        SpinnerValueFactory<Integer> fiveFourSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 27);
-        this.fiveFour.setValueFactory(fiveFourSpin);
-
-        SpinnerValueFactory<Integer> fiveFiveSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
-        this.fiveFive.setValueFactory(fiveFiveSpin);
+        SpinnerValueFactory<Integer> betSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000000, 1);
+        this.betragSpinner.setValueFactory(betSpin);
         //-------------------------------------------------------------------
     }
 
-    
     public void placeBet() {
         System.out.println(betInt);
         wheels.decideResult(betInt);
@@ -669,9 +586,8 @@ public class RouletteFXMLController implements Initializable {
         isNumber = false;
         betArray = row1Array;
     }
-    
-    //-------------------------------------------------------------------
 
+    //-------------------------------------------------------------------
     //Confirm your bet and pass off the numbers
     //-------------------------------------------------------------------
     @FXML
@@ -680,9 +596,9 @@ public class RouletteFXMLController implements Initializable {
         PauseTransition transition = new PauseTransition(Duration.seconds(3));
         transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
         transition.play();
-        
+
         wheels.generateRandom();
-        
+
         if (isNumber == true) {
             placeBet();
         } else {
@@ -690,4 +606,8 @@ public class RouletteFXMLController implements Initializable {
         }
     }
     //-------------------------------------------------------------------
+       
+    @FXML
+    private void rouletteVerlassen(ActionEvent event) throws IOException {
+    }
 }

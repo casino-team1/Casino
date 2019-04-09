@@ -15,16 +15,7 @@ import javafx.scene.input.MouseEvent;
 
 public class CasinoController implements Initializable, Observer {
 
-    @FXML
     private Label label;
-    @FXML
-    private Button blackJack;
-    @FXML
-    private Button roulette;
-    @FXML
-    private Button baccara;
-    @FXML
-    private Button yatzy;
 
     private CasinoModel casinoModel;
 

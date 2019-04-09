@@ -21,8 +21,11 @@ import javafx.stage.Stage;
  */
 public class PlayRoulette extends Spiel {
 
+    Stage stage;
     public PlayRoulette(MainApp mainApplication) {
         super(mainApplication);
+        this.stage = mainApplication.getStage();
+        this.stage.setResizable(false);
     }
 
     @Override

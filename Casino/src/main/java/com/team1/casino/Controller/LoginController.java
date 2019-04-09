@@ -30,6 +30,8 @@ public class LoginController implements Initializable {
     private PasswordField passwordField;
     @FXML
     private Button loginButtion;
+    @FXML
+    private Button registerButton;
 
     public void setModel(CasinoLoginModel model) {
         this.loginModel = model;
@@ -55,6 +57,11 @@ public class LoginController implements Initializable {
         if (result.equals("Valid user")) {
             this.loginModel.displayMainMenu();
         }
+    }
+
+    @FXML
+    private void registerUser(ActionEvent event) {
+        this.loginModel.registerWindow();
     }
 
 }

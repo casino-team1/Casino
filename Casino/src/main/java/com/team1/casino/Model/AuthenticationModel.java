@@ -1,0 +1,51 @@
+/*
+ * This peace of Software has been written by Nick Flückiger
+ * You are free to use and modifiy this software to your needs
+ * For information and contact with the developer please write to
+ * Mail: nick.flueckiger@outlook.de
+ */
+package com.team1.casino.Model;
+
+import com.team1.casino.User.UserCentral;
+import java.util.Observable;
+import javafx.beans.property.SimpleStringProperty;
+
+/**
+ *
+ * @author Nick Flückiger
+ */
+public class AuthenticationModel extends Observable {
+
+    public AuthenticationModel(String accessCodeNeeded) {
+        this.givenCode = accessCodeNeeded;
+    }
+    private String errorMessage;
+
+    private String givenCode;
+
+    private SimpleStringProperty userInputCode = new SimpleStringProperty();
+
+    public String getGivenCode() {
+        return givenCode;
+    }
+
+    public SimpleStringProperty getUserInputCode() {
+        return userInputCode;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void checkAccessCode() {
+        String accessCode = this.userInputCode.getValue();
+        if (accessCode.equals(this.givenCode)) {
+            UserCentral.getInstance().getUser().writeUserToDatabase();
+        } else {
+            System.out.println("invalid");
+            this.errorMessage = "Ungülteriger Zugangscode, bitte versuchen sie es erneut";
+            setChanged();
+            notifyObservers();
+        }
+    }
+}

@@ -7,9 +7,9 @@
 package com.team1.casino.Model;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.Player.Player;
-import com.team1.casino.Player.PlayerUtil;
-import com.team1.casino.Player.Spieler;
+import com.team1.casino.User.User;
+import com.team1.casino.User.UserUtil;
+import com.team1.casino.User.Spieler;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -19,7 +19,7 @@ import javafx.beans.property.StringProperty;
  */
 public class CasinoLoginModel {
 
-    private Player currentPlayer;
+    private User currentPlayer;
     private MainApp mainApplication;
 
     public void setMainApplication(MainApp mainApplication) {
@@ -39,14 +39,18 @@ public class CasinoLoginModel {
 
     public String loginUser() {
         this.currentPlayer = new Spieler(username.getValue(), password.getValue());
-        PlayerUtil playerUtil = new PlayerUtil();
+        UserUtil playerUtil = new UserUtil();
         if (playerUtil.isUniqueUsername(currentPlayer.getUsername()) == true) {
             return "Gegebener Nutzernamen ist nicht vergeben";
         }
-        if (playerUtil.isValidPlayer(currentPlayer) == false) {
+        if (currentPlayer.isValidUser() == false) {
             return "Gegebens Passwort ist ungültig.";
         }
         return "Valid user";
+    }
+
+    public void registerWindow() {
+        this.mainApplication.displayRegistrationView();
     }
 
     public void displayMainMenu() {

@@ -5,50 +5,56 @@ DROP USER 'casinoworker'@'localhost';
 CREATE USER 'casinoworker'@'localhost' IDENTIFIED BY '';
 GRANT ALL PRIVILEGES ON Casino.* TO 'casinoworker'@'localhost' WITH GRANT OPTION;
 
-CREATE TABLE Balance(
-    balanceID integer auto_increment,
+CREATE TABLE balance(
+    id integer auto_increment,
     balance double,
     lastUpdated Datetime,
-    PRIMARY KEY (BalanceID)
+    PRIMARY KEY (id)
 );
 
-CREATE TABLE Game(
-    gameID integer auto_increment,
-    spielName varchar(255),
-    PRIMARY KEY (gameID)
+CREATE TABLE game(
+    id integer auto_increment,
+    gameName varchar(255),
+    PRIMARY KEY (id)
 );  
 
-CREATE TABLE Statistic(
-    statisticID INTEGER auto_increment,
-    gameID integer,
+CREATE TABLE statistic(
+    id INTEGER auto_increment,
+    game_id integer,
     bet double,
     result varchar(255),
     amount double,
-    PRIMARY KEY (statisticID),
-    FOREIGN KEY (gameID) REFERENCES Game(gameID)
+    PRIMARY KEY (id),
+    FOREIGN KEY (game_id) REFERENCES game(id)
 );
 
-CREATE TABLE Player(
-    playerID INTEGER auto_increment,
+CREATE TABLE user(
+    id INTEGER auto_increment,
     username varchar(255),
     password varchar(255),
-    balanceID integer,
-    PRIMARY KEY (playerID),
-    FOREIGN KEY (balanceID) REFERENCES Balance(balanceID)
+    role varchar(255),
+    balance_id integer,
+    PRIMARY KEY (id),
+    FOREIGN KEY (balance_id) REFERENCES balance(id)
 );
 
-CREATE TABLE StatisticToPlayer(
-    playerID INTEGER,
-    statisticID INTEGER,
-    FOREIGN KEY (playerID) REFERENCES Player(playerID),
-    FOREIGN KEY (statisticID) REFERENCES Statistic(statisticID)
+CREATE TABLE statistictoplayer(
+    user_id INTEGER,
+    statistic_id INTEGER,
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (statistic_id) REFERENCES statistic(id)
 );
 
 
-INSERT INTO Game(spielName) VALUES("Baccara");
-INSERT INTO Statistic(gameID,bet,result,amount) VALUES(1,50,"Won",100);
-INSERT INTO Balance(Balance,LastUpdated) VALUES(1000.0,CURDATE());
+INSERT INTO game(gameName) VALUES("Baccara");
+INSERT INTO game(gameName) VALUES("Roulette");
+INSERT INTO game(gameName) VALUES("BlackJack");
+INSERT INTO game(gameName) VALUES("Yatzy");
+
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO balance(balance,lastUpdated) VALUES(1000.0,CURDATE());
+
+INSERT INTO statistictoplayer(player_id,statistic_id) VALUES(1,1);
 -- Username == "Muster" -- Password: "1234"
 -- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK
-INSERT INTO StatisticToPlayer(playerID,statisticID) VALUES(1,1);
-INSERT INTO Player(username,password,balanceID) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK",1);
+INSERT INTO user(username,password,role,balance_id) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",1);

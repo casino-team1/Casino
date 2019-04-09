@@ -1,0 +1,80 @@
+/*
+ * This peace of Software has been written by Nick Flückiger
+ * You are free to use and modifiy this software to your needs
+ * For information and contact with the developer please write to
+ * Mail: nick.flueckiger@outlook.de
+ */
+package com.team1.casino.User;
+
+/**
+ *
+ * @author Nick Flückiger
+ */
+public abstract class User {
+
+    private int ID;
+    private String role;
+    private String username;
+    private String password;
+    private double currentBalance;
+    private boolean validated = false;
+    private String validationCode = "1234";
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public boolean isValidUser() {
+        boolean isValid = new UserUtil().isValidUser(this);
+        System.out.println(isValid);
+        this.validated = isValid;
+        if (isValid == true) {
+            UserUtil util = new UserUtil();
+            this.role = util.getUserRoleByUsername(this.username);
+            this.ID = util.getIDFromUserByUsername(username);
+            System.out.println(role);
+            System.out.println(ID);
+        }
+        return isValid;
+    }
+
+    public double getCurrentBalance() {
+        return this.currentBalance;
+    }
+
+    public void setCurrentBalance(double currentBalance) {
+        this.currentBalance = currentBalance;
+    }
+
+    public void writeBalanceToDatabase() {
+
+    }
+
+    public boolean isValidValidationCode(String code) {
+        return this.validationCode.equals(code);
+    }
+
+    public String getValidationCode() {
+        return "1234";
+    }
+
+    public void setRole(String userRole) {
+        this.role = userRole;
+    }
+
+    public void setId(int ID) {
+        this.ID = ID;
+    }
+
+    public abstract void writeUserToDatabase();
+
+}

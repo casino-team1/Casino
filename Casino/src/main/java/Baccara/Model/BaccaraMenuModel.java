@@ -7,8 +7,8 @@
 package Baccara.Model;
 
 import Baccara.BaccaraHandler;
-import com.team1.casino.Player.Player;
-import com.team1.casino.Player.PlayerCentral;
+import com.team1.casino.User.User;
+import com.team1.casino.User.UserCentral;
 
 /**
  *
@@ -16,7 +16,7 @@ import com.team1.casino.Player.PlayerCentral;
  */
 public class BaccaraMenuModel extends BaccaraModel {
 
-    private Player player = PlayerCentral.getInstance().getPlayer();
+    private User player = UserCentral.getInstance().getUser();
 
     public BaccaraMenuModel(BaccaraHandler baccaraGame) {
         super(baccaraGame);
@@ -30,7 +30,7 @@ public class BaccaraMenuModel extends BaccaraModel {
         super.getBaccaraGame().displayGame();
     }
 
-    public Player getPlayer() {
+    public User getPlayer() {
         return this.player;
     }
 }

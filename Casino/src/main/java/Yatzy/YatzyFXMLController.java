@@ -31,29 +31,20 @@ public class YatzyFXMLController implements Initializable {
     private boolean firstthrow = true;
     private boolean secondthrow = true;
     private boolean lockdices = false;
+    private boolean locklabels = true;
     private ArrayList<String> keeparray = new ArrayList<>();
     private ArrayList<Dice> keep = new ArrayList<>();
     private ArrayList<Dice> gearray = new ArrayList<>();
     private ArrayList<Dice> bearray = new ArrayList<>();
     private ArrayList<Dice> finalarray = new ArrayList<>();
 
-    Cup cup = new Cup();
-    Rules rules = new Rules();
+    Cup cup = new Cup(); 
     Images img = new Images();
+    Rules rules = new Rules();
 
     private PlayYatzy yatzy;
     @FXML
-    private Label lbldicelbl;
-    @FXML
-    private Label lbldices;
-    @FXML
-    private Label lblkeep;
-    @FXML
-    private TextField txtkeep;
-    @FXML
     private Button btnthrowdices;
-    @FXML
-    private Label lbltest;
     @FXML
     private ImageView ge1;
     @FXML
@@ -95,8 +86,6 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private Label sclblup8;
     @FXML
-    private Label sclblup9;
-    @FXML
     private Label lblup1;
     @FXML
     private Label lblup2;
@@ -113,8 +102,6 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private Label lblup8;
     @FXML
-    private Label lblup9;
-    @FXML
     private Label sclbllo1;
     @FXML
     private Label sclbllo2;
@@ -130,6 +117,8 @@ public class YatzyFXMLController implements Initializable {
     private Label sclbllo7;
     @FXML
     private Label sclbllo8;
+    @FXML
+    private Label sclbllo9;
     @FXML
     private Label lbllo1;
     @FXML
@@ -148,9 +137,7 @@ public class YatzyFXMLController implements Initializable {
     private Label lbllo8;
     @FXML
     private Label lbllo9;
-    @FXML
-    private Label sclbllo9;
-
+    
     public void setYatzy(PlayYatzy yatzy) {
         this.yatzy = yatzy;
     }
@@ -183,38 +170,51 @@ public class YatzyFXMLController implements Initializable {
 
             firstthrow = false;
             btnthrowdices.setText("Zweiter Wurf");
+            lockdices = false;
+            
+            cup.throwDices();
+            gearray.addAll(cup.getDicearray());
+            assignImages();
+            
         } else if (secondthrow == true && firstthrow == false) {
 
             secondthrow = false;
             btnthrowdices.setText("Dritter Wurf");
+            
+            keep.clear();
+            keep.addAll(bearray);
+            gearray.clear();
+            cup.setKeep(keep);
+            cup.throwDices();
+            gearray.addAll(cup.getDicearray());
+            assignImages();
+            
         } else {
-
+            
             btnthrowdices.setText("Figur Wählen");
             btnthrowdices.setDisable(true);
             lockdices = true;
+            locklabels = false;
+            
+            keep.clear();
+            keep.addAll(bearray);
+            gearray.clear();
+            cup.setKeep(keep);
+            cup.throwDices();
+            gearray.addAll(cup.getDicearray());
+            gearray.addAll(keep);
+            bearray.clear();           
+            finalarray.addAll(gearray); 
+            assignImages();
         }
 
-        keep.clear();
-        keep.addAll(bearray);
-        bearray.clear();
-        gearray.clear();
-        cup.setKeep(keep);
-        cup.throwDices();
-        gearray.addAll(keep);
-        gearray.addAll(cup.getDicearray());
-        assignImages();
-        finalarray.clear();
-        finalarray.addAll(gearray);
+        
+        
 
-        String s = "";
-        for (int i = 0; i < keep.size(); i++) {
-            s += keep.get(i).getValue();
-        }
-        lbltest.setText(s);
 
     }
     
-        @FXML
+    @FXML
     private void presshelp(ActionEvent event) {
     }
 
@@ -233,9 +233,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void pressGe2(MouseEvent event) {
-        bearray.add(gearray.get(1));
-        gearray.remove(1);
-        assignImages();
+        if (lockdices == false) {
+            bearray.add(gearray.get(1));
+            gearray.remove(1);
+            assignImages();
+        }
     }
 
     @FXML
@@ -302,8 +304,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslblup1(MouseEvent event) {
-        if (sclblup1.getText().equals("") || sclblup1.getText() == null) {
-            rules.calculate("EINER");
+        if (locklabels == true) {
+        }       
+        else if (sclblup1.getText().equals("") || sclblup1.getText() == null) {
+            sclblup1.setText(Integer.toString(rules.createSubresult("EINER", finalarray)));   
+            newTurn();
         } else {
             notPressable(lblup1);
         }
@@ -312,8 +317,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslblup2(MouseEvent event) {
-        if (sclblup2.getText().equals("") || sclblup1.getText() == null) {
-            rules.calculate("ZWEIER");
+        if (locklabels == true) {
+        }       
+        else if (sclblup2.getText().equals("") || sclblup2.getText() == null) {
+            sclblup2.setText(Integer.toString(rules.createSubresult("ZWEIER", finalarray)));
+            newTurn();
         } else {
             notPressable(lblup2);
         }
@@ -321,9 +329,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslblup3(MouseEvent event) {
-        if (sclblup3.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("DREIER");
+        if (locklabels == true) {
+        }       
+        else if (sclblup3.getText().equals("") || sclblup3.getText() == null) {
+            sclblup3.setText(Integer.toString(rules.createSubresult("DREIER", finalarray)));           
+            newTurn();
         } else {
             notPressable(lblup3);
         }
@@ -331,9 +341,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslblup4(MouseEvent event) {
-        if (sclblup4.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("VIERER");
+        if (locklabels == true) {
+        }       
+        else if (sclblup4.getText().equals("") || sclblup4.getText() == null) {
+            sclblup4.setText(Integer.toString(rules.createSubresult("VIERER", finalarray)));
+            newTurn();
         } else {
             notPressable(lblup4);
         }
@@ -341,9 +353,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslblup5(MouseEvent event) {
-        if (sclblup5.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("FÜNFER");
+        if (locklabels == true) {
+        }       
+        else if (sclblup5.getText().equals("") || sclblup5.getText() == null) {
+            sclblup5.setText(Integer.toString(rules.createSubresult("FÜNFER", finalarray)));
+            newTurn();
         } else {
             notPressable(lblup5);
         }
@@ -351,9 +365,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslblup6(MouseEvent event) {
-        if (sclblup6.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("SECHSER");
+        if (locklabels == true) {
+        }       
+        else if (sclblup6.getText().equals("") || sclblup6.getText() == null) {
+            sclblup6.setText(Integer.toString(rules.createSubresult("SECHSER", finalarray)));
+            newTurn();
         } else {
             notPressable(lblup6);
         }
@@ -361,9 +377,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslbllo1(MouseEvent event) {
-        if (sclbllo1.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("DREI GLEICHE");
+        if (locklabels == true) {
+        }       
+        else if (sclbllo1.getText().equals("") || sclbllo1.getText() == null) {
+            sclbllo1.setText(Integer.toString(rules.createSubresult("DREI GLEICHE", finalarray)));
+            newTurn();
         } else {
             notPressable(lbllo1);
         }
@@ -371,9 +389,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslbllo2(MouseEvent event) {
-        if (sclbllo2.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("VIER GLEICHE");
+        if (locklabels == true) {
+        }       
+        else if (sclbllo2.getText().equals("") || sclbllo2.getText() == null) {
+            sclbllo2.setText(Integer.toString(rules.createSubresult("VIER GLEICHE", finalarray)));
+            newTurn();
         } else {
             notPressable(lbllo2);
         }
@@ -381,9 +401,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslbllo3(MouseEvent event) {
-        if (sclbllo3.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("FULL HOUSE");
+        if (locklabels == true) {
+        }       
+        else if (sclbllo3.getText().equals("") || sclbllo3.getText() == null) { 
+            sclbllo3.setText(Integer.toString(rules.createSubresult("FULL HOUSE", finalarray)));
+            newTurn();
         } else {
             notPressable(lbllo3);
         }
@@ -391,9 +413,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslbllo4(MouseEvent event) {
-        if (sclbllo4.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("KLEINE STRASSE");
+        if (locklabels == true) {
+        }       
+        else if (sclbllo4.getText().equals("") || sclbllo4.getText() == null) {        
+            sclbllo4.setText(Integer.toString(rules.createSubresult("KLEINE STRASSE", finalarray)));
+            newTurn();
         } else {
             notPressable(lbllo4);
         }
@@ -401,9 +425,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslbllo5(MouseEvent event) {
-        if (sclbllo5.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("GROSSE STRASSE");
+        if (locklabels == true) {
+        }       
+        else if (sclbllo5.getText().equals("") || sclbllo5.getText() == null) {
+            sclbllo5.setText(Integer.toString(rules.createSubresult("GROSSE STRASSE", finalarray)));
+            newTurn();
         } else {
             notPressable(lbllo5);
         }
@@ -411,9 +437,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslbllo6(MouseEvent event) {
-        if (sclbllo6.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("YATZY");
+        if (locklabels == true) {
+        }       
+        else if (sclbllo6.getText().equals("") || sclbllo6.getText() == null) {
+            sclbllo6.setText(Integer.toString(rules.createSubresult("YATZY", finalarray)));
+            newTurn();
         } else {
             notPressable(lbllo6);
         }
@@ -421,9 +449,11 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void presslbllo7(MouseEvent event) {
-        if (sclbllo7.getText().equals("") || sclblup1.getText() == null) {
-
-            rules.calculate("CHANCE");
+        if (locklabels == true) {
+        }       
+        else if (sclbllo7.getText().equals("") || sclbllo7.getText() == null) {
+            sclbllo7.setText(Integer.toString(rules.createSubresult("CHANCE", finalarray)));
+            newTurn();
         } else {
             notPressable(lbllo7);
         }
@@ -643,4 +673,36 @@ public class YatzyFXMLController implements Initializable {
     public void notPressable(Label lbl) {
         lbl.setStyle("-fx-border-color: black;-fx-border-width: 3; -fx-background-color: red;");
     }
+
+    public ArrayList<Dice> getGearray() {
+        return gearray;
+    }
+    
+    public void newTurn(){
+        
+        rules.totalChecker();
+        if(rules.isUpperbool() == true) {
+            sclblup7.setText(Integer.toString(rules.getUppertotal()));
+            sclblup8.setText(Integer.toString(rules.getBonusUppertotal()));
+        }
+        if(rules.isLowerbool() == true) {
+            sclbllo8.setText(Integer.toString(rules.getLowertotal()));
+        }
+        if(rules.isUpperbool() == true && rules.isLowerbool() == true) {
+            sclbllo9.setText(Integer.toString(rules.getTotal()));
+        }
+        
+        btnthrowdices.setDisable(false);
+        btnthrowdices.setText("Würfel werfen");
+        locklabels = true;
+        keep.clear();
+        gearray.clear();
+        gearray.clear();
+        finalarray.clear();
+        firstthrow = true;
+        secondthrow = true;
+        
+    }
+            
+    
 }

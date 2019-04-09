@@ -6,8 +6,13 @@ import Baccara.Baccara;
 import Blackjack.Blackjack;
 import Roulette.Roulette;
 import Yatzy.Yatzy;
+import com.team1.casino.Controller.AuthenticationController;
 import com.team1.casino.Controller.LoginController;
+import com.team1.casino.Controller.RegistrationViewController;
+import com.team1.casino.Model.AuthenticationModel;
 import com.team1.casino.Model.CasinoLoginModel;
+import com.team1.casino.Model.RegistrationModel;
+import com.team1.casino.User.UserCentral;
 import com.team1.casino.database.DatabaseConnection;
 import com.team1.casino.database.DatabaseConnector;
 import java.io.IOException;
@@ -23,23 +28,26 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
-    
+
     private Stage stage;
-    
+
     public Stage getStage() {
         this.stage.setResizable(false);
         return this.stage;
     }
-    
+
     private final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         this.stage.setResizable(false);
         if (this.executionMode == ExecutionMode.DEBUG) {
-            displayLoginView();
-            setupForDEBUG();
+            if (UserCentral.getInstance().getUser() != null) {
+            } else {
+                displayLoginView();
+                setupForDEBUG();
+            }
         } else {
             displayMainMenu();
         }
@@ -49,17 +57,17 @@ public class MainApp extends Application {
         } else if (this.executionMode == ExecutionMode.DEBUG) {
             setupForDEBUG();
         }*/
-        
+
     }
-    
+
     public void setupForProduction() {
         DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "casinoworker", "", false).connectToDatabase();
     }
-    
+
     public void setupForDEBUG() {
         DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "casinoworker", "", false).connectToDatabase();
     }
-    
+
     public void displayLoginView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginView.fxml"));
@@ -77,13 +85,29 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-    
+
+    public void displayRegistrationView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegistrationView.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Casino Registration");
+            stage.setScene(scene);
+            stage.show();
+            RegistrationViewController controller = loader.getController();
+            RegistrationModel model = new RegistrationModel(this);
+            controller.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void displayMainMenu() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
             Parent root;
             root = (Parent) loader.load();
-            
             Scene scene = new Scene(root);
             stage.setTitle("Casino Central");
             stage.setScene(scene);
@@ -94,27 +118,45 @@ public class MainApp extends Application {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public void displayAuthenticationWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AuthenticationView.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Casino Central");
+            stage.setScene(scene);
+            stage.show();
+            AuthenticationController controller = loader.getController();
+            AuthenticationModel authModel = new AuthenticationModel(UserCentral.getInstance().getUser().getValidationCode());
+            authModel.setMainApplication(this);
+            controller.setAuthenticationModel(authModel);
+        } catch (IOException ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void startBaccara() {
         Baccara baccara = new Baccara(this);
         baccara.startGame();
     }
-    
+
     public void startBlackJack() {
         Blackjack blackJack = new Blackjack(this);
         blackJack.startGame();
     }
-    
+
     public void startRoulette() {
         Roulette roulette = new Roulette(this);
         roulette.startGame();
     }
-    
+
     public void startYatzy() {
         Yatzy yatzy = new Yatzy(this);
         yatzy.startGame();
     }
-    
+
     public static Stage centerStageInScreen(Stage stage, Scene scene) {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
@@ -133,5 +175,5 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

@@ -69,7 +69,7 @@ public class BaccaraHandler {
     }
 
     public void displayMainMenu() throws Exception {
-        this.mainApplication.start(stage);
+        this.mainApplication.displayMainMenu();
     }
 
 }

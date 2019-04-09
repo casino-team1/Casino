@@ -41,4 +41,8 @@ public abstract class Player {
         this.currentBalance = currentBalance;
     }
 
+    public void writeBalanceToDatabase() {
+
+    }
+
 }

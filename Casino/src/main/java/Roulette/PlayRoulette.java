@@ -34,6 +34,7 @@ public class PlayRoulette extends Spiel {
         try {
             root = (Parent) loader.load();
         } catch (IOException ex) {
+            ex.printStackTrace();
             Logger.getLogger(Roulette.class.getName()).log(Level.SEVERE, null, ex);
         }
         Scene scene = new Scene(root);

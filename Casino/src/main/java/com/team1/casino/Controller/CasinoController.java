@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
+
 public class CasinoController implements Initializable, Observer {
 
     @FXML
@@ -39,6 +40,8 @@ public class CasinoController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        
     }
 
     @Override

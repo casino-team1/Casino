@@ -13,14 +13,14 @@
             <Image url="@../images/Roulette/vegas.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="235.0" fitWidth="329.0" layoutX="322.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rouletteLogo" fitHeight="235.0" fitWidth="329.0" layoutX="322.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/vegasRoulette.png" />
          </image>
       </ImageView>
-      <Button fx:id="rouletteStartButton" layoutX="362.0" layoutY="290.0" mnemonicParsing="false" onAction="#rouletteStart" prefHeight="53.0" prefWidth="249.0" text="Start Roulette">
+      <Button fx:id="rouletteStartButton" layoutX="322.0" layoutY="292.0" mnemonicParsing="false" onAction="#rouletteStart" prefHeight="72.0" prefWidth="329.0" text="Start Roulette">
          <font>
-            <Font name="Dubai Regular" size="32.0" />
+            <Font name="Lucida Calligraphy Italic" size="35.0" />
          </font></Button>
    </children>
 </AnchorPane>

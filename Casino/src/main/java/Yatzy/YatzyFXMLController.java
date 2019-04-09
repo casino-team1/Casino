@@ -31,6 +31,7 @@ public class YatzyFXMLController implements Initializable {
      */
     private boolean firstthrow = true;
     private boolean secondthrow = true;
+    private boolean lockdices = false;
     private ArrayList<String> keeparray = new ArrayList<>();
     private ArrayList<Dice> keep = new ArrayList<>();
     private ArrayList<Dice> gearray = new ArrayList<>();
@@ -71,6 +72,82 @@ public class YatzyFXMLController implements Initializable {
     private ImageView be4;
     @FXML
     private ImageView be5;
+    @FXML
+    private Button btnhelp;
+    @FXML
+    private Button btnendgame;
+    @FXML
+    private Label sclblup1;
+    @FXML
+    private Label sclblup2;
+    @FXML
+    private Label sclblup3;
+    @FXML
+    private Label sclblup4;
+    @FXML
+    private Label sclblup5;
+    @FXML
+    private Label sclblup6;
+    @FXML
+    private Label sclblup7;
+    @FXML
+    private Label sclblup8;
+    @FXML
+    private Label sclblup9;
+    @FXML
+    private Label lblup1;
+    @FXML
+    private Label lblup2;
+    @FXML
+    private Label lblup3;
+    @FXML
+    private Label lblup4;
+    @FXML
+    private Label lblup5;
+    @FXML
+    private Label lblup6;
+    @FXML
+    private Label lblup7;
+    @FXML
+    private Label lblup8;
+    @FXML
+    private Label lblup9;
+    @FXML
+    private Label sclbllo1;
+    @FXML
+    private Label sclbllo2;
+    @FXML
+    private Label sclbllo3;
+    @FXML
+    private Label sclbllo4;
+    @FXML
+    private Label sclbllo5;
+    @FXML
+    private Label sclbllo6;
+    @FXML
+    private Label sclbllo7;
+    @FXML
+    private Label sclbllo8;
+    @FXML
+    private Label lbllo1;
+    @FXML
+    private Label lbllo2;
+    @FXML
+    private Label lbllo3;
+    @FXML
+    private Label lbllo4;
+    @FXML
+    private Label lbllo5;
+    @FXML
+    private Label lbllo6;
+    @FXML
+    private Label lbllo7;
+    @FXML
+    private Label lbllo8;
+    @FXML
+    private Label lbllo9;
+    @FXML
+    private Label sclbllo9;
 
     public void setYatzy(PlayYatzy yatzy) {
         this.yatzy = yatzy;
@@ -95,43 +172,53 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void pressthrowdices(ActionEvent event) {
+        assignImages();
         if (firstthrow == true) {
+            
             firstthrow = false;
             btnthrowdices.setText("Zweiter Wurf");
         } else if (secondthrow == true && firstthrow == false) {
-            keeparray = new ArrayList<String>(Arrays.asList(txtkeep.getText().split("")));
-            for (int i = 0; i < keeparray.size(); i++) {
-                Dice dice = new Dice(Integer.parseInt(keeparray.get(i)));
-                keep.add(dice);
-            }
-            cup.setKeep(keep);
-            cup.throwDices();
+                       
             secondthrow = false;
             btnthrowdices.setText("Dritter Wurf");
         } else {
-            keeparray = new ArrayList<String>(Arrays.asList(txtkeep.getText().split("")));
-
-            for (int i = 0; i < keeparray.size(); i++) {
-                Dice dice = new Dice(Integer.parseInt(keeparray.get(i)));
-                keep.add(dice);
-            }
-            cup.setKeep(keep);
-            cup.throwDices();
+            
             Rules rules = new Rules();
             rules.calculateResult(cup.getDicearray());
             lbltest.setText("" + rules.getResult());
+            btnthrowdices.setText("Figur Wählen");
+            btnthrowdices.setDisable(true);
+            lockdices = true;
         }
+        
+        keep.clear();
+        keep.addAll(bearray);
+        bearray.clear();
+        gearray.clear();
+        cup.setKeep(keep);
         cup.throwDices();
+        gearray.addAll(keep);
         gearray.addAll(cup.getDicearray());
         assignImages();
+        
+        
+        
+        String s = "";
+        for (int i = 0; i < keep.size(); i++) {
+            s += keep.get(i).getValue();
+        }
+        lbltest.setText(s);
+        
 
     }
 
     @FXML
     private void pressGe1(MouseEvent event) {
-        bearray.add(gearray.get(0));
-        gearray.remove(0);
-        assignImages();
+        if(lockdices == false) {
+            bearray.add(gearray.get(0));
+            gearray.remove(0);
+            assignImages();
+        }
     }
 
     @FXML
@@ -143,23 +230,29 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void pressGe3(MouseEvent event) {
+        if(lockdices == false) {
         bearray.add(gearray.get(2));
         gearray.remove(2);
         assignImages();
+        }
     }
 
     @FXML
     private void pressGe4(MouseEvent event) {
+        if(lockdices == false) {
         bearray.add(gearray.get(3));
         gearray.remove(3);
         assignImages();
+        }
     }
 
     @FXML
     private void pressGe5(MouseEvent event) {
+        if(lockdices == false) {
         bearray.add(gearray.get(4));
         gearray.remove(4);
         assignImages();
+        }
     }
 
     @FXML
@@ -296,5 +389,65 @@ public class YatzyFXMLController implements Initializable {
             this.be5.setImage(new Image(getImage(bearray.get(4).getValue())));
             be5.setVisible(true);
         }
+    }
+
+    @FXML
+    private void presshelp(ActionEvent event) {
+    }
+
+    @FXML
+    private void pressendgame(ActionEvent event) {
+    }
+    
+    
+    
+
+    @FXML
+    private void presslblup1(MouseEvent event) {
+        lbltest.setText("hello world");
+    }
+
+    @FXML
+    private void presslblup2(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslblup3(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslblup4(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslblup5(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslblup6(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslbllo1(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslbllo2(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslbllo3(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslbllo4(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslbllo5(MouseEvent event) {
+    }
+
+    @FXML
+    private void presslbllo6(MouseEvent event) {
     }
 }

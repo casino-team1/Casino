@@ -133,7 +133,6 @@
       <Line endX="100.0" layoutX="478.0" layoutY="167.0" startX="50.0" />
       <Line endX="100.0" layoutX="478.0" layoutY="292.0" startX="50.0" />
       <Line endX="98.5" endY="41.5" layoutX="429.0" layoutY="126.0" startX="98.5" startY="165.5" />
-      <Pane fx:id="pane0" layoutX="527.0" layoutY="168.0" onMouseClicked="#clickPane0" prefHeight="125.0" prefWidth="51.0" />
       <Line endX="101.0" layoutX="968.0" layoutY="352.0" startX="-389.0" />
       <Line endX="100.0" layoutX="968.0" layoutY="107.0" startX="-388.0" />
       <Pane fx:id="paneManque" layoutX="578.0" layoutY="106.0" onMouseClicked="#clickPaneManque" prefHeight="60.0" prefWidth="162.0" />
@@ -152,21 +151,6 @@
       <Button layoutX="1141.0" layoutY="14.0" mnemonicParsing="false" text="?" />
       <Button fx:id="rouletteVerlassen" layoutX="14.0" layoutY="744.0" mnemonicParsing="false" onAction="#rouletteVerlassen" text="Den Roulettetisch verlassen" />
       <RadioButton fx:id="radioTable" layoutX="467.0" layoutY="112.0" mnemonicParsing="false" text="Tisch benutzen" />
-      <RadioButton fx:id="radioThree" layoutX="467.0" layoutY="408.0" mnemonicParsing="false" text="Drei Nummern" />
-      <RadioButton fx:id="radioFour" layoutX="467.0" layoutY="482.0" mnemonicParsing="false" text="Vier Nummern" />
-      <RadioButton fx:id="radioFive" layoutX="467.0" layoutY="562.0" mnemonicParsing="false" text="Fünf Nummern" />
-      <Spinner fx:id="threeOne" editable="true" layoutX="601.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="threeTwo" editable="true" layoutX="701.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="fourOne" editable="true" layoutX="601.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="fourTwo" editable="true" layoutX="701.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="fiveOne" editable="true" layoutX="601.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="fiveTwo" editable="true" layoutX="701.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="threeThree" editable="true" layoutX="801.0" layoutY="404.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="fourThree" editable="true" layoutX="801.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="fiveThree" editable="true" layoutX="801.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="fourFour" editable="true" layoutX="901.0" layoutY="478.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="fiveFour" editable="true" layoutX="901.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
-      <Spinner fx:id="fiveFive" editable="true" layoutX="1001.0" layoutY="558.0" prefHeight="25.0" prefWidth="76.0" />
       <Line endX="172.0" endY="30.0" layoutX="938.0" layoutY="137.0" startX="172.0" startY="156.0" />
       <Pane fx:id="row3" layoutX="1070.0" layoutY="170.0" onMouseClicked="#clickRow3" prefHeight="40.0" prefWidth="40.0" />
       <Pane fx:id="row2" layoutX="1070.0" layoutY="208.0" onMouseClicked="#clickRow2" prefHeight="40.0" prefWidth="40.0" />
@@ -180,5 +164,15 @@
             <Blend />
          </effect>
       </Label>
+      <Label layoutX="579.0" layoutY="70.0" text="Die Standartwette ist die Zahl 0">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <effect>
+            <Blend />
+         </effect>
+      </Label>
+      <Pane fx:id="pane0" layoutX="527.0" layoutY="233.0" onMouseClicked="#clickPane0" prefHeight="60.0" prefWidth="51.0" />
+      <Pane layoutX="527.0" layoutY="169.0" prefHeight="60.0" prefWidth="51.0" />
    </children>
 </AnchorPane>

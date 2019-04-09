@@ -27,6 +27,7 @@ public class MainApp extends Application {
     private Stage stage;
     
     public Stage getStage() {
+        this.stage.setResizable(false);
         return this.stage;
     }
     
@@ -35,6 +36,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
+        this.stage.setResizable(false);
         if (this.executionMode == ExecutionMode.DEBUG) {
             displayLoginView();
             setupForDEBUG();

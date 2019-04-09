@@ -42,7 +42,7 @@ public abstract class Player {
     }
 
     public void writeBalanceToDatabase() {
-        
+
     }
 
 }

@@ -34,7 +34,7 @@ import javafx.stage.Stage;
 public class BlackJackFXMLController implements Initializable {
 
     BlackJackGameModel game = new BlackJackGameModel();
-
+    
     private int einsatz;
 
     @FXML
@@ -69,7 +69,7 @@ public class BlackJackFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    
     @FXML
     private void stand(ActionEvent event) {
         buttonHit.setDisable(true);

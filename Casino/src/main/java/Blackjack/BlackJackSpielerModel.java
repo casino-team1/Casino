@@ -15,22 +15,24 @@ import javafx.scene.control.Label;
  * @author albio
  */
 public class BlackJackSpielerModel {
-    
+
+    private int kartenWertSpieler = 0;
+
     private boolean gewonnen = false;
 
     private Random r = new Random();
     private int zufallszahl = 0;
     private String zufallskarte = "";
 
-    public void hit(int anzahlKartenImKartendeck, int kartenWertSpieler, ArrayList<String> kartenSpieler, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten, Label labelKartenSpieler) {
-        
+    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenSpieler, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten, Label labelKartenSpieler) {
+        int i = 51;
         /*//Hat es genügend Karten?
         if (anzahlKartenImKartendeck < 1) {
         //dealer.austeilen();
         }*/
 
         //Spieler zieht Karten
-        zufallszahl = r.nextInt(51);
+        zufallszahl = r.nextInt(i);
         zufallskarte = kartenSymbole.get(zufallszahl);
 
         if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
@@ -43,6 +45,7 @@ public class BlackJackSpielerModel {
         kartenSpieler.add(zufallskarte);
         karten.remove(zufallskarte);
         anzahlKartenImKartendeck--;
+        i--;
         labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
     }
 
@@ -52,5 +55,9 @@ public class BlackJackSpielerModel {
 
     public boolean hasGewonnen() {
         return gewonnen;
+    }
+    
+    public int getKartenWertSpieler() {
+        return kartenWertSpieler;
     }
 }

@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="733.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Roulette.RouletteFXMLController">
    <children>
-      <ImageView fitHeight="733.0" fitWidth="1178.0" layoutX="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="783.0" fitWidth="1178.0" layoutX="-1.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Roulette/tableBackground.jpg" />
          </image>
@@ -27,7 +30,7 @@
             <Image url="@../images/Roulette/rouletteWheel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="placeYourBet" fitHeight="216.0" fitWidth="384.0" layoutX="35.0" layoutY="383.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="758.0">
+      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="136.0" layoutY="541.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="827.6666717529297">
          <image>
             <Image url="@../images/Roulette/placeBet.png" />
          </image>
@@ -144,10 +147,10 @@
          </children></Pane>
       <Line endX="-51.0" layoutX="51.0" layoutY="55.0" startX="1124.0" />
       <Line endX="-51.0" layoutX="51.0" layoutY="60.0" startX="1124.0" />
-      <Line endX="-51.0" layoutX="51.0" layoutY="677.0" startX="1124.5" />
-      <Line endX="-51.0" layoutX="51.0" layoutY="672.0" startX="1124.0" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="727.0" startX="1124.5" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="722.0" startX="1124.0" />
       <Button layoutX="1141.0" layoutY="14.0" mnemonicParsing="false" text="?" />
-      <Button layoutX="14.0" layoutY="694.0" mnemonicParsing="false" text="Den Roulettetisch verlassen" />
+      <Button fx:id="rouletteVerlassen" layoutX="14.0" layoutY="744.0" mnemonicParsing="false" onAction="#rouletteVerlassen" text="Den Roulettetisch verlassen" />
       <RadioButton fx:id="radioTable" layoutX="467.0" layoutY="112.0" mnemonicParsing="false" text="Tisch benutzen" />
       <RadioButton fx:id="radioThree" layoutX="467.0" layoutY="408.0" mnemonicParsing="false" text="Drei Nummern" />
       <RadioButton fx:id="radioFour" layoutX="467.0" layoutY="482.0" mnemonicParsing="false" text="Vier Nummern" />
@@ -168,5 +171,14 @@
       <Pane fx:id="row3" layoutX="1070.0" layoutY="170.0" onMouseClicked="#clickRow3" prefHeight="40.0" prefWidth="40.0" />
       <Pane fx:id="row2" layoutX="1070.0" layoutY="208.0" onMouseClicked="#clickRow2" prefHeight="40.0" prefWidth="40.0" />
       <Pane fx:id="row1" layoutX="1070.0" layoutY="251.0" onMouseClicked="#clickRow1" prefHeight="40.0" prefWidth="40.0" />
+      <Spinner fx:id="betragSpinner" editable="true" layoutX="275.0" layoutY="417.0" />
+      <Label layoutX="42.0" layoutY="408.0" text="Betrag eingeben">
+         <font>
+            <Font size="29.0" />
+         </font>
+         <effect>
+            <Blend />
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

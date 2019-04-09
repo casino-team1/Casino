@@ -5,6 +5,7 @@
  */
 package Roulette;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,7 +23,11 @@ import java.util.Date;
 import java.util.Random;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 /**
@@ -33,8 +38,6 @@ import javafx.util.Duration;
 
 
 public class RouletteFXMLController implements Initializable {
-
-    
     
     //Deklarationen für jedes Feld auf dem Roulettetisch
     //-------------------------------------------------------------------
@@ -150,6 +153,9 @@ public class RouletteFXMLController implements Initializable {
     private Pane row2;
     @FXML
     private Pane row1;
+    @FXML
+    private Button rouletteVerlassen;
+
 
     public boolean getIsNumber() {
         return isNumber;
@@ -209,7 +215,13 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private Spinner<Integer> fiveFive;
     //-------------------------------------------------------------------
-
+    
+    //Spinner to select bet amount
+    //-------------------------------------------------------------------
+    @FXML
+    private Spinner<Integer> betragSpinner;
+    //-------------------------------------------------------------------
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -322,6 +334,12 @@ public class RouletteFXMLController implements Initializable {
 
         SpinnerValueFactory<Integer> fiveFiveSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 36, 36);
         this.fiveFive.setValueFactory(fiveFiveSpin);
+        //-------------------------------------------------------------------
+        
+        //Setting value for bet spinner
+        //-------------------------------------------------------------------
+        SpinnerValueFactory<Integer> betSpin = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000000, 1);
+        this.betragSpinner.setValueFactory(betSpin);
         //-------------------------------------------------------------------
     }
 
@@ -690,4 +708,9 @@ public class RouletteFXMLController implements Initializable {
         }
     }
     //-------------------------------------------------------------------
+
+    @FXML
+    private void rouletteVerlassen(ActionEvent event) throws IOException {
+        
+    }
 }

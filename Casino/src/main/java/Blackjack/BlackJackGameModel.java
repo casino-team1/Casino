@@ -20,8 +20,9 @@ public class BlackJackGameModel {
 
     BlackJackSpielerModel spieler = new BlackJackSpielerModel();
     BlackJackDealerModel dealer = new BlackJackDealerModel();
-    Karten k;
-
+    
+    Karten k = new Karten();
+    
     private ArrayList<String> kartenSpieler = new ArrayList<>();
     private int kartenWertSpieler = 0;
 
@@ -38,8 +39,8 @@ public class BlackJackGameModel {
     private String zufallskarte = "";
     private int zufallszahl = 0;
 
-    private HashMap<String, Integer> karten = new HashMap<>();
-    private ArrayList<String> kartenSymbole = new ArrayList<>();
+    private HashMap<String, Integer> karten = k.getKarten();
+    private ArrayList<String> kartenSymbole = k.getKartenSymbole();
 
     Random r = new Random();
 
@@ -50,10 +51,10 @@ public class BlackJackGameModel {
         kartenSpieler.clear();
         kartenDealer.clear();
 
-        dealer.austeilen(anzahlKartenImKartendeck, kartenWertSpieler, kartenWertDealer, karteZweiWert, kartenSpieler, kartenDealer, labelKartenSpieler, labelKartenDealer);
+        dealer.austeilen(karten, kartenSymbole, anzahlKartenImKartendeck, kartenWertSpieler, kartenWertDealer, karteZweiWert, kartenSpieler, kartenDealer, labelKartenSpieler, labelKartenDealer);
     }
 
-    public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Label labelKartenSpieler) {
+    public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Label labelKartenDealer, Label labelKartenSpieler) {
         spieler.hit(anzahlKartenImKartendeck, kartenWertSpieler, kartenSpieler, kartenSymbole, karten, labelKartenSpieler);
 
         //Überprüfung, ob 21 überschritten wurde

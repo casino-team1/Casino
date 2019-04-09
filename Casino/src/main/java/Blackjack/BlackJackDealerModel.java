@@ -19,17 +19,12 @@ public class BlackJackDealerModel {
 
     private boolean gewonnen = false;
 
-    Karten k = new Karten();
-
-    private HashMap<String, Integer> karten;
-    private ArrayList<String> kartenSymbole;
-
     Random r = new Random();
     int zufallszahl = 0;
     String zufallskarte = "";
 
     public void hit(int anzahlKartenImKartendeck, int kartenWertDealer, ArrayList<String> kartenDealer, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten) {
-        
+
         //Wenn Dealer unter 17 hat, muss er ziehen
         if (kartenWertDealer < 17) {
             while (kartenWertDealer < 17) {
@@ -44,21 +39,19 @@ public class BlackJackDealerModel {
                     kartenWertDealer += karten.get(zufallskarte);
                 }
                 kartenDealer.add(zufallskarte);
-                karten.remove(zufallszahl);
+                karten.remove(zufallskarte);
                 anzahlKartenImKartendeck--;
             }
         }
     }
 
-    public void austeilen(int anzahlKartenImKartendeck, int kartenWertSpieler, int kartenWertDealer, int karteZweiWert, ArrayList<String> kartenSpieler, ArrayList<String> kartenDealer, Label labelKartenSpieler, Label labelKartenDealer) {
-        //neue Karten bekommen
-        this.karten = getAlleKarten();
+    public void austeilen(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, int anzahlKartenImKartendeck, int kartenWertSpieler, int kartenWertDealer, int karteZweiWert, ArrayList<String> kartenSpieler, ArrayList<String> kartenDealer, Label labelKartenSpieler, Label labelKartenDealer) {
 
         //Karten mischen
         Collections.shuffle(kartenSymbole);
 
         //Zufallskarten verteilen an Spieler
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) { 
             zufallszahl = r.nextInt(51);
             zufallskarte = kartenSymbole.get(zufallszahl);
 
@@ -113,10 +106,6 @@ public class BlackJackDealerModel {
 
     public boolean hasGewonnen() {
         return gewonnen;
-    }
-
-    public HashMap<String, Integer> getAlleKarten() {
-        return k.getKarten();
     }
 
 }

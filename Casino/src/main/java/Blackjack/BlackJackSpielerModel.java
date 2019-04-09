@@ -24,16 +24,16 @@ public class BlackJackSpielerModel {
 
     public void hit(int anzahlKartenImKartendeck, int kartenWertSpieler, ArrayList<String> kartenSpieler, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten, Label labelKartenSpieler) {
         
-        //Hat es genügend Karten?
+        /*//Hat es genügend Karten?
         if (anzahlKartenImKartendeck < 1) {
-            //dealer.austeilen();
-        }
+        //dealer.austeilen();
+        }*/
 
         //Spieler zieht Karten
         zufallszahl = r.nextInt(51);
         zufallskarte = kartenSymbole.get(zufallszahl);
 
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
             kartenWertSpieler += 10;
         } else if (zufallskarte.equals("A")) {
             kartenWertSpieler += 11;

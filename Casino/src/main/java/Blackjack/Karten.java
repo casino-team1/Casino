@@ -50,7 +50,7 @@ public class Karten {
         return karten;
     }
 
-    public ArrayList<String> getkartenSymbole() {
+    public ArrayList<String> getKartenSymbole() {
         return kartenSymbole;
     }
 

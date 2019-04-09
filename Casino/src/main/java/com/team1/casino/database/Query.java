@@ -19,7 +19,11 @@ public abstract class Query {
         this.WRAP_IN_TRANSACTION = wrap_in_transaction;
     }
 
+    public abstract int runQueryGetAddedID(String query, String parameter);
+
     public abstract ArrayList<String> runQueryWithReturn(String querySequence, String arguments) throws SQLException;
 
-    public abstract void runQueryWithoutReturn(String querySequence);
+    public abstract void runInsertionMethod();
+
+    public abstract void runQueryWithoutReturn(String querySequence, String arguments);
 }

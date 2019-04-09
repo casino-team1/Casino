@@ -32,6 +32,7 @@ CREATE TABLE user(
     id INTEGER auto_increment,
     username varchar(255),
     password varchar(255),
+    email varchar(255),
     role varchar(255),
     balance_id integer,
     PRIMARY KEY (id),
@@ -57,4 +58,4 @@ INSERT INTO balance(balance,lastUpdated) VALUES(1000.0,CURDATE());
 INSERT INTO statistictoplayer(player_id,statistic_id) VALUES(1,1);
 -- Username == "Muster" -- Password: "1234"
 -- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK
-INSERT INTO user(username,password,role,balance_id) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",1);
+INSERT INTO user(username,password,role,balance_id,email) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",1,"nick.flueckiger@outlook.de");

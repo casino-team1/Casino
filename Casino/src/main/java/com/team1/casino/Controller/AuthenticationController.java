@@ -22,14 +22,14 @@ import javafx.scene.control.TextField;
  *
  * @author Nick Flückiger
  */
-public class AuthenticationController implements Initializable,Observer {
-    
+public class AuthenticationController implements Initializable, Observer {
+
     private AuthenticationModel model;
     @FXML
     private Button submitButton;
     @FXML
     private TextField accessCodeInput;
-    
+
     public void setAuthenticationModel(AuthenticationModel model) {
         this.model = model;
         this.model.getUserInputCode().bindBidirectional(this.accessCodeInput.textProperty());
@@ -42,7 +42,7 @@ public class AuthenticationController implements Initializable,Observer {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
+
     @FXML
     private void checkAccessCode(ActionEvent event) {
         this.model.checkAccessCode();
@@ -50,8 +50,8 @@ public class AuthenticationController implements Initializable,Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-       AuthenticationModel model = (AuthenticationModel) o;
-       String errorMessage = model.getErrorMessage();
+        AuthenticationModel model = (AuthenticationModel) o;
+        String errorMessage = model.getErrorMessage();
     }
-    
+
 }

@@ -37,6 +37,8 @@ public class RegistrationViewController implements Initializable, Observer {
     private Text errorMessage;
     @FXML
     private Button backButton;
+    @FXML
+    private TextField emailAdress;
 
     public void setModel(RegistrationModel model) {
         this.model = model;
@@ -46,6 +48,7 @@ public class RegistrationViewController implements Initializable, Observer {
     private void bind() {
         this.model.getPassword().bind(this.password.textProperty());
         this.model.getUsername().bind(this.username.textProperty());
+        this.model.getEmailAdress().bind(this.emailAdress.textProperty());
     }
 
     /**

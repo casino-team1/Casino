@@ -6,6 +6,8 @@
  */
 package com.team1.casino.User;
 
+import java.util.Random;
+
 /**
  *
  * @author Nick Flückiger
@@ -18,7 +20,28 @@ public abstract class User {
     private String password;
     private double currentBalance;
     private boolean validated = false;
-    private String validationCode = "1234";
+    private String validationCode = "";
+    private String emailAdress;
+
+    public void setEmailAdress(String emailAdress) {
+        this.emailAdress = emailAdress;
+    }
+
+    public String getEmailAdress() {
+        return emailAdress;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public boolean isValidated() {
+        return validated;
+    }
 
     public User(String username, String password) {
         this.username = username;
@@ -64,7 +87,14 @@ public abstract class User {
     }
 
     public String getValidationCode() {
-        return "1234";
+        if (this.validationCode.equals("")) {
+            String secureCode = "";
+            while (secureCode.length() < 10) {
+                secureCode += String.valueOf(((char) (97 + new Random().nextInt(26))));
+            }
+            this.validationCode = secureCode;
+        }
+        return this.validationCode;
     }
 
     public void setRole(String userRole) {

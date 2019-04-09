@@ -129,7 +129,9 @@ public class MainApp extends Application {
             stage.setScene(scene);
             stage.show();
             AuthenticationController controller = loader.getController();
-            controller.setAuthenticationModel(new AuthenticationModel(UserCentral.getInstance().getUser().getValidationCode()));
+            AuthenticationModel authModel = new AuthenticationModel(UserCentral.getInstance().getUser().getValidationCode());
+            authModel.setMainApplication(this);
+            controller.setAuthenticationModel(authModel);
         } catch (IOException ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }

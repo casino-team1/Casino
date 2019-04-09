@@ -121,7 +121,7 @@ public class UserUtil {
             DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
             ArrayList<String> elements = query.runQueryWithReturn("SELECT balance_id FROM user WHERE username = ?", username);
             int balanceID = Integer.parseInt(elements.get(0));
-            query.runQueryWithoutReturn(String.format("UPDATE Balance SET balance = %s WHERE balanceID = %s", String.valueOf(currentBalance), String.valueOf(balanceID)));
+            query.runQueryWithoutReturn(String.format("UPDATE Balance SET balance = %s WHERE balanceID = %s", String.valueOf(currentBalance), String.valueOf(balanceID)), "");
         } catch (SQLException ex) {
             Logger.getLogger(UserUtil.class.getName()).log(Level.SEVERE, null, ex);
         }

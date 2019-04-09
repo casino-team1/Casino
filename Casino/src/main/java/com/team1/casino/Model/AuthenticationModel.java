@@ -6,6 +6,7 @@
  */
 package com.team1.casino.Model;
 
+import com.team1.casino.MainApp;
 import com.team1.casino.User.UserCentral;
 import java.util.Observable;
 import javafx.beans.property.SimpleStringProperty;
@@ -19,6 +20,13 @@ public class AuthenticationModel extends Observable {
     public AuthenticationModel(String accessCodeNeeded) {
         this.givenCode = accessCodeNeeded;
     }
+
+    private MainApp mainApplication;
+
+    public void setMainApplication(MainApp mainApplication) {
+        this.mainApplication = mainApplication;
+    }
+
     private String errorMessage;
 
     private String givenCode;
@@ -39,8 +47,9 @@ public class AuthenticationModel extends Observable {
 
     public void checkAccessCode() {
         String accessCode = this.userInputCode.getValue();
-        if (accessCode.equals(this.givenCode)) {
+        if (accessCode.trim().equals(this.givenCode.trim())) {
             UserCentral.getInstance().getUser().writeUserToDatabase();
+            this.mainApplication.displayMainMenu();
         } else {
             System.out.println("invalid");
             this.errorMessage = "Ungülteriger Zugangscode, bitte versuchen sie es erneut";

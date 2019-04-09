@@ -12,6 +12,8 @@ import com.team1.casino.User.UserCentral;
 import com.team1.casino.User.UserUtil;
 import com.team1.casino.User.Spieler;
 import java.util.Observable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -45,6 +47,15 @@ public class RegistrationModel extends Observable {
         return errorMessage;
     }
 
+    public MainApp getMainApplicatin() {
+        return mainApplicatin;
+    }
+
+    public SimpleStringProperty getEmailAdress() {
+        return emailAdress;
+    }
+
+    private SimpleStringProperty emailAdress = new SimpleStringProperty();
     private StringProperty username = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
 
@@ -57,8 +68,21 @@ public class RegistrationModel extends Observable {
             setChanged();
             notifyObservers();
         } else {
-            new MailUtil("nick.flueckiger@outlook.de", UserCentral.getInstance().getUser().getValidationCode(), "").sendMail();
-            this.mainApplicatin.displayAuthenticationWindow();
+            if (isValidEmail(this.emailAdress.getValue()) == true) {
+                new MailUtil(this.emailAdress.getValue(), UserCentral.getInstance().getUser().getValidationCode(), "").sendRegistrationMail();
+                UserCentral.getInstance().getUser().setEmailAdress(this.emailAdress.getValue());
+                this.mainApplicatin.displayAuthenticationWindow();
+            } else {
+                this.errorMessage = "Ungültige Email-Adresse";
+                setChanged();
+                notifyObservers();
+            }
         }
+    }
+
+    private boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.find();
     }
 }

@@ -25,7 +25,7 @@ public class BlackJackSpielerModel {
     int zufallszahl;
     String zufallskarte = "";
 
-    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenWerte, HashMap<String, Integer> karten, Label labelKartenSpieler, Label labelKartenDealer) {
+    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten, Label labelKartenSpieler) {
         //Hat es genügend Karten?
         if (anzahlKartenImKartendeck < 1) {
             //dealer.austeilen();
@@ -33,7 +33,7 @@ public class BlackJackSpielerModel {
 
         //Spieler zieht Karten
         zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
+        zufallskarte = kartenSymbole.get(zufallszahl);
 
         if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
             kartenWertSpieler += 10;

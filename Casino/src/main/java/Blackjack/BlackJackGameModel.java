@@ -23,15 +23,15 @@ public class BlackJackGameModel {
     Karten k;
 
     private ArrayList<String> kartenSpieler = new ArrayList<>();
-    private int kartenWertSpieler;
+    private int kartenWertSpieler = 0;
 
-    private int einsatz;
+    private int einsatz = 0;
 
     private int anzahlKartenImKartendeck = 52;
 
     private ArrayList<String> kartenDealer = new ArrayList<>();
-    private int kartenWertDealer;
-    private int karteZweiWert;
+    private int kartenWertDealer = 0;
+    private int karteZweiWert = 0;
 
     private boolean unentschieden = false;
 
@@ -39,7 +39,7 @@ public class BlackJackGameModel {
     private int zufallszahl = 0;
 
     private HashMap<String, Integer> karten = new HashMap<>();
-    private ArrayList<String> kartenWerte = new ArrayList<>();
+    private ArrayList<String> kartenSymbole = new ArrayList<>();
 
     Random r = new Random();
 
@@ -53,8 +53,8 @@ public class BlackJackGameModel {
         dealer.austeilen(anzahlKartenImKartendeck, kartenWertSpieler, kartenWertDealer, karteZweiWert, kartenSpieler, labelKartenSpieler, labelKartenDealer);
     }
 
-    public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Label labelKartenSpieler, Label labelKartenDealer) {
-        spieler.hit(anzahlKartenImKartendeck, kartenWerte, karten, labelKartenSpieler, labelKartenDealer);
+    public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Label labelKartenSpieler) {
+        spieler.hit(anzahlKartenImKartendeck, kartenSymbole, karten, labelKartenSpieler);
 
         //Überprüfung, ob 21 überschritten wurde
         if (kartenWertSpieler > 21) {
@@ -85,7 +85,7 @@ public class BlackJackGameModel {
         }
 
         //Karte/n ziehen
-        dealer.hit(anzahlKartenImKartendeck, kartenWerte, karten);
+        dealer.hit(anzahlKartenImKartendeck, kartenSymbole, karten);
 
         //Anzeige leeren
         labelKartenDealer.setText("");
@@ -135,8 +135,8 @@ public class BlackJackGameModel {
         return anzahlKartenImKartendeck;
     }
 
-    public ArrayList<String> getKartenWerte() {
-        return kartenWerte;
+    public ArrayList<String> getKartenSymbole() {
+        return kartenSymbole;
     }
 
     public HashMap<String, Integer> getKarten() {

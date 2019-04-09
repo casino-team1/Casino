@@ -25,18 +25,18 @@ public class BlackJackDealerModel {
     Karten k = new Karten();
 
     private HashMap<String, Integer> karten = new HashMap<>();
-    private ArrayList<String> kartenWerte = new ArrayList<>();
+    private ArrayList<String> kartenSymbole = new ArrayList<>();
 
     Random r = new Random();
     int zufallszahl;
     String zufallskarte = "";
 
-    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenWerte, HashMap<String, Integer> karten) {
+    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten) {
         //Wenn Dealer unter 17 hat, muss er ziehen
         if (kartenWertDealer < 17) {
             while (kartenWertDealer < 17) {
                 zufallszahl = r.nextInt(51);
-                zufallskarte = kartenWerte.get(zufallszahl);
+                zufallskarte = kartenSymbole.get(zufallszahl);
 
                 if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
                     kartenWertDealer += 10;
@@ -57,12 +57,12 @@ public class BlackJackDealerModel {
         this.karten = getAlleKarten();
 
         //Karten mischen
-        Collections.shuffle(kartenWerte);
+        Collections.shuffle(kartenSymbole);
 
         //Zufallskarten verteilen an Spieler
         for (int i = 0; i < 2; i++) {
             zufallszahl = r.nextInt(51);
-            zufallskarte = kartenWerte.get(zufallszahl);
+            zufallskarte = kartenSymbole.get(zufallszahl);
 
             if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
                 kartenWertSpieler += 10;
@@ -72,14 +72,14 @@ public class BlackJackDealerModel {
                 kartenWertSpieler += karten.get(zufallskarte);
             }
             kartenSpieler.add(zufallskarte);
-            karten.remove(zufallszahl);
+            karten.remove(zufallskarte);
             anzahlKartenImKartendeck--;
-            labelKartenSpieler.setText(labelKartenSpieler + "," + zufallskarte);
+            labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
         }
 
         //Erste Karte an Dealer verteilen
         zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
+        zufallskarte = kartenSymbole.get(zufallszahl);
 
         if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
             kartenWertDealer += 10;
@@ -89,13 +89,13 @@ public class BlackJackDealerModel {
             kartenWertDealer += karten.get(zufallskarte);
         }
         kartenDealer.add(zufallskarte);
-        karten.remove(zufallszahl);
+        karten.remove(zufallskarte);
         anzahlKartenImKartendeck--;
         labelKartenDealer.setText(zufallskarte + " + ?");
 
         //Zweite unbekannte Karte an Dealer verteilen
         zufallszahl = r.nextInt(51);
-        zufallskarte = kartenWerte.get(zufallszahl);
+        zufallskarte = kartenSymbole.get(zufallszahl);
 
         if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
             karteZweiWert += 10;
@@ -105,7 +105,7 @@ public class BlackJackDealerModel {
             karteZweiWert += karten.get(zufallskarte);
         }
         kartenDealer.add(zufallskarte);
-        karten.remove(zufallszahl);
+        karten.remove(zufallskarte);
         anzahlKartenImKartendeck--;
     }
 

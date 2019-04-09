@@ -77,7 +77,7 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void hit(ActionEvent event) {
-        game.spielerHit(labelLösung, buttonHit, buttonStand, labelKartenDealer, labelKartenSpieler);
+        game.spielerHit(labelLösung, buttonHit, buttonStand, labelKartenDealer);
     }
 
     @FXML
@@ -111,62 +111,11 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void zurueck(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        rootPane.getChildren().setAll(pane);
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+        rootPane.getChildren().setAll(pane);*/
     }
 
     @FXML
     private void help(ActionEvent event) {
     }
-
-    
-    //Für Zugriffe nötig
-    public void setEinsatz(int einsatz) {
-        this.einsatz = einsatz;
-    }
-
-    public void setLabelKartenSpieler(String s) {
-        this.labelKartenSpieler.setText(s);
-    }
-
-    public void setLabelKartenDealer(String s) {
-        this.labelKartenDealer.setText(s);
-    }
-
-    public void setLabelLösung(String s) {
-        this.labelLösung.setText(s);
-    }
-
-    public void setLabelEinsatzFehler(String s) {
-        this.labelEinsatzFehler.setText(s);
-    }
-
-    public int getEinsatz() {
-        return einsatz;
-    }
-
-    public String getLabelKartenSpieler() {
-        return labelKartenSpieler.getText();
-    }
-
-    public String getLabelKartenDealer() {
-        return labelKartenDealer.getText();
-    }
-
-    public String getLabelLösung() {
-        return labelLösung.getText();
-    }
-
-    public String getLabelEinsatzFehler() {
-        return labelEinsatzFehler.getText();
-    }
-
-    public void setButtonStandDisable(boolean b) {
-        this.buttonStand.setDisable(b);
-    }
-
-    public void setButtonHitDisable(boolean b) {
-        this.buttonHit.setDisable(b);
-    }
-
 }

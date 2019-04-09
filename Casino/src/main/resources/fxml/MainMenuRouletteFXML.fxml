@@ -18,9 +18,14 @@
             <Image url="@../images/Roulette/vegasRoulette.png" />
          </image>
       </ImageView>
-      <Button fx:id="rouletteStartButton" layoutX="322.0" layoutY="292.0" mnemonicParsing="false" onAction="#rouletteStart" prefHeight="72.0" prefWidth="329.0" text="Start Roulette">
+      <Button fx:id="rouletteStartButton" layoutX="629.0" layoutY="292.0" mnemonicParsing="false" onAction="#rouletteStart" prefHeight="72.0" prefWidth="329.0" text="Start Roulette">
          <font>
             <Font name="Lucida Calligraphy Italic" size="35.0" />
          </font></Button>
+      <Button layoutX="14.0" layoutY="292.0" mnemonicParsing="false" onAction="#endGame" prefHeight="79.0" prefWidth="329.0" text="Go back">
+         <font>
+            <Font name="Lucida Calligraphy Italic" size="35.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -51,7 +51,7 @@ public class BlackJackDealerModel {
         Collections.shuffle(kartenSymbole);
 
         //Zufallskarten verteilen an Spieler
-        for (int i = 0; i < 2; i++) { 
+        for (int i = 0; i < 2; i++) {
             zufallszahl = r.nextInt(51);
             zufallskarte = kartenSymbole.get(zufallszahl);
 
@@ -107,5 +107,4 @@ public class BlackJackDealerModel {
     public boolean hasGewonnen() {
         return gewonnen;
     }
-
 }

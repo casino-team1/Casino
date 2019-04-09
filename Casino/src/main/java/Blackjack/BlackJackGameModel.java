@@ -20,9 +20,9 @@ public class BlackJackGameModel {
 
     private BlackJackSpielerModel spieler = new BlackJackSpielerModel();
     private BlackJackDealerModel dealer = new BlackJackDealerModel();
-    
+
     private Karten k = new Karten();
-    
+
     private ArrayList<String> kartenSpieler = new ArrayList<>();
     private int kartenWertSpieler = 0;
 

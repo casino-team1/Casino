@@ -450,4 +450,147 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslbllo6(MouseEvent event) {
     }
+
+    @FXML
+    private void presslbllo7(MouseEvent event) {
+    }
+    
+    @FXML
+    private void exitlblup1(MouseEvent event) {
+        exithover(lblup1);
+    }
+
+    @FXML
+    private void enterlblup1(MouseEvent event) {
+        enterhover(lblup1);
+    }
+
+    @FXML
+    private void exitlblup2(MouseEvent event) {
+        exithover(lblup2);
+    }
+
+    @FXML
+    private void enterlblup2(MouseEvent event) {
+        enterhover(lblup2);
+    }
+
+    @FXML
+    private void exitlblup3(MouseEvent event) {
+        exithover(lblup3);
+    }
+
+    @FXML
+    private void enterlblup3(MouseEvent event) {
+        enterhover(lblup3);
+    }
+
+    @FXML
+    private void exitlblup4(MouseEvent event) {
+        exithover(lblup4);
+    }
+
+    @FXML
+    private void enterlblup4(MouseEvent event) {
+        enterhover(lblup4);
+    }
+
+    @FXML
+    private void exitlblup5(MouseEvent event) {
+        exithover(lblup5);
+    }
+
+    @FXML
+    private void enterlblup5(MouseEvent event) {
+        enterhover(lblup5);
+    }
+
+    @FXML
+    private void exitlblup6(MouseEvent event) {
+        exithover(lblup6);
+    }
+
+    @FXML
+    private void enterlblup6(MouseEvent event) {
+        enterhover(lblup6);
+    }
+
+    @FXML
+    private void exitlbllo1(MouseEvent event) {
+        exithover(lbllo1);
+    }
+
+    @FXML
+    private void enterlbllo1(MouseEvent event) {
+        enterhover(lbllo1);
+    }
+
+    @FXML
+    private void exitlbllo2(MouseEvent event) {
+        exithover(lbllo2);
+    }
+
+    @FXML
+    private void enterlbllo2(MouseEvent event) {
+        enterhover(lbllo2);
+    }
+
+    @FXML
+    private void exitlbllo3(MouseEvent event) {
+        exithover(lbllo3);
+    }
+
+    @FXML
+    private void enterlbllo3(MouseEvent event) {
+        enterhover(lbllo3);
+    }
+
+    @FXML
+    private void exitlbllo4(MouseEvent event) {
+        exithover(lbllo4);
+    }
+
+    @FXML
+    private void enterlbllo4(MouseEvent event) {
+        enterhover(lbllo4);
+    }
+
+    @FXML
+    private void exitlbllo5(MouseEvent event) {
+        exithover(lbllo5);
+    }
+
+    @FXML
+    private void enterlbllo5(MouseEvent event) {
+        enterhover(lbllo5);
+    }
+
+    @FXML
+    private void exitlbllo6(MouseEvent event) {
+        exithover(lbllo6);
+    }
+
+    @FXML
+    private void enterlbllo6(MouseEvent event) {
+        enterhover(lbllo6);
+    }
+
+    @FXML
+    private void exitlbllo7(MouseEvent event) {
+        exithover(lbllo7);
+    }
+
+    @FXML
+    private void enterlbllo7(MouseEvent event) {
+        enterhover(lbllo7);
+    }
+    
+    public void enterhover(Label lbl) {
+        lbl.setStyle("-fx-border-color: green");   
+    }
+    
+    public void exithover(Label lbl) {
+        lbl.setStyle("-fx-border-color: black");   
+    }
 }
+

@@ -5,7 +5,6 @@
  */
 package Roulette;
 
-import Baccara.Controller.BaccaraMenuViewController;
 import com.team1.casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
@@ -16,22 +15,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import java.util.Date;
-import java.util.Random;
-import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -139,9 +132,10 @@ public class RouletteFXMLController implements Initializable {
     private Pane paneBlack;
     //-------------------------------------------------------------------
 
-    private boolean isNumber;
+    private boolean isNumber = true;
     private boolean betIsPlaced = false;
-    private int betInt = 0;
+    private int betInt;
+    private int ArrayIdentify;
     RouletteWheel wheels = new RouletteWheel();
     RouletteTable tables = new RouletteTable();
     ArrayList<Integer> betArray = new ArrayList<>();
@@ -161,9 +155,15 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private Button rouletteVerlassen;
     @FXML
-    private RadioButton radioTable;
-    @FXML
     private Button getHelp;
+    @FXML
+    private Pane pane00;
+    @FXML
+    private Pane paneD1;
+    @FXML
+    private Pane paneD2;
+    @FXML
+    private Pane paneD3;
 
     public boolean getIsNumber() {
         return isNumber;
@@ -182,7 +182,6 @@ public class RouletteFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         //Creating an arrayList which contains all red numbers
         redArray.add(1);
         redArray.add(3);
@@ -211,30 +210,21 @@ public class RouletteFXMLController implements Initializable {
             }
         }
         //Creating an arrayList that contains all Numbers in row 1
-        System.out.println("");
-        System.out.println("Row 1 here");
         for (int i = 1; i < 37; i++) {
-            System.out.println(i);
             row1Array.add(i);
             i++;
             i++;
         }
         //Creating an arrayList that contains all Numbers in row 2
-        System.out.println("");
-        System.out.println("");
         for (int i = 1; i < 37; i++) {
             i++;
-            System.out.println(i);
             row2Array.add(i);
             i++;
         }
         //Creating an arrayList that contains all Numbers in row 3
-        System.out.println("");
-        System.out.println("");
         for (int i = 1; i < 37; i++) {
             i++;
             i++;
-            System.out.println(i);
             row3Array.add(i);
         }
 
@@ -250,7 +240,7 @@ public class RouletteFXMLController implements Initializable {
         wheels.decideResult(betInt);
     }
 
-    public void placeBetArray() {
+    public void placeBetArray(int AI) {
         for (int i : betArray) {
             System.out.println(i);
         }
@@ -503,6 +493,7 @@ public class RouletteFXMLController implements Initializable {
             intArray.add(i);
 //            System.out.println(i);
         }
+        ArrayIdentify = 1;
         betArray = intArray;
         isNumber = false;
     }
@@ -514,6 +505,7 @@ public class RouletteFXMLController implements Initializable {
             intArray.add(i);
 //            System.out.println(i);
         }
+        ArrayIdentify = 1;
         betArray = intArray;
         isNumber = false;
     }
@@ -526,6 +518,7 @@ public class RouletteFXMLController implements Initializable {
 //            System.out.println(i);
             intArray.add(i);
         }
+        ArrayIdentify = 1;
         betArray = intArray;
         isNumber = false;
     }
@@ -538,6 +531,7 @@ public class RouletteFXMLController implements Initializable {
 //            System.out.println(i);
             intArray.add(i);
         }
+        ArrayIdentify = 1;
         betArray = intArray;
         isNumber = false;
     }
@@ -548,16 +542,18 @@ public class RouletteFXMLController implements Initializable {
             System.out.println(redArray.get(i));
 
         }
+        ArrayIdentify = 1;
         betArray = redArray;
         isNumber = false;
     }
 
     @FXML
     private void clickPaneBlack(MouseEvent event) {
-//        for (int i = 0; i < blackArray.size(); i++) {
-//            System.out.println(blackArray.get(i));
-//
-//        }
+        for (int i = 0; i < blackArray.size(); i++) {
+            System.out.println(blackArray.get(i));
+
+        }
+        ArrayIdentify = 1;
         betArray = blackArray;
         isNumber = false;
     }
@@ -567,6 +563,7 @@ public class RouletteFXMLController implements Initializable {
 //        for (int i = 0; i < row3Array.size(); i++) {
 //            System.out.println(row3Array.get(i));
 //        }
+        ArrayIdentify = 2;
         betArray = row3Array;
         isNumber = false;
     }
@@ -576,6 +573,7 @@ public class RouletteFXMLController implements Initializable {
 //        for (int i = 0; i < row2Array.size(); i++) {
 //            System.out.println(row2Array.get(i));
 //        }
+        ArrayIdentify = 2;
         betArray = row2Array;
         isNumber = false;
     }
@@ -585,6 +583,7 @@ public class RouletteFXMLController implements Initializable {
 //        for (int i = 0; i < row1Array.size(); i++) {
 //            System.out.println(row1Array.get(i));
 //        }
+        ArrayIdentify = 2;
         isNumber = false;
         betArray = row1Array;
     }
@@ -604,29 +603,26 @@ public class RouletteFXMLController implements Initializable {
         if (isNumber == true) {
             placeBet();
         } else {
-            placeBetArray();
+            placeBetArray(ArrayIdentify);
         }
     }
     //-------------------------------------------------------------------
+    private PlayRoulette playRoulette;
 
+    public void setPlayRoulette(PlayRoulette playRoulette) {
+        this.playRoulette = playRoulette;
+    }
     @FXML
     private void rouletteVerlassen(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainMenuRouletteFXML.fxml"));
-        Parent root = (Parent) loader.load();
-        Scene scene = new Scene(root);
-        stage = MainApp.centerStageInScreen(stage, scene);
-        stage.setTitle("Baccara Menu");
-        stage.setScene(scene);
-        stage.show();
-        MainMenuRouletteFXMLController controller = loader.getController();
     }
+
     @FXML
     private void getHelp(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/RouletteHelpFXML.fxml"));
         Stage stageHelp = new Stage();
         stageHelp.setTitle("Help");
-        stageHelp.setScene(new Scene(root, 450, 450));
+        stageHelp.setScene(new Scene(root, 1511, 665));
+        stageHelp.isResizable();
         stageHelp.show();
     }
 }

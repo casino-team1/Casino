@@ -1,0 +1,2 @@
+1 = Manque; Passe; Impair; Pair; Red; Black
+2 = Row1; Row2; Row3

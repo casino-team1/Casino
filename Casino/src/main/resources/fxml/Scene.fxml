@@ -15,12 +15,12 @@
             <Image url="@../images/MainScreen/black.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="599.0" fitWidth="811.0" opacity="0.7" pickOnBounds="true">
+      <ImageView fitHeight="598.0" fitWidth="811.0" opacity="0.7" pickOnBounds="true">
          <image>
             <Image url="@../images/MainScreen/woodenWall.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="198.0" layoutX="47.0" layoutY="30.0" onMouseClicked="#mouseClickBlackJack" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="198.0" layoutX="125.0" layoutY="65.0" onMouseClicked="#mouseClickBlackJack" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/MainScreen/blackjackButton.png" />
          </image>
@@ -31,7 +31,7 @@
             <DropShadow height="100.0" radius="49.5" width="100.0" />
          </effect>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="561.0" layoutY="30.0" onMouseClicked="#mouseClickBaccara" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="468.0" layoutY="65.0" onMouseClicked="#mouseClickBaccara" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/MainScreen/baccaraButton.png" />
          </image>
@@ -42,7 +42,7 @@
             <DropShadow height="100.0" radius="49.5" width="100.0" />
          </effect>
       </ImageView>
-      <ImageView fitHeight="224.0" fitWidth="224.0" layoutX="47.0" layoutY="316.0" onMouseClicked="#clickMouseRoulette" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="224.0" fitWidth="224.0" layoutX="125.0" layoutY="306.0" onMouseClicked="#clickMouseRoulette" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/MainScreen/roulette_wheel.png" />
          </image>
@@ -53,7 +53,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="178.0" fitWidth="270.0" layoutX="508.0" layoutY="347.0" onMouseClicked="#clickMouseYatzy" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="178.0" fitWidth="270.0" layoutX="427.0" layoutY="328.0" onMouseClicked="#clickMouseYatzy" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/MainScreen/YatzyButton.png" />
          </image>

@@ -16,16 +16,14 @@ import javafx.scene.control.Label;
  */
 public class BlackJackSpielerModel {
     
-    Karten k = new Karten();
-    private int kartenWertSpieler = 0;
-    private ArrayList<String> kartenSpieler = new ArrayList<>();
     private boolean gewonnen = false;
 
     Random r = new Random();
-    int zufallszahl;
+    int zufallszahl = 0;
     String zufallskarte = "";
 
-    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten, Label labelKartenSpieler) {
+    public void hit(int anzahlKartenImKartendeck, int kartenWertSpieler, ArrayList<String> kartenSpieler, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten, Label labelKartenSpieler) {
+        
         //Hat es genügend Karten?
         if (anzahlKartenImKartendeck < 1) {
             //dealer.austeilen();
@@ -43,7 +41,7 @@ public class BlackJackSpielerModel {
             kartenWertSpieler += karten.get(zufallskarte);
         }
         kartenSpieler.add(zufallskarte);
-        karten.remove(zufallszahl);
+        karten.remove(zufallskarte);
         anzahlKartenImKartendeck--;
         labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
     }
@@ -54,21 +52,5 @@ public class BlackJackSpielerModel {
 
     public boolean hasGewonnen() {
         return gewonnen;
-    }
-
-    public ArrayList<String> getKartenSpieler() {
-        return kartenSpieler;
-    }
-
-    public void setKartenWertSpieler(int i) {
-        this.kartenWertSpieler += i;
-    }
-
-    public int getKartenWertSpieler() {
-        return kartenWertSpieler;
-    }
-
-    public void addKarte(String zufallskarte) {
-        kartenSpieler.add(zufallskarte);
     }
 }

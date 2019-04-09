@@ -17,28 +17,26 @@ import javafx.scene.control.Label;
  */
 public class BlackJackDealerModel {
 
-    private int kartenWertDealer = 0;
-    private int karteZweiWert = 0;
-    private ArrayList<String> kartenDealer = new ArrayList<>();
     private boolean gewonnen = false;
 
     Karten k = new Karten();
 
-    private HashMap<String, Integer> karten = new HashMap<>();
-    private ArrayList<String> kartenSymbole = new ArrayList<>();
+    private HashMap<String, Integer> karten;
+    private ArrayList<String> kartenSymbole;
 
     Random r = new Random();
-    int zufallszahl;
+    int zufallszahl = 0;
     String zufallskarte = "";
 
-    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten) {
+    public void hit(int anzahlKartenImKartendeck, int kartenWertDealer, ArrayList<String> kartenDealer, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten) {
+        
         //Wenn Dealer unter 17 hat, muss er ziehen
         if (kartenWertDealer < 17) {
             while (kartenWertDealer < 17) {
                 zufallszahl = r.nextInt(51);
                 zufallskarte = kartenSymbole.get(zufallszahl);
 
-                if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+                if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
                     kartenWertDealer += 10;
                 } else if (zufallskarte.equals("A")) {
                     kartenWertDealer += 11;
@@ -52,7 +50,7 @@ public class BlackJackDealerModel {
         }
     }
 
-    public void austeilen(int anzahlKartenImKartendeck, int kartenWertSpieler, int kartenWertDealer, int karteZweiWert, ArrayList<String> kartenSpieler, Label labelKartenSpieler, Label labelKartenDealer) {
+    public void austeilen(int anzahlKartenImKartendeck, int kartenWertSpieler, int kartenWertDealer, int karteZweiWert, ArrayList<String> kartenSpieler, ArrayList<String> kartenDealer, Label labelKartenSpieler, Label labelKartenDealer) {
         //neue Karten bekommen
         this.karten = getAlleKarten();
 
@@ -64,7 +62,7 @@ public class BlackJackDealerModel {
             zufallszahl = r.nextInt(51);
             zufallskarte = kartenSymbole.get(zufallszahl);
 
-            if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+            if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
                 kartenWertSpieler += 10;
             } else if (zufallskarte.equals("A")) {
                 kartenWertSpieler += 11;
@@ -81,7 +79,7 @@ public class BlackJackDealerModel {
         zufallszahl = r.nextInt(51);
         zufallskarte = kartenSymbole.get(zufallszahl);
 
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
             kartenWertDealer += 10;
         } else if (zufallskarte.equals("A")) {
             kartenWertDealer += 11;
@@ -97,7 +95,7 @@ public class BlackJackDealerModel {
         zufallszahl = r.nextInt(51);
         zufallskarte = kartenSymbole.get(zufallszahl);
 
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("Q")) {
+        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
             karteZweiWert += 10;
         } else if (zufallskarte.equals("A")) {
             karteZweiWert += 11;
@@ -115,22 +113,6 @@ public class BlackJackDealerModel {
 
     public boolean hasGewonnen() {
         return gewonnen;
-    }
-
-    public int getKarteZweiWert() {
-        return karteZweiWert;
-    }
-
-    public void setKartenWertDealer(int kartenWertDealer) {
-        this.kartenWertDealer = kartenWertDealer;
-    }
-
-    public int getKartenWertDealer() {
-        return kartenWertDealer;
-    }
-
-    public ArrayList<String> getKartenDealer() {
-        return kartenDealer;
     }
 
     public HashMap<String, Integer> getAlleKarten() {

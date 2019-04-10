@@ -5,6 +5,7 @@
  */
 package Yatzy;
 
+import com.team1.casino.MainApp;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +27,12 @@ import javafx.scene.input.MouseEvent;
  */
 public class YatzyFXMLController implements Initializable {
 
+    private MainApp mainApplication;
+
+    public void setMainApplication(MainApp mainApplication) {
+        this.mainApplication = mainApplication;
+    }
+
     /**
      * Initializes the controller class.
      */
@@ -38,9 +45,9 @@ public class YatzyFXMLController implements Initializable {
     private ArrayList<Dice> keep = new ArrayList<>();
     private ArrayList<Dice> gearray = new ArrayList<>();
     private ArrayList<Dice> bearray = new ArrayList<>();
-    private ArrayList<Dice> finalarray = new ArrayList<>(); 
+    private ArrayList<Dice> finalarray = new ArrayList<>();
 
-    Cup cup = new Cup(); 
+    Cup cup = new Cup();
     Images img = new Images();
     Rules rules = new Rules();
 
@@ -139,7 +146,7 @@ public class YatzyFXMLController implements Initializable {
     private Label lbllo8;
     @FXML
     private Label lbllo9;
-    
+
     public void setYatzy(PlayYatzy yatzy) {
         this.yatzy = yatzy;
     }
@@ -163,23 +170,23 @@ public class YatzyFXMLController implements Initializable {
 
     @FXML
     private void pressthrowdices(ActionEvent event) {
-        
+
         //the displayed images get updated
         assignImages();
-        
+
         //if a new game was startet, after the previous one has been finished
-        if(newround == true) {
-            
+        if (newround == true) {
+
             //makes the next throw the first throw
             newround = false;
             btnthrowdices.setText("Würfel werfen");
-            
+
             //makes the dices unusable
             lockdices = true;
-            
+
             //makes the figure lables unusable
-            locklabels = true;             
-            
+            locklabels = true;
+
             //reseting everything for a new game
             keep.clear();
             gearray.clear();
@@ -194,7 +201,7 @@ public class YatzyFXMLController implements Initializable {
             rules.setUppercounter(0);
             rules.setLowertotal(0);
             rules.setUppertotal(0);
-            
+
             sclblup1.setText("");
             sclblup2.setText("");
             sclblup3.setText("");
@@ -212,58 +219,52 @@ public class YatzyFXMLController implements Initializable {
             sclbllo7.setText("");
             sclbllo8.setText("");
             sclbllo9.setText("");
-            
+
             //the displayed images get updated
             assignImages();
-        }  
-        
-        //the first dicethrow
+        } //the first dicethrow
         else if (firstthrow == true) {
-            
+
             //makes the next throw the second throw
             firstthrow = false;
             secondthrow = true;
             btnthrowdices.setText("Zweiter Wurf");
-            
+
             //makes the dices usable
             lockdices = false;
-            
+
             //generates an array of five dices
             cup.throwDices();
-            
+
             //attribute for the toprow gets the generated dices
             gearray.addAll(cup.getDicearray());
-            
+
             //the displayed images get updated
-            assignImages();   
-        } 
-        
-        //the second dicethrow
+            assignImages();
+        } //the second dicethrow
         else if (secondthrow == true) {
-                
+
             //makes the next throw the third throw
             secondthrow = false;
             btnthrowdices.setText("Dritter Wurf");
-            
+
             keep.clear();
             keep.addAll(bearray);
             gearray.clear();
             cup.setKeep(bearray);
             cup.throwDices();
-            gearray.addAll(cup.getDicearray());           
-            assignImages();  
-        } 
-        
-        //the third dicethrow
+            gearray.addAll(cup.getDicearray());
+            assignImages();
+        } //the third dicethrow
         else {
-            
+
             btnthrowdices.setText("Figur Wählen");
             btnthrowdices.setDisable(true);
             //makes the dices unusable
             lockdices = true;
             //makes the figure lables usable
             locklabels = false;
-            
+
             keep.clear();
             keep.addAll(bearray);
             gearray.clear();
@@ -274,30 +275,26 @@ public class YatzyFXMLController implements Initializable {
             bearray.clear();
             finalarray.clear();
             finalarray.addAll(gearray);
-            
+
             //the final dices get sorted from lowest to highest
             Collections.sort(gearray, new Comparator<Dice>() {
-            @Override
-            public int compare(Dice dice2, Dice dice1)
-            {
-            return  dice2.getValue() - dice1.getValue();
-            }
-            });  
+                @Override
+                public int compare(Dice dice2, Dice dice1) {
+                    return dice2.getValue() - dice1.getValue();
+                }
+            });
             assignImages();
         }
 
-        
-        
-
-
     }
-    
+
     @FXML
     private void presshelp(ActionEvent event) {
     }
 
     @FXML
     private void pressendgame(ActionEvent event) {
+        this.mainApplication.displayMainMenu();
     }
 
     @FXML
@@ -383,9 +380,8 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslblup1(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclblup1.getText().equals("") || sclblup1.getText() == null) {
-            sclblup1.setText(Integer.toString(rules.createSubresult("EINER", finalarray)));   
+        } else if (sclblup1.getText().equals("") || sclblup1.getText() == null) {
+            sclblup1.setText(Integer.toString(rules.createSubresult("EINER", finalarray)));
             newTurn();
         } else {
             notPressable(lblup1);
@@ -396,8 +392,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslblup2(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclblup2.getText().equals("") || sclblup2.getText() == null) {
+        } else if (sclblup2.getText().equals("") || sclblup2.getText() == null) {
             sclblup2.setText(Integer.toString(rules.createSubresult("ZWEIER", finalarray)));
             newTurn();
         } else {
@@ -408,9 +403,8 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslblup3(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclblup3.getText().equals("") || sclblup3.getText() == null) {
-            sclblup3.setText(Integer.toString(rules.createSubresult("DREIER", finalarray)));           
+        } else if (sclblup3.getText().equals("") || sclblup3.getText() == null) {
+            sclblup3.setText(Integer.toString(rules.createSubresult("DREIER", finalarray)));
             newTurn();
         } else {
             notPressable(lblup3);
@@ -420,8 +414,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslblup4(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclblup4.getText().equals("") || sclblup4.getText() == null) {
+        } else if (sclblup4.getText().equals("") || sclblup4.getText() == null) {
             sclblup4.setText(Integer.toString(rules.createSubresult("VIERER", finalarray)));
             newTurn();
         } else {
@@ -432,8 +425,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslblup5(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclblup5.getText().equals("") || sclblup5.getText() == null) {
+        } else if (sclblup5.getText().equals("") || sclblup5.getText() == null) {
             sclblup5.setText(Integer.toString(rules.createSubresult("FÜNFER", finalarray)));
             newTurn();
         } else {
@@ -444,8 +436,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslblup6(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclblup6.getText().equals("") || sclblup6.getText() == null) {
+        } else if (sclblup6.getText().equals("") || sclblup6.getText() == null) {
             sclblup6.setText(Integer.toString(rules.createSubresult("SECHSER", finalarray)));
             newTurn();
         } else {
@@ -456,8 +447,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslbllo1(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclbllo1.getText().equals("") || sclbllo1.getText() == null) {
+        } else if (sclbllo1.getText().equals("") || sclbllo1.getText() == null) {
             sclbllo1.setText(Integer.toString(rules.createSubresult("DREI GLEICHE", finalarray)));
             newTurn();
         } else {
@@ -468,8 +458,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslbllo2(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclbllo2.getText().equals("") || sclbllo2.getText() == null) {
+        } else if (sclbllo2.getText().equals("") || sclbllo2.getText() == null) {
             sclbllo2.setText(Integer.toString(rules.createSubresult("VIER GLEICHE", finalarray)));
             newTurn();
         } else {
@@ -480,8 +469,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslbllo3(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclbllo3.getText().equals("") || sclbllo3.getText() == null) { 
+        } else if (sclbllo3.getText().equals("") || sclbllo3.getText() == null) {
             sclbllo3.setText(Integer.toString(rules.createSubresult("FULL HOUSE", finalarray)));
             newTurn();
         } else {
@@ -492,8 +480,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslbllo4(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclbllo4.getText().equals("") || sclbllo4.getText() == null) {        
+        } else if (sclbllo4.getText().equals("") || sclbllo4.getText() == null) {
             sclbllo4.setText(Integer.toString(rules.createSubresult("KLEINE STRASSE", finalarray)));
             newTurn();
         } else {
@@ -504,8 +491,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslbllo5(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclbllo5.getText().equals("") || sclbllo5.getText() == null) {
+        } else if (sclbllo5.getText().equals("") || sclbllo5.getText() == null) {
             sclbllo5.setText(Integer.toString(rules.createSubresult("GROSSE STRASSE", finalarray)));
             newTurn();
         } else {
@@ -516,8 +502,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslbllo6(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclbllo6.getText().equals("") || sclbllo6.getText() == null) {
+        } else if (sclbllo6.getText().equals("") || sclbllo6.getText() == null) {
             sclbllo6.setText(Integer.toString(rules.createSubresult("YATZY", finalarray)));
             newTurn();
         } else {
@@ -528,8 +513,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private void presslbllo7(MouseEvent event) {
         if (locklabels == true) {
-        }       
-        else if (sclbllo7.getText().equals("") || sclbllo7.getText() == null) {
+        } else if (sclbllo7.getText().equals("") || sclbllo7.getText() == null) {
             sclbllo7.setText(Integer.toString(rules.createSubresult("CHANCE", finalarray)));
             newTurn();
         } else {
@@ -739,7 +723,7 @@ public class YatzyFXMLController implements Initializable {
             be5.setVisible(true);
         }
     }
-    
+
     public void enterhover(Label lbl) {
         lbl.setStyle("-fx-border-color: green; -fx-border-width: 3; -fx-background-color: white;");
     }
@@ -755,40 +739,38 @@ public class YatzyFXMLController implements Initializable {
     public ArrayList<Dice> getGearray() {
         return gearray;
     }
-    
-    public void newTurn(){
-        
+
+    public void newTurn() {
+
         rules.totalChecker();
-        if(rules.isUpperbool() == true) {
+        if (rules.isUpperbool() == true) {
             sclblup7.setText(Integer.toString(rules.getUppertotal()));
             sclblup8.setText(Integer.toString(rules.getBonusUppertotal()));
         }
-        if(rules.isLowerbool() == true) {
+        if (rules.isLowerbool() == true) {
             sclbllo8.setText(Integer.toString(rules.getLowertotal()));
         }
-        if(rules.isUpperbool() == true && rules.isLowerbool() == true) {
+        if (rules.isUpperbool() == true && rules.isLowerbool() == true) {
             sclbllo9.setText(Integer.toString(rules.getTotal()));
-            
-            finish = true;      
+
+            finish = true;
         }
-        
-        if(finish == false) {
+
+        if (finish == false) {
             btnthrowdices.setDisable(false);
             btnthrowdices.setText("Würfel werfen");
             locklabels = true;
             keep.clear();
             gearray.clear();
-            bearray.clear();      
+            bearray.clear();
             firstthrow = true;
             secondthrow = true;
-        }
-        else {
+        } else {
             btnthrowdices.setDisable(false);
-            newround = true;  
-            
+            newround = true;
+
             btnthrowdices.setText("Neues Spiel");
         }
     }
-            
-    
+
 }

@@ -6,17 +6,21 @@
  */
 package com.team1.casino.Model;
 
+import com.team1.casino.Entity.Stat;
+import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.UserUtil;
 import com.team1.casino.database.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Observable;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
  * @author Nick Flückiger
  */
-public class PlayerStatisticModel {
+public class PlayerStatisticModel extends Observable {
 
     public ArrayList<String> getUsernameListing() {
         return usernameListing;
@@ -28,14 +32,83 @@ public class PlayerStatisticModel {
         return selectedPlayer;
     }
 
-    private ArrayList<String> usernameListing;
+    public void setSelectePlayer(String value) {
+        this.selectedPlayer.setValue(value);
+    }
 
-    public void loadusernames() throws SQLException {
+    private ArrayList<Double> accountValues = new ArrayList<>();
+
+    private ArrayList<String> usernameListing;
+    private ArrayList<String> statistics;
+
+    public void loadUsernames() throws SQLException {
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
         this.usernameListing = query.runQueryWithReturn("SELECT username FROM user WHERE role = ?", "Player");
     }
 
-    public void displayStatsForSelectedPlayer() {
+    public void displayStatsForSelectedPlayer() throws SQLException {
+        this.accountValues.clear();
+        DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
+        String playerID = String.valueOf(new UserUtil().getIDFromUserByUsername(this.selectedPlayer.getValue()));
+        this.statistics = query.runQueryWithReturn("SELECT stat.bet,stat.amount,stat.result FROM statistic stat, statistictoplayer sp WHERE sp.user_id = ? AND sp.statistic_id = stat.id", playerID);
+        calculateAccountValues(this.statistics);
+        setChanged();
+        notifyObservers();
+    }
 
+    public ArrayList<Double> getAccountValues() {
+        return accountValues;
+    }
+
+    public ArrayList<String> getStatistics() {
+        return statistics;
+    }
+
+    private void calculateAccountValues(ArrayList<String> statisticInformation) {
+        ArrayList<Stat> stats = new ArrayList<>();
+        for (String el : statisticInformation) {
+            System.out.println(el);
+        }
+        int counter = 0;
+        String result = "";
+        double bet = 0;
+        double endAmount = 0;
+        for (String statistic : statisticInformation) {
+            switch (counter) {
+                case 2:
+                    result = statistic;
+                    stats.add(new Stat(result, bet, endAmount));
+                    counter = -1;
+                    result = "";
+                    bet = 0;
+                    endAmount = 0;
+                    break;
+                case 0:
+                    bet = Double.valueOf(statistic);
+                    break;
+                case 1:
+                    endAmount = Double.valueOf(statistic);
+                    break;
+            }
+            counter++;
+        }
+        ArrayList<Double> accountBalance = new ArrayList<>();
+        accountBalance.add(5000.0);
+        double value = 5000.0;
+        for (Stat stat : stats) {
+            //System.out.println(value);
+            if (stat.getResult().equals("Won")) {
+                value += (stat.getEndamount() - stat.getBet());
+                accountBalance.add(value);
+            } else {
+                value -= (stat.getBet());
+            }
+        }
+        System.out.println(accountBalance.get(accountBalance.size() - 1));
+        this.accountValues = accountBalance;
+    }
+
+    public ArrayList<String> getUserStatistics() {
+        return this.statistics;
     }
 }

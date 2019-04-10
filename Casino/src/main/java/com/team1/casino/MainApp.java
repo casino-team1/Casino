@@ -170,7 +170,8 @@ public class MainApp extends Application {
             stage.show();
             PlayerStatisticController controller = loader.getController();
             PlayerStatisticModel playerStatModel = new PlayerStatisticModel();
-            playerStatModel.loadusernames();
+            playerStatModel.loadUsernames();
+            playerStatModel.addObserver(controller);
             controller.setPlayerStatisticModel(playerStatModel);
         } catch (IOException ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);

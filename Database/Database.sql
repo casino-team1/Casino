@@ -53,9 +53,28 @@ INSERT INTO game(gameName) VALUES("BlackJack");
 INSERT INTO game(gameName) VALUES("Yatzy");
 
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",50);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",50);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+
 INSERT INTO balance(balance,lastUpdated) VALUES(0.0,CURDATE());
 INSERT INTO balance(balance,lastUpdated) VALUES(1000.0,CURDATE());
-INSERT INTO statistictoplayer(player_id,statistic_id) VALUES(1,1);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,1);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,2);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,3);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,4);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,5);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,6);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,7);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,8);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,9);
+INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,10);
 -- Username == "Muster" -- Password: "1234"
 -- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK
 

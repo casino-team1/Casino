@@ -8,12 +8,17 @@ package com.team1.casino.Controller;
 
 import com.team1.casino.Model.PlayerStatisticModel;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.ComboBox;
 
 /**
@@ -27,16 +32,14 @@ public class PlayerStatisticController implements Initializable, Observer {
 
     @FXML
     private ComboBox<String> nutzernamen;
+    @FXML
+    private LineChart<String, Double> kontostandChart;
 
     public void setPlayerStatisticModel(PlayerStatisticModel model) {
         this.model = model;
         for (String username : model.getUsernameListing()) {
             this.nutzernamen.getItems().add(username);
         }
-    }
-
-    private void bind() {
-        this.model.getSelectedPlayer().bind(this.nutzernamen.getEditor().textProperty());
     }
 
     /**
@@ -48,12 +51,23 @@ public class PlayerStatisticController implements Initializable, Observer {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PlayerStatisticModel model = (PlayerStatisticModel) o;
+        ArrayList<Double> accountbalances = model.getAccountValues();
+        XYChart.Series<String, Double> series = new XYChart.Series<>();
+        int counter = 0;
+        this.kontostandChart.getData().clear();
+        for (double value : accountbalances) {
+            series.getData().add(new XYChart.Data<>(String.valueOf(counter + 20), value));
+            counter++;
+        }
+        this.kontostandChart.getData().add(series);
     }
 
     @FXML
-    private void selectionChanged(ActionEvent event) {
+    private void selectionChanged(ActionEvent event) throws SQLException {
+        this.model.setSelectePlayer(this.nutzernamen.getValue());
         this.model.displayStatsForSelectedPlayer();
     }
 

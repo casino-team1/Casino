@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="718.0" prefWidth="831.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.team1.casino.Controller.PlayerStatisticController">
+<AnchorPane id="AnchorPane" prefHeight="718.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.PlayerStatisticController">
    <children>
       <ComboBox fx:id="nutzernamen" layoutX="63.0" layoutY="94.0" onAction="#selectionChanged" prefHeight="27.0" prefWidth="210.0" />
       <Text layoutX="127.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutzernamen" />
+      <TableView layoutX="63.0" layoutY="208.0" prefHeight="369.0" prefWidth="210.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <LineChart fx:id="kontostandChart" layoutX="300.0" layoutY="208.0" prefHeight="369.0" prefWidth="500.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Text layoutX="492.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

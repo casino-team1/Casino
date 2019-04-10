@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  * @author Nick Flückiger
  */
 public class UserUtilTest {
-    
+
     public UserUtilTest() {
     }
 
@@ -84,5 +84,5 @@ public class UserUtilTest {
         boolean EXPECTED_RESULT = true;
         assertEquals(EXPECTED_RESULT, new UserUtil().validPassword(password, hashedPassword));
     }
-    
+
 }

@@ -42,10 +42,11 @@ CREATE TABLE user(
 CREATE TABLE statistictoplayer(
     user_id INTEGER,
     statistic_id INTEGER,
+    game_id INTEGER,
+    FOREIGN KEY (game_id) REFERENCES game(id),
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (statistic_id) REFERENCES statistic(id)
 );
-
 
 INSERT INTO game(gameName) VALUES("Baccara");
 INSERT INTO game(gameName) VALUES("Roulette");
@@ -65,18 +66,21 @@ INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
 
 INSERT INTO balance(balance,lastUpdated) VALUES(0.0,CURDATE());
 INSERT INTO balance(balance,lastUpdated) VALUES(1000.0,CURDATE());
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,1);
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,2);
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,3);
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,4);
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,5);
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,6);
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,7);
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,8);
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,9);
-INSERT INTO statistictoplayer(user_id,statistic_id) VALUES(1,10);
--- Username == "Muster" -- Password: "1234"
--- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK
 
 INSERT INTO user(username,password,role,balance_id,email) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",2,"nick.flueckiger@outlook.de");
 INSERT INTO user(username,password,role,balance_id,email) VALUES("Admin","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Admin",1,"nick.flueckiger@outlook.de");
+
+
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,1,1);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,2,1);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,3,1);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,4,1);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,5,1);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,6,1);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,7,1);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,8,1);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,9,1);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,10,1);
+-- Username == "Muster" -- Password: "1234"
+-- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK
+

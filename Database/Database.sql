@@ -53,9 +53,11 @@ INSERT INTO game(gameName) VALUES("BlackJack");
 INSERT INTO game(gameName) VALUES("Yatzy");
 
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO balance(balance,lastUpdated) VALUES(0.0,CURDATE());
 INSERT INTO balance(balance,lastUpdated) VALUES(1000.0,CURDATE());
-
 INSERT INTO statistictoplayer(player_id,statistic_id) VALUES(1,1);
 -- Username == "Muster" -- Password: "1234"
 -- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK
-INSERT INTO user(username,password,role,balance_id,email) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",1,"nick.flueckiger@outlook.de");
+
+INSERT INTO user(username,password,role,balance_id,email) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",2,"nick.flueckiger@outlook.de");
+INSERT INTO user(username,password,role,balance_id,email) VALUES("Admin","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Admin",1,"nick.flueckiger@outlook.de");

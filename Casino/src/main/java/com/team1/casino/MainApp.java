@@ -8,14 +8,19 @@ import Roulette.Roulette;
 import Yatzy.Yatzy;
 import com.team1.casino.Controller.AuthenticationController;
 import com.team1.casino.Controller.LoginController;
+import com.team1.casino.Controller.PlayerStatisticController;
 import com.team1.casino.Controller.RegistrationViewController;
+import com.team1.casino.Controller.StatisticController;
 import com.team1.casino.Model.AuthenticationModel;
 import com.team1.casino.Model.CasinoLoginModel;
+import com.team1.casino.Model.PlayerStatisticModel;
 import com.team1.casino.Model.RegistrationModel;
+import com.team1.casino.Model.StatisticModel;
 import com.team1.casino.User.UserCentral;
 import com.team1.casino.database.DatabaseConnection;
 import com.team1.casino.database.DatabaseConnector;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -81,7 +86,7 @@ public class MainApp extends Application {
             CasinoLoginModel loginModel = new CasinoLoginModel();
             loginModel.setMainApplication(this);
             controller.setModel(loginModel);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -98,12 +103,13 @@ public class MainApp extends Application {
             RegistrationViewController controller = loader.getController();
             RegistrationModel model = new RegistrationModel(this);
             controller.setModel(model);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void displayMainMenu() {
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
             Parent root;
@@ -132,6 +138,55 @@ public class MainApp extends Application {
             AuthenticationModel authModel = new AuthenticationModel(UserCentral.getInstance().getUser().getValidationCode());
             authModel.setMainApplication(this);
             controller.setAuthenticationModel(authModel);
+        } catch (IOException ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void displayStatisticView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StatisticView.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Casino Central");
+            stage.setScene(scene);
+            stage.show();
+            StatisticController controller = loader.getController();
+            controller.setStatisticModel(new StatisticModel(this));
+        } catch (IOException ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void displayPlayerStatistic() throws SQLException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PlayerStatisticView.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Casino Central");
+            stage.setScene(scene);
+            stage.show();
+            PlayerStatisticController controller = loader.getController();
+            PlayerStatisticModel playerStatModel = new PlayerStatisticModel();
+            playerStatModel.loadusernames();
+            controller.setPlayerStatisticModel(playerStatModel);
+        } catch (IOException ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void displayGameStatistic() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameStatisticView.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Casino Central");
+            stage.setScene(scene);
+            stage.show();
+
         } catch (IOException ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -6,16 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseQuery extends Query {
-    
+
     public DatabaseQuery(final Connection DATABASE_CONNECTION, final boolean wrap_in_transaction) {
         super(DATABASE_CONNECTION, wrap_in_transaction);
     }
-    
+
     @Override
     public ArrayList<String> runQueryWithReturn(String querySequence, String arguments) throws SQLException {
         PreparedStatement statement = super.getDATABASE_CONNECTION().prepareStatement(querySequence);
@@ -38,7 +37,7 @@ public class DatabaseQuery extends Query {
         }
         return resultSet;
     }
-    
+
     @Override
     public void runQueryWithoutReturn(String querySequence, String parameter) {
         try {
@@ -56,7 +55,7 @@ public class DatabaseQuery extends Query {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public int runQueryGetAddedID(String query, String parameter) {
         PreparedStatement statement = null;
@@ -79,10 +78,10 @@ public class DatabaseQuery extends Query {
         }
         return -1;
     }
-    
+
     @Override
     public void runInsertionMethod() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

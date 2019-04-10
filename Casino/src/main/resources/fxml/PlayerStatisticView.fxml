@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="718.0" prefWidth="831.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.team1.casino.Controller.PlayerStatisticController">
+   <children>
+      <ComboBox fx:id="nutzernamen" layoutX="63.0" layoutY="94.0" onAction="#selectionChanged" prefHeight="27.0" prefWidth="210.0" />
+      <Text layoutX="127.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutzernamen" />
+   </children>
+</AnchorPane>

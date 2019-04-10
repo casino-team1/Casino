@@ -25,9 +25,27 @@ public class RouletteWheel {
             System.out.println("Better Luck next time");
         }
     }
-    public void decideResult(ArrayList<Integer> parameterArrayBet){
+    public void decideResult(ArrayList<Integer> parameterArrayBet, int ArrayIdentity){
         if (parameterArrayBet.contains(randomNumber)){
             System.out.println("Good Job");
+            if (ArrayIdentity == 1) {
+                
+            }
+            else if (ArrayIdentity == 2) {
+                
+            }
+            else if (ArrayIdentity == 3) {
+                
+            }
+            else if (ArrayIdentity == 4) {
+                
+            }
+            else if (ArrayIdentity == 5) {
+                
+            }
+            else{
+                
+            }
         }
         else{
             System.out.println("Better Luck next time");
@@ -39,6 +57,6 @@ public class RouletteWheel {
     }
     
     public void generateRandom(){
-        this.randomNumber = new Random().nextInt(37);
+        this.randomNumber = new Random().nextInt(38);
     }
 }

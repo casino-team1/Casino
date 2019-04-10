@@ -79,7 +79,7 @@
             <Font name="Arial Bold" size="36.0" />
          </font>
       </Text>
-      <ImageView fx:id="chipImage" fitHeight="140.0" fitWidth="147.0" layoutX="89.0" layoutY="778.0" pickOnBounds="true">
+      <ImageView fx:id="chipImage" fitHeight="140.0" fitWidth="147.0" layoutX="89.0" layoutY="778.0" onMouseDragReleased="#dropCoin" pickOnBounds="true">
          <image>
             <Image url="@../images/gameChipImage.png" />
          </image>
@@ -89,5 +89,6 @@
             <Font size="36.0" />
          </font>
       </Text>
+      <ImageView fx:id="bankerBetCoin" fitHeight="104.0" fitWidth="147.0" layoutX="623.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -45,5 +45,10 @@
          </children>
       </Pane>
       <Button fx:id="registerButton" layoutX="234.0" layoutY="577.0" mnemonicParsing="false" onAction="#registerUser" text="Register" />
+      <Text fx:id="errorMEssage" fill="RED" layoutX="81.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="da">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

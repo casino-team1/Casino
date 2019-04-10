@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="746.0" prefWidth="874.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.team1.casino.Controller.GameStatisticController">
-    
+<AnchorPane id="AnchorPane" prefHeight="746.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.GameStatisticController">
+   <children>
+      <TableView fx:id="gameStatTable" layoutX="41.0" layoutY="173.0" prefHeight="516.0" prefWidth="312.0">
+        <columns>
+          <TableColumn fx:id="userCol" prefWidth="75.0" text="Nutzer" />
+          <TableColumn fx:id="betCol" prefWidth="75.0" text="Einsatz" />
+            <TableColumn fx:id="resultCol" prefWidth="75.0" text="Resultat" />
+            <TableColumn fx:id="changeCol" prefWidth="75.0" text="Change" />
+        </columns>
+      </TableView>
+      <LineChart fx:id="gameProfit" layoutX="360.0" layoutY="173.0" prefHeight="516.0" prefWidth="500.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Text layoutX="86.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GameName" />
+      <ComboBox fx:id="gameNames" layoutX="47.0" layoutY="83.0" onAction="#selectionChanged" prefWidth="150.0" />
+   </children>
 </AnchorPane>

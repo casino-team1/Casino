@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
@@ -69,6 +70,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private ImageView thirdRightImage;
     @FXML
     private Text winner;
+    @FXML
+    private ImageView bankerBetCoin;
 
     /**
      * Initializes the controller class.
@@ -84,6 +87,10 @@ public class BaccaraGameViewController implements Initializable, Observer {
             data.putImage(image);
             content.setContent(data);
             event.consume();
+        });
+        this.bankerBet.setOnMouseClicked(event -> {
+            this.bankerBetCoin.setImage(this.chipImage.getImage());
+            this.gameModel.setDealerBet(5);
         });
     }
     private BaccaraGameModel gameModel;
@@ -113,6 +120,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @FXML
     private void startBaccara(MouseEvent event) throws InterruptedException {
         this.gameModel.generateCards();
+        resetImageViews();
         String format = "/images/GameCards/%s";
         ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
         ImageView[] dealerView = {this.firstRightCard, this.secondRightCard};
@@ -146,6 +154,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void resetImageViews() {
+        this.bankerBetCoin.setImage(null);
         ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.thirdLeftCard, this.firstRightCard, this.secondRightCard, this.thirdRightImage};
         for (int i = 0; i < imageViews.length; i++) {
             imageViews[i] = new ImageView();
@@ -164,7 +173,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @FXML
     private void setBankerBet(DragEvent event) {
-        System.out.println("Dragged");
         ImageView chipContainer = new ImageView(this.content.getImage());
         chipContainer.localToParent(this.bankerBet.getX(), this.bankerBet.getY());
         chipContainer.setVisible(true);
@@ -177,6 +185,12 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @FXML
     private void setPlayerBet(DragEvent event) {
+    }
+
+    @FXML
+    private void dropCoin(MouseDragEvent event) {
+        System.out.println(this.bankerBet.getX());
+        System.out.println(this.bankerBet.getY());
     }
 
 }

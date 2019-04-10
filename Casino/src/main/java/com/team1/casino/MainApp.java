@@ -7,12 +7,14 @@ import Blackjack.Blackjack;
 import Roulette.Roulette;
 import Yatzy.Yatzy;
 import com.team1.casino.Controller.AuthenticationController;
+import com.team1.casino.Controller.GameStatisticController;
 import com.team1.casino.Controller.LoginController;
 import com.team1.casino.Controller.PlayerStatisticController;
 import com.team1.casino.Controller.RegistrationViewController;
 import com.team1.casino.Controller.StatisticController;
 import com.team1.casino.Model.AuthenticationModel;
 import com.team1.casino.Model.CasinoLoginModel;
+import com.team1.casino.Model.GameStatisticModel;
 import com.team1.casino.Model.PlayerStatisticModel;
 import com.team1.casino.Model.RegistrationModel;
 import com.team1.casino.Model.StatisticModel;
@@ -79,7 +81,7 @@ public class MainApp extends Application {
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Casino Login");
+            stage.setTitle("Spieler einloggen");
             stage.setScene(scene);
             stage.show();
             LoginController controller = loader.getController();
@@ -97,7 +99,7 @@ public class MainApp extends Application {
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Casino Registration");
+            stage.setTitle("Spieler registrieren");
             stage.setScene(scene);
             stage.show();
             RegistrationViewController controller = loader.getController();
@@ -115,7 +117,7 @@ public class MainApp extends Application {
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Casino Central");
+            stage.setTitle("Spiel auswahl | MountainView");
             stage.setScene(scene);
             stage.show();
             CasinoController controller = loader.getController();
@@ -131,7 +133,7 @@ public class MainApp extends Application {
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Casino Central");
+            stage.setTitle("Authentifizierungs Menu");
             stage.setScene(scene);
             stage.show();
             AuthenticationController controller = loader.getController();
@@ -149,7 +151,7 @@ public class MainApp extends Application {
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Casino Central");
+            stage.setTitle("Adminstrator Dashboard");
             stage.setScene(scene);
             stage.show();
             StatisticController controller = loader.getController();
@@ -165,7 +167,7 @@ public class MainApp extends Application {
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Casino Central");
+            stage.setTitle("Spieler Statistiken");
             stage.setScene(scene);
             stage.show();
             PlayerStatisticController controller = loader.getController();
@@ -178,16 +180,20 @@ public class MainApp extends Application {
         }
     }
 
-    public void displayGameStatistic() {
+    public void displayGameStatistic() throws SQLException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameStatisticView.fxml"));
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Casino Central");
+            stage.setTitle("Spiel Statistiken");
             stage.setScene(scene);
             stage.show();
-
+            GameStatisticController controller = loader.getController();
+            GameStatisticModel gameStatModel = new GameStatisticModel();
+            gameStatModel.loadGameNames();
+            gameStatModel.addObserver(controller);
+            controller.setGameStatistics(gameStatModel);
         } catch (IOException ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -54,7 +54,7 @@ public class StatisticController implements Initializable, Observer {
     }
 
     @FXML
-    private void displayGameStat(ActionEvent event) {
+    private void displayGameStat(ActionEvent event) throws SQLException {
         this.model.displayGameStatistic();
     }
 

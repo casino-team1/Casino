@@ -37,7 +37,7 @@ public class PlayerStatisticModel extends Observable {
     }
 
     private ArrayList<Double> accountValues = new ArrayList<>();
-
+    private ArrayList<Stat> stats = new ArrayList<>();
     private ArrayList<String> usernameListing;
     private ArrayList<String> statistics;
 
@@ -50,7 +50,7 @@ public class PlayerStatisticModel extends Observable {
         this.accountValues.clear();
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
         String playerID = String.valueOf(new UserUtil().getIDFromUserByUsername(this.selectedPlayer.getValue()));
-        this.statistics = query.runQueryWithReturn("SELECT stat.bet,stat.amount,stat.result FROM statistic stat, statistictoplayer sp WHERE sp.user_id = ? AND sp.statistic_id = stat.id", playerID);
+        this.statistics = query.runQueryWithReturn("SELECT stat.bet,stat.amount,ga.gameName,stat.result FROM statistic stat, statistictoplayer sp, game ga WHERE sp.user_id = ? AND sp.statistic_id = stat.id AND sp.game_id = ga.id", playerID);
         calculateAccountValues(this.statistics);
         setChanged();
         notifyObservers();
@@ -66,46 +66,49 @@ public class PlayerStatisticModel extends Observable {
 
     private void calculateAccountValues(ArrayList<String> statisticInformation) {
         ArrayList<Stat> stats = new ArrayList<>();
-        for (String el : statisticInformation) {
-            System.out.println(el);
-        }
         int counter = 0;
         String result = "";
         double bet = 0;
         double endAmount = 0;
+        String gameName = "";
         for (String statistic : statisticInformation) {
             switch (counter) {
-                case 2:
-                    result = statistic;
-                    stats.add(new Stat(result, bet, endAmount));
-                    counter = -1;
-                    result = "";
-                    bet = 0;
-                    endAmount = 0;
-                    break;
                 case 0:
                     bet = Double.valueOf(statistic);
+                    counter++;
                     break;
                 case 1:
                     endAmount = Double.valueOf(statistic);
+                    counter++;
+                    break;
+                case 2:
+                    gameName = statistic;
+                    counter++;
+                    break;
+                case 3:
+                    result = statistic;
+                    stats.add(new Stat(result, bet, endAmount, gameName));
+                    gameName = "";
+                    result = "";
+                    bet = 0.0;
+                    endAmount = 0.0;
+                    counter = 0;
                     break;
             }
-            counter++;
         }
+        this.stats = stats;
         ArrayList<Double> accountBalance = new ArrayList<>();
         accountBalance.add(5000.0);
         double value = 5000.0;
         for (Stat stat : stats) {
-            //System.out.println(value);
-            if (stat.getResult().equals("Won")) {
-                value += (stat.getEndamount() - stat.getBet());
-                accountBalance.add(value);
-            } else {
-                value -= (stat.getBet());
-            }
+            value += stat.getEndamount();
+            accountBalance.add(value);
         }
-        System.out.println(accountBalance.get(accountBalance.size() - 1));
         this.accountValues = accountBalance;
+    }
+
+    public ArrayList<Stat> getStats() {
+        return stats;
     }
 
     public ArrayList<String> getUserStatistics() {

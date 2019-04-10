@@ -12,19 +12,34 @@ package com.team1.casino.Entity;
  */
 public class Stat {
 
+    public String getGameName() {
+        return gameName;
+    }
+
+    private String username;
     private String result;
     private double bet;
     private double Endamount;
+    private String gameName;
 
-    public Stat(String result, double bet, double amount) {
+    public void setUseranme(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Stat(String result, double bet, double amount, String gameName) {
         this.result = result;
         this.bet = bet;
         this.Endamount = amount;
+        this.gameName = gameName;
     }
 
     @Override
     public String toString() {
-        return "Stat{" + "result=" + result + ", bet=" + bet + ", Endamount=" + Endamount + '}';
+        return "Stat{" + "username=" + username + ", result=" + result + ", bet=" + bet + ", Endamount=" + Endamount + ", gameName=" + gameName + '}';
     }
 
     public String getResult() {

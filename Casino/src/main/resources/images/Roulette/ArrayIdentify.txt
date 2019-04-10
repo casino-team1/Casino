@@ -1,2 +1,4 @@
 1 = Manque; Passe; Impair; Pair; Red; Black
-2 = Row1; Row2; Row3
+2 = Row1; Row2; Row3; D1; D2; D3
+5 = Basket bet (0, 00, 1, 2, 3)
+6 = 

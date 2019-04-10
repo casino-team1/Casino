@@ -5,6 +5,9 @@
  */
 package Blackjack;
 
+import com.team1.casino.Controller.LoginController;
+import com.team1.casino.MainApp;
+import com.team1.casino.Model.CasinoLoginModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,6 +30,12 @@ import javafx.stage.Stage;
  */
 public class BlackJackMainController implements Initializable {
 
+    private MainApp main;
+
+    public void setMain(MainApp main) {
+        this.main = main;
+    }
+
     @FXML
     private Button buttonStart;
     @FXML
@@ -44,14 +53,25 @@ public class BlackJackMainController implements Initializable {
 
     @FXML
     private void startGame(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/BlackJackFXML.fxml"));
-        rootPane.getChildren().setAll(pane);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackFXML.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = this.main.getStage();
+            stage.setTitle("Casino Login");
+            stage.setScene(scene);
+            stage.show();
+            BlackJackFXMLController controller = loader.getController();
+            controller.setMain(main);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void zurueck(ActionEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        rootPane.getChildren().setAll(pane);*/
+        this.main.displayMainMenu();
     }
 
 }

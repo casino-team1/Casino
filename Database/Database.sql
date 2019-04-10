@@ -55,10 +55,10 @@ INSERT INTO game(gameName) VALUES("Yatzy");
 
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",50);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",-50);
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",50);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",-50);
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);

@@ -66,9 +66,6 @@ public class PlayerStatisticModel extends Observable {
 
     private void calculateAccountValues(ArrayList<String> statisticInformation) {
         ArrayList<Stat> stats = new ArrayList<>();
-        for (String el : statisticInformation) {
-            System.out.println(el);
-        }
         int counter = 0;
         String result = "";
         double bet = 0;
@@ -76,39 +73,36 @@ public class PlayerStatisticModel extends Observable {
         String gameName = "";
         for (String statistic : statisticInformation) {
             switch (counter) {
-                case 2:
-                    result = statistic;
-                    stats.add(new Stat(result, bet, endAmount, gameName));
-                    counter = -2;
-                    result = "";
-                    bet = 0;
-                    gameName = "";
-                    endAmount = 0;
+                case 0:
+                    bet = Double.valueOf(statistic);
+                    counter++;
                     break;
                 case 1:
-                    gameName = statistic;
-                    break;
-                case -1:
-                    bet = Double.valueOf(statistic);
-                    break;
-                case 0:
                     endAmount = Double.valueOf(statistic);
+                    counter++;
+                    break;
+                case 2:
+                    gameName = statistic;
+                    counter++;
+                    break;
+                case 3:
+                    result = statistic;
+                    stats.add(new Stat(result, bet, endAmount, gameName));
+                    gameName = "";
+                    result = "";
+                    bet = 0.0;
+                    endAmount = 0.0;
+                    counter = 0;
                     break;
             }
-            counter++;
         }
         this.stats = stats;
         ArrayList<Double> accountBalance = new ArrayList<>();
         accountBalance.add(5000.0);
         double value = 5000.0;
         for (Stat stat : stats) {
-            //System.out.println(value);
-            if (stat.getResult().equals("Won")) {
-                value += (stat.getEndamount() - stat.getBet());
-                accountBalance.add(value);
-            } else {
-                value -= (stat.getBet());
-            }
+            value += stat.getEndamount();
+            accountBalance.add(value);
         }
         this.accountValues = accountBalance;
     }

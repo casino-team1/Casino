@@ -25,12 +25,14 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -140,6 +142,9 @@ public class RouletteFXMLController implements Initializable {
 
     
     
+    private int betIntFromPlayer;
+    
+    private boolean isOverZero = true;
     private boolean isNumber = true;
     private boolean betIsPlaced = false;
     private int betInt;
@@ -148,7 +153,7 @@ public class RouletteFXMLController implements Initializable {
     RouletteWheel wheels = new RouletteWheel();
     RouletteTable tables = new RouletteTable();
     ArrayList<Integer> betArray = new ArrayList<>();
-    
+
     ArrayList<Integer> redArray = new ArrayList<>();
     ArrayList<Integer> blackArray = new ArrayList<>();
 
@@ -182,14 +187,11 @@ public class RouletteFXMLController implements Initializable {
     private Pane paneD3;
     @FXML
     private Label betString;
-    
-    
-    
 
     public boolean getIsNumber() {
         return isNumber;
     }
-    
+
     @FXML
     private ImageView placeYourBet;
     @FXML
@@ -197,16 +199,16 @@ public class RouletteFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         numberField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                if (!newValue.matches("\\d{1,7}([\\.]\\d{0,4})?")) {
                     numberField.setText(oldValue);
                 }
             }
         });
-        
+
         betString.textProperty().bind(stringBet);
         //Creating an arrayList which contains all red numbers
         redArray.add(1);
@@ -256,7 +258,6 @@ public class RouletteFXMLController implements Initializable {
 
     }
 
-    
     public void placeBet() {
         System.out.println(betInt);
         wheels.decideResult(betInt);
@@ -266,7 +267,7 @@ public class RouletteFXMLController implements Initializable {
         for (int i : betArray) {
             System.out.println(i);
         }
-        wheels.decideResult(betArray, AI);
+        wheels.decideResult(betArray, AI, betIntFromPlayer);
     }
 
     public void gameEnd() {
@@ -537,6 +538,7 @@ public class RouletteFXMLController implements Initializable {
         isNumber = true;
         stringBet.set("0");
     }
+
     @FXML
     private void clickPane00(MouseEvent event) {
         betInt = 37;
@@ -545,7 +547,6 @@ public class RouletteFXMLController implements Initializable {
     }
 
     //-------------------------------------------------------------------
-
     //Methoden für jede Gruppe von Zahlen auf dem Tisch
     //-------------------------------------------------------------------
     @FXML
@@ -688,18 +689,25 @@ public class RouletteFXMLController implements Initializable {
     //-------------------------------------------------------------------
     @FXML
     private void clickPlaceBet(MouseEvent event) {
-        rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheelFast.gif"));
-        PauseTransition transition = new PauseTransition(Duration.seconds(3));
-        transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
-        transition.play();
+        String betIntFromPlayerString = numberField.getText();
+        betIntFromPlayer = Integer.parseInt(betIntFromPlayerString);
+        checkForZero(betIntFromPlayer);
+        if (isOverZero == true) {
+            rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheelFast.gif"));
+            PauseTransition transition = new PauseTransition(Duration.seconds(3));
+            transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
+            transition.play();
 
-        wheels.generateRandom();
+            wheels.generateRandom();
 
-        if (isNumber == true) {
-            placeBet();
-        } else {
-            placeBetArray(ArrayIdentify);
+            if (isNumber == true) {
+                placeBet();
+            } else {
+
+                placeBetArray(ArrayIdentify);
+            }
         }
+
     }
     //-------------------------------------------------------------------
     private PlayRoulette playRoulette;
@@ -721,10 +729,18 @@ public class RouletteFXMLController implements Initializable {
         stageHelp.setResizable(false);
         stageHelp.show();
     }
-    
-    public StringProperty stringBetProperty(){
+
+    public StringProperty stringBetProperty() {
         return stringBet;
     }
 
-    
+
+    private void checkForZero(int betIntFromPlayer) {
+        if (betIntFromPlayer < 1) {
+            isOverZero = false;
+        } else {
+            isOverZero = true;
+        }
+    }
+
 }

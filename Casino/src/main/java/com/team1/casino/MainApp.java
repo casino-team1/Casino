@@ -7,12 +7,14 @@ import Blackjack.Blackjack;
 import Roulette.Roulette;
 import Yatzy.Yatzy;
 import com.team1.casino.Controller.AuthenticationController;
+import com.team1.casino.Controller.GameStatisticController;
 import com.team1.casino.Controller.LoginController;
 import com.team1.casino.Controller.PlayerStatisticController;
 import com.team1.casino.Controller.RegistrationViewController;
 import com.team1.casino.Controller.StatisticController;
 import com.team1.casino.Model.AuthenticationModel;
 import com.team1.casino.Model.CasinoLoginModel;
+import com.team1.casino.Model.GameStatisticModel;
 import com.team1.casino.Model.PlayerStatisticModel;
 import com.team1.casino.Model.RegistrationModel;
 import com.team1.casino.Model.StatisticModel;
@@ -178,7 +180,7 @@ public class MainApp extends Application {
         }
     }
 
-    public void displayGameStatistic() {
+    public void displayGameStatistic() throws SQLException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameStatisticView.fxml"));
             Parent root;
@@ -187,7 +189,11 @@ public class MainApp extends Application {
             stage.setTitle("Casino Central");
             stage.setScene(scene);
             stage.show();
-
+            GameStatisticController controller = loader.getController();
+            GameStatisticModel gameStatModel = new GameStatisticModel();
+            gameStatModel.loadGameNames();
+            gameStatModel.addObserver(controller);
+            controller.setGameStatistics(gameStatModel);
         } catch (IOException ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }

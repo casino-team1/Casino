@@ -53,16 +53,16 @@ INSERT INTO game(gameName) VALUES("Roulette");
 INSERT INTO game(gameName) VALUES("BlackJack");
 INSERT INTO game(gameName) VALUES("Yatzy");
 
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",-50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
 INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",-50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",100);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
+INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
 
 INSERT INTO balance(balance,lastUpdated) VALUES(0.0,CURDATE());
 INSERT INTO balance(balance,lastUpdated) VALUES(1000.0,CURDATE());
@@ -84,3 +84,8 @@ INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,10,1);
 -- Username == "Muster" -- Password: "1234"
 -- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK
 
+
+
+-- SELECT
+
+SELECT ga.gameName,us.username,stat.bet,stat.result,stat.amount FROM game ga,user us,statistic stat, statistictoplayer stp WHERE stp.user_id = us.id AND stp.game_id = ga.id AND stat.id = stp.statistic_id AND ga.gameName = "Baccara";

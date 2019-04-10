@@ -26,7 +26,7 @@ public class StatisticModel extends Observable {
         this.mainApplication.displayPlayerStatistic();
     }
 
-    public void displayGameStatistic() {
+    public void displayGameStatistic() throws SQLException {
         this.mainApplication.displayGameStatistic();
     }
 

@@ -28,6 +28,22 @@ import javafx.scene.input.MouseEvent;
 public class YatzyFXMLController implements Initializable {
 
     private MainApp mainApplication;
+    @FXML
+    private Label lblwin;
+    @FXML
+    private Label lblresulttxt;
+    @FXML
+    private Label lblresultnum;
+    @FXML
+    private Label lblresulttxt1;
+    @FXML
+    private Label lblresulttotalnum;
+    @FXML
+    private Label lblenemy;
+    @FXML
+    private Label sclblenemy;
+    @FXML
+    private Label lblbetnum;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -769,6 +785,34 @@ public class YatzyFXMLController implements Initializable {
             btnthrowdices.setDisable(false);
             newround = true;
 
+            rules.checkwin(Integer.parseInt(sclbllo9.getText()));
+            switch (rules.getWin()) {
+                case 1:
+                    lblwin.setText("Gewonnen!");
+                    lblresulttxt.setText("Gewonnener Betrag");
+                    lblbetnum.setText(Integer.toString(rules.getBetnum()));
+                    lblresultnum.setText(Integer.toString(rules.getWinamount()));;
+                    lblresulttotalnum.setText(Double.toString(rules.getNewAmount()));
+                    break;
+                case 2:
+                    lblwin.setText("Verloren!");
+                    lblresulttxt.setText("Verlorener Betrag");
+                    lblbetnum.setText(Integer.toString(rules.getBetnum()));
+                    lblresultnum.setText(Integer.toString(rules.getWinamount()));;
+                    lblresulttotalnum.setText(Double.toString(rules.getNewAmount()));
+                    break;
+                case 3:
+                    lblwin.setText("Unentschieden!");
+                    lblresulttxt.setText("");
+                    lblbetnum.setText(Integer.toString(rules.getBetnum()));
+                    lblresultnum.setText(Integer.toString(rules.getWinamount()));;
+                    lblresulttotalnum.setText(Double.toString(rules.getNewAmount()));
+                    break;
+                default:
+                    
+                    break;
+            }
+            
             btnthrowdices.setText("Neues Spiel");
         }
     }

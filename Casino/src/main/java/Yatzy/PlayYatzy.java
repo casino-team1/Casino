@@ -26,7 +26,6 @@ public class PlayYatzy extends Spiel {
     @Override
     public void startGame() {
 
-        int jetons = 1000;
         /*
             UserCentral.getInstance().getPlayer();
          */

@@ -9,16 +9,16 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="607.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="607.0" prefWidth="654.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
    <children>
-      <ImageView fitHeight="635.0" fitWidth="654.0" layoutY="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="623.0" fitWidth="654.0" layoutY="-1.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Yatzy/paperBackground.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="65.0" layoutX="13.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="65.0" layoutX="13.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
-      <ImageView fx:id="ge1" fitHeight="55.0" fitWidth="52.0" layoutX="115.0" layoutY="97.0" onMouseClicked="#pressGe1" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="13.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="13.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
+      <ImageView fx:id="ge1" fitHeight="55.0" fitWidth="52.0" layoutX="115.0" layoutY="85.0" onMouseClicked="#pressGe1" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D1.png" />
          </image>
@@ -26,7 +26,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="ge2" fitHeight="51.0" fitWidth="66.0" layoutX="175.0" layoutY="97.0" onMouseClicked="#pressGe2" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge2" fitHeight="51.0" fitWidth="66.0" layoutX="175.0" layoutY="85.0" onMouseClicked="#pressGe2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D2.png" />
          </image>
@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="ge3" fitHeight="55.0" fitWidth="52.0" layoutX="235.0" layoutY="97.0" onMouseClicked="#pressGe3" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge3" fitHeight="55.0" fitWidth="52.0" layoutX="235.0" layoutY="85.0" onMouseClicked="#pressGe3" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D3.png" />
          </image>
@@ -42,7 +42,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="ge4" fitHeight="51.0" fitWidth="52.0" layoutX="295.0" layoutY="97.0" onMouseClicked="#pressGe4" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge4" fitHeight="51.0" fitWidth="52.0" layoutX="295.0" layoutY="85.0" onMouseClicked="#pressGe4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D4.png" />
          </image>
@@ -50,7 +50,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="ge5" fitHeight="51.0" fitWidth="52.0" layoutX="355.0" layoutY="97.0" onMouseClicked="#pressGe5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge5" fitHeight="51.0" fitWidth="52.0" layoutX="355.0" layoutY="85.0" onMouseClicked="#pressGe5" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/D5.png" />
          </image>
@@ -100,9 +100,12 @@
       </ImageView>
       <Button fx:id="btnthrowdices" layoutX="14.0" layoutY="242.0" mnemonicParsing="false" onAction="#pressthrowdices" prefHeight="122.0" prefWidth="407.0" text="Würfel werfen">
          <font>
-            <Font size="36.0" />
-         </font></Button>
-      <Label layoutX="24.0" layoutY="110.0" text="Gewürfelt:">
+            <Font name="System Bold" size="48.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label layoutX="24.0" layoutY="98.0" text="Gewürfelt:">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -113,7 +116,7 @@
          </font>
       </Label>
       <Button fx:id="btnhelp" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#presshelp" text="?" />
-      <Button fx:id="btnendgame" layoutX="14.0" layoutY="597.0" mnemonicParsing="false" onAction="#pressendgame" text="Spiel Beenden" />
+      <Button fx:id="btnendgame" layoutX="14.0" layoutY="590.0" mnemonicParsing="false" onAction="#pressendgame" text="Spiel Beenden" />
       <Label fx:id="sclblup1" alignment="CENTER" layoutX="604.0" layoutY="53.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
          <font>
             <Font name="Arial Nova" size="12.0" />
@@ -328,12 +331,12 @@
             <Font name="Arial Nova Bold" size="64.0" />
          </font>
       </Label>
-      <Label layoutX="44.0" layoutY="487.0" text="Gesetzter Betrag:">
+      <Label layoutX="44.0" layoutY="487.0" text="Gesamt Kontostand:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblplacednum" layoutX="227.0" layoutY="487.0" text="0">
+      <Label fx:id="lblbetnum" layoutX="227.0" layoutY="487.0" text="0">
          <font>
             <Font size="18.0" />
          </font>
@@ -348,7 +351,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblresulttxt1" layoutX="44.0" layoutY="543.0" text="Gesamt Betrag:">
+      <Label fx:id="lblresulttxt1" layoutX="44.0" layoutY="543.0" text="Neuer Kontostand:">
          <font>
             <Font size="18.0" />
          </font>

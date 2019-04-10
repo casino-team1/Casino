@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Roulette.RouletteHelpFXMLController">
+   <children>
+      <ImageView fitHeight="702.0" fitWidth="1511.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Roulette/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="690.0" layoutX="42.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/rouletteHelpBanner.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label layoutX="68.0" layoutY="179.0" text="Schritt 1:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="68.0" layoutY="221.0" text="Schritt 2:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="223.0" layoutY="179.0" text="Betrag festlegen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="223.0" layoutY="221.0" text="Feld oder Felder auswählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <ImageView fitHeight="290.0" fitWidth="629.0" layoutX="62.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/rouletteFields.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="745.0" layoutY="31.0" text="Oranges Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="745.0" layoutY="101.0" text="Grünes Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="31.0" text="Auf Gruppe klicken, um die Zahlen auszuwählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="101.0" text="Ertrag bei Gewinn: 1:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="101.0" text="Zwischen der untersten Zahl und einer Gruppe">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="131.0" text="klicken, um drei Zahlen auszuwählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="201.0" text="In der Mitte von vier Zahlen klicken, um diese">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="745.0" layoutY="201.0" text="Purpures Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="231.0" text="auszuwählen.">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="161.0" text="Ertrag bei Gewinn: 11:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="261.0" text="Ertrag bei Gewinn: 8:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="745.0" layoutY="301.0" text="Blaues Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="301.0" text="Eine Zahl auswählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="331.0" text="Ertrag bei Gewinn: 35:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="745.0" layoutY="371.0" text="Schwarzes Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="371.0" text="In der Mitte von Zwei Zahlen klicken, um diese">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="401.0" text="auszuwählen.">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="431.0" text="Ertrag bei Gewinn: 17:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="745.0" layoutY="481.0" text="Pinkes Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="481.0" text="Zwischen 1, 0 und Passe klicken, um fünf Zahlen ">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="511.0" text="auszuwählen.">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="68.0" layoutY="588.0" text="Schritt 3:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="223.0" layoutY="588.0" text="Einsatz bestätigen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="745.0" layoutY="591.0" text="Türkises Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="591.0" text="Eine Reihe auswählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="621.0" text="Ertrag bei Gewinn: 2:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="939.0" layoutY="541.0" text="Ertrag bei Gewinn: 6:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+   </children>
+</AnchorPane>

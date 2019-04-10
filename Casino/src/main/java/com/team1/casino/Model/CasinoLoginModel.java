@@ -10,6 +10,7 @@ import com.team1.casino.MainApp;
 import com.team1.casino.User.User;
 import com.team1.casino.User.UserUtil;
 import com.team1.casino.User.Spieler;
+import com.team1.casino.User.UserCentral;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -46,6 +47,7 @@ public class CasinoLoginModel {
         if (currentPlayer.isValidUser() == false) {
             return "Gegebens Passwort ist ungültig.";
         }
+
         return "Valid user";
     }
 
@@ -54,7 +56,16 @@ public class CasinoLoginModel {
     }
 
     public void displayMainMenu() {
-        this.mainApplication.displayMainMenu();
+        if (UserCentral.getInstance().getUser() != null) {
+            System.out.println(UserCentral.getInstance());
+            if (UserCentral.getInstance().getUser().getRole().equals("Admin")) {
+                this.mainApplication.displayStatisticView();
+            } else {
+                this.mainApplication.displayMainMenu();
+            }
+        } else {
+            this.mainApplication.displayMainMenu();
+        }
     }
 
 }

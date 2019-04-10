@@ -7,13 +7,14 @@ package Yatzy;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,14 +30,15 @@ public class YatzyFXMLController implements Initializable {
      * Initializes the controller class.
      */
     private boolean firstthrow = true;
-    private boolean secondthrow = true;
+    private boolean secondthrow = false;
     private boolean lockdices = false;
     private boolean locklabels = true;
-    private ArrayList<String> keeparray = new ArrayList<>();
+    private boolean finish = false;
+    private boolean newround = false;
     private ArrayList<Dice> keep = new ArrayList<>();
     private ArrayList<Dice> gearray = new ArrayList<>();
     private ArrayList<Dice> bearray = new ArrayList<>();
-    private ArrayList<Dice> finalarray = new ArrayList<>();
+    private ArrayList<Dice> finalarray = new ArrayList<>(); 
 
     Cup cup = new Cup(); 
     Images img = new Images();
@@ -159,52 +161,128 @@ public class YatzyFXMLController implements Initializable {
         return finalarray;
     }
 
-    public ArrayList<String> getkeeparray() {
-        return keeparray;
-    }
-
     @FXML
     private void pressthrowdices(ActionEvent event) {
+        
+        //the displayed images get updated
         assignImages();
-        if (firstthrow == true) {
-
+        
+        //if a new game was startet, after the previous one has been finished
+        if(newround == true) {
+            
+            //makes the next throw the first throw
+            newround = false;
+            btnthrowdices.setText("Würfel werfen");
+            
+            //makes the dices unusable
+            lockdices = true;
+            
+            //makes the figure lables unusable
+            locklabels = true;             
+            
+            //reseting everything for a new game
+            keep.clear();
+            gearray.clear();
+            gearray.clear();
+            finalarray.clear();
+            firstthrow = true;
+            secondthrow = false;
+            finish = false;
+            rules.setLowerbool(false);
+            rules.setUpperbool(false);
+            rules.setLowercounter(0);
+            rules.setUppercounter(0);
+            rules.setLowertotal(0);
+            rules.setUppertotal(0);
+            
+            sclblup1.setText("");
+            sclblup2.setText("");
+            sclblup3.setText("");
+            sclblup4.setText("");
+            sclblup5.setText("");
+            sclblup6.setText("");
+            sclblup7.setText("");
+            sclblup8.setText("");
+            sclbllo1.setText("");
+            sclbllo2.setText("");
+            sclbllo3.setText("");
+            sclbllo4.setText("");
+            sclbllo5.setText("");
+            sclbllo6.setText("");
+            sclbllo7.setText("");
+            sclbllo8.setText("");
+            sclbllo9.setText("");
+            
+            //the displayed images get updated
+            assignImages();
+        }  
+        
+        //the first dicethrow
+        else if (firstthrow == true) {
+            
+            //makes the next throw the second throw
             firstthrow = false;
+            secondthrow = true;
             btnthrowdices.setText("Zweiter Wurf");
+            
+            //makes the dices usable
             lockdices = false;
             
+            //generates an array of five dices
             cup.throwDices();
-            gearray.addAll(cup.getDicearray());
-            assignImages();
             
-        } else if (secondthrow == true && firstthrow == false) {
-
+            //attribute for the toprow gets the generated dices
+            gearray.addAll(cup.getDicearray());
+            
+            //the displayed images get updated
+            assignImages();   
+        } 
+        
+        //the second dicethrow
+        else if (secondthrow == true) {
+                
+            //makes the next throw the third throw
             secondthrow = false;
             btnthrowdices.setText("Dritter Wurf");
             
             keep.clear();
             keep.addAll(bearray);
             gearray.clear();
-            cup.setKeep(keep);
+            cup.setKeep(bearray);
             cup.throwDices();
-            gearray.addAll(cup.getDicearray());
-            assignImages();
-            
-        } else {
+            gearray.addAll(cup.getDicearray());           
+            assignImages();  
+        } 
+        
+        //the third dicethrow
+        else {
             
             btnthrowdices.setText("Figur Wählen");
             btnthrowdices.setDisable(true);
+            //makes the dices unusable
             lockdices = true;
+            //makes the figure lables usable
             locklabels = false;
             
             keep.clear();
             keep.addAll(bearray);
             gearray.clear();
-            cup.setKeep(keep);
+            cup.setKeep(bearray);
             cup.throwDices();
             gearray.addAll(cup.getDicearray());
-            gearray.addAll(keep);
-            bearray.clear();           
-            finalarray.addAll(gearray); 
+            gearray.addAll(bearray);
+            bearray.clear();
+            finalarray.clear();
+            finalarray.addAll(gearray);
+            
+            //the final dices get sorted from lowest to highest
+            Collections.sort(gearray, new Comparator<Dice>() {
+            @Override
+            public int compare(Dice dice2, Dice dice1)
+            {
+            return  dice2.getValue() - dice1.getValue();
+            }
+            });  
             assignImages();
         }
 
@@ -690,18 +768,26 @@ public class YatzyFXMLController implements Initializable {
         }
         if(rules.isUpperbool() == true && rules.isLowerbool() == true) {
             sclbllo9.setText(Integer.toString(rules.getTotal()));
+            
+            finish = true;      
         }
         
-        btnthrowdices.setDisable(false);
-        btnthrowdices.setText("Würfel werfen");
-        locklabels = true;
-        keep.clear();
-        gearray.clear();
-        gearray.clear();
-        finalarray.clear();
-        firstthrow = true;
-        secondthrow = true;
-        
+        if(finish == false) {
+            btnthrowdices.setDisable(false);
+            btnthrowdices.setText("Würfel werfen");
+            locklabels = true;
+            keep.clear();
+            gearray.clear();
+            bearray.clear();      
+            firstthrow = true;
+            secondthrow = true;
+        }
+        else {
+            btnthrowdices.setDisable(false);
+            newround = true;  
+            
+            btnthrowdices.setText("Neues Spiel");
+        }
     }
             
     

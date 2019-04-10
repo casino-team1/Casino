@@ -73,7 +73,7 @@ public class Rules {
                 break;
             case "DREI GLEICHE":
                 for(int i = 1; i < 7; i++){
-                    if(dicemap.get(i) == 3) {
+                    if(dicemap.get(i) == 3 || dicemap.get(i) == 4 || dicemap.get(i) == 5) {
                         subresult = i * 3;
                     }
                 } 
@@ -82,7 +82,7 @@ public class Rules {
                 break;
             case "VIER GLEICHE":
                 for(int i = 1; i < 7; i++){
-                    if(dicemap.get(i) == 4) {
+                    if(dicemap.get(i) == 4 || dicemap.get(i) == 5) {
                         subresult = i * 4;                      
                     }
                 } 
@@ -164,6 +164,10 @@ public class Rules {
             total = lowertotal + bonusuppertotal;
         }
     }
+    
+    public void checkwin() {
+        
+    }
 
     public int getUppertotal() {
         return uppertotal;
@@ -188,6 +192,31 @@ public class Rules {
     public int getTotal() {
         return total;
     }
+
+    public void setUppercounter(int uppercounter) {
+        this.uppercounter = uppercounter;
+    }
+
+    public void setLowercounter(int lowercounter) {
+        this.lowercounter = lowercounter;
+    }
+
+    public void setUpperbool(boolean upperbool) {
+        this.upperbool = upperbool;
+    }
+
+    public void setLowerbool(boolean lowerbool) {
+        this.lowerbool = lowerbool;
+    }
+
+    public void setUppertotal(int uppertotal) {
+        this.uppertotal = uppertotal;
+    }
+
+    public void setLowertotal(int lowertotal) {
+        this.lowertotal = lowertotal;
+    }
+    
     
     
     

@@ -25,6 +25,11 @@ public class PlayYatzy extends Spiel {
 
     @Override
     public void startGame() {
+        
+        int jetons = 1000;
+        /*
+            UserCentral.getInstance().getPlayer();
+        */
         try {
             Stage stage = super.getMainApp().getStage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/YatzyFXML.fxml"));
@@ -38,8 +43,7 @@ public class PlayYatzy extends Spiel {
             menu.setYatzy(this);
         } catch (IOException e) {
 
-        }
-
+        }  
     }
-
+    
 }

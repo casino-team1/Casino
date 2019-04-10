@@ -5,6 +5,7 @@
  */
 package Yatzy;
 
+import com.team1.casino.User.UserCentral;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,15 +15,20 @@ import java.util.HashMap;
  */
 public class Rules {
 
-    private int subresult = 0;
-    private int total = 0;
-    private int uppertotal = 0;
-    private int lowertotal = 0;
+    private int subresult;
+    private int total;
+    private int uppertotal;
+    private int lowertotal;
     private int uppercounter = 0;
-    private int bonusuppertotal = 0;
+    private int bonusuppertotal;
     private int lowercounter = 0;
+    private int betnum = 0;
+    private int win;
+    private int winamount;
+    private double newamount;
     private boolean upperbool = false;
     private boolean lowerbool = false;
+    
 
     
     public int createSubresult(String label, ArrayList<Dice> dicearray) {
@@ -165,8 +171,25 @@ public class Rules {
         }
     }
     
-    public void checkwin() {
-        
+    public void checkwin(int enemytotal) {
+        if(total > enemytotal) {
+            win = 1;
+            winamount = betnum + betnum;
+            //newamount = UserCentral.getInstance().getUser().getCurrentBalance() + winamount;
+            //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
+        }
+        else if(total < enemytotal) {
+            win = 2;
+            winamount = (-1) * betnum;
+            //newamount = UserCentral.getInstance().getUser().getCurrentBalance() - winamount;
+            //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
+        }
+        else {
+            win = 3;
+            winamount = betnum;
+            //newamount = UserCentral.getInstance().getUser().getCurrentBalance() + winamount;
+            //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
+        }
     }
 
     public int getUppertotal() {
@@ -216,6 +239,27 @@ public class Rules {
     public void setLowertotal(int lowertotal) {
         this.lowertotal = lowertotal;
     }
+
+    public int getBetnum() {
+        return betnum;
+    }
+    
+    public void setBetnum(int betnum) {
+        this.betnum = betnum;
+    }
+
+    public int getWin() {
+        return win;
+    }
+
+    public int getWinamount() {
+        return winamount;
+    }
+
+    public double getNewAmount() {
+        return newamount;
+    }
+    
     
     
     

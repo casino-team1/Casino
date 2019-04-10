@@ -21,95 +21,199 @@ public class BlackJackGameModel {
     private BlackJackSpielerModel spieler = new BlackJackSpielerModel();
     private BlackJackDealerModel dealer = new BlackJackDealerModel();
 
-    private Karten k = new Karten();
-
     private ArrayList<String> kartenSpieler = new ArrayList<>();
     private int kartenWertSpieler = 0;
-
-    private int einsatz = 0;
-
-    private int anzahlKartenImKartendeck = 52;
 
     private ArrayList<String> kartenDealer = new ArrayList<>();
     private int kartenWertDealer = 0;
     private int karteZweiWert = 0;
+    private int anzahlKartenInKartenSymbole = 51;
 
     private boolean unentschieden = false;
 
     private String zufallskarte = "";
     private int zufallszahl = 0;
 
-    private HashMap<String, Integer> karten = k.getKarten();
-    private ArrayList<String> kartenSymbole = k.getKartenSymbole();
+    private Karten k = new Karten();
+    private HashMap<String, Integer> karten = new HashMap<>();
+    private ArrayList<String> kartenSymbole = new ArrayList<>();
 
     private Random r = new Random();
 
-    public void play(Label labelKartenSpieler, Label labelKartenDealer) {
+    public void play(Label labelKartenSpieler, Label labelKartenDealer, Button buttonHit, Button buttonStand, Label labelLösung) {
         //Vorbereitung
+        k.kartenErstellen();
+
         spieler.setGewonnen(false);
         dealer.setGewonnen(false);
+        unentschieden = false;
+        zufallskarte = "";
+        zufallszahl = 0;
+        k.setAnzahlKartenImKartenDeck(52);
+        k.setAnzahlKartenInKartenSymbole(51);
+        kartenWertSpieler = 0;
+        kartenWertDealer = 0;
+        karteZweiWert = 0;
         kartenSpieler.clear();
         kartenDealer.clear();
+        karten.clear();
+        kartenSymbole.clear();
+        karten.putAll(k.getKarten());
+        kartenSymbole.addAll(k.getKartenSymbole());
 
-        dealer.austeilen(karten, kartenSymbole, anzahlKartenImKartendeck, kartenWertSpieler, kartenWertDealer, karteZweiWert, kartenSpieler, kartenDealer, labelKartenSpieler, labelKartenDealer);
-    }
+        //Karten mischen
+        Collections.shuffle(kartenSymbole);
 
-    public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Label labelKartenDealer, Label labelKartenSpieler) {
-        spieler.hit(anzahlKartenImKartendeck, kartenWertSpieler, kartenSpieler, kartenSymbole, karten, labelKartenSpieler);
+        //Zufallskarten verteilen an Spieler
+        for (int i = 0; i < 2; i++) {
+            zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+            zufallskarte = kartenSymbole.get(zufallszahl);
+
+            if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+                kartenWertSpieler += 10;
+            } else if (zufallskarte.contains("A")) {
+                kartenWertSpieler += 11;
+            } else {
+                kartenWertSpieler += karten.get(zufallskarte);
+            }
+            kartenSpieler.add(zufallskarte);
+            karten.remove(zufallskarte);
+            kartenSymbole.remove(zufallskarte);
+            k.subAnzahlKartenImKartenDeck();
+            k.subAnzahlKartenInKartenSymbole();
+            labelKartenSpieler.setText(labelKartenSpieler.getText() + " , " + zufallskarte);
+        }
+
+        //Erste Karte an Dealer verteilen
+        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+        zufallskarte = kartenSymbole.get(zufallszahl);
+
+        if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+            kartenWertDealer += 10;
+        } else if (zufallskarte.contains("A")) {
+            kartenWertDealer += 11;
+        } else {
+            kartenWertDealer += karten.get(zufallskarte);
+        }
+        kartenDealer.add(zufallskarte);
+        karten.remove(zufallskarte);
+        kartenSymbole.remove(zufallskarte);
+        k.subAnzahlKartenImKartenDeck();
+        k.subAnzahlKartenInKartenSymbole();
+        labelKartenDealer.setText(zufallskarte + " + ?");
+
+        //Zweite unbekannte Karte an Dealer verteilen
+        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+        zufallskarte = kartenSymbole.get(zufallszahl);
+
+        if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+            karteZweiWert += 10;
+        } else if (zufallskarte.contains("A")) {
+            karteZweiWert += 11;
+        } else {
+            karteZweiWert += karten.get(zufallskarte);
+        }
+        kartenDealer.add(zufallskarte);
+        karten.remove(zufallskarte);
+        kartenSymbole.remove(zufallskarte);
+        k.subAnzahlKartenImKartenDeck();
+        k.subAnzahlKartenInKartenSymbole();
 
         //Überprüfung, ob 21 überschritten wurde
         if (kartenWertSpieler > 21) {
             dealer.setGewonnen(true);
+            end(buttonHit, buttonStand, labelLösung);
         }
-
-        //Hat jemand gewonnen?
-        if (spieler.hasGewonnen()) {
-            labelLösung.setText("SPIELER HAT GEWONNEN!!");
-            buttonHit.setDisable(true);
-            buttonStand.setDisable(true);
-        }
-        if (dealer.hasGewonnen()) {
-            labelLösung.setText("DEALER HAT GEWONNEN!!");
-            buttonHit.setDisable(true);
-            buttonStand.setDisable(true);
-        }
-
     }
 
-    public void dealerRound(Label labelLösung, Label labelKartenDealer, Button buttonHit, Button buttonStand) {
-        //Zweiter Wert von Karte mitberechnen
-        kartenWertDealer += karteZweiWert;
-
+    public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Label labelKartenDealer, Label labelKartenSpieler) {
         //Hat es genügend Karten?
-        if (anzahlKartenImKartendeck < 1) {
+        if (k.getAnzahlKartenImKartenDeck() < 1) {
             this.karten = k.getKarten();
         }
 
-        //Karte/n ziehen
-        dealer.hit(anzahlKartenImKartendeck, kartenWertDealer, kartenDealer, kartenSymbole, karten);
+        //Spieler zieht Karten
+        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+        zufallskarte = kartenSymbole.get(zufallszahl);
+
+        if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+            kartenWertSpieler += 10;
+        } else if (zufallskarte.contains("A")) {
+            kartenWertSpieler += 11;
+        } else {
+            kartenWertSpieler += karten.get(zufallskarte);
+        }
+        kartenSpieler.add(zufallskarte);
+        karten.remove(zufallskarte);
+        kartenSymbole.remove(zufallskarte);
+        k.subAnzahlKartenImKartenDeck();
+        k.subAnzahlKartenInKartenSymbole();
+        labelKartenSpieler.setText(labelKartenSpieler.getText() + " , " + zufallskarte);
+
+        //Überprüfung, ob 21 überschritten wurde
+        if (kartenWertSpieler > 21) {
+            dealer.setGewonnen(true);
+            end(buttonHit, buttonStand, labelLösung);
+        }
+    }
+
+    public void dealerHit(Label labelLösung, Button buttonHit, Button buttonStand) {
+        //Zweiter Wert von Karte mitberechnen
+        kartenWertDealer += karteZweiWert;
+
+        //Wenn Dealer unter 17 hat, muss er ziehen
+        if (kartenWertDealer < 17) {
+            while (kartenWertDealer < 17) {
+                zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+                zufallskarte = kartenSymbole.get(zufallszahl);
+                if (karten.containsKey(zufallskarte)) {
+                    if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+                        kartenWertDealer += 10;
+                    } else if (zufallskarte.contains("A")) {
+                        kartenWertDealer += 11;
+                    } else {
+                        kartenWertDealer += karten.get(zufallskarte);
+                    }
+                    kartenDealer.add(zufallskarte);
+                    karten.remove(zufallskarte);
+                    kartenSymbole.remove(zufallskarte);
+                    k.subAnzahlKartenImKartenDeck();
+                    k.subAnzahlKartenInKartenSymbole();
+                } else {
+                    kartenWertDealer -= karteZweiWert;
+                    dealerHit(labelLösung, buttonHit, buttonStand);
+                }
+            }
+        }
+    }
+
+    public void dealerRound(Label labelLösung, Label labelKartenDealer, Button buttonHit, Button buttonStand) {
+        dealerHit(labelLösung, buttonHit, buttonStand);
 
         //Anzeige leeren
         labelKartenDealer.setText("");
 
         //Alle Karten vom Dealer anzeigen
         for (String s : kartenDealer) {
-            labelKartenDealer.setText(labelKartenDealer.getText() + "," + s);
+            labelKartenDealer.setText(labelKartenDealer.getText() + " , " + s);
         }
 
-        //Anzeigen der Karten
+        //Werte überprüfen
         if (kartenWertDealer > 21) {
             spieler.setGewonnen(true);
-        }
-        if (kartenWertDealer > kartenWertSpieler) {
+        } else if (kartenWertDealer > kartenWertSpieler) {
             dealer.setGewonnen(true);
-        }
-        if (kartenWertDealer == kartenWertSpieler) {
+        } else if (kartenWertDealer == kartenWertSpieler) {
             unentschieden = true;
-        }
-        if (kartenWertDealer < kartenWertSpieler) {
+        } else if (kartenWertDealer < kartenWertSpieler) {
             spieler.setGewonnen(true);
+        } else {
         }
 
+        end(buttonHit, buttonStand, labelLösung);
+    }
+
+    public void end(Button buttonHit, Button buttonStand, Label labelLösung) {
         //Hat jemand gewonnen?
         if (spieler.hasGewonnen()) {
             labelLösung.setText("SPIELER HAT GEWONNEN!!");

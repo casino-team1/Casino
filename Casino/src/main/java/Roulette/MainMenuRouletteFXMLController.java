@@ -25,6 +25,9 @@ import javafx.util.Duration;
 public class MainMenuRouletteFXMLController implements Initializable {
 
     private Roulette play;
+    
+    
+    
     @FXML
     private ImageView rouletteLogo;
 
@@ -62,6 +65,7 @@ public class MainMenuRouletteFXMLController implements Initializable {
 
     @FXML
     private void endGame(ActionEvent event) {
+        
     }
 
 }

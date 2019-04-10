@@ -32,9 +32,8 @@ import javafx.stage.Stage;
  * @author albio
  */
 public class BlackJackFXMLController implements Initializable {
-
     BlackJackGameModel game = new BlackJackGameModel();
-
+    
     private int einsatz;
 
     @FXML
@@ -69,7 +68,7 @@ public class BlackJackFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    
     @FXML
     private void stand(ActionEvent event) {
         buttonHit.setDisable(true);
@@ -88,9 +87,8 @@ public class BlackJackFXMLController implements Initializable {
         labelKartenSpieler.setText("");
         labelKartenDealer.setText("");
         labelLösung.setText("");
-        labelEinsatzFehler.setText("");
-        
-        game.play(labelKartenSpieler, labelKartenDealer);
+        labelEinsatzFehler.setText("");      
+        game.play(labelKartenSpieler, labelKartenDealer, buttonHit, buttonStand, labelLösung);
         buttonStart.setDisable(true);
         buttonHit.setDisable(false);
         buttonStand.setDisable(false);

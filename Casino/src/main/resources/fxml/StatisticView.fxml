@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="547.0" prefWidth="702.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.team1.casino.Controller.StatisticController">
+   <children>
+      <Button fx:id="playerStat" layoutX="119.0" layoutY="213.0" mnemonicParsing="false" onAction="#displayPlayerStat" prefHeight="74.0" prefWidth="153.0" text="Player" />
+      <Button fx:id="gameStat" layoutX="430.0" layoutY="213.0" mnemonicParsing="false" onAction="#displayGameStat" prefHeight="74.0" prefWidth="140.0" text="Game" />
+   </children>
+</AnchorPane>

@@ -58,14 +58,12 @@ public abstract class User {
 
     public boolean isValidUser() {
         boolean isValid = new UserUtil().isValidUser(this);
-        System.out.println(isValid);
         this.validated = isValid;
         if (isValid == true) {
             UserUtil util = new UserUtil();
             this.role = util.getUserRoleByUsername(this.username);
             this.ID = util.getIDFromUserByUsername(username);
-            System.out.println(role);
-            System.out.println(ID);
+            UserCentral.getInstance().setUser(this);
         }
         return isValid;
     }

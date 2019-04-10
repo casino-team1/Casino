@@ -24,8 +24,6 @@ public class Spieler extends User {
         String username = super.getUsername();
         String password = UserUtil.getHashedPassword(super.getPassword());
         String email = super.getEmailAdress();
-        System.out.println(password);
-        System.out.println(email);
         new Thread(new Runnable() {
             @Override
             public void run() {

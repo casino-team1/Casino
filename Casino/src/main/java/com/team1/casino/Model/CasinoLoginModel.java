@@ -68,4 +68,8 @@ public class CasinoLoginModel {
         }
     }
 
+    public void forgotPassword() {
+
+    }
+
 }

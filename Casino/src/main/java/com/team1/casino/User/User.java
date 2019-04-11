@@ -35,6 +35,8 @@ public abstract class User {
         return ID;
     }
 
+    public abstract void addStat(String gameName, double bet, String result, double amount);
+
     public String getRole() {
         return role;
     }

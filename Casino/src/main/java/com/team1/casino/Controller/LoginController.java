@@ -59,8 +59,6 @@ public class LoginController implements Initializable {
 
             this.loginModel.displayMainMenu();
         } else {
-            this.errorMEssage.setText(result);
-            this.errorMEssage.setVisible(true);
         }
     }
 

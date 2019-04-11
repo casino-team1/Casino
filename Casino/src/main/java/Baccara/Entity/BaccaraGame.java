@@ -55,7 +55,7 @@ public class BaccaraGame {
     private ArrayList<BaccaraCard> playerCards = new ArrayList<>();
 
     public int getPlayerBet() {
-        return playerBet;
+        return 100;
     }
 
     public int getDealerBet() {

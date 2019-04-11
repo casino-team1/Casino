@@ -6,6 +6,7 @@
  */
 package com.team1.casino.database;
 
+import com.team1.casino.User.UserCentral;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -76,6 +77,26 @@ public class Updater {
                     int updates = statement.getUpdateCount();
                 } catch (SQLException ex) {
                     Logger.getLogger(Updater.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        thread.start();
+    }
+
+    public void writeStatisticToDatabase(String gameName, double bet, String result, double amount) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
+                    int userID = UserCentral.getInstance().getUser().getID();
+                    int gameID = Integer.parseInt(query.runQueryWithReturn("SELECT id FROM game WHERE gameName = ?", gameName).get(0));
+                    String parameters = String.valueOf(amount);
+                    int statID = query.runQueryGetAddedID("INSERT INTO statistic(game_id,bet,result,amount) VALUES(?,?,?,?)", String.valueOf(gameID) + ";" + String.valueOf(bet) + ";" + result + ";" + parameters);
+                    query.runQueryWithoutReturn("INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(?,?,?)", String.valueOf(userID) + ";-" + String.valueOf(statID)
+                            + ";-" + String.valueOf(gameID));
+                } catch (NumberFormatException | SQLException e) {
+                    e.printStackTrace();
                 }
             }
         });

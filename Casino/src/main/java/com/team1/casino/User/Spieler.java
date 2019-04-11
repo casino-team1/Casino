@@ -34,7 +34,7 @@ public class Spieler extends User {
             @Override
             public void run() {
                 DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-                int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(balance,lastUpdated) VALUES(?,CURDATE())", "1000.0");
+                int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(balance,lastUpdated) VALUES(5000.0,CURDATE())", "");
                 System.out.println(balanceIndex);
                 query.runQueryWithoutReturn("INSERT INTO user(username,password,role,balance_id,email) VALUES(?,?,?,?,?)", username + ";-" + password + ";-" + "Player" + ";-" + String.valueOf(balanceIndex) + ";-"
                         + email
@@ -49,10 +49,17 @@ public class Spieler extends User {
         super.setCurrentBalance(currentBalance);
         if (MainApp.executionMode != ExecutionMode.DEVELOPMENT) {
             try {
-                new Updater().performUpdateWithArgument("UPDATE balance b, user u SET b.balance = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(super.getCurrentBalance()) + ";" + String.valueOf(super.getID()));
+                Updater updated = new Updater();
+                updated.performUpdateWithArgument("UPDATE balance b, user u SET b.balance = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(super.getCurrentBalance()) + ";" + String.valueOf(super.getID()));
             } catch (SQLException ex) {
                 Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    @Override
+    public void addStat(String gameName, double bet, String result, double amount) {
+        Updater updated = new Updater();
+        updated.writeStatisticToDatabase(gameName, bet, result, amount);
     }
 }

@@ -131,8 +131,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
                 playerView[i].setImage(new Image(String.format(format, playerCards.get(i).getImageLocation())));
                 dealerView[i].setImage(new Image(String.format(format, dealerCard.get(i).getImageLocation())));
             } catch (Exception e) {
-                System.out.println(playerCards.get(i).getImageLocation());
-                System.out.println(dealerCard.get(i).getImageLocation());
             }
         }
         setCardCount();
@@ -144,11 +142,15 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private void checkForNewCards(String linkFormat) {
         ArrayList<BaccaraCard> playerCards = this.gameModel.getPlayerCards();
         ArrayList<BaccaraCard> dealerCards = this.gameModel.getDealerCards();
-        if (playerCards.size() == 3) {
-            this.thirdLeftCard.setImage(new Image(String.format(linkFormat, playerCards.get(2).getImageLocation())));
-        }
-        if (dealerCards.size() == 3) {
-            this.thirdRightImage.setImage(new Image(String.format(linkFormat, dealerCards.get(2).getImageLocation())));
+        try {
+            if (playerCards.size() == 3) {
+                this.thirdLeftCard.setImage(new Image(String.format(linkFormat, playerCards.get(2).getImageLocation())));
+            }
+            if (dealerCards.size() == 3) {
+                this.thirdRightImage.setImage(new Image(String.format(linkFormat, dealerCards.get(2).getImageLocation())));
+            }
+        } catch (Exception e) {
+
         }
         setCardCount();
     }

@@ -36,8 +36,6 @@ public class BlackJackGameModel {
     private String zufallskarte = "";
     private int zufallszahl = 0;
 
-    private static int assSpieler = 11;
-
     private Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
@@ -123,29 +121,14 @@ public class BlackJackGameModel {
         k.subAnzahlKartenImKartenDeck();
         k.subAnzahlKartenInKartenSymbole();
 
-        //A entweder 1 oder 11 gelten lassen
-        if (kartenSpieler.contains("A♥") || kartenSpieler.contains("A♦") || kartenSpieler.contains("A♣") || kartenSpieler.contains("A♠")) {
-            String[] buttons = {"als 1", "als 11"};
-            int assWahl = JOptionPane.showOptionDialog(null,
-                    "Wie soll Ihr Ass bewertet werden?",
-                    "ASS",
-                    0, JOptionPane.PLAIN_MESSAGE, null, buttons, buttons[1]);
-
-            if (assWahl == 0) {
-                assSpieler = 1;
-            } else if (assWahl == 1) {
-                assSpieler = 11;
-            } else {
-                System.exit(0);
-            }
-
-            setAssSpieler();
-        }
-
         //Überprüfung, ob 21 überschritten wurde
         if (kartenWertSpieler > 21) {
-            dealer.setGewonnen(true);
-            end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+            if(kartenSpieler.contains("A♥") || kartenSpieler.contains("A♦") || kartenSpieler.contains("A♣") || kartenSpieler.contains("A♠")){
+                kartenWertSpieler -= 10;
+            }else{
+                dealer.setGewonnen(true);
+                end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+            } 
         }
 
         if (kartenWertSpieler == 21) {
@@ -159,6 +142,7 @@ public class BlackJackGameModel {
 
         if (kartenWertDealer == 11) {
             buttonVersichern.setDisable(false);
+            textfeldVersicherung.setDisable(false);          
         }
     }
 
@@ -175,7 +159,7 @@ public class BlackJackGameModel {
         if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
             kartenWertSpieler += 10;
         } else if (zufallskarte.contains("A")) {
-            kartenWertSpieler += assSpieler;
+            kartenWertSpieler += 11;
         } else {
             kartenWertSpieler += karten.get(zufallskarte);
         }
@@ -188,7 +172,16 @@ public class BlackJackGameModel {
 
         //Überprüfung, ob 21 überschritten wurde
         if (kartenWertSpieler > 21) {
+            if(zufallskarte.contains("A")){
+                kartenWertSpieler -= 10;
+            }
             dealer.setGewonnen(true);
+            end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+        }
+        
+        //Überprüfung, ob 21 erreicht wurde wurde
+        if (kartenWertSpieler == 21) {
+            spieler.setGewonnen(true);
             end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
         }
     }
@@ -300,64 +293,5 @@ public class BlackJackGameModel {
         textfeldVersicherung.setDisable(true);
         buttonPrüfung.setDisable(false);
         textfeldEinsatz.setDisable(false);
-    }
-
-    public void setAssSpieler() {
-        //wert im Deck anpassen
-        if (karten.containsKey("A♥")) {
-            karten.remove("A♥");
-            karten.put("A♥", assSpieler);
-        }
-        if (karten.containsKey("A♦")) {
-            karten.remove("A♦");
-            karten.put("A♦", assSpieler);
-        }
-        if (karten.containsKey("A♣")) {
-            karten.remove("A♣");
-            karten.put("A♣", assSpieler);
-        }
-        if (karten.containsKey("A♠")) {
-            karten.remove("A♠");
-            karten.put("A♠", assSpieler);
-        }
-
-        kartenWertSpieler = 0;
-
-        //wert bei Spielerkarten anpassen
-        for (String s : kartenSpieler) {
-            if (s.contains("10") ||s.contains("J") || s.contains("Q") || s.contains("K")) {
-                kartenWertSpieler += 10;
-            }
-            if (s.contains("A")) {
-                kartenWertSpieler += assSpieler;
-            }
-            if (s.contains("1")) {
-                kartenWertSpieler += 1;
-            }
-            if (s.contains("2")) {
-                kartenWertSpieler += 2;
-            }
-            if (s.contains("3")) {
-                kartenWertSpieler += 3;
-            }
-            if (s.contains("4")) {
-                kartenWertSpieler += 4;
-            }
-            if (s.contains("5")) {
-                kartenWertSpieler += 5;
-            }
-            if (s.contains("6")) {
-                kartenWertSpieler += 6;
-            }
-            if (s.contains("7")) {
-                kartenWertSpieler += 7;
-            }
-            if (s.contains("8")) {
-                kartenWertSpieler += 8;
-            }
-            if (s.contains("9")) {
-                kartenWertSpieler += 9;
-            }
-        }
     }
 }

@@ -113,4 +113,6 @@ public abstract class User {
         this.ID = util.getIDFromUserByUsername(username);
     }
 
+    public abstract void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount);
+
 }

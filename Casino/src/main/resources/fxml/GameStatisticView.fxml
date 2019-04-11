@@ -3,6 +3,7 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -29,5 +30,7 @@
       </LineChart>
       <Text layoutX="86.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GameName" />
       <ComboBox fx:id="gameNames" layoutX="47.0" layoutY="83.0" onAction="#selectionChanged" prefWidth="150.0" />
+      <ComboBox fx:id="statCounter" layoutX="47.0" layoutY="126.0" onAction="#selectedStatCount" prefWidth="150.0" />
+      <Button fx:id="back" layoutX="781.0" layoutY="49.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Go back" />
    </children>
 </AnchorPane>

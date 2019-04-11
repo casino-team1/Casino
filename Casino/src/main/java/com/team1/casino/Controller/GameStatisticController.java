@@ -22,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -49,6 +50,10 @@ public class GameStatisticController implements Initializable, Observer {
     private TableColumn<Stat, String> resultCol;
     @FXML
     private TableColumn<Stat, String> changeCol;
+    @FXML
+    private ComboBox<Integer> statCounter;
+    @FXML
+    private Button back;
 
     public void setGameStatistics(GameStatisticModel model) throws SQLException {
         this.model = model;
@@ -70,6 +75,10 @@ public class GameStatisticController implements Initializable, Observer {
                 }
             }
         });
+        this.statCounter.getItems().add(10);
+        this.statCounter.getItems().add(20);
+        this.statCounter.getItems().add(50);
+        this.statCounter.getItems().add(100);
         resultCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
@@ -106,24 +115,48 @@ public class GameStatisticController implements Initializable, Observer {
     public void update(Observable o, Object arg) {
         GameStatisticModel gameModel = (GameStatisticModel) o;
         this.gameStatTable.getItems().clear();
+        int maxNumberOfEntries = -1;
+        if (this.statCounter.getSelectionModel().getSelectedItem() != null) {
+            maxNumberOfEntries = this.statCounter.getSelectionModel().getSelectedItem();
+        }
         for (Stat stat : gameModel.getGameStats()) {
+            if (maxNumberOfEntries != -1 && this.gameStatTable.getItems().size() >= maxNumberOfEntries) {
+                break;
+            }
             this.gameStatTable.getItems().add(stat);
         }
+
         ArrayList<Double> gameProfit = model.getGameProfits();
+
         XYChart.Series<String, Double> series = new XYChart.Series<>();
         int counter = 0;
         this.gameProfit.getData().clear();
         for (double value : gameProfit) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(counter + 20), value));
+            if (series.getData().size() >= maxNumberOfEntries && maxNumberOfEntries != -1) {
+                break;
+            }
+            series.getData().add(new XYChart.Data<>(String.valueOf(counter + 1), value));
             counter++;
         }
         this.gameProfit.getData().add(series);
+        this.gameProfit.setCreateSymbols(false);
     }
 
     @FXML
     private void selectionChanged(ActionEvent event) throws SQLException {
         this.model.setSelectedGame(this.gameNames.getSelectionModel().getSelectedItem());
         this.model.loadGameStats();
+    }
+
+    @FXML
+    private void selectedStatCount(ActionEvent event) throws SQLException {
+        this.model.setSelectedGame(this.gameNames.getSelectionModel().getSelectedItem());
+        this.model.loadGameStats();
+    }
+
+    @FXML
+    private void goBackToMenu(ActionEvent event) {
+        this.model.goBackToMenu();
     }
 
 }

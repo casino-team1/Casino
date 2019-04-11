@@ -20,11 +20,11 @@ import java.util.logging.Logger;
  * @author Nick Flückiger
  */
 public class Spieler extends User {
-
+    
     public Spieler(String username, String password) {
         super(username, password);
     }
-
+    
     @Override
     public void writeUserToDatabase() {
         String username = super.getUsername();
@@ -43,7 +43,7 @@ public class Spieler extends User {
             }
         }).start();
     }
-
+    
     @Override
     public void setCurrentBalance(double currentBalance) {
         super.setCurrentBalance(currentBalance);
@@ -56,10 +56,16 @@ public class Spieler extends User {
             }
         }
     }
-
+    
     @Override
     public void addStat(String gameName, double bet, String result, double amount) {
         Updater updated = new Updater();
         updated.writeStatisticToDatabase(gameName, bet, result, amount);
+    }
+    
+    @Override
+    public void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount) {
+        this.setCurrentBalance(newBalance);
+        this.addStat(gameName, bet, result, amount);
     }
 }

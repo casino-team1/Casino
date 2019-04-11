@@ -22,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -50,6 +51,8 @@ public class PlayerStatisticController implements Initializable, Observer {
     private TableColumn<Stat, String> ResCol;
     @FXML
     private TableColumn<Stat, String> ChangeCol;
+    @FXML
+    private Button back;
 
     public void setPlayerStatisticModel(PlayerStatisticModel model) {
         this.model = model;
@@ -128,6 +131,11 @@ public class PlayerStatisticController implements Initializable, Observer {
     private void selectionChanged(ActionEvent event) throws SQLException {
         this.model.setSelectePlayer(this.nutzernamen.getValue());
         this.model.displayStatsForSelectedPlayer();
+    }
+
+    @FXML
+    private void goBackToMenu(ActionEvent event) {
+        this.model.backToMenu();
     }
 
 }

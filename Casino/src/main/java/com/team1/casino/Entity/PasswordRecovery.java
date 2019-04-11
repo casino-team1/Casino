@@ -43,8 +43,11 @@ public class PasswordRecovery {
 
     private String randomPassword(int length) {
         String newPasswordstring = "";
+        while (newPasswordstring.length() < length - 3) {
+            newPasswordstring += "" + String.valueOf((char) (97 + new Random().nextInt(26)));
+        }
         while (newPasswordstring.length() < length) {
-            newPasswordstring += "" + String.valueOf(((char) 97 + new Random().nextInt(26)));
+            newPasswordstring += String.valueOf(new Random().nextInt(100));
         }
         return newPasswordstring;
     }

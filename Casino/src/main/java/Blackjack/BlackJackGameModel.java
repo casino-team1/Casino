@@ -36,8 +36,6 @@ public class BlackJackGameModel {
     private String zufallskarte = "";
     private int zufallszahl = 0;
 
-    private static int assSpieler = 11;
-
     private Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
@@ -51,13 +49,11 @@ public class BlackJackGameModel {
         spieler.setGewonnen(false);
         dealer.setGewonnen(false);
         unentschieden = false;
-        zufallskarte = "";
-        zufallszahl = 0;
         k.setAnzahlKartenImKartenDeck(52);
         k.setAnzahlKartenInKartenSymbole(51);
-        kartenWertSpieler = 0;
-        kartenWertDealer = 0;
-        karteZweiWert = 0;
+        spieler.setKartenWertSpieler(0);
+        dealer.setKartenWertDealer(0);
+        dealer.setKarteZweiWert(0);
         kartenSpieler.clear();
         kartenDealer.clear();
         karten.clear();
@@ -68,127 +64,54 @@ public class BlackJackGameModel {
         //Karten mischen
         Collections.shuffle(kartenSymbole);
 
-        //Zufallskarten verteilen an Spieler
-        for (int i = 0; i < 2; i++) {
-            zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
-            zufallskarte = kartenSymbole.get(zufallszahl);
+        //2 Zufallskarten verteilen an Spieler
+        spieler.hit(karten, kartenSymbole, kartenSpieler, labelKartenSpieler);
+        spieler.hit(karten, kartenSymbole, kartenSpieler, labelKartenSpieler);
 
-            if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
-                kartenWertSpieler += 10;
-            } else if (zufallskarte.contains("A")) {
-                kartenWertSpieler += 11;
-            } else {
-                kartenWertSpieler += karten.get(zufallskarte);
-            }
-            kartenSpieler.add(zufallskarte);
-            karten.remove(zufallskarte);
-            kartenSymbole.remove(zufallskarte);
-            k.subAnzahlKartenImKartenDeck();
-            k.subAnzahlKartenInKartenSymbole();
-            labelKartenSpieler.setText(labelKartenSpieler.getText() + " , " + zufallskarte);
-        }
-
-        //Erste Karte an Dealer verteilen
-        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
-        zufallskarte = kartenSymbole.get(zufallszahl);
-
-        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
-            kartenWertDealer += 10;
-        } else if (zufallskarte.contains("A")) {
-            kartenWertDealer += 11;
-        } else {
-            kartenWertDealer += karten.get(zufallskarte);
-        }
-        kartenDealer.add(zufallskarte);
-        karten.remove(zufallskarte);
-        kartenSymbole.remove(zufallskarte);
-        k.subAnzahlKartenImKartenDeck();
-        k.subAnzahlKartenInKartenSymbole();
-        labelKartenDealer.setText(zufallskarte + " + ?");
-
-        //Zweite unbekannte Karte an Dealer verteilen
-        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
-        zufallskarte = kartenSymbole.get(zufallszahl);
-
-        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
-            karteZweiWert += 10;
-        } else if (zufallskarte.contains("A")) {
-            karteZweiWert += 11;
-        } else {
-            karteZweiWert += karten.get(zufallskarte);
-        }
-        kartenDealer.add(zufallskarte);
-        karten.remove(zufallskarte);
-        kartenSymbole.remove(zufallskarte);
-        k.subAnzahlKartenImKartenDeck();
-        k.subAnzahlKartenInKartenSymbole();
-
-        //A entweder 1 oder 11 gelten lassen
-        if (kartenSpieler.contains("A♥") || kartenSpieler.contains("A♦") || kartenSpieler.contains("A♣") || kartenSpieler.contains("A♠")) {
-            String[] buttons = {"als 1", "als 11"};
-            int assWahl = JOptionPane.showOptionDialog(null,
-                    "Wie soll Ihr Ass bewertet werden?",
-                    "ASS",
-                    0, JOptionPane.PLAIN_MESSAGE, null, buttons, buttons[1]);
-
-            if (assWahl == 0) {
-                assSpieler = 1;
-            } else if (assWahl == 1) {
-                assSpieler = 11;
-            } else {
-                System.exit(0);
-            }
-
-            setAssSpieler();
-        }
+        //Dealer zieht Karten
+        dealer.hit(karten, kartenSymbole, kartenDealer, labelKartenDealer);
 
         //Überprüfung, ob 21 überschritten wurde
-        if (kartenWertSpieler > 21) {
-            dealer.setGewonnen(true);
-            end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+        if (spieler.getKartenWertSpieler() > 21) {
+            if(spieler.getKartenSpieler().contains("A♥") || spieler.getKartenSpieler().contains("A♦") || spieler.getKartenSpieler().contains("A♣") || spieler.getKartenSpieler().contains("A♠")){
+                spieler.setKartenWertSpielerMinusTen();
+            }else{
+                dealer.setGewonnen(true);
+                end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+            } 
         }
 
-        if (kartenWertSpieler == 21) {
+        if (spieler.getKartenWertSpieler() == 21) {
             spieler.setGewonnen(true);
             end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
         }
 
-        if (kartenWertSpieler == 9 || kartenWertSpieler == 10 || kartenWertSpieler == 11) {
+        if (spieler.getKartenWertSpieler() == 9 || spieler.getKartenWertSpieler() == 10 || spieler.getKartenWertSpieler() == 11) {
             buttonVerdoppeln.setDisable(false);
         }
 
-        if (kartenWertDealer == 11) {
+        if (dealer.getKartenWertDealer() == 11) {
             buttonVersichern.setDisable(false);
+            textfeldVersicherung.setDisable(false);          
         }
     }
 
     public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, Label labelKartenDealer, Label labelKartenSpieler, TextField textfeldEinsatz, TextField textfeldVersicherung) {
-        //Hat es genügend Karten?
-        if (k.getAnzahlKartenImKartenDeck() < 1) {
-            this.karten = k.getKarten();
-        }
-
-        //Spieler zieht Karten
-        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
-        zufallskarte = kartenSymbole.get(zufallszahl);
-
-        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
-            kartenWertSpieler += 10;
-        } else if (zufallskarte.contains("A")) {
-            kartenWertSpieler += assSpieler;
-        } else {
-            kartenWertSpieler += karten.get(zufallskarte);
-        }
-        kartenSpieler.add(zufallskarte);
-        karten.remove(zufallskarte);
-        kartenSymbole.remove(zufallskarte);
-        k.subAnzahlKartenImKartenDeck();
-        k.subAnzahlKartenInKartenSymbole();
-        labelKartenSpieler.setText(labelKartenSpieler.getText() + " , " + zufallskarte);
+        //Spieler zieht Karte
+        spieler.hit(karten, kartenSymbole, kartenSpieler, labelKartenSpieler);
 
         //Überprüfung, ob 21 überschritten wurde
-        if (kartenWertSpieler > 21) {
+        if (spieler.getKartenWertSpieler() > 21) {
+            if(zufallskarte.contains("A")){
+                kartenWertSpieler -= 10;
+            }
             dealer.setGewonnen(true);
+            end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+        }
+        
+        //Überprüfung, ob 21 erreicht wurde wurde
+        if (kartenWertSpieler == 21) {
+            spieler.setGewonnen(true);
             end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
         }
     }
@@ -300,64 +223,5 @@ public class BlackJackGameModel {
         textfeldVersicherung.setDisable(true);
         buttonPrüfung.setDisable(false);
         textfeldEinsatz.setDisable(false);
-    }
-
-    public void setAssSpieler() {
-        //wert im Deck anpassen
-        if (karten.containsKey("A♥")) {
-            karten.remove("A♥");
-            karten.put("A♥", assSpieler);
-        }
-        if (karten.containsKey("A♦")) {
-            karten.remove("A♦");
-            karten.put("A♦", assSpieler);
-        }
-        if (karten.containsKey("A♣")) {
-            karten.remove("A♣");
-            karten.put("A♣", assSpieler);
-        }
-        if (karten.containsKey("A♠")) {
-            karten.remove("A♠");
-            karten.put("A♠", assSpieler);
-        }
-
-        kartenWertSpieler = 0;
-
-        //wert bei Spielerkarten anpassen
-        for (String s : kartenSpieler) {
-            if (s.contains("10") ||s.contains("J") || s.contains("Q") || s.contains("K")) {
-                kartenWertSpieler += 10;
-            }
-            if (s.contains("A")) {
-                kartenWertSpieler += assSpieler;
-            }
-            if (s.contains("1")) {
-                kartenWertSpieler += 1;
-            }
-            if (s.contains("2")) {
-                kartenWertSpieler += 2;
-            }
-            if (s.contains("3")) {
-                kartenWertSpieler += 3;
-            }
-            if (s.contains("4")) {
-                kartenWertSpieler += 4;
-            }
-            if (s.contains("5")) {
-                kartenWertSpieler += 5;
-            }
-            if (s.contains("6")) {
-                kartenWertSpieler += 6;
-            }
-            if (s.contains("7")) {
-                kartenWertSpieler += 7;
-            }
-            if (s.contains("8")) {
-                kartenWertSpieler += 8;
-            }
-            if (s.contains("9")) {
-                kartenWertSpieler += 9;
-            }
-        }
     }
 }

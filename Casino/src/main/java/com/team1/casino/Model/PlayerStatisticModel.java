@@ -6,10 +6,11 @@
  */
 package com.team1.casino.Model;
 
-import com.team1.casino.Entity.Stat;
-import com.team1.casino.User.UserCentral;
-import com.team1.casino.User.UserUtil;
-import com.team1.casino.database.DatabaseConnection;
+import com.team1.casino.Entity.Statistic;
+import com.team1.casino.MainApp;
+import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.UserUtil;
+import com.team1.casino.database.Connection.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,6 +27,12 @@ public class PlayerStatisticModel extends Observable {
         return usernameListing;
     }
 
+    private MainApp mainApplication;
+
+    public void setMainApplication(MainApp mainApplication) {
+        this.mainApplication = mainApplication;
+    }
+
     private SimpleStringProperty selectedPlayer = new SimpleStringProperty();
 
     public SimpleStringProperty getSelectedPlayer() {
@@ -37,7 +44,7 @@ public class PlayerStatisticModel extends Observable {
     }
 
     private ArrayList<Double> accountValues = new ArrayList<>();
-    private ArrayList<Stat> stats = new ArrayList<>();
+    private ArrayList<Statistic> stats = new ArrayList<>();
     private ArrayList<String> usernameListing;
     private ArrayList<String> statistics;
 
@@ -65,7 +72,7 @@ public class PlayerStatisticModel extends Observable {
     }
 
     private void calculateAccountValues(ArrayList<String> statisticInformation) {
-        ArrayList<Stat> stats = new ArrayList<>();
+        ArrayList<Statistic> stats = new ArrayList<>();
         int counter = 0;
         String result = "";
         double bet = 0;
@@ -87,7 +94,7 @@ public class PlayerStatisticModel extends Observable {
                     break;
                 case 3:
                     result = statistic;
-                    stats.add(new Stat(result, bet, endAmount, gameName));
+                    stats.add(new Statistic(result, bet, endAmount, gameName));
                     gameName = "";
                     result = "";
                     bet = 0.0;
@@ -100,18 +107,22 @@ public class PlayerStatisticModel extends Observable {
         ArrayList<Double> accountBalance = new ArrayList<>();
         accountBalance.add(5000.0);
         double value = 5000.0;
-        for (Stat stat : stats) {
+        for (Statistic stat : stats) {
             value += stat.getEndamount();
             accountBalance.add(value);
         }
         this.accountValues = accountBalance;
     }
 
-    public ArrayList<Stat> getStats() {
+    public ArrayList<Statistic> getStats() {
         return stats;
     }
 
     public ArrayList<String> getUserStatistics() {
         return this.statistics;
+    }
+
+    public void backToMenu() {
+        this.mainApplication.displayStatisticView();
     }
 }

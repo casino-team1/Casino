@@ -6,6 +6,8 @@
  */
 package com.team1.casino.User;
 
+import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.UserUtil;
 import java.util.Random;
 
 /**
@@ -112,5 +114,7 @@ public abstract class User {
         this.currentBalance = util.loadCurrentBalanceFromGivenUsername(username);
         this.ID = util.getIDFromUserByUsername(username);
     }
+
+    public abstract void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount);
 
 }

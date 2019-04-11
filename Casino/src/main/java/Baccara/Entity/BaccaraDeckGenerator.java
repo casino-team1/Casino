@@ -14,11 +14,11 @@ import java.util.ArrayList;
  */
 public class BaccaraDeckGenerator {
 
-    private static final int DECKS = 8;
+    private static final int BACCARA_DECK_COUNT = 8;
 
     public ArrayList<BaccaraCard> getDecks() {
         ArrayList<BaccaraCard> cards = new ArrayList<>();
-        for (int i = 0; i < DECKS; i++) {
+        for (int i = 0; i < BACCARA_DECK_COUNT; i++) {
             ArrayList<BaccaraCard> deck = generateDeck();
             deck.forEach((card) -> {
                 cards.add(card);
@@ -35,7 +35,7 @@ public class BaccaraDeckGenerator {
                 cards.add(new BaccaraCard(type, String.valueOf(i), i));
             }
         }
-        //generate cards that are not numeric
+        //generate cards that are non numeric
         final String[] specialCards = {"King", "Queen", "Jack", "Ace"};
         for (String cardName : specialCards) {
             for (BaccaraCardType type : cardTypes) {

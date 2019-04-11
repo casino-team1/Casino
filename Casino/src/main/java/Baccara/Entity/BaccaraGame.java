@@ -32,6 +32,7 @@ public class BaccaraGame {
     }
 
     public void reshuffleCards() {
+        //generaten new card pile and shuffle if by inbuilt methods.
         this.baccaraCardDecks = new BaccaraDeckGenerator().getDecks();
         Collections.shuffle(this.baccaraCardDecks);
     }
@@ -55,6 +56,7 @@ public class BaccaraGame {
     private ArrayList<BaccaraCard> playerCards = new ArrayList<>();
 
     public int getPlayerBet() {
+        //100 is just set for debugging.
         return 100;
     }
 
@@ -100,16 +102,19 @@ public class BaccaraGame {
 
     private int calculateCardCount(ArrayList<BaccaraCard> cards) {
         int total = 0;
-        for (BaccaraCard card : cards) {
-            total += card.getCardValue();
-        }
-        if (total >= 10) {
-            total %= 10;
-        }
+        total = cards.stream().map((card) -> card.getCardValue()).reduce(total, Integer::sum);
+        //in baccara a card value of 10 is looked at as 0. So the real card value of the player is always modul 10.
+        total %= 10;
         return total;
     }
 
     public void checkForAdditionalDraw() {
+        /**
+         * These are implementations of the baccara roules according to the
+         * wikipedia entry. For informaton or further knowledge of the used
+         * rules, consult wikipedia: Baccar.
+         */
+
         if (this.playerCardCount == 8 || this.playerCardCount == 9 || this.playerCardCount == 6 || this.playerCardCount == 7) {
             if (this.dealerCardCount >= 0 && this.dealerCardCount <= 5) {
                 this.dealerThirdDraw();

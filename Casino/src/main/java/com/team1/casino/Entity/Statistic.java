@@ -10,7 +10,7 @@ package com.team1.casino.Entity;
  *
  * @author Nick Flückiger
  */
-public class Stat {
+public class Statistic {
 
     public String getGameName() {
         return gameName;
@@ -30,7 +30,7 @@ public class Stat {
         return username;
     }
 
-    public Stat(String result, double bet, double amount, String gameName) {
+    public Statistic(String result, double bet, double amount, String gameName) {
         this.result = result;
         this.bet = bet;
         this.Endamount = amount;

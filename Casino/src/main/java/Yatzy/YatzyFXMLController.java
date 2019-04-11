@@ -6,7 +6,7 @@
 package Yatzy;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.Util.UserCentral;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;

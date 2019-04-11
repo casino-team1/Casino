@@ -8,8 +8,8 @@ package com.team1.casino.Model;
 
 import com.team1.casino.Entity.MailUtil;
 import com.team1.casino.MainApp;
-import com.team1.casino.User.UserCentral;
-import com.team1.casino.User.UserUtil;
+import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.UserUtil;
 import com.team1.casino.User.Spieler;
 import java.util.Observable;
 import java.util.regex.Matcher;

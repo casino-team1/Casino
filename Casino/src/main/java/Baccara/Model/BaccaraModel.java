@@ -15,7 +15,7 @@ import java.util.Observable;
  */
 public class BaccaraModel extends Observable {
 
-    private BaccaraHandler baccaraGame;
+    private final BaccaraHandler baccaraGame;
 
     public BaccaraModel(BaccaraHandler baccaraGame) {
         this.baccaraGame = baccaraGame;

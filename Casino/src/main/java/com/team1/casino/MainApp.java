@@ -43,7 +43,11 @@ public class MainApp extends Application {
         return this.stage;
     }
 
+<<<<<<< HEAD
     public static final ExecutionMode executionMode = ExecutionMode.DEBUG;
+=======
+    private final ExecutionMode executionMode = ExecutionMode.DEBUG;
+>>>>>>> master
 
     @Override
     public void start(Stage stage) throws Exception {

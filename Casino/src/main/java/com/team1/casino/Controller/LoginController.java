@@ -34,6 +34,8 @@ public class LoginController implements Initializable {
     private Button loginButtion;
     @FXML
     private Button registerButton;
+    @FXML
+    private Button recoverPasswordButton;
 
     public void setModel(CasinoLoginModel model) {
         this.loginModel = model;
@@ -65,6 +67,11 @@ public class LoginController implements Initializable {
     @FXML
     private void registerUser(ActionEvent event) {
         this.loginModel.registerWindow();
+    }
+
+    @FXML
+    private void displayPasswordRecovery(ActionEvent event) {
+        this.loginModel.displayPasswordRecovery();
     }
 
 }

@@ -11,34 +11,37 @@
 
 <AnchorPane id="AnchorPane" prefHeight="631.0" prefWidth="518.0" style="-fx-background-image: ../images/loginBackground.jpg../images/loginBackground.jpg;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.LoginController">
 
-   <children>
-      <ImageView fitHeight="631.0" fitWidth="540.0" layoutX="-1.0" pickOnBounds="true">
-         <image>
-            <Image url="@../images/loginBackground.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="469.0" fitWidth="458.0" layoutX="35.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/MainScreen/LoginScreen.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="registerButton" layoutX="93.0" layoutY="564.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="51.0" prefWidth="118.0" text="Register" />
-      <TextField fx:id="usernameField" layoutX="101.0" layoutY="458.0" prefHeight="38.0" prefWidth="181.0" promptText="Nutzernamen">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-         <effect>
-            <DropShadow color="RED" />
-         </effect></TextField>
-      <PasswordField fx:id="passwordField" layoutX="290.0" layoutY="458.0" prefHeight="38.0" prefWidth="157.0" promptText="Passwort">
-          <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-         <effect>
-            <DropShadow color="RED" />
-         </effect></PasswordField>
-      <Button fx:id="loginButtion" layoutX="354.0" layoutY="563.0" mnemonicParsing="false" onAction="#loginUser" opacity="0.0" prefHeight="51.0" prefWidth="108.0" text="Login" />
+    <children>
+        <ImageView fitHeight="631.0" fitWidth="540.0" layoutX="-1.0" pickOnBounds="true">
+            <image>
+                <Image url="@../images/loginBackground.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="469.0" fitWidth="458.0" layoutX="35.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/MainScreen/LoginScreen.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="registerButton" layoutX="93.0" layoutY="564.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="51.0" prefWidth="118.0" text="Register" />
+        <TextField fx:id="usernameField" layoutX="101.0" layoutY="458.0" prefHeight="38.0" prefWidth="181.0" promptText="Nutzernamen">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+            <effect>
+                <DropShadow color="RED" />
+            </effect>
+        </TextField>
+        <PasswordField fx:id="passwordField" layoutX="290.0" layoutY="458.0" prefHeight="38.0" prefWidth="157.0" promptText="Passwort">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+            <effect>
+                <DropShadow color="RED" />
+            </effect>
+        </PasswordField>
+        <Button fx:id="loginButtion" layoutX="354.0" layoutY="563.0" mnemonicParsing="false" onAction="#loginUser" opacity="0.0" prefHeight="51.0" prefWidth="108.0" text="Login" />
+        <Button fx:id="recoverPasswordButton" layoutX="207.0" layoutY="68.0" mnemonicParsing="false" onAction="#displayPasswordRecovery" prefHeight="27.0" prefWidth="128.0" text="Recover" />
       
 
-   </children>
+    </children>
 </AnchorPane>

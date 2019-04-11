@@ -72,4 +72,8 @@ public class CasinoLoginModel {
 
     }
 
+    public void displayPasswordRecovery() {
+        this.mainApplication.displayPasswordRecovery();
+    }
+
 }

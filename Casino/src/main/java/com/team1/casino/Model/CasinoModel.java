@@ -7,6 +7,7 @@
 package com.team1.casino.Model;
 
 import com.team1.casino.MainApp;
+import com.team1.casino.User.Util.UserCentral;
 import java.util.Observable;
 
 /**
@@ -35,5 +36,10 @@ public class CasinoModel extends Observable {
 
     public void startBlackJack() {
         this.mainApplication.startBlackJack();
+    }
+
+    public void logOutUser() {
+        UserCentral.getInstance().setUser(null);
+        this.mainApplication.displayLoginView();
     }
 }

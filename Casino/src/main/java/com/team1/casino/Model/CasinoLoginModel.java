@@ -47,12 +47,12 @@ public class CasinoLoginModel {
         if (currentPlayer.isValidUser() == false) {
             return "Gegebens Passwort ist ungültig.";
         }
+        currentPlayer.loadUserInformation();
         UserCentral.getInstance().setUser(currentPlayer);
-        UserCentral.getInstance().getUser().loadUserInformation();
         return "Valid user";
     }
 
-    public void registerWindow() {
+    public void displayRegistrationView() {
         this.mainApplication.displayRegistrationView();
     }
 
@@ -64,7 +64,7 @@ public class CasinoLoginModel {
                 this.mainApplication.displayMainMenu();
             }
         } else {
-            this.mainApplication.displayMainMenu();
+            this.mainApplication.displayLoginView();
         }
     }
 

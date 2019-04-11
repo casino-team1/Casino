@@ -6,7 +6,7 @@
  */
 package com.team1.casino.User;
 
-import com.team1.casino.Entity.Stat;
+import com.team1.casino.Entity.Statistic;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -38,7 +38,7 @@ public class StatisticTest {
      */
     @Test
     public void testGetAmount() {
-        Stat stat = new Stat("Won", 0.0, 0.0, "Baccara");
+        Statistic stat = new Statistic("Won", 0.0, 0.0, "Baccara");
         String EXPECTED_RESULT = "Won";
         assertEquals(EXPECTED_RESULT, stat.getResult());
     }

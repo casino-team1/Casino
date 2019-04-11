@@ -16,7 +16,7 @@ import com.team1.casino.User.Util.UserCentral;
  */
 public class BaccaraMenuModel extends BaccaraModel {
 
-    private User player = UserCentral.getInstance().getUser();
+    private final User player = UserCentral.getInstance().getUser();
 
     public BaccaraMenuModel(BaccaraHandler baccaraGame) {
         super(baccaraGame);

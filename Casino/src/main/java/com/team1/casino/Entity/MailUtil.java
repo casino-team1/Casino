@@ -26,7 +26,10 @@ public class MailUtil {
     private String secureCode;
     private String preparedMessage;
 
-    private String signature = "Wilkommen zum MountainnView Casino in Los Angeles.\n Wir sind erreichbar unter:\nEmail: mountainviewcasino@gmail.com \nTel: In Arbeit \n Wir bieten Ihnen die besten Spiele und die besten Gewinnchangen der ganzen Stadt. Bei uns sitzen Sie nie auf dem Trocknen.";
+    private String signature = "Wilkommen zum MountainnView Casino in Los Angeles.\n"
+            + " Wir sind erreichbar unter:\nEmail: mountainviewcasino@gmail.com \n"
+            + "Tel: In Arbeit \n Wir bieten Ihnen die besten Spiele und die besten Gewinnchangen der ganzen Stadt."
+            + " Bei uns sitzen Sie nie auf dem Trocknen.";
 
     public MailUtil(String emailAdress, String secureCode, String preparedMessage) {
         this.emailAdress = emailAdress;
@@ -74,6 +77,7 @@ public class MailUtil {
                 throw new RuntimeException(e);
             }
         });
+        //Registration email will not be sent if the programm is interupted or shutdown.
         thread.setDaemon(true);
         thread.start();
     }

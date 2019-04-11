@@ -6,6 +6,8 @@
  */
 package Baccara.Entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Nick Flückiger
@@ -18,6 +20,47 @@ public class BaccaraCard {
     @Override
     public String toString() {
         return "BaccaraCard{" + "cardValue=" + cardValue + ", imageLocation=" + imageLocation + ", cardName=" + cardName + ", cardColor=" + cardColor + ", cardType=" + cardType + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.cardValue;
+        hash = 97 * hash + Objects.hashCode(this.imageLocation);
+        hash = 97 * hash + Objects.hashCode(this.cardName);
+        hash = 97 * hash + Objects.hashCode(this.cardColor);
+        hash = 97 * hash + Objects.hashCode(this.cardType);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BaccaraCard other = (BaccaraCard) obj;
+        if (this.cardValue != other.cardValue) {
+            return false;
+        }
+        if (!Objects.equals(this.imageLocation, other.imageLocation)) {
+            return false;
+        }
+        if (!Objects.equals(this.cardName, other.cardName)) {
+            return false;
+        }
+        if (this.cardColor != other.cardColor) {
+            return false;
+        }
+        if (this.cardType != other.cardType) {
+            return false;
+        }
+        return true;
     }
 
     private final String cardName;
@@ -38,6 +81,7 @@ public class BaccaraCard {
 
     private BaccaraCardColor evaluateCardColor(BaccaraCardType type) {
         BaccaraCardColor color;
+        //Certain symbols can only be one color, so color is not set but evaluated by the code.
         if (type == BaccaraCardType.DIAMON || type == BaccaraCardType.HEART) {
             color = BaccaraCardColor.RED;
         } else {

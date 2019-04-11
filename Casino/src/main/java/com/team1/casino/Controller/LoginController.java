@@ -7,7 +7,6 @@
 package com.team1.casino.Controller;
 
 import com.team1.casino.Model.CasinoLoginModel;
-import com.team1.casino.User.Util.UserCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -66,7 +64,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void registerUser(ActionEvent event) {
-        this.loginModel.registerWindow();
+        this.loginModel.displayRegistrationView();
     }
 
     @FXML

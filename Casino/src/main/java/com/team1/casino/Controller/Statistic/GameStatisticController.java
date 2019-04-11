@@ -6,9 +6,8 @@
  */
 package com.team1.casino.Controller.Statistic;
 
-import com.team1.casino.Entity.Stat;
+import com.team1.casino.Entity.Statistic;
 import com.team1.casino.Model.GameStatisticModel;
-import com.team1.casino.Model.PlayerStatisticModel;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,19 +36,19 @@ public class GameStatisticController implements Initializable, Observer {
 
     private GameStatisticModel model;
     @FXML
-    private TableView<Stat> gameStatTable;
+    private TableView<Statistic> gameStatTable;
     @FXML
     private LineChart<String, Double> gameProfit;
     @FXML
     private ComboBox<String> gameNames;
     @FXML
-    private TableColumn<Stat, String> userCol;
+    private TableColumn<Statistic, String> userCol;
     @FXML
-    private TableColumn<Stat, String> betCol;
+    private TableColumn<Statistic, String> betCol;
     @FXML
-    private TableColumn<Stat, String> resultCol;
+    private TableColumn<Statistic, String> resultCol;
     @FXML
-    private TableColumn<Stat, String> changeCol;
+    private TableColumn<Statistic, String> changeCol;
     @FXML
     private ComboBox<Integer> statCounter;
     @FXML
@@ -65,48 +64,45 @@ public class GameStatisticController implements Initializable, Observer {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        userCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
-                if (p.getValue() != null) {
-                    return new SimpleStringProperty(p.getValue().getUsername());
-                } else {
-                    return new SimpleStringProperty("No Game");
-                }
-            }
-        });
+        setHandlingOfStatInformationForTable();
+        addPossibleStatRanges();
+    }
+
+    private void addPossibleStatRanges() {
         this.statCounter.getItems().add(10);
         this.statCounter.getItems().add(20);
         this.statCounter.getItems().add(50);
         this.statCounter.getItems().add(100);
-        resultCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
-                if (p.getValue() != null) {
-                    return new SimpleStringProperty(p.getValue().getResult());
-                } else {
-                    return new SimpleStringProperty("No Result");
-                }
+    }
+
+    private void setHandlingOfStatInformationForTable() {
+        userCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
+            if (p.getValue() != null) {
+                return new SimpleStringProperty(p.getValue().getUsername());
+            } else {
+                return new SimpleStringProperty("No Game");
             }
         });
-        betCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
-                if (p.getValue() != null) {
-                    return new SimpleStringProperty(String.valueOf(p.getValue().getBet()));
-                } else {
-                    return new SimpleStringProperty("No Bet");
-                }
+
+        resultCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
+            if (p.getValue() != null) {
+                return new SimpleStringProperty(p.getValue().getResult());
+            } else {
+                return new SimpleStringProperty("No Result");
             }
         });
-        changeCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
-                if (p.getValue() != null) {
-                    return new SimpleStringProperty(String.valueOf(p.getValue().getEndamount()));
-                } else {
-                    return new SimpleStringProperty("No Change");
-                }
+        betCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
+            if (p.getValue() != null) {
+                return new SimpleStringProperty(String.valueOf(p.getValue().getBet()));
+            } else {
+                return new SimpleStringProperty("No Bet");
+            }
+        });
+        changeCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
+            if (p.getValue() != null) {
+                return new SimpleStringProperty(String.valueOf(p.getValue().getEndamount()));
+            } else {
+                return new SimpleStringProperty("No Change");
             }
         });
     }
@@ -119,17 +115,21 @@ public class GameStatisticController implements Initializable, Observer {
         if (this.statCounter.getSelectionModel().getSelectedItem() != null) {
             maxNumberOfEntries = this.statCounter.getSelectionModel().getSelectedItem();
         }
-        for (Stat stat : gameModel.getGameStats()) {
+        for (Statistic stat : gameModel.getGameStats()) {
             if (maxNumberOfEntries != -1 && this.gameStatTable.getItems().size() >= maxNumberOfEntries) {
                 break;
             }
             this.gameStatTable.getItems().add(stat);
         }
+        XYChart.Series<String, Double> series = getPopulatedProfitChart(maxNumberOfEntries);
+        this.gameProfit.getData().add(series);
+        this.gameProfit.setCreateSymbols(false);
+    }
 
-        ArrayList<Double> gameProfit = model.getGameProfits();
-
+    private XYChart.Series<String, Double> getPopulatedProfitChart(int maxNumberOfEntries) {
         XYChart.Series<String, Double> series = new XYChart.Series<>();
         int counter = 0;
+        ArrayList<Double> gameProfit = model.getGameProfits();
         this.gameProfit.getData().clear();
         for (double value : gameProfit) {
             if (series.getData().size() >= maxNumberOfEntries && maxNumberOfEntries != -1) {
@@ -138,8 +138,7 @@ public class GameStatisticController implements Initializable, Observer {
             series.getData().add(new XYChart.Data<>(String.valueOf(counter + 1), value));
             counter++;
         }
-        this.gameProfit.getData().add(series);
-        this.gameProfit.setCreateSymbols(false);
+        return series;
     }
 
     @FXML

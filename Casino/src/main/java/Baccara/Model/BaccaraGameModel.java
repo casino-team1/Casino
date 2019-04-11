@@ -23,14 +23,19 @@ public class BaccaraGameModel extends BaccaraModel {
     private BaccaraGame baccaraGame;
 
     public void startNewRound() {
+        /**
+         * Thread.sleep is not working, because the procedure is running in
+         * different threads.
+         *
+         */
+        //TODO: Implement way to delay the game thread for a some seconds.
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
         }
         resetGame();
         setChanged();
-        notifyAll();
-
+        notifyObservers();
     }
 
     public void checkForCardDraw() {
@@ -90,6 +95,9 @@ public class BaccaraGameModel extends BaccaraModel {
     }
 
     public String determineWinner() {
+        /*
+            Check who has won the game and then write the new stats and balances to the database.
+         */
         if (this.baccaraGame.getPlayerCardCount() > this.baccaraGame.getDealerCardCount()) {
             if (this.baccaraGame.getPlayerBet() != 0) {
                 UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance() + (this.baccaraGame.getPlayerBet() * 2), "Baccara", this.baccaraGame.getPlayerBet(), "Won", this.baccaraGame.getPlayerBet());

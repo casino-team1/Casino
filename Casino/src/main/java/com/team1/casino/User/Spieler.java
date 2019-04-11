@@ -31,6 +31,8 @@ public class Spieler extends User {
         String username = super.getUsername();
         String password = UserUtil.getHashedPassword(super.getPassword());
         String email = super.getEmailAdress();
+        //Create new Class, that handles the creation of the user.
+        //The class should also handle Statupdate and other actions related to the player.
         new Thread(new Runnable() {
             @Override
             public void run() {

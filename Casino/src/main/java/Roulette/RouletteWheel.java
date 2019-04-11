@@ -20,7 +20,8 @@ public class RouletteWheel {
     public int decideResult(int parameterBet, int betAmount) {
         if (parameterBet == randomNumber) {
             System.out.println("Good Job");
-            betAmount = betAmount * 36;
+            //Has to be 35, in order to account for bet placed
+            betAmount = betAmount * 35;
             result = true;
         } else {
             System.out.println("Better Luck next time");
@@ -35,19 +36,22 @@ public class RouletteWheel {
             System.out.println("Good Job");
             result = true;
             if (ArrayIdentity == 1) {
+                betAmount = betAmount;                
+            } 
+            else if (ArrayIdentity == 2) {
                 betAmount = betAmount * 2;
-//                System.out.println("You placed " + betAmount + " and you Won! That will leave you with " + playerBalance);
-            } else if (ArrayIdentity == 2) {
-                betAmount = betAmount * 3;
-//                System.out.println("You placed " + betAmount + " and you Won! That will leave you with " + playerBalance);
-            } else if (ArrayIdentity == 3) {
-
-            } else if (ArrayIdentity == 4) {
-
-            } else if (ArrayIdentity == 5) {
-
-            } else { //ArrayIdentity == 6
-
+            } 
+            else if (ArrayIdentity == 3) {
+                betAmount = betAmount * 4;
+            } 
+            else if (ArrayIdentity == 4) {
+                betAmount = betAmount * 6;
+            } 
+            else if (ArrayIdentity == 5) {
+                betAmount = betAmount * 10;
+            } 
+            else { //ArrayIdentity == 6
+                betAmount = betAmount * 16;
             }
         } else {
             System.out.println("Better Luck next time");

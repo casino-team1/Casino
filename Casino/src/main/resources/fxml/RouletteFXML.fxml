@@ -23,7 +23,7 @@
             <Image url="@../images/Roulette/rouletteWheel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="118.66665649414062" layoutY="315.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="845.0000152587891">
+      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="120.0" layoutY="303.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="843.6666717529297">
          <image>
             <Image url="@../images/Roulette/placeBet.png" />
          </image>
@@ -202,7 +202,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label fx:id="betString" layoutX="979.0" layoutY="584.0" text="0">
+      <Label fx:id="betString" layoutX="986.0" layoutY="561.0" prefHeight="82.0" prefWidth="62.0" text="0">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -235,7 +235,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label fx:id="gewonnenVerloren" layoutX="34.0" layoutY="454.0" prefHeight="94.0" prefWidth="410.0">
+      <Label fx:id="gewonnenVerloren" layoutX="22.0" layoutY="486.0" prefHeight="94.0" prefWidth="410.0">
          <font>
             <Font name="Droid Serif" size="66.0" />
          </font>
@@ -243,7 +243,20 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label fx:id="randomNumberLabel" layoutX="979.0" layoutY="533.0" prefHeight="35.0" prefWidth="1.0" text="0">
+      <Label fx:id="randomNumberLabel" layoutX="976.0" layoutY="507.0" prefHeight="82.0" prefWidth="62.0">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label fx:id="errorMessage" layoutX="41.0" layoutY="447.0" textFill="RED">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="intBetBindLabel" layoutX="311.0" layoutY="633.0">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>

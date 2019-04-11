@@ -26,7 +26,7 @@
       <Label fx:id="labelEinsatzFehler" layoutX="364.0" layoutY="109.0" prefHeight="18.0" prefWidth="298.0" />
       <Button fx:id="buttonPrüfung" layoutX="166.0" layoutY="142.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfen" />
       <Button fx:id="buttonVerlassen" layoutX="61.0" layoutY="404.0" mnemonicParsing="false" onAction="#zurueck" text="BlackJack verlassen" />
-      <Button fx:id="buttonHelp" layoutX="687.0" layoutY="13.0" mnemonicParsing="false" onAction="#help" text="?" />
+      <Button fx:id="buttonHelp" layoutX="746.0" layoutY="13.0" mnemonicParsing="false" onAction="#help" text="?" />
       <Button fx:id="buttonVerdoppeln" disable="true" layoutX="359.0" layoutY="190.0" mnemonicParsing="false" onAction="#verdoppeln" text="Verdoppeln" />
       <Button fx:id="buttonVersichern" disable="true" layoutX="217.0" layoutY="250.0" mnemonicParsing="false" onAction="#versichern" text="Versichern" />
       <TextField fx:id="textfeldVersicherung" disable="true" layoutX="330.0" layoutY="250.0" promptText="Versicherungsbetrag" />

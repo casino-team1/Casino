@@ -59,6 +59,7 @@ public class LoginController implements Initializable {
     private void loginUser(ActionEvent event) {
         String result = this.loginModel.loginUser();
         if (result.equals("Valid user")) {
+            
             this.loginModel.displayMainMenu();
         } else {
             this.errorMEssage.setText(result);

@@ -43,27 +43,36 @@ public class MainApp extends Application {
         return this.stage;
     }
 
-    private final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
+    public static final ExecutionMode executionMode = ExecutionMode.DEBUG;
 
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         this.stage.setResizable(false);
-        if (this.executionMode == ExecutionMode.DEBUG) {
-            if (UserCentral.getInstance().getUser() != null) {
-            } else {
-                displayLoginView();
-                setupForDEBUG();
-            }
-        } else {
+        if (null == this.executionMode) {
             displayMainMenu();
+        } else {
+            switch (this.executionMode) {
+                case DEBUG:
+                    if (UserCentral.getInstance().getUser() != null) {
+                    } else {
+                        displayLoginView();
+                        setupForDEBUG();
+                    }
+                    break;
+                case ADMINISTRATOR_TEST:
+                    setupForDEBUG();
+                    displayStatisticView();
+                    break;
+                case PRODUCTION:
+                    setupForProduction();
+                    displayMainMenu();
+                    break;
+                default:
+                    displayMainMenu();
+                    break;
+            }
         }
-        /*
-        if (this.executionMode == ExecutionMode.PRODUCTION) {
-            setupForProduction();
-        } else if (this.executionMode == ExecutionMode.DEBUG) {
-            setupForDEBUG();
-        }*/
 
     }
 

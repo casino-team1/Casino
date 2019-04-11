@@ -105,4 +105,10 @@ public abstract class User {
 
     public abstract void writeUserToDatabase();
 
+    public void loadUserInformation() {
+        UserUtil util = new UserUtil();
+        this.currentBalance = util.loadCurrentBalanceFromGivenUsername(username);
+        this.ID = util.getIDFromUserByUsername(username);
+    }
+
 }

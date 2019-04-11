@@ -6,8 +6,14 @@
  */
 package com.team1.casino.User;
 
+import com.team1.casino.ExecutionMode;
+import com.team1.casino.MainApp;
 import com.team1.casino.database.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;
+import com.team1.casino.database.Updater;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,5 +42,17 @@ public class Spieler extends User {
                 System.out.println("Inserted the information");
             }
         }).start();
+    }
+
+    @Override
+    public void setCurrentBalance(double currentBalance) {
+        super.setCurrentBalance(currentBalance);
+        if (MainApp.executionMode != ExecutionMode.DEVELOPMENT) {
+            try {
+                new Updater().performUpdateWithArgument("UPDATE balance b, user u SET b.balance = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(super.getCurrentBalance()) + ";" + String.valueOf(super.getID()));
+            } catch (SQLException ex) {
+                Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

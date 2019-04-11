@@ -90,3 +90,5 @@ INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,10,1);
 -- SELECT
 
 SELECT ga.gameName,us.username,stat.bet,stat.result,stat.amount FROM game ga,user us,statistic stat, statistictoplayer stp WHERE stp.user_id = us.id AND stp.game_id = ga.id AND stat.id = stp.statistic_id AND ga.gameName = "Baccara";
+
+UPDATE balance b, user u SET b.balance = 1002 WHERE b.id = u.balance_id AND u.id = 1 

@@ -7,7 +7,7 @@
 package com.team1.casino.Model;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.Util.UserCentral;
 import java.util.Observable;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -49,6 +49,7 @@ public class AuthenticationModel extends Observable {
         String accessCode = this.userInputCode.getValue();
         if (accessCode.trim().equals(this.givenCode.trim())) {
             UserCentral.getInstance().getUser().writeUserToDatabase();
+            UserCentral.getInstance().getUser().loadUserInformation();
             this.mainApplication.displayMainMenu();
         } else {
             System.out.println("invalid");

@@ -12,27 +12,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-
 public class CasinoController implements Initializable, Observer {
 
     private Label label;
 
     private CasinoModel casinoModel;
+    @FXML
+    private Button logOutButton;
 
     public void setCasinoModel(CasinoModel model) {
         this.casinoModel = model;
     }
 
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        
+
     }
 
     @Override
@@ -58,5 +53,10 @@ public class CasinoController implements Initializable, Observer {
     @FXML
     private void clickMouseYatzy(MouseEvent event) {
         this.casinoModel.startYatzy();
+    }
+
+    @FXML
+    private void logUserOut(ActionEvent event) {
+        this.casinoModel.logOutUser();
     }
 }

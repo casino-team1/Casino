@@ -4,7 +4,7 @@
  * For information and contact with the developer please write to
  * Mail: nick.flueckiger@outlook.de
  */
-package com.team1.casino.database;
+package com.team1.casino.database.Connection;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

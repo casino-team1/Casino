@@ -6,9 +6,9 @@
  */
 package com.team1.casino.Model;
 
-import com.team1.casino.Entity.Stat;
+import com.team1.casino.Entity.Statistic;
 import com.team1.casino.MainApp;
-import com.team1.casino.database.DatabaseConnection;
+import com.team1.casino.database.Connection.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,11 +34,11 @@ public class GameStatisticModel extends Observable {
         this.mainApplication = mainApplication;
     }
 
-    public ArrayList<Stat> getGameStats() {
+    public ArrayList<Statistic> getGameStats() {
         return gameStats;
     }
 
-    public ArrayList<Stat> getProfit() {
+    public ArrayList<Statistic> getProfit() {
         return profit;
     }
 
@@ -52,9 +52,9 @@ public class GameStatisticModel extends Observable {
 
     private ArrayList<String> gameNames = new ArrayList<>();
 
-    private ArrayList<Stat> gameStats = new ArrayList<>();
+    private ArrayList<Statistic> gameStats = new ArrayList<>();
 
-    private ArrayList<Stat> profit = new ArrayList<>();
+    private ArrayList<Statistic> profit = new ArrayList<>();
 
     public void loadGameNames() {
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
@@ -81,7 +81,7 @@ public class GameStatisticModel extends Observable {
     private void populateCurrentList(ArrayList<String> retreavedDatabaseInfromation) {
         this.gameStats.clear();
         for (int i = 0; i < retreavedDatabaseInfromation.size() - 5; i++) {
-            Stat currentStat = new Stat(retreavedDatabaseInfromation.get(i + 3), Double.valueOf(retreavedDatabaseInfromation.get(i + 2)), Double.valueOf(retreavedDatabaseInfromation.get(i + 4)), retreavedDatabaseInfromation.get(i));
+            Statistic currentStat = new Statistic(retreavedDatabaseInfromation.get(i + 3), Double.valueOf(retreavedDatabaseInfromation.get(i + 2)), Double.valueOf(retreavedDatabaseInfromation.get(i + 4)), retreavedDatabaseInfromation.get(i));
             currentStat.setUseranme(retreavedDatabaseInfromation.get(i + 1));
             this.gameStats.add(currentStat);
             i += 4;
@@ -89,7 +89,7 @@ public class GameStatisticModel extends Observable {
         double value = 0;
         this.gameProfits.clear();
         this.gameProfits.add(0.0);
-        for (Stat stat : this.gameStats) {
+        for (Statistic stat : this.gameStats) {
             if (stat.getResult().equals("Won")) {
                 value -= stat.getEndamount();
             } else if (stat.getResult().equals("Lost")) {

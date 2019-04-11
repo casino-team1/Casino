@@ -8,9 +8,9 @@ package com.team1.casino.Model;
 
 import com.team1.casino.MainApp;
 import com.team1.casino.User.User;
-import com.team1.casino.User.UserUtil;
+import com.team1.casino.User.Util.UserUtil;
 import com.team1.casino.User.Spieler;
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.Util.UserCentral;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -47,12 +47,12 @@ public class CasinoLoginModel {
         if (currentPlayer.isValidUser() == false) {
             return "Gegebens Passwort ist ungültig.";
         }
+        currentPlayer.loadUserInformation();
         UserCentral.getInstance().setUser(currentPlayer);
-        UserCentral.getInstance().getUser().loadUserInformation();
         return "Valid user";
     }
 
-    public void registerWindow() {
+    public void displayRegistrationView() {
         this.mainApplication.displayRegistrationView();
     }
 
@@ -64,12 +64,16 @@ public class CasinoLoginModel {
                 this.mainApplication.displayMainMenu();
             }
         } else {
-            this.mainApplication.displayMainMenu();
+            this.mainApplication.displayLoginView();
         }
     }
 
     public void forgotPassword() {
 
+    }
+
+    public void displayPasswordRecovery() {
+        this.mainApplication.displayPasswordRecovery();
     }
 
 }

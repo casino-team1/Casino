@@ -1,4 +1,4 @@
-package com.team1.casino.database;
+package com.team1.casino.database.Connection;
 
 import java.sql.SQLException;
 

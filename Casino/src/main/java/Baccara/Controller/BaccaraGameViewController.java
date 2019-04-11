@@ -79,8 +79,10 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setCardBacks();
+        /*
+            Code below checks for drag and drop and sets image at new position.
+         */
         this.chipImage.setOnDragDetected((event) -> {
-            System.out.println("Set");
             content = chipImage.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent data = new ClipboardContent();
             Image image = chipImage.getImage();
@@ -98,7 +100,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
     public void setBaccaraGameModel(BaccaraGameModel gameModel) {
         this.gameModel = gameModel;
         bind();
-        this.gameModel.setPlayerBet(50);
     }
 
     private void setCardBacks() {
@@ -114,7 +115,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     public void bind() {
-
     }
 
     @FXML
@@ -142,6 +142,9 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private void checkForNewCards(String linkFormat) {
         ArrayList<BaccaraCard> playerCards = this.gameModel.getPlayerCards();
         ArrayList<BaccaraCard> dealerCards = this.gameModel.getDealerCards();
+        /*
+            Check if a third card has been drawn by the algorithm following the rules of Baccara.
+         */
         try {
             if (playerCards.size() == 3) {
                 this.thirdLeftCard.setImage(new Image(String.format(linkFormat, playerCards.get(2).getImageLocation())));
@@ -166,6 +169,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void setCardCount() {
+        //Update the card count for player and dealer by the gameModel values.
         int playerCardCount = this.gameModel.getPlayerCardCount();
         int dealerCardCount = this.gameModel.getDealerCardCount();
         this.playerCardCountLabel.setText("Spieler Kartenwert: " + String.valueOf(playerCardCount));

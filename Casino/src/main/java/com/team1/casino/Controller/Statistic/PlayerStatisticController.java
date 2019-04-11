@@ -4,9 +4,9 @@
  * For information and contact with the developer please write to
  * Mail: nick.flueckiger@outlook.de
  */
-package com.team1.casino.Controller;
+package com.team1.casino.Controller.Statistic;
 
-import com.team1.casino.Entity.Stat;
+import com.team1.casino.Entity.Statistic;
 import com.team1.casino.Model.PlayerStatisticModel;
 import java.net.URL;
 import java.sql.SQLException;
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -42,15 +41,15 @@ public class PlayerStatisticController implements Initializable, Observer {
     @FXML
     private LineChart<String, Double> kontostandChart;
     @FXML
-    private TableView<Stat> statisticTable;
+    private TableView<Statistic> statisticTable;
     @FXML
-    private TableColumn<Stat, String> gameCol;
+    private TableColumn<Statistic, String> gameCol;
     @FXML
-    private TableColumn<Stat, String> betCol;
+    private TableColumn<Statistic, String> betCol;
     @FXML
-    private TableColumn<Stat, String> ResCol;
+    private TableColumn<Statistic, String> ResCol;
     @FXML
-    private TableColumn<Stat, String> ChangeCol;
+    private TableColumn<Statistic, String> ChangeCol;
     @FXML
     private Button back;
 
@@ -66,9 +65,13 @@ public class PlayerStatisticController implements Initializable, Observer {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
+        setHandlingOfStatsForTable();
+    }
+
+    private void setHandlingOfStatsForTable() {
+        gameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Statistic, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Statistic, String> p) {
                 if (p.getValue() != null) {
                     return new SimpleStringProperty(p.getValue().getGameName());
                 } else {
@@ -76,9 +79,9 @@ public class PlayerStatisticController implements Initializable, Observer {
                 }
             }
         });
-        ResCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
+        ResCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Statistic, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Statistic, String> p) {
                 if (p.getValue() != null) {
                     return new SimpleStringProperty(p.getValue().getResult());
                 } else {
@@ -86,9 +89,9 @@ public class PlayerStatisticController implements Initializable, Observer {
                 }
             }
         });
-        betCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
+        betCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Statistic, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Statistic, String> p) {
                 if (p.getValue() != null) {
                     return new SimpleStringProperty(String.valueOf(p.getValue().getBet()));
                 } else {
@@ -96,9 +99,9 @@ public class PlayerStatisticController implements Initializable, Observer {
                 }
             }
         });
-        ChangeCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
+        ChangeCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Statistic, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Statistic, String> p) {
                 if (p.getValue() != null) {
                     return new SimpleStringProperty(String.valueOf(p.getValue().getEndamount()));
                 } else {
@@ -112,6 +115,15 @@ public class PlayerStatisticController implements Initializable, Observer {
     @SuppressWarnings("unchecked")
     public void update(Observable o, Object arg) {
         PlayerStatisticModel model = (PlayerStatisticModel) o;
+        XYChart.Series<String, Double> series = getPopulatedPlayerBalanceSeries();
+        this.kontostandChart.getData().add(series);
+        this.statisticTable.getItems().clear();
+        for (Statistic stat : model.getStats()) {
+            this.statisticTable.getItems().add(stat);
+        }
+    }
+
+    private XYChart.Series<String, Double> getPopulatedPlayerBalanceSeries() {
         ArrayList<Double> accountbalances = model.getAccountValues();
         XYChart.Series<String, Double> series = new XYChart.Series<>();
         int counter = 0;
@@ -120,11 +132,7 @@ public class PlayerStatisticController implements Initializable, Observer {
             series.getData().add(new XYChart.Data<>(String.valueOf(counter + 20), value));
             counter++;
         }
-        this.kontostandChart.getData().add(series);
-        this.statisticTable.getItems().clear();
-        for (Stat stat : model.getStats()) {
-            this.statisticTable.getItems().add(stat);
-        }
+        return series;
     }
 
     @FXML

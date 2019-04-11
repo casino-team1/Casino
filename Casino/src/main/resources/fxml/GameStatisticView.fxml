@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="746.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.GameStatisticController">
+<AnchorPane id="AnchorPane" prefHeight="746.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.Statistic.GameStatisticController">
    <children>
       <TableView fx:id="gameStatTable" layoutX="41.0" layoutY="173.0" prefHeight="516.0" prefWidth="312.0">
         <columns>

@@ -7,20 +7,22 @@ import Blackjack.Blackjack;
 import Roulette.Roulette;
 import Yatzy.Yatzy;
 import com.team1.casino.Controller.AuthenticationController;
-import com.team1.casino.Controller.GameStatisticController;
+import com.team1.casino.Controller.Statistic.GameStatisticController;
 import com.team1.casino.Controller.LoginController;
-import com.team1.casino.Controller.PlayerStatisticController;
+import com.team1.casino.Controller.PasswordRecoveryController;
+import com.team1.casino.Controller.Statistic.PlayerStatisticController;
 import com.team1.casino.Controller.RegistrationViewController;
-import com.team1.casino.Controller.StatisticController;
+import com.team1.casino.Controller.Statistic.StatisticController;
+import com.team1.casino.Entity.PasswordRecovery;
 import com.team1.casino.Model.AuthenticationModel;
 import com.team1.casino.Model.CasinoLoginModel;
 import com.team1.casino.Model.GameStatisticModel;
 import com.team1.casino.Model.PlayerStatisticModel;
 import com.team1.casino.Model.RegistrationModel;
 import com.team1.casino.Model.StatisticModel;
-import com.team1.casino.User.UserCentral;
-import com.team1.casino.database.DatabaseConnection;
-import com.team1.casino.database.DatabaseConnector;
+import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.database.Connection.DatabaseConnection;
+import com.team1.casino.database.Connection.DatabaseConnector;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -42,9 +44,8 @@ public class MainApp extends Application {
         this.stage.setResizable(false);
         return this.stage;
     }
-
-    public static final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
-
+    
+    public static final ExecutionMode executionMode = ExecutionMode.DEBUG;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -57,8 +58,8 @@ public class MainApp extends Application {
                 case DEBUG:
                     if (UserCentral.getInstance().getUser() != null) {
                     } else {
-                        displayLoginView();
                         setupForDEBUG();
+                        displayLoginView();
                     }
                     break;
                 case ADMINISTRATOR_TEST:
@@ -74,7 +75,22 @@ public class MainApp extends Application {
                     break;
             }
         }
-        
+    }
+    
+    public void displayPasswordRecovery() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PasswordRecovery.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Passwort vergessen");
+            stage.setScene(scene);
+            stage.show();
+            PasswordRecoveryController controller = loader.getController();
+            controller.setMainApplication(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     public void setupForProduction() {

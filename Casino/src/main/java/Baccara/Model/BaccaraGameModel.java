@@ -9,6 +9,7 @@ package Baccara.Model;
 import Baccara.BaccaraHandler;
 import Baccara.Entity.BaccaraCard;
 import Baccara.Entity.BaccaraGame;
+import com.team1.casino.User.UserCentral;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -90,10 +91,15 @@ public class BaccaraGameModel extends BaccaraModel {
 
     public String determineWinner() {
         if (this.baccaraGame.getPlayerCardCount() > this.baccaraGame.getDealerCardCount()) {
+            if (this.baccaraGame.getPlayerBet() != 0) {
+                UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance() + (this.baccaraGame.getPlayerBet() * 2), "Baccara", this.baccaraGame.getPlayerBet(), "Won", this.baccaraGame.getPlayerBet());
+            }
             return "Player";
         } else if (this.baccaraGame.getPlayerCardCount() == this.baccaraGame.getDealerCardCount()) {
+            UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance() + this.baccaraGame.getTieBet(), "Baccara", this.baccaraGame.getPlayerBet(), "Tie", 0);
             return "Tie";
         }
+        UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance(), "Baccara", this.baccaraGame.getPlayerBet(), "Lost", this.baccaraGame.getPlayerBet() - (this.baccaraGame.getPlayerBet() * 2));
         return "Dealer";
     }
 

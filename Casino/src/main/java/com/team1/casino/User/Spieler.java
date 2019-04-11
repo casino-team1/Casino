@@ -6,19 +6,25 @@
  */
 package com.team1.casino.User;
 
+import com.team1.casino.ExecutionMode;
+import com.team1.casino.MainApp;
 import com.team1.casino.database.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;
+import com.team1.casino.database.Updater;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Nick Flückiger
  */
 public class Spieler extends User {
-
+    
     public Spieler(String username, String password) {
         super(username, password);
     }
-
+    
     @Override
     public void writeUserToDatabase() {
         String username = super.getUsername();
@@ -28,7 +34,7 @@ public class Spieler extends User {
             @Override
             public void run() {
                 DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-                int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(balance,lastUpdated) VALUES(?,CURDATE())", "1000.0");
+                int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(balance,lastUpdated) VALUES(5000.0,CURDATE())", "");
                 System.out.println(balanceIndex);
                 query.runQueryWithoutReturn("INSERT INTO user(username,password,role,balance_id,email) VALUES(?,?,?,?,?)", username + ";-" + password + ";-" + "Player" + ";-" + String.valueOf(balanceIndex) + ";-"
                         + email
@@ -36,5 +42,30 @@ public class Spieler extends User {
                 System.out.println("Inserted the information");
             }
         }).start();
+    }
+    
+    @Override
+    public void setCurrentBalance(double currentBalance) {
+        super.setCurrentBalance(currentBalance);
+        if (MainApp.executionMode != ExecutionMode.DEVELOPMENT) {
+            try {
+                Updater updated = new Updater();
+                updated.performUpdateWithArgument("UPDATE balance b, user u SET b.balance = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(super.getCurrentBalance()) + ";" + String.valueOf(super.getID()));
+            } catch (SQLException ex) {
+                Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    @Override
+    public void addStat(String gameName, double bet, String result, double amount) {
+        Updater updated = new Updater();
+        updated.writeStatisticToDatabase(gameName, bet, result, amount);
+    }
+    
+    @Override
+    public void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount) {
+        this.setCurrentBalance(newBalance);
+        this.addStat(gameName, bet, result, amount);
     }
 }

@@ -9,16 +9,16 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="654.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
+<AnchorPane id="AnchorPane" onMouseMoved="#mouseMove" prefHeight="634.0" prefWidth="654.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
    <children>
-      <ImageView fitHeight="654.0" fitWidth="654.0" layoutY="-20.0" pickOnBounds="true">
+      <ImageView fitHeight="634.0" fitWidth="654.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Yatzy/paperBackground.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="13.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
+      <Rectangle fx:id="geback" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="13.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: white;" width="407.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="13.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
-      <ImageView fx:id="ge1" fitHeight="55.0" fitWidth="52.0" layoutX="115.0" layoutY="66.0" onMouseClicked="#pressGe1" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge1" fitHeight="55.0" fitWidth="52.0" layoutX="115.0" layoutY="66.0" onMouseClicked="#pressGe1" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D1.png" />
          </image>
@@ -26,7 +26,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="ge2" fitHeight="51.0" fitWidth="66.0" layoutX="175.0" layoutY="66.0" onMouseClicked="#pressGe2" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge2" fitHeight="51.0" fitWidth="66.0" layoutX="175.0" layoutY="66.0" onMouseClicked="#pressGe2" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D2.png" />
          </image>
@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="ge3" fitHeight="55.0" fitWidth="52.0" layoutX="235.0" layoutY="66.0" onMouseClicked="#pressGe3" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge3" fitHeight="55.0" fitWidth="52.0" layoutX="235.0" layoutY="66.0" onMouseClicked="#pressGe3" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D3.png" />
          </image>
@@ -42,7 +42,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="ge4" fitHeight="51.0" fitWidth="52.0" layoutX="295.0" layoutY="66.0" onMouseClicked="#pressGe4" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge4" fitHeight="51.0" fitWidth="52.0" layoutX="295.0" layoutY="66.0" onMouseClicked="#pressGe4" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D4.png" />
          </image>
@@ -50,7 +50,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="ge5" fitHeight="51.0" fitWidth="52.0" layoutX="355.0" layoutY="66.0" onMouseClicked="#pressGe5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ge5" fitHeight="51.0" fitWidth="52.0" layoutX="355.0" layoutY="66.0" onMouseClicked="#pressGe5" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D5.png" />
          </image>
@@ -58,7 +58,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="be1" fitHeight="51.0" fitWidth="52.0" layoutX="115.0" layoutY="153.0" onMouseClicked="#pressBe1" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be1" fitHeight="51.0" fitWidth="52.0" layoutX="115.0" layoutY="153.0" onMouseClicked="#pressBe1" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D6.png" />
          </image>
@@ -66,7 +66,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="be2" fitHeight="67.0" fitWidth="52.0" layoutX="175.0" layoutY="153.0" onMouseClicked="#pressBe2" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be2" fitHeight="67.0" fitWidth="52.0" layoutX="175.0" layoutY="153.0" onMouseClicked="#pressBe2" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D1.png" />
          </image>
@@ -74,7 +74,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="be3" fitHeight="51.0" fitWidth="52.0" layoutX="235.0" layoutY="153.0" onMouseClicked="#pressBe3" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be3" fitHeight="51.0" fitWidth="52.0" layoutX="235.0" layoutY="153.0" onMouseClicked="#pressBe3" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D2.png" />
          </image>
@@ -82,7 +82,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="be4" fitHeight="55.0" fitWidth="52.0" layoutX="295.0" layoutY="153.0" onMouseClicked="#pressBe4" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be4" fitHeight="55.0" fitWidth="52.0" layoutX="295.0" layoutY="153.0" onMouseClicked="#pressBe4" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D3.png" />
          </image>
@@ -90,7 +90,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="be5" fitHeight="55.0" fitWidth="52.0" layoutX="355.0" layoutY="153.0" onMouseClicked="#pressBe5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="be5" fitHeight="55.0" fitWidth="52.0" layoutX="355.0" layoutY="153.0" onMouseClicked="#pressBe5" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Yatzy/D4.png" />
          </image>
@@ -328,35 +328,35 @@
       </Label>
       <Label fx:id="lblwin" alignment="CENTER" layoutX="13.0" layoutY="390.0" prefHeight="82.0" prefWidth="407.0" underline="true">
          <font>
-            <Font name="Arial Nova Bold" size="64.0" />
+            <Font name="Arial Nova Bold" size="52.0" />
          </font>
       </Label>
-      <Label layoutX="44.0" layoutY="487.0" text="Gesamt Kontostand:">
+      <Label layoutX="19.0" layoutY="483.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gesamt Kontostand:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblbetnum" layoutX="227.0" layoutY="487.0">
+      <Label fx:id="lbltotalnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="483.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblresulttxt" layoutX="44.0" layoutY="516.0" text="Gewonnener Betrag:">
+      <Label layoutX="19.0" layoutY="512.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gesetzter Betrag:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblresultnum" layoutX="227.0" layoutY="516.0">
+      <Label fx:id="lblbetnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="512.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblresulttxt1" layoutX="44.0" layoutY="543.0" text="Neuer Kontostand:">
+      <Label layoutX="19.0" layoutY="542.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gewonnener Betrag:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblresulttotalnum" layoutX="227.0" layoutY="543.0">
+      <Label fx:id="lblwinnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="542.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
          <font>
             <Font size="18.0" />
          </font>
@@ -369,7 +369,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="sclblenemy" alignment="CENTER" layoutX="604.0" layoutY="588.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text="180" />
+      <Label fx:id="sclblenemy" alignment="CENTER" layoutX="604.0" layoutY="588.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text="100" />
       <Button fx:id="btnbet" layoutX="14.0" layoutY="232.0" mnemonicParsing="false" onAction="#pressbtnbet" prefHeight="122.0" prefWidth="140.0" text="Betrag setzen">
          <font>
             <Font name="System Bold" size="18.0" />

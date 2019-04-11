@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="631.0" prefWidth="518.0" style="-fx-background-image: ../images/loginBackground.jpg../images/loginBackground.jpg;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.LoginController">
+
    <children>
       <ImageView fitHeight="631.0" fitWidth="540.0" layoutX="-1.0" pickOnBounds="true">
          <image>

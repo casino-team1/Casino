@@ -50,19 +50,21 @@ public class DatabaseQuery extends Query {
                 statement.setString(counter, argument);
                 counter++;
             }
-            System.out.println(statement.toString());
             int retn = statement.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public int runQueryGetAddedID(String query, String parameter) {
+    public int runQueryGetAddedID(String query, String parameters) {
         PreparedStatement statement = null;
         try {
             statement = super.getDATABASE_CONNECTION().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, parameter);
+            String[] para = parameters.split(";");
+            for (int i = 0; i < para.length; i++) {
+                statement.setString(i + 1, para[i]);
+            }
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 return -1;

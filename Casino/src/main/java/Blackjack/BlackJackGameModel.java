@@ -12,6 +12,7 @@ import java.util.Random;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,6 +35,8 @@ public class BlackJackGameModel {
 
     private String zufallskarte = "";
     private int zufallszahl = 0;
+
+    private static int assSpieler = 11;
 
     private Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
@@ -70,7 +73,7 @@ public class BlackJackGameModel {
             zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
             zufallskarte = kartenSymbole.get(zufallszahl);
 
-            if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+            if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
                 kartenWertSpieler += 10;
             } else if (zufallskarte.contains("A")) {
                 kartenWertSpieler += 11;
@@ -89,7 +92,7 @@ public class BlackJackGameModel {
         zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
         zufallskarte = kartenSymbole.get(zufallszahl);
 
-        if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
             kartenWertDealer += 10;
         } else if (zufallskarte.contains("A")) {
             kartenWertDealer += 11;
@@ -107,7 +110,7 @@ public class BlackJackGameModel {
         zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
         zufallskarte = kartenSymbole.get(zufallszahl);
 
-        if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
             karteZweiWert += 10;
         } else if (zufallskarte.contains("A")) {
             karteZweiWert += 11;
@@ -119,6 +122,25 @@ public class BlackJackGameModel {
         kartenSymbole.remove(zufallskarte);
         k.subAnzahlKartenImKartenDeck();
         k.subAnzahlKartenInKartenSymbole();
+
+        //A entweder 1 oder 11 gelten lassen
+        if (kartenSpieler.contains("A♥") || kartenSpieler.contains("A♦") || kartenSpieler.contains("A♣") || kartenSpieler.contains("A♠")) {
+            String[] buttons = {"als 1", "als 11"};
+            int assWahl = JOptionPane.showOptionDialog(null,
+                    "Wie soll Ihr Ass bewertet werden?",
+                    "ASS",
+                    0, JOptionPane.PLAIN_MESSAGE, null, buttons, buttons[1]);
+
+            if (assWahl == 0) {
+                assSpieler = 1;
+            } else if (assWahl == 1) {
+                assSpieler = 11;
+            } else {
+                System.exit(0);
+            }
+
+            setAssSpieler();
+        }
 
         //Überprüfung, ob 21 überschritten wurde
         if (kartenWertSpieler > 21) {
@@ -150,10 +172,10 @@ public class BlackJackGameModel {
         zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
         zufallskarte = kartenSymbole.get(zufallszahl);
 
-        if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
             kartenWertSpieler += 10;
         } else if (zufallskarte.contains("A")) {
-            kartenWertSpieler += 11;
+            kartenWertSpieler += assSpieler;
         } else {
             kartenWertSpieler += karten.get(zufallskarte);
         }
@@ -181,7 +203,7 @@ public class BlackJackGameModel {
                 zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
                 zufallskarte = kartenSymbole.get(zufallszahl);
                 if (karten.containsKey(zufallskarte)) {
-                    if (zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+                    if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
                         kartenWertDealer += 10;
                     } else if (zufallskarte.contains("A")) {
                         kartenWertDealer += 11;
@@ -261,15 +283,15 @@ public class BlackJackGameModel {
         for (String s : kartenDealer) {
             labelKartenDealer.setText(labelKartenDealer.getText() + " , " + s);
         }
-        
+
         //Hat dealer BlackJack?
-        if(kartenWertDealer == 21){
+        if (kartenWertDealer == 21) {
             labelLösung.setText("SPIELER HAT GEWONNEN!!");
         }
-        if(kartenWertDealer < 21 || kartenWertDealer > 21){
+        if (kartenWertDealer < 21 || kartenWertDealer > 21) {
             labelLösung.setText("DEALER HAT GEWONNEN!!");
         }
-        
+
         //Eingaben blockieren
         buttonHit.setDisable(true);
         buttonStand.setDisable(true);
@@ -278,20 +300,64 @@ public class BlackJackGameModel {
         textfeldVersicherung.setDisable(true);
         buttonPrüfung.setDisable(false);
         textfeldEinsatz.setDisable(false);
-
-        /*//Werte überprüfen
-        if (kartenWertDealer > 21) {
-        spieler.setGewonnen(true);
-        }
-        if (kartenWertDealer > kartenWertSpieler) {
-        dealer.setGewonnen(true);
-        }
-        if (kartenWertDealer == kartenWertSpieler) {
-        unentschieden = true;
-        }
-        if (kartenWertDealer < kartenWertSpieler) {
-        spieler.setGewonnen(true);
-        }*/
     }
 
+    public void setAssSpieler() {
+        //wert im Deck anpassen
+        if (karten.containsKey("A♥")) {
+            karten.remove("A♥");
+            karten.put("A♥", assSpieler);
+        }
+        if (karten.containsKey("A♦")) {
+            karten.remove("A♦");
+            karten.put("A♦", assSpieler);
+        }
+        if (karten.containsKey("A♣")) {
+            karten.remove("A♣");
+            karten.put("A♣", assSpieler);
+        }
+        if (karten.containsKey("A♠")) {
+            karten.remove("A♠");
+            karten.put("A♠", assSpieler);
+        }
+
+        kartenWertSpieler = 0;
+
+        //wert bei Spielerkarten anpassen
+        for (String s : kartenSpieler) {
+            if (s.contains("10") ||s.contains("J") || s.contains("Q") || s.contains("K")) {
+                kartenWertSpieler += 10;
+            }
+            if (s.contains("A")) {
+                kartenWertSpieler += assSpieler;
+            }
+            if (s.contains("1")) {
+                kartenWertSpieler += 1;
+            }
+            if (s.contains("2")) {
+                kartenWertSpieler += 2;
+            }
+            if (s.contains("3")) {
+                kartenWertSpieler += 3;
+            }
+            if (s.contains("4")) {
+                kartenWertSpieler += 4;
+            }
+            if (s.contains("5")) {
+                kartenWertSpieler += 5;
+            }
+            if (s.contains("6")) {
+                kartenWertSpieler += 6;
+            }
+            if (s.contains("7")) {
+                kartenWertSpieler += 7;
+            }
+            if (s.contains("8")) {
+                kartenWertSpieler += 8;
+            }
+            if (s.contains("9")) {
+                kartenWertSpieler += 9;
+            }
+        }
+    }
 }

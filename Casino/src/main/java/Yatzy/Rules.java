@@ -25,7 +25,8 @@ public class Rules {
     private int betnum = 0;
     private int win;
     private int winamount;
-    private double newamount;
+    private int newamount;
+    private int balance;
     private boolean upperbool = false;
     private boolean lowerbool = false;
 
@@ -170,16 +171,19 @@ public class Rules {
         if (total > enemytotal) {
             win = 1;
             winamount = betnum + betnum;
+            newamount = balance + winamount;
             //newamount = UserCentral.getInstance().getUser().getCurrentBalance() + winamount;
             //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
         } else if (total < enemytotal) {
             win = 2;
-            winamount = (-1) * betnum;
+            winamount = 0;
+            newamount = balance + winamount;
             //newamount = UserCentral.getInstance().getUser().getCurrentBalance() - winamount;
             //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
         } else {
             win = 3;
             winamount = betnum;
+            newamount = balance + winamount;
             //newamount = UserCentral.getInstance().getUser().getCurrentBalance() + winamount;
             //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
         }
@@ -245,12 +249,16 @@ public class Rules {
         return win;
     }
 
-    public int getWinamount() {
+    public int getWinAmount() {
         return winamount;
     }
 
-    public double getNewAmount() {
+    public int getNewAmount() {
         return newamount;
     }
 
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+    
 }

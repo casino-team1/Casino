@@ -13,22 +13,17 @@
 
 <AnchorPane id="AnchorPane" prefHeight="679.0" prefWidth="1177.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Roulette.RouletteFXMLController">
    <children>
-      <ImageView fitHeight="686.0" fitWidth="1178.0" layoutX="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="747.0" fitWidth="1178.0" layoutX="-1.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Roulette/tableBackground.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="127.0" fitWidth="40.0" layoutX="1070.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Roulette/rowSelect.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="rouletteWheel" fitHeight="355.0" fitWidth="299.0" layoutX="86.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rouletteWheel" fitHeight="254.0" fitWidth="233.0" layoutX="110.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/rouletteWheel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="677.0" layoutY="442.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="286.6666717529297">
+      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="118.66665649414062" layoutY="315.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="845.0000152587891">
          <image>
             <Image url="@../images/Roulette/placeBet.png" />
          </image>
@@ -36,136 +31,147 @@
             <DropShadow height="136.64" radius="66.3375" width="130.71" />
          </effect>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="907.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="926.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/blackBet.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="742.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="761.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/pair.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="579.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="598.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/passe.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="906.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="925.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/redBet.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="579.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="598.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/manque.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="226.0" layoutX="742.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="226.0" layoutX="761.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/impair.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="rouletteBoard1" fitHeight="125.0" fitWidth="489.0" layoutX="579.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="125.0" fitWidth="489.0" layoutX="598.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/rouletteboard1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="124.0" fitWidth="51.0" layoutX="527.0" layoutY="167.0" pickOnBounds="true">
+      <ImageView fitHeight="124.0" fitWidth="51.0" layoutX="546.0" layoutY="195.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Roulette/green0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="580.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="599.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/d1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="742.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="761.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/d2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="905.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="924.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/d3.png" />
          </image>
       </ImageView>
-      <Line endX="140.0" layoutX="968.0" layoutY="167.0" startX="-388.0" />
-      <Line endX="140.0" layoutX="968.0" layoutY="209.0" startX="-388.0" startY="-1.0" />
-      <Line endX="140.0" layoutX="968.0" layoutY="250.0" startX="-390.0" />
-      <Line endX="140.0" endY="0.2874755859375" layoutX="968.0" layoutY="292.0" startX="-389.0" />
-      <Line endX="98.5" endY="-19.5" layoutX="970.0" layoutY="127.0" startX="98.5" startY="225.0" />
-      <Line endX="98.5" endY="41.5" layoutX="928.0" layoutY="127.0" startX="98.5" startY="165.5" />
-      <Line endX="98.5" endY="41.5" layoutX="887.0" layoutY="127.0" startX="98.5" startY="165.5" />
-      <Line endX="98.5" endY="41.5" layoutX="848.0" layoutY="125.0" startX="98.5" startY="165.5" />
-      <Line endX="98.5" endY="-19.5" layoutX="807.0" layoutY="127.0" startX="97.0" startY="286.0" />
-      <Line endX="98.5" endY="41.5" layoutX="766.0" layoutY="127.0" startX="98.5" startY="165.5" />
-      <Line endX="98.5" endY="41.5" layoutX="725.0" layoutY="125.0" startX="98.5" startY="165.5" />
-      <Line endX="98.5" endY="41.5" layoutX="684.0" layoutY="125.0" startX="98.5" startY="165.5" />
-      <Line endX="98.5" endY="-17.5" layoutX="643.0" layoutY="125.0" startX="98.5" startY="288.0" />
-      <Line endX="98.5" endY="41.5" layoutX="603.0" layoutY="125.0" startX="98.5" startY="165.5" />
-      <Line endX="98.5" endY="41.5" layoutX="562.0" layoutY="127.0" startX="98.5" startY="165.5" />
-      <Line endX="98.5" endY="41.5" layoutX="521.0" layoutY="127.0" startX="98.5" startY="165.5" />
-      <Line endX="98.5" endY="-20.0" layoutX="481.0" layoutY="125.0" startX="98.5" startY="287.0" />
-      <Pane fx:id="pane36" layoutX="1027.0" layoutY="168.0" onMouseClicked="#clickPane36" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane33" layoutX="986.0" layoutY="168.0" onMouseClicked="#clickPane33" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane30" layoutX="947.0" layoutY="168.0" onMouseClicked="#clickPane30" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane27" layoutX="906.0" layoutY="168.0" onMouseClicked="#clickPane27" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane24" layoutX="865.0" layoutY="168.0" onMouseClicked="#clickPane24" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane21" layoutX="824.0" layoutY="168.0" onMouseClicked="#clickPane21" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane18" layoutX="783.0" layoutY="168.0" onMouseClicked="#clickPane18" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane15" layoutX="742.0" layoutY="168.0" onMouseClicked="#clickPane15" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane12" layoutX="702.0" layoutY="168.0" onMouseClicked="#clickPane12" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane9" layoutX="661.0" layoutY="168.0" onMouseClicked="#clickPane9" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane6" layoutX="620.0" layoutY="168.0" onMouseClicked="#clickPane6" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane3" layoutX="580.0" layoutY="168.0" onMouseClicked="#clickPane3" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane35" layoutX="1028.0" layoutY="209.0" onMouseClicked="#clickPane35" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane32" layoutX="987.0" layoutY="209.0" onMouseClicked="#clickPane32" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane29" layoutX="948.0" layoutY="209.0" onMouseClicked="#clickPane29" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane26" layoutX="907.0" layoutY="209.0" onMouseClicked="#clickPane26" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane23" layoutX="866.0" layoutY="209.0" onMouseClicked="#clickPane23" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane20" layoutX="825.0" layoutY="209.0" onMouseClicked="#clickPane20" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane17" layoutX="784.0" layoutY="209.0" onMouseClicked="#clickPane17" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane14" layoutX="743.0" layoutY="209.0" onMouseClicked="#clickPane14" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane11" layoutX="703.0" layoutY="209.0" onMouseClicked="#clickPane11" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane8" layoutX="662.0" layoutY="209.0" onMouseClicked="#clickPane8" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane5" layoutX="621.0" layoutY="209.0" onMouseClicked="#clickPane5" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane2" layoutX="581.0" layoutY="209.0" onMouseClicked="#clickPane2" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane34" layoutX="1027.0" layoutY="251.0" onMouseClicked="#clickPane34" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane31" layoutX="986.0" layoutY="251.0" onMouseClicked="#clickPane31" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane28" layoutX="947.0" layoutY="251.0" onMouseClicked="#clickPane28" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane22" layoutX="865.0" layoutY="251.0" onMouseClicked="#clickPane22" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane19" layoutX="824.0" layoutY="251.0" onMouseClicked="#clickPane19" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane16" layoutX="783.0" layoutY="251.0" onMouseClicked="#clickPane16" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane13" layoutX="742.0" layoutY="251.0" onMouseClicked="#clickPane13" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane10" layoutX="702.0" layoutY="251.0" onMouseClicked="#clickPane10" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane7" layoutX="661.0" layoutY="251.0" onMouseClicked="#clickPane7" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane4" layoutX="620.0" layoutY="251.0" onMouseClicked="#clickPane4" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="pane1" layoutX="580.0" layoutY="251.0" onMouseClicked="#clickPane1" prefHeight="40.0" prefWidth="40.0" />
-      <Line endX="100.0" layoutX="478.0" layoutY="167.0" startX="50.0" />
-      <Line endX="100.0" layoutX="478.0" layoutY="292.0" startX="50.0" />
-      <Line endX="98.5" endY="41.5" layoutX="429.0" layoutY="126.0" startX="98.5" startY="165.5" />
-      <Line endX="101.0" layoutX="968.0" layoutY="352.0" startX="-389.0" />
-      <Line endX="100.0" layoutX="968.0" layoutY="107.0" startX="-388.0" />
-      <Pane fx:id="paneManque" layoutX="578.0" layoutY="106.0" onMouseClicked="#clickPaneManque" prefHeight="60.0" prefWidth="162.0" />
-      <Pane fx:id="paneImpair" layoutX="744.0" layoutY="106.0" onMouseClicked="#clickPaneImpair" prefHeight="60.0" prefWidth="162.0" />
-      <Pane fx:id="paneRed" layoutX="907.0" layoutY="106.0" onMouseClicked="#clickPaneRed" prefHeight="60.0" prefWidth="162.0" />
-      <Pane fx:id="panePasse" layoutX="580.0" layoutY="291.0" onMouseClicked="#clickPanePasse" prefHeight="60.0" prefWidth="162.0" />
-      <Pane fx:id="panePair" layoutX="742.0" layoutY="291.0" onMouseClicked="#clickPanePair" prefHeight="60.0" prefWidth="162.0" />
-      <Pane fx:id="pane25" layoutX="907.0" layoutY="251.0" onMouseClicked="#clickPane25" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="paneBlack" layoutX="907.0" layoutY="291.0" onMouseClicked="#clickPaneBlack" prefHeight="60.0" prefWidth="162.0" />
-      <Line endX="-51.0" layoutX="51.0" layoutY="55.0" startX="1124.0" />
-      <Line endX="-51.0" layoutX="51.0" layoutY="60.0" startX="1124.0" />
-      <Line endX="-51.0" layoutX="51.0" layoutY="619.0" startX="1124.5" />
-      <Line endX="-51.0" layoutX="51.0" layoutY="614.0" startX="1124.0" />
-      <Button fx:id="getHelp" layoutX="1141.0" layoutY="14.0" mnemonicParsing="false" onAction="#getHelp" text="?" />
-      <Button fx:id="rouletteVerlassen" layoutX="14.0" layoutY="636.0" mnemonicParsing="false" onAction="#rouletteVerlassen" text="Den Roulettetisch verlassen" />
-      <Line endX="172.0" endY="30.0" layoutX="938.0" layoutY="137.0" startX="172.0" startY="156.0" />
-      <Pane fx:id="row3" layoutX="1070.0" layoutY="170.0" onMouseClicked="#clickRow3" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="row2" layoutX="1070.0" layoutY="208.0" onMouseClicked="#clickRow2" prefHeight="40.0" prefWidth="40.0" />
-      <Pane fx:id="row1" layoutX="1070.0" layoutY="251.0" onMouseClicked="#clickRow1" prefHeight="40.0" prefWidth="40.0" />
-      <Label layoutX="42.0" layoutY="481.0" text="Betrag eingeben:">
+      <ImageView fitHeight="46.0" fitWidth="485.0" layoutX="601.0" layoutY="320.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Roulette/collumnSelect.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="127.0" fitWidth="40.0" layoutX="1089.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/rowSelect.png" />
+         </image>
+      </ImageView>
+      <Line endX="140.0" layoutX="987.0" layoutY="195.0" startX="-388.0" />
+      <Line endX="140.0" layoutX="987.0" layoutY="237.0" startX="-388.0" startY="-1.0" />
+      <Line endX="140.0" layoutX="987.0" layoutY="278.0" startX="-390.0" />
+      <Line endX="140.0" endY="0.2874755859375" layoutX="987.0" layoutY="320.0" startX="-389.0" />
+      <Line endX="98.5" endY="-19.5" layoutX="989.0" layoutY="155.0" startX="98.5" startY="330.0" />
+      <Line endX="98.5" endY="41.5" layoutX="947.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="41.5" layoutX="906.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="41.5" layoutX="867.0" layoutY="153.0" startX="98.5" startY="207.0" />
+      <Line endX="98.5" endY="-19.5" layoutX="826.0" layoutY="155.0" startX="98.5" startY="329.0" />
+      <Line endX="98.5" endY="41.5" layoutX="785.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="41.5" layoutX="744.0" layoutY="153.0" startX="100.5" startY="207.0" />
+      <Line endX="98.5" endY="41.5" layoutX="703.0" layoutY="153.0" startX="98.5" startY="207.0" />
+      <Line endX="98.5" endY="-17.5" layoutX="662.0" layoutY="153.0" startX="99.0" startY="331.0" />
+      <Line endX="98.5" endY="41.5" layoutX="622.0" layoutY="153.0" startX="98.5" startY="207.0" />
+      <Line endX="98.5" endY="41.5" layoutX="581.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="41.5" layoutX="540.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="-20.0" layoutX="500.0" layoutY="153.0" startX="98.5" startY="331.0" />
+      <Pane layoutX="1046.0" layoutY="196.0" onMouseClicked="#clickPane36" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1005.0" layoutY="196.0" onMouseClicked="#clickPane33" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="966.0" layoutY="196.0" onMouseClicked="#clickPane30" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="925.0" layoutY="196.0" onMouseClicked="#clickPane27" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="884.0" layoutY="196.0" onMouseClicked="#clickPane24" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="843.0" layoutY="196.0" onMouseClicked="#clickPane21" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="802.0" layoutY="196.0" onMouseClicked="#clickPane18" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="761.0" layoutY="196.0" onMouseClicked="#clickPane15" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="721.0" layoutY="196.0" onMouseClicked="#clickPane12" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="680.0" layoutY="196.0" onMouseClicked="#clickPane9" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="639.0" layoutY="196.0" onMouseClicked="#clickPane6" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="599.0" layoutY="196.0" onMouseClicked="#clickPane3" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1047.0" layoutY="237.0" onMouseClicked="#clickPane35" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1006.0" layoutY="237.0" onMouseClicked="#clickPane32" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="967.0" layoutY="237.0" onMouseClicked="#clickPane29" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="926.0" layoutY="237.0" onMouseClicked="#clickPane26" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="885.0" layoutY="237.0" onMouseClicked="#clickPane23" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="844.0" layoutY="237.0" onMouseClicked="#clickPane20" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="803.0" layoutY="237.0" onMouseClicked="#clickPane17" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="762.0" layoutY="237.0" onMouseClicked="#clickPane14" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="722.0" layoutY="237.0" onMouseClicked="#clickPane11" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="681.0" layoutY="237.0" onMouseClicked="#clickPane8" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="640.0" layoutY="237.0" onMouseClicked="#clickPane5" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="600.0" layoutY="237.0" onMouseClicked="#clickPane2" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1046.0" layoutY="279.0" onMouseClicked="#clickPane34" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1005.0" layoutY="279.0" onMouseClicked="#clickPane31" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="966.0" layoutY="279.0" onMouseClicked="#clickPane28" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="884.0" layoutY="279.0" onMouseClicked="#clickPane22" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="843.0" layoutY="279.0" onMouseClicked="#clickPane19" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="802.0" layoutY="279.0" onMouseClicked="#clickPane16" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="761.0" layoutY="279.0" onMouseClicked="#clickPane13" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="721.0" layoutY="279.0" onMouseClicked="#clickPane10" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="680.0" layoutY="279.0" onMouseClicked="#clickPane7" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="639.0" layoutY="279.0" onMouseClicked="#clickPane4" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="599.0" layoutY="279.0" onMouseClicked="#clickPane1" prefHeight="40.0" prefWidth="40.0" />
+      <Line endX="100.0" layoutX="497.0" layoutY="195.0" startX="50.0" />
+      <Line endX="100.0" layoutX="497.0" layoutY="320.0" startX="50.0" />
+      <Line endX="98.5" endY="41.5" layoutX="447.0" layoutY="153.0" startX="98.5" startY="165.5" />
+      <Line endX="100.0" layoutX="987.0" layoutY="135.0" startX="-388.0" />
+      <Pane layoutX="597.0" layoutY="134.0" onMouseClicked="#clickPaneManque" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="763.0" layoutY="134.0" onMouseClicked="#clickPaneImpair" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="926.0" layoutY="134.0" onMouseClicked="#clickPaneRed" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="599.0" layoutY="363.0" onMouseClicked="#clickPanePasse" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="761.0" layoutY="363.0" onMouseClicked="#clickPanePair" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="926.0" layoutY="279.0" onMouseClicked="#clickPane25" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="926.0" layoutY="363.0" onMouseClicked="#clickPaneBlack" prefHeight="60.0" prefWidth="162.0" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="56.0" startX="1124.0" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="61.0" startX="1124.0" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="688.0" startX="1124.5" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="683.0" startX="1124.0" />
+      <Button layoutX="1141.0" layoutY="15.0" mnemonicParsing="false" onAction="#getHelp" text="?" />
+      <Button layoutX="14.0" layoutY="705.0" mnemonicParsing="false" onAction="#rouletteVerlassen" text="Den Roulettetisch verlassen" />
+      <Line endX="172.0" endY="30.0" layoutX="957.0" layoutY="165.0" startX="172.0" startY="156.0" />
+      <Pane layoutX="1089.0" layoutY="198.0" onMouseClicked="#clickRow3" prefHeight="40.0" prefWidth="40.0">
+         <children>
+            <Pane layoutY="80.0" onMouseClicked="#clickRow1" prefHeight="40.0" prefWidth="40.0" />
+            <Pane layoutY="39.0" onMouseClicked="#clickRow2" prefHeight="40.0" prefWidth="40.0" />
+         </children></Pane>
+      <Label layoutX="34.0" layoutY="579.0" text="Betrag eingeben:">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -173,29 +179,22 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label layoutX="579.0" layoutY="70.0" text="Die Standartwette ist die Zahl 0">
+      <Label layoutX="601.0" layoutY="77.0" text="Die Standartwette ist die Zahl 0">
          <font>
-            <Font size="18.0" />
+            <Font size="29.0" />
          </font>
          <effect>
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Pane fx:id="pane0" layoutX="527.0" layoutY="233.0" onMouseClicked="#clickPane0" prefHeight="60.0" prefWidth="51.0" />
-      <Pane fx:id="pane00" layoutX="527.0" layoutY="169.0" onMouseClicked="#clickPane00" prefHeight="60.0" prefWidth="51.0" />
-      <Line endX="101.0" layoutX="967.0" layoutY="412.0" startX="-389.0" />
-      <Pane fx:id="paneD1" layoutX="580.0" layoutY="352.0" onMouseClicked="#clickPaneD1" prefHeight="60.0" prefWidth="162.0" />
-      <Pane fx:id="paneD2" layoutX="742.0" layoutY="352.0" onMouseClicked="#clickPaneD2" prefHeight="60.0" prefWidth="162.0" />
-      <Pane fx:id="paneD3" layoutX="904.0" layoutY="353.0" onMouseClicked="#clickPaneD3" prefHeight="60.0" prefWidth="162.0" />
-      <Label layoutX="42.0" layoutY="414.0" text="Ihre momentane Wette:">
-         <font>
-            <Font name="Droid Serif" size="29.0" />
-         </font>
-         <effect>
-            <DropShadow color="WHITE" />
-         </effect>
-      </Label>
-      <Label fx:id="betString" layoutX="388.0" layoutY="414.0">
+      <Pane layoutX="546.0" layoutY="261.0" onMouseClicked="#clickPane0" prefHeight="60.0" prefWidth="51.0" />
+      <Pane layoutX="546.0" layoutY="197.0" onMouseClicked="#clickPane00" prefHeight="60.0" prefWidth="51.0" />
+      <Line endX="101.0" endY="43.0" layoutX="987.0" layoutY="380.0" startX="-388.0" startY="45.0" />
+      <Line endX="101.0" endY="45.0" layoutX="986.0" layoutY="440.0" startX="-385.0" startY="45.0" />
+      <Pane layoutX="599.0" layoutY="424.0" onMouseClicked="#clickPaneD1" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="761.0" layoutY="424.0" onMouseClicked="#clickPaneD2" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="923.0" layoutY="425.0" onMouseClicked="#clickPaneD3" prefHeight="60.0" prefWidth="162.0" />
+      <Label layoutX="594.0" layoutY="584.0" text="Ihre momentane Wette:">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -203,6 +202,54 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <TextField fx:id="numberField" layoutX="311.0" layoutY="490.0" />
+      <Label fx:id="betString" layoutX="979.0" layoutY="584.0" text="0">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <TextField fx:id="numberField" layoutX="311.0" layoutY="584.0" text="50" />
+      <Pane layoutX="600.0" layoutY="322.0" prefHeight="42.0" prefWidth="40.0">
+         <children>
+            <Pane layoutX="40.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="78.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="122.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="162.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="203.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="244.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="284.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="325.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="366.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="404.0" prefHeight="42.0" prefWidth="40.0" />
+            <Pane layoutX="445.0" prefHeight="42.0" prefWidth="40.0" />
+         </children>
+      </Pane>
+      <Button layoutX="34.0" layoutY="630.0" mnemonicParsing="false" onAction="#returnPlayerBalanceNew" prefHeight="40.0" prefWidth="213.0" text="Request Balance" />
+      <Label layoutX="593.0" layoutY="533.0" text="Die Zufallszahl ist:">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label fx:id="gewonnenVerloren" layoutX="34.0" layoutY="454.0" prefHeight="94.0" prefWidth="410.0">
+         <font>
+            <Font name="Droid Serif" size="66.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label fx:id="randomNumberLabel" layoutX="979.0" layoutY="533.0" prefHeight="35.0" prefWidth="1.0" text="0">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

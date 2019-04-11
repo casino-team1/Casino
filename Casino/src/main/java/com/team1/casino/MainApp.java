@@ -43,13 +43,10 @@ public class MainApp extends Application {
         return this.stage;
     }
 
-<<<<<<< HEAD
-    public static final ExecutionMode executionMode = ExecutionMode.DEBUG;
-=======
-    private final ExecutionMode executionMode = ExecutionMode.DEBUG;
->>>>>>> master
+    public static final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
 
     @Override
+
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         this.stage.setResizable(false);

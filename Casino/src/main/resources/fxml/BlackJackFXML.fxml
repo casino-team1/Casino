@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="449.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackFXMLController">
    <children>
-      <Label layoutX="201.0" layoutY="26.0" text="BlackJack">
+      <Label layoutX="227.0" layoutY="26.0" text="♥♦BlackJack♣♠">
          <font>
             <Font size="48.0" />
          </font>
@@ -17,15 +17,20 @@
       <Label layoutX="98.0" layoutY="329.0" text="Dealer Karten" />
       <Label fx:id="labelKartenSpieler" layoutX="191.0" layoutY="293.0" prefHeight="18.0" prefWidth="230.0" />
       <Label fx:id="labelKartenDealer" layoutX="199.0" layoutY="329.0" prefHeight="18.0" prefWidth="230.0" />
-      <Button fx:id="buttonStand" disable="true" layoutX="217.0" layoutY="246.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
-      <Button fx:id="buttonHit" disable="true" layoutX="339.0" layoutY="246.0" mnemonicParsing="false" onAction="#hit" text="Hit" />
-      <Button fx:id="buttonStart" disable="true" layoutX="261.0" layoutY="200.0" mnemonicParsing="false" onAction="#startGame" text="Neues Spiel" />
+      <Button fx:id="buttonStand" disable="true" layoutX="167.0" layoutY="190.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
+      <Button fx:id="buttonHit" disable="true" layoutX="267.0" layoutY="190.0" mnemonicParsing="false" onAction="#hit" text="Hit" />
+      <Button fx:id="buttonStart" disable="true" layoutX="267.0" layoutY="142.0" mnemonicParsing="false" onAction="#startGame" text="Neues Spiel" />
       <Label fx:id="labelLösung" layoutX="421.0" layoutY="311.0" prefHeight="18.0" prefWidth="198.0" />
-      <Label layoutX="87.0" layoutY="110.0" text="Ihr Einsatz" />
+      <Label layoutX="87.0" layoutY="110.0" text="Ihr Einsatz:" />
       <TextField fx:id="textfeldEinsatz" layoutX="166.0" layoutY="106.0" />
       <Label fx:id="labelEinsatzFehler" layoutX="364.0" layoutY="109.0" prefHeight="18.0" prefWidth="298.0" />
       <Button fx:id="buttonPrüfung" layoutX="166.0" layoutY="142.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfen" />
       <Button fx:id="buttonVerlassen" layoutX="61.0" layoutY="404.0" mnemonicParsing="false" onAction="#zurueck" text="BlackJack verlassen" />
-      <Button fx:id="buttonHelp" layoutX="651.0" layoutY="13.0" mnemonicParsing="false" onAction="#help" text="?" />
+      <Button fx:id="buttonHelp" layoutX="687.0" layoutY="13.0" mnemonicParsing="false" onAction="#help" text="?" />
+      <Button fx:id="buttonVerdoppeln" disable="true" layoutX="359.0" layoutY="190.0" mnemonicParsing="false" onAction="#verdoppeln" text="Verdoppeln" />
+      <Button fx:id="buttonVersichern" disable="true" layoutX="217.0" layoutY="250.0" mnemonicParsing="false" onAction="#versichern" text="Versichern" />
+      <TextField fx:id="textfeldVersicherung" disable="true" layoutX="330.0" layoutY="250.0" promptText="Versicherungsbetrag" />
+      <Label fx:id="labelVerdoppeln" layoutX="469.0" layoutY="193.0" prefHeight="18.0" prefWidth="274.0" />
+      <Label fx:id="labelVersicherung" layoutX="504.0" layoutY="253.0" prefHeight="18.0" prefWidth="230.0" />
    </children>
 </AnchorPane>

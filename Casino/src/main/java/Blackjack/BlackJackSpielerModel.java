@@ -24,29 +24,8 @@ public class BlackJackSpielerModel {
     private int zufallszahl = 0;
     private String zufallskarte = "";
 
-    public void hit(int anzahlKartenImKartendeck, ArrayList<String> kartenSpieler, ArrayList<String> kartenSymbole, HashMap<String, Integer> karten, Label labelKartenSpieler) {
-        int i = 51;
-        /*//Hat es genügend Karten?
-        if (anzahlKartenImKartendeck < 1) {
-        //dealer.austeilen();
-        }*/
+    public void hit() {
 
-        //Spieler zieht Karten
-        zufallszahl = r.nextInt(i);
-        zufallskarte = kartenSymbole.get(zufallszahl);
-
-        if (zufallskarte.equals("J") || zufallskarte.equals("Q") || zufallskarte.equals("K")) {
-            kartenWertSpieler += 10;
-        } else if (zufallskarte.equals("A")) {
-            kartenWertSpieler += 11;
-        } else {
-            kartenWertSpieler += karten.get(zufallskarte);
-        }
-        kartenSpieler.add(zufallskarte);
-        karten.remove(zufallskarte);
-        anzahlKartenImKartendeck--;
-        i--;
-        labelKartenSpieler.setText(labelKartenSpieler.getText() + "," + zufallskarte);
     }
 
     public void setGewonnen(boolean g) {

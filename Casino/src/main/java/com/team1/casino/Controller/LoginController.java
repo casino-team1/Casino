@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -33,6 +34,8 @@ public class LoginController implements Initializable {
     private Button loginButtion;
     @FXML
     private Button registerButton;
+    @FXML
+    private Text errorMEssage;
 
     public void setModel(CasinoLoginModel model) {
         this.loginModel = model;
@@ -49,7 +52,7 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        this.errorMEssage.setVisible(false);
     }
 
     @FXML
@@ -57,6 +60,9 @@ public class LoginController implements Initializable {
         String result = this.loginModel.loginUser();
         if (result.equals("Valid user")) {
             this.loginModel.displayMainMenu();
+        } else {
+            this.errorMEssage.setText(result);
+            this.errorMEssage.setVisible(true);
         }
     }
 

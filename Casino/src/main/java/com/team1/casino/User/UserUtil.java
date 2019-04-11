@@ -25,7 +25,7 @@ public class UserUtil {
         return hashed;
     }
 
-    private boolean validPassword(String givenPassword, String hashedPassword) {
+    public boolean validPassword(String givenPassword, String hashedPassword) {
         boolean isValidPassword = BCrypt.checkpw(givenPassword, hashedPassword);
         return isValidPassword;
     }

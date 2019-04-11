@@ -6,6 +6,7 @@
 package Yatzy;
 
 import com.team1.casino.MainApp;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,12 +14,17 @@ import java.util.Comparator;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -44,6 +50,10 @@ public class YatzyFXMLController implements Initializable {
     private Label sclblenemy;
     @FXML
     private Label lblbetnum;
+    @FXML
+    private Button btnbet;
+    @FXML
+    private TextField txttest;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -162,6 +172,7 @@ public class YatzyFXMLController implements Initializable {
     private Label lbllo8;
     @FXML
     private Label lbllo9;
+    
 
     public void setYatzy(PlayYatzy yatzy) {
         this.yatzy = yatzy;
@@ -170,14 +181,7 @@ public class YatzyFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-
-    public void endGame() {
-
-    }
-
-    public void needHelp() {
-
+        btnthrowdices.setDisable(true);
     }
 
     public ArrayList<Dice> getFinalArray() {
@@ -189,7 +193,6 @@ public class YatzyFXMLController implements Initializable {
 
         //the displayed images get updated
         assignImages();
-
         //if a new game was startet, after the previous one has been finished
         if (newround == true) {
 
@@ -303,9 +306,38 @@ public class YatzyFXMLController implements Initializable {
         }
 
     }
+  
+    @FXML
+    private void pressbtnbet(ActionEvent event) throws IOException {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzybetFXML.fxml"));
+            Stage stageBet = new Stage();   
+            stageBet.setTitle("Betrag setzen");
+            stageBet.setScene(new Scene(root, 267, 130));
+            stageBet.setResizable(false);
+            stageBet.show();
+            //YatzybetFXMLController controlling = loader.getController();
+            
+            
+            //the placed value is displayed
+        } catch (Exception e) {
+        }
+
+        
+        
+//        lblbetnum.setText(Integer.toString(rules.getBetnum()));
+        btnthrowdices.setDisable(false);
+        btnbet.setDisable(true);
+    }
 
     @FXML
-    private void presshelp(ActionEvent event) {
+    private void presshelp(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzyhelpFXML.fxml"));
+        Stage stageHelp = new Stage();
+        stageHelp.setTitle("Hilfe");
+        stageHelp.setScene(new Scene(root, 1433, 665));
+        stageHelp.setResizable(false);
+        stageHelp.show();
     }
 
     @FXML
@@ -745,7 +777,7 @@ public class YatzyFXMLController implements Initializable {
     }
 
     public void exithover(Label lbl) {
-        lbl.setStyle("-fx-border-color: black; -fx-border-width: 1;");
+        lbl.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-background-color: white;");
     }
 
     public void notPressable(Label lbl) {
@@ -790,29 +822,29 @@ public class YatzyFXMLController implements Initializable {
                 case 1:
                     lblwin.setText("Gewonnen!");
                     lblresulttxt.setText("Gewonnener Betrag");
-                    lblbetnum.setText(Integer.toString(rules.getBetnum()));
-                    lblresultnum.setText(Integer.toString(rules.getWinamount()));;
+                    lblresultnum.setText(Integer.toString(rules.getWinamount()));
+                    ;
                     lblresulttotalnum.setText(Double.toString(rules.getNewAmount()));
                     break;
                 case 2:
                     lblwin.setText("Verloren!");
                     lblresulttxt.setText("Verlorener Betrag");
-                    lblbetnum.setText(Integer.toString(rules.getBetnum()));
-                    lblresultnum.setText(Integer.toString(rules.getWinamount()));;
+                    lblresultnum.setText(Integer.toString(rules.getWinamount()));
+                    ;
                     lblresulttotalnum.setText(Double.toString(rules.getNewAmount()));
                     break;
                 case 3:
                     lblwin.setText("Unentschieden!");
                     lblresulttxt.setText("");
-                    lblbetnum.setText(Integer.toString(rules.getBetnum()));
-                    lblresultnum.setText(Integer.toString(rules.getWinamount()));;
+                    lblresultnum.setText(Integer.toString(rules.getWinamount()));
+                    ;
                     lblresulttotalnum.setText(Double.toString(rules.getNewAmount()));
                     break;
                 default:
-                    
+
                     break;
             }
-            
+
             btnthrowdices.setText("Neues Spiel");
         }
     }

@@ -5,7 +5,7 @@
  */
 package Yatzy;
 
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.Util.UserCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;

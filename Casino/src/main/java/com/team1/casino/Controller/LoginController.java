@@ -7,7 +7,7 @@
 package com.team1.casino.Controller;
 
 import com.team1.casino.Model.CasinoLoginModel;
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.Util.UserCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;

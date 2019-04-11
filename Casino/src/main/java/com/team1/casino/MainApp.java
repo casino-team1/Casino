@@ -7,20 +7,20 @@ import Blackjack.Blackjack;
 import Roulette.Roulette;
 import Yatzy.Yatzy;
 import com.team1.casino.Controller.AuthenticationController;
-import com.team1.casino.Controller.GameStatisticController;
+import com.team1.casino.Controller.Statistic.GameStatisticController;
 import com.team1.casino.Controller.LoginController;
-import com.team1.casino.Controller.PlayerStatisticController;
+import com.team1.casino.Controller.Statistic.PlayerStatisticController;
 import com.team1.casino.Controller.RegistrationViewController;
-import com.team1.casino.Controller.StatisticController;
+import com.team1.casino.Controller.Statistic.StatisticController;
 import com.team1.casino.Model.AuthenticationModel;
 import com.team1.casino.Model.CasinoLoginModel;
 import com.team1.casino.Model.GameStatisticModel;
 import com.team1.casino.Model.PlayerStatisticModel;
 import com.team1.casino.Model.RegistrationModel;
 import com.team1.casino.Model.StatisticModel;
-import com.team1.casino.User.UserCentral;
-import com.team1.casino.database.DatabaseConnection;
-import com.team1.casino.database.DatabaseConnector;
+import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.database.Connection.DatabaseConnection;
+import com.team1.casino.database.Connection.DatabaseConnector;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -43,7 +43,7 @@ public class MainApp extends Application {
         return this.stage;
     }
 
-    public static final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
+    public static final ExecutionMode executionMode = ExecutionMode.DEBUG;
     
     @Override
     public void start(Stage stage) throws Exception {

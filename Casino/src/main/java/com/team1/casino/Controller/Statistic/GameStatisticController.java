@@ -4,9 +4,10 @@
  * For information and contact with the developer please write to
  * Mail: nick.flueckiger@outlook.de
  */
-package com.team1.casino.Controller;
+package com.team1.casino.Controller.Statistic;
 
 import com.team1.casino.Entity.Stat;
+import com.team1.casino.Model.GameStatisticModel;
 import com.team1.casino.Model.PlayerStatisticModel;
 import java.net.URL;
 import java.sql.SQLException;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -33,32 +33,31 @@ import javafx.util.Callback;
  *
  * @author Nick Flückiger
  */
-public class PlayerStatisticController implements Initializable, Observer {
+public class GameStatisticController implements Initializable, Observer {
 
-    private PlayerStatisticModel model;
-
+    private GameStatisticModel model;
     @FXML
-    private ComboBox<String> nutzernamen;
+    private TableView<Stat> gameStatTable;
     @FXML
-    private LineChart<String, Double> kontostandChart;
+    private LineChart<String, Double> gameProfit;
     @FXML
-    private TableView<Stat> statisticTable;
+    private ComboBox<String> gameNames;
     @FXML
-    private TableColumn<Stat, String> gameCol;
+    private TableColumn<Stat, String> userCol;
     @FXML
     private TableColumn<Stat, String> betCol;
     @FXML
-    private TableColumn<Stat, String> ResCol;
+    private TableColumn<Stat, String> resultCol;
     @FXML
-    private TableColumn<Stat, String> ChangeCol;
+    private TableColumn<Stat, String> changeCol;
+    @FXML
+    private ComboBox<Integer> statCounter;
     @FXML
     private Button back;
 
-    public void setPlayerStatisticModel(PlayerStatisticModel model) {
+    public void setGameStatistics(GameStatisticModel model) throws SQLException {
         this.model = model;
-        for (String username : model.getUsernameListing()) {
-            this.nutzernamen.getItems().add(username);
-        }
+        this.gameNames.getItems().addAll(model.getGameNames());
     }
 
     /**
@@ -66,17 +65,21 @@ public class PlayerStatisticController implements Initializable, Observer {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
+        userCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
                 if (p.getValue() != null) {
-                    return new SimpleStringProperty(p.getValue().getGameName());
+                    return new SimpleStringProperty(p.getValue().getUsername());
                 } else {
                     return new SimpleStringProperty("No Game");
                 }
             }
         });
-        ResCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
+        this.statCounter.getItems().add(10);
+        this.statCounter.getItems().add(20);
+        this.statCounter.getItems().add(50);
+        this.statCounter.getItems().add(100);
+        resultCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
                 if (p.getValue() != null) {
@@ -96,7 +99,7 @@ public class PlayerStatisticController implements Initializable, Observer {
                 }
             }
         });
-        ChangeCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
+        changeCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Stat, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Stat, String> p) {
                 if (p.getValue() != null) {
@@ -109,33 +112,51 @@ public class PlayerStatisticController implements Initializable, Observer {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public void update(Observable o, Object arg) {
-        PlayerStatisticModel model = (PlayerStatisticModel) o;
-        ArrayList<Double> accountbalances = model.getAccountValues();
+        GameStatisticModel gameModel = (GameStatisticModel) o;
+        this.gameStatTable.getItems().clear();
+        int maxNumberOfEntries = -1;
+        if (this.statCounter.getSelectionModel().getSelectedItem() != null) {
+            maxNumberOfEntries = this.statCounter.getSelectionModel().getSelectedItem();
+        }
+        for (Stat stat : gameModel.getGameStats()) {
+            if (maxNumberOfEntries != -1 && this.gameStatTable.getItems().size() >= maxNumberOfEntries) {
+                break;
+            }
+            this.gameStatTable.getItems().add(stat);
+        }
+
+        ArrayList<Double> gameProfit = model.getGameProfits();
+
         XYChart.Series<String, Double> series = new XYChart.Series<>();
         int counter = 0;
-        this.kontostandChart.getData().clear();
-        for (double value : accountbalances) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(counter + 20), value));
+        this.gameProfit.getData().clear();
+        for (double value : gameProfit) {
+            if (series.getData().size() >= maxNumberOfEntries && maxNumberOfEntries != -1) {
+                break;
+            }
+            series.getData().add(new XYChart.Data<>(String.valueOf(counter + 1), value));
             counter++;
         }
-        this.kontostandChart.getData().add(series);
-        this.statisticTable.getItems().clear();
-        for (Stat stat : model.getStats()) {
-            this.statisticTable.getItems().add(stat);
-        }
+        this.gameProfit.getData().add(series);
+        this.gameProfit.setCreateSymbols(false);
     }
 
     @FXML
     private void selectionChanged(ActionEvent event) throws SQLException {
-        this.model.setSelectePlayer(this.nutzernamen.getValue());
-        this.model.displayStatsForSelectedPlayer();
+        this.model.setSelectedGame(this.gameNames.getSelectionModel().getSelectedItem());
+        this.model.loadGameStats();
+    }
+
+    @FXML
+    private void selectedStatCount(ActionEvent event) throws SQLException {
+        this.model.setSelectedGame(this.gameNames.getSelectionModel().getSelectedItem());
+        this.model.loadGameStats();
     }
 
     @FXML
     private void goBackToMenu(ActionEvent event) {
-        this.model.backToMenu();
+        this.model.goBackToMenu();
     }
 
 }

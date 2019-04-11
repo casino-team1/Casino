@@ -6,7 +6,7 @@
  */
 package com.team1.casino.Entity;
 
-import com.team1.casino.User.UserUtil;
+import com.team1.casino.User.Util.UserUtil;
 
 /**
  *

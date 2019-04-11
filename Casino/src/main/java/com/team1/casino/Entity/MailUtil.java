@@ -6,7 +6,7 @@
  */
 package com.team1.casino.Entity;
 
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.Util.UserCentral;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;

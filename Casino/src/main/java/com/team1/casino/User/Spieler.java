@@ -6,9 +6,10 @@
  */
 package com.team1.casino.User;
 
+import com.team1.casino.User.Util.UserUtil;
 import com.team1.casino.ExecutionMode;
 import com.team1.casino.MainApp;
-import com.team1.casino.database.DatabaseConnection;
+import com.team1.casino.database.Connection.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;
 import com.team1.casino.database.Updater;
 import java.sql.SQLException;

@@ -4,7 +4,7 @@
  * For information and contact with the developer please write to
  * Mail: nick.flueckiger@outlook.de
  */
-package com.team1.casino.Controller;
+package com.team1.casino.Controller.Statistic;
 
 import com.team1.casino.Model.StatisticModel;
 import java.net.URL;

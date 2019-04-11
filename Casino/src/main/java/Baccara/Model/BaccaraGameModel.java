@@ -9,7 +9,7 @@ package Baccara.Model;
 import Baccara.BaccaraHandler;
 import Baccara.Entity.BaccaraCard;
 import Baccara.Entity.BaccaraGame;
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.Util.UserCentral;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;

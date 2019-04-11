@@ -8,9 +8,9 @@ package com.team1.casino.Model;
 
 import com.team1.casino.MainApp;
 import com.team1.casino.User.User;
-import com.team1.casino.User.UserUtil;
+import com.team1.casino.User.Util.UserUtil;
 import com.team1.casino.User.Spieler;
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.Util.UserCentral;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 

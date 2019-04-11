@@ -8,7 +8,7 @@ package Baccara.Model;
 
 import Baccara.BaccaraHandler;
 import com.team1.casino.User.User;
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.User.Util.UserCentral;
 
 /**
  *

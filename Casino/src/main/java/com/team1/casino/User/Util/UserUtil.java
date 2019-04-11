@@ -4,9 +4,10 @@
  * For information and contact with the developer please write to
  * Mail: nick.flueckiger@outlook.de
  */
-package com.team1.casino.User;
+package com.team1.casino.User.Util;
 
-import com.team1.casino.database.DatabaseConnection;
+import com.team1.casino.User.User;
+import com.team1.casino.database.Connection.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;
 import java.sql.SQLException;
 import java.util.ArrayList;

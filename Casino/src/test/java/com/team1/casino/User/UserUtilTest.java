@@ -6,6 +6,7 @@
  */
 package com.team1.casino.User;
 
+import com.team1.casino.User.Util.UserUtil;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

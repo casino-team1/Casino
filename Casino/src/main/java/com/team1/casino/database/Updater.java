@@ -6,7 +6,8 @@
  */
 package com.team1.casino.database;
 
-import com.team1.casino.User.UserCentral;
+import com.team1.casino.database.Connection.DatabaseConnection;
+import com.team1.casino.User.Util.UserCentral;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

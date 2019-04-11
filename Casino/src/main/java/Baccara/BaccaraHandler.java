@@ -31,6 +31,7 @@ public class BaccaraHandler {
     public BaccaraHandler(MainApp mainApplication) {
         this.mainApplication = mainApplication;
         this.stage = mainApplication.getStage();
+        //in order to preserve the ratio of the images, the user is not allowed to change the size of the window.
         this.stage.setResizable(false);
         this.menuModel = new BaccaraMenuModel(this);
         this.gameModel = new BaccaraGameModel(this);

@@ -10,16 +10,24 @@ package com.team1.casino.Sound;
  *
  * @author Nick Flückiger
  */
-public class SoundManager {
+public abstract class SoundManager {
 
-    private String soundFile;
+    private String relativeSoundPath;
 
-    public SoundManager(String soundFile
-    ) {
-        this.soundFile = soundFile;
+    public SoundManager(String soundPath) {
+        this.relativeSoundPath = soundPath;
     }
 
-    public String getSoundFile() {
-        return soundFile;
+    public String getRelativeSoundPath() {
+        return relativeSoundPath;
     }
+
+    public boolean isValidSoundFile() {
+        return false;
+    }
+
+    public void playSound() {
+
+    }
+
 }

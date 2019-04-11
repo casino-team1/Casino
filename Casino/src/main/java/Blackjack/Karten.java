@@ -86,5 +86,5 @@ public class Karten {
     public int getAnzahlKartenInKartenSymbole() {
         return anzahlKartenInKartenSymbole;
     }
-
+    
 }

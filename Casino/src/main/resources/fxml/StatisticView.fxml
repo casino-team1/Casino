@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="547.0" prefWidth="702.0" style="-fx-background-color: #8fe8da;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.StatisticController">
+<AnchorPane id="AnchorPane" prefHeight="547.0" prefWidth="702.0" style="-fx-background-color: #8fe8da;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.Statistic.StatisticController">
    <children>
       <ImageView fx:id="playerStat" fitHeight="198.0" fitWidth="225.0" layoutX="109.0" layoutY="175.0" onMouseClicked="#displayPlayerStat" pickOnBounds="true" preserveRatio="true">
          <image>

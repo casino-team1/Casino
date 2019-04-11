@@ -34,8 +34,6 @@ public class LoginController implements Initializable {
     private Button loginButtion;
     @FXML
     private Button registerButton;
-    @FXML
-    private Text errorMEssage;
 
     public void setModel(CasinoLoginModel model) {
         this.loginModel = model;
@@ -52,17 +50,15 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.errorMEssage.setVisible(false);
     }
 
     @FXML
     private void loginUser(ActionEvent event) {
         String result = this.loginModel.loginUser();
         if (result.equals("Valid user")) {
+
             this.loginModel.displayMainMenu();
         } else {
-            this.errorMEssage.setText(result);
-            this.errorMEssage.setVisible(true);
         }
     }
 

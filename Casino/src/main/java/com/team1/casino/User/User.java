@@ -35,6 +35,8 @@ public abstract class User {
         return ID;
     }
 
+    public abstract void addStat(String gameName, double bet, String result, double amount);
+
     public String getRole() {
         return role;
     }
@@ -104,5 +106,11 @@ public abstract class User {
     }
 
     public abstract void writeUserToDatabase();
+
+    public void loadUserInformation() {
+        UserUtil util = new UserUtil();
+        this.currentBalance = util.loadCurrentBalanceFromGivenUsername(username);
+        this.ID = util.getIDFromUserByUsername(username);
+    }
 
 }

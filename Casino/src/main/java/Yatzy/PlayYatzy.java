@@ -22,6 +22,12 @@ public class PlayYatzy extends Spiel {
     public PlayYatzy(MainApp mainApplication) {
         super(mainApplication);
     }
+    
+//    private MainApp main;
+//    
+//    public void setMain(MainApp main) {
+//        this.main = main;
+//    }
 
     @Override
     public void startGame() {

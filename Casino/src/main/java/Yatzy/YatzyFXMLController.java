@@ -52,8 +52,6 @@ public class YatzyFXMLController implements Initializable {
     private Label lblbetnum;
     @FXML
     private Button btnbet;
-    @FXML
-    private TextField txttest;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;

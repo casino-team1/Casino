@@ -19,4 +19,12 @@ public class RouletteTable {
         return betAmount;
     }
 
+    public boolean checkForAvailableMoney(int playerBalance, int betAmount){
+        if (playerBalance < betAmount){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }

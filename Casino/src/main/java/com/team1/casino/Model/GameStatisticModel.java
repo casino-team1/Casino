@@ -7,6 +7,7 @@
 package com.team1.casino.Model;
 
 import com.team1.casino.Entity.Stat;
+import com.team1.casino.MainApp;
 import com.team1.casino.database.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;
 import java.sql.SQLException;
@@ -25,6 +26,12 @@ public class GameStatisticModel extends Observable {
 
     public String getSelectedGame() {
         return selectedGame;
+    }
+
+    private MainApp mainApplication;
+
+    public void setMainApplication(MainApp mainApplication) {
+        this.mainApplication = mainApplication;
     }
 
     public ArrayList<Stat> getGameStats() {
@@ -96,6 +103,10 @@ public class GameStatisticModel extends Observable {
 
     public ArrayList<Double> getGameProfits() {
         return gameProfits;
+    }
+
+    public void goBackToMenu() {
+        this.mainApplication.displayStatisticView();
     }
 
 }

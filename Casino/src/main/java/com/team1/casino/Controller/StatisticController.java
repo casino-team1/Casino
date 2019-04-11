@@ -16,6 +16,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -25,9 +27,9 @@ import javafx.scene.control.Button;
 public class StatisticController implements Initializable, Observer {
 
     @FXML
-    private Button playerStat;
+    private ImageView playerStat;
     @FXML
-    private Button gameStat;
+    private ImageView gameStat;
 
     private StatisticModel model;
 
@@ -49,12 +51,12 @@ public class StatisticController implements Initializable, Observer {
     }
 
     @FXML
-    private void displayPlayerStat(ActionEvent event) throws SQLException {
+    private void displayPlayerStat(MouseEvent event) throws SQLException {
         this.model.displayPlayerStatistic();
     }
 
     @FXML
-    private void displayGameStat(ActionEvent event) throws SQLException {
+    private void displayGameStat(MouseEvent event) throws SQLException {
         this.model.displayGameStatistic();
     }
 

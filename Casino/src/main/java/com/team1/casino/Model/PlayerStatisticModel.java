@@ -7,6 +7,7 @@
 package com.team1.casino.Model;
 
 import com.team1.casino.Entity.Stat;
+import com.team1.casino.MainApp;
 import com.team1.casino.User.UserCentral;
 import com.team1.casino.User.UserUtil;
 import com.team1.casino.database.DatabaseConnection;
@@ -24,6 +25,12 @@ public class PlayerStatisticModel extends Observable {
 
     public ArrayList<String> getUsernameListing() {
         return usernameListing;
+    }
+
+    private MainApp mainApplication;
+
+    public void setMainApplication(MainApp mainApplication) {
+        this.mainApplication = mainApplication;
     }
 
     private SimpleStringProperty selectedPlayer = new SimpleStringProperty();
@@ -113,5 +120,9 @@ public class PlayerStatisticModel extends Observable {
 
     public ArrayList<String> getUserStatistics() {
         return this.statistics;
+    }
+
+    public void backToMenu() {
+        this.mainApplication.displayStatisticView();
     }
 }

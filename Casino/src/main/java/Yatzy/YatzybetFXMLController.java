@@ -5,6 +5,7 @@
  */
 package Yatzy;
 
+import com.team1.casino.User.UserCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -51,6 +52,7 @@ public class YatzybetFXMLController implements Initializable {
             input = Integer.parseInt(txtbet.getText());
             if(input%10 == 0 && error == false) {
                 betnum = input;
+                //UserCentral.getInstance().getUser().setCurrentBalance(UserCentral.getInstance().getUser().getCurrentBalance() + betnum);
                 Stage stage = (Stage) btncancel.getScene().getWindow();
                 stage.close();
             }
@@ -69,6 +71,7 @@ public class YatzybetFXMLController implements Initializable {
         Stage stage = (Stage) btncancel.getScene().getWindow();
         stage.close();
     }
+
     
   
 }

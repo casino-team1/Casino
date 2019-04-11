@@ -49,6 +49,7 @@ public class AuthenticationModel extends Observable {
         String accessCode = this.userInputCode.getValue();
         if (accessCode.trim().equals(this.givenCode.trim())) {
             UserCentral.getInstance().getUser().writeUserToDatabase();
+            UserCentral.getInstance().getUser().loadUserInformation();
             this.mainApplication.displayMainMenu();
         } else {
             System.out.println("invalid");

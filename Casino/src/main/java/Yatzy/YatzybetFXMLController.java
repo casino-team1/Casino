@@ -26,7 +26,7 @@ public class YatzybetFXMLController implements Initializable {
     private int input;
     private int betnum;
     Rules rules = new Rules();
-    
+
     @FXML
     private TextField txtbet;
     @FXML
@@ -35,32 +35,31 @@ public class YatzybetFXMLController implements Initializable {
     private Button btncancel;
     @FXML
     private Label lblerror;
+
     /**
      * Initializes the controller class.
      */
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void pressbtnbet(ActionEvent event) {
         boolean error = false;
         try {
             input = Integer.parseInt(txtbet.getText());
-            if(input%10 == 0 && error == false) {
+            if (input % 10 == 0 && error == false) {
                 betnum = input;
                 //UserCentral.getInstance().getUser().setCurrentBalance(UserCentral.getInstance().getUser().getCurrentBalance() + betnum);
                 Stage stage = (Stage) btncancel.getScene().getWindow();
                 stage.close();
-            }
-            else {
+            } else {
                 lblerror.setText("Der Betrag muss zehnstellig sein");
             }
-        
-        } catch(NumberFormatException e){
+
+        } catch (NumberFormatException e) {
             lblerror.setText("Der Betrag muss eine Zahl sein");
             error = true;
         }
@@ -72,6 +71,4 @@ public class YatzybetFXMLController implements Initializable {
         stage.close();
     }
 
-    
-  
 }

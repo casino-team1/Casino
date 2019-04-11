@@ -21,11 +21,11 @@ import java.util.logging.Logger;
  * @author Nick Flückiger
  */
 public class Spieler extends User {
-    
+
     public Spieler(String username, String password) {
         super(username, password);
     }
-    
+
     @Override
     public void writeUserToDatabase() {
         String username = super.getUsername();
@@ -35,7 +35,7 @@ public class Spieler extends User {
             @Override
             public void run() {
                 DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-                int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(balance,lastUpdated) VALUES(5000.0,CURDATE())", "");
+                int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(balance,lastUpdated) VALUES(?,CURDATE())", "5000.0;");
                 System.out.println(balanceIndex);
                 query.runQueryWithoutReturn("INSERT INTO user(username,password,role,balance_id,email) VALUES(?,?,?,?,?)", username + ";-" + password + ";-" + "Player" + ";-" + String.valueOf(balanceIndex) + ";-"
                         + email
@@ -44,7 +44,7 @@ public class Spieler extends User {
             }
         }).start();
     }
-    
+
     @Override
     public void setCurrentBalance(double currentBalance) {
         super.setCurrentBalance(currentBalance);
@@ -57,13 +57,13 @@ public class Spieler extends User {
             }
         }
     }
-    
+
     @Override
     public void addStat(String gameName, double bet, String result, double amount) {
         Updater updated = new Updater();
         updated.writeStatisticToDatabase(gameName, bet, result, amount);
     }
-    
+
     @Override
     public void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount) {
         this.setCurrentBalance(newBalance);

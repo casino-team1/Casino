@@ -6,56 +6,29 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="631.0" prefWidth="518.0" style="-fx-background-image: ../images/loginBackground.jpg../images/loginBackground.jpg;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.LoginController">
-   <children>
-      <ImageView fitHeight="631.0" fitWidth="529.0" layoutX="-1.0" pickOnBounds="true">
-         <image>
-            <Image url="@../images/loginBackground.jpg" />
-         </image>
-      </ImageView>
-<<<<<<< HEAD
-      <ImageView fitHeight="469.0" fitWidth="458.0" layoutX="35.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/MainScreen/LoginScreen.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="registerButton" layoutX="93.0" layoutY="564.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="51.0" prefWidth="118.0" text="Register" />
-      <TextField fx:id="usernameField" layoutX="101.0" layoutY="458.0" prefHeight="38.0" prefWidth="181.0" promptText="Nutzernamen" />
-      <PasswordField fx:id="passwordField" layoutX="290.0" layoutY="458.0" prefHeight="38.0" prefWidth="157.0" promptText="Passwort" />
-      <Button fx:id="loginButtion" layoutX="354.0" layoutY="563.0" mnemonicParsing="false" onAction="#loginUser" opacity="0.0" prefHeight="51.0" prefWidth="108.0" text="Login" />
-=======
-      <Pane layoutX="53.0" layoutY="77.0" prefHeight="492.0" prefWidth="420.0" style="-fx-background-color: blue; -fx-border-radius: 10px;">
-         <children>
-            <Pane prefHeight="78.0" prefWidth="420.0" style="-fx-background-color: White;">
-               <children>
-                  <Text layoutX="73.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MountainView Casino">
-                     <font>
-                        <Font name="Source Code Pro Bold for Powerline" size="24.0" />
-                     </font>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="#ee0000" />
-                              <Stop color="#ee0000" offset="0.3612662942271881" />
-                              <Stop color="#970505" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Text>
-               </children>
-            </Pane>
-            <TextField fx:id="usernameField" layoutX="127.0" layoutY="136.0" promptText="Nutzernamen" />
-            <PasswordField fx:id="passwordField" layoutX="127.0" layoutY="210.0" promptText="Passwort" />
-            <Button fx:id="loginButtion" layoutX="156.0" layoutY="284.0" mnemonicParsing="false" onAction="#loginUser" prefHeight="27.0" prefWidth="108.0" text="Login" />
-         </children>
-      </Pane>
-      <Button fx:id="registerButton" layoutX="234.0" layoutY="577.0" mnemonicParsing="false" onAction="#registerUser" text="Register" />
-      <Text fx:id="errorMEssage" fill="RED" layoutX="81.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="da">
+    <children>
+        <ImageView fitHeight="631.0" fitWidth="529.0" layoutX="-1.0" pickOnBounds="true">
+            <image>
+                <Image url="@../images/loginBackground.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="469.0" fitWidth="458.0" layoutX="35.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/MainScreen/LoginScreen.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="registerButton" layoutX="93.0" layoutY="564.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="51.0" prefWidth="118.0" text="Register" />
+        <TextField fx:id="usernameField" layoutX="101.0" layoutY="458.0" prefHeight="38.0" prefWidth="181.0" promptText="Nutzernamen">
          <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Text>
->>>>>>> 161e4960547aa6afc06922672ad5dbee39801518
-   </children>
+            <Font name="Arial Bold" size="14.0" />
+         </font></TextField>
+        <PasswordField fx:id="passwordField" layoutX="290.0" layoutY="458.0" prefHeight="38.0" prefWidth="157.0" promptText="Passwort">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font></PasswordField>
+        <Button fx:id="loginButtion" layoutX="354.0" layoutY="563.0" mnemonicParsing="false" onAction="#loginUser" opacity="0.0" prefHeight="51.0" prefWidth="108.0" text="Login" />
+    </children>
 </AnchorPane>

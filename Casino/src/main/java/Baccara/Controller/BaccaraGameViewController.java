@@ -98,7 +98,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
     public void setBaccaraGameModel(BaccaraGameModel gameModel) {
         this.gameModel = gameModel;
         bind();
-
+        this.gameModel.setPlayerBet(50);
     }
 
     private void setCardBacks() {

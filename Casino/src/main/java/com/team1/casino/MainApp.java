@@ -44,6 +44,7 @@ public class MainApp extends Application {
         return this.stage;
     }
 
+    
     public static final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
 
     @Override

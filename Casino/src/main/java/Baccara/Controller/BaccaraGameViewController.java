@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
@@ -162,6 +160,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @FXML
     private void startBaccara(MouseEvent event) throws InterruptedException {
         this.gameModel.generateCards();
+        this.gameModel.resetGame();
         resetImageViews();
         updateBalanceAndBet();
         String format = "/images/GameCards/%s";
@@ -265,7 +264,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
                                     case "Player":
                                     case "Dealer":
                                     case "Tie":
-                                        checkForNewCards(format);
+                                        // checkForNewCards(format);
                                         updateBalanceAndBet();
                                         resetImageViews();
                                         setCardBacks();

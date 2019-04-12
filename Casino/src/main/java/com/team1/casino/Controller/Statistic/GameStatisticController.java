@@ -50,7 +50,7 @@ public class GameStatisticController implements Initializable, Observer {
     @FXML
     private TableColumn<Statistic, String> changeCol;
     @FXML
-    private ComboBox<Integer> statCounter;
+    private ComboBox<String> statCounter;
     @FXML
     private Button back;
 
@@ -69,10 +69,11 @@ public class GameStatisticController implements Initializable, Observer {
     }
 
     private void addPossibleStatRanges() {
-        this.statCounter.getItems().add(10);
-        this.statCounter.getItems().add(20);
-        this.statCounter.getItems().add(50);
-        this.statCounter.getItems().add(100);
+        this.statCounter.getItems().add(String.valueOf(10));
+        this.statCounter.getItems().add(String.valueOf(20));
+        this.statCounter.getItems().add(String.valueOf(100));
+        this.statCounter.getItems().add(String.valueOf(200));
+        this.statCounter.getItems().add("All");
     }
 
     private void setHandlingOfStatInformationForTable() {
@@ -113,7 +114,11 @@ public class GameStatisticController implements Initializable, Observer {
         this.gameStatTable.getItems().clear();
         int maxNumberOfEntries = -1;
         if (this.statCounter.getSelectionModel().getSelectedItem() != null) {
-            maxNumberOfEntries = this.statCounter.getSelectionModel().getSelectedItem();
+            if (this.statCounter.getSelectionModel().getSelectedItem().equals("All")) {
+                maxNumberOfEntries = -1;
+            } else {
+                maxNumberOfEntries = Integer.parseInt(this.statCounter.getSelectionModel().getSelectedItem());
+            }
         }
         for (Statistic stat : gameModel.getGameStats()) {
             if (maxNumberOfEntries != -1 && this.gameStatTable.getItems().size() >= maxNumberOfEntries) {

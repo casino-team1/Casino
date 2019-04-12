@@ -13,7 +13,6 @@ import com.team1.casino.Controller.PasswordRecoveryController;
 import com.team1.casino.Controller.Statistic.PlayerStatisticController;
 import com.team1.casino.Controller.RegistrationViewController;
 import com.team1.casino.Controller.Statistic.StatisticController;
-import com.team1.casino.Entity.PasswordRecovery;
 import com.team1.casino.Model.AuthenticationModel;
 import com.team1.casino.Model.CasinoLoginModel;
 import com.team1.casino.Model.GameStatisticModel;

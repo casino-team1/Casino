@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackHelp1FXMLController">
+   <children>
+      <ImageView fitHeight="529.0" fitWidth="776.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="290.0" layoutY="65.0" text="How to play Black Jack" underline="true">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="260.0" layoutY="14.0" text="♥♦Black Jack♣♠">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="181.0" layoutY="101.0" text="Wer näher an 21 ist, hat gewonnen!" textFill="WHITE" underline="true">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="201.0" fitWidth="514.0" layoutX="145.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/BlackJack/Blackjack-values-gr.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="167.0" layoutY="353.0" text="Die Kartenwerte vom Spieler und Dealer werden zusammengezählt" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="374.0" text="Derjenige, der am Schluss näher an 21 ist oder 21 besitzt, hat gewonnen" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="153.0" layoutY="395.0" text="Beim Zählen haben alle Karten einen bestimmten Wert bis auf das Ass, " textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="221.0" layoutY="416.0" text="das Ass kann entweder den Wert 1 oder 11 haben." textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonWeiter" layoutX="362.0" layoutY="483.0" mnemonicParsing="false" onAction="#weiter" text="Weiter" />
+      <Label layoutX="68.0" layoutY="437.0" text="Hat man von Anfang an den Kartenwert 21, hat man ein Black Jack. Der Spieler gewinnt das Spiel." textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonBeenden" layoutX="638.0" layoutY="14.0" mnemonicParsing="false" onAction="#beenden" text="Anleitung beenden" />
+   </children>
+</Pane>

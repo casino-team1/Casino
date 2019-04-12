@@ -117,6 +117,7 @@ public class PlayerStatisticController implements Initializable, Observer {
         PlayerStatisticModel model = (PlayerStatisticModel) o;
         XYChart.Series<String, Double> series = getPopulatedPlayerBalanceSeries();
         this.kontostandChart.getData().add(series);
+        this.kontostandChart.setCreateSymbols(false);
         this.statisticTable.getItems().clear();
         for (Statistic stat : model.getStats()) {
             this.statisticTable.getItems().add(stat);

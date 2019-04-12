@@ -3,13 +3,14 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" onMouseMoved="#mouseMove" prefHeight="634.0" prefWidth="654.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="654.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
    <children>
       <ImageView fitHeight="634.0" fitWidth="654.0" pickOnBounds="true">
          <image>
@@ -98,13 +99,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Button fx:id="btnthrowdices" layoutX="166.0" layoutY="232.0" mnemonicParsing="false" onAction="#pressthrowdices" prefHeight="122.0" prefWidth="258.0" text="Würfel werfen">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
       <Label layoutX="24.0" layoutY="79.0" text="Gewürfelt:">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -361,7 +355,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblenemy" layoutX="432.0" layoutY="588.0" onMouseClicked="#presslbllo7" onMouseEntered="#enterlbllo7" onMouseExited="#exitlbllo7" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" ENDSUMME GEGNER">
+      <Label fx:id="lblenemy" layoutX="432.0" layoutY="588.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" ENDSUMME GEGNER">
          <font>
             <Font name="Arial Nova" size="12.0" />
          </font>
@@ -369,11 +363,36 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="sclblenemy" alignment="CENTER" layoutX="604.0" layoutY="588.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text="100" />
-      <Button fx:id="btnbet" layoutX="14.0" layoutY="232.0" mnemonicParsing="false" onAction="#pressbtnbet" prefHeight="122.0" prefWidth="140.0" text="Betrag setzen">
+      <Label fx:id="sclblenemy" alignment="CENTER" layoutX="604.0" layoutY="588.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text="150" />
+      <Button fx:id="btnbet" layoutX="19.0" layoutY="270.0" mnemonicParsing="false" onAction="#pressbtnbet" onMouseEntered="#enterbtnbet" prefHeight="66.0" prefWidth="140.0" text="Betrag setzen">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
+      <TextField fx:id="bettxt" layoutX="19.0" layoutY="234.0" prefHeight="26.0" prefWidth="140.0" />
+      <Label fx:id="lblerror" layoutX="19.0" layoutY="339.0" prefHeight="26.0" prefWidth="407.0" textFill="RED" />
+      <Button fx:id="btnthrowdices" alignment="CENTER" layoutX="166.0" layoutY="232.0" mnemonicParsing="false" onAction="#pressthrowdices" onMouseEntered="#enterbtnthrowdices" prefHeight="104.0" prefWidth="258.0" style="-fx-font-weight: italic;" text="Würfel werfen" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fx:id="imgwurf3" fitHeight="44.0" fitWidth="314.0" layoutX="389.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/Cup.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgwurf2" fitHeight="44.0" fitWidth="314.0" layoutX="355.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/Cup.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgwurf1" fitHeight="44.0" fitWidth="314.0" layoutX="321.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/Cup.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

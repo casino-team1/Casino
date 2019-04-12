@@ -11,8 +11,6 @@ import Baccara.Entity.BaccaraCard;
 import Baccara.Entity.BaccaraGame;
 import com.team1.casino.User.Util.UserCentral;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleBooleanProperty;
 
 /**
@@ -173,6 +171,10 @@ public class BaccaraGameModel extends BaccaraModel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public double getTotalBet() {
+        return this.baccaraGame.getTotalBet();
     }
 
 }

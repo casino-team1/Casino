@@ -17,14 +17,14 @@
             <Image url="@../images/Baccara/tableBackground.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="baccaraButton" layoutX="229.0" layoutY="492.0" mnemonicParsing="false" onAction="#startBaccara" prefHeight="55.0" prefWidth="289.0" text="Play Baccara" />
-      <ImageView fx:id="spadeIcon" fitHeight="123.0" fitWidth="146.0" layoutX="47.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="281.0" fitWidth="381.0" layoutX="215.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/Baccara/heartpokerIcon.png" />
+            <Image url="@../images/Baccara/BankerBackground.png" />
          </image>
       </ImageView>
+      <Button fx:id="baccaraButton" layoutX="243.0" layoutY="338.0" mnemonicParsing="false" onAction="#startBaccara" prefHeight="55.0" prefWidth="289.0" text="Play Baccara" />
       <Button fx:id="backToMenuButton" layoutX="624.0" layoutY="22.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="27.0" prefWidth="99.0" text="Go back" />
-      <Text fx:id="baccaraText" layoutX="263.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baccara">
+      <Text fx:id="baccaraText" layoutX="266.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baccara">
          <font>
             <Font name="Arial Bold" size="64.0" />
          </font>
@@ -39,25 +39,30 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ImageView fx:id="cardView" fitHeight="116.0" fitWidth="123.0" layoutX="64.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true" rotate="21.8">
-         <image>
-            <Image url="@../images/Baccara/gamblingCards.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="cardView1" fitHeight="116.0" fitWidth="123.0" layoutX="579.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true" rotate="-31.0">
-         <image>
-            <Image url="@../images/Baccara/gamblingCards.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="welcomeMessage" layoutX="301.0" layoutY="104.0" text="PLACEHOLDER" textFill="WHITE" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="296.0">
+      <Label fx:id="welcomeMessage" layoutX="298.0" layoutY="171.0" text="PLACEHOLDER" textFill="WHITE" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="299.0">
          <font>
             <Font name="Arial" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="currentBalance" layoutX="170.0" layoutY="166.0" prefHeight="29.0" prefWidth="471.0" text="PLACEHOLDER CURRENTBALANCE" textFill="WHITE" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
+      <Label fx:id="currentBalance" layoutX="142.0" layoutY="233.0" prefHeight="29.0" prefWidth="471.0" text="PLACEHOLDER CURRENTBALANCE" textFill="WHITE" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="138.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <ImageView fx:id="cardView12" fitHeight="164.0" fitWidth="170.0" layoutX="602.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/baccaraCoint.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardView121" fitHeight="164.0" fitWidth="170.0" layoutX="586.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/baccaraCoint.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardView122" fitHeight="164.0" fitWidth="170.0" layoutX="566.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/baccaraCoint.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

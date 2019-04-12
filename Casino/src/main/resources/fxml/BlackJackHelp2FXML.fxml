@@ -91,6 +91,6 @@
          </font>
       </Label>
       <Button fx:id="buttonWeiter" layoutX="371.0" layoutY="518.0" mnemonicParsing="false" onAction="#weiter" text="Weiter" />
-      <Button fx:id="buttonBeenden" layoutX="642.0" layoutY="14.0" mnemonicParsing="false" onAction="#beenden" text="Anleitung beenden" />
+      <Button fx:id="buttonBeenden" layoutX="607.0" layoutY="14.0" mnemonicParsing="false" onAction="#beenden" text="Anleitung beenden" />
    </children>
 </Pane>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="797.0" fitWidth="923.0" layoutX="-12.0" layoutY="-15.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="275.0" layoutY="10.0" text="♥♦Black Jack♣♠">
+         <font>
+            <Font size="49.0" />
+         </font>
+      </Label>
+      <Label layoutX="353.0" layoutY="81.0" text="Dealer must draw to 16 and tand on 17" textFill="WHITE" underline="true">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <TextField fx:id="textfeldEinsatz" layoutX="383.0" layoutY="170.0" opacity="0.3" />
+      <Button fx:id="buttonPrüfung" layoutX="428.0" layoutY="202.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfung" />
+      <Label layoutX="387.0" layoutY="109.0" text="Teilnahme: mindestens 50!" textFill="WHITE" underline="true">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Button fx:id="buttonStart" disable="true" layoutX="437.0" layoutY="242.0" mnemonicParsing="false" onAction="#startGame" text="Start" />
+      <Label layoutX="429.0" layoutY="153.0" prefHeight="17.0" prefWidth="57.0" text="Ihr Einsatz:" underline="true">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Button fx:id="buttonVerlassen" layoutX="14.0" layoutY="745.0" mnemonicParsing="false" onAction="#zurueck" text="Spiel Verlassen" />
+      <Button fx:id="buttonHelp" layoutX="873.0" layoutY="14.0" mnemonicParsing="false" onAction="#help" text="?">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="spielerKarte1" fitHeight="140.0" fitWidth="101.0" layoutX="11.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="spielerKarte2" fitHeight="140.0" fitWidth="101.0" layoutX="129.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="spielerKarte3" fitHeight="140.0" fitWidth="101.0" layoutX="232.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="spielerKarte4" fitHeight="140.0" fitWidth="101.0" layoutX="345.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="labelKontostand" layoutX="671.0" layoutY="170.0" text="Kontostand:" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelKontostand1" layoutX="14.0" layoutY="170.0" text="Ihr eingesetztes Geld: " textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Line endX="5.79998779296875" endY="220.60003662109375" layoutX="450.0" layoutY="269.0" startX="5.79998779296875" startY="24.600006103515625" stroke="#e5ff00" strokeWidth="5.0" />
+      <ImageView fx:id="dealerKarte1" fitHeight="140.0" fitWidth="101.0" layoutX="465.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte2" fitHeight="140.0" fitWidth="101.0" layoutX="572.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte3" fitHeight="140.0" fitWidth="101.0" layoutX="680.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte4" fitHeight="140.0" fitWidth="101.0" layoutX="787.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</Pane>

@@ -22,18 +22,28 @@ public class BlackJackDealerModel {
     private int kartenWertDealer = 0;
     private int karteZweiWert = 0;
 
-    Karten k;
-    private HashMap<String, Integer> karten;
-    private ArrayList<String> kartenSymbole;
-    private ArrayList<String> kartenDealer;
+    Karten k = new Karten();
+    private HashMap<String, Integer> karten = new HashMap<>();
+    private ArrayList<String> kartenSymbole = new ArrayList<>();
+    private ArrayList<String> kartenDealer = new ArrayList<>();
     private String zufallskarte;
 
     private boolean gewonnen = false;
 
     public void firstHit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Label labelKartenDealer) {
+        //Parameter einfangen
+        this.karten = karten;
+        this.kartenSymbole = kartenSymbole; 
         
-        //Zufallszahlen
+        //Hat es genügend Karten?
+        if(k.getAnzahlKartenImKartenDeck() < 1){
+            k.kartenErstellen();
+            this.karten = k.getKarten();
+        }
+        
+        //zufällige Werte
         int zufallszahl = 0;
+        String zufallskarte = "";
         Random r = new Random();
         
         //Erste Karte an Dealer verteilen
@@ -76,8 +86,15 @@ public class BlackJackDealerModel {
         //Zweiter Wert von Karte mitberechnen
         kartenWertDealer += karteZweiWert;
         
-        //Zufallszahlen
+        //Hat es genügend Karten?
+        if(k.getAnzahlKartenImKartenDeck() < 1){
+            k.kartenErstellen();
+            this.karten = k.getKarten();
+        }
+        
+        //zufällige Werte
         int zufallszahl = 0;
+        String zufallskarte = "";
         Random r = new Random();
         
         //Wenn Dealer unter 17 hat, muss er ziehen
@@ -121,6 +138,10 @@ public class BlackJackDealerModel {
     public void setKartenWertDealer(int kartenWertDealer) {
         this.kartenWertDealer = kartenWertDealer;
     }
+    
+    public void kartenWertDealerPlusKarteZwei(){
+        kartenWertDealer += karteZweiWert;
+    }
 
     public String getZufallskarte() {
         return zufallskarte;
@@ -142,8 +163,8 @@ public class BlackJackDealerModel {
         return kartenDealer;
     }
 
-    public void setKartenDealer(ArrayList<String> kartenDealer) {
-        this.kartenDealer = kartenDealer;
+    public void clearKartenDealer() {
+        kartenDealer.clear();
     }
 
 }

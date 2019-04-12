@@ -54,8 +54,8 @@ public class BlackJackGameModel {
         spieler.setKartenWertSpieler(0);
         dealer.setKartenWertDealer(0);
         dealer.setKarteZweiWert(0);
-        spieler.getKartenSpieler().clear();
-        dealer.getKartenDealer().clear();
+        spieler.clearKartenSpieler();
+        dealer.clearKartenDealer();
         karten.clear();
         kartenSymbole.clear();
         karten.putAll(k.getKarten());
@@ -116,56 +116,26 @@ public class BlackJackGameModel {
         }
     }
 
-    public void dealerHit() {
-        //Zweiter Wert von Karte mitberechnen
-        kartenWertDealer += karteZweiWert;
-
-        //Wenn Dealer unter 17 hat, muss er ziehen
-        if (kartenWertDealer < 17) {
-            while (kartenWertDealer < 17) {
-                zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
-                zufallskarte = kartenSymbole.get(zufallszahl);
-                if (karten.containsKey(zufallskarte)) {
-                    if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
-                        kartenWertDealer += 10;
-                    } else if (zufallskarte.contains("A")) {
-                        kartenWertDealer += 11;
-                    } else {
-                        kartenWertDealer += karten.get(zufallskarte);
-                    }
-                    kartenDealer.add(zufallskarte);
-                    karten.remove(zufallskarte);
-                    kartenSymbole.remove(zufallskarte);
-                    k.subAnzahlKartenImKartenDeck();
-                    k.subAnzahlKartenInKartenSymbole();
-                } else {
-                    kartenWertDealer -= karteZweiWert;
-                    dealerHit();
-                }
-            }
-        }
-    }
-
     public void dealerRound(Label labelLösung, Label labelKartenDealer, Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, TextField textfeldEinsatz, TextField textfeldVersicherung) {
         //dealer muss karten ziehen
-        dealerHit();
+        dealer.secondHit();
 
         //Anzeige leeren
         labelKartenDealer.setText("");
 
         //Alle Karten vom Dealer anzeigen
-        for (String s : kartenDealer) {
+        for (String s : dealer.getKartenDealer()) {
             labelKartenDealer.setText(labelKartenDealer.getText() + " , " + s);
         }
 
         //Werte überprüfen
-        if (kartenWertDealer > 21) {
+        if (dealer.getKartenWertDealer() > 21) {
             spieler.setGewonnen(true);
-        } else if (kartenWertDealer > kartenWertSpieler) {
+        } else if (dealer.getKartenWertDealer() > spieler.getKartenWertSpieler()) {
             dealer.setGewonnen(true);
-        } else if (kartenWertDealer == kartenWertSpieler) {
+        } else if (dealer.getKartenWertDealer() == spieler.getKartenWertSpieler()) {
             unentschieden = true;
-        } else if (kartenWertDealer < kartenWertSpieler) {
+        } else if (dealer.getKartenWertDealer() < spieler.getKartenWertSpieler()) {
             spieler.setGewonnen(true);
         } else {
         }
@@ -197,21 +167,21 @@ public class BlackJackGameModel {
 
     public void versichern(Label labelLösung, Label labelKartenDealer, Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, TextField textfeldEinsatz, TextField textfeldVersicherung) {
         //Zweiter Wert von Karte mitberechnen
-        kartenWertDealer += karteZweiWert;
+        dealer.kartenWertDealerPlusKarteZwei();
 
         //Anzeige leeren
         labelKartenDealer.setText("");
 
         //Alle Karten vom Dealer anzeigen
-        for (String s : kartenDealer) {
+        for (String s : dealer.getKartenDealer()) {
             labelKartenDealer.setText(labelKartenDealer.getText() + " , " + s);
         }
 
         //Hat dealer BlackJack?
-        if (kartenWertDealer == 21) {
+        if (dealer.getKartenWertDealer() == 21) {
             labelLösung.setText("SPIELER HAT GEWONNEN!!");
         }
-        if (kartenWertDealer < 21 || kartenWertDealer > 21) {
+        if (dealer.getKartenWertDealer() < 21 || dealer.getKartenWertDealer() > 21) {
             labelLösung.setText("DEALER HAT GEWONNEN!!");
         }
 

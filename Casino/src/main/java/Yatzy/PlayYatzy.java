@@ -13,12 +13,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 /**
  *
  * @author Erik Hess
  */
 public class PlayYatzy extends Spiel {
-
+    
     public PlayYatzy(MainApp mainApplication) {
         super(mainApplication);
     }

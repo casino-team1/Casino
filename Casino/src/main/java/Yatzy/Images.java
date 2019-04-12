@@ -5,12 +5,16 @@
  */
 package Yatzy;
 
+import java.util.ArrayList;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author Schule
  */
 public class Images {
-    
+
     public String getImage(int value) {
         String path = "";
 
@@ -38,6 +42,4 @@ public class Images {
         }
         return path;
     }
-    
-    
 }

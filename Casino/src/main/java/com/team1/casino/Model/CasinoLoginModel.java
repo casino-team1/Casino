@@ -68,10 +68,6 @@ public class CasinoLoginModel {
         }
     }
 
-    public void forgotPassword() {
-
-    }
-
     public void displayPasswordRecovery() {
         this.mainApplication.displayPasswordRecovery();
     }

@@ -13,8 +13,13 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -26,6 +31,8 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -69,8 +76,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @FXML
     private ImageView thirdRightImage;
     @FXML
-    private Text winner;
-    @FXML
     private ImageView bankerBetCoin;
 
     /**
@@ -103,10 +108,12 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void setCardBacks() {
+        /*
         ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.firstRightCard, this.secondRightCard};
         for (ImageView imageView : imageViews) {
             imageView.setImage(new Image("/images/GameCards/cardBack.jpeg"));
         }
+         */
     }
 
     @Override
@@ -124,19 +131,10 @@ public class BaccaraGameViewController implements Initializable, Observer {
         String format = "/images/GameCards/%s";
         ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
         ImageView[] dealerView = {this.firstRightCard, this.secondRightCard};
-        ArrayList<BaccaraCard> playerCards = this.gameModel.getPlayerCards();
-        ArrayList<BaccaraCard> dealerCard = this.gameModel.getDealerCards();
-        for (int i = 0; i < 2; i++) {
-            try {
-                playerView[i].setImage(new Image(String.format(format, playerCards.get(i).getImageLocation())));
-                dealerView[i].setImage(new Image(String.format(format, dealerCard.get(i).getImageLocation())));
-            } catch (Exception e) {
-            }
-        }
         setCardCount();
+        rotateCards(playerView, dealerView, format);
         this.gameModel.checkForCardDraw();
         checkForNewCards(format);
-        this.winner.setText(this.gameModel.determineWinner());
     }
 
     private void checkForNewCards(String linkFormat) {
@@ -156,6 +154,60 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
         }
         setCardCount();
+    }
+
+    private void rotateCards(ImageView[] playerView, ImageView[] dealerView, String format) {
+        ImageView[][] views = {playerView, dealerView};
+        RotateTransition[] rotators = new RotateTransition[4];
+        int index = 0;
+        for (ImageView view : playerView) {
+            rotators[index] = createRotator(view, 0, 90, 750);
+            index++;
+        }
+        for (ImageView view : dealerView) {
+            rotators[index] = createRotator(view, 0, 90, 750);
+            index++;
+        }
+        for (int i = 0; i < rotators.length; i++) {
+            rotators[i].play();
+            if (i == 0) {
+                rotators[i].setOnFinished((ActionEvent event) -> {
+                    flipCardsArround(format, playerView, dealerView);
+                    for (ImageView[] viewList : views) {
+                        for (ImageView view : viewList) {
+                            createRotator(view, 90, 180, 750).play();
+                        }
+                    }
+                });
+            }
+        }
+
+    }
+
+    private RotateTransition createRotator(Node card, int startAngle, int endAngle, int duration) {
+        RotateTransition rotator = new RotateTransition(Duration.millis(duration), card);
+        rotator.setAxis(Rotate.Y_AXIS);
+        rotator.setFromAngle(startAngle);
+        rotator.setToAngle(endAngle);
+        rotator.setInterpolator(Interpolator.LINEAR);
+        rotator.setCycleCount(1);
+        return rotator;
+    }
+
+    private void flipCardsArround(String format, ImageView[] playerView, ImageView[] dealerView) {
+        //set cards
+        ArrayList<BaccaraCard> playerCards = this.gameModel.getPlayerCards();
+        ArrayList<BaccaraCard> dealerCard = this.gameModel.getDealerCards();
+        for (int i = 0; i < 2; i++) {
+            try {
+                playerView[i].setImage(new Image(String.format(format, playerCards.get(i).getImageLocation())));
+                dealerView[i].setImage(new Image(String.format(format, dealerCard.get(i).getImageLocation())));
+            } catch (Exception e) {
+                System.out.println(String.format(format, playerCards.get(i).getImageLocation()));
+                System.out.println(String.format(format, dealerCard.get(i).getImageLocation()));
+                e.printStackTrace();
+            }
+        }
     }
 
     private void resetImageViews() {

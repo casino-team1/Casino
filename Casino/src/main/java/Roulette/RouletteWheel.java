@@ -42,10 +42,10 @@ public class RouletteWheel {
                 betAmount = betAmount * 2;
             } 
             else if (ArrayIdentity == 3) {
-                betAmount = betAmount * 4;
+                betAmount = betAmount * 5;
             } 
             else if (ArrayIdentity == 4) {
-                betAmount = betAmount * 6;
+                betAmount = betAmount * 7;
             } 
             else if (ArrayIdentity == 5) {
                 betAmount = betAmount * 10;

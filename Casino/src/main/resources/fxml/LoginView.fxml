@@ -19,7 +19,7 @@
         </ImageView>
         <ImageView fitHeight="469.0" fitWidth="458.0" layoutX="35.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/MainScreen/LoginScreen.png" />
+                <Image url="@../images/MainScreen/LoginScreen2.png" />
             </image>
         </ImageView>
         <Button fx:id="registerButton" layoutX="93.0" layoutY="564.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="51.0" prefWidth="118.0" text="Register" />
@@ -40,7 +40,7 @@
             </effect>
         </PasswordField>
         <Button fx:id="loginButtion" layoutX="354.0" layoutY="563.0" mnemonicParsing="false" onAction="#loginUser" opacity="0.0" prefHeight="51.0" prefWidth="108.0" text="Login" />
-        <Button fx:id="recoverPasswordButton" layoutX="207.0" layoutY="68.0" mnemonicParsing="false" onAction="#displayPasswordRecovery" prefHeight="27.0" prefWidth="128.0" text="Recover" />
+        <Button fx:id="recoverPasswordButton" layoutX="232.0" layoutY="565.0" mnemonicParsing="false" onAction="#displayPasswordRecovery" opacity="0.0" prefHeight="51.0" prefWidth="102.0" text="Recover" />
       
 
     </children>

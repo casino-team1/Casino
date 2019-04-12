@@ -25,6 +25,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -42,37 +44,37 @@ public class BlackJackFXMLController implements Initializable {
     private int einsatz;
 
     @FXML
-    private Button buttonStand;
-    @FXML
-    private Button buttonHit;
-    @FXML
-    private Label labelKartenSpieler;
-    @FXML
-    private Label labelKartenDealer;
-    @FXML
-    private Button buttonStart;
-    @FXML
-    private Label labelLösung;
-    @FXML
     private TextField textfeldEinsatz;
     @FXML
-    private Label labelEinsatzFehler;
-    @FXML
     private Button buttonPrüfung;
+    @FXML
+    private Button buttonStart;
     @FXML
     private Button buttonVerlassen;
     @FXML
     private Button buttonHelp;
     @FXML
+    private Button buttonVersichern;
+    @FXML
     private Button buttonVerdoppeln;
     @FXML
-    private Button buttonVersichern;
+    private Button buttonStand;
+    @FXML
+    private Button buttonHit;
     @FXML
     private TextField textfeldVersicherung;
     @FXML
     private Label labelVerdoppeln;
     @FXML
+    private Label labelLösung;
+    @FXML
     private Label labelVersicherung;
+    @FXML
+    private Label labelKartenSpieler;
+    @FXML
+    private Label labelKartenDealer;
+    @FXML
+    private Label labelEinsatzFehler;
 
     /**
      * Initializes the controller class.
@@ -80,7 +82,7 @@ public class BlackJackFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern,
-                                      labelEinsatzFehler, labelKartenDealer, labelKartenSpieler, labelLösung, labelVerdoppeln, labelVersicherung,
+                                      labelKartenSpieler, labelKartenDealer, labelLösung, labelVerdoppeln, labelVersicherung, labelEinsatzFehler,
                                       textfeldEinsatz, textfeldVersicherung);
     }
 
@@ -98,11 +100,13 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void startGame(ActionEvent event) {
+        /*Image tenC = new Image("/images/GameCards/10C.png");
+        spielerKarte1.setImage(tenC);*/
+        
         //Vorbereitung
         labelKartenSpieler.setText("");
         labelKartenDealer.setText("");
         labelLösung.setText("");
-        labelEinsatzFehler.setText("");
         buttonStart.setDisable(true);
         textfeldEinsatz.setDisable(true);
         buttonPrüfung.setDisable(true);
@@ -120,15 +124,16 @@ public class BlackJackFXMLController implements Initializable {
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
             if (einsatz < 50) {
-                labelEinsatzFehler.setText("Ihr Einsatz ist zu klein -> mind. 50!");
+                labelEinsatzFehler.setText("Der Einsatz muss mindestens 50 sein!");
             } else {
-                labelEinsatzFehler.setText("Viel Spass beim Spielen!");
                 buttonStart.setDisable(false);
                 buttonPrüfung.setDisable(true);
                 textfeldVersicherung.setDisable(true);
+                labelEinsatzFehler.setText("Viel Spass!");
             }
         } catch (NumberFormatException e) {
-            labelEinsatzFehler.setText("Bitte ganze Zahlen einsetzen!!");
+            
+            labelEinsatzFehler.setText("Bitte geben Sie ganze Zahlen ein!");
         }
     }
 
@@ -143,6 +148,20 @@ public class BlackJackFXMLController implements Initializable {
 
     @FXML
     private void help(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackHelp1FXML.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = this.main.getStage();
+            stage.setTitle("Casino Login");
+            stage.setScene(scene);
+            stage.show();
+            BlackJackFXMLController controller = loader.getController();
+            controller.setMain(main);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

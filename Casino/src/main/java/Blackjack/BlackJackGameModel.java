@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,10 +36,10 @@ public class BlackJackGameModel {
     private Button buttonHit;
     private Label labelKartenSpieler;
     private Label labelKartenDealer;
+    private Label labelEinsatzFehler;
     private Button buttonStart;
     private Label labelLösung;
     private TextField textfeldEinsatz;
-    private Label labelEinsatzFehler;
     private Button buttonPrüfung;
     private Button buttonVerlassen;
     private Button buttonHelp;
@@ -48,7 +49,7 @@ public class BlackJackGameModel {
     private Label labelVerdoppeln;
     private Label labelVersicherung;
 
-    public BlackJackGameModel(Button buttonHelp, Button buttonHit, Button buttonPrüfung, Button buttonStand, Button buttonStart, Button buttonVerdoppeln, Button buttonVerlassen, Button buttonVersichern, Label labelEinsatzFehler, Label labelKartenDealer, Label labelKartenSpieler, Label labelLösung, Label labelVerdoppeln, Label labelVersicherung, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+    public BlackJackGameModel(Button buttonHelp, Button buttonHit, Button buttonPrüfung, Button buttonStand, Button buttonStart, Button buttonVerdoppeln, Button buttonVerlassen, Button buttonVersichern, Label labelKartenSpieler, Label labelKartenDealer, Label labelLösung, Label labelVerdoppeln, Label labelVersicherung, Label labelEinsatzFehler, TextField textfeldEinsatz, TextField textfeldVersicherung) {
         this.buttonHelp = buttonHelp;
         this.buttonHit = buttonHit;
         this.buttonPrüfung = buttonPrüfung;
@@ -129,10 +130,10 @@ public class BlackJackGameModel {
                 if (spieler.getKartenWertSpieler() > 21) {
                     dealer.setGewonnen(true);
                     end();
-                }else{
+                } else {
                     //nichts
                 }
-            }else{
+            } else {
                 dealer.setGewonnen(true);
                 end();
             }

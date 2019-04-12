@@ -21,8 +21,8 @@ public class Karten {
 
     private int anzahlKartenImKartenDeck = 52;
     private int anzahlKartenInKartenSymbole = 51;
-
-    public void kartenErstellen() {
+    
+    public void kartenErstellen() {        
         karten.clear();
         kartenSymbole.clear();
 

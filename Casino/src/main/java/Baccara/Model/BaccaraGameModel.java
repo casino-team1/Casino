@@ -11,8 +11,6 @@ import Baccara.Entity.BaccaraCard;
 import Baccara.Entity.BaccaraGame;
 import com.team1.casino.User.Util.UserCentral;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleBooleanProperty;
 
 /**

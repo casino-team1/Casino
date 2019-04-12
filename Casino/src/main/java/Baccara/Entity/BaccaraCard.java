@@ -76,7 +76,11 @@ public class BaccaraCard {
     }
 
     private String concatinateImageLocation(String cardName, BaccaraCardType type) {
-        return String.valueOf(cardName.toUpperCase().toCharArray()[0]) + "" + (type.toString().toUpperCase().toCharArray()[0]) + ".png";
+        String firstLocationPart = cardName.toUpperCase().split(" ")[0];
+        if (firstLocationPart.length() > 2) {
+            firstLocationPart = String.valueOf(firstLocationPart.toCharArray()[0]);
+        }
+        return String.valueOf(firstLocationPart + "" + type.toString().toUpperCase().toCharArray()[0] + ".png");
     }
 
     private BaccaraCardColor evaluateCardColor(BaccaraCardType type) {

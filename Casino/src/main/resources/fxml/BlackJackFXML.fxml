@@ -15,12 +15,12 @@
       </Label>
       <Label layoutX="98.0" layoutY="293.0" text="Deine Karten" />
       <Label layoutX="98.0" layoutY="329.0" text="Dealer Karten" />
-      <Label fx:id="labelKartenSpieler" layoutX="191.0" layoutY="293.0" prefHeight="18.0" prefWidth="230.0" />
-      <Label fx:id="labelKartenDealer" layoutX="199.0" layoutY="329.0" prefHeight="18.0" prefWidth="230.0" />
+      <Label fx:id="labelKartenSpieler" layoutX="191.0" layoutY="293.0" prefHeight="18.0" prefWidth="298.0" />
+      <Label fx:id="labelKartenDealer" layoutX="199.0" layoutY="329.0" prefHeight="18.0" prefWidth="298.0" />
       <Button fx:id="buttonStand" disable="true" layoutX="167.0" layoutY="190.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
       <Button fx:id="buttonHit" disable="true" layoutX="267.0" layoutY="190.0" mnemonicParsing="false" onAction="#hit" text="Hit" />
       <Button fx:id="buttonStart" disable="true" layoutX="267.0" layoutY="142.0" mnemonicParsing="false" onAction="#startGame" text="Neues Spiel" />
-      <Label fx:id="labelLösung" layoutX="421.0" layoutY="311.0" prefHeight="18.0" prefWidth="198.0" />
+      <Label fx:id="labelLösung" layoutX="513.0" layoutY="302.0" prefHeight="18.0" prefWidth="198.0" />
       <Label layoutX="87.0" layoutY="110.0" text="Ihr Einsatz:" />
       <TextField fx:id="textfeldEinsatz" layoutX="166.0" layoutY="106.0" />
       <Label fx:id="labelEinsatzFehler" layoutX="364.0" layoutY="109.0" prefHeight="18.0" prefWidth="298.0" />

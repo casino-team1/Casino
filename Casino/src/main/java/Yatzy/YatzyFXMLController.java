@@ -360,15 +360,11 @@ public class YatzyFXMLController implements Initializable {
     }
   
     @FXML
-    private void pressbtnbet(ActionEvent event) throws IOException {
-        
+    private void pressbtnbet(ActionEvent event) throws IOException {        
         updateButton(btnbet);
         try {
             betnum = Integer.parseInt(bettxt.getText());
             if (betnum%10 == 0 && balance - betnum >= 0) {
-                
-                
-                
                 btnthrowdices.setLayoutX(17);
                 btnthrowdices.setPrefWidth(407);
                 updateButton(btnthrowdices);
@@ -893,7 +889,6 @@ public class YatzyFXMLController implements Initializable {
             case "btnbet":
                 btnbet.setStyle("-fx-font-size: 18; -fx-font-weight: BOLD");
                 break;
-            
         }
     }
     

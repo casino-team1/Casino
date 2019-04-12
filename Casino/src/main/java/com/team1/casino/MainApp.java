@@ -49,7 +49,7 @@ public class MainApp extends Application {
 
 
     
-    public static final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
+    public static final ExecutionMode executionMode = ExecutionMode.DEBUG;
     
 
     @Override

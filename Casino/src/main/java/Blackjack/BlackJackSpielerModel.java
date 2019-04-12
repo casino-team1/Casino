@@ -22,7 +22,7 @@ public class BlackJackSpielerModel {
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
     private ArrayList<String> kartenSpieler = new ArrayList<>();
-    private String zufallskarte;
+    private String zufallskarte = "";
 
     private boolean gewonnen = false;
 
@@ -39,7 +39,6 @@ public class BlackJackSpielerModel {
         
         //Zufällige Werte
         int zufallszahl = 0;
-        String zufallskarte = "";
         Random r = new Random();
 
         //Spieler zieht Karten

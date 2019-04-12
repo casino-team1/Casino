@@ -99,14 +99,10 @@ public class Rules {
                 int sult;
                 for (int i = 1; i < 7; i++) {
                     if (dicemap.get(i) == 3) {
-                        System.out.println("i = " + i);
-                        System.out.println("Dice = " + dicemap.get(i));
                         re = i * 3;
-                        System.out.println("re = " + re);
                         for (int j = 1; j < 7; j++) {
                             if (dicemap.get(j) == 2) {
                                 sult = j * 2;
-                                System.out.println("sult = " + sult);
                                 subresult = re + sult;
                             }
                         }

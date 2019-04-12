@@ -26,7 +26,7 @@ public class BlackJackDealerModel {
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
     private ArrayList<String> kartenDealer = new ArrayList<>();
-    private String zufallskarte;
+    private String zufallskarte = "";
 
     private boolean gewonnen = false;
 
@@ -43,7 +43,6 @@ public class BlackJackDealerModel {
         
         //zufällige Werte
         int zufallszahl = 0;
-        String zufallskarte = "";
         Random r = new Random();
         
         //Erste Karte an Dealer verteilen
@@ -94,7 +93,6 @@ public class BlackJackDealerModel {
         
         //zufällige Werte
         int zufallszahl = 0;
-        String zufallskarte = "";
         Random r = new Random();
         
         //Wenn Dealer unter 17 hat, muss er ziehen

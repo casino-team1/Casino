@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -23,26 +24,52 @@ public class BlackJackGameModel {
     private BlackJackSpielerModel spieler = new BlackJackSpielerModel();
     private BlackJackDealerModel dealer = new BlackJackDealerModel();
 
-    private ArrayList<String> kartenSpieler = new ArrayList<>();
-    private int kartenWertSpieler = 0;
-
-    private ArrayList<String> kartenDealer = new ArrayList<>();
-    private int kartenWertDealer = 0;
-    private int karteZweiWert = 0;
-    private int anzahlKartenInKartenSymbole = 51;
-
     private boolean unentschieden = false;
-
-    private String zufallskarte = "";
-    private int zufallszahl = 0;
 
     private Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
 
-    private Random r = new Random();
+    //FXML
+    private Button buttonStand;
+    private Button buttonHit;
+    private Label labelKartenSpieler;
+    private Label labelKartenDealer;
+    private Button buttonStart;
+    private Label labelLösung;
+    private TextField textfeldEinsatz;
+    private Label labelEinsatzFehler;
+    private Button buttonPrüfung;
+    private Button buttonVerlassen;
+    private Button buttonHelp;
+    private Button buttonVerdoppeln;
+    private Button buttonVersichern;
+    private TextField textfeldVersicherung;
+    private Label labelVerdoppeln;
+    private Label labelVersicherung;
 
-    public void play(Label labelKartenSpieler, Label labelKartenDealer, Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, Label labelLösung, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+    public BlackJackGameModel(Button buttonHelp, Button buttonHit, Button buttonPrüfung, Button buttonStand, Button buttonStart, Button buttonVerdoppeln, Button buttonVerlassen, Button buttonVersichern, Label labelEinsatzFehler, Label labelKartenDealer, Label labelKartenSpieler, Label labelLösung, Label labelVerdoppeln, Label labelVersicherung, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+        this.buttonHelp = buttonHelp;
+        this.buttonHit = buttonHit;
+        this.buttonPrüfung = buttonPrüfung;
+        this.buttonStand = buttonStand;
+        this.buttonStart = buttonStart;
+        this.buttonVerdoppeln = buttonVerdoppeln;
+        this.buttonVerlassen = buttonVerlassen;
+        this.buttonVersichern = buttonVersichern;
+
+        this.labelEinsatzFehler = labelEinsatzFehler;
+        this.labelKartenDealer = labelKartenDealer;
+        this.labelKartenSpieler = labelKartenSpieler;
+        this.labelLösung = labelLösung;
+        this.labelVerdoppeln = labelVerdoppeln;
+        this.labelVersicherung = labelVersicherung;
+
+        this.textfeldEinsatz = textfeldEinsatz;
+        this.textfeldVersicherung = textfeldVersicherung;
+    }
+
+    public void play() {
         //Vorbereitung
         k.kartenErstellen();
 
@@ -73,17 +100,12 @@ public class BlackJackGameModel {
 
         //Überprüfung, ob 21 überschritten wurde
         if (spieler.getKartenWertSpieler() > 21) {
-            if(spieler.getKartenSpieler().contains("A♥") || spieler.getKartenSpieler().contains("A♦") || spieler.getKartenSpieler().contains("A♣") || spieler.getKartenSpieler().contains("A♠")){
-                spieler.setKartenWertSpielerMinusTen();
-            }else{
-                dealer.setGewonnen(true);
-                end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
-            } 
+            spieler.setKartenWertSpielerMinusTen();
         }
 
         if (spieler.getKartenWertSpieler() == 21) {
             spieler.setGewonnen(true);
-            end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+            end();
         }
 
         if (spieler.getKartenWertSpieler() == 9 || spieler.getKartenWertSpieler() == 10 || spieler.getKartenWertSpieler() == 11) {
@@ -92,31 +114,38 @@ public class BlackJackGameModel {
 
         if (dealer.getKartenWertDealer() == 11) {
             buttonVersichern.setDisable(false);
-            textfeldVersicherung.setDisable(false);          
+            textfeldVersicherung.setDisable(false);
         }
     }
 
-    public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, Label labelKartenDealer, Label labelKartenSpieler, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+    public void spielerHit() {
         //Spieler zieht Karte
         spieler.hit(karten, kartenSymbole, labelKartenSpieler);
 
         //Überprüfung, ob 21 überschritten wurde
         if (spieler.getKartenWertSpieler() > 21) {
-            if(zufallskarte.contains("A")){
-                kartenWertSpieler -= 10;
+            if (spieler.getZufallskarte().contains("A")) {
+                spieler.setKartenWertSpielerMinusTen();
+                if (spieler.getKartenWertSpieler() > 21) {
+                    dealer.setGewonnen(true);
+                    end();
+                }else{
+                    //nichts
+                }
+            }else{
+                dealer.setGewonnen(true);
+                end();
             }
-            dealer.setGewonnen(true);
-            end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
         }
-        
+
         //Überprüfung, ob 21 erreicht wurde wurde
-        if (kartenWertSpieler == 21) {
+        if (spieler.getKartenWertSpieler() == 21) {
             spieler.setGewonnen(true);
-            end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+            end();
         }
     }
 
-    public void dealerRound(Label labelLösung, Label labelKartenDealer, Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+    public void dealerRound() {
         //dealer muss karten ziehen
         dealer.secondHit();
 
@@ -140,10 +169,10 @@ public class BlackJackGameModel {
         } else {
         }
 
-        end(buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+        end();
     }
 
-    public void end(Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, Label labelLösung, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+    public void end() {
         //Eingaben blockieren
         buttonHit.setDisable(true);
         buttonStand.setDisable(true);
@@ -165,7 +194,7 @@ public class BlackJackGameModel {
         }
     }
 
-    public void versichern(Label labelLösung, Label labelKartenDealer, Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+    public void versichern() {
         //Zweiter Wert von Karte mitberechnen
         dealer.kartenWertDealerPlusKarteZwei();
 

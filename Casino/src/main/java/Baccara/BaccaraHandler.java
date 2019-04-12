@@ -42,7 +42,6 @@ public class BaccaraHandler {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BaccaraMenuView.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage = MainApp.centerStageInScreen(stage, scene);
             stage.setTitle("Baccara Menu");
             stage.setScene(scene);
             stage.show();

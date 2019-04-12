@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="975.0" prefWidth="1379.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
+<AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="975.0" prefWidth="1373.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
    <children>
-      <ImageView cache="true" fitHeight="984.0" fitWidth="1425.0" layoutX="-11.0" layoutY="-9.0" pickOnBounds="true">
+      <ImageView cache="true" fitHeight="1093.0" fitWidth="1423.0" layoutX="-11.0" layoutY="-118.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Baccara/tableBackground.jpg" />
          </image>
@@ -32,9 +32,9 @@
          </image>
       </ImageView>
       <Pane layoutX="687.0" layoutY="54.0" prefHeight="328.0" prefWidth="9.0" style="-fx-background-color: #DCCC88#DCCC88;" />
-      <HBox fx:id="playerSide" layoutX="128.0" layoutY="116.0" prefHeight="295.0" prefWidth="528.0" spacing="10.0">
+      <HBox fx:id="playerSide" layoutX="128.0" layoutY="106.0" prefHeight="295.0" prefWidth="528.0" spacing="10.0">
          <children>
-            <ImageView fx:id="thirdLeftCard" fitHeight="295.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="thirdLeftCard" fitHeight="241.0" fitWidth="155.0" pickOnBounds="true" />
             <ImageView fx:id="secondLeftCard" fitHeight="241.0" fitWidth="149.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/GameCards/cardBack.png" />
@@ -47,14 +47,14 @@
             </ImageView>
          </children>
       </HBox>
-      <HBox fx:id="dealerSide" layoutX="734.0" layoutY="106.0" prefHeight="277.0" prefWidth="676.0" spacing="10.0">
+      <HBox fx:id="dealerSide" layoutX="777.0" layoutY="106.0" prefHeight="277.0" prefWidth="633.0" spacing="10.0">
          <children>
-            <ImageView fx:id="firstRightCard" fitHeight="252.0" fitWidth="171.0" pickOnBounds="true">
+            <ImageView fx:id="firstRightCard" fitHeight="241.0" fitWidth="155.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/GameCards/cardBack.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="secondRightCard" fitHeight="253.0" fitWidth="165.0" pickOnBounds="true">
+            <ImageView fx:id="secondRightCard" fitHeight="241.0" fitWidth="155.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/GameCards/cardBack.png" />
                </image>
@@ -62,7 +62,7 @@
                   <Insets />
                </HBox.margin>
             </ImageView>
-            <ImageView fx:id="thirdRightImage" fitHeight="303.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="thirdRightImage" fitHeight="241.0" fitWidth="155.0" pickOnBounds="true" />
          </children></HBox>
       <ImageView fx:id="startGameView" fitHeight="90.0" fitWidth="268.0" layoutX="882.0" layoutY="818.0" onMouseClicked="#startBaccara" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -95,5 +95,6 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
+      <ImageView fx:id="winnerCard" fitHeight="229.0" fitWidth="274.0" layoutX="574.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

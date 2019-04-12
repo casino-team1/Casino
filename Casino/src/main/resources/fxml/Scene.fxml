@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="591.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.CasinoController">
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.CasinoController">
     <children>
-      <ImageView fitHeight="599.0" fitWidth="811.0" layoutY="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="601.0" fitWidth="811.0" layoutY="-1.0" pickOnBounds="true">
          <image>
             <Image url="@../images/MainScreen/black.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="598.0" fitWidth="811.0" opacity="0.7" pickOnBounds="true">
+      <ImageView fitHeight="650.0" fitWidth="853.0" layoutX="-40.0" layoutY="-49.0" opacity="0.7" pickOnBounds="true">
          <image>
             <Image url="@../images/MainScreen/woodenWall.jpg" />
          </image>

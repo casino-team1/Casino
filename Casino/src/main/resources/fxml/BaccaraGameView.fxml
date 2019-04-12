@@ -37,12 +37,12 @@
             <ImageView fx:id="thirdLeftCard" fitHeight="295.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
             <ImageView fx:id="secondLeftCard" fitHeight="241.0" fitWidth="149.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/GameCards/cardBack.jpeg" />
+                  <Image url="@../images.GameCards/cardBack.png" />
                </image>
             </ImageView>
             <ImageView fx:id="firstLeftCard" fitHeight="241.0" fitWidth="155.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/GameCards/cardBack.jpeg" />
+                  <Image url="@../images.GameCards/cardBack.png" />
                </image>
             </ImageView>
          </children>
@@ -51,12 +51,12 @@
          <children>
             <ImageView fx:id="firstRightCard" fitHeight="252.0" fitWidth="171.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/GameCards/cardBack.jpeg" />
+                  <Image url="@../images.GameCards/cardBack.png" />
                </image>
             </ImageView>
             <ImageView fx:id="secondRightCard" fitHeight="253.0" fitWidth="165.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/GameCards/cardBack.jpeg" />
+                  <Image url="@../images.GameCards/cardBack.png" />
                </image>
                <HBox.margin>
                   <Insets />

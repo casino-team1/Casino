@@ -95,5 +95,6 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
+      <ImageView fx:id="winnerCard" fitHeight="229.0" fitWidth="274.0" layoutX="574.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

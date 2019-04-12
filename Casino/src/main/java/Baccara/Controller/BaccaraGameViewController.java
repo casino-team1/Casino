@@ -78,6 +78,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private ImageView thirdRightImage;
     @FXML
     private ImageView bankerBetCoin;
+    @FXML
     private ImageView winnerCard;
     @FXML
     private Text userBalance;
@@ -265,9 +266,18 @@ public class BaccaraGameViewController implements Initializable, Observer {
                                     case "Dealer":
                                     case "Tie":
                                         // checkForNewCards(format);
-                                        updateBalanceAndBet();
-                                        resetImageViews();
-                                        setCardBacks();
+                                        this.winnerCard.setImage(new Image(String.format(format, "playerWon.png")));
+                                        this.winnerCard.toFront();
+                                        centerImage(this.winnerCard);
+                                        this.winnerCard.setVisible(true);
+                                        RotateTransition rotator = createRotator(this.winnerCard, 0, 360, 1500, 3);
+                                        rotator.play();
+                                        rotator.setOnFinished(imageChange -> {
+                                            updateBalanceAndBet();
+                                            resetImageViews();
+                                            setCardBacks();
+                                            this.winnerCard.setVisible(false);
+                                        });
                                         break;
                                 }
                             });

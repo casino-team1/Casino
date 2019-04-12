@@ -54,8 +54,8 @@ public class BlackJackGameModel {
         spieler.setKartenWertSpieler(0);
         dealer.setKartenWertDealer(0);
         dealer.setKarteZweiWert(0);
-        kartenSpieler.clear();
-        kartenDealer.clear();
+        spieler.getKartenSpieler().clear();
+        dealer.getKartenDealer().clear();
         karten.clear();
         kartenSymbole.clear();
         karten.putAll(k.getKarten());
@@ -65,11 +65,11 @@ public class BlackJackGameModel {
         Collections.shuffle(kartenSymbole);
 
         //2 Zufallskarten verteilen an Spieler
-        spieler.hit(karten, kartenSymbole, kartenSpieler, labelKartenSpieler);
-        spieler.hit(karten, kartenSymbole, kartenSpieler, labelKartenSpieler);
+        spieler.hit(karten, kartenSymbole, labelKartenSpieler);
+        spieler.hit(karten, kartenSymbole, labelKartenSpieler);
 
         //Dealer zieht Karten
-        dealer.hit(karten, kartenSymbole, kartenDealer, labelKartenDealer);
+        dealer.firstHit(karten, kartenSymbole, labelKartenDealer);
 
         //Überprüfung, ob 21 überschritten wurde
         if (spieler.getKartenWertSpieler() > 21) {
@@ -98,7 +98,7 @@ public class BlackJackGameModel {
 
     public void spielerHit(Label labelLösung, Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, Label labelKartenDealer, Label labelKartenSpieler, TextField textfeldEinsatz, TextField textfeldVersicherung) {
         //Spieler zieht Karte
-        spieler.hit(karten, kartenSymbole, kartenSpieler, labelKartenSpieler);
+        spieler.hit(karten, kartenSymbole, labelKartenSpieler);
 
         //Überprüfung, ob 21 überschritten wurde
         if (spieler.getKartenWertSpieler() > 21) {
@@ -116,7 +116,7 @@ public class BlackJackGameModel {
         }
     }
 
-    public void dealerHit(Label labelLösung, Button buttonHit, Button buttonStand, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+    public void dealerHit() {
         //Zweiter Wert von Karte mitberechnen
         kartenWertDealer += karteZweiWert;
 
@@ -140,7 +140,7 @@ public class BlackJackGameModel {
                     k.subAnzahlKartenInKartenSymbole();
                 } else {
                     kartenWertDealer -= karteZweiWert;
-                    dealerHit(labelLösung, buttonHit, buttonStand, textfeldEinsatz, textfeldVersicherung);
+                    dealerHit();
                 }
             }
         }
@@ -148,7 +148,7 @@ public class BlackJackGameModel {
 
     public void dealerRound(Label labelLösung, Label labelKartenDealer, Button buttonHit, Button buttonStand, Button buttonPrüfung, Button buttonVerdoppeln, Button buttonVersichern, TextField textfeldEinsatz, TextField textfeldVersicherung) {
         //dealer muss karten ziehen
-        dealerHit(labelLösung, buttonHit, buttonStand, textfeldEinsatz, textfeldVersicherung);
+        dealerHit();
 
         //Anzeige leeren
         labelKartenDealer.setText("");

@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -28,9 +30,9 @@ public class BlackJackDealerModel {
 
     private boolean gewonnen = false;
 
-    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, ArrayList<String> kartenDealer, Label labelKartenDealer) {
+    public void firstHit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Label labelKartenDealer) {
         
-        //
+        //Zufallszahlen
         int zufallszahl = 0;
         Random r = new Random();
         
@@ -68,6 +70,40 @@ public class BlackJackDealerModel {
         kartenSymbole.remove(zufallskarte);
         k.subAnzahlKartenImKartenDeck();
         k.subAnzahlKartenInKartenSymbole();
+    }
+    
+    public void secondHit(){
+        //Zweiter Wert von Karte mitberechnen
+        kartenWertDealer += karteZweiWert;
+        
+        //Zufallszahlen
+        int zufallszahl = 0;
+        Random r = new Random();
+        
+        //Wenn Dealer unter 17 hat, muss er ziehen
+        if (kartenWertDealer < 17) {
+            while (kartenWertDealer < 17) {
+                zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+                zufallskarte = kartenSymbole.get(zufallszahl);
+                if (karten.containsKey(zufallskarte)) {
+                    if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+                        kartenWertDealer += 10;
+                    } else if (zufallskarte.contains("A")) {
+                        kartenWertDealer += 11;
+                    } else {
+                        kartenWertDealer += karten.get(zufallskarte);
+                    }
+                    kartenDealer.add(zufallskarte);
+                    karten.remove(zufallskarte);
+                    kartenSymbole.remove(zufallskarte);
+                    k.subAnzahlKartenImKartenDeck();
+                    k.subAnzahlKartenInKartenSymbole();
+                } else {
+                    kartenWertDealer -= karteZweiWert;
+                    secondHit();
+                }
+            }
+        }
     }
 
     public void setGewonnen(boolean g) {

@@ -26,7 +26,7 @@ public class BlackJackSpielerModel {
 
     private boolean gewonnen = false;
 
-    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, ArrayList<String> kartenSpieler, Label labelKartenSpieler) {
+    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Label labelKartenSpieler) {
         //Parameter einfangen
         this.karten = karten;
         this.kartenSymbole = kartenSymbole;

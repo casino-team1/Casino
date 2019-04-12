@@ -63,14 +63,7 @@ public class PasswordRecovery {
 
     private void sendMail(String newPlainTextPassword) {
         Thread thread = new Thread(() -> {
-            Properties props = new Properties();
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.socketFactory.port", "465");
-            props.put("mail.smtp.socketFactory.class",
-                    "javax.net.ssl.SSLSocketFactory");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.port", "465");
-            Session session = Session.getInstance(props,
+            Session session = Session.getInstance(MailConfig.getMailProperties(),
                     new javax.mail.Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {

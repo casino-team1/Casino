@@ -175,4 +175,8 @@ public class BaccaraGameModel extends BaccaraModel {
         }
     }
 
+    public double getTotalBet() {
+        return this.baccaraGame.getTotalBet();
+    }
+
 }

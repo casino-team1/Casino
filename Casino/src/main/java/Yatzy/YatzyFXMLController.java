@@ -29,7 +29,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -187,10 +186,7 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private Label lbllo7;
     
-    private ArrayList<Label> gelabels = new ArrayList<>();
-    private ArrayList<Label> belabels = new ArrayList<>();
-    private ArrayList<Label> uplabels = new ArrayList<>();
-    private ArrayList<Label> lolabels = new ArrayList<>();
+    private ArrayList<ImageView> imgarray = new ArrayList<>();
     private ArrayList<Label> scuplabels = new ArrayList<>();
     private ArrayList<Label> sclolabels = new ArrayList<>();
     
@@ -216,11 +212,19 @@ public class YatzyFXMLController implements Initializable {
                 }
             }
         });
+        
+        imgarray.add(ge1);
+        imgarray.add(ge2);
+        imgarray.add(ge3);
+        imgarray.add(ge4);
+        imgarray.add(ge5);
+        imgarray.add(be1);
+        imgarray.add(be2);
+        imgarray.add(be3);
+        imgarray.add(be4);
+        imgarray.add(be5);
     }
 
-    public ArrayList<Dice> getFinalArray() {
-        return finalarray;
-    }
 
     @FXML
     private void pressthrowdices(ActionEvent event) {
@@ -271,29 +275,21 @@ public class YatzyFXMLController implements Initializable {
             rules.setLowertotal(0);
             rules.setUppertotal(0);
 
-            sclblup1.setText("");
-            sclblup2.setText("");
-            sclblup3.setText("");
-            sclblup4.setText("");
-            sclblup5.setText("");
-            sclblup6.setText("");
-            sclblup7.setText("");
-            sclblup8.setText("");
-            sclbllo1.setText("");
-            sclbllo2.setText("");
-            sclbllo3.setText("");
-            sclbllo4.setText("");
-            sclbllo5.setText("");
-            sclbllo6.setText("");
-            sclbllo7.setText("");
-            sclbllo8.setText("");
-            sclbllo9.setText("");     
+            
+            for(Label lbl : scuplabels) {
+                lbl.setText("");
+            }
+            
+            for(Label lbl : sclolabels) {
+                lbl.setText("");
+            }
+                 
             lblbetnum.setText("");
             lblwinnum.setText("");
             lblwin.setText("");        
 
             //the displayed images get updated
-            assignImages(gearray, bearray);
+            assignImages();
         } //the first dicethrow
         else if (firstthrow == true) {
 
@@ -313,7 +309,7 @@ public class YatzyFXMLController implements Initializable {
 
             
             //the displayed images get updated (this function appears multiple times in the code and always does the same
-            assignImages(gearray, bearray);
+            assignImages();
         } //the second dicethrow (skip the third throw if all dices are kept)
         else if (secondthrow == true && bearray.size() != 5) {
 
@@ -327,7 +323,7 @@ public class YatzyFXMLController implements Initializable {
             cup.setKeep(bearray);
             cup.throwDices();
             gearray.addAll(cup.getDicearray());
-            assignImages(gearray, bearray);
+            assignImages();
         } //the third dicethrow
         else {
             //turns the second throw picture invisible in case the third throw is skiped 
@@ -359,7 +355,7 @@ public class YatzyFXMLController implements Initializable {
                 }
             });
             geback.setStyle("-fx-fill: #EDEDED;");
-            assignImages(gearray, bearray);
+            assignImages();
         }
     }
   
@@ -423,7 +419,7 @@ public class YatzyFXMLController implements Initializable {
         if (lockdices == false) {
             bearray.add(gearray.get(0));
             gearray.remove(0);
-            assignImages(gearray, bearray);
+            assignImages();
         }
     }
 
@@ -432,7 +428,7 @@ public class YatzyFXMLController implements Initializable {
         if (lockdices == false) {
             bearray.add(gearray.get(1));
             gearray.remove(1);
-            assignImages(gearray, bearray);
+            assignImages();
         }
     }
 
@@ -441,7 +437,7 @@ public class YatzyFXMLController implements Initializable {
         if (lockdices == false) {
             bearray.add(gearray.get(2));
             gearray.remove(2);
-            assignImages(gearray, bearray);
+            assignImages();
         }
     }
 
@@ -450,7 +446,7 @@ public class YatzyFXMLController implements Initializable {
         if (lockdices == false) {
             bearray.add(gearray.get(3));
             gearray.remove(3);
-            assignImages(gearray, bearray);
+            assignImages();
         }
     }
 
@@ -459,7 +455,7 @@ public class YatzyFXMLController implements Initializable {
         if (lockdices == false) {
             bearray.add(gearray.get(4));
             gearray.remove(4);
-            assignImages(gearray, bearray);
+            assignImages();
         }
     }
 
@@ -467,35 +463,35 @@ public class YatzyFXMLController implements Initializable {
     private void pressBe1(MouseEvent event) {
         gearray.add(bearray.get(0));
         bearray.remove(0);
-        assignImages(gearray, bearray);
+        assignImages();
     }
 
     @FXML
     private void pressBe2(MouseEvent event) {
         gearray.add(bearray.get(1));
         bearray.remove(1);
-        assignImages(gearray, bearray);
+        assignImages();
     }
 
     @FXML
     private void pressBe3(MouseEvent event) {
         gearray.add(bearray.get(2));
         bearray.remove(2);
-        assignImages(gearray, bearray);
+        assignImages();
     }
 
     @FXML
     private void pressBe4(MouseEvent event) {
         gearray.add(bearray.get(3));
         bearray.remove(3);
-        assignImages(gearray, bearray);
+        assignImages();
     }
 
     @FXML
     private void pressBe5(MouseEvent event) {
         gearray.add(bearray.get(4));
         bearray.remove(4);
-        assignImages(gearray, bearray);
+        assignImages();
     }
 
     @FXML
@@ -781,81 +777,6 @@ public class YatzyFXMLController implements Initializable {
         updateButton(btnthrowdices);
     }
 
-    public void assignImages(ArrayList<Dice> gearray, ArrayList<Dice> bearray) {
-
-        for(int i = 1; i < 6; i++){
-            if (gearray.size() < 1) {
-            ge1.setVisible(false);
-            } else {
-                this.ge1.setImage(new Image(img.getImage(gearray.get(0).getValue())));
-                ge1.setVisible(true);
-            }
-        }
-
-        if (gearray.size() < 2) {
-            ge2.setVisible(false);
-        } else {
-            this.ge2.setImage(new Image(img.getImage(gearray.get(1).getValue())));
-            ge2.setVisible(true);
-        }
-
-        if (gearray.size() < 3) {
-            ge3.setVisible(false);
-        } else {
-            this.ge3.setImage(new Image(img.getImage(gearray.get(2).getValue())));
-            ge3.setVisible(true);
-        }
-
-        if (gearray.size() < 4) {
-            ge4.setVisible(false);
-        } else {
-            this.ge4.setImage(new Image(img.getImage(gearray.get(3).getValue())));
-            ge4.setVisible(true);
-        }
-
-        if (gearray.size() < 5) {
-            ge5.setVisible(false);
-        } else {
-            this.ge5.setImage(new Image(img.getImage(gearray.get(4).getValue())));
-            ge5.setVisible(true);
-        }
-
-        if (bearray.size() < 1) {
-            be1.setVisible(false);
-        } else {
-            this.be1.setImage(new Image(img.getImage(bearray.get(0).getValue())));
-            be1.setVisible(true);
-        }
-
-        if (bearray.size() < 2) {
-            be2.setVisible(false);
-        } else {
-            this.be2.setImage(new Image(img.getImage(bearray.get(1).getValue())));
-            be2.setVisible(true);
-        }
-
-        if (bearray.size() < 3) {
-            be3.setVisible(false);
-        } else {
-            this.be3.setImage(new Image(img.getImage(bearray.get(2).getValue())));
-            be3.setVisible(true);
-        }
-
-        if (bearray.size() < 4) {
-            be4.setVisible(false);
-        } else {
-            this.be4.setImage(new Image(img.getImage(bearray.get(3).getValue())));
-            be4.setVisible(true);
-        }
-
-        if (bearray.size() < 5) {
-            be5.setVisible(false);
-        } else {
-            this.be5.setImage(new Image(img.getImage(bearray.get(4).getValue())));
-            be5.setVisible(true);
-        }
-    }
-
     public void enterhover(Label lbl) {
         lbl.setStyle("-fx-border-color: green; -fx-border-width: 3; -fx-background-color: white;");
     }
@@ -868,12 +789,29 @@ public class YatzyFXMLController implements Initializable {
         lbl.setStyle("-fx-border-color: black;-fx-border-width: 3; -fx-background-color: red;");
     }
 
-    public ArrayList<Dice> getGearray() {
-        return gearray;
+    public void assignImages() {
+        for (int i = 1; i < 6; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (gearray.size() < j + 1) {
+                    imgarray.get(j).setVisible(false);
+                } else {
+                    imgarray.get(j).setImage(new Image(img.getImage(gearray.get(j).getValue())));
+                    imgarray.get(j).setVisible(true);
+                }
+            }
+
+            for (int j = 0; j < 5; j++) {
+                if (bearray.size() < j + 1) {
+                    imgarray.get(j + 5).setVisible(false);
+                } else {
+                    imgarray.get(j + 5).setImage(new Image(img.getImage(bearray.get(j).getValue())));
+                    imgarray.get(j + 5).setVisible(true);
+                }
+            }
+        }
     }
 
     public void newTurn() {
-
         rules.totalChecker();
         if (rules.isUpperbool() == true) {
             sclblup7.setText(Integer.toString(rules.getUppertotal()));
@@ -886,7 +824,6 @@ public class YatzyFXMLController implements Initializable {
             sclbllo9.setText(Integer.toString(rules.getTotal()));
             finish = true;
         }
-
         if (finish == false) {
             btnthrowdices.setDisable(false);
             btnthrowdices.setText("Würfel werfen");
@@ -899,12 +836,11 @@ public class YatzyFXMLController implements Initializable {
             bearray.clear();
             firstthrow = true;
             secondthrow = true;
-            
-            
+                       
             //the background of the top dicerow gets set back to white
             geback.setStyle("-fx-fill: white;");
             
-            assignImages(gearray, bearray);
+            assignImages();
         } else {
             btnthrowdices.setDisable(false);
             newgame = true;
@@ -960,8 +896,14 @@ public class YatzyFXMLController implements Initializable {
             
         }
     }
-
-
+    
+    public ArrayList<Dice> getGearray() {
+        return gearray;
+    }
+    
+    public ArrayList<Dice> getFinalArray() {
+    return finalarray;
+    }    
 }
 
 

@@ -18,29 +18,28 @@ public class BlackJackSpielerModel {
 
     private int kartenWertSpieler = 0;
     
-    private Karten k;
-    private HashMap<String, Integer> karten;
-    private ArrayList<String> kartenSymbole;
-    private ArrayList<String> kartenSpieler;
-    private String zufallskarte;
+    private Karten k = new Karten();
+    private HashMap<String, Integer> karten = new HashMap<>();
+    private ArrayList<String> kartenSymbole = new ArrayList<>();
+    private ArrayList<String> kartenSpieler = new ArrayList<>();
+    private String zufallskarte = "";
 
     private boolean gewonnen = false;
 
-    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, ArrayList<String> kartenSpieler, Label labelKartenSpieler) {
+    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Label labelKartenSpieler) {
         //Parameter einfangen
         this.karten = karten;
         this.kartenSymbole = kartenSymbole;
-        this.kartenSpieler = kartenSpieler;
-        
-        //Zufällige Werte
-        int zufallszahl = 0;
-        String zufallskarte = "";
-        Random r = new Random();
         
         //Hat es genügend Karten?
         if (k.getAnzahlKartenImKartenDeck() < 1) {
+            k.kartenErstellen();
             this.karten = k.getKarten();
         }
+        
+        //Zufällige Werte
+        int zufallszahl = 0;
+        Random r = new Random();
 
         //Spieler zieht Karten
         zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
@@ -89,8 +88,8 @@ public class BlackJackSpielerModel {
         return kartenSpieler;
     }
     
-    public void setKartenSpieler(ArrayList<String> kartenSpieler) {
-        this.kartenSpieler = kartenSpieler;
+    public void clearKartenSpieler() {
+        kartenSpieler.clear();
     }
    
 }

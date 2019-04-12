@@ -35,7 +35,7 @@ import javafx.stage.Stage;
  */
 public class BlackJackFXMLController implements Initializable {
 
-    BlackJackGameModel game = new BlackJackGameModel();
+    BlackJackGameModel game;
 
     private MainApp main;
 
@@ -79,19 +79,21 @@ public class BlackJackFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern,
+                                      labelEinsatzFehler, labelKartenDealer, labelKartenSpieler, labelLösung, labelVerdoppeln, labelVersicherung,
+                                      textfeldEinsatz, textfeldVersicherung);
     }
 
     @FXML
     private void stand(ActionEvent event) {
         buttonHit.setDisable(true);
         buttonStand.setDisable(true);
-        game.dealerRound(labelLösung, labelKartenDealer, buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, textfeldEinsatz, textfeldVersicherung);
+        game.dealerRound();
     }
 
     @FXML
     private void hit(ActionEvent event) {
-        game.spielerHit(labelLösung, buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelKartenDealer, labelKartenSpieler, textfeldEinsatz, textfeldVersicherung);
+        game.spielerHit();
     }
 
     @FXML
@@ -110,7 +112,7 @@ public class BlackJackFXMLController implements Initializable {
         buttonVersichern.setDisable(true);
         textfeldVersicherung.setDisable(false);
 
-        game.play(labelKartenSpieler, labelKartenDealer, buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelLösung, textfeldEinsatz, textfeldVersicherung);
+        game.play();
     }
 
     @FXML
@@ -155,8 +157,8 @@ public class BlackJackFXMLController implements Initializable {
         int i = Integer.parseInt(textfeldEinsatz.getText());
         String s = String.valueOf(i * 2);
         labelVerdoppeln.setText("Ihr Einsatz wurde erhöht auf " + s);
-        game.spielerHit(labelLösung, buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, labelKartenDealer, labelKartenSpieler, textfeldEinsatz, textfeldVersicherung);
-        game.dealerRound(labelLösung, labelKartenDealer, buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, textfeldEinsatz, textfeldVersicherung);
+        game.spielerHit();
+        game.dealerRound();
     }
 
     @FXML
@@ -173,7 +175,7 @@ public class BlackJackFXMLController implements Initializable {
                 textfeldEinsatz.setDisable(true);
                 textfeldVersicherung.setDisable(true);
 
-                game.versichern(labelLösung, labelKartenDealer, buttonHit, buttonStand, buttonPrüfung, buttonVerdoppeln, buttonVersichern, textfeldEinsatz, textfeldVersicherung);
+                game.versichern();
             } else {
                 labelVersicherung.setText("Bitte ganze Zahlen über 0 eingeben!");
             }

@@ -98,10 +98,6 @@ public class BaccaraCard {
         return cardValue;
     }
 
-    private void evaluateImageLink() {
-
-    }
-
     public String getImageLocation() {
         return this.imageLocation;
     }

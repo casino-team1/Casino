@@ -13,7 +13,6 @@ import com.team1.casino.Controller.PasswordRecoveryController;
 import com.team1.casino.Controller.Statistic.PlayerStatisticController;
 import com.team1.casino.Controller.RegistrationViewController;
 import com.team1.casino.Controller.Statistic.StatisticController;
-import com.team1.casino.Entity.PasswordRecovery;
 import com.team1.casino.Model.AuthenticationModel;
 import com.team1.casino.Model.CasinoLoginModel;
 import com.team1.casino.Model.GameStatisticModel;
@@ -37,9 +36,9 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
-    
+
     private Stage stage;
-    
+
     public Stage getStage() {
         this.stage.setResizable(false);
         return this.stage;
@@ -81,7 +80,7 @@ public class MainApp extends Application {
             }
         }
     }
-    
+
     public void displayPasswordRecovery() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PasswordRecovery.fxml"));
@@ -97,15 +96,15 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-    
+
     public void setupForProduction() {
         DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "casinoworker", "", false).connectToDatabase();
     }
-    
+
     public void setupForDEBUG() {
         DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "casinoworker", "", false).connectToDatabase();
     }
-    
+
     public void displayLoginView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginView.fxml"));
@@ -123,7 +122,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-    
+
     public void displayRegistrationView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RegistrationView.fxml"));
@@ -140,9 +139,9 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-    
+
     public void displayMainMenu() {
-        
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
             Parent root;
@@ -157,7 +156,7 @@ public class MainApp extends Application {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void displayAuthenticationWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AuthenticationView.fxml"));
@@ -175,7 +174,7 @@ public class MainApp extends Application {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void displayStatisticView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StatisticView.fxml"));
@@ -191,7 +190,7 @@ public class MainApp extends Application {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void displayPlayerStatistic() throws SQLException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PlayerStatisticView.fxml"));
@@ -211,7 +210,7 @@ public class MainApp extends Application {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void displayGameStatistic() throws SQLException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameStatisticView.fxml"));
@@ -231,27 +230,27 @@ public class MainApp extends Application {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void startBaccara() {
         Baccara baccara = new Baccara(this);
         baccara.startGame();
     }
-    
+
     public void startBlackJack() {
         Blackjack blackJack = new Blackjack(this);
         blackJack.startGame();
     }
-    
+
     public void startRoulette() {
         Roulette roulette = new Roulette(this);
         roulette.startGame();
     }
-    
+
     public void startYatzy() {
         Yatzy yatzy = new Yatzy(this);
         yatzy.startGame();
     }
-    
+
     public static Stage centerStageInScreen(Stage stage, Scene scene) {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
@@ -270,5 +269,5 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

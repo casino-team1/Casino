@@ -34,7 +34,7 @@
       <Pane layoutX="687.0" layoutY="54.0" prefHeight="328.0" prefWidth="9.0" style="-fx-background-color: #DCCC88#DCCC88;" />
       <HBox fx:id="playerSide" layoutX="128.0" layoutY="116.0" prefHeight="295.0" prefWidth="528.0" spacing="10.0">
          <children>
-            <ImageView fx:id="thirdLeftCard" fitHeight="295.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+            <ImageView fx:id="thirdLeftCard" fitHeight="295.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="secondLeftCard" fitHeight="241.0" fitWidth="149.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/GameCards/cardBack.png" />
@@ -62,7 +62,7 @@
                   <Insets />
                </HBox.margin>
             </ImageView>
-            <ImageView fx:id="thirdRightImage" fitHeight="303.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+            <ImageView fx:id="thirdRightImage" fitHeight="303.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
          </children></HBox>
       <ImageView fx:id="startGameView" fitHeight="90.0" fitWidth="268.0" layoutX="882.0" layoutY="818.0" onMouseClicked="#startBaccara" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -85,10 +85,15 @@
          </image>
       </ImageView>
       <ImageView fx:id="bankerBetCoin" fitHeight="104.0" fitWidth="147.0" layoutX="605.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="winnerCard" fitHeight="328.0" fitWidth="445.0" layoutX="469.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/GameCards/playerWon.png" />
-         </image>
-      </ImageView>
+      <Text fx:id="userBalance" fill="WHITE" layoutX="54.0" layoutY="701.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand: ">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="totalBet" fill="WHITE" layoutX="54.0" layoutY="767.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Einsatz:">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

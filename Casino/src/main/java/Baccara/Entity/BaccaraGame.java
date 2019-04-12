@@ -176,5 +176,9 @@ public class BaccaraGame {
     public ArrayList<BaccaraCard> getPlayerCards() {
         return this.playerCards;
     }
+    
+    public double getTotalBet(){
+        return this.playerBet + this.dealerBet + this.tieBet;
+    }
 
 }

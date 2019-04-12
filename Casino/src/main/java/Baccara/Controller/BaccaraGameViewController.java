@@ -8,15 +8,18 @@ package Baccara.Controller;
 
 import Baccara.Entity.BaccaraCard;
 import Baccara.Model.BaccaraGameModel;
+import com.team1.casino.User.Util.UserCentral;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -77,8 +80,11 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private ImageView thirdRightImage;
     @FXML
     private ImageView bankerBetCoin;
-    @FXML
     private ImageView winnerCard;
+    @FXML
+    private Text userBalance;
+    @FXML
+    private Text totalBet;
 
     /**
      * Initializes the controller class.
@@ -89,7 +95,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
         /*
             Code below checks for drag and drop and sets image at new position.
          */
-        this.winnerCard.setVisible(false);
         this.chipImage.setOnDragDetected((event) -> {
             content = chipImage.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent data = new ClipboardContent();
@@ -97,6 +102,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
             data.putImage(image);
             content.setContent(data);
             event.consume();
+            updateBalanceAndBet();
         });
         this.bankerBet.setOnMouseClicked(event -> {
             this.bankerBetCoin.setImage(this.chipImage.getImage());
@@ -148,18 +154,22 @@ public class BaccaraGameViewController implements Initializable, Observer {
     public void bind() {
     }
 
+    private void updateBalanceAndBet() {
+        this.userBalance.setText("Kontostand: " + UserCentral.getInstance().getUser().getCurrentBalance());
+        this.totalBet.setText("Einsatz: " + this.gameModel.getTotalBet());
+    }
+
     @FXML
     private void startBaccara(MouseEvent event) throws InterruptedException {
         this.gameModel.generateCards();
         resetImageViews();
+        updateBalanceAndBet();
         String format = "/images/GameCards/%s";
         ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
         ImageView[] dealerView = {this.firstRightCard, this.secondRightCard};
         setCardCount();
         rotateCards(playerView, dealerView, format);
         this.gameModel.checkForCardDraw();
-        //checkForNewCards(format);
-
     }
 
     private void checkForNewCards(String linkFormat) {
@@ -169,11 +179,58 @@ public class BaccaraGameViewController implements Initializable, Observer {
             Check if a third card has been drawn by the algorithm following the rules of Baccara.
          */
         try {
+            TranslateTransition translateTransition = new TranslateTransition();
+            translateTransition.setDuration(Duration.millis(2000));
             if (playerCards.size() == 3) {
-                this.thirdLeftCard.setImage(new Image(String.format(linkFormat, playerCards.get(2).getImageLocation())));
+                thirdLeftCard.setImage(new Image(String.format(linkFormat, "cardBack.png")));
+                /*
+                translateTransition.setNode(thirdLeftCard);
+                translateTransition.fromYProperty().set(thirdLeftCard.getY() + ((thirdLeftCard.getImage().getHeight() - (thirdLeftCard.getImage().getHeight() * 2)) * 2));
+                translateTransition.toYProperty().setValue(thirdLeftCard.getY());
+                translateTransition.play();
+                translateTransition.setOnFinished(hanlder -> {
+                    RotateTransition trans = createRotator(this.thirdLeftCard, 0, -90, 750, 1);
+                    trans.play();
+                    trans.setOnFinished(imageSetter -> {
+                        this.thirdLeftCard.setImage(new Image(String.format(linkFormat, playerCards.get(2).getImageLocation())));
+                        RotateTransition rotateBack = createRotator(this.thirdLeftCard, -85, 0, 750, 1);
+                        rotateBack.setOnFinished(imageBack -> {
+                            try {
+                                Thread.sleep(1000);
+                                setCardBacks();
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(BaccaraGameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        });
+                    });
+
+                });
+                 */
             }
             if (dealerCards.size() == 3) {
                 this.thirdRightImage.setImage(new Image(String.format(linkFormat, dealerCards.get(2).getImageLocation())));
+                /*
+                translateTransition.setNode(thirdRightImage);
+                translateTransition.fromYProperty().set(thirdRightImage.getY() + ((thirdRightImage.getImage().getHeight() - (thirdRightImage.getImage().getHeight() * 2)) * 2));
+                translateTransition.toYProperty().setValue(thirdRightImage.getY());
+                translateTransition.play();
+                translateTransition.setOnFinished(hanlder -> {
+                    RotateTransition trans = createRotator(this.thirdRightImage, 0, -90, 750, 1);
+                    trans.play();
+                    trans.setOnFinished(imageSetter -> {
+                        this.thirdRightImage.setImage(new Image(String.format(linkFormat, dealerCards.get(2).getImageLocation())));
+                        RotateTransition rotate = createRotator(this.thirdRightImage, -85, 0, 750, 1);
+                        rotate.setOnFinished(cardBack -> {
+                            try {
+                                Thread.sleep(1000);
+                                setCardBacks();
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(BaccaraGameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        });
+                    });
+                });
+                 */
             }
         } catch (Exception e) {
 
@@ -208,16 +265,10 @@ public class BaccaraGameViewController implements Initializable, Observer {
                                     case "Player":
                                     case "Dealer":
                                     case "Tie":
-                                        this.winnerCard.setImage(new Image(String.format(format, "playerWon.png")));
-                                        centerImage(winnerCard);
-                                        winnerCard.setVisible(true);
-                                        RotateTransition rotate = createRotator(winnerCard, 0, 360, 4000, 3);
-                                        rotate.play();
-                                        rotate.setOnFinished(change -> {
-                                            winnerCard.setVisible(false);
-                                            resetImageViews();
-                                            setCardBacks();
-                                        });
+                                        checkForNewCards(format);
+                                        updateBalanceAndBet();
+                                        resetImageViews();
+                                        setCardBacks();
                                         break;
                                 }
                             });
@@ -262,8 +313,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
         for (int i = 0; i < imageViews.length; i++) {
             imageViews[i] = new ImageView();
         }
-        this.thirdRightImage.setRotate(90);
-        this.thirdLeftCard.setRotate(90);
     }
 
     private void setCardCount() {

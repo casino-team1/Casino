@@ -94,18 +94,15 @@
             <Font size="23.0" />
          </font>
       </Label>
-<<<<<<< HEAD
       <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0$" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-=======
       <ImageView fx:id="dealerKarte1" fitHeight="201.0" fitWidth="149.0" layoutX="494.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerKarte2" fitHeight="201.0" fitWidth="149.0" layoutX="569.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerKarte3" fitHeight="201.0" fitWidth="149.0" layoutX="644.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerKarte4" fitHeight="201.0" fitWidth="149.0" layoutX="719.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerKarte5" fitHeight="201.0" fitWidth="149.0" layoutX="794.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
->>>>>>> 27bda55d2db2c8d732e4ddd224f91928640da810
    </children>
 </Pane>

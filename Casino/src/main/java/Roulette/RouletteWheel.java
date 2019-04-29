@@ -50,7 +50,7 @@ public class RouletteWheel {
             else if (ArrayIdentity == 5) {
                 betAmount = betAmount * 10;
             } 
-            else { //ArrayIdentity == 6
+            else if (ArrayIdentity == 6) { 
                 betAmount = betAmount * 16;
             }
         } else {

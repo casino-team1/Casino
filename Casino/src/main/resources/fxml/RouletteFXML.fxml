@@ -297,5 +297,27 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Pane layoutX="757.0" layoutY="269.0" onMouseClicked="#clickPaneQ1" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="757.0" layoutY="229.0" onMouseClicked="#clickPaneQ2" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="797.0" layoutY="269.0" onMouseClicked="#clickPaneQ3" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="797.0" layoutY="229.0" onMouseClicked="#clickPaneQ4" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="837.0" layoutY="269.0" onMouseClicked="#clickPaneQ5" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="837.0" layoutY="229.0" onMouseClicked="#clickPaneQ6" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="877.0" layoutY="269.0" onMouseClicked="#clickPaneQ7" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="877.0" layoutY="229.0" onMouseClicked="#clickPaneQ8" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="917.0" layoutY="269.0" onMouseClicked="#clickPaneQ9" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="917.0" layoutY="229.0" onMouseClicked="#clickPaneQ10" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="957.0" layoutY="269.0" onMouseClicked="#clickPaneQ11" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="957.0" layoutY="229.0" onMouseClicked="#clickPaneQ12" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="997.0" layoutY="269.0" onMouseClicked="#clickPaneQ13" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="997.0" layoutY="229.0" onMouseClicked="#clickPaneQ14" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1040.0" layoutY="269.0" onMouseClicked="#clickPaneQ15" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1040.0" layoutY="229.0" onMouseClicked="#clickPaneQ16" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1080.0" layoutY="269.0" onMouseClicked="#clickPaneQ17" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1080.0" layoutY="229.0" onMouseClicked="#clickPaneQ18" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1120.0" layoutY="269.0" onMouseClicked="#clickPaneQ19" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1120.0" layoutY="229.0" onMouseClicked="#clickPaneQ20" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1160.0" layoutY="269.0" onMouseClicked="#clickPaneQ21" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1160.0" layoutY="229.0" onMouseClicked="#clickPaneQ22" prefHeight="20.0" prefWidth="20.0" />
    </children>
 </AnchorPane>

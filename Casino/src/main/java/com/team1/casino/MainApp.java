@@ -46,7 +46,7 @@ public class MainApp extends Application {
 
 
     
-    public static final ExecutionMode executionMode = ExecutionMode.DEBUG;
+    public static final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
     
     public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEBUG;
 

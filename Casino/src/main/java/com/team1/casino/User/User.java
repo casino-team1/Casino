@@ -20,7 +20,7 @@ public abstract class User {
     private String role;
     private String username;
     private String password;
-    private double currentBalance;
+    private Integer currentBalance;
     private boolean validated = false;
     private String validationCode = "";
     private String emailAdress;
@@ -72,12 +72,12 @@ public abstract class User {
         return isValid;
     }
 
-    public double getCurrentBalance() {
+    public Integer getCurrentBalance() {
         return this.currentBalance;
     }
 
     public void setCurrentBalance(double currentBalance) {
-        this.currentBalance = currentBalance;
+        this.currentBalance = (int)currentBalance;
     }
 
     public void writeBalanceToDatabase() {
@@ -111,7 +111,7 @@ public abstract class User {
 
     public void loadUserInformation() {
         UserUtil util = new UserUtil();
-        this.currentBalance = util.loadCurrentBalanceFromGivenUsername(username);
+        this.currentBalance = (int)util.loadCurrentBalanceFromGivenUsername(username);
         this.ID = util.getIDFromUserByUsername(username);
     }
 

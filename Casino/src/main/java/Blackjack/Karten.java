@@ -74,7 +74,6 @@ public class Karten {
         for (String symb : symbols) {
             karten.put(new Image(String.format(format, "A", symb)), 11);
         }
-        System.out.println(karten);
     }
 
     public HashMap<Image, Integer> getKarten() {

@@ -31,18 +31,18 @@ public class BlackJackDealerModel {
     public void firstHit(HashMap<Image, Integer> karten, ArrayList<String> kartenSymbole, Label labelKartenDealer) {
         //Parameter einfangen
         this.karten = karten;
-        this.kartenSymbole = kartenSymbole; 
-        
+        this.kartenSymbole = kartenSymbole;
+
         //Hat es genügend Karten?
-        if(k.getAnzahlKartenImKartenDeck() < 1){
+        if (k.getAnzahlKartenImKartenDeck() < 1) {
             k.kartenErstellen();
             this.karten = k.getKarten();
         }
-        
+
         //zufällige Werte
         int zufallszahl = 0;
         Random r = new Random();
-        
+
         //Erste Karte an Dealer verteilen
         zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
         zufallskarte = kartenSymbole.get(zufallszahl);
@@ -78,21 +78,21 @@ public class BlackJackDealerModel {
         k.subAnzahlKartenImKartenDeck();
         k.subAnzahlKartenInKartenSymbole();
     }
-    
-    public void secondHit(){
+
+    public void secondHit() {
         //Zweiter Wert von Karte mitberechnen
         kartenWertDealer += karteZweiWert;
-        
+
         //Hat es genügend Karten?
-        if(k.getAnzahlKartenImKartenDeck() < 1){
+        if (k.getAnzahlKartenImKartenDeck() < 1) {
             k.kartenErstellen();
             this.karten = k.getKarten();
         }
-        
+
         //zufällige Werte
         int zufallszahl = 0;
         Random r = new Random();
-        
+
         //Wenn Dealer unter 17 hat, muss er ziehen
         if (kartenWertDealer < 17) {
             while (kartenWertDealer < 17) {
@@ -134,8 +134,8 @@ public class BlackJackDealerModel {
     public void setKartenWertDealer(int kartenWertDealer) {
         this.kartenWertDealer = kartenWertDealer;
     }
-    
-    public void kartenWertDealerPlusKarteZwei(){
+
+    public void kartenWertDealerPlusKarteZwei() {
         kartenWertDealer += karteZweiWert;
     }
 

@@ -10,32 +10,38 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="945.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackGameFXMLController">
    <children>
-      <ImageView fitHeight="804.0" fitWidth="963.0" layoutX="-12.0" layoutY="-15.0" pickOnBounds="true">
+      <ImageView fitHeight="804.0" fitWidth="976.0" layoutX="-12.0" layoutY="-15.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Baccara/tableBackground.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="285.0" layoutY="10.0" text="♥♦Black Jack♣♠">
+      <Label layoutX="291.0" layoutY="10.0" text="♥♦Black Jack♣♠">
          <font>
             <Font name="System Bold" size="49.0" />
          </font>
       </Label>
-      <Label layoutX="380.0" layoutY="81.0" text="Dealer must draw to 16 and tand on 17" textFill="WHITE" underline="true">
+      <Label layoutX="349.0" layoutY="81.0" text="Dealer must draw to 16 and stand on 17." textFill="WHITE" underline="true">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <font>
+            <Font size="14.0" />
+         </font>
       </Label>
-      <TextField fx:id="textfeldEinsatz" layoutX="409.0" layoutY="171.0" opacity="0.75" />
-      <Button fx:id="buttonPrüfung" layoutX="454.0" layoutY="202.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfung" />
-      <Label layoutX="414.0" layoutY="108.0" text="Teilnahme: mindestens 50!" textFill="WHITE" underline="true">
+      <TextField fx:id="textfeldEinsatz" layoutX="401.0" layoutY="171.0" opacity="0.75" />
+      <Button fx:id="buttonPrüfung" layoutX="447.0" layoutY="206.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfung" />
+      <Label layoutX="345.0" layoutY="107.0" text="Teilnahme: mindestens 50 (ganze Zahlen)!" textFill="WHITE" underline="true">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <font>
+            <Font size="14.0" />
+         </font>
       </Label>
-      <Button fx:id="buttonStart" disable="true" layoutX="463.0" layoutY="238.0" mnemonicParsing="false" onAction="#startGame" text="Start" />
-      <Label layoutX="455.0" layoutY="153.0" prefHeight="17.0" prefWidth="57.0" text="Ihr Einsatz:" textFill="WHITE" underline="true">
+      <Button fx:id="buttonStart" disable="true" layoutX="456.0" layoutY="255.0" mnemonicParsing="false" onAction="#startGame" text="Start" />
+      <Label layoutX="447.0" layoutY="154.0" prefHeight="17.0" prefWidth="78.0" text="Ihr Einsatz:" textFill="WHITE" underline="true">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -46,10 +52,11 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <ImageView fx:id="spielerKarte1" fitHeight="140.0" fitWidth="101.0" layoutX="20.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="spielerKarte2" fitHeight="140.0" fitWidth="108.0" layoutX="132.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="spielerKarte3" fitHeight="140.0" fitWidth="101.0" layoutX="252.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="spielerKarte4" fitHeight="140.0" fitWidth="101.0" layoutX="368.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="spielerKarte1" fitHeight="201.0" fitWidth="149.0" layoutX="14.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="spielerKarte2" fitHeight="201.0" fitWidth="149.0" layoutX="89.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="spielerKarte3" fitHeight="201.0" fitWidth="149.0" layoutX="164.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="spielerKarte4" fitHeight="201.0" fitWidth="149.0" layoutX="239.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="spielerKarte5" fitHeight="201.0" fitWidth="149.0" layoutX="314.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="labelKontostand" layoutX="685.0" layoutY="170.0" text="Kontostand:" textFill="WHITE">
          <font>
             <Font size="17.0" />
@@ -60,11 +67,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Line endX="5.79998779296875" endY="220.60003662109375" layoutX="477.0" layoutY="269.0" startX="5.79998779296875" startY="24.600006103515625" stroke="#e5ff00" strokeWidth="5.0" />
-      <ImageView fx:id="dealerKarte1" fitHeight="140.0" fitWidth="101.0" layoutX="494.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte2" fitHeight="140.0" fitWidth="101.0" layoutX="601.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte3" fitHeight="140.0" fitWidth="101.0" layoutX="709.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte4" fitHeight="140.0" fitWidth="101.0" layoutX="816.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <Line endX="5.79998779296875" endY="220.60003662109375" layoutX="470.0" layoutY="269.0" startX="5.79998779296875" startY="24.600006103515625" stroke="#e5ff00" strokeWidth="5.0" />
       <Button fx:id="buttonVersichern" disable="true" layoutX="587.0" layoutY="591.0" mnemonicParsing="false" onAction="#versichern" text="Versichern" />
       <Button fx:id="buttonVerdoppeln" disable="true" layoutX="447.0" layoutY="591.0" mnemonicParsing="false" onAction="#verdoppeln" text="Verdoppeln" />
       <Button fx:id="buttonStand" disable="true" layoutX="345.0" layoutY="590.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
@@ -76,8 +79,11 @@
          </font>
       </Label>
       <Label fx:id="labelVerdoppeln" layoutX="403.0" layoutY="634.0" textFill="WHITE" />
-      <Label fx:id="labelLösung" layoutX="354.0" layoutY="716.0" />
-      <Label fx:id="labelVersicherung" layoutX="587.0" layoutY="626.0" />
+      <Label fx:id="labelLösung" layoutX="354.0" layoutY="716.0" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="labelVersicherung" layoutX="587.0" layoutY="626.0" textFill="WHITE" />
       <Label layoutX="161.0" layoutY="250.0" text="Spieler Karten" textFill="#ffc200">
          <font>
             <Font size="23.0" />
@@ -88,5 +94,10 @@
             <Font size="23.0" />
          </font>
       </Label>
+      <ImageView fx:id="dealerKarte1" fitHeight="201.0" fitWidth="149.0" layoutX="494.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte2" fitHeight="201.0" fitWidth="149.0" layoutX="569.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte3" fitHeight="201.0" fitWidth="149.0" layoutX="644.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte4" fitHeight="201.0" fitWidth="149.0" layoutX="719.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte5" fitHeight="201.0" fitWidth="149.0" layoutX="794.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

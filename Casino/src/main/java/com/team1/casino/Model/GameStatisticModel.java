@@ -91,9 +91,9 @@ public class GameStatisticModel extends Observable {
         this.gameProfits.add(0.0);
         for (Statistic stat : this.gameStats) {
             if (stat.getResult().equals("Won")) {
-                value -= stat.getEndamount();
+                value -= stat.getUserAccountChange();
             } else if (stat.getResult().equals("Lost")) {
-                value += Math.abs(stat.getEndamount());
+                value += Math.abs(stat.getUserAccountChange());
             } else {
                 value += 0;
             }

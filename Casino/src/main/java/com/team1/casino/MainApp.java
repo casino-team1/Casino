@@ -38,42 +38,39 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
     private Stage stage;
-    
+
     public Stage getStage() {
         this.stage.setResizable(false);
         return this.stage;
     }
 
-    
-    public static final ExecutionMode executionMode = ExecutionMode.DEBUG;
+
+    public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEVELOPMENT;
 
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
+        this.stage.setResizable(false);
         this.stage.centerOnScreen();
-        if (null == this.executionMode) {
-            displayMainMenu();
-        } else {
-            switch (this.executionMode) {
-                case DEBUG:
-                    if (UserCentral.getInstance().getUser() != null) {
-                    } else {
-                        setupForDEBUG();
-                        displayLoginView();
-                    }
-                    break;
-                case ADMINISTRATOR_TEST:
+        switch (this.EXECUTION_MODE) {
+            case DEBUG:
+                if (UserCentral.getInstance().getUser() != null) {
+                } else {
                     setupForDEBUG();
-                    displayStatisticView();
-                    break;
-                case PRODUCTION:
-                    setupForProduction();
-                    displayMainMenu();
-                    break;
-                default:
-                    displayMainMenu();
-                    break;
-            }
+                    displayLoginView();
+                }
+                break;
+            case ADMINISTRATOR_TEST:
+                setupForDEBUG();
+                displayStatisticView();
+                break;
+            case PRODUCTION:
+                setupForProduction();
+                displayMainMenu();
+                break;
+            default:
+                displayMainMenu();
+                break;
         }
     }
 

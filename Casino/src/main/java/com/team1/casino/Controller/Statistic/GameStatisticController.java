@@ -15,7 +15,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,7 +24,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -61,6 +59,9 @@ public class GameStatisticController implements Initializable, Observer {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -101,7 +102,7 @@ public class GameStatisticController implements Initializable, Observer {
         });
         changeCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
             if (p.getValue() != null) {
-                return new SimpleStringProperty(String.valueOf(p.getValue().getEndamount()));
+                return new SimpleStringProperty(String.valueOf(p.getValue().getUserAccountChange()));
             } else {
                 return new SimpleStringProperty("No Change");
             }
@@ -112,31 +113,37 @@ public class GameStatisticController implements Initializable, Observer {
     public void update(Observable o, Object arg) {
         GameStatisticModel gameModel = (GameStatisticModel) o;
         this.gameStatTable.getItems().clear();
+        int maxNumberOfEntries = evaluateMaxNumberOfEntries();
+        XYChart.Series<String, Double> series = getPopulatedProfitChart(maxNumberOfEntries);
+        this.gameProfit.getData().add(series);
+        this.gameProfit.setCreateSymbols(false);
+    }
+
+    private int evaluateMaxNumberOfEntries() {
         int maxNumberOfEntries = -1;
         if (this.statCounter.getSelectionModel().getSelectedItem() != null) {
-            if (this.statCounter.getSelectionModel().getSelectedItem().equals("All")) {
-                maxNumberOfEntries = -1;
-            } else {
+            if (this.statCounter.getSelectionModel().getSelectedItem().equals("All") == false) {
                 maxNumberOfEntries = Integer.parseInt(this.statCounter.getSelectionModel().getSelectedItem());
             }
         }
+        return maxNumberOfEntries;
+    }
+
+    private void addStatistics(int maxNumberOfEntries, GameStatisticModel gameModel) {
         for (Statistic stat : gameModel.getGameStats()) {
             if (maxNumberOfEntries != -1 && this.gameStatTable.getItems().size() >= maxNumberOfEntries) {
                 break;
             }
             this.gameStatTable.getItems().add(stat);
         }
-        XYChart.Series<String, Double> series = getPopulatedProfitChart(maxNumberOfEntries);
-        this.gameProfit.getData().add(series);
-        this.gameProfit.setCreateSymbols(false);
     }
 
     private XYChart.Series<String, Double> getPopulatedProfitChart(int maxNumberOfEntries) {
         XYChart.Series<String, Double> series = new XYChart.Series<>();
         int counter = 0;
-        ArrayList<Double> gameProfit = model.getGameProfits();
+        ArrayList<Double> loadedGameProfits = model.getGameProfits();
         this.gameProfit.getData().clear();
-        for (double value : gameProfit) {
+        for (double value : loadedGameProfits) {
             if (series.getData().size() >= maxNumberOfEntries && maxNumberOfEntries != -1) {
                 break;
             }

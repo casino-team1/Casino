@@ -51,12 +51,7 @@ public class MailUtil {
 
     public void sendRegistrationMail() {
         Thread thread = new Thread(() -> {
-            Session session = Session.getInstance(MailConfig.getMailProperties(),
-                    new javax.mail.Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("mountainviewcasino@gmail.com", "V/Em]dy3`?n\\nW;;");
-                }
-            });
+            Session session = MailConfig.getSessionByProperty(MailConfig.getMailProperties());
             try {
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress("mountainviewcasino@gmail.com"));
@@ -74,4 +69,5 @@ public class MailUtil {
         thread.setDaemon(true);
         thread.start();
     }
+
 }

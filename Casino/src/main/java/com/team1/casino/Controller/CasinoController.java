@@ -1,6 +1,7 @@
 package com.team1.casino.Controller;
 
 import com.team1.casino.Model.CasinoModel;
+import com.team1.casino.User.Util.UserCentral;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
@@ -19,6 +20,8 @@ public class CasinoController implements Initializable, Observer {
     private CasinoModel casinoModel;
     @FXML
     private Button logOutButton;
+    @FXML
+    private Label balanceLabel;
 
     public void setCasinoModel(CasinoModel model) {
         this.casinoModel = model;
@@ -27,7 +30,7 @@ public class CasinoController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
     }
 
     @Override

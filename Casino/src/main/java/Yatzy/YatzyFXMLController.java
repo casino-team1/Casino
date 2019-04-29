@@ -74,6 +74,8 @@ public class YatzyFXMLController implements Initializable {
     private ImageView imgwurf2;
     @FXML
     private ImageView imgwurf1;
+    @FXML
+    private Label balanceLabel;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -198,9 +200,8 @@ public class YatzyFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        /*
-        balance = UserCentral.getInstance().getUser().getCurrentBalance();
-        */
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
+        
         btnthrowdices.setDisable(true);
         lbltotalnum.setText(Integer.toString(balance));
         sclblenemy.setText(Integer.toString(enemyscore));   

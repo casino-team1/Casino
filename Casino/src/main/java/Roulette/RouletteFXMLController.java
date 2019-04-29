@@ -166,35 +166,19 @@ public class RouletteFXMLController implements Initializable {
         stringBet.set("0");
 
         //Creating an arrayList which contains all red numbers
-        redArray.add(1);
-        redArray.add(3);
-        redArray.add(5);
-        redArray.add(7);
-        redArray.add(9);
-        redArray.add(12);
-        redArray.add(14);
-        redArray.add(16);
-        redArray.add(18);
-        redArray.add(19);
-        redArray.add(21);
-        redArray.add(23);
-        redArray.add(25);
-        redArray.add(27);
-        redArray.add(30);
-        redArray.add(32);
-        redArray.add(34);
-        redArray.add(36);
+        int[] rouletteNumbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36};
+        for (int value : rouletteNumbers) {
+            redArray.add(value);
+        }
         //creating an arraylist which contains all black numbers
         //  !!This is dependant on the red array and it being correct!!
         for (int i = 1; i < 37; i++) {
-            if (redArray.contains(i)) {
-            } else {
+            if (redArray.contains(i) == false) {
                 blackArray.add(i);
             }
         }
         //Creating an arrayList that contains all Numbers in row 1
         for (int i = 1; i < 37; i += 3) {
-            System.out.println(i);
             row1Array.add(i);
         }
         //Creating an arrayList that contains all Numbers in row 2
@@ -211,15 +195,10 @@ public class RouletteFXMLController implements Initializable {
     }
 
     public void placeBet() {
-        System.out.println(betInt);
         int difference = wheels.decideResult(betInt, betIntFromPlayer);
         playerBalance = playerBalance + difference;
         boolean isWon = wheels.getResult();
-        if (isWon == true) {
-            gewonnenVerloren.setText("Gewonnen");
-        } else {
-            gewonnenVerloren.setText("Verloren");
-        }
+        gewonnenVerloren.setText(isWon == true ? "Gewonnen" : "Verloren");
         String playerBalanceString = String.valueOf(playerBalance);
         intBetBindLabel.setText(playerBalanceString);
     }
@@ -228,11 +207,7 @@ public class RouletteFXMLController implements Initializable {
         int difference = wheels.decideResult(betArray, AI, betIntFromPlayer);
         playerBalance = playerBalance + difference;
         boolean isWon = wheels.getResult();
-        if (isWon == true) {
-            gewonnenVerloren.setText("Gewonnen");
-        } else {
-            gewonnenVerloren.setText("Verloren");
-        }
+        gewonnenVerloren.setText(isWon == true ? "Gewonnen" : "Verloren");
         String playerBalanceString = String.valueOf(playerBalance);
         intBetBindLabel.setText(playerBalanceString);
     }
@@ -251,259 +226,267 @@ public class RouletteFXMLController implements Initializable {
     private void clickPane36(MouseEvent event) {
         betInt = 36;
         isNumber = true;
-        stringBet.set("36");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane21(MouseEvent event) {
         betInt = 21;
         isNumber = true;
-        stringBet.set("21");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane33(MouseEvent event) {
         betInt = 33;
         isNumber = true;
-        stringBet.set("33");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane30(MouseEvent event) {
         betInt = 30;
         isNumber = true;
-        stringBet.set("30");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane27(MouseEvent event) {
         betInt = 27;
         isNumber = true;
-        stringBet.set("27");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane24(MouseEvent event) {
         betInt = 24;
         isNumber = true;
-        stringBet.set("24");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane18(MouseEvent event) {
         betInt = 18;
         isNumber = true;
-        stringBet.set("18");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane15(MouseEvent event) {
         betInt = 15;
         isNumber = true;
-        stringBet.set("15");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane12(MouseEvent event) {
         betInt = 12;
         isNumber = true;
-        stringBet.set("12");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane9(MouseEvent event) {
         betInt = 9;
         isNumber = true;
-        stringBet.set("9");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane6(MouseEvent event) {
         betInt = 6;
         isNumber = true;
-        stringBet.set("6");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane3(MouseEvent event) {
         betInt = 3;
         isNumber = true;
-        stringBet.set("3");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane35(MouseEvent event) {
         betInt = 35;
         isNumber = true;
-        stringBet.set("35");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane32(MouseEvent event) {
         betInt = 32;
         isNumber = true;
-        stringBet.set("32");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane29(MouseEvent event) {
         betInt = 29;
         isNumber = true;
-        stringBet.set("29");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane26(MouseEvent event) {
         betInt = 26;
         isNumber = true;
-        stringBet.set("26");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane23(MouseEvent event) {
         betInt = 23;
         isNumber = true;
-        stringBet.set("23");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane20(MouseEvent event) {
         betInt = 20;
         isNumber = true;
-        stringBet.set("20");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane17(MouseEvent event) {
         betInt = 17;
         isNumber = true;
-        stringBet.set("17");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane14(MouseEvent event) {
         betInt = 14;
         isNumber = true;
-        stringBet.set("14");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane11(MouseEvent event) {
         betInt = 11;
         isNumber = true;
-        stringBet.set("11");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane8(MouseEvent event) {
         betInt = 8;
         isNumber = true;
-        stringBet.set("8");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane5(MouseEvent event) {
         betInt = 5;
         isNumber = true;
-        stringBet.set("5");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane2(MouseEvent event) {
         betInt = 2;
         isNumber = true;
-        stringBet.set("2");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane34(MouseEvent event) {
         betInt = 34;
         isNumber = true;
-        stringBet.set("34");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane31(MouseEvent event) {
         betInt = 31;
         isNumber = true;
-        stringBet.set("31");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane28(MouseEvent event) {
         betInt = 28;
         isNumber = true;
-        stringBet.set("28");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane25(MouseEvent event) {
         betInt = 25;
         isNumber = true;
-        stringBet.set("25");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane22(MouseEvent event) {
         betInt = 22;
         isNumber = true;
-        stringBet.set("22");
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
     private void clickPane19(MouseEvent event) {
         betInt = 19;
         isNumber = true;
-        stringBet.set("19");
+        stringBet.set(String.valueOf(betInt));
+
     }
 
     @FXML
     private void clickPane16(MouseEvent event) {
         betInt = 16;
         isNumber = true;
-        stringBet.set("16");
+        stringBet.set(String.valueOf(betInt));
+
     }
 
     @FXML
     private void clickPane13(MouseEvent event) {
         betInt = 13;
         isNumber = true;
-        stringBet.set("13");
+        stringBet.set(String.valueOf(betInt));
+
     }
 
     @FXML
     private void clickPane10(MouseEvent event) {
         betInt = 10;
         isNumber = true;
-        stringBet.set("10");
+        stringBet.set(String.valueOf(betInt));
+
     }
 
     @FXML
     private void clickPane7(MouseEvent event) {
         betInt = 7;
         isNumber = true;
-        stringBet.set("7");
+        stringBet.set(String.valueOf(betInt));
+
     }
 
     @FXML
     private void clickPane4(MouseEvent event) {
         betInt = 4;
         isNumber = true;
-        stringBet.set("4");
+        stringBet.set(String.valueOf(betInt));
+
     }
 
     @FXML
     private void clickPane1(MouseEvent event) {
         betInt = 1;
         isNumber = true;
-        stringBet.set("1");
+        stringBet.set(String.valueOf(betInt));
+
     }
 
     @FXML
     private void clickPane0(MouseEvent event) {
         betInt = 0;
         isNumber = true;
-        stringBet.set("0");
+        stringBet.set(String.valueOf(betInt));
+
     }
 
     @FXML
@@ -775,34 +758,32 @@ public class RouletteFXMLController implements Initializable {
     //-------------------------------------------------------------------
     public void clickTable() {
         String betIntFromPlayerString = numberField.getText();
-        if (betIntFromPlayerString == "") {
+        if ("".equals(betIntFromPlayerString)) {
             betIntFromPlayerString = "1";
         }
         betIntFromPlayer = Integer.parseInt(betIntFromPlayerString);
-        if (betIntFromPlayer == 0) {
-            betIntFromPlayer++;
-        }
+        betIntFromPlayer = betIntFromPlayer == 0 ? betIntFromPlayer + 1 : betIntFromPlayer;
         boolean availableMoneySuffice = tables.checkForAvailableMoney(playerBalance, betIntFromPlayer);
         if (availableMoneySuffice == false) {
             errorMessage.setText("Sie haben zu wenig Geld verfügbar");
+            return;
+        }
+        errorMessage.setText("");
+        if (betString.getText().trim().isEmpty()) {
+            stringBet.set("0");
+        }
+        wheels.generateRandom();
+        rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheelFast.gif"));
+        PauseTransition transition = new PauseTransition(Duration.seconds(3));
+        transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
+        transition.play();
+        int random = wheels.getRandomNumber();
+        String randomString = String.valueOf(random);
+        randomNumberLabel.setText(randomString);
+        if (isNumber == true) {
+            placeBet();
         } else {
-            errorMessage.setText("");
-            if (betString.getText().trim().isEmpty()) {
-                stringBet.set("0");
-            }
-            wheels.generateRandom();
-            rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheelFast.gif"));
-            PauseTransition transition = new PauseTransition(Duration.seconds(3));
-            transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
-            transition.play();
-            int random = wheels.getRandomNumber();
-            String randomString = String.valueOf(random);
-            randomNumberLabel.setText(randomString);
-            if (isNumber == true) {
-                placeBet();
-            } else {
-                placeBetArray(ArrayIdentify);
-            }
+            placeBetArray(ArrayIdentify);
         }
     }
 

@@ -16,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -30,13 +32,13 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private Button loginButtion;
-    @FXML
     private Button registerButton;
     @FXML
     private Button recoverPasswordButton;
     @FXML
     private Label errorLabel;
+    @FXML
+    private Button loginButton;
 
     public void setModel(CasinoLoginModel model) {
         this.loginModel = model;
@@ -76,4 +78,11 @@ public class LoginController implements Initializable {
         this.loginModel.displayPasswordRecovery();
     }
 
+    @FXML
+    private void pressPasswordField(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER))
+            {
+                loginUser(null);
+            }
+    }
 }

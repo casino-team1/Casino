@@ -35,10 +35,7 @@ public class RouletteTable {
         stageHelp.setResizable(false);
         stageHelp.show();
     }
-    public void checkValid(String stringBox1, String stringBox2){
-        int intBox1 = Integer.parseInt(stringBox1);
-        int intBox2 = Integer.parseInt(stringBox2);
-        
-        
+    public void checkValid(int intBox1){
+        System.out.println(intBox1);
     }
 }

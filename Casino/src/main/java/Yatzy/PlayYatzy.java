@@ -37,14 +37,15 @@ public class PlayYatzy extends Spiel {
             UserCentral.getInstance().getPlayer();
          */
         try {
-            Stage stage = super.getMainApp().getStage();
+            Stage stageGame = super.getMainApp().getStage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/YatzyFXML.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add("/styles/Styles.css");
-            stage.setTitle("Casino Central");
-            stage.setScene(scene);
-            stage.show();
+            stageGame.setTitle("Casino Central");
+            stageGame.setScene(scene);
+            stageGame.centerOnScreen();
+            stageGame.show();
             YatzyFXMLController menu = loader.getController();
             menu.setMainApplication(super.getMainApp());
             menu.setYatzy(this);

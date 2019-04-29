@@ -123,6 +123,11 @@ public class RouletteFXMLController implements Initializable {
                 if (!newValue.matches("\\d{0,0}(\\d{0,2})?")) {
                     neighborField1.setText(oldValue);
                 }
+                if (newValue.matches("\\d{0,0}(\\d{0,2})?")) {
+                    String neighborString = neighborField1.getText();
+                    int neighborInt = Integer.parseInt(neighborString);
+                    tables.checkValid(neighborInt);
+                }
                 if (neighborField1.getText().isEmpty()) {
                     neighborField2.setEditable(false);
                     neighborField2.setOpacity(0.5);
@@ -761,8 +766,9 @@ public class RouletteFXMLController implements Initializable {
         }
         boolean availableMoneySuffice = tables.checkForAvailableMoney(playerBalance, betIntFromPlayer);
         if (availableMoneySuffice == false) {
-            errorMessage.setText("Sie haben zu wenig geld verfügbar");
+            errorMessage.setText("Sie haben zu wenig Geld verfügbar");
         } else {
+            errorMessage.setText("");
             if (betString.getText().trim().isEmpty()) {
                 stringBet.set("0");
             }
@@ -783,10 +789,7 @@ public class RouletteFXMLController implements Initializable {
     }
 
     public void clickNeighbor() {
-        boolean checkValidity;
-        String stringBox1 = neighborField1.getText();
-//        tables.checkValid(stringBox1);
-        
+   
         
     }
 

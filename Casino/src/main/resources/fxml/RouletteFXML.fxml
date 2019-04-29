@@ -25,7 +25,7 @@
             <Image url="@../images/Roulette/rouletteWheel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="120.0" layoutY="303.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="843.6666717529297">
+      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="120.0" layoutY="306.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="945.6666717529297">
          <image>
             <Image url="@../images/Roulette/placeBet.png" />
          </image>
@@ -173,11 +173,9 @@
       <Button layoutX="1234.0" layoutY="15.0" mnemonicParsing="false" onAction="#getHelp" text="?" />
       <Button layoutX="14.0" layoutY="705.0" mnemonicParsing="false" onAction="#rouletteVerlassen" text="Den Roulettetisch verlassen" />
       <Line endX="172.0" endY="30.0" layoutX="1084.0" layoutY="165.0" startX="172.0" startY="156.0" />
-      <Pane layoutX="1216.0" layoutY="198.0" onMouseClicked="#clickRow3" prefHeight="40.0" prefWidth="40.0">
-         <children>
-            <Pane layoutY="80.0" onMouseClicked="#clickRow1" prefHeight="40.0" prefWidth="40.0" />
-            <Pane layoutY="39.0" onMouseClicked="#clickRow2" prefHeight="40.0" prefWidth="40.0" />
-         </children></Pane>
+      <Pane layoutX="1216.0" layoutY="198.0" onMouseClicked="#clickRow3" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1216.0" layoutY="279.0" onMouseClicked="#clickRow1" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1216.0" layoutY="237.0" onMouseClicked="#clickRow2" prefHeight="40.0" prefWidth="40.0" />
       <Label layoutX="34.0" layoutY="579.0" text="Betrag eingeben:">
          <font>
             <Font name="Droid Serif" size="29.0" />
@@ -293,6 +291,6 @@
          </effect>
       </RadioButton>
       <TextField fx:id="neighborField1" layoutX="725.0" layoutY="522.0" prefHeight="25.0" prefWidth="72.0" />
-      <ComboBox fx:id="neighborField2" layoutX="827.0" layoutY="522.0" prefHeight="25.0" prefWidth="89.0" />
+      <ComboBox fx:id="neighborField2" layoutX="828.0" layoutY="521.0" opacity="0.5" prefHeight="25.0" prefWidth="89.0" />
    </children>
 </AnchorPane>

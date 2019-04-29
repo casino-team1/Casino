@@ -196,11 +196,10 @@ public class RouletteFXMLController implements Initializable {
 
     public void placeBet() {
         int difference = wheels.decideResult(betInt, betIntFromPlayer);
-        playerBalance = playerBalance + difference;
+        playerBalance += difference;
         boolean isWon = wheels.getResult();
         gewonnenVerloren.setText(isWon == true ? "Gewonnen" : "Verloren");
-        String playerBalanceString = String.valueOf(playerBalance);
-        intBetBindLabel.setText(playerBalanceString);
+        intBetBindLabel.setText(String.valueOf(playerBalance));
     }
 
     public void placeBetArray(int AI) {
@@ -208,8 +207,7 @@ public class RouletteFXMLController implements Initializable {
         playerBalance = playerBalance + difference;
         boolean isWon = wheels.getResult();
         gewonnenVerloren.setText(isWon == true ? "Gewonnen" : "Verloren");
-        String playerBalanceString = String.valueOf(playerBalance);
-        intBetBindLabel.setText(playerBalanceString);
+        intBetBindLabel.setText(String.valueOf(playerBalance));
     }
 
     public void gameEnd() {
@@ -773,18 +771,19 @@ public class RouletteFXMLController implements Initializable {
             stringBet.set("0");
         }
         wheels.generateRandom();
-        rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheelFast.gif"));
+        String wheelLocatioon = "/images/Roulette/rouletteWheelFast.gif";
+        rouletteWheel.setImage(new Image(wheelLocatioon));
         PauseTransition transition = new PauseTransition(Duration.seconds(3));
-        transition.setOnFinished(x -> rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheel.png")));
+        transition.setOnFinished(x -> rouletteWheel.setImage(new Image(wheelLocatioon)));
         transition.play();
         int random = wheels.getRandomNumber();
         String randomString = String.valueOf(random);
         randomNumberLabel.setText(randomString);
         if (isNumber == true) {
             placeBet();
-        } else {
-            placeBetArray(ArrayIdentify);
+            return;
         }
+        placeBetArray(ArrayIdentify);
     }
 
     public void clickNeighbor() {

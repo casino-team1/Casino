@@ -36,6 +36,7 @@ public class Yatzy extends Spiel {
             stage.centerOnScreen();
             stage.show();     
             YatzyFXMLMenuController menu = loader.getController();
+            menu.setMainApplication(super.getMainApp());
             menu.setYatzy(this);
         } catch (IOException e) {
         }

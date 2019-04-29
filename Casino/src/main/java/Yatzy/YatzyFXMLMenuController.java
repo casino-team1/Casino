@@ -5,6 +5,7 @@
  */
 package Yatzy;
 
+import com.team1.casino.MainApp;
 import com.team1.casino.User.Util.UserCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,7 +27,7 @@ public class YatzyFXMLMenuController implements Initializable {
      * Initializes the controller class.
      */
     
-    
+    private MainApp mainApplication;
     private Yatzy yatzy;
     @FXML
     private Button btnstart;
@@ -34,28 +35,31 @@ public class YatzyFXMLMenuController implements Initializable {
     private AnchorPane menuwindow;
     @FXML
     private Label balanceLabel;
+    @FXML
+    private Button btnback;
     
     public void setYatzy(Yatzy yatzy){
         this.yatzy = yatzy;
     }
     
+    public void setMainApplication(MainApp mainApplication) {
+        this.mainApplication = mainApplication;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance());
     }    
-    
-    public void startYatzy() {
-        
-    }
-    
-    public void endGame() {
-        
-    }
 
     @FXML
     private void btnstartPress(ActionEvent event) {
         this.yatzy.displayGame();
+    }
+
+    @FXML
+    private void pressbtnback(ActionEvent event) {
+        this.mainApplication.displayMainMenu();
     }
 
     

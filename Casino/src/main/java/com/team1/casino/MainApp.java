@@ -50,7 +50,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        this.stage.setResizable(false);
+        
         if (null == this.executionMode) {
             displayMainMenu();
         } else {
@@ -145,6 +145,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Spiel auswahl | MountainView");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             CasinoController controller = loader.getController();
             controller.setCasinoModel(new CasinoModel(this));

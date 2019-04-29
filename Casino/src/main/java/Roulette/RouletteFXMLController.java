@@ -1,6 +1,7 @@
 package Roulette;
 
 import com.team1.casino.MainApp;
+import com.team1.casino.User.Util.UserCentral;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import javafx.util.Duration;
  */
 public class RouletteFXMLController implements Initializable {
 
-    private int playerBalance = 1000;
+    private int playerBalance;
 
     private int betIntFromPlayer;
 
@@ -113,7 +114,11 @@ public class RouletteFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        if (UserCentral.getInstance().getUser() != null) {
+            playerBalance = UserCentral.getInstance().getUser().getCurrentBalance();
+        } else {
+            playerBalance = 1000;
+        }
         String playerBalanceString = String.valueOf(playerBalance);
         intBetBindLabel.setText(playerBalanceString);
 
@@ -188,10 +193,9 @@ public class RouletteFXMLController implements Initializable {
             }
         }
         //Creating an arrayList that contains all Numbers in row 1
-        for (int i = 1; i < 37; i++) {
+        for (int i = 1; i < 37; i += 3) {
+            System.out.println(i);
             row1Array.add(i);
-            i++;
-            i++;
         }
         //Creating an arrayList that contains all Numbers in row 2
         for (int i = 1; i < 37; i++) {
@@ -201,8 +205,7 @@ public class RouletteFXMLController implements Initializable {
         }
         //Creating an arrayList that contains all Numbers in row 3
         for (int i = 1; i < 37; i++) {
-            i++;
-            i++;
+            i += 2;
             row3Array.add(i);
         }
     }

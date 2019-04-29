@@ -15,7 +15,7 @@
             <Image url="@../images/Baccara/tableBackground.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="227.0" layoutY="26.0" text="♥♦BlackJack♣♠">
+      <Label layoutX="240.0" layoutY="26.0" text="♥♦BlackJack♣♠">
          <font>
             <Font size="48.0" />
          </font>

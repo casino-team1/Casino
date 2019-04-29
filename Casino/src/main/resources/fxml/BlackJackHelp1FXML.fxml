@@ -60,6 +60,5 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="buttonBeenden" layoutX="609.0" layoutY="14.0" mnemonicParsing="false" onAction="#beenden" text="Anleitung beenden" />
    </children>
 </Pane>

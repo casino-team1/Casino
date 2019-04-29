@@ -26,8 +26,6 @@ import javafx.stage.Stage;
 public class BlackJackHelp3FXMLController implements Initializable {
     
     private MainApp main = new MainApp();
-    @FXML
-    private Button buttonBeenden;
 
     public void setMain(MainApp main) {
         this.main = main;
@@ -35,6 +33,8 @@ public class BlackJackHelp3FXMLController implements Initializable {
 
     @FXML
     private Button buttonZurueck;
+    
+    private Stage stage;
 
     /**
      * Initializes the controller class.
@@ -44,40 +44,21 @@ public class BlackJackHelp3FXMLController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void zurueck(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackHelp2FXML.fxml"));
-            Parent root;
-            root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = this.main.getStage();
-            stage.setTitle("Hilfe");
-            stage.setScene(scene);
-            stage.show();
-            BlackJackHelp2FXMLController controller = loader.getController();
-            controller.setMain(main);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void beenden(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackFXML.fxml"));
-            Parent root;
-            root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = this.main.getStage();
-            stage.setTitle("Black Jack");
-            stage.setScene(scene);
-            stage.show();
-            BlackJackFXMLController controller = loader.getController();
-            controller.setMain(main);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
     
+    @FXML
+    private void zurueck(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackHelp2FXML.fxml"));
+        Parent root;
+        root = (Parent) loader.load();
+        Stage stageHelp = new Stage();
+        this.stage.setTitle("Hilfe");
+        this.stage.setScene(new Scene(root, 778, 565));
+        stage.setResizable(false);
+        BlackJackHelp2FXMLController cont = loader.getController();
+        cont.setStage(stage);
+        stage.show();
+    }
 }

@@ -44,6 +44,7 @@ public class PlayYatzy extends Spiel {
             scene.getStylesheets().add("/styles/Styles.css");
             stageGame.setTitle("Casino Central");
             stageGame.setScene(scene);
+            stageGame.centerOnScreen();
             stageGame.show();
             YatzyFXMLController menu = loader.getController();
             menu.setMainApplication(super.getMainApp());

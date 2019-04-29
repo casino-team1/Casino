@@ -33,6 +33,7 @@ public class Yatzy extends Spiel {
             Scene scene = new Scene(root);
             stage.setTitle("Yatzy Menu"); 
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();     
             YatzyFXMLMenuController menu = loader.getController();
             menu.setYatzy(this);

@@ -384,7 +384,7 @@ public class YatzyFXMLController implements Initializable {
                 imgwurf3.setVisible(true);
             }
             else if (betnum%10 != 0){
-                lblerror.setText("Der Betrag muss zehnstellig sein");
+                lblerror.setText("Der Betrag muss ein Vielfaches von Zehn sein");
             }
             else {
                 lblerror.setText("Sie haben nicht genügend Jetons für diesen Betrag");
@@ -400,8 +400,9 @@ public class YatzyFXMLController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzyhelpFXML.fxml"));
         Stage stageHelp = new Stage();
         stageHelp.setTitle("Hilfe");
-        stageHelp.setScene(new Scene(root, 1433, 665));
+        stageHelp.setScene(new Scene(root, 600, 428));
         stageHelp.setResizable(false);
+        stageHelp.centerOnScreen();
         stageHelp.show(); 
     }
 

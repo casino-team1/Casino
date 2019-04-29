@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.CasinoController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="793.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.CasinoController">
     <children>
-      <ImageView fitHeight="601.0" fitWidth="811.0" layoutY="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="575.0" fitWidth="793.0" pickOnBounds="true">
          <image>
             <Image url="@../images/MainScreen/black.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="650.0" fitWidth="853.0" layoutX="-40.0" layoutY="-49.0" opacity="0.7" pickOnBounds="true">
+      <ImageView fitHeight="575.0" fitWidth="793.0" opacity="0.7" pickOnBounds="true">
          <image>
             <Image url="@../images/MainScreen/woodenWall.jpg" />
          </image>
@@ -73,7 +73,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Button fx:id="logOutButton" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#logUserOut" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Logout" textFill="WHITE">
+      <Button fx:id="logOutButton" layoutX="14.0" layoutY="530.0" mnemonicParsing="false" onAction="#logUserOut" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Logout" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

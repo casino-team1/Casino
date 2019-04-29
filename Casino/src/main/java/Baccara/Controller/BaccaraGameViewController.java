@@ -23,15 +23,15 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -87,9 +87,14 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private Text userBalance;
     @FXML
     private Text totalBet;
+    @FXML
+    private ImageView bankerChip;
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -97,24 +102,12 @@ public class BaccaraGameViewController implements Initializable, Observer {
         /*
             Code below checks for drag and drop and sets image at new position.
          */
-        this.chipImage.setOnDragDetected((event) -> {
-            content = chipImage.startDragAndDrop(TransferMode.MOVE);
-            ClipboardContent data = new ClipboardContent();
-            Image image = chipImage.getImage();
-            data.putImage(image);
-            content.setContent(data);
-            event.consume();
-            // updateBalanceAndBet();
-        });
-        this.bankerBet.setOnMouseClicked(event -> {
-            this.bankerBetCoin.setImage(this.chipImage.getImage());
-            this.gameModel.setDealerBet(5);
-        });
     }
     private BaccaraGameModel gameModel;
 
     public void setBaccaraGameModel(BaccaraGameModel gameModel) {
         this.gameModel = gameModel;
+        updateBalanceAndBet();
         bind();
     }
 
@@ -143,13 +136,10 @@ public class BaccaraGameViewController implements Initializable, Observer {
             } else {
                 reducCoeff = ratioX;
             }
-
             w = img.getWidth() * reducCoeff;
             h = img.getHeight() * reducCoeff;
-
             imageView.setX((imageView.getFitWidth() - w) / 2);
             imageView.setY((imageView.getFitHeight() - h) / 2);
-
         }
     }
 
@@ -163,15 +153,20 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @FXML
     private void startBaccara(MouseEvent event) throws InterruptedException {
+        if (this.gameModel.getTotalBet() == 0) {
+            return;
+        }
         this.gameModel.generateCards();
-        this.gameModel.resetGame();
+        updateBalanceAndBet();
         resetImageViews();
+        this.gameRunning = true;
         //();
         String format = "/images/GameCards/%s";
         ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
         ImageView[] dealerView = {this.firstRightCard, this.secondRightCard};
         setCardCount();
         rotateCards(playerView, dealerView, format);
+        this.gameRunning = false;
     }
 
     private void checkForNewCards(String linkFormat) {
@@ -182,11 +177,14 @@ public class BaccaraGameViewController implements Initializable, Observer {
             Check if a third card has been drawn by the algorithm following the rules of Baccara.
          */
         try {
-
+            if (dealerCards.size() == 2 && playerCards.size() == 2) {
+                Thread.sleep(1000);
+                resetImageViews();
+            }
             if (playerCards.size() == 3 && dealerCards.size() != 3) {
                 thirdLeftCard.setImage(new Image(String.format(linkFormat, "cardBack.png")));
                 this.thirdLeftCard.setVisible(true);
-                TranslateTransition translateTransition = createTranslation(this.thirdRightImage);
+                TranslateTransition translateTransition = createTransitionTranslation(this.thirdRightImage);
                 translateTransition.play();
                 translateTransition.setOnFinished(hanlder -> {
                     RotateTransition trans = createRotator(this.thirdLeftCard, 0, -90, 750, 1);
@@ -210,7 +208,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
             if (dealerCards.size() == 3 && playerCards.size() != 3) {
                 this.thirdRightImage.setImage(new Image(String.format(linkFormat, "cardBack.png")));
                 this.thirdRightImage.setVisible(true);
-                TranslateTransition translateTransition = createTranslation(this.thirdRightImage);
+                TranslateTransition translateTransition = createTransitionTranslation(this.thirdRightImage);
                 translateTransition.play();
                 translateTransition.setOnFinished(hanlder -> {
                     RotateTransition trans = createRotator(this.thirdRightImage, 0, -90, 750, 1);
@@ -242,8 +240,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
                         e.printStackTrace();
                     }
                 }
-                TranslateTransition left = createTranslation(this.thirdLeftCard);
-                TranslateTransition right = createTranslation(this.thirdRightImage);
+                TranslateTransition left = createTransitionTranslation(this.thirdLeftCard);
+                TranslateTransition right = createTransitionTranslation(this.thirdRightImage);
                 ParallelTransition parTrans = new ParallelTransition(left, right);
                 parTrans.play();
                 parTrans.setOnFinished(parFinished -> {
@@ -266,13 +264,14 @@ public class BaccaraGameViewController implements Initializable, Observer {
                     });
                 });
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         setCardCount();
     }
 
-    private TranslateTransition createTranslation(ImageView view) {
+    private TranslateTransition createTransitionTranslation(ImageView view) {
         TranslateTransition translateTransition = new TranslateTransition();
         translateTransition.setDuration(Duration.millis(1500));
         translateTransition.setNode(view);
@@ -348,6 +347,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
         for (int i = 0; i < imageViews.length; i++) {
             imageViews[i] = new ImageView();
         }
+        this.gameRunning = false;
         this.thirdLeftCard.setVisible(false);
         this.thirdLeftCard.setImage(null);
         this.thirdRightImage.setVisible(false);
@@ -363,12 +363,11 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
     private static int betAmont = 0;
 
-    @FXML
-    private void setBankerBet(DragEvent event) {
-        ImageView chipContainer = new ImageView(this.content.getImage());
-        chipContainer.localToParent(this.bankerBet.getX(), this.bankerBet.getY());
-        chipContainer.setVisible(true);
-    }
+    private boolean gameRunning = false;
+
+    private double lastX;
+    private double lastY;
+    private ImageView draggable;
 
     @FXML
     private void setTieBet(DragEvent event) {
@@ -379,10 +378,30 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private void setPlayerBet(DragEvent event) {
     }
 
-    @FXML
     private void dropCoin(MouseDragEvent event) {
-        System.out.println(this.bankerBet.getX());
-        System.out.println(this.bankerBet.getY());
+        this.draggable = null;
     }
 
+    @FXML
+    private void clipChip(MouseEvent event) {
+        if (this.gameRunning == false) {
+            this.draggable = new ImageView();
+            this.draggable.setImage(this.chipImage.getImage());
+            ImageCursor cursor = new ImageCursor(this.draggable.getImage());
+            this.gameModel.setCursor().setCursor(cursor);
+        }
+    }
+
+    @FXML
+    private void setBankerBet(MouseEvent event) {
+        if (this.draggable != null) {
+            this.bankerBet.setImage(this.draggable.getImage());
+            this.bankerBet.setFitHeight(100);
+            this.bankerBet.setFitWidth(100);
+            this.draggable = null;
+            this.gameModel.setCursor().setCursor(Cursor.DEFAULT);
+            this.gameModel.setDealerBet(100);
+            updateBalanceAndBet();
+        }
+    }
 }

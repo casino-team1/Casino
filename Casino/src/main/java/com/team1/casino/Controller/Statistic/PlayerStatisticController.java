@@ -103,7 +103,7 @@ public class PlayerStatisticController implements Initializable, Observer {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Statistic, String> p) {
                 if (p.getValue() != null) {
-                    return new SimpleStringProperty(String.valueOf(p.getValue().getEndamount()));
+                    return new SimpleStringProperty(String.valueOf(p.getValue().getUserAccountChange()));
                 } else {
                     return new SimpleStringProperty("No Change");
                 }

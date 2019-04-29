@@ -17,9 +17,9 @@ public class Statistic {
     }
 
     private String username;
-    private String result;
+    private String gameResult;
     private double bet;
-    private double Endamount;
+    private double accountChange;
     private String gameName;
 
     public void setUseranme(String username) {
@@ -31,27 +31,27 @@ public class Statistic {
     }
 
     public Statistic(String result, double bet, double amount, String gameName) {
-        this.result = result;
+        this.gameResult = result;
         this.bet = bet;
-        this.Endamount = amount;
+        this.accountChange = amount;
         this.gameName = gameName;
     }
 
     @Override
     public String toString() {
-        return "Stat{" + "username=" + username + ", result=" + result + ", bet=" + bet + ", Endamount=" + Endamount + ", gameName=" + gameName + '}';
+        return "Stat{" + "username=" + username + ", result=" + gameResult + ", bet=" + bet + ", Endamount=" + accountChange + ", gameName=" + gameName + '}';
     }
 
     public String getResult() {
-        return result;
+        return gameResult;
     }
 
     public double getBet() {
         return bet;
     }
 
-    public double getEndamount() {
-        return Endamount;
+    public double getUserAccountChange() {
+        return accountChange;
     }
 
 }

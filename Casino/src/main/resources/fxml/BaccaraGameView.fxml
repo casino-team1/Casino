@@ -79,7 +79,7 @@
             <Font name="Arial Bold" size="36.0" />
          </font>
       </Text>
-      <ImageView fx:id="chipImage" fitHeight="78.0" fitWidth="97.0" layoutX="374.0" layoutY="848.0" onMouseDragReleased="#dropCoin" pickOnBounds="true">
+      <ImageView fx:id="chipImage" fitHeight="101.0" fitWidth="100.0" layoutX="361.0" layoutY="831.0" onMouseClicked="#clipChip" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/gameChipImage.png" />
          </image>
@@ -96,5 +96,6 @@
          </font>
       </Text>
       <ImageView fx:id="winnerCard" fitHeight="229.0" fitWidth="274.0" layoutX="574.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="bankerChip" fitHeight="78.0" fitWidth="129.0" layoutX="636.0" layoutY="511.0" onMouseClicked="#setBankerBet" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

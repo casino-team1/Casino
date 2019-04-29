@@ -44,17 +44,16 @@ public class MainApp extends Application {
         return this.stage;
     }
 
-    
-    public static final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
+    public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEVELOPMENT;
 
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         this.stage.setResizable(false);
-        if (null == this.executionMode) {
+        if (null == this.EXECUTION_MODE) {
             displayMainMenu();
         } else {
-            switch (this.executionMode) {
+            switch (this.EXECUTION_MODE) {
                 case DEBUG:
                     if (UserCentral.getInstance().getUser() != null) {
                     } else {

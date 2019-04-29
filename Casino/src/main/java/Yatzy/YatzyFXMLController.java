@@ -89,7 +89,7 @@ public class YatzyFXMLController implements Initializable {
     private boolean lockdices = false;
     private boolean locklabels = true;
     private boolean finish = false;
-    private boolean newgame = false; 
+    private boolean newgame = false;
     private int balance;
     private int enemyscore = 100;
     private int betnum = 0;
@@ -187,12 +187,11 @@ public class YatzyFXMLController implements Initializable {
     private Label lbllo6;
     @FXML
     private Label lbllo7;
-    
+
     private ArrayList<ImageView> imgarray = new ArrayList<>();
     private ArrayList<Label> scuplabels = new ArrayList<>();
     private ArrayList<Label> sclolabels = new ArrayList<>();
-    
-    
+
     public void setYatzy(PlayYatzy yatzy) {
         this.yatzy = yatzy;
     }
@@ -202,10 +201,10 @@ public class YatzyFXMLController implements Initializable {
         // TODO
         balance = UserCentral.getInstance().getUser().getCurrentBalance();
         balanceLabel.setText("Konto: " + balance);
- 
+
         btnthrowdices.setDisable(true);
         lbltotalnum.setText(Integer.toString(balance));
-        sclblenemy.setText(Integer.toString(enemyscore));   
+        sclblenemy.setText(Integer.toString(enemyscore));
         bettxt.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -214,26 +213,18 @@ public class YatzyFXMLController implements Initializable {
                 }
             }
         });
-        
-        imgarray.add(ge1);
-        imgarray.add(ge2);
-        imgarray.add(ge3);
-        imgarray.add(ge4);
-        imgarray.add(ge5);
-        imgarray.add(be1);
-        imgarray.add(be2);
-        imgarray.add(be3);
-        imgarray.add(be4);
-        imgarray.add(be5);
+        ImageView[] views = {ge1, ge2, ge3, ge4, ge5, be1, be2, be3, be4, be5};
+        for (ImageView view : views) {
+            imgarray.add(view);
+        }
     }
-
 
     @FXML
     private void pressthrowdices(ActionEvent event) {
-        
+
         //the Buttons Font gets updated, so that it stays the same
-        updateButton(btnthrowdices);  
-        
+        updateButton(btnthrowdices);
+
         //if a new game was startet, after the previous one has been finished
         if (newgame == true) {
 
@@ -246,19 +237,19 @@ public class YatzyFXMLController implements Initializable {
 
             //makes the figure lables unusable
             locklabels = true;
-            
+
             //the total balance gets updated
             lbltotalnum.setText(Integer.toString(balance));
-   
+
             //the Throw Button gets shrinked back and disabled
             btnthrowdices.setDisable(true);
             btnthrowdices.setLayoutX(166);
             btnthrowdices.setPrefWidth(258);
-            
+
             //the Textbox and Bet Button get enabled
             btnbet.setDisable(false);
             bettxt.setDisable(false);
-            
+
             //reseting everything for a new game
             keep.clear();
             gearray.clear();
@@ -277,18 +268,17 @@ public class YatzyFXMLController implements Initializable {
             rules.setLowertotal(0);
             rules.setUppertotal(0);
 
-            
-            for(Label lbl : scuplabels) {
+            for (Label lbl : scuplabels) {
                 lbl.setText("");
             }
-            
-            for(Label lbl : sclolabels) {
+
+            for (Label lbl : sclolabels) {
                 lbl.setText("");
             }
-                 
+
             lblbetnum.setText("");
             lblwinnum.setText("");
-            lblwin.setText("");        
+            lblwin.setText("");
 
             //the displayed images get updated
             assignImages();
@@ -309,7 +299,6 @@ public class YatzyFXMLController implements Initializable {
             //attribute for the toprow gets the generated dices
             gearray.addAll(cup.getDicearray());
 
-            
             //the displayed images get updated (this function appears multiple times in the code and always does the same
             assignImages();
         } //the second dicethrow (skip the third throw if all dices are kept)
@@ -317,8 +306,8 @@ public class YatzyFXMLController implements Initializable {
 
             //makes the next throw the third throw
             secondthrow = false;
-            imgwurf2.setVisible(false);          
-                       
+            imgwurf2.setVisible(false);
+
             keep.clear();
             keep.addAll(bearray);
             gearray.clear();
@@ -360,13 +349,13 @@ public class YatzyFXMLController implements Initializable {
             assignImages();
         }
     }
-  
+
     @FXML
-    private void pressbtnbet(ActionEvent event) throws IOException {        
+    private void pressbtnbet(ActionEvent event) throws IOException {
         updateButton(btnbet);
         try {
             betnum = Integer.parseInt(bettxt.getText());
-            if (betnum%10 == 0 && balance - betnum >= 0) {
+            if (betnum % 10 == 0 && balance - betnum >= 0) {
                 btnthrowdices.setLayoutX(17);
                 btnthrowdices.setPrefWidth(407);
                 updateButton(btnthrowdices);
@@ -381,20 +370,18 @@ public class YatzyFXMLController implements Initializable {
                 btnbet.setDisable(true);
                 bettxt.setDisable(true);
                 btnbet.setVisible(false);
-                bettxt.setVisible(false); 
+                bettxt.setVisible(false);
                 imgwurf1.setVisible(true);
                 imgwurf2.setVisible(true);
                 imgwurf3.setVisible(true);
-                
-            }
-            else if (betnum%10 != 0){
+
+            } else if (betnum % 10 != 0) {
                 lblerror.setText("Der Betrag muss ein Vielfaches von Zehn sein");
-            }
-            else {
+            } else {
                 lblerror.setText("Sie haben nicht genügend Jetons für diesen Betrag");
             }
-        
-        } catch(NumberFormatException e){
+
+        } catch (NumberFormatException e) {
             lblerror.setText("Der Betrag muss eine Zahl sein");
         }
     }
@@ -407,7 +394,7 @@ public class YatzyFXMLController implements Initializable {
         stageHelp.setScene(new Scene(root, 600, 428));
         stageHelp.setResizable(false);
         stageHelp.centerOnScreen();
-        stageHelp.show(); 
+        stageHelp.show();
     }
 
     @FXML
@@ -767,7 +754,7 @@ public class YatzyFXMLController implements Initializable {
     private void enterlbllo7(MouseEvent event) {
         enterhover(lbllo7);
     }
-    
+
     @FXML
     private void enterbtnbet(MouseEvent event) {
         updateButton(btnbet);
@@ -837,10 +824,10 @@ public class YatzyFXMLController implements Initializable {
             bearray.clear();
             firstthrow = true;
             secondthrow = true;
-                       
+
             //the background of the top dicerow gets set back to white
             geback.setStyle("-fx-fill: white;");
-            
+
             assignImages();
         } else {
             btnthrowdices.setDisable(false);
@@ -848,10 +835,10 @@ public class YatzyFXMLController implements Initializable {
 
             rules.setBetnum(betnum);
             rules.setBalance(balance);
-            
+
             //checks if player won
             rules.checkwin(Integer.parseInt(sclblenemy.getText()));
-            
+
             //depending on the result the numbers will get displayed
             switch (rules.getWin()) {
                 case 1:
@@ -861,7 +848,7 @@ public class YatzyFXMLController implements Initializable {
                     UserCentral.getInstance().getUser().setCurrentBalance(balance);
                     break;
                 case 2:
-                    lblwin.setText("Verloren!");                   
+                    lblwin.setText("Verloren!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
                     UserCentral.getInstance().getUser().setCurrentBalance(balance);
@@ -876,13 +863,13 @@ public class YatzyFXMLController implements Initializable {
             //the total balance gets updated
             lbltotalnum.setText(Integer.toString(balance));
             balanceLabel.setText("Konto: " + balance);
-            
+
             btnthrowdices.setText("Neues Spiel");
         }
     }
 
     public void updateButton(Button btn) {
-        switch(btn.getId()){
+        switch (btn.getId()) {
             case "btnthrowdices":
                 btnthrowdices.setStyle("-fx-font-size: 30; -fx-font-weight: BOLD");
                 break;
@@ -891,16 +878,12 @@ public class YatzyFXMLController implements Initializable {
                 break;
         }
     }
-    
+
     public ArrayList<Dice> getGearray() {
         return gearray;
     }
-    
+
     public ArrayList<Dice> getFinalArray() {
-    return finalarray;
-    }    
+        return finalarray;
+    }
 }
-
-
-    
-

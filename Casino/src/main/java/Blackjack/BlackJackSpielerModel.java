@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -19,14 +20,14 @@ public class BlackJackSpielerModel {
     private int kartenWertSpieler = 0;
     
     private Karten k = new Karten();
-    private HashMap<String, Integer> karten = new HashMap<>();
+    private HashMap<Image, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
     private ArrayList<String> kartenSpieler = new ArrayList<>();
     private String zufallskarte = "";
 
     private boolean gewonnen = false;
 
-    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Label labelKartenSpieler) {
+    public void hit(HashMap<Image, Integer> karten, ArrayList<String> kartenSymbole, Label labelKartenSpieler) {
         //Parameter einfangen
         this.karten = karten;
         this.kartenSymbole = kartenSymbole;

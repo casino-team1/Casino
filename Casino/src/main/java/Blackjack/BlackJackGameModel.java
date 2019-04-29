@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 
@@ -28,7 +29,7 @@ public class BlackJackGameModel {
     private boolean unentschieden = false;
 
     private Karten k = new Karten();
-    private HashMap<String, Integer> karten = new HashMap<>();
+    private HashMap<Image, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
 
     //FXML
@@ -107,6 +108,7 @@ public class BlackJackGameModel {
         if (spieler.getKartenWertSpieler() == 21) {
             spieler.setGewonnen(true);
             end();
+            return;
         }
 
         if (spieler.getKartenWertSpieler() == 9 || spieler.getKartenWertSpieler() == 10 || spieler.getKartenWertSpieler() == 11) {

@@ -107,7 +107,7 @@ public class PlayerStatisticModel extends Observable {
         accountBalance.add(5000.0);
         double value = 5000.0;
         for (Statistic stat : stats) {
-            value += stat.getEndamount();
+            value += stat.getUserAccountChange();
             accountBalance.add(value);
         }
         this.accountValues = accountBalance;

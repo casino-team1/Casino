@@ -31,9 +31,10 @@ public class Yatzy extends Spiel {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/YatzyFXMLMenu.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage.setTitle("Yatzy Menu");
+            stage.setTitle("Yatzy Menu"); 
             stage.setScene(scene);
-            stage.show();
+            stage.centerOnScreen();
+            stage.show();     
             YatzyFXMLMenuController menu = loader.getController();
             menu.setYatzy(this);
         } catch (IOException e) {

@@ -53,6 +53,9 @@ public class RegistrationViewController implements Initializable, Observer {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,8 +70,8 @@ public class RegistrationViewController implements Initializable, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        RegistrationModel model = (RegistrationModel) o;
-        this.errorMessage.setText(model.getErrorMessage());
+        RegistrationModel registrationModel = (RegistrationModel) o;
+        this.errorMessage.setText(registrationModel.getErrorMessage());
         this.errorMessage.setVisible(true);
         this.password.setText("");
         this.username.setText("");

@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -34,6 +35,8 @@ public class LoginController implements Initializable {
     private Button registerButton;
     @FXML
     private Button recoverPasswordButton;
+    @FXML
+    private Label errorLabel;
 
     public void setModel(CasinoLoginModel model) {
         this.loginModel = model;
@@ -56,9 +59,10 @@ public class LoginController implements Initializable {
     private void loginUser(ActionEvent event) {
         String result = this.loginModel.loginUser();
         if (result.equals("Valid user")) {
-
+            errorLabel.setVisible(false);
             this.loginModel.displayMainMenu();
         } else {
+            errorLabel.setVisible(true);
         }
     }
 

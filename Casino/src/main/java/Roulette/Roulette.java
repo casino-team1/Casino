@@ -21,18 +21,18 @@ import javafx.stage.Stage;
  * @author Nick Flückiger
  */
 public class Roulette extends Spiel {
-
+    
     Stage stage;
-
+    
     public Roulette(MainApp mainApplication) {
         super(mainApplication);
     }
-
+    
     public void displayGame() {
         PlayRoulette play = new PlayRoulette(super.getMainApp());
         play.startGame();
     }
-
+    
     @Override
     public void startGame() {
         //System.out.println("Main Menu Roulette is working");
@@ -49,6 +49,7 @@ public class Roulette extends Spiel {
         mainStageRoulette.setScene(scene);
         mainStageRoulette.show();
         MainMenuRouletteFXMLController controller = loader.getController();
+        controller.setMainApplication(super.getMainApp());
         controller.setPlayRoulette(this);
     }
 }

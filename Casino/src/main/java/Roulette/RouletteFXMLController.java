@@ -1,5 +1,6 @@
 package Roulette;
 
+import com.team1.casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,6 +34,12 @@ public class RouletteFXMLController implements Initializable {
     private int playerBalance = 1000;
 
     private int betIntFromPlayer;
+
+    private MainApp mainApplication;
+
+    public void setMainApplication(MainApp mainApplication) {
+        this.mainApplication = mainApplication;
+    }
 
     private int neigborNumber1;
     private boolean isOverZero = true;
@@ -142,8 +149,7 @@ public class RouletteFXMLController implements Initializable {
                 }
                 tables.clear(neighborField2);
                 tables.addNeighborNumbers(neighborString, neighborField2);
-                
-                
+
             }
         });
 
@@ -809,6 +815,7 @@ public class RouletteFXMLController implements Initializable {
 
     @FXML
     private void rouletteVerlassen(ActionEvent event) throws IOException {
+        this.mainApplication.startRoulette();
     }
 
     @FXML

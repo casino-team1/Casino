@@ -290,6 +290,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
      * @param format
      */
     private void rotateCards(ImageView[] playerView, ImageView[] dealerView, String format) {
+        this.bankerBetCoin = new ImageView();
         ImageView[][] views = {playerView, dealerView};
         RotateTransition[] rotators = new RotateTransition[2];
         int index = 0;
@@ -343,7 +344,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void resetImageViews() {
-        this.bankerBetCoin.setImage(null);
+        this.bankerBetCoin = new ImageView();
         ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.thirdLeftCard, this.firstRightCard, this.secondRightCard, this.thirdRightImage};
         for (int i = 0; i < imageViews.length; i++) {
             imageViews[i] = new ImageView();

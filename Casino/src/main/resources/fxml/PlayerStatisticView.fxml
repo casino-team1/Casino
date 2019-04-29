@@ -23,7 +23,7 @@
             <TableColumn fx:id="ChangeCol" prefWidth="75.0" text="Change" />
         </columns>
       </TableView>
-      <LineChart fx:id="kontostandChart" layoutX="352.0" layoutY="208.0" prefHeight="369.0" prefWidth="448.0">
+      <LineChart fx:id="kontostandChart" layoutX="352.0" layoutY="208.0" prefHeight="369.0" prefWidth="448.0" style="-fx-stroke: black;">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

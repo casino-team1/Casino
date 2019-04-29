@@ -38,6 +38,6 @@
       <Button fx:id="buttonVersichern" disable="true" layoutX="217.0" layoutY="250.0" mnemonicParsing="false" onAction="#versichern" text="Versichern" />
       <TextField fx:id="textfeldVersicherung" disable="true" layoutX="330.0" layoutY="250.0" promptText="Versicherungsbetrag" />
       <Label fx:id="labelVerdoppeln" layoutX="469.0" layoutY="193.0" prefHeight="18.0" prefWidth="274.0" textFill="WHITE" />
-      <Label fx:id="labelVersicherung" layoutX="504.0" layoutY="253.0" prefHeight="18.0" prefWidth="230.0" textFill="WHITE" />
+      <Label fx:id="labelVersicherung" layoutX="504.0" layoutY="253.0" prefHeight="18.0" prefWidth="274.0" textFill="WHITE" />
    </children>
 </AnchorPane>

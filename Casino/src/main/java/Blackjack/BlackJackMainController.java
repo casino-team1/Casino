@@ -59,7 +59,7 @@ public class BlackJackMainController implements Initializable {
     @FXML
     private void startGame(ActionEvent event) throws IOException {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackGameFXML.fxml"));
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -67,7 +67,7 @@ public class BlackJackMainController implements Initializable {
             stage.setTitle("Black Jack");
             stage.setScene(scene);
             stage.show();
-            BlackJackFXMLController controller = loader.getController();
+            BlackJackGameFXMLController controller = loader.getController();
             controller.setMain(main);
         } catch (IOException e) {
             e.printStackTrace();

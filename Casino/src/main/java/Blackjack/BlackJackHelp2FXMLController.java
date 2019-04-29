@@ -71,7 +71,7 @@ public class BlackJackHelp2FXMLController implements Initializable {
         root = (Parent) loader.load();
         Stage stageHelp = new Stage();
         this.stage.setTitle("Hilfe");
-        this.stage.setScene(new Scene(root, 776, 533));
+        this.stage.setScene(new Scene(root, 750, 520));
         stage.setResizable(false);
         BlackJackHelp3FXMLController cont = loader.getController();
         cont.setStage(stage);

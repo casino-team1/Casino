@@ -6,6 +6,7 @@
 package Blackjack;
 
 import com.team1.casino.MainApp;
+import com.team1.casino.User.Util.UserCentral;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -87,6 +88,8 @@ public class BlackJackGameFXMLController implements Initializable {
     private Label labelLösung;
     @FXML
     private Label labelVersicherung;
+    @FXML
+    private Label balanceLabel;
 
     public void setMain(MainApp main) {
         this.main = main;
@@ -211,6 +214,7 @@ public class BlackJackGameFXMLController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
     }
 
 }

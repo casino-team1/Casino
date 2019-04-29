@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  */
 public class BlackJackGameFXMLController implements Initializable {
 
-    BlackJackGameModel game;
+    private BlackJackGameModel game;
     private int einsatz;
 
     private MainApp main;
@@ -94,6 +94,8 @@ public class BlackJackGameFXMLController implements Initializable {
 
     @FXML
     private void prüfungEinsatz(ActionEvent event) {
+        Karten karten = new Karten();
+        karten.kartenErstellen();
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
             if (einsatz < 50) {
@@ -111,6 +113,7 @@ public class BlackJackGameFXMLController implements Initializable {
 
     @FXML
     private void startGame(ActionEvent event) {
+        
         //Vorbereitung
         spielerKarte1.setImage(null);
         spielerKarte2.setImage(null);

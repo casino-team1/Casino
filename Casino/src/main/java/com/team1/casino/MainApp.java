@@ -19,6 +19,7 @@ import com.team1.casino.Model.GameStatisticModel;
 import com.team1.casino.Model.PlayerStatisticModel;
 import com.team1.casino.Model.RegistrationModel;
 import com.team1.casino.Model.StatisticModel;
+import com.team1.casino.User.Spieler;
 import com.team1.casino.User.Util.UserCentral;
 import com.team1.casino.database.Connection.DatabaseConnection;
 import com.team1.casino.database.Connection.DatabaseConnector;
@@ -68,6 +69,7 @@ public class MainApp extends Application {
                 displayMainMenu();
                 break;
             default:
+                UserCentral.getInstance().setUser(new Spieler("TEST", "TEst"));
                 displayMainMenu();
                 break;
         }

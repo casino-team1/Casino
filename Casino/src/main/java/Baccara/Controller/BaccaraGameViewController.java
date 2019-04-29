@@ -147,8 +147,11 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void updateBalanceAndBet() {
-        this.userBalance.setText("Kontostand: " + UserCentral.getInstance().getUser().getCurrentBalance());
-        this.totalBet.setText("Einsatz: " + this.gameModel.getTotalBet());
+        if (UserCentral.getInstance().getUser() != null) {
+            this.userBalance.setText("Kontostand: " + UserCentral.getInstance().getUser().getCurrentBalance());
+            this.totalBet.setText("Einsatz: " + this.gameModel.getTotalBet());
+
+        }
     }
 
     @FXML
@@ -229,7 +232,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
                     });
                 });
             }
-
             if (dealerCards.size() == 3 && playerCards.size() == 3) {
                 ImageView[] imageViews = {this.thirdLeftCard, this.thirdRightImage};
                 for (ImageView view : imageViews) {
@@ -264,7 +266,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
                     });
                 });
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

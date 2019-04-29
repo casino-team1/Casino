@@ -135,7 +135,7 @@ public class Rules {
                 break;
             case "CHANCE":
                 for (int i = 0; i < 5; i++) {
-                    subresult = subresult + dicearray.get(i).getValue();
+                    subresult += dicearray.get(i).getValue();
                 }
                 lowertotal += subresult;
                 lowercounter++;
@@ -255,5 +255,5 @@ public class Rules {
     public void setBalance(int balance) {
         this.balance = balance;
     }
-    
+
 }

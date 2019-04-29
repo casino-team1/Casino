@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  */
 public class RouletteTable {
 
-    private boolean containsNumber = false;
+    private boolean containsNumber = true;
 
     public int getAmountOfBet(int parameterInt) {
         int betAmount = 0;
@@ -41,7 +41,6 @@ public class RouletteTable {
     }
 
     public boolean checkValid(String stringBox1) {
-//        System.out.println(stringBox1);
 
         for (int i = 0; i < 37; i++) {
             String e = Integer.toString(i);
@@ -95,6 +94,7 @@ public class RouletteTable {
             neighborField.getItems().add("1");
             neighborField.getItems().add("2");
         } else {
+
             int numberEnteredInt = Integer.parseInt(numberEntered);
             int neighborNumberPlus3 = numberEnteredInt + 3;
             int neighborNumberPlus1 = numberEnteredInt + 1;
@@ -102,22 +102,62 @@ public class RouletteTable {
             int neighborNumberMinus1 = numberEnteredInt - 1;
 
             if (row3Array.contains(numberEnteredInt) == true) {
-                neighborField.getItems().add(neighborNumberPlus3);
-                neighborField.getItems().add(neighborNumberMinus3);
-                neighborField.getItems().add(neighborNumberMinus1);
+                if (numberEnteredInt != 3 && numberEnteredInt != 36) {
+                    neighborField.getItems().add(neighborNumberPlus3);
+                    neighborField.getItems().add(neighborNumberMinus3);
+                    neighborField.getItems().add(neighborNumberMinus1);
+                } else if (numberEnteredInt == 3) {
+                    neighborField.getItems().add(neighborNumberPlus3);
+                    neighborField.getItems().add(neighborNumberMinus1);
+                } else {
+                    neighborField.getItems().add(neighborNumberMinus1);
+                    neighborField.getItems().add(neighborNumberMinus3);
+                }
+
             } else if (row2Array.contains(numberEnteredInt) == true) {
-                neighborField.getItems().add(neighborNumberPlus3);
-                neighborField.getItems().add(neighborNumberPlus1);
-                neighborField.getItems().add(neighborNumberMinus3);
-                neighborField.getItems().add(neighborNumberMinus1);
+                if (numberEnteredInt != 2 && numberEnteredInt != 35) {
+                    neighborField.getItems().add(neighborNumberPlus3);
+                    neighborField.getItems().add(neighborNumberPlus1);
+                    neighborField.getItems().add(neighborNumberMinus3);
+                    neighborField.getItems().add(neighborNumberMinus1);
+                } else if (numberEnteredInt == 2) {
+                    neighborField.getItems().add(neighborNumberPlus3);
+                    neighborField.getItems().add(neighborNumberPlus1);
+                    neighborField.getItems().add(neighborNumberMinus1);
+                } else {
+                    neighborField.getItems().add(neighborNumberPlus1);
+                    neighborField.getItems().add(neighborNumberMinus3);
+                    neighborField.getItems().add(neighborNumberMinus1);
+                }
+
             } else if (row1Array.contains(numberEnteredInt) == true) {
-                neighborField.getItems().add(neighborNumberPlus3);
-                neighborField.getItems().add(neighborNumberPlus1);
-                neighborField.getItems().add(neighborNumberMinus3);
+                if (numberEnteredInt != 1 && numberEnteredInt != 34) {
+                    neighborField.getItems().add(neighborNumberPlus3);
+                    neighborField.getItems().add(neighborNumberPlus1);
+                    neighborField.getItems().add(neighborNumberMinus3);
+                } else if (numberEnteredInt == 1) {
+                    neighborField.getItems().add(neighborNumberPlus3);
+                    neighborField.getItems().add(neighborNumberPlus1);
+                } else {
+                    neighborField.getItems().add(neighborNumberPlus1);
+                    neighborField.getItems().add(neighborNumberMinus3);
+                }
+
+//                neighborField.getItems().add(neighborNumberPlus3);
+//                neighborField.getItems().add(neighborNumberMinus3);
+//                neighborField.getItems().add(neighborNumberMinus1);
+//            } else if (row2Array.contains(numberEnteredInt) == true) {
+//                neighborField.getItems().add(neighborNumberPlus3);
+//                neighborField.getItems().add(neighborNumberPlus1);
+//                neighborField.getItems().add(neighborNumberMinus3);
+//                neighborField.getItems().add(neighborNumberMinus1);
+//            } else if (row1Array.contains(numberEnteredInt) == true) {
+//                neighborField.getItems().add(neighborNumberPlus3);
+//                neighborField.getItems().add(neighborNumberPlus1);
+//                neighborField.getItems().add(neighborNumberMinus3);
             }
         }
         neighborField.getSelectionModel().selectFirst();
-
     }
 
     public void clear(ComboBox neighborField) {

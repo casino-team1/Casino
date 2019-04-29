@@ -7,6 +7,8 @@
 package com.team1.casino.Entity;
 
 import java.util.Properties;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 
 /**
  *
@@ -23,5 +25,15 @@ public class MailConfig {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
         return props;
+    }
+
+    public static Session getSessionByProperty(Properties properties) {
+        Session session = Session.getInstance(MailConfig.getMailProperties(),
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("mountainviewcasino@gmail.com", "V/Em]dy3`?n\\nW;;");
+            }
+        });
+        return session;
     }
 }

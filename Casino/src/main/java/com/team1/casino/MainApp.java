@@ -44,36 +44,33 @@ public class MainApp extends Application {
         return this.stage;
     }
 
-    
-    public static final ExecutionMode executionMode = ExecutionMode.DEVELOPMENT;
+
+    public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEBUG;
 
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        
-        if (null == this.executionMode) {
-            displayMainMenu();
-        } else {
-            switch (this.executionMode) {
-                case DEBUG:
-                    if (UserCentral.getInstance().getUser() != null) {
-                    } else {
-                        setupForDEBUG();
-                        displayLoginView();
-                    }
-                    break;
-                case ADMINISTRATOR_TEST:
+        this.stage.setResizable(false);
+        this.stage.centerOnScreen();
+        switch (this.EXECUTION_MODE) {
+            case DEBUG:
+                if (UserCentral.getInstance().getUser() != null) {
+                } else {
                     setupForDEBUG();
-                    displayStatisticView();
-                    break;
-                case PRODUCTION:
-                    setupForProduction();
-                    displayMainMenu();
-                    break;
-                default:
-                    displayMainMenu();
-                    break;
-            }
+                    displayLoginView();
+                }
+                break;
+            case ADMINISTRATOR_TEST:
+                setupForDEBUG();
+                displayStatisticView();
+                break;
+            case PRODUCTION:
+                setupForProduction();
+                displayMainMenu();
+                break;
+            default:
+                displayMainMenu();
+                break;
         }
     }
 
@@ -85,6 +82,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Passwort vergessen");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             PasswordRecoveryController controller = loader.getController();
             controller.setMainApplication(this);
@@ -109,6 +107,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Spieler einloggen");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             LoginController controller = loader.getController();
             CasinoLoginModel loginModel = new CasinoLoginModel();
@@ -127,6 +126,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Spieler registrieren");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             RegistrationViewController controller = loader.getController();
             RegistrationModel model = new RegistrationModel(this);
@@ -162,6 +162,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Authentifizierungs Menu");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             AuthenticationController controller = loader.getController();
             AuthenticationModel authModel = new AuthenticationModel(UserCentral.getInstance().getUser().getValidationCode());
@@ -180,6 +181,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Adminstrator Dashboard");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             StatisticController controller = loader.getController();
             controller.setStatisticModel(new StatisticModel(this));
@@ -196,6 +198,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Spieler Statistiken");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             PlayerStatisticController controller = loader.getController();
             PlayerStatisticModel playerStatModel = new PlayerStatisticModel();
@@ -216,6 +219,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Spiel Statistiken");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             GameStatisticController controller = loader.getController();
             GameStatisticModel gameStatModel = new GameStatisticModel();

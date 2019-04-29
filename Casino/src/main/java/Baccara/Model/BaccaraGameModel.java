@@ -12,6 +12,7 @@ import Baccara.Entity.BaccaraGame;
 import com.team1.casino.User.Util.UserCentral;
 import java.util.ArrayList;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.Scene;
 
 /**
  * @author Nick Flückiger
@@ -163,6 +164,10 @@ public class BaccaraGameModel extends BaccaraModel {
         this.dealerDoubleBet = 0;
         this.playerDoubleBet = 0;
         this.tieBet = 0;
+    }
+
+    public Scene setCursor() {
+        return super.getBaccaraGame().getScene();
     }
 
     public void interuptGame() {

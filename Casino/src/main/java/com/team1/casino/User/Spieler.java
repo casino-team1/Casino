@@ -50,7 +50,7 @@ public class Spieler extends User {
     @Override
     public void setCurrentBalance(double currentBalance) {
         super.setCurrentBalance(currentBalance);
-        if (MainApp.executionMode != ExecutionMode.DEVELOPMENT) {
+        if (MainApp.EXECUTION_MODE != ExecutionMode.DEVELOPMENT) {
             try {
                 Updater updated = new Updater();
                 updated.performUpdateWithArgument("UPDATE balance b, user u SET b.balance = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(super.getCurrentBalance()) + ";" + String.valueOf(super.getID()));

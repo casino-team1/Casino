@@ -27,6 +27,7 @@ public class BaccaraHandler {
     private Stage stage;
     private BaccaraMenuModel menuModel;
     private BaccaraGameModel gameModel;
+    private Scene scene;
 
     public BaccaraHandler(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -37,6 +38,10 @@ public class BaccaraHandler {
         this.gameModel = new BaccaraGameModel(this);
     }
 
+    public Scene getScene() {
+        return this.scene;
+    }
+
     public void displayMenu() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BaccaraMenuView.fxml"));
@@ -44,6 +49,7 @@ public class BaccaraHandler {
             Scene scene = new Scene(root);
             stage.setTitle("Baccara Menu");
             stage.setScene(scene);
+            this.scene = scene;
             stage.show();
             BaccaraMenuViewController controller = loader.getController();
             controller.setMenuModel(this.menuModel);
@@ -59,6 +65,7 @@ public class BaccaraHandler {
             Scene scene = new Scene(root);
             stage.setTitle("Baccara!");
             stage.setScene(scene);
+            this.scene = scene;
             stage = MainApp.centerStageInScreen(stage, scene);
             stage.show();
             BaccaraGameViewController controller = loader.getController();

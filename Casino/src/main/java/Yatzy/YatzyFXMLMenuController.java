@@ -5,12 +5,14 @@
  */
 package Yatzy;
 
+import com.team1.casino.User.Util.UserCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -30,6 +32,8 @@ public class YatzyFXMLMenuController implements Initializable {
     private Button btnstart;
     @FXML
     private AnchorPane menuwindow;
+    @FXML
+    private Label balanceLabel;
     
     public void setYatzy(Yatzy yatzy){
         this.yatzy = yatzy;
@@ -38,7 +42,7 @@ public class YatzyFXMLMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
     }    
     
     public void startYatzy() {

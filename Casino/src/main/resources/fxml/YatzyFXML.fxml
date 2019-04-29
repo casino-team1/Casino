@@ -394,7 +394,7 @@
             <Image url="@../images/Yatzy/Cup.png" />
          </image>
       </ImageView>
-      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0$">
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0">
          <font>
             <Font size="14.0" />
          </font>

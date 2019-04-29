@@ -61,6 +61,7 @@ public class RouletteTable {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void addNeighborNumbers(String numberEntered, ComboBox neighborField) {
 
         ArrayList<Integer> row1Array = new ArrayList<>();
@@ -70,8 +71,7 @@ public class RouletteTable {
         //Creating an arrayList that contains all Numbers in row 1
         for (int i = 1; i < 37; i++) {
             row1Array.add(i);
-            i++;
-            i++;
+            i += 2;
         }
         //Creating an arrayList that contains all Numbers in row 2
         for (int i = 1; i < 37; i++) {
@@ -81,8 +81,7 @@ public class RouletteTable {
         }
         //Creating an arrayList that contains all Numbers in row 3
         for (int i = 1; i < 37; i++) {
-            i++;
-            i++;
+            i += 2;
             row3Array.add(i);
         }
 
@@ -143,6 +142,19 @@ public class RouletteTable {
                     neighborField.getItems().add(neighborNumberPlus1);
                     neighborField.getItems().add(neighborNumberMinus3);
                 }
+
+//                neighborField.getItems().add(neighborNumberPlus3);
+//                neighborField.getItems().add(neighborNumberMinus3);
+//                neighborField.getItems().add(neighborNumberMinus1);
+//            } else if (row2Array.contains(numberEnteredInt) == true) {
+//                neighborField.getItems().add(neighborNumberPlus3);
+//                neighborField.getItems().add(neighborNumberPlus1);
+//                neighborField.getItems().add(neighborNumberMinus3);
+//                neighborField.getItems().add(neighborNumberMinus1);
+//            } else if (row1Array.contains(numberEnteredInt) == true) {
+//                neighborField.getItems().add(neighborNumberPlus3);
+//                neighborField.getItems().add(neighborNumberPlus1);
+//                neighborField.getItems().add(neighborNumberMinus3);
             }
         }
         neighborField.getSelectionModel().selectFirst();

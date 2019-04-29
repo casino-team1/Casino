@@ -1,5 +1,6 @@
 package com.team1.casino.database.Connection;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
@@ -26,8 +27,12 @@ public class DatabaseConnection {
         return this.DATABASE_CONNECTION;
     }
 
-    private void addStatToDatabase() {
-
+    public boolean IsHealthy() {
+        try {
+            return this.DATABASE_CONNECTION.isValid(1000);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void closeConnection() throws SQLException {

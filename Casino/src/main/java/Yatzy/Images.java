@@ -5,10 +5,6 @@
  */
 package Yatzy;
 
-import java.util.ArrayList;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 /**
  *
  * @author Schule
@@ -17,7 +13,6 @@ public class Images {
 
     public String getImage(int value) {
         String path = "";
-
         switch (value) {
             case 1:
                 path = "images/Yatzy/D1.png";

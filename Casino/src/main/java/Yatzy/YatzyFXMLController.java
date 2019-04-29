@@ -90,7 +90,7 @@ public class YatzyFXMLController implements Initializable {
     private boolean locklabels = true;
     private boolean finish = false;
     private boolean newgame = false; 
-    private int balance = 1000;
+    private int balance;
     private int enemyscore = 100;
     private int betnum = 0;
     private ArrayList<Dice> keep = new ArrayList<>();
@@ -200,8 +200,9 @@ public class YatzyFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
-        
+        balance = UserCentral.getInstance().getUser().getCurrentBalance();
+        balanceLabel.setText("Konto: " + balance + "$");
+ 
         btnthrowdices.setDisable(true);
         lbltotalnum.setText(Integer.toString(balance));
         sclblenemy.setText(Integer.toString(enemyscore));   
@@ -372,6 +373,7 @@ public class YatzyFXMLController implements Initializable {
                 betnum = Integer.parseInt(bettxt.getText());
                 balance -= betnum;
                 lbltotalnum.setText(Integer.toString(balance));
+                balanceLabel.setText("Konto: " + balance + "$");
                 lblbetnum.setText(Integer.toString(betnum));
                 lblerror.setText("");
                 bettxt.setText("");
@@ -382,7 +384,7 @@ public class YatzyFXMLController implements Initializable {
                 bettxt.setVisible(false); 
                 imgwurf1.setVisible(true);
                 imgwurf2.setVisible(true);
-                imgwurf3.setVisible(true);
+                imgwurf3.setVisible(true);               
             }
             else if (betnum%10 != 0){
                 lblerror.setText("Der Betrag muss ein Vielfaches von Zehn sein");
@@ -855,29 +857,24 @@ public class YatzyFXMLController implements Initializable {
                     lblwin.setText("Gewonnen!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    /*
                     UserCentral.getInstance().getUser().setCurrentBalance(balance);
-                    */
                     break;
                 case 2:
                     lblwin.setText("Verloren!");                   
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    /*
                     UserCentral.getInstance().getUser().setCurrentBalance(balance);
-                    */
                     break;
                 case 3:
                     lblwin.setText("Unentschieden!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    /*
                     UserCentral.getInstance().getUser().setCurrentBalance(balance);
-                    */
                     break;
             }
             //the total balance gets updated
             lbltotalnum.setText(Integer.toString(balance));
+            balanceLabel.setText("Konto: " + balance + "$");
             
             btnthrowdices.setText("Neues Spiel");
         }

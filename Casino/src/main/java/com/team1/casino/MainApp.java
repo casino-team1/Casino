@@ -42,17 +42,15 @@ public class MainApp extends Application {
 
     public Stage getStage() {
         this.stage.setResizable(false);
+        this.stage.centerOnScreen();
         return this.stage;
     }
 
     public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEVELOPMENT;
 
-
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        this.stage.setResizable(false);
-        this.stage.centerOnScreen();
         switch (this.EXECUTION_MODE) {
             case DEBUG:
                 if (UserCentral.getInstance().getUser() != null) {
@@ -84,7 +82,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Passwort vergessen");
             stage.setScene(scene);
-            stage.centerOnScreen();
+            this.stage.centerOnScreen();
             stage.show();
             PasswordRecoveryController controller = loader.getController();
             controller.setMainApplication(this);
@@ -108,9 +106,11 @@ public class MainApp extends Application {
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
             stage.setTitle("Spieler einloggen");
-            stage.setScene(scene);
+            stage.setScene(scene); 
             stage.centerOnScreen();
             stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
             LoginController controller = loader.getController();
             CasinoLoginModel loginModel = new CasinoLoginModel();
             loginModel.setMainApplication(this);
@@ -149,6 +149,8 @@ public class MainApp extends Application {
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
             CasinoController controller = loader.getController();
             controller.setCasinoModel(new CasinoModel(this));
         } catch (IOException ex) {

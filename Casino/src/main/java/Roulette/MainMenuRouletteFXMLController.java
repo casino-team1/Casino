@@ -5,6 +5,7 @@
  */
 package Roulette;
 
+import com.team1.casino.MainApp;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
@@ -25,9 +26,12 @@ import javafx.util.Duration;
 public class MainMenuRouletteFXMLController implements Initializable {
 
     private Roulette play;
-    
-    
-    
+
+    private MainApp mainApp;
+
+    public void setMainApplication(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
     @FXML
     private ImageView rouletteLogo;
 
@@ -49,8 +53,9 @@ public class MainMenuRouletteFXMLController implements Initializable {
         transition.setOnFinished(x -> showLogo());
         transition.play();
     }
-    public void showLogo(){
-        
+
+    public void showLogo() {
+
         FadeTransition ft = new FadeTransition(Duration.millis(3000), rouletteLogo);
         ft.setFromValue(0);
         ft.setToValue(1.0);
@@ -65,7 +70,7 @@ public class MainMenuRouletteFXMLController implements Initializable {
 
     @FXML
     private void endGame(ActionEvent event) {
-        
+        this.mainApp.displayMainMenu();
     }
 
 }

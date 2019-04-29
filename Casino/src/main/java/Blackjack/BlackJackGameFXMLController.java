@@ -138,7 +138,7 @@ public class BlackJackGameFXMLController implements Initializable {
         buttonVerdoppeln.setDisable(true);
         buttonVersichern.setDisable(true);
 
-        //game.play();
+        game.play();
     }
 
     @FXML
@@ -214,6 +214,10 @@ public class BlackJackGameFXMLController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, 
+                spielerKarte1, spielerKarte2, spielerKarte3, spielerKarte4, spielerKarte5, dealerKarte1, dealerKarte2, dealerKarte3, dealerKarte4, dealerKarte5, 
+                labelLösung, labelVerdoppeln, labelVersicherung, textfeldEinsatz, textfeldVersicherung);
+        
         balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
     }
 

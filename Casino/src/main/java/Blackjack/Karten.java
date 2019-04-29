@@ -15,11 +15,10 @@ import javafx.scene.image.Image;
  */
 public class Karten {
 
-    private HashMap<Image, Integer> karten = new HashMap<>();
+    private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<String>();
 
-    private String[] farben = new String[]{"♥", "♦", "♣", "♠"};
-
+    //private String[] farben = new String[]{"♥", "♦", "♣", "♠"};
     private int anzahlKartenImKartenDeck = 52;
     private int anzahlKartenInKartenSymbole = 51;
 
@@ -61,23 +60,41 @@ public class Karten {
         String[] special = {"J", "K", "Q"};
         String[] symbols = {"C", "H", "S", "D"};
         String format = "/images/GameCards/%s%s.png";
+
+        //kartendeck
         for (int i = 1; i < 10; i++) {
             for (String symbol : symbols) {
-                karten.put(new Image(String.format(format, String.valueOf(i + 1), symbol)), i + 1);
+                karten.put((String.format(format, String.valueOf(i + 1), symbol)), i + 1);
             }
         }
-        for (String sepci : special) {
+        for (String speci : special) {
             for (String symbol : symbols) {
-                karten.put(new Image(String.format(format, sepci, symbol)), 10);
+                karten.put((String.format(format, speci, symbol)), 10);
             }
         }
         for (String symb : symbols) {
-            karten.put(new Image(String.format(format, "A", symb)), 11);
+            karten.put((String.format(format, "A", symb)), 11);
         }
-        System.out.println(karten);
+
+        //kartenSymbole
+        for (int i = 2; i <= 10; i++) {
+            for (String j : symbols) {
+                kartenSymbole.add(i + j);
+            }
+        }
+
+        for (String s : special) {
+            for (String sy : symbols) {
+                kartenSymbole.add(s + sy);
+            }
+        }
+
+        for (String sy : symbols) {
+            kartenSymbole.add("A" + sy);
+        }
     }
 
-    public HashMap<Image, Integer> getKarten() {
+    public HashMap<String, Integer> getKarten() {
         return karten;
     }
 

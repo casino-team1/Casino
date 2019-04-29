@@ -83,9 +83,9 @@ public class BlackJackFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern,
-                labelKartenSpieler, labelKartenDealer, labelLösung, labelVerdoppeln, labelVersicherung, labelEinsatzFehler,
-                textfeldEinsatz, textfeldVersicherung);
+        /*game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern,
+        labelKartenSpieler, labelKartenDealer, labelLösung, labelVerdoppeln, labelVersicherung, labelEinsatzFehler,
+        textfeldEinsatz, textfeldVersicherung);*/
     }
 
     public void setMain(MainApp main) {

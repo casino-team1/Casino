@@ -201,7 +201,7 @@ public class YatzyFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         balance = UserCentral.getInstance().getUser().getCurrentBalance();
-        balanceLabel.setText("Konto: " + balance + "$");
+        balanceLabel.setText("Konto: " + balance);
  
         btnthrowdices.setDisable(true);
         lbltotalnum.setText(Integer.toString(balance));
@@ -373,7 +373,7 @@ public class YatzyFXMLController implements Initializable {
                 betnum = Integer.parseInt(bettxt.getText());
                 balance -= betnum;
                 lbltotalnum.setText(Integer.toString(balance));
-                balanceLabel.setText("Konto: " + balance + "$");
+                balanceLabel.setText("Konto: " + balance);
                 lblbetnum.setText(Integer.toString(betnum));
                 lblerror.setText("");
                 bettxt.setText("");
@@ -384,7 +384,8 @@ public class YatzyFXMLController implements Initializable {
                 bettxt.setVisible(false); 
                 imgwurf1.setVisible(true);
                 imgwurf2.setVisible(true);
-                imgwurf3.setVisible(true);               
+                imgwurf3.setVisible(true);
+                
             }
             else if (betnum%10 != 0){
                 lblerror.setText("Der Betrag muss ein Vielfaches von Zehn sein");
@@ -874,7 +875,7 @@ public class YatzyFXMLController implements Initializable {
             }
             //the total balance gets updated
             lbltotalnum.setText(Integer.toString(balance));
-            balanceLabel.setText("Konto: " + balance + "$");
+            balanceLabel.setText("Konto: " + balance);
             
             btnthrowdices.setText("Neues Spiel");
         }

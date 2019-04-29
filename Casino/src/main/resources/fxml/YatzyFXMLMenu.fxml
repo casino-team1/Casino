@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,22 +12,26 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="644.0" pickOnBounds="true">
          <image>
-            <Image url="@../images/Yatzy/tableBackground.jpg" />
+            <Image url="@../images/Yatzy/paperBackground.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btnstart" layoutX="231.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnstartPress" prefHeight="102.0" prefWidth="180.0" text="start">
+      <Button fx:id="btnstart" layoutX="231.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnstartPress" prefHeight="102.0" prefWidth="180.0" text="Spielen">
          <font>
             <Font size="38.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <DropShadow height="60.0" radius="29.5" spread="0.21" width="60.0" />
+         </effect></Button>
       <ImageView fitHeight="191.0" fitWidth="377.0" layoutX="132.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/yatzy_logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0$" textFill="WHITE">
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
+      <Button fx:id="btnback" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#pressbtnback" text="Zurück" />
    </children>
 </AnchorPane>

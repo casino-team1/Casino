@@ -6,6 +6,8 @@
  */
 package Baccara.Entity;
 
+import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
@@ -22,6 +24,12 @@ public class BaccaraGameTest {
      */
     @Test
     public void testReshuffleCards() {
+        BaccaraGame game = new BaccaraGame();
+        ArrayList<BaccaraCard> beforeShuffle = game.getRemainingCardDecks();
+        game.reshuffleCards();
+        ArrayList<BaccaraCard> afterShuffle = game.getRemainingCardDecks();
+        boolean EXPECTED_RESULT = false;
+        assertEquals(EXPECTED_RESULT, beforeShuffle == afterShuffle);
     }
 
     /**
@@ -29,6 +37,7 @@ public class BaccaraGameTest {
      */
     @Test
     public void testGetPlayerCardCount() {
+
     }
 
     /**
@@ -43,6 +52,10 @@ public class BaccaraGameTest {
      */
     @Test
     public void testGetPlayerBet() {
+        BaccaraGame game = new BaccaraGame();
+        game.setPlayerBet(50);
+        double EXPECTED_RESULT = 50.0;
+        assertEquals(EXPECTED_RESULT, game.getPlayerBet(), 0.00);
     }
 
     /**

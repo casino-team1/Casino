@@ -43,7 +43,7 @@ public class Blackjack extends Spiel {
         }
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
-        stage.setTitle("Casino Central");
+        stage.setTitle("Black Jack");
         BlackJackMainController controller = loader.getController();
         controller.setMain(super.getMainApp());
         stage.setScene(scene);

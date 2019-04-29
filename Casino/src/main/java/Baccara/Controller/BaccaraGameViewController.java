@@ -104,7 +104,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
             data.putImage(image);
             content.setContent(data);
             event.consume();
-            updateBalanceAndBet();
+            // updateBalanceAndBet();
         });
         this.bankerBet.setOnMouseClicked(event -> {
             this.bankerBetCoin.setImage(this.chipImage.getImage());
@@ -166,7 +166,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
         this.gameModel.generateCards();
         this.gameModel.resetGame();
         resetImageViews();
-        updateBalanceAndBet();
+        //();
         String format = "/images/GameCards/%s";
         ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
         ImageView[] dealerView = {this.firstRightCard, this.secondRightCard};

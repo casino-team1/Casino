@@ -17,6 +17,10 @@ public class BaccaraGame {
 
     private ArrayList<BaccaraCard> baccaraCardDecks = new ArrayList<>();
 
+    public ArrayList<BaccaraCard> getRemainingCardDecks() {
+        return this.baccaraCardDecks;
+    }
+
     public BaccaraGame() {
         this.baccaraCardDecks = new BaccaraDeckGenerator().getDecks();
         Collections.shuffle(this.baccaraCardDecks);
@@ -57,7 +61,7 @@ public class BaccaraGame {
 
     public int getPlayerBet() {
         //100 is just set for debugging.
-        return 100;
+        return this.playerBet;
     }
 
     public int getDealerBet() {

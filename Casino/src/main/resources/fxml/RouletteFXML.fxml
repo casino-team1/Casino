@@ -25,7 +25,7 @@
             <Image url="@../images/Roulette/rouletteWheel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="120.0" layoutY="306.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="945.6666717529297">
+      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="144.0" layoutY="333.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="921.6666717529297">
          <image>
             <Image url="@../images/Roulette/placeBet.png" />
          </image>

@@ -34,6 +34,7 @@ public class RouletteFXMLController implements Initializable {
 
     private int betIntFromPlayer;
 
+    private int neigborNumber1;
     private boolean isOverZero = true;
     private boolean isNumber = true;
     private boolean betIsPlaced = false;
@@ -90,7 +91,7 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private TextField neighborField1;
     @FXML
-    private ComboBox<?> neighborField2;
+    private ComboBox<String> neighborField2;
 
     ToggleGroup group = new ToggleGroup();
 
@@ -120,14 +121,18 @@ public class RouletteFXMLController implements Initializable {
         neighborField1.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                String neighborString = neighborField1.getText();
                 if (!newValue.matches("\\d{0,0}(\\d{0,2})?")) {
                     neighborField1.setText(oldValue);
                 }
                 if (newValue.matches("\\d{0,0}(\\d{0,2})?")) {
-                    String neighborString = neighborField1.getText();
-                    int neighborInt = Integer.parseInt(neighborString);
-                    tables.checkValid(neighborInt);
+                    boolean checkForValidity = tables.checkValid(neighborString);
+                    if (checkForValidity == false) {
+                        neighborField1.setText(oldValue);
+                    }
                 }
+
+                //Check if field is empty / not empty
                 if (neighborField1.getText().isEmpty()) {
                     neighborField2.setEditable(false);
                     neighborField2.setOpacity(0.5);
@@ -135,6 +140,10 @@ public class RouletteFXMLController implements Initializable {
                     neighborField2.setEditable(true);
                     neighborField2.setOpacity(1);
                 }
+                tables.clear(neighborField2);
+                tables.addNeighborNumbers(neighborString, neighborField2);
+                
+                
             }
         });
 
@@ -747,7 +756,7 @@ public class RouletteFXMLController implements Initializable {
     @FXML
     private void clickPlaceBet(MouseEvent event) {
         if (radioTable.isSelected() == true) {
-             clickTable();
+            clickTable();
         } else {
             clickNeighbor();
         }
@@ -789,8 +798,7 @@ public class RouletteFXMLController implements Initializable {
     }
 
     public void clickNeighbor() {
-   
-        
+
     }
 
     private PlayRoulette playRoulette;
@@ -819,4 +827,5 @@ public class RouletteFXMLController implements Initializable {
     public int getPlayerBalance() {
         return playerBalance;
     }
+
 }

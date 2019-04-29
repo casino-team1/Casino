@@ -325,32 +325,32 @@
             <Font name="Arial Nova Bold" size="52.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="483.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gesamt Kontostand:">
+      <Label layoutX="19.0" layoutY="544.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gesamt Kontostand:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lbltotalnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="483.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
+      <Label fx:id="lbltotalnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="544.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="512.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gesetzter Betrag:">
+      <Label layoutX="19.0" layoutY="484.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gesetzter Betrag:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblbetnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="512.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
+      <Label fx:id="lblbetnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="484.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="542.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gewonnener Betrag:">
+      <Label layoutX="19.0" layoutY="514.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gewonnener Betrag:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblwinnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="542.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
+      <Label fx:id="lblwinnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="514.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
          <font>
             <Font size="18.0" />
          </font>

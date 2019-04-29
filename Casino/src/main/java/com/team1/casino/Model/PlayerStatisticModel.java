@@ -8,7 +8,6 @@ package com.team1.casino.Model;
 
 import com.team1.casino.Entity.Statistic;
 import com.team1.casino.MainApp;
-import com.team1.casino.User.Util.UserCentral;
 import com.team1.casino.User.Util.UserUtil;
 import com.team1.casino.database.Connection.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;

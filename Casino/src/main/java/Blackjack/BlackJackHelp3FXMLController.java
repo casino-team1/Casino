@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  */
 public class BlackJackHelp3FXMLController implements Initializable {
     
-    private MainApp main;
+    private MainApp main = new MainApp();
     @FXML
     private Button buttonBeenden;
 
@@ -52,10 +52,10 @@ public class BlackJackHelp3FXMLController implements Initializable {
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stage = this.main.getStage();
-            stage.setTitle("Casino Login");
+            stage.setTitle("Hilfe");
             stage.setScene(scene);
             stage.show();
-            BlackJackFXMLController controller = loader.getController();
+            BlackJackHelp2FXMLController controller = loader.getController();
             controller.setMain(main);
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class BlackJackHelp3FXMLController implements Initializable {
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stage = this.main.getStage();
-            stage.setTitle("Casino Login");
+            stage.setTitle("Black Jack");
             stage.setScene(scene);
             stage.show();
             BlackJackFXMLController controller = loader.getController();

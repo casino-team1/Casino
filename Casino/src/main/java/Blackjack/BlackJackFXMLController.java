@@ -85,6 +85,10 @@ public class BlackJackFXMLController implements Initializable {
                                       labelKartenSpieler, labelKartenDealer, labelLösung, labelVerdoppeln, labelVersicherung, labelEinsatzFehler,
                                       textfeldEinsatz, textfeldVersicherung);
     }
+    
+    public void setMain(MainApp main) {
+        this.main = main;
+    }
 
     @FXML
     private void stand(ActionEvent event) {
@@ -142,10 +146,6 @@ public class BlackJackFXMLController implements Initializable {
         this.main.displayMainMenu();
     }
 
-    public void setMain(MainApp main) {
-        this.main = main;
-    }
-
     @FXML
     private void help(ActionEvent event) {
         try {
@@ -157,7 +157,7 @@ public class BlackJackFXMLController implements Initializable {
             stage.setTitle("Casino Login");
             stage.setScene(scene);
             stage.show();
-            BlackJackFXMLController controller = loader.getController();
+            BlackJackHelp1FXMLController controller = loader.getController();
             controller.setMain(main);
         } catch (IOException e) {
             e.printStackTrace();

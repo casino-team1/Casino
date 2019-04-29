@@ -30,11 +30,6 @@ public class BlackJackHelp1FXMLController implements Initializable {
     private MainApp main;
     @FXML
     private Button buttonBeenden;
-
-    public void setMain(MainApp main) {
-        this.main = main;
-    }
-
     @FXML
     private Button buttonWeiter;
 
@@ -45,19 +40,24 @@ public class BlackJackHelp1FXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+    
+        public void setMain(MainApp main) {
+        this.main = main;
+    }
 
     @FXML
     private void weiter(ActionEvent event) {
-        try {
+        try {                  
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackHelp2FXML.fxml"));
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
+            setMain(main);
             Stage stage = this.main.getStage();
-            stage.setTitle("Casino Login");
+            stage.setTitle("Hilfe");
             stage.setScene(scene);
             stage.show();
-            BlackJackFXMLController controller = loader.getController();
+            BlackJackHelp2FXMLController controller = loader.getController();
             controller.setMain(main);
         } catch (IOException e) {
             e.printStackTrace();
@@ -71,8 +71,9 @@ public class BlackJackHelp1FXMLController implements Initializable {
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
+            setMain(main);
             Stage stage = this.main.getStage();
-            stage.setTitle("Casino Login");
+            stage.setTitle("Black Jack");
             stage.setScene(scene);
             stage.show();
             BlackJackFXMLController controller = loader.getController();

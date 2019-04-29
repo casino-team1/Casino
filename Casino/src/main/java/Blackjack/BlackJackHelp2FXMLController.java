@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  */
 public class BlackJackHelp2FXMLController implements Initializable {
     
-    private MainApp main;
+    private MainApp main = new MainApp();
     @FXML
     private Button buttonBeenden;
 
@@ -49,15 +49,15 @@ public class BlackJackHelp2FXMLController implements Initializable {
     @FXML
     private void zurueck(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackHelp2FXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackHelp1FXML.fxml"));
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stage = this.main.getStage();
-            stage.setTitle("Casino Login");
+            stage.setTitle("Hilfe");
             stage.setScene(scene);
             stage.show();
-            BlackJackFXMLController controller = loader.getController();
+            BlackJackHelp1FXMLController controller = loader.getController();
             controller.setMain(main);
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,15 +67,16 @@ public class BlackJackHelp2FXMLController implements Initializable {
     @FXML
     private void weiter(ActionEvent event) {
         try {
+            Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackHelp3FXML.fxml"));
             Parent root;
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            Stage stage = this.main.getStage();
-            stage.setTitle("Casino Login");
+            stage = this.main.getStage();
+            stage.setTitle("Hilfe");
             stage.setScene(scene);
             stage.show();
-            BlackJackFXMLController controller = loader.getController();
+            BlackJackHelp3FXMLController controller = loader.getController();
             controller.setMain(main);
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,7 +91,7 @@ public class BlackJackHelp2FXMLController implements Initializable {
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stage = this.main.getStage();
-            stage.setTitle("Casino Login");
+            stage.setTitle("BlackJack");
             stage.setScene(scene);
             stage.show();
             BlackJackFXMLController controller = loader.getController();

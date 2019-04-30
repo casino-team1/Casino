@@ -142,6 +142,9 @@ public class BlackJackGameFXMLController implements Initializable {
         buttonVersichern.setDisable(true);
         labelKartenWertDealer.setText("");
         labelKartenWertSpieler.setText("");
+        labelLösung.setText("");
+        labelVerdoppeln.setText("");
+        labelVersicherung.setText("");
 
         game.play();
     }

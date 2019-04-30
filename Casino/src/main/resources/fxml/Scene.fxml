@@ -83,5 +83,10 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Button fx:id="changePasswordButton" layoutX="591.0" layoutY="530.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="39.0" prefWidth="188.0" style="-fx-border-color: white; -fx-background-color: transparent; -fx-border-width: 3px;" text="Change Password" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

@@ -30,7 +30,7 @@ public class DatabaseConnection {
     public boolean IsHealthy() {
         try {
             return this.DATABASE_CONNECTION.isValid(1000);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             return false;
         }
     }

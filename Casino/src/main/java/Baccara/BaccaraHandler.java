@@ -60,6 +60,7 @@ public class BaccaraHandler {
 
     public void displayGame() {
         try {
+            this.gameModel = new BaccaraGameModel(this);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BaccaraGameView.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -69,6 +70,7 @@ public class BaccaraHandler {
             stage = MainApp.centerStageInScreen(stage, scene);
             stage.show();
             BaccaraGameViewController controller = loader.getController();
+            controller.setBaccaraHandler(this);
             controller.setBaccaraGameModel(this.gameModel);
         } catch (IOException e) {
             e.printStackTrace();

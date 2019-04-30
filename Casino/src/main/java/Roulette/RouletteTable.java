@@ -160,6 +160,10 @@ public class RouletteTable {
         neighborField.getSelectionModel().selectFirst();
     }
 
+    /**
+     *
+     * @param neighborField
+     */
     public void clear(ComboBox neighborField) {
         neighborField.getItems().clear();
     }

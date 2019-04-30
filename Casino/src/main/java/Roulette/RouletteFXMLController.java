@@ -791,7 +791,7 @@ public class RouletteFXMLController implements Initializable {
         Q1Array.add(2);
         Q1Array.add(4);
         Q1Array.add(5);
-        
+
         betArray = Q1Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -804,7 +804,7 @@ public class RouletteFXMLController implements Initializable {
         Q2Array.add(3);
         Q2Array.add(5);
         Q2Array.add(6);
-        
+
         betArray = Q2Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -817,7 +817,7 @@ public class RouletteFXMLController implements Initializable {
         Q3Array.add(5);
         Q3Array.add(7);
         Q3Array.add(8);
-        
+
         betArray = Q3Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -830,7 +830,7 @@ public class RouletteFXMLController implements Initializable {
         Q4Array.add(6);
         Q4Array.add(8);
         Q4Array.add(9);
-        
+
         betArray = Q4Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -843,7 +843,7 @@ public class RouletteFXMLController implements Initializable {
         Q5Array.add(8);
         Q5Array.add(10);
         Q5Array.add(11);
-        
+
         betArray = Q5Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -856,7 +856,7 @@ public class RouletteFXMLController implements Initializable {
         Q6Array.add(9);
         Q6Array.add(11);
         Q6Array.add(12);
-        
+
         betArray = Q6Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -869,7 +869,7 @@ public class RouletteFXMLController implements Initializable {
         Q7Array.add(11);
         Q7Array.add(13);
         Q7Array.add(14);
-        
+
         betArray = Q7Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -882,7 +882,7 @@ public class RouletteFXMLController implements Initializable {
         Q8Array.add(12);
         Q8Array.add(14);
         Q8Array.add(15);
-        
+
         betArray = Q8Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -895,7 +895,7 @@ public class RouletteFXMLController implements Initializable {
         Q9Array.add(14);
         Q9Array.add(16);
         Q9Array.add(17);
-        
+
         betArray = Q9Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -908,7 +908,7 @@ public class RouletteFXMLController implements Initializable {
         Q10Array.add(15);
         Q10Array.add(17);
         Q10Array.add(18);
-        
+
         betArray = Q10Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -921,7 +921,7 @@ public class RouletteFXMLController implements Initializable {
         Q11Array.add(17);
         Q11Array.add(19);
         Q11Array.add(20);
-        
+
         betArray = Q11Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -934,7 +934,7 @@ public class RouletteFXMLController implements Initializable {
         Q12Array.add(18);
         Q12Array.add(20);
         Q12Array.add(21);
-        
+
         betArray = Q12Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -947,7 +947,7 @@ public class RouletteFXMLController implements Initializable {
         Q13Array.add(20);
         Q13Array.add(22);
         Q13Array.add(23);
-        
+
         betArray = Q13Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -960,7 +960,7 @@ public class RouletteFXMLController implements Initializable {
         Q14Array.add(21);
         Q14Array.add(23);
         Q14Array.add(24);
-        
+
         betArray = Q14Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -973,7 +973,7 @@ public class RouletteFXMLController implements Initializable {
         Q15Array.add(23);
         Q15Array.add(25);
         Q15Array.add(26);
-        
+
         betArray = Q15Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -986,7 +986,7 @@ public class RouletteFXMLController implements Initializable {
         Q16Array.add(24);
         Q16Array.add(26);
         Q16Array.add(27);
-        
+
         betArray = Q16Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -999,7 +999,7 @@ public class RouletteFXMLController implements Initializable {
         Q17Array.add(26);
         Q17Array.add(28);
         Q17Array.add(29);
-        
+
         betArray = Q17Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -1012,7 +1012,7 @@ public class RouletteFXMLController implements Initializable {
         Q18Array.add(27);
         Q18Array.add(29);
         Q18Array.add(30);
-        
+
         betArray = Q18Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -1025,7 +1025,7 @@ public class RouletteFXMLController implements Initializable {
         Q19Array.add(29);
         Q19Array.add(31);
         Q19Array.add(32);
-        
+
         betArray = Q19Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -1038,7 +1038,7 @@ public class RouletteFXMLController implements Initializable {
         Q20Array.add(30);
         Q20Array.add(32);
         Q20Array.add(33);
-        
+
         betArray = Q20Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -1051,7 +1051,7 @@ public class RouletteFXMLController implements Initializable {
         Q21Array.add(32);
         Q21Array.add(34);
         Q21Array.add(35);
-        
+
         betArray = Q21Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -1064,7 +1064,7 @@ public class RouletteFXMLController implements Initializable {
         Q22Array.add(33);
         Q22Array.add(35);
         Q22Array.add(36);
-        
+
         betArray = Q22Array;
         ArrayIdentify = 4;
         isNumber = false;
@@ -1121,6 +1121,7 @@ public class RouletteFXMLController implements Initializable {
                 clickTable();
             } else {
                 clickNeighbor();
+
             }
 
             return;
@@ -1153,23 +1154,33 @@ public class RouletteFXMLController implements Initializable {
         } else {
             placeBetArray(ArrayIdentify);
         }
+        errorMessage.setText("");
     }
 
     public void clickNeighbor() {
         String stringFromField1 = neighborField1.getText();
-        String stringFromField2 = neighborField2.getValue();
+        
 
-        int intFromF1 = Integer.parseInt(stringFromField1);
-        int intFromF2 = Integer.parseInt(stringFromField2);
+        if (!stringFromField1.equals("")) {
+            String stringFromField2 = neighborField2.getValue();
+            
+            int intFromF1 = Integer.parseInt(stringFromField1);
+            int intFromF2 = Integer.parseInt(stringFromField2);
 
-        neighborArray.add(intFromF1);
-        neighborArray.add(intFromF2);
+            neighborArray.add(intFromF1);
+            neighborArray.add(intFromF2);
 
-        betArray = neighborArray;
+            betArray = neighborArray;
 
-        ArrayIdentify = 6;
+            ArrayIdentify = 6;
 
-        placeBetArray(ArrayIdentify);
+            placeBetArray(ArrayIdentify);
+            errorMessage.setText("");
+        } else {
+            errorMessage.setText("Geben sie zwei Zahlen an");
+            String wheelLocatioon = "/images/Roulette/rouletteWheel.png";
+            rouletteWheel.setImage(new Image(wheelLocatioon));
+        }
     }
 
     private PlayRoulette playRoulette;
@@ -1190,10 +1201,6 @@ public class RouletteFXMLController implements Initializable {
 
     public StringProperty stringBetProperty() {
         return stringBet;
-    }
-
-    private void checkForZero(int betIntFromPlayer) {
-
     }
 
     public int getPlayerBalance() {

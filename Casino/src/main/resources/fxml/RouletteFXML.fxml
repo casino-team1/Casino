@@ -207,7 +207,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label fx:id="betString" layoutX="1113.0" layoutY="608.0" prefHeight="82.0" prefWidth="62.0" text="0">
+      <Label fx:id="betString" layoutX="1113.0" layoutY="608.0" prefHeight="82.0" prefWidth="149.0" text="0">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>

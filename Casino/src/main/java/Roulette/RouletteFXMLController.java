@@ -82,6 +82,29 @@ public class RouletteFXMLController implements Initializable {
 
     ArrayList<Integer> neighborArray = new ArrayList<>();
 
+    ArrayList<Integer> Q1Array = new ArrayList<>();
+    ArrayList<Integer> Q2Array = new ArrayList<>();
+    ArrayList<Integer> Q3Array = new ArrayList<>();
+    ArrayList<Integer> Q4Array = new ArrayList<>();
+    ArrayList<Integer> Q5Array = new ArrayList<>();
+    ArrayList<Integer> Q6Array = new ArrayList<>();
+    ArrayList<Integer> Q7Array = new ArrayList<>();
+    ArrayList<Integer> Q8Array = new ArrayList<>();
+    ArrayList<Integer> Q9Array = new ArrayList<>();
+    ArrayList<Integer> Q10Array = new ArrayList<>();
+    ArrayList<Integer> Q11Array = new ArrayList<>();
+    ArrayList<Integer> Q12Array = new ArrayList<>();
+    ArrayList<Integer> Q13Array = new ArrayList<>();
+    ArrayList<Integer> Q14Array = new ArrayList<>();
+    ArrayList<Integer> Q15Array = new ArrayList<>();
+    ArrayList<Integer> Q16Array = new ArrayList<>();
+    ArrayList<Integer> Q17Array = new ArrayList<>();
+    ArrayList<Integer> Q18Array = new ArrayList<>();
+    ArrayList<Integer> Q19Array = new ArrayList<>();
+    ArrayList<Integer> Q20Array = new ArrayList<>();
+    ArrayList<Integer> Q21Array = new ArrayList<>();
+    ArrayList<Integer> Q22Array = new ArrayList<>();
+
     @FXML
     private TextField numberField;
     @FXML
@@ -166,7 +189,7 @@ public class RouletteFXMLController implements Initializable {
 
             }
         });
-        
+
         radioTable.setToggleGroup(group);
         radioTable.setSelected(true);
         radioNeighbor.setToggleGroup(group);
@@ -515,6 +538,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 1;
         betArray = intArray;
         isNumber = false;
+        stringBet.set("1 - 18");
     }
 
     @FXML
@@ -526,6 +550,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 1;
         betArray = intArray;
         isNumber = false;
+        stringBet.set("19 - 36");
     }
 
     @FXML
@@ -538,6 +563,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 1;
         betArray = intArray;
         isNumber = false;
+        stringBet.set("Ungerade");
     }
 
     @FXML
@@ -550,6 +576,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 1;
         betArray = intArray;
         isNumber = false;
+        stringBet.set("Gerade");
     }
 
     @FXML
@@ -557,6 +584,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 1;
         betArray = redArray;
         isNumber = false;
+        stringBet.set("Rot");
     }
 
     @FXML
@@ -564,6 +592,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 1;
         betArray = blackArray;
         isNumber = false;
+        stringBet.set("Schwarz");
     }
 
     @FXML
@@ -571,6 +600,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 2;
         betArray = row3Array;
         isNumber = false;
+        stringBet.set("Reihe 3");
     }
 
     @FXML
@@ -578,6 +608,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 2;
         betArray = row2Array;
         isNumber = false;
+        stringBet.set("Reihe 2");
     }
 
     @FXML
@@ -585,6 +616,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 2;
         isNumber = false;
         betArray = row1Array;
+        stringBet.set("Reihe 1");
     }
 
     @FXML
@@ -595,6 +627,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 2;
         isNumber = false;
         betArray = d1Array;
+        stringBet.set("Duzend 1");
     }
 
     @FXML
@@ -605,6 +638,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 2;
         isNumber = false;
         betArray = d2Array;
+        stringBet.set("Duzend 2");
     }
 
     @FXML
@@ -615,6 +649,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 2;
         isNumber = false;
         betArray = d3Array;
+        stringBet.set("Duzend 3");
     }
 
     @FXML
@@ -625,6 +660,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c1Array;
+        stringBet.set("1, 2, 3");
     }
 
     @FXML
@@ -635,6 +671,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c2Array;
+        stringBet.set("4, 5, 6");
     }
 
     @FXML
@@ -645,6 +682,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c3Array;
+        stringBet.set("7, 8, 9");
     }
 
     @FXML
@@ -655,6 +693,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c4Array;
+        stringBet.set("10, 11, 12");
     }
 
     @FXML
@@ -665,6 +704,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c5Array;
+        stringBet.set("13, 14, 15");
     }
 
     @FXML
@@ -675,6 +715,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c6Array;
+        stringBet.set("16, 17, 18");
     }
 
     @FXML
@@ -685,6 +726,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c7Array;
+        stringBet.set("19, 20, 21");
     }
 
     @FXML
@@ -695,6 +737,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c8Array;
+        stringBet.set("22, 23, 24");
     }
 
     @FXML
@@ -705,6 +748,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c9Array;
+        stringBet.set("25, 26, 27");
     }
 
     @FXML
@@ -715,6 +759,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c10Array;
+        stringBet.set("28, 29, 30");
     }
 
     @FXML
@@ -725,6 +770,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c11Array;
+        stringBet.set("31, 32, 33");
     }
 
     @FXML
@@ -736,96 +782,294 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 5;
         isNumber = false;
         betArray = c12Array;
+        stringBet.set("34, 35, 36");
     }
-    
+
     @FXML
     private void clickPaneQ1(MouseEvent event) {
+        Q1Array.add(1);
+        Q1Array.add(2);
+        Q1Array.add(4);
+        Q1Array.add(5);
+        
+        betArray = Q1Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("1, 2, 4, 5");
     }
 
     @FXML
     private void clickPaneQ2(MouseEvent event) {
+        Q2Array.add(2);
+        Q2Array.add(3);
+        Q2Array.add(5);
+        Q2Array.add(6);
+        
+        betArray = Q2Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("2, 3, 5, 6");
     }
 
     @FXML
     private void clickPaneQ3(MouseEvent event) {
+        Q3Array.add(4);
+        Q3Array.add(5);
+        Q3Array.add(7);
+        Q3Array.add(8);
+        
+        betArray = Q3Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("4, 5, 7, 8");
     }
 
     @FXML
     private void clickPaneQ4(MouseEvent event) {
+        Q4Array.add(5);
+        Q4Array.add(6);
+        Q4Array.add(8);
+        Q4Array.add(9);
+        
+        betArray = Q4Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("5, 6, 8, 9");
     }
 
     @FXML
     private void clickPaneQ5(MouseEvent event) {
+        Q5Array.add(7);
+        Q5Array.add(8);
+        Q5Array.add(10);
+        Q5Array.add(11);
+        
+        betArray = Q5Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("7, 8, 10, 11");
     }
 
     @FXML
     private void clickPaneQ6(MouseEvent event) {
+        Q6Array.add(8);
+        Q6Array.add(9);
+        Q6Array.add(11);
+        Q6Array.add(12);
+        
+        betArray = Q6Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("8, 9, 11, 12");
     }
 
     @FXML
     private void clickPaneQ7(MouseEvent event) {
+        Q7Array.add(10);
+        Q7Array.add(11);
+        Q7Array.add(13);
+        Q7Array.add(14);
+        
+        betArray = Q7Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("10, 11, 13, 14");
     }
 
     @FXML
     private void clickPaneQ8(MouseEvent event) {
+        Q8Array.add(11);
+        Q8Array.add(12);
+        Q8Array.add(14);
+        Q8Array.add(15);
+        
+        betArray = Q8Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("11, 12, 14, 15");
     }
 
     @FXML
     private void clickPaneQ9(MouseEvent event) {
+        Q9Array.add(13);
+        Q9Array.add(14);
+        Q9Array.add(16);
+        Q9Array.add(17);
+        
+        betArray = Q9Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("13, 14, 16, 17");
     }
 
     @FXML
     private void clickPaneQ10(MouseEvent event) {
+        Q10Array.add(14);
+        Q10Array.add(15);
+        Q10Array.add(17);
+        Q10Array.add(18);
+        
+        betArray = Q10Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("14, 15, 17, 18");
     }
 
     @FXML
     private void clickPaneQ11(MouseEvent event) {
+        Q11Array.add(16);
+        Q11Array.add(17);
+        Q11Array.add(19);
+        Q11Array.add(20);
+        
+        betArray = Q11Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("16, 17, 19, 20");
     }
 
     @FXML
     private void clickPaneQ12(MouseEvent event) {
+        Q12Array.add(17);
+        Q12Array.add(18);
+        Q12Array.add(20);
+        Q12Array.add(21);
+        
+        betArray = Q12Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("17, 18, 20, 21");
     }
 
     @FXML
     private void clickPaneQ13(MouseEvent event) {
+        Q13Array.add(19);
+        Q13Array.add(20);
+        Q13Array.add(22);
+        Q13Array.add(23);
+        
+        betArray = Q13Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("19, 20, 22, 23");
     }
 
     @FXML
     private void clickPaneQ14(MouseEvent event) {
+        Q14Array.add(20);
+        Q14Array.add(21);
+        Q14Array.add(23);
+        Q14Array.add(24);
+        
+        betArray = Q14Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("20, 21, 23, 24");
     }
 
     @FXML
     private void clickPaneQ15(MouseEvent event) {
+        Q15Array.add(22);
+        Q15Array.add(23);
+        Q15Array.add(25);
+        Q15Array.add(26);
+        
+        betArray = Q15Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("22, 23, 25, 26");
     }
 
     @FXML
     private void clickPaneQ16(MouseEvent event) {
+        Q16Array.add(23);
+        Q16Array.add(24);
+        Q16Array.add(26);
+        Q16Array.add(27);
+        
+        betArray = Q16Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("23, 24, 26, 27");
     }
 
     @FXML
     private void clickPaneQ17(MouseEvent event) {
+        Q17Array.add(25);
+        Q17Array.add(26);
+        Q17Array.add(28);
+        Q17Array.add(29);
+        
+        betArray = Q17Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("25, 26, 28, 29");
     }
 
     @FXML
     private void clickPaneQ18(MouseEvent event) {
+        Q18Array.add(26);
+        Q18Array.add(27);
+        Q18Array.add(29);
+        Q18Array.add(30);
+        
+        betArray = Q18Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("26, 27, 29, 30");
     }
 
     @FXML
     private void clickPaneQ19(MouseEvent event) {
+        Q19Array.add(28);
+        Q19Array.add(29);
+        Q19Array.add(31);
+        Q19Array.add(32);
+        
+        betArray = Q19Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("28, 29, 31, 32");
     }
 
     @FXML
     private void clickPaneQ20(MouseEvent event) {
+        Q20Array.add(29);
+        Q20Array.add(30);
+        Q20Array.add(32);
+        Q20Array.add(33);
+        
+        betArray = Q20Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("29, 30, 32, 33");
     }
 
     @FXML
     private void clickPaneQ21(MouseEvent event) {
+        Q21Array.add(31);
+        Q21Array.add(32);
+        Q21Array.add(34);
+        Q21Array.add(35);
+        
+        betArray = Q21Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("31, 32, 34, 35");
     }
 
     @FXML
     private void clickPaneQ22(MouseEvent event) {
+        Q22Array.add(32);
+        Q22Array.add(33);
+        Q22Array.add(35);
+        Q22Array.add(36);
+        
+        betArray = Q22Array;
+        ArrayIdentify = 4;
+        isNumber = false;
+        stringBet.set("32, 33, 35, 36");
     }
-
 
     @FXML
     private void clickFiveBet(MouseEvent event) {
@@ -836,6 +1080,7 @@ public class RouletteFXMLController implements Initializable {
         ArrayIdentify = 3;
         isNumber = false;
         betArray = fiveArray;
+        stringBet.set("Five Bet");
     }
 
     //-------------------------------------------------------------------
@@ -955,5 +1200,4 @@ public class RouletteFXMLController implements Initializable {
         return playerBalance;
     }
 
-    
 }

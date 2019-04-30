@@ -49,23 +49,22 @@ public class MainMenuRouletteFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         rouletteLogo.setOpacity(0);
         // TODO
-        PauseTransition transition = new PauseTransition(Duration.seconds(1));
+        PauseTransition transition = new PauseTransition(Duration.millis(500));
         transition.setOnFinished(x -> showLogo());
         transition.play();
     }
 
     public void showLogo() {
 
-        FadeTransition ft = new FadeTransition(Duration.millis(3000), rouletteLogo);
+        FadeTransition ft = new FadeTransition(Duration.millis(2500), rouletteLogo);
         ft.setFromValue(0);
-        ft.setToValue(1.0);
+        ft.setToValue(1);
         ft.play();
     }
 
     @FXML
     private void rouletteStart(ActionEvent event) {
         play.displayGame();
-        System.out.println("Button is working");
     }
 
     @FXML

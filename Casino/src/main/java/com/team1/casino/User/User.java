@@ -20,7 +20,7 @@ public abstract class User {
     private String role;
     private String username;
     private String password;
-    private Integer currentBalance;
+    private Integer currentBalance = 1000;
     private boolean validated = false;
     private String validationCode = "";
     private String emailAdress;
@@ -77,7 +77,7 @@ public abstract class User {
     }
 
     public void setCurrentBalance(double currentBalance) {
-        this.currentBalance = (int)currentBalance;
+        this.currentBalance = (int) currentBalance;
     }
 
     public void writeBalanceToDatabase() {
@@ -111,10 +111,15 @@ public abstract class User {
 
     public void loadUserInformation() {
         UserUtil util = new UserUtil();
-        this.currentBalance = (int)util.loadCurrentBalanceFromGivenUsername(username);
+        this.currentBalance = (int) util.loadCurrentBalanceFromGivenUsername(username);
         this.ID = util.getIDFromUserByUsername(username);
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public abstract void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount);
 
+    public abstract void setNewPassword(String newPasswordHash, String newPasswordPlain);
 }

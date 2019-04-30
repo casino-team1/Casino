@@ -83,7 +83,11 @@
             <Font size="14.0" />
          </font>
       </Label>
+<<<<<<< HEAD
       <Button fx:id="kasseButton" layoutX="681.0" layoutY="521.0" mnemonicParsing="false" onAction="#pressKasseButton" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Kasse" textFill="WHITE">
+=======
+      <Button fx:id="changePasswordButton" layoutX="591.0" layoutY="530.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="39.0" prefWidth="188.0" style="-fx-border-color: white; -fx-background-color: transparent; -fx-border-width: 3px;" text="Change Password" textFill="WHITE">
+>>>>>>> 3dcf56e585d521334a062c7bf2d03c15acc87dcc
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Random;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -20,14 +21,14 @@ public class BlackJackSpielerModel {
     private int kartenWertSpieler = 0;
     
     private Karten k = new Karten();
-    private HashMap<Image, Integer> karten = new HashMap<>();
+    private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
     private ArrayList<String> kartenSpieler = new ArrayList<>();
     private String zufallskarte = "";
 
     private boolean gewonnen = false;
 
-    public void hit(HashMap<Image, Integer> karten, ArrayList<String> kartenSymbole, Label labelKartenSpieler) {
+    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, ImageView spielerKarte1, ImageView spielerKarte2, ImageView spielerKarte3, ImageView spielerKarte4, ImageView spielerKarte5) {
         //Parameter einfangen
         this.karten = karten;
         this.kartenSymbole = kartenSymbole;
@@ -51,14 +52,36 @@ public class BlackJackSpielerModel {
         } else if (zufallskarte.contains("A")) {
             kartenWertSpieler += 11;
         } else {
-            kartenWertSpieler += karten.get(zufallskarte);
+            kartenWertSpieler += karten.get(("/images/GameCards/"+zufallskarte+".png"));
         }
         kartenSpieler.add(zufallskarte);
-        karten.remove(zufallskarte);
+        karten.remove("/images/GameCards/" + zufallskarte + ".png");
         kartenSymbole.remove(zufallskarte);
         k.subAnzahlKartenImKartenDeck();
         k.subAnzahlKartenInKartenSymbole();
-        labelKartenSpieler.setText(labelKartenSpieler.getText() + " , " + zufallskarte);
+        //labelKartenSpieler.setText(labelKartenSpieler.getText() + " , " + zufallskarte);
+        //Karten anzeigen
+        if(spielerKarte1.getImage() == null){
+            spielerKarte1.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
+            return;
+        }
+        if(spielerKarte2.getImage() == null){
+            spielerKarte2.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
+            return;
+        }
+        if(spielerKarte3.getImage() == null){
+            spielerKarte3.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
+            return;
+        }
+        if(spielerKarte4.getImage() == null){
+            spielerKarte4.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
+            return;
+        }
+        if(spielerKarte5.getImage() == null){
+            spielerKarte5.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
+            return;
+        }
+        
     }
 
     public void setGewonnen(boolean g) {

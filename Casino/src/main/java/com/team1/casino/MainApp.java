@@ -47,7 +47,7 @@ public class MainApp extends Application {
         return this.stage;
     }
 
-    public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEVELOPMENT;
+    public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEBUG;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -69,7 +69,7 @@ public class MainApp extends Application {
                 displayMainMenu();
                 break;
             default:
-                UserCentral.getInstance().setUser(new Spieler("TEST", "TEst"));
+                UserCentral.getInstance().setUser(new Spieler("THISISATEST", "THISISATEST"));
                 displayMainMenu();
                 break;
         }
@@ -107,7 +107,7 @@ public class MainApp extends Application {
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
             stage.setTitle("Spieler einloggen");
-            stage.setScene(scene); 
+            stage.setScene(scene);
             stage.centerOnScreen();
             stage.show();
             stage.setResizable(false);

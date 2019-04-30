@@ -26,10 +26,11 @@ public class BlackJackDealerModel {
     private ArrayList<String> kartenSymbole = new ArrayList<>();
     private ArrayList<String> kartenDealer = new ArrayList<>();
     private String zufallskarte = "";
+    private Random r = new Random();
 
     private boolean gewonnen = false;
 
-    public void firstHit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, ImageView dealerKarte1, ImageView dealerKarte2, ImageView dealerKarte3, ImageView dealerKarte4, ImageView dealerKarte5) {
+    public void firstHit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, ImageView dealerKarte1, ImageView dealerKarte2, ImageView dealerKarte3, ImageView dealerKarte4, ImageView dealerKarte5, Label labelKartenWertDealer) {
         //Parameter einfangen
         this.karten = karten;
         this.kartenSymbole = kartenSymbole;
@@ -42,7 +43,6 @@ public class BlackJackDealerModel {
 
         //zufällige Werte
         int zufallszahl = 0;
-        Random r = new Random();
 
         //Erste Karte an Dealer verteilen
         zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
@@ -64,14 +64,19 @@ public class BlackJackDealerModel {
         //Karten anzeigen
         if (dealerKarte1.getImage() == null) {
             dealerKarte1.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertDealer.setText("("+kartenWertDealer+")");
         } else if (dealerKarte2.getImage() == null) {
             dealerKarte2.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertDealer.setText("("+kartenWertDealer+")");
         } else if (dealerKarte3.getImage() == null) {
             dealerKarte3.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertDealer.setText("("+kartenWertDealer+")");
         } else if (dealerKarte4.getImage() == null) {
             dealerKarte4.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertDealer.setText("("+kartenWertDealer+")");
         } else if (dealerKarte5.getImage() == null) {
             dealerKarte5.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertDealer.setText("("+kartenWertDealer+")");
         }
 
         //Zweite unbekannte Karte an Dealer verteilen
@@ -93,7 +98,7 @@ public class BlackJackDealerModel {
     }
 
     public void secondHit() {
-        //Zweiter Wert von Karte mitberechnen
+        //Zweite Karte mitberechnen
         kartenWertDealer += karteZweiWert;
 
         //Hat es genügend Karten?
@@ -104,7 +109,7 @@ public class BlackJackDealerModel {
 
         //zufällige Werte
         int zufallszahl = 0;
-        Random r = new Random();
+        zufallskarte = "";
 
         //Wenn Dealer unter 17 hat, muss er ziehen
         if (kartenWertDealer < 17) {

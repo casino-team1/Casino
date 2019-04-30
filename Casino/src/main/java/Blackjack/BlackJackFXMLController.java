@@ -96,7 +96,7 @@ public class BlackJackFXMLController implements Initializable {
     private void stand(ActionEvent event) {
         buttonHit.setDisable(true);
         buttonStand.setDisable(true);
-        game.dealerRound();
+        //game.dealerRound();
     }
 
     @FXML
@@ -173,7 +173,7 @@ public class BlackJackFXMLController implements Initializable {
         String s = String.valueOf(i * 2);
         labelVerdoppeln.setText("Ihr Einsatz wurde erhöht auf " + s);
         game.spielerHit();
-        game.dealerRound();
+        //game.dealerRound();
     }
 
     @FXML

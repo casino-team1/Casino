@@ -46,8 +46,8 @@ public class ExchangeFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance());
-    }    
-    
+    }
+
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
     }
@@ -56,5 +56,5 @@ public class ExchangeFXMLController implements Initializable {
     private void pressBackButton(ActionEvent event) {
         this.mainApplication.displayMainMenu();
     }
-    
+
 }

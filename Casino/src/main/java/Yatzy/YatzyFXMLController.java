@@ -391,7 +391,7 @@ public class YatzyFXMLController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/YatzyhelpFXML.fxml"));
         Stage stageHelp = new Stage();
         stageHelp.setTitle("Hilfe");
-        stageHelp.setScene(new Scene(root, 600, 428));
+        stageHelp.setScene(new Scene(root, 640, 448));
         stageHelp.setResizable(false);
         stageHelp.centerOnScreen();
         stageHelp.show();

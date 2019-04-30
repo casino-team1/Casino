@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
@@ -20,8 +21,11 @@
             <Font size="38.0" />
          </font>
          <effect>
-            <DropShadow height="60.0" radius="29.5" spread="0.21" width="60.0" />
-         </effect></Button>
+            <DropShadow blurType="GAUSSIAN" height="60.0" radius="29.5" spread="0.1" width="60.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <ImageView fitHeight="191.0" fitWidth="377.0" layoutX="132.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Yatzy/yatzy_logo.png" />
@@ -32,6 +36,9 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnback" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#pressbtnback" text="Zurück" />
+      <Button fx:id="btnback" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#pressbtnback" text="Zurück">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

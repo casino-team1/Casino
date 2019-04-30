@@ -20,7 +20,7 @@ public abstract class User {
     private String role;
     private String username;
     private String password;
-    private Integer currentBalance;
+    private Integer currentBalance = 1000;
     private boolean validated = false;
     private String validationCode = "";
     private String emailAdress;

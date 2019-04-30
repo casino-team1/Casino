@@ -89,24 +89,18 @@ public class PlayerStatisticController implements Initializable, Observer {
                 }
             }
         });
-        betCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Statistic, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Statistic, String> p) {
-                if (p.getValue() != null) {
-                    return new SimpleStringProperty(String.valueOf(p.getValue().getBet()));
-                } else {
-                    return new SimpleStringProperty("No Bet");
-                }
+        betCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
+            if (p.getValue() != null) {
+                return new SimpleStringProperty(String.valueOf(p.getValue().getBet()));
+            } else {
+                return new SimpleStringProperty("No Bet");
             }
         });
-        ChangeCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Statistic, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Statistic, String> p) {
-                if (p.getValue() != null) {
-                    return new SimpleStringProperty(String.valueOf(p.getValue().getUserAccountChange()));
-                } else {
-                    return new SimpleStringProperty("No Change");
-                }
+        ChangeCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
+            if (p.getValue() != null) {
+                return new SimpleStringProperty(String.valueOf(p.getValue().getUserAccountChange()));
+            } else {
+                return new SimpleStringProperty("No Change");
             }
         });
     }
@@ -114,12 +108,12 @@ public class PlayerStatisticController implements Initializable, Observer {
     @Override
     @SuppressWarnings("unchecked")
     public void update(Observable o, Object arg) {
-        PlayerStatisticModel model = (PlayerStatisticModel) o;
+        PlayerStatisticModel playerModel = (PlayerStatisticModel) o;
         XYChart.Series<String, Double> series = getPopulatedPlayerBalanceSeries();
         this.kontostandChart.getData().add(series);
         this.kontostandChart.setCreateSymbols(false);
         this.statisticTable.getItems().clear();
-        for (Statistic stat : model.getStats()) {
+        for (Statistic stat : playerModel.getStats()) {
             this.statisticTable.getItems().add(stat);
         }
     }

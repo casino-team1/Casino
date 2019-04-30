@@ -74,6 +74,9 @@ public class GameStatisticController implements Initializable, Observer {
         this.statCounter.getItems().add(String.valueOf(20));
         this.statCounter.getItems().add(String.valueOf(100));
         this.statCounter.getItems().add(String.valueOf(200));
+        this.statCounter.getItems().add(String.valueOf(300));
+        this.statCounter.getItems().add(String.valueOf(400));
+        this.statCounter.getItems().add(String.valueOf(500));
         this.statCounter.getItems().add("All");
     }
 

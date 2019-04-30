@@ -58,7 +58,7 @@ public class DatabaseQuery extends Query {
 
     @Override
     public int runQueryGetAddedID(String query, String parameters) {
-        PreparedStatement statement = null;
+        PreparedStatement statement;
         try {
             statement = super.getDATABASE_CONNECTION().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             String[] para = parameters.split(";");

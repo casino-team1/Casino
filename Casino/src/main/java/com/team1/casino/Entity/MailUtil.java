@@ -47,6 +47,11 @@ public class MailUtil {
         return preparedMessage;
     }
 
+    /**
+     * Code Idea found on
+     * https://www.javatpoint.com/example-of-sending-email-using-java-mail-api
+     * {15.04}
+     */
     public void sendRegistrationMail() {
         Thread thread = new Thread(() -> {
             Session session = MailConfig.getSessionByProperty(MailConfig.getMailProperties());

@@ -20,20 +20,20 @@ import javafx.stage.Stage;
  * @author Lukas Gilgen Schule
  */
 public class PlayRoulette extends Spiel {
-    
+
     Stage stage;
-    
+
     public PlayRoulette(MainApp mainApplication) {
         super(mainApplication);
         this.stage = mainApplication.getStage();
         this.stage.setResizable(false);
     }
     private Roulette rouellte;
-    
+
     public void setRoulette(Roulette rouellte) {
         this.rouellte = rouellte;
     }
-    
+
     @Override
     public void startGame() {
         //System.out.println("Roulette is working");
@@ -42,15 +42,16 @@ public class PlayRoulette extends Spiel {
         Parent root = null;
         try {
             root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            RouletteFXMLController controller = loader.getController();
+            controller.setMainApplication(super.getMainApp());
+            stageRoulette.setTitle("Roulette Wheel");
+            stageRoulette.setScene(scene);
+            stageRoulette.show();
         } catch (IOException ex) {
             ex.printStackTrace();
             Logger.getLogger(Roulette.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Scene scene = new Scene(root);
-        RouletteFXMLController controller = loader.getController();
-        controller.setMainApplication(super.getMainApp());
-        stageRoulette.setTitle("Roulette Wheel");
-        stageRoulette.setScene(scene);
-        stageRoulette.show();
+
     }
 }

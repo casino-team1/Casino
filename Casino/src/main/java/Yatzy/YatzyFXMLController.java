@@ -878,12 +878,4 @@ public class YatzyFXMLController implements Initializable {
                 break;
         }
     }
-
-    public ArrayList<Dice> getGearray() {
-        return gearray;
-    }
-
-    public ArrayList<Dice> getFinalArray() {
-        return finalarray;
-    }
 }

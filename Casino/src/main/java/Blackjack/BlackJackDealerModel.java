@@ -64,19 +64,19 @@ public class BlackJackDealerModel {
         //Karten anzeigen
         if (dealerKarte1.getImage() == null) {
             dealerKarte1.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("("+kartenWertDealer+")");
+            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
         } else if (dealerKarte2.getImage() == null) {
             dealerKarte2.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("("+kartenWertDealer+")");
+            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
         } else if (dealerKarte3.getImage() == null) {
             dealerKarte3.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("("+kartenWertDealer+")");
+            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
         } else if (dealerKarte4.getImage() == null) {
             dealerKarte4.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("("+kartenWertDealer+")");
+            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
         } else if (dealerKarte5.getImage() == null) {
             dealerKarte5.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("("+kartenWertDealer+")");
+            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
         }
 
         //Zweite unbekannte Karte an Dealer verteilen
@@ -98,8 +98,6 @@ public class BlackJackDealerModel {
     }
 
     public void secondHit() {
-        //Zweite Karte mitberechnen
-        kartenWertDealer += karteZweiWert;
 
         //Hat es genügend Karten?
         if (k.getAnzahlKartenImKartenDeck() < 1) {
@@ -112,29 +110,20 @@ public class BlackJackDealerModel {
         zufallskarte = "";
 
         //Wenn Dealer unter 17 hat, muss er ziehen
-        if (kartenWertDealer < 17) {
-            while (kartenWertDealer < 17) {
-                zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
-                zufallskarte = kartenSymbole.get(zufallszahl);
-                if (karten.containsKey(zufallskarte)) {
-                    if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
-                        kartenWertDealer += 10;
-                    } else if (zufallskarte.contains("A")) {
-                        kartenWertDealer += 11;
-                    } else {
-                        kartenWertDealer += karten.get("/images/GameCards/" + zufallskarte + ".png");
-                    }
-                    kartenDealer.add(zufallskarte);
-                    karten.remove("/images/GameCards/" + zufallskarte + ".png");
-                    kartenSymbole.remove(zufallskarte);
-                    k.subAnzahlKartenImKartenDeck();
-                    k.subAnzahlKartenInKartenSymbole();
-                } else {
-                    kartenWertDealer -= karteZweiWert;
-                    secondHit();
-                }
-            }
+        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+        zufallskarte = kartenSymbole.get(zufallszahl);
+        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+            kartenWertDealer += 10;
+        } else if (zufallskarte.contains("A")) {
+            kartenWertDealer += 11;
+        } else {
+            kartenWertDealer += karten.get("/images/GameCards/" + zufallskarte + ".png");
         }
+        kartenDealer.add(zufallskarte);
+        karten.remove("/images/GameCards/" + zufallskarte + ".png");
+        kartenSymbole.remove(zufallskarte);
+        k.subAnzahlKartenImKartenDeck();
+        k.subAnzahlKartenInKartenSymbole();
     }
 
     public void setGewonnen(boolean g) {

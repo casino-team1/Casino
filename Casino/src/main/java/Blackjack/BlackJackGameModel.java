@@ -170,8 +170,16 @@ public class BlackJackGameModel {
     }
 
     public void dealerRound(Label labelKartenWertDealer) {
+        //Zweite Karte mitberechnen
+        dealer.kartenWertDealerPlusKarteZwei();
+        
         //dealer muss karten ziehen
-        dealer.secondHit();
+        if(dealer.getKartenWertDealer() < 17){
+            do{
+                dealer.secondHit();
+            }while(dealer.getKartenWertDealer() < 17);
+        }
+        
 
         //Anzeige leeren
         dealerKarte1.setImage(null);

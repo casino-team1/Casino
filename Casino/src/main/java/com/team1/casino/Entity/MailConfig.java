@@ -30,6 +30,7 @@ public class MailConfig {
     public static Session getSessionByProperty(Properties properties) {
         Session session = Session.getInstance(MailConfig.getMailProperties(),
                 new javax.mail.Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication("mountainviewcasino@gmail.com", "V/Em]dy3`?n\\nW;;");
             }

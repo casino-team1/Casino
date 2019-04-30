@@ -12,15 +12,15 @@ package com.team1.casino;
  */
 public abstract class Spiel {
 
-    private MainApp mainApplication;
+    private final MainApp mainApplication;
 
     public Spiel(MainApp mainApplication) {
         this.mainApplication = mainApplication;
     }
 
     public abstract void startGame();
-    
-    public MainApp getMainApp(){
+
+    public MainApp getMainApp() {
         return this.mainApplication;
     }
 }

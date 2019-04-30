@@ -41,6 +41,9 @@ public class StatisticController implements Initializable, Observer {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

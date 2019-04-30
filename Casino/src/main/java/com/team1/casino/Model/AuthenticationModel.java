@@ -29,9 +29,9 @@ public class AuthenticationModel extends Observable {
 
     private String errorMessage;
 
-    private String givenCode;
+    private final String givenCode;
 
-    private SimpleStringProperty userInputCode = new SimpleStringProperty();
+    private final SimpleStringProperty userInputCode = new SimpleStringProperty();
 
     public String getGivenCode() {
         return givenCode;

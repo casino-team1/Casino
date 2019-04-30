@@ -74,12 +74,14 @@ public class CasinoController implements Initializable, Observer {
         if (isValidChange == true) {
             String newPassword = changer.getNewPassword();
             if (newPassword.equals(UserCentral.getInstance().getUser().getPassword()) == false) {
+                //Run a new thread that changes the password, even if the programm is terminated.
                 Thread thread = new Thread() {
                     @Override
                     public void run() {
                         UserCentral.getInstance().getUser().setNewPassword(UserUtil.getHashedPassword(newPassword), newPassword);
                     }
                 };
+                thread.start();
                 changer.displayMessage("You'r new password", String.format("You have changed your password to: %s", newPassword));
             } else {
                 changer.displayMessage("That looks a lot a like", "You can't change the password to the password itself, please use a different one");

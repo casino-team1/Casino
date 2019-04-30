@@ -7,6 +7,7 @@ import Blackjack.Blackjack;
 import Roulette.Roulette;
 import Yatzy.Yatzy;
 import com.team1.casino.Controller.AuthenticationController;
+import com.team1.casino.Controller.ExchangeFXMLController;
 import com.team1.casino.Controller.Statistic.GameStatisticController;
 import com.team1.casino.Controller.LoginController;
 import com.team1.casino.Controller.PasswordRecoveryController;
@@ -46,7 +47,7 @@ public class MainApp extends Application {
         return this.stage;
     }
 
-    public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEVELOPMENT;
+    public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEBUG;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -68,7 +69,7 @@ public class MainApp extends Application {
                 displayMainMenu();
                 break;
             default:
-                UserCentral.getInstance().setUser(new Spieler("TEST", "TEst"));
+                UserCentral.getInstance().setUser(new Spieler("THISISATEST", "THISISATEST"));
                 displayMainMenu();
                 break;
         }
@@ -106,7 +107,7 @@ public class MainApp extends Application {
             root = (Parent) loader.load();
             Scene scene = new Scene(root);
             stage.setTitle("Spieler einloggen");
-            stage.setScene(scene); 
+            stage.setScene(scene);
             stage.centerOnScreen();
             stage.show();
             stage.setResizable(false);
@@ -116,7 +117,6 @@ public class MainApp extends Application {
             loginModel.setMainApplication(this);
             controller.setModel(loginModel);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -231,6 +231,23 @@ public class MainApp extends Application {
             gameStatModel.loadGameNames();
             gameStatModel.addObserver(controller);
             controller.setGameStatistics(gameStatModel);
+        } catch (IOException ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void displayExchange() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ExchangeFXML.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Kasse");
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+            ExchangeFXMLController controller = loader.getController();
+            controller.setMainApplication(this);
         } catch (IOException ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }

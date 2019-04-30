@@ -53,7 +53,7 @@
          </font>
       </Button>
       <ImageView fx:id="spielerKarte1" fitHeight="201.0" fitWidth="149.0" layoutX="14.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="spielerKarte2" fitHeight="201.0" fitWidth="149.0" layoutX="89.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="spielerKarte2" fitHeight="201.0" fitWidth="149.0" layoutX="89.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="spielerKarte3" fitHeight="201.0" fitWidth="149.0" layoutX="164.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="spielerKarte4" fitHeight="201.0" fitWidth="149.0" layoutX="239.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="spielerKarte5" fitHeight="201.0" fitWidth="149.0" layoutX="314.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
@@ -67,7 +67,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Line endX="5.79998779296875" endY="220.60003662109375" layoutX="470.0" layoutY="269.0" startX="5.79998779296875" startY="24.600006103515625" stroke="#e5ff00" strokeWidth="5.0" />
+      <Line endX="5.79998779296875" endY="220.60003662109375" layoutX="468.0" layoutY="268.0" startX="5.79998779296875" startY="24.600006103515625" stroke="#e5ff00" strokeWidth="5.0" />
       <Button fx:id="buttonVersichern" disable="true" layoutX="587.0" layoutY="591.0" mnemonicParsing="false" onAction="#versichern" text="Versichern" />
       <Button fx:id="buttonVerdoppeln" disable="true" layoutX="447.0" layoutY="591.0" mnemonicParsing="false" onAction="#verdoppeln" text="Verdoppeln" />
       <Button fx:id="buttonStand" disable="true" layoutX="345.0" layoutY="590.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
@@ -79,17 +79,17 @@
          </font>
       </Label>
       <Label fx:id="labelVerdoppeln" layoutX="403.0" layoutY="634.0" textFill="WHITE" />
-      <Label fx:id="labelLösung" layoutX="354.0" layoutY="716.0" textFill="WHITE">
+      <Label fx:id="labelLösung" layoutX="286.0" layoutY="672.0" prefHeight="53.0" prefWidth="511.0" textFill="WHITE">
          <font>
-            <Font size="24.0" />
+            <Font size="36.0" />
          </font></Label>
       <Label fx:id="labelVersicherung" layoutX="587.0" layoutY="626.0" textFill="WHITE" />
-      <Label layoutX="161.0" layoutY="250.0" text="Spieler Karten" textFill="#ffc200">
+      <Label layoutX="115.0" layoutY="251.0" text="Spieler Karten" textFill="#ffc200">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label layoutX="680.0" layoutY="250.0" text="Dealer Karten" textFill="#ffc200">
+      <Label layoutX="650.0" layoutY="251.0" text="Dealer Karten" textFill="#ffc200">
          <font>
             <Font size="23.0" />
          </font>
@@ -99,10 +99,20 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fx:id="dealerKarte1" fitHeight="201.0" fitWidth="149.0" layoutX="494.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte1" fitHeight="201.0" fitWidth="149.0" layoutX="494.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerKarte2" fitHeight="201.0" fitWidth="149.0" layoutX="569.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte3" fitHeight="201.0" fitWidth="149.0" layoutX="644.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte4" fitHeight="201.0" fitWidth="149.0" layoutX="719.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte5" fitHeight="201.0" fitWidth="149.0" layoutX="794.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte3" fitHeight="201.0" fitWidth="149.0" layoutX="644.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte4" fitHeight="201.0" fitWidth="149.0" layoutX="719.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerKarte5" fitHeight="201.0" fitWidth="149.0" layoutX="794.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="labelKartenWertSpieler" layoutX="263.0" layoutY="251.0" prefHeight="17.0" prefWidth="46.0" textFill="#ffc200">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelKartenWertDealer" layoutX="794.0" layoutY="251.0" prefHeight="17.0" prefWidth="46.0" textFill="#ffc200">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

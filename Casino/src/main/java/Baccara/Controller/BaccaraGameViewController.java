@@ -6,6 +6,7 @@
  */
 package Baccara.Controller;
 
+import Baccara.BaccaraHandler;
 import Baccara.Entity.BaccaraCard;
 import Baccara.Model.BaccaraGameModel;
 import com.team1.casino.User.Util.UserCentral;
@@ -26,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -82,13 +84,11 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @FXML
     private ImageView bankerBetCoin;
     @FXML
-    private ImageView winnerCard;
-    @FXML
     private Text userBalance;
     @FXML
     private Text totalBet;
     @FXML
-    private ImageView bankerChip;
+    private Button menuButton;
 
     /**
      * Initializes the controller class.
@@ -116,6 +116,12 @@ public class BaccaraGameViewController implements Initializable, Observer {
         for (ImageView imageView : imageViews) {
             imageView.setImage(new Image("/images/GameCards/cardBack.png"));
         }
+    }
+
+    private BaccaraHandler handler;
+
+    public void setBaccaraHandler(BaccaraHandler handler) {
+        this.handler = handler;
     }
 
     @Override
@@ -159,6 +165,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
         if (this.gameModel.getTotalBet() == 0) {
             return;
         }
+        this.bankerBetCoin.setImage(null);
         this.gameModel.generateCards();
         updateBalanceAndBet();
         resetImageViews();
@@ -344,7 +351,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void resetImageViews() {
-        this.bankerBetCoin = new ImageView();
         ImageView[] imageViews = {this.firstLeftCard, this.secondLeftCard, this.thirdLeftCard, this.firstRightCard, this.secondRightCard, this.thirdRightImage};
         for (int i = 0; i < imageViews.length; i++) {
             imageViews[i] = new ImageView();
@@ -397,13 +403,18 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @FXML
     private void setBankerBet(MouseEvent event) {
         if (this.draggable != null) {
-            this.bankerBet.setImage(this.draggable.getImage());
-            this.bankerBet.setFitHeight(100);
-            this.bankerBet.setFitWidth(100);
+            this.bankerBetCoin.setImage(this.draggable.getImage());
+            this.bankerBetCoin.setFitHeight(100);
+            this.bankerBetCoin.setFitWidth(100);
             this.draggable = null;
             this.gameModel.setCursor().setCursor(Cursor.DEFAULT);
             this.gameModel.setDealerBet(100);
             updateBalanceAndBet();
         }
+    }
+
+    @FXML
+    private void backToMenu(ActionEvent event) {
+        this.handler.displayMenu();
     }
 }

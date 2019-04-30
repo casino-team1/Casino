@@ -98,12 +98,12 @@ public class BaccaraGameModel extends BaccaraModel {
             Check who has won the game and then write the new stats and balances to the database.
          */
         if (this.baccaraGame.getPlayerCardCount() > this.baccaraGame.getDealerCardCount()) {
-            if (this.baccaraGame.getPlayerBet() != 0) {
-                UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance() + (this.baccaraGame.getPlayerBet() * 2), "Baccara", this.baccaraGame.getPlayerBet(), "Won", this.baccaraGame.getPlayerBet());
-            }
+            UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance() + (this.baccaraGame.getPlayerBet() * 2), "Baccara", this.baccaraGame.getPlayerBet(), "Won", this.baccaraGame.getPlayerBet());
             return "Player";
         } else if (this.baccaraGame.getPlayerCardCount() == this.baccaraGame.getDealerCardCount()) {
+            System.out.println(UserCentral.getInstance().getUser().getCurrentBalance());
             UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance() + this.baccaraGame.getTieBet(), "Baccara", this.baccaraGame.getPlayerBet(), "Tie", 0);
+            System.out.println(UserCentral.getInstance().getUser().getCurrentBalance());
             return "Tie";
         }
         UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance(), "Baccara", this.baccaraGame.getPlayerBet(), "Lost", this.baccaraGame.getPlayerBet() - (this.baccaraGame.getPlayerBet() * 2));

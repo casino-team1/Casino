@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -90,6 +89,10 @@ public class BlackJackGameFXMLController implements Initializable {
     private Label labelVersicherung;
     @FXML
     private Label balanceLabel;
+    @FXML
+    private Label labelKartenWertSpieler;
+    @FXML
+    private Label labelKartenWertDealer;
 
     public void setMain(MainApp main) {
         this.main = main;
@@ -137,6 +140,11 @@ public class BlackJackGameFXMLController implements Initializable {
         buttonStand.setDisable(false);
         buttonVerdoppeln.setDisable(true);
         buttonVersichern.setDisable(true);
+        labelKartenWertDealer.setText("");
+        labelKartenWertSpieler.setText("");
+        labelLösung.setText("");
+        labelVerdoppeln.setText("");
+        labelVersicherung.setText("");
 
         game.play();
     }
@@ -197,14 +205,14 @@ public class BlackJackGameFXMLController implements Initializable {
         String s = String.valueOf(i * 2);
         labelVerdoppeln.setText("Ihr Einsatz wurde erhöht auf " + s);
         game.spielerHit();
-        game.dealerRound();
+        game.dealerRound(labelKartenWertDealer);
     }
 
     @FXML
     private void stand(ActionEvent event) {
         buttonHit.setDisable(true);
         buttonStand.setDisable(true);
-        game.dealerRound();
+        game.dealerRound(labelKartenWertDealer);
     }
 
     @FXML
@@ -216,7 +224,7 @@ public class BlackJackGameFXMLController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, 
                 spielerKarte1, spielerKarte2, spielerKarte3, spielerKarte4, spielerKarte5, dealerKarte1, dealerKarte2, dealerKarte3, dealerKarte4, dealerKarte5, 
-                labelLösung, labelVerdoppeln, labelVersicherung, textfeldEinsatz, textfeldVersicherung);
+                labelKartenWertSpieler, labelKartenWertDealer, labelLösung, labelVerdoppeln, labelVersicherung, textfeldEinsatz, textfeldVersicherung);
         
         balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
     }

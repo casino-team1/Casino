@@ -24,7 +24,7 @@ import javafx.scene.layout.AnchorPane;
 public class YatzyFXMLMenuController implements Initializable {
 
     /**
-     * Initializes the controller class.
+     * Initialises the controller class.
      */
     
     private MainApp mainApplication;

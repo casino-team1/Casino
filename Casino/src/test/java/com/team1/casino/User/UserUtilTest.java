@@ -24,6 +24,9 @@ public class UserUtilTest {
      */
     @Test
     public void testGetHashedPassword() {
+        String password = "1234";
+        String hashedPassword = UserUtil.getHashedPassword(password);
+        assertEquals(60, hashedPassword.length());
     }
 
     /**

@@ -7,10 +7,8 @@
 package com.team1.casino.Entity;
 
 import com.team1.casino.User.Util.UserCentral;
-import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -22,9 +20,9 @@ import javax.mail.internet.MimeMessage;
  */
 public class MailUtil {
 
-    private String emailAdress;
-    private String secureCode;
-    private String preparedMessage;
+    private final String emailAdress;
+    private final String secureCode;
+    private final String preparedMessage;
 
     private String signature = "Wilkommen zum MountainnView Casino in Los Angeles.\n"
             + " Wir sind erreichbar unter:\nEmail: mountainviewcasino@gmail.com \n"
@@ -49,6 +47,11 @@ public class MailUtil {
         return preparedMessage;
     }
 
+    /**
+     * Code Idea found on
+     * https://www.javatpoint.com/example-of-sending-email-using-java-mail-api
+     * {15.04}
+     */
     public void sendRegistrationMail() {
         Thread thread = new Thread(() -> {
             Session session = MailConfig.getSessionByProperty(MailConfig.getMailProperties());

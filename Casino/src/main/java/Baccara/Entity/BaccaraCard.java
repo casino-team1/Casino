@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class BaccaraCard {
 
-    private int cardValue;
+    private final int cardValue;
     private final String imageLocation;
 
     @Override

@@ -71,4 +71,12 @@ public class Spieler extends User {
         this.setCurrentBalance(newBalance);
         this.addStat(gameName, bet, result, amount);
     }
+
+    @Override
+    public void setNewPassword(String newPasswordHash, String newPasswordPlain) {
+        super.setPassword(newPasswordPlain);
+        String statement = "Update user SET password = ? WHERE username = ?";
+        DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
+        query.runQueryWithoutReturn(statement, newPasswordHash + ";-" + super.getUsername());
+    }
 }

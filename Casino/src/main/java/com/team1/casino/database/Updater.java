@@ -22,13 +22,14 @@ import java.util.logging.Logger;
  */
 public class Updater {
 
-    private java.sql.Connection connection = DatabaseConnection.getInstance().getDatabaseConnection();
+    private final java.sql.Connection connection = DatabaseConnection.getInstance().getDatabaseConnection();
 
     public Updater() {
     }
 
     public void performUpdateWithoutArgument(String query) throws SQLException {
-        Thread thread = new Thread(new Runnable() {
+        Thread thread;
+        thread = new Thread(new Runnable() {
             private boolean result;
 
             public boolean getResult() {

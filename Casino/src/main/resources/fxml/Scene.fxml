@@ -83,5 +83,10 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Button fx:id="kasseButton" layoutX="681.0" layoutY="521.0" mnemonicParsing="false" onAction="#pressKasseButton" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Kasse" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

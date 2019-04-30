@@ -7,6 +7,7 @@ import Blackjack.Blackjack;
 import Roulette.Roulette;
 import Yatzy.Yatzy;
 import com.team1.casino.Controller.AuthenticationController;
+import com.team1.casino.Controller.ExchangeFXMLController;
 import com.team1.casino.Controller.Statistic.GameStatisticController;
 import com.team1.casino.Controller.LoginController;
 import com.team1.casino.Controller.PasswordRecoveryController;
@@ -231,6 +232,21 @@ public class MainApp extends Application {
             gameStatModel.loadGameNames();
             gameStatModel.addObserver(controller);
             controller.setGameStatistics(gameStatModel);
+        } catch (IOException ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void displayExchange() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ExchangeFXML.fxml"));
+            Parent root;
+            root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Kasse");
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }

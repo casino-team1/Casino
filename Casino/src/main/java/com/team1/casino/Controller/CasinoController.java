@@ -22,6 +22,8 @@ public class CasinoController implements Initializable, Observer {
     private Button logOutButton;
     @FXML
     private Label balanceLabel;
+    @FXML
+    private Button kasseButton;
 
     public void setCasinoModel(CasinoModel model) {
         this.casinoModel = model;
@@ -62,4 +64,11 @@ public class CasinoController implements Initializable, Observer {
     private void logUserOut(ActionEvent event) {
         this.casinoModel.logOutUser();
     }
+
+    @FXML
+    private void pressKasseButton(ActionEvent event) {
+        this.casinoModel.displayExchange();
+    }
+    
+    
 }

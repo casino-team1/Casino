@@ -17,9 +17,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
@@ -44,18 +41,16 @@ public class PasswordChanger {
         dialog.setTitle("Change your password");
         dialog.setHeaderText("Password Changer");
 
-        ButtonType loginButtonType = new ButtonType("Login", ButtonData.OK_DONE);
+        ButtonType loginButtonType = new ButtonType("Change", ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
-
         PasswordField password = new PasswordField();
         password.setPromptText("Password");
         PasswordField repeat = new PasswordField();
         repeat.setPromptText("Repeat");
-
         grid.add(new Label("Password:"), 0, 0);
         grid.add(password, 1, 0);
         grid.add(new Label("Repeat:"), 0, 1);
@@ -67,7 +62,6 @@ public class PasswordChanger {
         });
         dialog.getDialogPane().setContent(grid);
         Platform.runLater(() -> password.requestFocus());
-
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == loginButtonType) {
                 return new Pair<>(password.getText(), repeat.getText());

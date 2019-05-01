@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Roulette.RouletteHelpFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1433.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Roulette.RouletteHelpFXMLController">
    <children>
       <ImageView fitHeight="755.0" fitWidth="1433.0" pickOnBounds="true">
          <image>
@@ -56,8 +56,11 @@
       </Label>
       <ImageView fitHeight="290.0" fitWidth="629.0" layoutX="62.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/Roulette/rouletteFields.png" />
+            <Image url="@../images/Roulette/rouletteFieldsHelp.png" />
          </image>
+         <effect>
+            <DropShadow />
+         </effect>
       </ImageView>
       <Label layoutX="662.0" layoutY="25.0" text="Oranges Feld:">
          <font>
@@ -83,7 +86,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label layoutX="856.0" layoutY="75.0" text="Zwischen der untersten Zahl und einer Gruppe">
+      <Label layoutX="856.0" layoutY="75.0" text="Auf einen unteren Pfeil klicken um drei Zahlen">
          <font>
             <Font name="Droid Serif" size="23.0" />
          </font>
@@ -91,7 +94,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label layoutX="856.0" layoutY="105.0" text="klicken, um drei Zahlen auszuwählen">
+      <Label layoutX="856.0" layoutY="105.0" text="auszuwählen">
          <font>
             <Font name="Droid Serif" size="23.0" />
          </font>
@@ -171,7 +174,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label layoutX="856.0" layoutY="345.0" text="In der Mitte von Zwei Zahlen klicken, um diese">
+      <Label layoutX="856.0" layoutY="345.0" text="In Textfeld eine Zahl eingeben und ein Nachbar">
          <font>
             <Font name="Droid Serif" size="23.0" />
          </font>
@@ -179,7 +182,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label layoutX="856.0" layoutY="375.0" text="auszuwählen.">
+      <Label layoutX="856.0" layoutY="375.0" text="auswählen.">
          <font>
             <Font name="Droid Serif" size="23.0" />
          </font>

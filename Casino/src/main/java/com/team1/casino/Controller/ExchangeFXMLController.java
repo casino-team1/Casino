@@ -205,7 +205,7 @@ public class ExchangeFXMLController implements Initializable {
             
             else {
                 jetoncalc = (int)UserCentral.getInstance().getUser().getCurrentChipBalance() - Integer.parseInt(jetonsField.getText());
-                moneycalc = (int)UserCentral.getInstance().getUser().getCurrentMoney() + (int)(Math.round(Double.parseDouble(moneyField.getText())));
+                moneycalc = (int)UserCentral.getInstance().getUser().getCurrentMoney() + (int)(Math.floor(Double.parseDouble(moneyField.getText())));
                 nothundred = false;
             }
         }

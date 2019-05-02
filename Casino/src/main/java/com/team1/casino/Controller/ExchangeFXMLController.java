@@ -52,7 +52,6 @@ public class ExchangeFXMLController implements Initializable {
     private double jetoncalc = 0;
     private double moneycalc = 0;
 
-
     /**
      * Initialises the controller class.
      *
@@ -63,23 +62,11 @@ public class ExchangeFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
-        balanceLabel.setText(Integer.toString(UserCentral.getInstance().getUser().getCurrentChipBalance()));
+        balanceLabel.setText(Integer.toString((int) UserCentral.getInstance().getUser().getCurrentChipBalance()));
         moneyLabel.setText(Double.toString(UserCentral.getInstance().getUser().getCurrentMoney()));
-        
+
         Font.loadFont(getClass().getResourceAsStream("/resources/fonts/SqueakyChalkSound.ttf"), 14);
         balanceLabel.setStyle("-fx-font-family: Squeaky Chalk Sound");
-        
-        moneyField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (moneyfieldlocked == false) {
-                    if (!newValue.matches("\\d{0,7}(\\d{0,4})?")) {
-                        moneyField.setText(oldValue);
-                    }
-                
-                    else {
-
-        //balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance());
 
         moneyField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (moneyfieldlocked == false) {
@@ -95,23 +82,20 @@ public class ExchangeFXMLController implements Initializable {
             }
         });
 
-        jetonsField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (jetonsfieldlocked == false) {
-                    if (!newValue.matches("\\d{0,7}(\\d{0,4})?")) {
-                        jetonsField.setText(oldValue);
+        jetonsField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (jetonsfieldlocked == false) {
+                if (!newValue.matches("\\d{0,7}(\\d{0,4})?")) {
+                    jetonsField.setText(oldValue);
+                } else {
+                    if (jetonsField.getText().equals("")) {
                     } else {
-                        if (jetonsField.getText().equals("")) {
-                        } else {
-                            moneyField.setText(Double.toString(Double.parseDouble(jetonsField.getText()) / 100));
-                        }
-                        acceptButton.setDisable(false);
+                        moneyField.setText(Double.toString(Double.parseDouble(jetonsField.getText()) / 100));
                     }
+                    acceptButton.setDisable(false);
                 }
             }
         });
-        balanceLabel.setText(Integer.toString(UserCentral.getInstance().getUser().getCurrentChipBalance()));
+        balanceLabel.setText(Integer.toString((int) UserCentral.getInstance().getUser().getCurrentChipBalance()));
     }
 
     public void setMainApplication(MainApp mainApplication) {
@@ -201,17 +185,6 @@ public class ExchangeFXMLController implements Initializable {
             jetoncalc = UserCentral.getInstance().getUser().getCurrentChips() - Integer.parseInt(jetonsField.getText());
             moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() + (int) (Math.round(Double.parseDouble(moneyField.getText())));
         }
-        else {
-            //jetoncalc = UserCentral.getInstance().getUser().getCurrentBalance() - Integer.parseInt(jetonsField.getText());
-            //moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() + (int)(Math.round(Double.parseDouble(moneyField.getText())));
-        }
-        
-        UserCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
-        UserCentral.getInstance().getUser().setCurrentMoney(moneycalc);
-        balanceLabel.setText(Integer.toString(UserCentral.getInstance().getUser().getCurrentChipBalance()));
-        moneyLabel.setText(Double.toString(UserCentral.getInstance().getUser().getCurrentMoney()));
-        
-        
 
         if (moneycalc < 0) {
             System.out.println("Insufficient Money");
@@ -219,6 +192,8 @@ public class ExchangeFXMLController implements Initializable {
             UserCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
             UserCentral.getInstance().getUser().setNewMoney(moneycalc);
         }
+        balanceLabel.setText(Integer.toString((int) UserCentral.getInstance().getUser().getCurrentChipBalance()));
+        moneyLabel.setText(Double.toString(UserCentral.getInstance().getUser().getCurrentMoney()));
         locked = false;
         moneyField.setDisable(true);
         jetonsField.setDisable(true);

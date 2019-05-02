@@ -48,12 +48,12 @@ public class Spieler extends User {
     }
 
     @Override
-    public void setCurrentBalance(double currentBalance) {
-        super.setCurrentBalance(currentBalance);
+    public void setNewChipBalance(double currentBalance) {
+        super.setNewChipBalance(currentBalance);
         if (MainApp.EXECUTION_MODE != ExecutionMode.DEVELOPMENT) {
             try {
                 Updater updated = new Updater();
-                updated.performUpdateWithArgument("UPDATE balance b, user u SET b.balance = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(super.getCurrentBalance()) + ";" + String.valueOf(super.getID()));
+                updated.performUpdateWithArgument("UPDATE balance b, user u SET b.chips = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(super.getCurrentChipBalance()) + ";" + String.valueOf(super.getID()));
             } catch (SQLException ex) {
                 Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -68,7 +68,7 @@ public class Spieler extends User {
 
     @Override
     public void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount) {
-        this.setCurrentBalance(newBalance);
+        this.setNewChipBalance(newBalance);
         this.addStat(gameName, bet, result, amount);
     }
 
@@ -79,4 +79,18 @@ public class Spieler extends User {
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
         query.runQueryWithoutReturn(statement, newPasswordHash + ";-" + super.getUsername());
     }
+
+    @Override
+    public void setNewMoney(double newMoney) {
+        super.setCurrentMoney(newMoney);
+        if (MainApp.EXECUTION_MODE != ExecutionMode.DEVELOPMENT) {
+            try {
+                Updater updated = new Updater();
+                updated.performUpdateWithArgument("UPDATE balance b, user u SET b.money = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(super.getCurrentMoney()) + ";" + String.valueOf(super.getID()));
+            } catch (SQLException ex) {
+                Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
 }

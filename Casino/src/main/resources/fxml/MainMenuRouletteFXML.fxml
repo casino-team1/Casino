@@ -41,7 +41,7 @@
       </Label>
       <ImageView fitHeight="266.0" fitWidth="378.0" layoutX="591.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../target/classes/images/MainScreen/logo.png" />
+            <Image url="@../images/Roulette/logo.png" />
          </image>
          <effect>
             <DropShadow />

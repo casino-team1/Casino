@@ -11,6 +11,7 @@ import Baccara.Entity.BaccaraCard;
 import Baccara.Entity.BaccaraGame;
 import com.team1.casino.User.Util.UserCentral;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Scene;
 
@@ -92,21 +93,73 @@ public class BaccaraGameModel extends BaccaraModel {
     public void setDealerBet(int betValue) {
         this.baccaraGame.setDealerBet(betValue);
     }
+    private String resultMessage;
+
+    public void endGame() {
+        String winner = determineWinner();
+        String betMatch = checkForResult(winner);
+        switch (betMatch) {
+            case "Player":
+                accountChange = (this.playerBet * 2) - (this.baccaraGame.getTotalBet());
+                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance() + (this.playerBet * 2), "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
+                break;
+            case "Dealer":
+                accountChange = (this.dealerBet * 2) - (this.baccaraGame.getTotalBet());
+                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance() + (this.dealerBet * 2), "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
+                break;
+            case "Tie":
+                accountChange = (this.tieBet * 8) - (this.baccaraGame.getTotalBet());
+                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance() + this.tieBet * 8, "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
+                break;
+            case "Lost":
+                accountChange = this.baccaraGame.getTotalBet();
+                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance(), "Baccara", this.baccaraGame.getTotalBet(), "Lost", 0);
+                break;
+        }
+        setChanged();
+        notifyObservers();
+    }
+
+    private double accountChange = 0;
+
+    public String getResultMessage() {
+        return resultMessage;
+    }
+
+    public double getAccountChange() {
+        return accountChange;
+    }
+
+    private String checkForResult(String winner) {
+        List<String> betted;
+        betted = new ArrayList<>();
+        if (this.baccaraGame.getDealerBet() != 0) {
+            betted.add("Dealer");
+        }
+        if (this.baccaraGame.getPlayerBet() != 0) {
+            betted.add("Player");
+        }
+        if (this.baccaraGame.getTieBet() != 0) {
+            betted.add("Tie");
+        }
+        for (String bet : betted) {
+            if (bet.equals(winner)) {
+                return bet;
+            }
+        }
+        return "Lost";
+    }
+
+    private void changeUserBalance(double newBalance, String gameName, double bet, String result, double changed) {
+        UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(newBalance, gameName, bet, result, changed);
+    }
 
     public String determineWinner() {
-        /*
-            Check who has won the game and then write the new stats and balances to the database.
-         */
         if (this.baccaraGame.getPlayerCardCount() > this.baccaraGame.getDealerCardCount()) {
-            UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance() + (this.baccaraGame.getPlayerBet() * 2), "Baccara", this.baccaraGame.getPlayerBet(), "Won", this.baccaraGame.getPlayerBet());
             return "Player";
         } else if (this.baccaraGame.getPlayerCardCount() == this.baccaraGame.getDealerCardCount()) {
-            System.out.println(UserCentral.getInstance().getUser().getCurrentBalance());
-            UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance() + this.baccaraGame.getTieBet(), "Baccara", this.baccaraGame.getPlayerBet(), "Tie", 0);
-            System.out.println(UserCentral.getInstance().getUser().getCurrentBalance());
             return "Tie";
         }
-        UserCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(UserCentral.getInstance().getUser().getCurrentBalance(), "Baccara", this.baccaraGame.getPlayerBet(), "Lost", this.baccaraGame.getPlayerBet() - (this.baccaraGame.getPlayerBet() * 2));
         return "Dealer";
     }
 

@@ -73,7 +73,7 @@ public class CasinoController implements Initializable, Observer {
     private void pressKasseButton(ActionEvent event) {
         this.casinoModel.displayExchange();
     }
-    
+
     @FXML
     private void changePassword(ActionEvent event) {
         PasswordChanger changer = new PasswordChanger();

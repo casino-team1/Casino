@@ -8,6 +8,7 @@ package Baccara.Entity;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -83,7 +84,6 @@ public class BaccaraGame {
     }
 
     public void generateCards() {
-        resetGame();
         this.playerCards.clear();
         this.dealerCards.clear();
         for (int i = 0; i < 2; i++) {
@@ -166,6 +166,20 @@ public class BaccaraGame {
 
     public void setDealerBet(int dealerBet) {
         this.dealerBet = dealerBet;
+    }
+
+    public List<String> getSetBets() {
+        List<String> bets = new ArrayList<>();
+        if (this.playerBet > 0) {
+            bets.add("Player");
+        }
+        if (this.dealerBet > 0) {
+            bets.add("Dealer");
+        }
+        if (this.tieBet > 0) {
+            bets.add("Tie");
+        }
+        return bets;
     }
 
     public void setTieBet(int tieBet) {

@@ -9,8 +9,6 @@ import com.team1.casino.MainApp;
 import com.team1.casino.User.Util.UserCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Set;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -111,7 +109,6 @@ public class ExchangeFXMLController implements Initializable {
 
     @FXML
     private void pressBackButton(ActionEvent event) { 
-        UserCentral.getInstance().getUser().setCurrentChips(5000);
         this.mainApplication.displayMainMenu();
     }
 

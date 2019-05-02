@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 
 /**
  * FXML Controller class
@@ -39,6 +40,8 @@ public class ExchangeFXMLController implements Initializable {
     @FXML
     private Label balanceLabel;
     @FXML
+    private Label moneyLabel;
+    @FXML
     private TextField jetonsField;
     @FXML
     private TextField moneyField;
@@ -49,6 +52,7 @@ public class ExchangeFXMLController implements Initializable {
     private boolean jetonsfieldlocked = false;
     private double jetoncalc = 0;
     private double moneycalc = 0;
+    
             
 
     /**
@@ -57,7 +61,11 @@ public class ExchangeFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        //balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance());
+        balanceLabel.setText(Integer.toString(UserCentral.getInstance().getUser().getCurrentChipBalance()));
+        moneyLabel.setText(Double.toString(UserCentral.getInstance().getUser().getCurrentMoney()));
+        
+        Font.loadFont(getClass().getResourceAsStream("/resources/fonts/SqueakyChalkSound.ttf"), 14);
+        balanceLabel.setStyle("-fx-font-family: Squeaky Chalk Sound");
         
         moneyField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -91,7 +99,7 @@ public class ExchangeFXMLController implements Initializable {
                 }
             }
         });
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChipBalance());
+        balanceLabel.setText(Integer.toString(UserCentral.getInstance().getUser().getCurrentChipBalance()));
     }
 
     public void setMainApplication(MainApp mainApplication) {
@@ -178,16 +186,15 @@ public class ExchangeFXMLController implements Initializable {
             //jetoncalc = UserCentral.getInstance().getUser().getCurrentBalance() + Integer.parseInt(jetonsField.getText());
             //moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());
         }
-        
-        
-        
-        else if (moneyField.isDisabled() == false) {
+        else {
             //jetoncalc = UserCentral.getInstance().getUser().getCurrentBalance() - Integer.parseInt(jetonsField.getText());
             //moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() + (int)(Math.round(Double.parseDouble(moneyField.getText())));
         }
         
-        //UserCentral.getInstance().getUser().setCurrentBalance(jetoncalc);
-        //UserCentral.getInstance().getUser().setCurrentMoney(moneycalc);
+        UserCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
+        UserCentral.getInstance().getUser().setCurrentMoney(moneycalc);
+        balanceLabel.setText(Integer.toString(UserCentral.getInstance().getUser().getCurrentChipBalance()));
+        moneyLabel.setText(Double.toString(UserCentral.getInstance().getUser().getCurrentMoney()));
         
         
         locked = false;

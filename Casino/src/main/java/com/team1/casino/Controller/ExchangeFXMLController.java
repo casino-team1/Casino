@@ -226,8 +226,8 @@ public class ExchangeFXMLController implements Initializable {
                 
             }
             else {
-                UserCentral.getInstance().getUser().setCurrentChips(jetoncalc);
-                UserCentral.getInstance().getUser().setCurrentMoney(moneycalc);
+                UserCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
+                UserCentral.getInstance().getUser().setNewMoney(moneycalc);
                 
                 errorJetonsLabel.setText("");
                 errorMoneyLabel.setText("");

@@ -5,6 +5,7 @@
  */
 package Blackjack;
 
+import com.team1.casino.User.Util.UserCentral;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,6 +30,8 @@ public class BlackJackGameModel {
 
     private boolean unentschieden = false;
 
+    private int einsatz;
+
     private Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
@@ -52,8 +55,9 @@ public class BlackJackGameModel {
     private Label labelVersicherung;
     private Pane spielerKartenPane;
     private Pane dealerKartenPane;
+    private Label balanceLabel;
 
-    public BlackJackGameModel(Button buttonHelp, Button buttonHit, Button buttonPrüfung, Button buttonStand, Button buttonStart, Button buttonVerdoppeln, Button buttonVerlassen, Button buttonVersichern, Pane spielerKartenPane, Pane dealerKartenPane, Label labelKartenWertSpieler, Label labelKartenWertDealer, Label labelLösung, Label labelVerdoppeln, Label labelVersicherung, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+    public BlackJackGameModel(Button buttonHelp, Button buttonHit, Button buttonPrüfung, Button buttonStand, Button buttonStart, Button buttonVerdoppeln, Button buttonVerlassen, Button buttonVersichern, Pane spielerKartenPane, Pane dealerKartenPane, Label labelKartenWertSpieler, Label labelKartenWertDealer, Label labelLösung, Label labelVerdoppeln, Label labelVersicherung, Label balanceLabel, TextField textfeldEinsatz, TextField textfeldVersicherung) {
         this.buttonHelp = buttonHelp;
         this.buttonHit = buttonHit;
         this.buttonPrüfung = buttonPrüfung;
@@ -71,12 +75,19 @@ public class BlackJackGameModel {
         this.labelLösung = labelLösung;
         this.labelVerdoppeln = labelVerdoppeln;
         this.labelVersicherung = labelVersicherung;
+        this.balanceLabel = balanceLabel;
 
         this.textfeldEinsatz = textfeldEinsatz;
         this.textfeldVersicherung = textfeldVersicherung;
     }
 
     public void play() {
+        //Einsatz entgegen nehmen
+        einsatz = Integer.parseInt(textfeldEinsatz.getText());
+        double restlichesGeld = UserCentral.getInstance().getUser().getCurrentChipBalance() - einsatz;
+        UserCentral.getInstance().getUser().setCurrentChips(restlichesGeld);
+        balanceLabel.setText("Konto: " + restlichesGeld + "$");
+
         //Vorbereitung
         k.kartenErstellen();
 
@@ -137,7 +148,7 @@ public class BlackJackGameModel {
             if (spieler.getKartenSpieler().contains("AC") || spieler.getKartenSpieler().contains("AD") || spieler.getKartenSpieler().contains("AH") || spieler.getKartenSpieler().contains("AS")) {
                 spieler.setKartenWertSpielerMinusTen();
                 String j = String.valueOf(spieler.getKartenWertSpieler());
-                labelKartenWertSpieler.setText(j);
+                labelKartenWertSpieler.setText("(" + j + ")");
                 if (spieler.getKartenWertSpieler() > 21) {
                     dealer.setGewonnen(true);
                     end();
@@ -166,18 +177,16 @@ public class BlackJackGameModel {
             } while (dealer.getKartenWertDealer() < 17);
         }
 
-        for(String s : dealer.getKartenDealer()){
+        for (String s : dealer.getKartenDealer()) {
             System.out.println(s);
         }
         System.out.println("-----------");
-        
+
         //Anzeige leeren
         dealerKartenPane.getChildren().clear();
         dealer.setxKoordinate(0);
+
         //Alle Karten vom Dealer anzeigen
-        /*for (String s : dealer.getKartenDealer()) {
-        labelKartenDealer.setText(labelKartenDealer.getText() + " , " + s);
-        }*/
         //erste Karte
         ImageView neueDealerKarte = new ImageView();
         dealerKartenPane.getChildren().add(neueDealerKarte);
@@ -192,30 +201,14 @@ public class BlackJackGameModel {
             ImageView neusteDealerKarte = new ImageView();
             dealerKartenPane.getChildren().add(neusteDealerKarte);
             neusteDealerKarte.setLayoutX(dealer.getxKoordinate() + 34);
-            dealer.setxKoordinate(dealer.getxKoordinate()+34);
+            dealer.setxKoordinate(dealer.getxKoordinate() + 34);
             neusteDealerKarte.setLayoutY(dealer.getyKoordinate());
             neusteDealerKarte.setFitWidth(dealer.getKarteWidth());
             neusteDealerKarte.setFitHeight(dealer.getKarteHeight());
             neusteDealerKarte.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            /*if (dealerKarte1.getImage() == null) {
-            dealerKarte1.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            } else if (dealerKarte2.getImage() == null) {
-            dealerKarte2.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            } else if (dealerKarte3.getImage() == null) {
-            dealerKarte3.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            } else if (dealerKarte4.getImage() == null) {
-            dealerKarte4.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            } else if (dealerKarte5.getImage() == null) {
-            dealerKarte5.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            }*/
         }
         labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-        
+
         //Werte überprüfen
         if (dealer.getKartenWertDealer() > 21) {
             spieler.setGewonnen(true);
@@ -261,22 +254,6 @@ public class BlackJackGameModel {
             neusteDealerKarte.setFitHeight(dealer.getKarteHeight());
             neusteDealerKarte.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
             labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            /*if (dealerKarte1.getImage() == null) {
-            dealerKarte1.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            } else if (dealerKarte2.getImage() == null) {
-            dealerKarte2.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            } else if (dealerKarte3.getImage() == null) {
-            dealerKarte3.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            } else if (dealerKarte4.getImage() == null) {
-            dealerKarte4.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            } else if (dealerKarte5.getImage() == null) {
-            dealerKarte5.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(i) + ".png"));
-            labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-            }*/
         }
 
         //Hat dealer BlackJack?
@@ -309,13 +286,44 @@ public class BlackJackGameModel {
 
         //Hat jemand gewonnen?
         if (spieler.hasGewonnen()) {
-            labelLösung.setText("SPIELER HAT GEWONNEN!!");
+            if (spieler.getKartenWertSpieler() == 21) {
+                gewonnenDurchBlackJack();
+            } else {
+                gewonnen();
+            }
         }
         if (dealer.hasGewonnen()) {
-            labelLösung.setText("DEALER HAT GEWONNEN!!");
+            verloren();
+
         }
         if (unentschieden) {
-            labelLösung.setText("UNENTSCHIEDEN!!");
+            unentschieden();
         }
+    }
+
+    public void gewonnenDurchBlackJack() {
+        //Gewinnberechnung       
+        int gewinn = einsatz + ((einsatz * 3) / 2);
+        labelLösung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
+        UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+    }
+
+    public void gewonnen() {
+        //Gewinnberechnung
+        int gewinn = (Integer.parseInt(textfeldEinsatz.getText()) * 2);
+        labelLösung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
+        UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+    }
+
+    public void unentschieden() {
+        labelLösung.setText("UNENTSCHIEDEN!");
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+    }
+
+    public void verloren() {
+        labelLösung.setText("SIE HABEN VERLOREN!");
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
     }
 }

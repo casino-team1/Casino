@@ -20,12 +20,12 @@
             <Image url="@../images/MainScreen/Kasse/chalkboard.png" />
          </image>
       </ImageView>
-      <TextField fx:id="jetonsField" disable="true" layoutX="481.0" layoutY="294.0" onKeyPressed="#typeJetonsField" prefHeight="43.0" prefWidth="184.0">
+      <TextField fx:id="jetonsField" disable="true" layoutX="516.0" layoutY="294.0" onKeyPressed="#typeJetonsField" prefHeight="43.0" prefWidth="184.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="moneyField" disable="true" layoutX="133.0" layoutY="294.0" onKeyPressed="#typeMoneyField" prefHeight="43.0" prefWidth="184.0">
+      <TextField fx:id="moneyField" disable="true" layoutX="125.0" layoutY="294.0" onKeyPressed="#typeMoneyField" prefHeight="43.0" prefWidth="184.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -35,12 +35,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="jetonToMoneyLabel" alignment="CENTER" layoutX="345.0" layoutY="186.0" onMouseClicked="#pressJGLabel" onMouseEntered="#enterJGLabel" onMouseExited="#exitJGLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Jetons -&gt; Geld">
+      <Label fx:id="jetonToMoneyLabel" alignment="CENTER" layoutX="345.0" layoutY="187.0" onMouseClicked="#pressJGLabel" onMouseEntered="#enterJGLabel" onMouseExited="#exitJGLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Geld &lt;- Jetons">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="acceptButton" alignment="CENTER" disable="true" layoutX="296.0" layoutY="433.0" onKeyPressed="#pressAcceptButton" onMouseClicked="#clickedAcceptButton" onMouseEntered="#enterAcceptButton" onMouseExited="#exitAcceptButton" prefHeight="82.0" prefWidth="207.0" style="-fx-background-color: #01DF01; -fx-border-color: black; -fx-border-width: 3;" text="Bestätigen">
+      <Label fx:id="acceptButton" alignment="CENTER" disable="true" layoutX="309.0" layoutY="433.0" onKeyPressed="#pressAcceptButton" onMouseClicked="#clickedAcceptButton" onMouseEntered="#enterAcceptButton" onMouseExited="#exitAcceptButton" prefHeight="82.0" prefWidth="207.0" style="-fx-background-color: #01DF01; -fx-border-color: black; -fx-border-width: 3;" text="Bestätigen">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -50,15 +50,17 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Label fx:id="balanceLabel" alignment="CENTER" layoutX="112.0" layoutY="232.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
+      <Label fx:id="moneyLabel" alignment="CENTER" layoutX="112.0" layoutY="232.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="moneyLabel" alignment="CENTER" layoutX="553.0" layoutY="232.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
+      <Label fx:id="balanceLabel" alignment="CENTER" layoutX="553.0" layoutY="232.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
+      <Label fx:id="errorJetonsLabel" alignment="CENTER" layoutX="516.0" layoutY="337.0" prefHeight="18.0" prefWidth="184.0" textFill="RED" />
+      <Label fx:id="errorMoneyLabel" alignment="CENTER" layoutX="125.0" layoutY="337.0" prefHeight="18.0" prefWidth="184.0" textFill="RED" />
    </children>
 </AnchorPane>

@@ -94,7 +94,7 @@ public class BlackJackGameFXMLController implements Initializable {
         karten.kartenErstellen();
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
-            if (einsatz < 50) {
+            if (einsatz <  50|| einsatz > UserCentral.getInstance().getUser().getCurrentChipBalance()) {
 
             } else {
                 buttonStart.setDisable(false);
@@ -204,7 +204,7 @@ public class BlackJackGameFXMLController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
-                labelKartenWertSpieler, labelKartenWertDealer, labelLösung, labelVerdoppeln, labelVersicherung, textfeldEinsatz, textfeldVersicherung);
+                labelKartenWertSpieler, labelKartenWertDealer, labelLösung, labelVerdoppeln, labelVersicherung, balanceLabel, textfeldEinsatz, textfeldVersicherung);
         
         balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChipBalance() + "$");
     }

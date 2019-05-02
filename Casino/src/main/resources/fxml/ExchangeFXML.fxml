@@ -3,11 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.ExchangeFXMLController">
@@ -19,51 +17,25 @@
       </ImageView>
       <ImageView fitHeight="527.0" fitWidth="804.0" layoutX="-1.0" opacity="0.7" pickOnBounds="true">
          <image>
-            <Image url="@../images/MainScreen/woodenWall.jpg" />
+            <Image url="@../images/MainScreen/Kasse/chalkboard.png" />
          </image>
       </ImageView>
-      <Label layoutX="286.0" layoutY="41.0" text="Kasse" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font name="Times New Roman" size="96.0" />
-         </font>
-         <effect>
-            <DropShadow color="WHITE" />
-         </effect>
-      </Label>
       <TextField fx:id="jetonsField" disable="true" layoutX="481.0" layoutY="294.0" onKeyPressed="#typeJetonsField" prefHeight="43.0" prefWidth="184.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Line endX="-100.00003051757812" endY="169.79998779296875" layoutX="500.0" layoutY="259.0" startX="-100.00003051757812" startY="-22.199996948242188" strokeWidth="5.0" />
-      <Line endX="-240.60000610351562" endY="353.79998779296875" layoutX="306.0" layoutY="-205.0" startX="436.2000732421875" startY="353.79998779296875" strokeWidth="3.0" />
       <TextField fx:id="moneyField" disable="true" layoutX="133.0" layoutY="294.0" onKeyPressed="#typeMoneyField" prefHeight="43.0" prefWidth="184.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="182.0" layoutY="161.0" prefHeight="62.0" prefWidth="86.0" text="Geld" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font name="Times New Roman" size="36.0" />
-         </font>
-         <effect>
-            <DropShadow color="WHITE" />
-         </effect>
-      </Label>
-      <Label layoutX="521.0" layoutY="161.0" prefHeight="62.0" prefWidth="104.0" text="Jetons" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font name="Times New Roman" size="36.0" />
-         </font>
-         <effect>
-            <DropShadow color="WHITE" />
-         </effect>
-      </Label>
-      <Label fx:id="moneyToJetonLabel" alignment="CENTER" layoutX="333.0" layoutY="161.0" onMouseClicked="#pressGJLabel" onMouseEntered="#enterGJLabel" onMouseExited="#exitGJLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Geld -&gt; Jetons">
+      <Label fx:id="moneyToJetonLabel" alignment="CENTER" layoutX="345.0" layoutY="139.0" onMouseClicked="#pressGJLabel" onMouseEntered="#enterGJLabel" onMouseExited="#exitGJLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Geld -&gt; Jetons">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="jetonToMoneyLabel" alignment="CENTER" layoutX="333.0" layoutY="198.0" onMouseClicked="#pressJGLabel" onMouseEntered="#enterJGLabel" onMouseExited="#exitJGLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Jetons -&gt; Geld">
+      <Label fx:id="jetonToMoneyLabel" alignment="CENTER" layoutX="345.0" layoutY="186.0" onMouseClicked="#pressJGLabel" onMouseEntered="#enterJGLabel" onMouseExited="#exitJGLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Jetons -&gt; Geld">
          <font>
             <Font size="18.0" />
          </font>
@@ -78,7 +50,12 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0" textFill="WHITE">
+      <Label fx:id="balanceLabel" alignment="CENTER" layoutX="112.0" layoutY="232.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="moneyLabel" alignment="CENTER" layoutX="553.0" layoutY="232.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

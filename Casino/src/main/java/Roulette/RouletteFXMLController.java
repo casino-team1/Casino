@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -37,6 +38,8 @@ public class RouletteFXMLController implements Initializable {
     private int betIntFromPlayer;
 
     private MainApp mainApplication;
+    @FXML
+    private Pane coverPane;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -152,7 +155,7 @@ public class RouletteFXMLController implements Initializable {
         numberField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d{1,7}(\\d{0,4})?")) {
+                if (!newValue.matches("\\d{0,7}(\\d{0,2})?")) {
                     numberField.setText(oldValue);
                 }
             }
@@ -1205,6 +1208,20 @@ public class RouletteFXMLController implements Initializable {
 
     public int getPlayerBalance() {
         return playerBalance;
+    }
+
+    @FXML
+    private void setPaneNeighbor(ActionEvent event) {
+        coverPane.setPrefSize(221, 72);
+        coverPane.setLayoutX(717);
+        coverPane.setLayoutY(498);
+    }
+
+    @FXML
+    private void setPaneBoard(ActionEvent event) {
+        coverPane.setPrefSize(630, 385);
+        coverPane.setLayoutX(641);
+        coverPane.setLayoutY(118);
     }
 
 }

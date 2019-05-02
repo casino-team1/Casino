@@ -60,7 +60,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="errorJetonsLabel" alignment="CENTER" layoutX="516.0" layoutY="337.0" prefHeight="18.0" prefWidth="184.0" textFill="RED" />
+      <Label fx:id="errorJetonsLabel" alignment="CENTER" layoutX="462.0" layoutY="337.0" prefHeight="18.0" prefWidth="291.0" textFill="RED" />
       <Label fx:id="errorMoneyLabel" alignment="CENTER" layoutX="125.0" layoutY="337.0" prefHeight="18.0" prefWidth="184.0" textFill="RED" />
    </children>
 </AnchorPane>

@@ -110,7 +110,6 @@
          </font>
       </Label>
       <Button fx:id="btnhelp" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#presshelp" text="?" />
-      <Button fx:id="btnendgame" layoutX="18.0" layoutY="594.0" mnemonicParsing="false" onAction="#pressendgame" text="Spiel Beenden" />
       <Label fx:id="sclblup1" alignment="CENTER" layoutX="604.0" layoutY="53.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
          <font>
             <Font name="Arial Nova" size="12.0" />
@@ -399,5 +398,10 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Button fx:id="btnback" layoutX="19.0" layoutY="583.0" mnemonicParsing="false" onAction="#pressbtnback" onMouseEntered="#enterbtnback" onMouseExited="#exitbtnback" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: black; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

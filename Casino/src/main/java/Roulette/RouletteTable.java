@@ -39,7 +39,7 @@ public class RouletteTable {
         stageHelp.setResizable(false);
         stageHelp.show();
     }
-
+    
     public boolean checkValid(String stringBox1) {
 
         for (int i = 0; i < 37; i++) {

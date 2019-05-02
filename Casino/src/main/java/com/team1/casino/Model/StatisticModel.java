@@ -17,7 +17,7 @@ import java.util.Observable;
  */
 public class StatisticModel extends Observable {
 
-    private MainApp mainApplication;
+    private final MainApp mainApplication;
 
     public StatisticModel(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -30,9 +30,10 @@ public class StatisticModel extends Observable {
     public void displayGameStatistic() throws SQLException {
         this.mainApplication.displayGameStatistic();
     }
-    public void logOut(){
+
+    public void logOut() {
         UserCentral.getInstance().setUser(null);
         this.mainApplication.displayLoginView();
     }
-    
+
 }

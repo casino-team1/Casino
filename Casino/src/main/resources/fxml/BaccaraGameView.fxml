@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="764.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
    <children>
-      <ImageView cache="true" fitHeight="774.0" fitWidth="1217.0" layoutX="55.0" layoutY="-10.0" pickOnBounds="true">
+      <ImageView cache="true" fitHeight="774.0" fitWidth="1272.0" layoutY="-10.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Baccara/tableBackground.jpg" />
          </image>

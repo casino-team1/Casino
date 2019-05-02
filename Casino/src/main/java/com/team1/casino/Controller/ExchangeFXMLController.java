@@ -73,7 +73,7 @@ public class ExchangeFXMLController implements Initializable {
         moneyLabel.setText(Integer.toString((int)UserCentral.getInstance().getUser().getCurrentMoney()));
         
         Font.loadFont(getClass().getResourceAsStream("/resources/fonts/SqueakyChalkSound.ttf"), 14);
-        balanceLabel.setStyle("-fx-font-family: SqueakyChalkSound");
+        balanceLabel.setStyle("-fx-font-family: 'squeaky chalk sound';");
 
         moneyField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (moneyfieldlocked == false) {
@@ -153,6 +153,8 @@ public class ExchangeFXMLController implements Initializable {
         moneyfieldlocked = false;
         moneyField.setText("");
         jetonsField.setText("");
+        errorJetonsLabel.setText("");
+        errorMoneyLabel.setText("");
         moneyToJetonLabel.setStyle("-fx-border-width: 4; -fx-background-color: lightgrey; -fx-border-color: black;");
         jetonToMoneyLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
     }
@@ -181,19 +183,30 @@ public class ExchangeFXMLController implements Initializable {
         moneyfieldlocked = true;
         moneyField.setText("");
         jetonsField.setText("");
+        errorJetonsLabel.setText("");
+        errorMoneyLabel.setText("");
         moneyToJetonLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
         jetonToMoneyLabel.setStyle("-fx-border-width: 4; -fx-background-color: lightgrey; -fx-border-color: black;");
     }
 
     private void processAcception() {
-        if (jetonsField.isDisabled() == true) {                
+        
+        
+        if(jetonsField.isDisabled() == true) {  
+            if(moneyField.getText() == ""){
+                errorJetonsLabel.setText("Bitte geben Sie eine Zahl ein");
+            }
             jetoncalc = (int)UserCentral.getInstance().getUser().getCurrentChipBalance() + Integer.parseInt(jetonsField.getText());
             moneycalc = (int)UserCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());           
         }
         
         else {
-            if(Integer.parseInt(jetonsField.getText()) < 100) {
-                errorJetonsLabel.setText("Has to be higher than 100");
+            if(jetonsField.getText() == ""){
+                errorJetonsLabel.setText("Bitte geben Sie eine Zahl ein");
+            }
+            
+            else if(Integer.parseInt(jetonsField.getText()) < 100) {
+                errorJetonsLabel.setText("Die Zahl muss höher als 100 sein 100");
                 nothundred = true;
             }
             
@@ -207,11 +220,11 @@ public class ExchangeFXMLController implements Initializable {
             errorJetonsLabel.setText("");
             
             if (moneycalc < 0) {
-                errorMoneyLabel.setText("Insufficient Money");
+                errorMoneyLabel.setText("Zuwenig Geld");
                 insufficient = true;
             }
             else if (jetoncalc < 0){
-                errorJetonsLabel.setText("Insufficient Jetons");
+                errorJetonsLabel.setText("Zuwenig Jetons");
                 insufficient = true;
                 
             }

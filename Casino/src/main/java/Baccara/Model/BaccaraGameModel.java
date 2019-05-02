@@ -34,8 +34,6 @@ public class BaccaraGameModel extends BaccaraModel {
         } catch (InterruptedException ex) {
         }
         resetGame();
-        setChanged();
-        notifyObservers();
     }
 
     public void checkForCardDraw() {
@@ -80,11 +78,8 @@ public class BaccaraGameModel extends BaccaraModel {
     private SimpleBooleanProperty dealerDoubleBetSet = new SimpleBooleanProperty();
     private SimpleBooleanProperty tieBetSet = new SimpleBooleanProperty();
 
-    private int playerBet = 0;
-    private int dealerBet = 0;
     private int playerDoubleBet = 0;
     private int dealerDoubleBet = 0;
-    private int tieBet = 0;
 
     public void setPlayerBet(int betValue) {
         this.baccaraGame.setPlayerBet(betValue);
@@ -98,20 +93,30 @@ public class BaccaraGameModel extends BaccaraModel {
     public void endGame() {
         String winner = determineWinner();
         String betMatch = checkForResult(winner);
+        String totalBet = String.valueOf(getTotalBet());
         switch (betMatch) {
-            case "Player":
-                accountChange = (this.playerBet * 2) - (this.baccaraGame.getTotalBet());
-                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance() + (this.playerBet * 2), "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
+            case "Spieler":
+                this.resultMessage = String.format("Der Spieler hat gewonnen, gut gewettet... Sie erhalten ihren Einsatz von %s plus weitere %s chips", totalBet, totalBet);
+                accountChange = (this.baccaraGame.getPlayerBet() * 2) - (this.baccaraGame.getTotalBet());
+                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance() + (this.baccaraGame.getPlayerBet() * 2), "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
                 break;
             case "Dealer":
-                accountChange = (this.dealerBet * 2) - (this.baccaraGame.getTotalBet());
-                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance() + (this.dealerBet * 2), "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
+                this.resultMessage = String.format("Der Banker hat gewonnen, gut gewettet... Sie erhalten ihren Einsatz von %s plus weitere %s chips", totalBet, totalBet);
+                accountChange = (this.baccaraGame.getDealerBet() * 2) - (this.baccaraGame.getTotalBet());
+                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance() + (this.baccaraGame.getDealerBet() * 2), "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
                 break;
             case "Tie":
-                accountChange = (this.tieBet * 8) - (this.baccaraGame.getTotalBet());
-                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance() + this.tieBet * 8, "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
+                this.resultMessage = String.format("Weder Spieler noch Dealer hat gewonnen, gut gewettet... Sie erhalten ihren Einsatz von %s plus weitere %s chips", totalBet, String.valueOf((this.baccaraGame.getTotalBet())));
+                accountChange = (this.baccaraGame.getTieBet() * 8) - (this.baccaraGame.getTotalBet());
+                changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance() + this.baccaraGame.getTieBet() * 8, "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
                 break;
             case "Lost":
+                if (winner.equals("Tie") == true) {
+                    this.resultMessage = String.format("Weder Dealer noch Spieler hat gewonnen Leider knapp daneben... Sie verlieren ihren Einsatz von %s ", totalBet);
+                } else {
+                    this.resultMessage = String.format("Der %s hat gewonnen.Leider knapp daneben... Sie verlieren ihren Einsatz von %s ", winner, totalBet
+                    );
+                }
                 accountChange = this.baccaraGame.getTotalBet();
                 changeUserBalance(UserCentral.getInstance().getUser().getCurrentChipBalance(), "Baccara", this.baccaraGame.getTotalBet(), "Lost", 0);
                 break;
@@ -131,19 +136,8 @@ public class BaccaraGameModel extends BaccaraModel {
     }
 
     private String checkForResult(String winner) {
-        List<String> betted;
-        betted = new ArrayList<>();
-        if (this.baccaraGame.getDealerBet() != 0) {
-            betted.add("Dealer");
-        }
-        if (this.baccaraGame.getPlayerBet() != 0) {
-            betted.add("Player");
-        }
-        if (this.baccaraGame.getTieBet() != 0) {
-            betted.add("Tie");
-        }
-        for (String bet : betted) {
-            if (bet.equals(winner)) {
+        for (String bet : this.baccaraGame.getSetBets()) {
+            if (bet.trim().equals(winner.trim())) {
                 return bet;
             }
         }
@@ -212,11 +206,9 @@ public class BaccaraGameModel extends BaccaraModel {
     }
 
     public void resetGame() {
-        this.dealerBet = 0;
-        this.playerBet = 0;
         this.dealerDoubleBet = 0;
         this.playerDoubleBet = 0;
-        this.tieBet = 0;
+        this.baccaraGame.resetGame();
     }
 
     public Scene setCursor() {

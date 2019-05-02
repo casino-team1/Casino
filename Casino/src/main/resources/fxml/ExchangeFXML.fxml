@@ -40,7 +40,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="acceptButton" alignment="CENTER" disable="true" layoutX="296.0" layoutY="433.0" onKeyPressed="#pressAcceptButton" onMouseEntered="#enterAcceptButton" onMouseExited="#exitAcceptButton" prefHeight="82.0" prefWidth="207.0" style="-fx-background-color: #01DF01; -fx-border-color: black; -fx-border-width: 3;" text="Bestätigen">
+      <Label fx:id="acceptButton" alignment="CENTER" disable="true" layoutX="296.0" layoutY="433.0" onKeyPressed="#pressAcceptButton" onMouseClicked="#clickedAcceptButton" onMouseEntered="#enterAcceptButton" onMouseExited="#exitAcceptButton" prefHeight="82.0" prefWidth="207.0" style="-fx-background-color: #01DF01; -fx-border-color: black; -fx-border-width: 3;" text="Bestätigen">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

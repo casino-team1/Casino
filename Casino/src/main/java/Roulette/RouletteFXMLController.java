@@ -145,7 +145,7 @@ public class RouletteFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (UserCentral.getInstance().getUser() != null) {
-            playerBalance = UserCentral.getInstance().getUser().getCurrentChipBalance();
+            playerBalance = (int) UserCentral.getInstance().getUser().getCurrentChips();
         } else {
             playerBalance = 1000;
         }
@@ -1162,11 +1162,10 @@ public class RouletteFXMLController implements Initializable {
 
     public void clickNeighbor() {
         String stringFromField1 = neighborField1.getText();
-        
 
         if (!stringFromField1.equals("")) {
             String stringFromField2 = neighborField2.getValue();
-            
+
             int intFromF1 = Integer.parseInt(stringFromField1);
             int intFromF2 = Integer.parseInt(stringFromField2);
 

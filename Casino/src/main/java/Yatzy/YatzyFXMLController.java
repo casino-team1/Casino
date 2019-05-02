@@ -199,7 +199,7 @@ public class YatzyFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        balance = UserCentral.getInstance().getUser().getCurrentChipBalance();
+        balance = (int) UserCentral.getInstance().getUser().getCurrentChipBalance();
         balanceLabel.setText("Konto: " + balance);
 
         btnthrowdices.setDisable(true);

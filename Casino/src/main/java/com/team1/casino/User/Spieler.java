@@ -21,11 +21,11 @@ import java.util.logging.Logger;
  * @author Nick Flückiger
  */
 public class Spieler extends User {
-    
+
     public Spieler(String username, String password) {
         super(username, password);
     }
-    
+
     @Override
     public void writeUserToDatabase() {
         String username = super.getUsername();
@@ -46,7 +46,7 @@ public class Spieler extends User {
             }
         }).start();
     }
-    
+
     @Override
     public void setNewChipBalance(double currentBalance) {
         super.setNewChipBalance(currentBalance);
@@ -59,19 +59,19 @@ public class Spieler extends User {
             }
         }
     }
-    
+
     @Override
     public void addStat(String gameName, double bet, String result, double amount) {
         Updater updated = new Updater();
         updated.writeStatisticToDatabase(gameName, bet, result, amount);
     }
-    
+
     @Override
     public void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount) {
         this.setNewChipBalance(newBalance);
         this.addStat(gameName, bet, result, amount);
     }
-    
+
     @Override
     public void setNewPassword(String newPasswordHash, String newPasswordPlain) {
         super.setPassword(newPasswordPlain);
@@ -79,9 +79,9 @@ public class Spieler extends User {
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
         query.runQueryWithoutReturn(statement, newPasswordHash + ";-" + super.getUsername());
     }
-    
+
     @Override
-    public void setNewMoney(int newMoney) {
+    public void setNewMoney(double newMoney) {
         super.setCurrentMoney(newMoney);
         if (MainApp.EXECUTION_MODE != ExecutionMode.DEVELOPMENT) {
             try {
@@ -92,5 +92,5 @@ public class Spieler extends User {
             }
         }
     }
-    
+
 }

@@ -10,8 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.team1.casino.Controller.ExchangeFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.ExchangeFXMLController">
    <children>
       <ImageView fitHeight="527.0" fitWidth="804.0" layoutX="-1.0" pickOnBounds="true">
          <image>
@@ -69,7 +68,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="acceptButton" alignment="CENTER" disable="true" layoutX="296.0" layoutY="433.0" onKeyPressed="#pressAcceptButton" onMouseEntered="#enterAcceptButton" onMouseExited="#exitAcceptButton" prefHeight="82.0" prefWidth="207.0" style="-fx-background-color: #01DF01; -fx-border-color: black; -fx-border-width: 3;" text="Bestätigen">
+      <Label fx:id="acceptButton" alignment="CENTER" disable="true" layoutX="296.0" layoutY="433.0" onKeyPressed="#pressAcceptButton" onMouseClicked="#clickedAcceptButton" onMouseEntered="#enterAcceptButton" onMouseExited="#exitAcceptButton" prefHeight="82.0" prefWidth="207.0" style="-fx-background-color: #01DF01; -fx-border-color: black; -fx-border-width: 3;" text="Bestätigen">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

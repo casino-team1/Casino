@@ -42,50 +42,49 @@ public class ExchangeFXMLController implements Initializable {
     private TextField jetonsField;
     @FXML
     private TextField moneyField;
-    
-    
+
     private boolean locked = false;
     private boolean moneyfieldlocked = false;
     private boolean jetonsfieldlocked = false;
     private double jetoncalc = 0;
     private double moneycalc = 0;
-            
 
     /**
      * Initialises the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         //balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance());
-        
-        moneyField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (moneyfieldlocked == false) {
-                    if (!newValue.matches("\\d{0,7}(\\d{0,4})?")) {
-                        moneyField.setText(oldValue);
-                    }
-                
-                    else {
+
+        moneyField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (moneyfieldlocked == false) {
+                if (!newValue.matches("\\d{0,7}(\\d{0,4})?")) {
+                    moneyField.setText(oldValue);
+                } else {
+                    if (moneyField.getText().equals("")) {
+                    } else {
                         jetonsField.setText(Integer.toString(Integer.parseInt(moneyField.getText()) * 100));
-                        acceptButton.setDisable(false);
                     }
+                    acceptButton.setDisable(false);
                 }
             }
         });
-        
-        
+
         jetonsField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (jetonsfieldlocked == false) {
                     if (!newValue.matches("\\d{0,7}(\\d{0,4})?")) {
                         jetonsField.setText(oldValue);
-                    }
-                
-                    else {     
-                        moneyField.setText(Double.toString(Double.parseDouble(jetonsField.getText()) / 100));
+                    } else {
+                        if (jetonsField.getText().equals("")) {
+                        } else {
+                            moneyField.setText(Double.toString(Double.parseDouble(jetonsField.getText()) / 100));
+                        }
                         acceptButton.setDisable(false);
                     }
                 }
@@ -101,20 +100,21 @@ public class ExchangeFXMLController implements Initializable {
     @FXML
     private void pressBackButton(ActionEvent event) {
         this.mainApplication.displayMainMenu();
-    }    
+    }
 
     @FXML
     private void typeJetonsField(KeyEvent event) {
-        
-        //moneyField.setText(Integer.toString(Integer.parseInt(jetonsField.getText()) / 100));
+        if (jetonsField.getText().equals("") == false) {
+            moneyField.setText(Integer.toString(Integer.parseInt(jetonsField.getText()) / 100));
+        }
     }
 
     @FXML
     private void typeMoneyField(KeyEvent event) {
-        
-        //jetonsField.setText(Integer.toString(Integer.parseInt(moneyField.getText()) * 100));
+        if (!"".equals(moneyField.getText())) {
+            jetonsField.setText(Integer.toString(Integer.parseInt(moneyField.getText()) * 100));
+        }
     }
-    
 
     @FXML
     private void exitGJLabel(MouseEvent event) {
@@ -172,30 +172,27 @@ public class ExchangeFXMLController implements Initializable {
         jetonToMoneyLabel.setStyle("-fx-border-width: 4; -fx-background-color: lightgrey; -fx-border-color: black;");
     }
 
-    @FXML
-    private void pressAcceptButton(KeyEvent event) {
-        if (jetonsField.isDisabled() == false) {
-            //jetoncalc = UserCentral.getInstance().getUser().getCurrentBalance() + Integer.parseInt(jetonsField.getText());
-            //moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());
+    private void processAcception() {
+        if (jetonsField.isDisabled() == true) {
+            jetoncalc = UserCentral.getInstance().getUser().getCurrentChips() + Integer.parseInt(jetonsField.getText());
+            moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());
+        } else if (moneyField.isDisabled() == true) {
+            jetoncalc = UserCentral.getInstance().getUser().getCurrentChips() - Integer.parseInt(jetonsField.getText());
+            moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() + (int) (Math.round(Double.parseDouble(moneyField.getText())));
         }
-        
-        
-        
-        else if (moneyField.isDisabled() == false) {
-            //jetoncalc = UserCentral.getInstance().getUser().getCurrentBalance() - Integer.parseInt(jetonsField.getText());
-            //moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() + (int)(Math.round(Double.parseDouble(moneyField.getText())));
+        if (moneycalc < 0) {
+            System.out.println("Insufficient Money");
+        } else {
+            UserCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
+            UserCentral.getInstance().getUser().setNewMoney(moneycalc);
         }
-        
-        //UserCentral.getInstance().getUser().setCurrentBalance(jetoncalc);
-        //UserCentral.getInstance().getUser().setCurrentMoney(moneycalc);
-        
-        
         locked = false;
         moneyField.setDisable(true);
         jetonsField.setDisable(true);
         acceptButton.setDisable(true);
         moneyField.setText("");
         jetonsField.setText("");
+        this.balanceLabel.setText(String.format("Konto: %s", String.valueOf(UserCentral.getInstance().getUser().getCurrentChips())));
         moneyToJetonLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
         jetonToMoneyLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
     }
@@ -209,5 +206,16 @@ public class ExchangeFXMLController implements Initializable {
     private void enterAcceptButton(MouseEvent event) {
         acceptButton.setStyle("-fx-border-width: 4; -fx-background-color: green");
 
-    } 
+    }
+
+    @FXML
+    private void pressAcceptButton(KeyEvent event) {
+        processAcception();
+    }
+
+    @FXML
+    private void clickedAcceptButton(MouseEvent event) {
+        processAcception();
+    }
+
 }

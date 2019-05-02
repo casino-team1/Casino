@@ -25,9 +25,9 @@
             <Image url="@../images/Roulette/rouletteWheel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="placeYourBet" fitHeight="120.0" fitWidth="276.0" layoutX="144.0" layoutY="333.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="921.6666717529297">
+      <ImageView fx:id="placeYourBet" fitHeight="144.0" fitWidth="149.0" layoutX="156.0" layoutY="302.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="980.0212707519531">
          <image>
-            <Image url="@../images/Roulette/placeBet.png" />
+            <Image url="@../images/Roulette/button.png" />
          </image>
          <effect>
             <DropShadow height="136.64" radius="66.3375" width="130.71" />
@@ -199,7 +199,7 @@
       <Pane layoutX="726.0" layoutY="424.0" onMouseClicked="#clickPaneD1" prefHeight="60.0" prefWidth="162.0" />
       <Pane layoutX="888.0" layoutY="424.0" onMouseClicked="#clickPaneD2" prefHeight="60.0" prefWidth="162.0" />
       <Pane layoutX="1050.0" layoutY="425.0" onMouseClicked="#clickPaneD3" prefHeight="60.0" prefWidth="162.0" />
-      <Label layoutX="721.0" layoutY="631.0" text="Ihre momentane Wette:">
+      <Label layoutX="605.0" layoutY="631.0" text="Ihre momentane Wette:">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -207,7 +207,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label fx:id="betString" layoutX="1113.0" layoutY="608.0" prefHeight="82.0" prefWidth="149.0" text="0">
+      <Label fx:id="betString" layoutX="997.0" layoutY="608.0" prefHeight="82.0" prefWidth="255.0" text="0">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -215,7 +215,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <TextField fx:id="numberField" layoutX="311.0" layoutY="584.0" promptText="Die Mindestwette ist 1" />
+      <TextField fx:id="numberField" layoutX="311.0" layoutY="584.0" />
       <Pane layoutX="727.0" layoutY="322.0" onMouseClicked="#clickColumn1" prefHeight="42.0" prefWidth="40.0" />
       <Pane layoutX="766.0" layoutY="322.0" onMouseClicked="#clickColumn2" prefHeight="42.0" prefWidth="40.0" />
       <Pane layoutX="807.0" layoutY="322.0" onMouseClicked="#clickColumn3" prefHeight="42.0" prefWidth="40.0" />
@@ -228,7 +228,7 @@
       <Pane layoutX="1094.0" layoutY="322.0" onMouseClicked="#clickColumn10" prefHeight="42.0" prefWidth="40.0" />
       <Pane layoutX="1133.0" layoutY="322.0" onMouseClicked="#clickColumn11" prefHeight="42.0" prefWidth="40.0" />
       <Pane layoutX="1173.0" layoutY="322.0" onMouseClicked="#clickColumn12" prefHeight="42.0" prefWidth="40.0" />
-      <Label layoutX="720.0" layoutY="580.0" text="Die Zufallszahl ist:">
+      <Label layoutX="604.0" layoutY="580.0" text="Die Zufallszahl ist:">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -244,7 +244,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label fx:id="randomNumberLabel" layoutX="1103.0" layoutY="554.0" prefHeight="82.0" prefWidth="62.0">
+      <Label fx:id="randomNumberLabel" layoutX="987.0" layoutY="554.0" prefHeight="82.0" prefWidth="62.0">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -274,7 +274,7 @@
          </effect>
       </Label>
       <Line endX="186.0" endY="45.0" layoutX="1027.0" layoutY="320.0" startX="-354.0" startY="45.0" />
-      <RadioButton fx:id="radioTable" layoutX="513.0" layoutY="99.0" mnemonicParsing="false" text="Tisch">
+      <RadioButton fx:id="radioTable" layoutX="513.0" layoutY="99.0" mnemonicParsing="false" onAction="#setPaneNeighbor" text="Tisch">
          <font>
             <Font size="22.0" />
          </font>
@@ -282,7 +282,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </RadioButton>
-      <RadioButton fx:id="radioNeighbor" layoutX="513.0" layoutY="518.0" mnemonicParsing="false" text="Zwei Nachbarn">
+      <RadioButton fx:id="radioNeighbor" layoutX="513.0" layoutY="518.0" mnemonicParsing="false" onAction="#setPaneBoard" text="Zwei Nachbarn">
          <font>
             <Font size="22.0" />
          </font>
@@ -292,7 +292,7 @@
       </RadioButton>
       <TextField fx:id="neighborField1" layoutX="725.0" layoutY="522.0" prefHeight="25.0" prefWidth="72.0" />
       <ComboBox fx:id="neighborField2" layoutX="828.0" layoutY="521.0" opacity="0.5" prefHeight="25.0" prefWidth="89.0" />
-      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0$" textFill="WHITE">
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" opacity="0.0" text="Konto: 0$" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -319,5 +319,6 @@
       <Pane layoutX="1120.0" layoutY="229.0" onMouseClicked="#clickPaneQ20" prefHeight="20.0" prefWidth="20.0" />
       <Pane layoutX="1160.0" layoutY="269.0" onMouseClicked="#clickPaneQ21" prefHeight="20.0" prefWidth="20.0" />
       <Pane layoutX="1160.0" layoutY="229.0" onMouseClicked="#clickPaneQ22" prefHeight="20.0" prefWidth="20.0" />
+      <Pane fx:id="coverPane" layoutX="717.0" layoutY="498.0" prefHeight="72.0" prefWidth="221.0" />
    </children>
 </AnchorPane>

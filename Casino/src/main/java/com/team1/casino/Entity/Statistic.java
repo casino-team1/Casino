@@ -17,10 +17,10 @@ public class Statistic {
     }
 
     private String username;
-    private String gameResult;
-    private double bet;
-    private double accountChange;
-    private String gameName;
+    private final String gameResult;
+    private final double bet;
+    private final double accountChange;
+    private final String gameName;
 
     public void setUseranme(String username) {
         this.username = username;

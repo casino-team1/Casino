@@ -35,11 +35,11 @@ public class RouletteTable {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/RouletteHelpFXML.fxml"));
         Stage stageHelp = new Stage();
         stageHelp.setTitle("Help");
-        stageHelp.setScene(new Scene(root, 1433, 665));
+        stageHelp.setScene(new Scene(root, 1433, 755));
         stageHelp.setResizable(false);
         stageHelp.show();
     }
-
+    
     public boolean checkValid(String stringBox1) {
 
         for (int i = 0; i < 37; i++) {
@@ -50,7 +50,12 @@ public class RouletteTable {
             } else if ("00".equals(stringBox1)) {
                 containsNumber = true;
                 break;
-            } else {
+            }
+            else if ("".equals(stringBox1)) {
+                containsNumber = true;
+                break;
+            }
+            else {
                 containsNumber = false;
             }
         }
@@ -96,10 +101,10 @@ public class RouletteTable {
         } else {
 
             int numberEnteredInt = Integer.parseInt(numberEntered);
-            int neighborNumberPlus3 = numberEnteredInt + 3;
-            int neighborNumberPlus1 = numberEnteredInt + 1;
-            int neighborNumberMinus3 = numberEnteredInt - 3;
-            int neighborNumberMinus1 = numberEnteredInt - 1;
+            String neighborNumberPlus3 = String.valueOf(numberEnteredInt + 3);
+            String neighborNumberPlus1 = String.valueOf(numberEnteredInt + 1);
+            String neighborNumberMinus3 = String.valueOf(numberEnteredInt - 3);
+            String neighborNumberMinus1 = String.valueOf(numberEnteredInt - 1);
 
             if (row3Array.contains(numberEnteredInt) == true) {
                 if (numberEnteredInt != 3 && numberEnteredInt != 36) {
@@ -142,24 +147,15 @@ public class RouletteTable {
                     neighborField.getItems().add(neighborNumberPlus1);
                     neighborField.getItems().add(neighborNumberMinus3);
                 }
-
-//                neighborField.getItems().add(neighborNumberPlus3);
-//                neighborField.getItems().add(neighborNumberMinus3);
-//                neighborField.getItems().add(neighborNumberMinus1);
-//            } else if (row2Array.contains(numberEnteredInt) == true) {
-//                neighborField.getItems().add(neighborNumberPlus3);
-//                neighborField.getItems().add(neighborNumberPlus1);
-//                neighborField.getItems().add(neighborNumberMinus3);
-//                neighborField.getItems().add(neighborNumberMinus1);
-//            } else if (row1Array.contains(numberEnteredInt) == true) {
-//                neighborField.getItems().add(neighborNumberPlus3);
-//                neighborField.getItems().add(neighborNumberPlus1);
-//                neighborField.getItems().add(neighborNumberMinus3);
             }
         }
         neighborField.getSelectionModel().selectFirst();
     }
 
+    /**
+     *
+     * @param neighborField
+     */
     public void clear(ComboBox neighborField) {
         neighborField.getItems().clear();
     }

@@ -20,10 +20,20 @@ public abstract class User {
     private String role;
     private String username;
     private String password;
-    private Integer currentBalance = 1000;
+    private Integer currentChips = 1000;
     private boolean validated = false;
     private String validationCode = "";
     private String emailAdress;
+
+    private double currentMoney;
+
+    public double getCurrentMoney() {
+        return currentMoney;
+    }
+
+    public void setCurrentMoney(double currentMoney) {
+        this.currentMoney = currentMoney;
+    }
 
     public void setEmailAdress(String emailAdress) {
         this.emailAdress = emailAdress;
@@ -35,6 +45,10 @@ public abstract class User {
 
     public int getID() {
         return ID;
+    }
+
+    public void setCurrentChips(Integer currentChips) {
+        this.currentChips = currentChips;
     }
 
     public abstract void addStat(String gameName, double bet, String result, double amount);
@@ -72,12 +86,12 @@ public abstract class User {
         return isValid;
     }
 
-    public Integer getCurrentBalance() {
-        return this.currentBalance;
+    public Integer getCurrentChipBalance() {
+        return this.currentChips;
     }
 
-    public void setCurrentBalance(double currentBalance) {
-        this.currentBalance = (int) currentBalance;
+    public void setNewChipBalance(double currentBalance) {
+        this.currentChips = (int) currentBalance;
     }
 
     public void writeBalanceToDatabase() {
@@ -111,7 +125,9 @@ public abstract class User {
 
     public void loadUserInformation() {
         UserUtil util = new UserUtil();
-        this.currentBalance = (int) util.loadCurrentBalanceFromGivenUsername(username);
+        this.currentChips = (int) util.loadCurrentBalanceFromGivenUsername(username);
+        this.currentMoney = (int) util.loadCurrentMoneyFromUsername(username);
+        System.out.println(this.currentMoney);
         this.ID = util.getIDFromUserByUsername(username);
     }
 
@@ -122,4 +138,10 @@ public abstract class User {
     public abstract void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount);
 
     public abstract void setNewPassword(String newPasswordHash, String newPasswordPlain);
+
+    public Integer getCurrentChips() {
+        return currentChips;
+    }
+
+    public abstract void setNewMoney(int newMoney);
 }

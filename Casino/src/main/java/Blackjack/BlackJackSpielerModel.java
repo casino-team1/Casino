@@ -19,7 +19,7 @@ import javafx.scene.image.ImageView;
 public class BlackJackSpielerModel {
 
     private int kartenWertSpieler = 0;
-    
+
     private Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<>();
@@ -28,20 +28,21 @@ public class BlackJackSpielerModel {
 
     private boolean gewonnen = false;
 
-    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, ImageView spielerKarte1, ImageView spielerKarte2, ImageView spielerKarte3, ImageView spielerKarte4, ImageView spielerKarte5) {
+    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, ImageView spielerKarte1, ImageView spielerKarte2, ImageView spielerKarte3, ImageView spielerKarte4, ImageView spielerKarte5, Label labelKartenWertSpieler) {
         //Parameter einfangen
         this.karten = karten;
         this.kartenSymbole = kartenSymbole;
-        
+
         //Hat es genügend Karten?
         if (k.getAnzahlKartenImKartenDeck() < 1) {
             k.kartenErstellen();
             this.karten = k.getKarten();
         }
-        
+
         //Zufällige Werte
         int zufallszahl = 0;
         Random r = new Random();
+        zufallskarte = "";
 
         //Spieler zieht Karten
         zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
@@ -52,7 +53,7 @@ public class BlackJackSpielerModel {
         } else if (zufallskarte.contains("A")) {
             kartenWertSpieler += 11;
         } else {
-            kartenWertSpieler += karten.get(("/images/GameCards/"+zufallskarte+".png"));
+            kartenWertSpieler += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
         }
         kartenSpieler.add(zufallskarte);
         karten.remove("/images/GameCards/" + zufallskarte + ".png");
@@ -61,27 +62,31 @@ public class BlackJackSpielerModel {
         k.subAnzahlKartenInKartenSymbole();
         //labelKartenSpieler.setText(labelKartenSpieler.getText() + " , " + zufallskarte);
         //Karten anzeigen
-        if(spielerKarte1.getImage() == null){
-            spielerKarte1.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
+        if (spielerKarte1.getImage() == null) {
+            spielerKarte1.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
             return;
         }
-        if(spielerKarte2.getImage() == null){
-            spielerKarte2.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
+        if (spielerKarte2.getImage() == null) {
+            spielerKarte2.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
             return;
         }
-        if(spielerKarte3.getImage() == null){
-            spielerKarte3.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
+        if (spielerKarte3.getImage() == null) {
+            spielerKarte3.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
             return;
         }
-        if(spielerKarte4.getImage() == null){
-            spielerKarte4.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
+        if (spielerKarte4.getImage() == null) {
+            spielerKarte4.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
             return;
         }
-        if(spielerKarte5.getImage() == null){
-            spielerKarte5.setImage(new Image("/images/GameCards/"+zufallskarte+".png"));
-            return;
+        if (spielerKarte5.getImage() == null) {
+            spielerKarte5.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+            labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
         }
-        
+
     }
 
     public void setGewonnen(boolean g) {
@@ -91,7 +96,7 @@ public class BlackJackSpielerModel {
     public boolean hasGewonnen() {
         return gewonnen;
     }
-    
+
     public int getKartenWertSpieler() {
         return kartenWertSpieler;
     }
@@ -99,11 +104,11 @@ public class BlackJackSpielerModel {
     public void setKartenWertSpieler(int kartenWertSpieler) {
         this.kartenWertSpieler = kartenWertSpieler;
     }
-    
+
     public void setKartenWertSpielerMinusTen() {
         kartenWertSpieler -= 10;
     }
-    
+
     public String getZufallskarte() {
         return zufallskarte;
     }
@@ -111,9 +116,9 @@ public class BlackJackSpielerModel {
     public ArrayList<String> getKartenSpieler() {
         return kartenSpieler;
     }
-    
+
     public void clearKartenSpieler() {
         kartenSpieler.clear();
     }
-   
+
 }

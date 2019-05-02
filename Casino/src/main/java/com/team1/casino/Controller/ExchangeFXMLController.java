@@ -57,7 +57,7 @@ public class ExchangeFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance());
+        //balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance());
         
         moneyField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -91,6 +91,7 @@ public class ExchangeFXMLController implements Initializable {
                 }
             }
         });
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChipBalance());
     }
 
     public void setMainApplication(MainApp mainApplication) {
@@ -174,18 +175,18 @@ public class ExchangeFXMLController implements Initializable {
     @FXML
     private void pressAcceptButton(KeyEvent event) {
         if (jetonsField.isDisabled() == false) {
-            jetoncalc = UserCentral.getInstance().getUser().getCurrentBalance() + Integer.parseInt(jetonsField.getText());
+            //jetoncalc = UserCentral.getInstance().getUser().getCurrentBalance() + Integer.parseInt(jetonsField.getText());
             //moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());
         }
         
         
         
         else if (moneyField.isDisabled() == false) {
-            jetoncalc = UserCentral.getInstance().getUser().getCurrentBalance() - Integer.parseInt(jetonsField.getText());
+            //jetoncalc = UserCentral.getInstance().getUser().getCurrentBalance() - Integer.parseInt(jetonsField.getText());
             //moneycalc = UserCentral.getInstance().getUser().getCurrentMoney() + (int)(Math.round(Double.parseDouble(moneyField.getText())));
         }
         
-        UserCentral.getInstance().getUser().setCurrentBalance(jetoncalc);
+        //UserCentral.getInstance().getUser().setCurrentBalance(jetoncalc);
         //UserCentral.getInstance().getUser().setCurrentMoney(moneycalc);
         
         

@@ -15,15 +15,20 @@
             <Image url="@../images/loginBackground.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="registerButton" layoutX="165.0" layoutY="346.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="27.0" prefWidth="269.0" text="Register" />
-      <TextField fx:id="username" layoutX="216.0" layoutY="139.0" promptText="Nutzername" />
-      <TextField fx:id="password" layoutX="216.0" layoutY="239.0" promptText="Passwort" />
+      <ImageView fitHeight="477.0" fitWidth="383.0" layoutX="104.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MainScreen/registrationScreen.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="registerButton" layoutX="276.0" layoutY="467.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="50.0" prefWidth="168.0" text="Register" />
+      <TextField fx:id="username" layoutX="151.0" layoutY="293.0" prefHeight="30.0" prefWidth="282.0" promptText="Benutzername" />
+      <TextField fx:id="password" layoutX="151.0" layoutY="383.0" prefHeight="30.0" prefWidth="282.0" promptText="Passwort" />
       <Text fx:id="errorMessage" fill="RED" layoutX="219.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error-Message">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Text>
-      <Button fx:id="backButton" layoutX="54.0" layoutY="455.0" mnemonicParsing="false" onAction="#backToLogin" text="Go back" />
-      <TextField fx:id="emailAdress" layoutX="219.0" layoutY="193.0" promptText="Email" />
+      <Button fx:id="backButton" layoutX="143.0" layoutY="467.0" mnemonicParsing="false" onAction="#backToLogin" opacity="0.0" prefHeight="50.0" prefWidth="117.0" text="Go back" />
+      <TextField fx:id="emailAdress" layoutX="151.0" layoutY="339.0" prefHeight="30.0" prefWidth="282.0" promptText="Email" />
    </children>
 </AnchorPane>

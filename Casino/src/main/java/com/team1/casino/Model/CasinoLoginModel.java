@@ -23,12 +23,15 @@ public class CasinoLoginModel {
     private User currentPlayer;
     private MainApp mainApplication;
 
+    public CasinoLoginModel() {
+    }
+
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
     }
 
-    private StringProperty username = new SimpleStringProperty();
-    private StringProperty password = new SimpleStringProperty();
+    private final StringProperty username = new SimpleStringProperty();
+    private final StringProperty password = new SimpleStringProperty();
 
     public StringProperty getUsernameProperty() {
         return username;

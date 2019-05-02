@@ -5,15 +5,11 @@
  */
 package Blackjack;
 
-import com.team1.casino.Controller.LoginController;
 import com.team1.casino.MainApp;
-import com.team1.casino.Model.CasinoLoginModel;
 import com.team1.casino.User.Util.UserCentral;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +49,7 @@ public class BlackJackMainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChipBalance() + "$");
     }
 
     @FXML

@@ -7,7 +7,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -400,6 +399,5 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <BorderPane prefHeight="634.0" prefWidth="654.0" style="-fx-border-color: black; -fx-border-width: 3;" />
    </children>
 </AnchorPane>

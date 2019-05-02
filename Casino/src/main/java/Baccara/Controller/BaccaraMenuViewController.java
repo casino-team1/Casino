@@ -58,7 +58,7 @@ public class BaccaraMenuViewController implements Initializable, Observer {
         User player = this.menuModel.getPlayer();
         if (player != null) {
             this.welcomeMessage.setText(String.format("Wilkommen %s", player.getUsername()));
-            this.currentBalance.setText(String.format("Sie haben %s CHF", String.valueOf(player.getCurrentBalance())));
+            this.currentBalance.setText(String.format("Sie haben %s CHF", String.valueOf(player.getCurrentChipBalance())));
         }
     }
 

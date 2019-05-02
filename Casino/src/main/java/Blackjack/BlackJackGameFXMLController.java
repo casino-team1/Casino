@@ -242,7 +242,7 @@ public class BlackJackGameFXMLController implements Initializable {
                 spielerKarte1, spielerKarte2, spielerKarte3, spielerKarte4, spielerKarte5, dealerKarte1, dealerKarte2, dealerKarte3, dealerKarte4, dealerKarte5, 
                 labelKartenWertSpieler, labelKartenWertDealer, labelLösung, labelVerdoppeln, labelVersicherung, textfeldEinsatz, textfeldVersicherung);
         
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChipBalance() + "$");
     }
 
     @FXML

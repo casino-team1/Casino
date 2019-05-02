@@ -126,7 +126,9 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        setCardBacks();
+        System.out.println(this.gameModel.getAccountChange());
+        System.out.println(this.gameModel.getResultMessage());
+        this.resetImageViews();
     }
 
     private void centerImage(ImageView imageView) {
@@ -154,9 +156,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     private void updateBalanceAndBet() {
         if (UserCentral.getInstance().getUser() != null) {
-            this.userBalance.setText("Kontostand: " + UserCentral.getInstance().getUser().getCurrentBalance());
+            this.userBalance.setText("Kontostand: " + UserCentral.getInstance().getUser().getCurrentChipBalance());
             this.totalBet.setText("Einsatz: " + this.gameModel.getTotalBet());
-
         }
     }
 
@@ -165,12 +166,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
         if (this.gameModel.getTotalBet() == 0) {
             return;
         }
-        this.bankerBetCoin.setImage(null);
         this.gameModel.generateCards();
-        updateBalanceAndBet();
-        resetImageViews();
         this.gameRunning = true;
-        //();
         String format = "/images/GameCards/%s";
         ImageView[] playerView = {this.firstLeftCard, this.secondLeftCard};
         ImageView[] dealerView = {this.firstRightCard, this.secondRightCard};
@@ -206,8 +203,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
                         rotateBack.setOnFinished(imageBack -> {
                             try {
                                 Thread.sleep(1000);
-                                resetImageViews();
-                                setCardBacks();
+                                this.gameModel.endGame();
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(BaccaraGameViewController.class.getName()).log(Level.SEVERE, null, ex);
                             }

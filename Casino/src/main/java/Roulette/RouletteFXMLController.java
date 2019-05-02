@@ -142,7 +142,7 @@ public class RouletteFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (UserCentral.getInstance().getUser() != null) {
-            playerBalance = UserCentral.getInstance().getUser().getCurrentBalance();
+            playerBalance = UserCentral.getInstance().getUser().getCurrentChipBalance();
         } else {
             playerBalance = 1000;
         }

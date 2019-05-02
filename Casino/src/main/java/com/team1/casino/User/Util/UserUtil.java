@@ -102,7 +102,22 @@ public class UserUtil {
     public double loadCurrentBalanceFromGivenUsername(String username) {
         try {
             DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-            ArrayList<String> retreavedInfromation = query.runQueryWithReturn("SELECT b.balance FROM balance b, user p WHERE p.balance_id = b.id AND p.username = ?", username);
+            ArrayList<String> retreavedInfromation = query.runQueryWithReturn("SELECT b.chips FROM balance b, user p WHERE p.balance_id = b.id AND p.username = ?", username);
+            if (retreavedInfromation.isEmpty() == true) {
+                return 0.0;
+            } else {
+                return Double.valueOf(retreavedInfromation.get(0));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0.0;
+    }
+
+    public double loadCurrentMoneyFromUsername(String username) {
+        try {
+            DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
+            ArrayList<String> retreavedInfromation = query.runQueryWithReturn("SELECT b.money FROM balance b, user p WHERE p.balance_id = b.id AND p.username = ?", username);
             if (retreavedInfromation.isEmpty() == true) {
                 return 0.0;
             } else {

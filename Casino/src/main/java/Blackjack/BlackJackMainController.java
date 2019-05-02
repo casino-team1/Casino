@@ -62,6 +62,7 @@ public class BlackJackMainController implements Initializable {
             Stage stage = this.main.getStage();
             stage.setTitle("Black Jack");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             BlackJackGameFXMLController controller = loader.getController();
             controller.setMain(main);

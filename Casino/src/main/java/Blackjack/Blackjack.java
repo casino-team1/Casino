@@ -47,6 +47,7 @@ public class Blackjack extends Spiel {
         BlackJackMainController controller = loader.getController();
         controller.setMain(super.getMainApp());
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 }

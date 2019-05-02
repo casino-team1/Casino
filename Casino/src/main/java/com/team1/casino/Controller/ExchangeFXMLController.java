@@ -9,6 +9,7 @@ import com.team1.casino.MainApp;
 import com.team1.casino.User.Util.UserCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -50,8 +51,13 @@ public class ExchangeFXMLController implements Initializable {
     private boolean moneyfieldlocked = false;
     private boolean jetonsfieldlocked = false;
     private boolean nothundred = false;
+    private boolean insufficient = false;
     private int jetoncalc = 0;
     private int moneycalc = 0;
+    @FXML
+    private Label errorJetonsLabel;
+    @FXML
+    private Label errorMoneyLabel;
 
     /**
      * Initialises the controller class.
@@ -90,7 +96,7 @@ public class ExchangeFXMLController implements Initializable {
                 } else {
                     if (jetonsField.getText().equals("")) {
                     } else {
-                        moneyField.setText(Double.toString(Double.parseDouble(jetonsField.getText()) / 100));
+                        moneyField.setText(Integer.toString((int)Math.round(Double.parseDouble(jetonsField.getText()) / 100)));
                     }
                     acceptButton.setDisable(false);
                 }
@@ -104,7 +110,8 @@ public class ExchangeFXMLController implements Initializable {
     }
 
     @FXML
-    private void pressBackButton(ActionEvent event) {
+    private void pressBackButton(ActionEvent event) { 
+        UserCentral.getInstance().getUser().setCurrentChips(5000);
         this.mainApplication.displayMainMenu();
     }
 
@@ -179,43 +186,56 @@ public class ExchangeFXMLController implements Initializable {
     }
 
     private void processAcception() {
-        if (jetonsField.isDisabled() == true) {
-            if (Integer.parseInt(moneyField.getText()) >= UserCentral.getInstance().getUser().getCurrentMoney()) {
-                jetoncalc = (int)UserCentral.getInstance().getUser().getCurrentChips() + Integer.parseInt(jetonsField.getText());
-                moneycalc = (int)UserCentral.getInstance().getUser().getCurrentMoney() - (int)(Math.round(Double.parseDouble(moneyField.getText())));
-            }
-            
-        } else if (moneyField.isDisabled() == true) {
+        if (jetonsField.isDisabled() == true) {                
+            jetoncalc = (int)UserCentral.getInstance().getUser().getCurrentChipBalance() + Integer.parseInt(jetonsField.getText());
+            moneycalc = (int)UserCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());           
+        }
+        
+        else {
             if(Integer.parseInt(jetonsField.getText()) < 100) {
-                System.out.println("Has to be higher than 100");
+                errorJetonsLabel.setText("Has to be higher than 100");
                 nothundred = true;
             }
             
-            else if (Integer.parseInt(jetonsField.getText()) >= UserCentral.getInstance().getUser().getCurrentChips()) {
-                jetoncalc = (int)UserCentral.getInstance().getUser().getCurrentChips() - Integer.parseInt(jetonsField.getText());
+            else {
+                jetoncalc = (int)UserCentral.getInstance().getUser().getCurrentChipBalance() - Integer.parseInt(jetonsField.getText());
                 moneycalc = (int)UserCentral.getInstance().getUser().getCurrentMoney() + (int)(Math.round(Double.parseDouble(moneyField.getText())));
+                nothundred = false;
             }
         }
         if(nothundred == false) {
-
+            errorJetonsLabel.setText("");
+            
             if (moneycalc < 0) {
-                System.out.println("Insufficient Money");
-            } else if (jetoncalc < 0)
-                System.out.println("Insufficient Jetons");
-            else {
-                UserCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
-                UserCentral.getInstance().getUser().setNewMoney(moneycalc);
+                errorMoneyLabel.setText("Insufficient Money");
+                insufficient = true;
             }
-            balanceLabel.setText(Integer.toString((int) UserCentral.getInstance().getUser().getCurrentChipBalance()));
-            moneyLabel.setText(Integer.toString((int)UserCentral.getInstance().getUser().getCurrentMoney()));
-            locked = false;
-            moneyField.setDisable(true);
-            jetonsField.setDisable(true);
-            acceptButton.setDisable(true);
-            moneyField.setText("");
-            jetonsField.setText("");         
-            moneyToJetonLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
-            jetonToMoneyLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
+            else if (jetoncalc < 0){
+                errorJetonsLabel.setText("Insufficient Jetons");
+                insufficient = true;
+                
+            }
+            else {
+                UserCentral.getInstance().getUser().setCurrentChips(jetoncalc);
+                UserCentral.getInstance().getUser().setCurrentMoney(moneycalc);
+                
+                errorJetonsLabel.setText("");
+                errorMoneyLabel.setText("");
+                insufficient = false;
+            }
+            
+            if(insufficient == false) { 
+                balanceLabel.setText(Integer.toString((int)UserCentral.getInstance().getUser().getCurrentChipBalance()));
+                moneyLabel.setText(Integer.toString((int)UserCentral.getInstance().getUser().getCurrentMoney()));
+                locked = false;
+                moneyField.setDisable(true);
+                jetonsField.setDisable(true);
+                acceptButton.setDisable(true);
+                moneyField.setText("");
+                jetonsField.setText("");         
+                moneyToJetonLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
+                jetonToMoneyLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
+            }
         }
     }
 

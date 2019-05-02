@@ -19,7 +19,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -93,6 +95,20 @@ public class BlackJackGameFXMLController implements Initializable {
     private Label labelKartenWertSpieler;
     @FXML
     private Label labelKartenWertDealer;
+    @FXML
+    private Pane spielerKartenPane;
+    @FXML
+    private ImageView spielerKarte;
+    @FXML
+    private Button button;
+    @FXML
+    private Button button2;
+    @FXML
+    private Button button3;
+    @FXML
+    private Button button4;
+    @FXML
+    private Button button5;
 
     public void setMain(MainApp main) {
         this.main = main;
@@ -145,7 +161,7 @@ public class BlackJackGameFXMLController implements Initializable {
         labelLösung.setText("");
         labelVerdoppeln.setText("");
         labelVersicherung.setText("");
-
+    
         game.play();
     }
 
@@ -227,6 +243,56 @@ public class BlackJackGameFXMLController implements Initializable {
                 labelKartenWertSpieler, labelKartenWertDealer, labelLösung, labelVerdoppeln, labelVersicherung, textfeldEinsatz, textfeldVersicherung);
         
         balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
+    }
+
+    @FXML
+    private void nix(ActionEvent event) {
+        spielerKartenPane.getChildren().clear();
+        
+    }
+
+    @FXML
+    private void nix2(ActionEvent event) {
+        ImageView spielerKarte = new ImageView();
+        spielerKartenPane.getChildren().add(spielerKarte);
+        spielerKarte.setLayoutX(6);
+        spielerKarte.setLayoutY(6);
+        spielerKarte.setFitWidth(149);
+        spielerKarte.setFitHeight(201);
+        spielerKarte.setImage(new Image("/images/GameCards/AS.png"));
+    }
+
+    @FXML
+    private void nix3(ActionEvent event) {
+        ImageView spielerKarte = new ImageView();
+        spielerKartenPane.getChildren().add(spielerKarte);
+        spielerKarte.setLayoutX(spielerKarte.getX()+34);
+        spielerKarte.setLayoutY(6);
+        spielerKarte.setFitWidth(149);
+        spielerKarte.setFitHeight(201);
+        spielerKarte.setImage(new Image("/images/GameCards/AC.png"));
+    }
+
+    @FXML
+    private void nix4(ActionEvent event) {
+        ImageView spielerKarte = new ImageView();
+        spielerKartenPane.getChildren().add(spielerKarte);
+        spielerKarte.setLayoutX(spielerKarte.getX()+34+34);
+        spielerKarte.setLayoutY(6);
+        spielerKarte.setFitWidth(149);
+        spielerKarte.setFitHeight(201);
+        spielerKarte.setImage(new Image("/images/GameCards/AH.png"));
+    }
+
+    @FXML
+    private void nix5(ActionEvent event) {
+        ImageView spielerKarte = new ImageView();
+        spielerKartenPane.getChildren().add(spielerKarte);
+        spielerKarte.setLayoutX(spielerKarte.getX()+34+34+34);
+        spielerKarte.setLayoutY(6);
+        spielerKarte.setFitWidth(149);
+        spielerKarte.setFitHeight(201);
+        spielerKarte.setImage(new Image("/images/GameCards/AD.png"));
     }
 
 }

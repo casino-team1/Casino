@@ -114,5 +114,15 @@
             <Font size="23.0" />
          </font>
       </Label>
+      <Pane fx:id="spielerKartenPane" layoutX="15.0" layoutY="287.0" prefHeight="213.0" prefWidth="433.0">
+         <children>
+            <ImageView fx:id="spielerKarte" fitHeight="201.0" fitWidth="149.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Button fx:id="button" layoutX="99.0" layoutY="94.0" mnemonicParsing="false" onAction="#nix" text="Button" />
+      <Button fx:id="button2" layoutX="172.0" layoutY="94.0" mnemonicParsing="false" onAction="#nix2" text="Button" />
+      <Button fx:id="button3" layoutX="245.0" layoutY="94.0" mnemonicParsing="false" onAction="#nix3" text="Button" />
+      <Button fx:id="button4" layoutX="99.0" layoutY="127.0" mnemonicParsing="false" onAction="#nix4" text="Button" />
+      <Button fx:id="button5" layoutX="172.0" layoutY="127.0" mnemonicParsing="false" onAction="#nix5" text="Button" />
    </children>
 </Pane>

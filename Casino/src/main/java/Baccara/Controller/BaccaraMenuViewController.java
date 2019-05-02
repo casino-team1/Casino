@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 /**
@@ -30,19 +31,19 @@ public class BaccaraMenuViewController implements Initializable, Observer {
     @FXML
     private Button baccaraButton;
     @FXML
-    private ImageView spadeIcon;
-    @FXML
     private Button backToMenuButton;
     @FXML
     private Text baccaraText;
     @FXML
-    private ImageView cardView;
-    @FXML
-    private ImageView cardView1;
-    @FXML
     private Label welcomeMessage;
     @FXML
     private Label currentBalance;
+    @FXML
+    private ImageView cardView12;
+    @FXML
+    private ImageView cardView121;
+    @FXML
+    private ImageView cardView122;
 
     /**
      * Initializes the controller class.
@@ -75,6 +76,16 @@ public class BaccaraMenuViewController implements Initializable, Observer {
     @FXML
     private void backToMenu(ActionEvent event) throws Exception {
         this.menuModel.backToMainMenu();
+    }
+
+    @FXML
+    private void exitBackToMenuButton(MouseEvent event) {
+        backToMenuButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterBackToMenuButton(MouseEvent event) {
+        backToMenuButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
 
 }

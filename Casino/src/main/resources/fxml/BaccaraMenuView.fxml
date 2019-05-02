@@ -23,7 +23,6 @@
          </image>
       </ImageView>
       <Button fx:id="baccaraButton" layoutX="243.0" layoutY="338.0" mnemonicParsing="false" onAction="#startBaccara" prefHeight="55.0" prefWidth="289.0" text="Play Baccara" />
-      <Button fx:id="backToMenuButton" layoutX="624.0" layoutY="22.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="27.0" prefWidth="99.0" text="Go back" />
       <Text fx:id="baccaraText" layoutX="266.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baccara">
          <font>
             <Font name="Arial Bold" size="64.0" />
@@ -64,5 +63,10 @@
             <Image url="@../images/Baccara/baccaraCoint.png" />
          </image>
       </ImageView>
+      <Button fx:id="backToMenuButton" layoutX="14.0" layoutY="562.0" mnemonicParsing="false" onAction="#backToMenu" onMouseEntered="#enterBackToMenuButton" onMouseExited="#exitBackToMenuButton" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

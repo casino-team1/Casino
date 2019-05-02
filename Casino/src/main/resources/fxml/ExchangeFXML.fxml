@@ -35,7 +35,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="jetonToMoneyLabel" alignment="CENTER" layoutX="345.0" layoutY="187.0" onMouseClicked="#pressJGLabel" onMouseEntered="#enterJGLabel" onMouseExited="#exitJGLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Geld &lt;- Jetons">
+      <Label fx:id="jetonToMoneyLabel" alignment="CENTER" layoutX="345.0" layoutY="187.0" onMouseClicked="#pressJGLabel" onMouseEntered="#enterJGLabel" onMouseExited="#exitJGLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Jetons -&gt; Geld">
          <font>
             <Font size="18.0" />
          </font>
@@ -45,7 +45,7 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="474.0" mnemonicParsing="false" onAction="#pressBackButton" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück" textFill="WHITE">
+      <Button fx:id="btnback" layoutX="14.0" layoutY="474.0" mnemonicParsing="false" onAction="#pressbtnback" onMouseEntered="#enterbtnback" onMouseExited="#exitbtnback" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

@@ -109,6 +109,7 @@ public class ExchangeFXMLController implements Initializable {
 
     @FXML
     private void pressBackButton(ActionEvent event) { 
+        UserCentral.getInstance().getUser().setCurrentChips(5000);
         this.mainApplication.displayMainMenu();
     }
 

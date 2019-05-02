@@ -37,7 +37,7 @@ public class Spieler extends User {
             @Override
             public void run() {
                 DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-                int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(balance,lastUpdated) VALUES(?,CURDATE())", "5000.0;");
+                int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(chips,money,lastUpdated) VALUES(?,?,CURDATE())", "5000.0;0.0");
                 System.out.println(balanceIndex);
                 query.runQueryWithoutReturn("INSERT INTO user(username,password,role,balance_id,email) VALUES(?,?,?,?,?)", username + ";-" + password + ";-" + "Player" + ";-" + String.valueOf(balanceIndex) + ";-"
                         + email

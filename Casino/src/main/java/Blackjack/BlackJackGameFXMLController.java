@@ -48,29 +48,9 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private Button buttonHelp;
     @FXML
-    private ImageView spielerKarte1;
-    @FXML
-    private ImageView spielerKarte2;
-    @FXML
-    private ImageView spielerKarte3;
-    @FXML
-    private ImageView spielerKarte4;
-    @FXML
-    private ImageView spielerKarte5;
-    @FXML
     private Label labelKontostand;
     @FXML
     private Label labelKontostand1;
-    @FXML
-    private ImageView dealerKarte1;
-    @FXML
-    private ImageView dealerKarte2;
-    @FXML
-    private ImageView dealerKarte3;
-    @FXML
-    private ImageView dealerKarte4;
-    @FXML
-    private ImageView dealerKarte5;
     @FXML
     private Button buttonVersichern;
     @FXML
@@ -100,15 +80,9 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private ImageView spielerKarte;
     @FXML
-    private Button button;
+    private Pane dealerKartenPane;
     @FXML
-    private Button button2;
-    @FXML
-    private Button button3;
-    @FXML
-    private Button button4;
-    @FXML
-    private Button button5;
+    private ImageView dealerKarte;
 
     public void setMain(MainApp main) {
         this.main = main;
@@ -137,17 +111,8 @@ public class BlackJackGameFXMLController implements Initializable {
     private void startGame(ActionEvent event) {
         
         //Vorbereitung
-        spielerKarte1.setImage(null);
-        spielerKarte2.setImage(null);
-        spielerKarte3.setImage(null);
-        spielerKarte4.setImage(null);
-        spielerKarte5.setImage(null);
-
-        dealerKarte1.setImage(null);
-        dealerKarte2.setImage(null);
-        dealerKarte3.setImage(null);
-        dealerKarte4.setImage(null);
-        dealerKarte5.setImage(null);
+        spielerKartenPane.getChildren().clear();
+        dealerKartenPane.getChildren().clear();
 
         buttonStart.setDisable(true);
         textfeldEinsatz.setDisable(true);
@@ -238,61 +203,10 @@ public class BlackJackGameFXMLController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, 
-                spielerKarte1, spielerKarte2, spielerKarte3, spielerKarte4, spielerKarte5, dealerKarte1, dealerKarte2, dealerKarte3, dealerKarte4, dealerKarte5, 
+        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
                 labelKartenWertSpieler, labelKartenWertDealer, labelLösung, labelVerdoppeln, labelVersicherung, textfeldEinsatz, textfeldVersicherung);
         
         balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentBalance() + "$");
-    }
-
-    @FXML
-    private void nix(ActionEvent event) {
-        spielerKartenPane.getChildren().clear();
-        
-    }
-
-    @FXML
-    private void nix2(ActionEvent event) {
-        ImageView spielerKarte = new ImageView();
-        spielerKartenPane.getChildren().add(spielerKarte);
-        spielerKarte.setLayoutX(6);
-        spielerKarte.setLayoutY(6);
-        spielerKarte.setFitWidth(149);
-        spielerKarte.setFitHeight(201);
-        spielerKarte.setImage(new Image("/images/GameCards/AS.png"));
-    }
-
-    @FXML
-    private void nix3(ActionEvent event) {
-        ImageView spielerKarte = new ImageView();
-        spielerKartenPane.getChildren().add(spielerKarte);
-        spielerKarte.setLayoutX(spielerKarte.getX()+34);
-        spielerKarte.setLayoutY(6);
-        spielerKarte.setFitWidth(149);
-        spielerKarte.setFitHeight(201);
-        spielerKarte.setImage(new Image("/images/GameCards/AC.png"));
-    }
-
-    @FXML
-    private void nix4(ActionEvent event) {
-        ImageView spielerKarte = new ImageView();
-        spielerKartenPane.getChildren().add(spielerKarte);
-        spielerKarte.setLayoutX(spielerKarte.getX()+34+34);
-        spielerKarte.setLayoutY(6);
-        spielerKarte.setFitWidth(149);
-        spielerKarte.setFitHeight(201);
-        spielerKarte.setImage(new Image("/images/GameCards/AH.png"));
-    }
-
-    @FXML
-    private void nix5(ActionEvent event) {
-        ImageView spielerKarte = new ImageView();
-        spielerKartenPane.getChildren().add(spielerKarte);
-        spielerKarte.setLayoutX(spielerKarte.getX()+34+34+34);
-        spielerKarte.setLayoutY(6);
-        spielerKarte.setFitWidth(149);
-        spielerKarte.setFitHeight(201);
-        spielerKarte.setImage(new Image("/images/GameCards/AD.png"));
     }
 
 }

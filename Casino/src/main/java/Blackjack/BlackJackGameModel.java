@@ -31,6 +31,7 @@ public class BlackJackGameModel {
     private boolean unentschieden = false;
 
     private int einsatz;
+    private int gewinn;
 
     private Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
@@ -86,7 +87,7 @@ public class BlackJackGameModel {
         einsatz = Integer.parseInt(textfeldEinsatz.getText());
         double restlichesGeld = UserCentral.getInstance().getUser().getCurrentChipBalance() - einsatz;
         UserCentral.getInstance().getUser().setCurrentChips(restlichesGeld);
-        balanceLabel.setText("Konto: " + restlichesGeld + "$");
+        balanceLabel.setText("Konto: " + restlichesGeld);
 
         //Vorbereitung
         k.kartenErstellen();
@@ -303,27 +304,52 @@ public class BlackJackGameModel {
 
     public void gewonnenDurchBlackJack() {
         //Gewinnberechnung       
-        int gewinn = einsatz + ((einsatz * 3) / 2);
+        gewinn = einsatz + ((einsatz * 3) / 2);
         labelLösung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
         UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
     }
 
     public void gewonnen() {
         //Gewinnberechnung
-        int gewinn = (Integer.parseInt(textfeldEinsatz.getText()) * 2);
+        gewinn = einsatz * 2;
         labelLösung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
         UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
     }
 
     public void unentschieden() {
         labelLösung.setText("UNENTSCHIEDEN!");
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
     }
 
     public void verloren() {
         labelLösung.setText("SIE HABEN VERLOREN!");
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
     }
+
+    public int getEinsatz() {
+        return einsatz;
+    }
+
+    public void setEinsatz(int einsatz) {
+        this.einsatz = einsatz;
+    }
+
+    public int getGewinn() {
+        return gewinn;
+    }
+
+    public void setGewinn(int gewinn) {
+        this.gewinn = gewinn;
+    }
+
+    public Label getBalanceLabel() {
+        return balanceLabel;
+    }
+
+    //Damit Zugriffe auf Klasse für Tests möglich sind
+    public BlackJackGameModel() {
+    }
+
 }

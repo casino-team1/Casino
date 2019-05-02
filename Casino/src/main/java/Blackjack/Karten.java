@@ -18,42 +18,10 @@ public class Karten {
     private HashMap<String, Integer> karten = new HashMap<>();
     private ArrayList<String> kartenSymbole = new ArrayList<String>();
 
-    //private String[] farben = new String[]{"♥", "♦", "♣", "♠"};
     private int anzahlKartenImKartenDeck = 52;
     private int anzahlKartenInKartenSymbole = 51;
 
     public void kartenErstellen() {
-        /*karten.clear();
-        kartenSymbole.clear();
-        
-        //Kartendeck (für jede Farbe eine Karte)
-        for (int i = 2; i <= 10; i++) {
-        for (String f : farben) {
-        String j = String.valueOf(i);
-        karten.put(j + f, i);
-        //kartenSymbole
-        kartenSymbole.add(j + f);
-        }
-        
-        }
-        //Erstellen Karten und Kartenwert
-        String[] special = {"J", "Q", "K"};
-        for (int i = 0; i < 4; i++) {
-        for (String spec : special) {
-        for (String f : farben) {
-        karten.put(spec + f, 10);
-        kartenSymbole.add(spec + f);
-        }
-        }
-        }
-        //A || Kartenwert und Karten
-        for (int i = 0; i < 4; i++) {
-        for (String f : farben) {
-        karten.put("A" + f, 11);
-        kartenSymbole.add("A" + f);
-        }
-        }*/
-
         karten.clear();
         kartenSymbole.clear();
 

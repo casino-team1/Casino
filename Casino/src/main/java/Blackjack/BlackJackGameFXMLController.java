@@ -90,12 +90,10 @@ public class BlackJackGameFXMLController implements Initializable {
 
     @FXML
     private void prüfungEinsatz(ActionEvent event) {
-        Karten karten = new Karten();
-        karten.kartenErstellen();
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
-            if (einsatz <  50|| einsatz > UserCentral.getInstance().getUser().getCurrentChipBalance()) {
-
+            if (einsatz < 50 || einsatz > UserCentral.getInstance().getUser().getCurrentChipBalance()) {
+                labelLösung.setText("Fehler beim Einsatz, erneut versuchen!");
             } else {
                 buttonStart.setDisable(false);
                 buttonPrüfung.setDisable(true);
@@ -103,13 +101,13 @@ public class BlackJackGameFXMLController implements Initializable {
 
             }
         } catch (NumberFormatException e) {
-
+            labelLösung.setText("Fehler beim Einsatz, erneut versuchen!");
         }
     }
 
     @FXML
     private void startGame(ActionEvent event) {
-        
+
         //Vorbereitung
         spielerKartenPane.getChildren().clear();
         dealerKartenPane.getChildren().clear();
@@ -126,7 +124,7 @@ public class BlackJackGameFXMLController implements Initializable {
         labelLösung.setText("");
         labelVerdoppeln.setText("");
         labelVersicherung.setText("");
-    
+
         game.play();
     }
 
@@ -205,8 +203,8 @@ public class BlackJackGameFXMLController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
                 labelKartenWertSpieler, labelKartenWertDealer, labelLösung, labelVerdoppeln, labelVersicherung, balanceLabel, textfeldEinsatz, textfeldVersicherung);
-        
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChipBalance() + "$");
+
+        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChipBalance());
     }
 
 }

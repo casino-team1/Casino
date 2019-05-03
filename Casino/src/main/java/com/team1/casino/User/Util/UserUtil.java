@@ -6,7 +6,7 @@
  */
 package com.team1.casino.User.Util;
 
-import com.team1.casino.User.User;
+import com.team1.casino.User.Spieler;
 import com.team1.casino.database.Connection.DatabaseConnection;
 import com.team1.casino.database.DatabaseQuery;
 import java.sql.SQLException;
@@ -31,7 +31,7 @@ public class UserUtil {
         return isValidPassword;
     }
 
-    public boolean isValidUser(User user) {
+    public boolean isValidUser(Spieler user) {
         String storedPassword = retreaveStoredUserPassword(user.getUsername());
         if (storedPassword.equals("None") || storedPassword.isEmpty()) {
             return false;

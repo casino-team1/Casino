@@ -8,7 +8,7 @@ package com.team1.casino.Model;
 
 import com.team1.casino.Entity.MailUtil;
 import com.team1.casino.MainApp;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import com.team1.casino.User.Util.UserUtil;
 import com.team1.casino.User.Spieler;
 import java.util.Observable;
@@ -60,7 +60,7 @@ public class RegistrationModel extends Observable {
     private StringProperty password = new SimpleStringProperty();
 
     public void registerNewUser() {
-        UserCentral center = UserCentral.getInstance();
+        PlayerCentral center = PlayerCentral.getInstance();
         center.setUser(new Spieler(username.getValue(), password.getValue()));
         boolean isUniqueUsername = new UserUtil().isUniqueUsername(username.getValue());
         if (isUniqueUsername == false) {
@@ -69,8 +69,8 @@ public class RegistrationModel extends Observable {
             notifyObservers();
         } else {
             if (isValidEmail(this.emailAdress.getValue()) == true) {
-                new MailUtil(this.emailAdress.getValue(), UserCentral.getInstance().getUser().getValidationCode(), "").sendRegistrationMail();
-                UserCentral.getInstance().getUser().setEmailAdress(this.emailAdress.getValue());
+                new MailUtil(this.emailAdress.getValue(), PlayerCentral.getInstance().getUser().getValidationCode(), "").sendRegistrationMail();
+                PlayerCentral.getInstance().getUser().setEmailAdress(this.emailAdress.getValue());
                 this.mainApplicatin.displayAuthenticationWindow();
             } else {
                 this.errorMessage = "Ungültige Email-Adresse";

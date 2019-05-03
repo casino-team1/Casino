@@ -7,10 +7,9 @@
 package com.team1.casino.Model;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.User.User;
 import com.team1.casino.User.Util.UserUtil;
 import com.team1.casino.User.Spieler;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -20,7 +19,7 @@ import javafx.beans.property.StringProperty;
  */
 public class CasinoLoginModel {
 
-    private User currentPlayer;
+    private Spieler currentPlayer;
     private MainApp mainApplication;
 
     public CasinoLoginModel() {
@@ -47,11 +46,11 @@ public class CasinoLoginModel {
         if (playerUtil.isUniqueUsername(currentPlayer.getUsername()) == true) {
             return "Gegebener Nutzernamen ist nicht vergeben";
         }
-        if (currentPlayer.isValidUser() == false) {
+        if (currentPlayer.isValidPlayer() == false) {
             return "Gegebens Passwort ist ungültig.";
         }
         currentPlayer.loadUserInformation();
-        UserCentral.getInstance().setUser(currentPlayer);
+        PlayerCentral.getInstance().setUser(currentPlayer);
         return "Valid user";
     }
 
@@ -60,8 +59,8 @@ public class CasinoLoginModel {
     }
 
     public void displayMainMenu() {
-        if (UserCentral.getInstance().getUser() != null) {
-            if (UserCentral.getInstance().getUser().getRole().equals("Admin")) {
+        if (PlayerCentral.getInstance().getUser() != null) {
+            if (PlayerCentral.getInstance().getUser().getRole().equals("Admin")) {
                 this.mainApplication.displayStatisticView();
             } else {
                 this.mainApplication.displayMainMenu();

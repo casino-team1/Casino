@@ -2,7 +2,7 @@ package com.team1.casino.Controller;
 
 import com.team1.casino.Entity.PasswordChanger;
 import com.team1.casino.Model.CasinoModel;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import com.team1.casino.User.Util.UserUtil;
 import java.net.URL;
 import java.util.Observable;
@@ -36,7 +36,7 @@ public class CasinoController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChipBalance());
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance());
     }
 
     @Override
@@ -80,12 +80,12 @@ public class CasinoController implements Initializable, Observer {
         boolean isValidChange = changer.displayDialog();
         if (isValidChange == true) {
             String newPassword = changer.getNewPassword();
-            if (newPassword.equals(UserCentral.getInstance().getUser().getPassword()) == false) {
+            if (newPassword.equals(PlayerCentral.getInstance().getUser().getPassword()) == false) {
                 //Run a new thread that changes the password, even if the programm is terminated.
                 Thread thread = new Thread() {
                     @Override
                     public void run() {
-                        UserCentral.getInstance().getUser().setNewPassword(UserUtil.getHashedPassword(newPassword), newPassword);
+                        PlayerCentral.getInstance().getUser().setNewPassword(UserUtil.getHashedPassword(newPassword), newPassword);
                     }
                 };
                 thread.start();

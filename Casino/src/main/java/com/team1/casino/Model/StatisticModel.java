@@ -7,7 +7,7 @@
 package com.team1.casino.Model;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import java.sql.SQLException;
 import java.util.Observable;
 
@@ -32,7 +32,7 @@ public class StatisticModel extends Observable {
     }
 
     public void logOut() {
-        UserCentral.getInstance().setUser(null);
+        PlayerCentral.getInstance().setUser(null);
         this.mainApplication.displayLoginView();
     }
 

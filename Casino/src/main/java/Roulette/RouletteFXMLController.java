@@ -1,7 +1,7 @@
 package Roulette;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -144,8 +144,8 @@ public class RouletteFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if (UserCentral.getInstance().getUser() != null) {
-            playerBalance = (int) UserCentral.getInstance().getUser().getCurrentChips();
+        if (PlayerCentral.getInstance().getUser() != null) {
+            playerBalance = (int) PlayerCentral.getInstance().getUser().getCurrentChips();
         } else {
             playerBalance = 1000;
         }

@@ -5,19 +5,16 @@
  */
 package Blackjack;
 
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Random;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -84,8 +81,8 @@ public class BlackJackGameModel {
     public void play() {
         //Einsatz entgegen nehmen
         einsatz = Integer.parseInt(textfeldEinsatz.getText());
-        double restlichesGeld = UserCentral.getInstance().getUser().getCurrentChipBalance() - einsatz;
-        UserCentral.getInstance().getUser().setCurrentChips(restlichesGeld);
+        double restlichesGeld = PlayerCentral.getInstance().getUser().getCurrentChipBalance() - einsatz;
+        PlayerCentral.getInstance().getUser().setNewChipBalance(restlichesGeld);
         balanceLabel.setText("Konto: " + restlichesGeld + "$");
 
         //Vorbereitung
@@ -305,25 +302,25 @@ public class BlackJackGameModel {
         //Gewinnberechnung       
         int gewinn = einsatz + ((einsatz * 3) / 2);
         labelLösung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
-        UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+        PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChips() + gewinn);
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChips() + "$");
     }
 
     public void gewonnen() {
         //Gewinnberechnung
         int gewinn = (Integer.parseInt(textfeldEinsatz.getText()) * 2);
         labelLösung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
-        UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+        PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChips() + gewinn);
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChips() + "$");
     }
 
     public void unentschieden() {
         labelLösung.setText("UNENTSCHIEDEN!");
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChips() + "$");
     }
 
     public void verloren() {
         labelLösung.setText("SIE HABEN VERLOREN!");
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips() + "$");
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChips() + "$");
     }
 }

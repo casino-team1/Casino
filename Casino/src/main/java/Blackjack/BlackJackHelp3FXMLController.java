@@ -24,17 +24,12 @@ import javafx.stage.Stage;
  * @author albio
  */
 public class BlackJackHelp3FXMLController implements Initializable {
-    
+
     private MainApp main = new MainApp();
-
-    public void setMain(MainApp main) {
-        this.main = main;
-    }
-
+    private Stage stage;
+    
     @FXML
     private Button buttonZurueck;
-    
-    private Stage stage;
 
     /**
      * Initializes the controller class.
@@ -42,12 +37,16 @@ public class BlackJackHelp3FXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    
+    public void setMain(MainApp main) {
+        this.main = main;
+    }
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-    
+
     @FXML
     private void zurueck(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BlackJackHelp2FXML.fxml"));

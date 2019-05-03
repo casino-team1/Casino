@@ -37,6 +37,9 @@ public class BlackJackGameFXMLController implements Initializable {
 
     private Stage stage;
 
+    @FXML
+    private TextField textfeldEinsatz;
+    @FXML
     private Button buttonPruefung;
     @FXML
     private Button buttonStart;
@@ -63,8 +66,6 @@ public class BlackJackGameFXMLController implements Initializable {
     private Label labelKartenWertSpieler;
     @FXML
     private Label labelKartenWertDealer;
-    @FXML
-    private TextField textfeldEinsatz;
     @FXML
     private TextField textfeldVersicherung;
     @FXML
@@ -93,7 +94,6 @@ public class BlackJackGameFXMLController implements Initializable {
         this.main = main;
     }
 
-    @FXML
     private void pruefungEinsatz(ActionEvent event) {
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
@@ -214,5 +214,7 @@ public class BlackJackGameFXMLController implements Initializable {
         buttonVerlassen.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
 
-
+    @FXML
+    private void prüfungEinsatz(ActionEvent event) {
+    }
 }

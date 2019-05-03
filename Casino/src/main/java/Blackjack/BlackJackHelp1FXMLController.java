@@ -28,11 +28,10 @@ import javafx.stage.Stage;
 public class BlackJackHelp1FXMLController implements Initializable {
 
     private MainApp main;
-
+    private Stage stage;
+    
     @FXML
     private Button buttonWeiter;
-
-    private Stage stage;
 
     /**
      * Initializes the controller class.

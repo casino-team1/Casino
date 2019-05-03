@@ -156,8 +156,8 @@ public class BlackJackSpielerModel {
         return kartenWertSpieler;
     }
 
-    public void setKartenWertSpieler(int kartenWertSpieler) {
-        this.kartenWertSpieler = kartenWertSpieler;
+    public void setKartenWertSpieler(int i) {
+        this.kartenWertSpieler = i;
     }
 
     public void setKartenWertSpielerMinusTen() {
@@ -179,6 +179,10 @@ public class BlackJackSpielerModel {
     public int getxKoordinate() {
         return xKoordinate;
     }
+    
+    public void setxKoordinate(int i) {
+        this.xKoordinate = i;
+    }
 
     public int getyKoordinate() {
         return yKoordinate;
@@ -190,10 +194,6 @@ public class BlackJackSpielerModel {
 
     public int getKarteHeight() {
         return karteHeight;
-    }
-
-    public void setxKoordinate(int xKoordinate) {
-        this.xKoordinate = xKoordinate;
     }
 
 }

@@ -57,6 +57,7 @@ public class BlackJackGameFXMLController implements Initializable {
     private Button buttonVersichern;
     @FXML
     private Label labelVerdoppeln;
+    @FXML
     private Label labelLoesung;
     @FXML
     private Label labelVersicherung;
@@ -69,17 +70,9 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private TextField textfeldVersicherung;
     @FXML
-    private ImageView spielerKarte;
-    @FXML
-    private ImageView dealerKarte;
-    @FXML
     private Pane spielerKartenPane;
     @FXML
     private Pane dealerKartenPane;
-    @FXML
-    private Button buttonPrüfung;
-    @FXML
-    private Label labelLösung;
     
     
     @Override
@@ -188,6 +181,8 @@ public class BlackJackGameFXMLController implements Initializable {
         int i = Integer.parseInt(textfeldEinsatz.getText());
         String s = String.valueOf(i * 2);
         labelVerdoppeln.setText("Ihr Einsatz wurde erhöht auf " + s);
+        textfeldEinsatz.setText(s);
+        PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - i);
         game.spielerHit();
         game.dealerRound(labelKartenWertDealer);
     }

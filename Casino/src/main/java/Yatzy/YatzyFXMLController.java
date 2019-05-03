@@ -397,6 +397,7 @@ public class YatzyFXMLController implements Initializable {
         stageHelp.show();
     }
 
+    @FXML
     private void pressbtnback(ActionEvent event) {
         this.mainApplication.displayMainMenu();
     }

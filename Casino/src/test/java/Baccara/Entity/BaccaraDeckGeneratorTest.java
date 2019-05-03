@@ -24,7 +24,7 @@ public class BaccaraDeckGeneratorTest {
     @Test
     public void testGetDecks() {
         BaccaraDeckGenerator generator = new BaccaraDeckGenerator();
-        int EXPECTED_DECK_SIZE = 416;
+        int EXPECTED_DECK_SIZE = 52 * 8;
         assertEquals(EXPECTED_DECK_SIZE, generator.getDecks().size());
     }
 

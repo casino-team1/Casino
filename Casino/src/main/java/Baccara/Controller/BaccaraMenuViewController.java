@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import com.team1.casino.User.Spieler;
+import javafx.geometry.Pos;
 
 /**
  * FXML Controller class
@@ -50,6 +51,8 @@ public class BaccaraMenuViewController implements Initializable, Observer {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.welcomeMessage.setAlignment(Pos.BASELINE_CENTER);
+        this.currentBalance.setAlignment(Pos.BASELINE_CENTER);
     }
 
     private BaccaraMenuModel menuModel;
@@ -59,7 +62,7 @@ public class BaccaraMenuViewController implements Initializable, Observer {
         Spieler player = this.menuModel.getPlayer();
         if (player != null) {
             this.welcomeMessage.setText(String.format("Wilkommen %s", player.getUsername()));
-            this.currentBalance.setText(String.format("Sie haben %s CHF", String.valueOf(player.getCurrentChipBalance())));
+            this.currentBalance.setText(String.format("Sie haben %s Chips", String.valueOf(player.getCurrentChipBalance())));
         }
     }
 

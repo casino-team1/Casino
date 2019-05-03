@@ -11,6 +11,7 @@ import java.util.Random;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -20,6 +21,11 @@ public class BlackJackDealerModel {
 
     private int kartenWertDealer = 0;
     private int karteZweiWert = 0;
+    
+    private int xKoordinate = 0;
+    private int yKoordinate = 6;
+    private int karteWidth = 149;
+    private int karteHeight = 201;
 
     Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
@@ -27,10 +33,9 @@ public class BlackJackDealerModel {
     private ArrayList<String> kartenDealer = new ArrayList<>();
     private String zufallskarte = "";
     private Random r = new Random();
-
     private boolean gewonnen = false;
 
-    public void firstHit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, ImageView dealerKarte1, ImageView dealerKarte2, ImageView dealerKarte3, ImageView dealerKarte4, ImageView dealerKarte5, Label labelKartenWertDealer) {
+    public void firstHit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Pane dealerKartenPane, Label labelKartenWertDealer) {
         //Parameter einfangen
         this.karten = karten;
         this.kartenSymbole = kartenSymbole;
@@ -60,25 +65,17 @@ public class BlackJackDealerModel {
         kartenSymbole.remove(zufallskarte);
         k.subAnzahlKartenImKartenDeck();
         k.subAnzahlKartenInKartenSymbole();
-        //labelKartenDealer.setText(zufallskarte + " + ?");
-        //Karten anzeigen
-        if (dealerKarte1.getImage() == null) {
-            dealerKarte1.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        } else if (dealerKarte2.getImage() == null) {
-            dealerKarte2.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        } else if (dealerKarte3.getImage() == null) {
-            dealerKarte3.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        } else if (dealerKarte4.getImage() == null) {
-            dealerKarte4.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        } else if (dealerKarte5.getImage() == null) {
-            dealerKarte5.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-            labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        }
 
+        //Karte anzeigen
+        ImageView dealerKarte = new ImageView();
+        dealerKartenPane.getChildren().add(dealerKarte);
+        dealerKarte.setLayoutX(xKoordinate);
+        dealerKarte.setLayoutY(yKoordinate);
+        dealerKarte.setFitWidth(karteWidth);
+        dealerKarte.setFitHeight(karteHeight);
+        dealerKarte.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
+        labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
+        
         //Zweite unbekannte Karte an Dealer verteilen
         zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
         zufallskarte = kartenSymbole.get(zufallszahl);
@@ -169,5 +166,27 @@ public class BlackJackDealerModel {
     public void clearKartenDealer() {
         kartenDealer.clear();
     }
+
+    public int getxKoordinate() {
+        return xKoordinate;
+    }
+
+    public int getyKoordinate() {
+        return yKoordinate;
+    }
+
+    public int getKarteWidth() {
+        return karteWidth;
+    }
+
+    public int getKarteHeight() {
+        return karteHeight;
+    }
+
+    public void setxKoordinate(int xKoordinate) {
+        this.xKoordinate = xKoordinate;
+    }
+    
+    
 
 }

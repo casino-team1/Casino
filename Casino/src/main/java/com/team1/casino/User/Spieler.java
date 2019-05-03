@@ -21,11 +21,11 @@ import java.util.logging.Logger;
  * @author Nick Flückiger
  */
 public class Spieler extends User {
-    
+
     public Spieler(String username, String password) {
         super(username, password);
     }
-    
+
     @Override
     public void writeUserToDatabase() {
         String username = super.getUsername();
@@ -33,20 +33,17 @@ public class Spieler extends User {
         String email = super.getEmailAdress();
         //Create new Class, that handles the creation of the user.
         //The class should also handle Statupdate and other actions related to the player.
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-                int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(balance,lastUpdated) VALUES(?,CURDATE())", "5000.0;");
-                System.out.println(balanceIndex);
-                query.runQueryWithoutReturn("INSERT INTO user(username,password,role,balance_id,email) VALUES(?,?,?,?,?)", username + ";-" + password + ";-" + "Player" + ";-" + String.valueOf(balanceIndex) + ";-"
-                        + email
-                );
-                System.out.println("Inserted the information");
-            }
-        }).start();
+        super.setCurrentChips(0);
+        super.setCurrentMoney(5000);
+        DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
+
+        int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(chips,money,lastUpdated) VALUES(?,?,CURDATE())", "0.0;5000.0");
+        query.runQueryWithoutReturn("INSERT INTO user(username,password,role,balance_id,email) VALUES(?,?,?,?,?)", username + ";-" + password + ";-" + "Player" + ";-" + String.valueOf(balanceIndex) + ";-"
+                + email
+        );
+        System.out.println("Inserted the information");
     }
-    
+
     @Override
     public void setNewChipBalance(double currentBalance) {
         super.setNewChipBalance(currentBalance);
@@ -59,19 +56,19 @@ public class Spieler extends User {
             }
         }
     }
-    
+
     @Override
     public void addStat(String gameName, double bet, String result, double amount) {
         Updater updated = new Updater();
         updated.writeStatisticToDatabase(gameName, bet, result, amount);
     }
-    
+
     @Override
     public void setCurrentBalanceAndAddStatistic(double newBalance, String gameName, double bet, String result, double amount) {
         this.setNewChipBalance(newBalance);
         this.addStat(gameName, bet, result, amount);
     }
-    
+
     @Override
     public void setNewPassword(String newPasswordHash, String newPasswordPlain) {
         super.setPassword(newPasswordPlain);
@@ -79,9 +76,9 @@ public class Spieler extends User {
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
         query.runQueryWithoutReturn(statement, newPasswordHash + ";-" + super.getUsername());
     }
-    
+
     @Override
-    public void setNewMoney(int newMoney) {
+    public void setNewMoney(double newMoney) {
         super.setCurrentMoney(newMoney);
         if (MainApp.EXECUTION_MODE != ExecutionMode.DEVELOPMENT) {
             try {
@@ -92,5 +89,5 @@ public class Spieler extends User {
             }
         }
     }
-    
+
 }

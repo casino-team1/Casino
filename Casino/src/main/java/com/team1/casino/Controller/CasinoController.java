@@ -73,7 +73,7 @@ public class CasinoController implements Initializable, Observer {
     private void pressKasseButton(ActionEvent event) {
         this.casinoModel.displayExchange();
     }
-    
+
     @FXML
     private void changePassword(ActionEvent event) {
         PasswordChanger changer = new PasswordChanger();
@@ -94,5 +94,35 @@ public class CasinoController implements Initializable, Observer {
                 changer.displayMessage("That looks a lot a like", "You can't change the password to the password itself, please use a different one");
             }
         }
+    }
+
+    @FXML
+    private void exitLogOutButton(MouseEvent event) {
+        logOutButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterLogOutButton(MouseEvent event) {
+        logOutButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void exitKasseButton(MouseEvent event) {
+        kasseButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterKasseButton(MouseEvent event) {
+        kasseButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void exitChangePasswordButton(MouseEvent event) {
+        changePasswordButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterChangePasswordButton(MouseEvent event) {
+        changePasswordButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
 }

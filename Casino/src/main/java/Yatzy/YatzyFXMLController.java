@@ -57,8 +57,6 @@ public class YatzyFXMLController implements Initializable {
     @FXML
     private Label lblerror;
     @FXML
-    private Button btnendgame;
-    @FXML
     private Label lblup7;
     @FXML
     private Label lblup8;
@@ -76,6 +74,8 @@ public class YatzyFXMLController implements Initializable {
     private ImageView imgwurf1;
     @FXML
     private Label balanceLabel;
+    @FXML
+    private Button btnback;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -199,7 +199,7 @@ public class YatzyFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        balance = UserCentral.getInstance().getUser().getCurrentChipBalance();
+        balance = (int) UserCentral.getInstance().getUser().getCurrentChipBalance();
         balanceLabel.setText("Konto: " + balance);
 
         btnthrowdices.setDisable(true);
@@ -397,8 +397,7 @@ public class YatzyFXMLController implements Initializable {
         stageHelp.show();
     }
 
-    @FXML
-    private void pressendgame(ActionEvent event) {
+    private void pressbtnback(ActionEvent event) {
         this.mainApplication.displayMainMenu();
     }
 
@@ -877,5 +876,15 @@ public class YatzyFXMLController implements Initializable {
                 btnbet.setStyle("-fx-font-size: 18; -fx-font-weight: BOLD");
                 break;
         }
+    }
+
+    @FXML
+    private void exitbtnback(MouseEvent event) {
+        btnback.setStyle("-fx-background-color: rgba(1, 1, 1, 0); -fx-border-color: black; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterbtnback(MouseEvent event) {
+        btnback.setStyle("-fx-background-color: rgba(1, 1, 1, .1); -fx-border-color: black; -fx-border-width: 3;");
     }
 }

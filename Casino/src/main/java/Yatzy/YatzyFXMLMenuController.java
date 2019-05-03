@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -60,6 +61,16 @@ public class YatzyFXMLMenuController implements Initializable {
     @FXML
     private void pressbtnback(ActionEvent event) {
         this.mainApplication.displayMainMenu();
+    }
+
+    @FXML
+    private void exitbtnback(MouseEvent event) {
+        btnback.setStyle("-fx-background-color: rgba(1, 1, 1, 0); -fx-border-color: black; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterbtnback(MouseEvent event) {
+        btnback.setStyle("-fx-background-color: rgba(1, 1, 1, .1); -fx-border-color: black; -fx-border-width: 3;");
     }
 
     

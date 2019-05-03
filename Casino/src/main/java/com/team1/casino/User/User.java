@@ -20,11 +20,10 @@ public abstract class User {
     private String role;
     private String username;
     private String password;
-    private Integer currentChips = 1000;
+    private double currentChips = 1000;
     private boolean validated = false;
     private String validationCode = "";
     private String emailAdress;
-
     private double currentMoney;
 
     public double getCurrentMoney() {
@@ -47,7 +46,7 @@ public abstract class User {
         return ID;
     }
 
-    public void setCurrentChips(Integer currentChips) {
+    public void setCurrentChips(double currentChips) {
         this.currentChips = currentChips;
     }
 
@@ -86,7 +85,7 @@ public abstract class User {
         return isValid;
     }
 
-    public Integer getCurrentChipBalance() {
+    public double getCurrentChipBalance() {
         return this.currentChips;
     }
 
@@ -139,9 +138,9 @@ public abstract class User {
 
     public abstract void setNewPassword(String newPasswordHash, String newPasswordPlain);
 
-    public Integer getCurrentChips() {
+    public double getCurrentChips() {
         return currentChips;
     }
 
-    public abstract void setNewMoney(int newMoney);
+    public abstract void setNewMoney(double newMoney);
 }

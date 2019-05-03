@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -46,17 +47,11 @@
             <Insets />
          </opaqueInsets>
       </Label>
-      <Button fx:id="buttonVerlassen" layoutX="14.0" layoutY="745.0" mnemonicParsing="false" onAction="#zurueck" text="Spiel Verlassen" />
       <Button fx:id="buttonHelp" layoutX="904.0" layoutY="14.0" mnemonicParsing="false" onAction="#help" text="?">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <ImageView fx:id="spielerKarte1" fitHeight="201.0" fitWidth="149.0" layoutX="14.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="spielerKarte2" fitHeight="201.0" fitWidth="149.0" layoutX="89.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="spielerKarte3" fitHeight="201.0" fitWidth="149.0" layoutX="164.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="spielerKarte4" fitHeight="201.0" fitWidth="149.0" layoutX="239.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="spielerKarte5" fitHeight="201.0" fitWidth="149.0" layoutX="314.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="labelKontostand" layoutX="685.0" layoutY="170.0" text="Kontostand:" textFill="WHITE">
          <font>
             <Font size="17.0" />
@@ -73,7 +68,7 @@
       <Button fx:id="buttonStand" disable="true" layoutX="345.0" layoutY="590.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
       <Button fx:id="buttonHit" disable="true" layoutX="255.0" layoutY="590.0" mnemonicParsing="false" onAction="#hit" text="Hit" />
       <TextField fx:id="textfeldVersicherung" disable="true" layoutX="680.0" layoutY="591.0" opacity="0.75" promptText="Versicherungsbetrag" />
-      <Label fx:id="labelMöglichkeiten" layoutX="29.0" layoutY="590.0" text="Was möchten Sie tun?" textFill="WHITE">
+      <Label layoutX="29.0" layoutY="590.0" text="Was möchten Sie tun?" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
@@ -99,11 +94,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fx:id="dealerKarte1" fitHeight="201.0" fitWidth="149.0" layoutX="494.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte2" fitHeight="201.0" fitWidth="149.0" layoutX="569.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte3" fitHeight="201.0" fitWidth="149.0" layoutX="644.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte4" fitHeight="201.0" fitWidth="149.0" layoutX="719.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerKarte5" fitHeight="201.0" fitWidth="149.0" layoutX="794.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="labelKartenWertSpieler" layoutX="263.0" layoutY="251.0" prefHeight="17.0" prefWidth="46.0" textFill="#ffc200">
          <font>
             <Font size="23.0" />
@@ -114,15 +104,23 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Pane fx:id="spielerKartenPane" layoutX="15.0" layoutY="287.0" prefHeight="213.0" prefWidth="433.0">
+      <Pane fx:id="spielerKartenPane" layoutX="5.0" layoutY="287.0" prefHeight="213.0" prefWidth="457.0">
          <children>
-            <ImageView fx:id="spielerKarte" fitHeight="201.0" fitWidth="149.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="spielerKarte" fitHeight="201.0" fitWidth="149.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
-      <Button fx:id="button" layoutX="99.0" layoutY="94.0" mnemonicParsing="false" onAction="#nix" text="Button" />
-      <Button fx:id="button2" layoutX="172.0" layoutY="94.0" mnemonicParsing="false" onAction="#nix2" text="Button" />
-      <Button fx:id="button3" layoutX="245.0" layoutY="94.0" mnemonicParsing="false" onAction="#nix3" text="Button" />
-      <Button fx:id="button4" layoutX="99.0" layoutY="127.0" mnemonicParsing="false" onAction="#nix4" text="Button" />
-      <Button fx:id="button5" layoutX="172.0" layoutY="127.0" mnemonicParsing="false" onAction="#nix5" text="Button" />
+      <Pane fx:id="dealerKartenPane" layoutX="486.0" layoutY="287.0" prefHeight="213.0" prefWidth="457.0">
+         <children>
+            <ImageView fx:id="dealerKarte" fitHeight="201.0" fitWidth="149.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Button fx:id="buttonVerlassen" layoutX="14.0" layoutY="731.0" mnemonicParsing="false" onAction="#zurueck" onMouseEntered="#enterButtonVerlassen" onMouseExited="#exitButtonVerlassen" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>

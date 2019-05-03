@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -62,6 +63,7 @@ public class BlackJackMainController implements Initializable {
             Stage stage = this.main.getStage();
             stage.setTitle("Black Jack");
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
             BlackJackGameFXMLController controller = loader.getController();
             controller.setMain(main);
@@ -73,6 +75,16 @@ public class BlackJackMainController implements Initializable {
     @FXML
     private void zurueck(ActionEvent event) throws IOException {
         this.main.displayMainMenu();
+    }
+
+    @FXML
+    private void exitButtonZurueck(MouseEvent event) {
+        buttonZurueck.setStyle("-fx-background-color: rgba(1, 1, 1, 0); -fx-border-color: black; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterButtonZurueck(MouseEvent event) {
+        buttonZurueck.setStyle("-fx-background-color: rgba(1, 1, 1, .1); -fx-border-color: black; -fx-border-width: 3;");
     }
 
 }

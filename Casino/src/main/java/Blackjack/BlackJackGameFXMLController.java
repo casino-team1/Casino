@@ -19,8 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -40,7 +40,7 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private TextField textfeldEinsatz;
     @FXML
-    private Button buttonPrüfung;
+    private Button buttonPruefung;
     @FXML
     private Button buttonStart;
     @FXML
@@ -62,11 +62,9 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private TextField textfeldVersicherung;
     @FXML
-    private Label labelMöglichkeiten;
-    @FXML
     private Label labelVerdoppeln;
     @FXML
-    private Label labelLösung;
+    private Label labelLoesung;
     @FXML
     private Label labelVersicherung;
     @FXML
@@ -89,44 +87,42 @@ public class BlackJackGameFXMLController implements Initializable {
     }
 
     @FXML
-    private void prüfungEinsatz(ActionEvent event) {
-        Karten karten = new Karten();
-        karten.kartenErstellen();
+    private void pruefungEinsatz(ActionEvent event) {
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
-            if (einsatz <  50|| einsatz > PlayerCentral.getInstance().getUser().getCurrentChipBalance()) {
-
+            if (einsatz < 50 || einsatz > PlayerCentral.getInstance().getUser().getCurrentChipBalance()) {
+                labelLoesung.setText("Fehler beim Einsatz, erneut versuchen!");
             } else {
                 buttonStart.setDisable(false);
-                buttonPrüfung.setDisable(true);
+                buttonPruefung.setDisable(true);
                 textfeldEinsatz.setDisable(true);
 
             }
         } catch (NumberFormatException e) {
-
+            labelLoesung.setText("Fehler beim Einsatz, erneut versuchen!");
         }
     }
 
     @FXML
     private void startGame(ActionEvent event) {
-        
+
         //Vorbereitung
         spielerKartenPane.getChildren().clear();
         dealerKartenPane.getChildren().clear();
 
         buttonStart.setDisable(true);
         textfeldEinsatz.setDisable(true);
-        buttonPrüfung.setDisable(true);
+        buttonPruefung.setDisable(true);
         buttonHit.setDisable(false);
         buttonStand.setDisable(false);
         buttonVerdoppeln.setDisable(true);
         buttonVersichern.setDisable(true);
         labelKartenWertDealer.setText("");
         labelKartenWertSpieler.setText("");
-        labelLösung.setText("");
+        labelLoesung.setText("");
         labelVerdoppeln.setText("");
         labelVersicherung.setText("");
-    
+
         game.play();
     }
 
@@ -203,10 +199,21 @@ public class BlackJackGameFXMLController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPrüfung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
-                labelKartenWertSpieler, labelKartenWertDealer, labelLösung, labelVerdoppeln, labelVersicherung, balanceLabel, textfeldEinsatz, textfeldVersicherung);
-        
+
+        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPruefung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
+                labelKartenWertSpieler, labelKartenWertDealer, labelLoesung, labelVerdoppeln, labelVersicherung, balanceLabel, textfeldEinsatz, textfeldVersicherung);
         balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance() + "$");
+
+    }
+
+    @FXML
+    private void exitButtonVerlassen(MouseEvent event) {
+        buttonVerlassen.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterButtonVerlassen(MouseEvent event) {
+        buttonVerlassen.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
 
 }

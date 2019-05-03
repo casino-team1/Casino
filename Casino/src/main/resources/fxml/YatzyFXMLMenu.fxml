@@ -36,9 +36,10 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnback" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#pressbtnback" text="Zurück">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
+      <Button fx:id="btnback" layoutX="14.0" layoutY="346.0" mnemonicParsing="false" onAction="#pressbtnback" onMouseEntered="#enterbtnback" onMouseExited="#exitbtnback" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: black; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -142,32 +142,6 @@ public class BlackJackSpielerModel {
         neusteSpielerKarte.setFitHeight(karteHeight);
         neusteSpielerKarte.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
         labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
-
-        /*//Karten anzeigen
-        if (spielerKarte1.getImage() == null) {
-        spielerKarte1.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
-        return;
-        }
-        if (spielerKarte2.getImage() == null) {
-        spielerKarte2.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
-        return;
-        }
-        if (spielerKarte3.getImage() == null) {
-        spielerKarte3.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
-        return;
-        }
-        if (spielerKarte4.getImage() == null) {
-        spielerKarte4.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
-        return;
-        }
-        if (spielerKarte5.getImage() == null) {
-        spielerKarte5.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
-        }*/
     }
 
     public void setGewonnen(boolean g) {

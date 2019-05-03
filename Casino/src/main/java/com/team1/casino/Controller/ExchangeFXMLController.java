@@ -35,8 +35,6 @@ public class ExchangeFXMLController implements Initializable {
     @FXML
     private Label acceptButton;
     @FXML
-    private Button backButton;
-    @FXML
     private Label balanceLabel;
     @FXML
     private Label moneyLabel;
@@ -56,6 +54,8 @@ public class ExchangeFXMLController implements Initializable {
     private Label errorJetonsLabel;
     @FXML
     private Label errorMoneyLabel;
+    @FXML
+    private Button btnback;
 
     /**
      * Initialises the controller class.
@@ -201,10 +201,10 @@ public class ExchangeFXMLController implements Initializable {
             } else if (Integer.parseInt(jetonsField.getText()) < 100) {
                 errorJetonsLabel.setText("Die Zahl muss höher als 100 sein 100");
                 nothundred = true;
+
             } else {
                 jetoncalc = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance() - Integer.parseInt(jetonsField.getText());
                 moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() + (int) (Math.round(Double.parseDouble(moneyField.getText())));
-                nothundred = false;
             }
         }
         if (nothundred == false) {
@@ -248,7 +248,7 @@ public class ExchangeFXMLController implements Initializable {
 
     @FXML
     private void enterAcceptButton(MouseEvent event) {
-        acceptButton.setStyle("-fx-border-width: 4; -fx-background-color: green");
+        acceptButton.setStyle("-fx-border-width: 5; -fx-background-color: green");
 
     }
 
@@ -260,6 +260,21 @@ public class ExchangeFXMLController implements Initializable {
     @FXML
     private void clickedAcceptButton(MouseEvent event) {
         processAcception();
+    }
+
+    @FXML
+    private void exitbtnback(MouseEvent event) {
+        btnback.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterbtnback(MouseEvent event) {
+        btnback.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void pressbtnback(ActionEvent event) {
+        this.mainApplication.displayMainMenu();
     }
 
 }

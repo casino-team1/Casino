@@ -76,24 +76,6 @@ public class BlackJackDealerModel {
         dealerKarte.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
         labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
         
-        /*//Karten anzeigen
-        if (dealerKarte1.getImage() == null) {
-        dealerKarte1.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        } else if (dealerKarte2.getImage() == null) {
-        dealerKarte2.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        } else if (dealerKarte3.getImage() == null) {
-        dealerKarte3.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        } else if (dealerKarte4.getImage() == null) {
-        dealerKarte4.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        } else if (dealerKarte5.getImage() == null) {
-        dealerKarte5.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertDealer.setText("(" + kartenWertDealer + ")");
-        }*/
-
         //Zweite unbekannte Karte an Dealer verteilen
         zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
         zufallskarte = kartenSymbole.get(zufallszahl);

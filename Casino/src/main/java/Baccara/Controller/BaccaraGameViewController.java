@@ -454,4 +454,13 @@ public class BaccaraGameViewController implements Initializable, Observer {
         this.handler.displayMenu();
     }
 
+    @FXML
+    private void exitMenuButton(MouseEvent event) {
+        menuButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterMenuButton(MouseEvent event) {
+        menuButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
+    }
 }

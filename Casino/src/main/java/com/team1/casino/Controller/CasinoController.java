@@ -95,4 +95,34 @@ public class CasinoController implements Initializable, Observer {
             }
         }
     }
+
+    @FXML
+    private void exitLogOutButton(MouseEvent event) {
+        logOutButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterLogOutButton(MouseEvent event) {
+        logOutButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void exitKasseButton(MouseEvent event) {
+        kasseButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterKasseButton(MouseEvent event) {
+        kasseButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void exitChangePasswordButton(MouseEvent event) {
+        changePasswordButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterChangePasswordButton(MouseEvent event) {
+        changePasswordButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
+    }
 }

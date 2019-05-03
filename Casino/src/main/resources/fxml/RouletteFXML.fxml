@@ -292,7 +292,7 @@
       </RadioButton>
       <TextField fx:id="neighborField1" layoutX="725.0" layoutY="522.0" prefHeight="25.0" prefWidth="72.0" />
       <ComboBox fx:id="neighborField2" layoutX="828.0" layoutY="521.0" opacity="0.5" prefHeight="25.0" prefWidth="89.0" />
-      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" opacity="0.0" text="Konto: 0$" textFill="WHITE">
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

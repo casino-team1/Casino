@@ -141,21 +141,21 @@ public class BaccaraGameViewController implements Initializable, Observer {
         updateBalanceAndBet();
         resetImageViews();
         resetCardCount();
+        final int totaleWette = (int) this.gameModel.getTotalBet();
         final boolean isWon = this.gameModel.isWon();
         final String result = this.gameModel.getResultMessage();
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                if (isWon) {
-                    alert.setTitle("WON!!!!");
-                } else {
-                    alert.setTitle("Lost..");
-                }
-                alert.setHeaderText(null);
-                alert.setContentText(result);
-                alert.showAndWait();
+        final int totalerGewinn = (int) this.gameModel.getAccountChange();
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            if (isWon) {
+                alert.setTitle("WON!!!!");
+            } else {
+                alert.setTitle("Lost..");
             }
+            alert.setHeaderText(null);
+            String userMessage = String.format("%s\n%s\n%s", result, String.format("Totaler Wettbetrag: %s", String.valueOf(totaleWette)), totalerGewinn < 0 ? String.format("Sie verlieren gesammt %s chips", String.valueOf(totalerGewinn)) : String.format("Sie gewinnen gesammt %s chips", String.valueOf(totalerGewinn)));
+            alert.setContentText(userMessage);
+            alert.showAndWait();
         });
         this.gameModel.resetGame();
     }
@@ -276,7 +276,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
                         view.setImage(new Image(String.format(linkFormat, "cardBack.png")));
                         view.setVisible(true);
                     } catch (Exception e) {
-                        e.printStackTrace();
                     }
                 }
                 TranslateTransition left = createTransitionTranslation(this.thirdLeftCard);

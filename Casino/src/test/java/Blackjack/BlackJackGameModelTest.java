@@ -44,4 +44,16 @@ public class BlackJackGameModelTest {
         assertEquals(100, g.gewinnBerechnung());
     }
     
+    @Test
+    public void testVersicherungGewonnen() {
+        //Arrange
+        g.setVersicherung(50);
+        
+        //Act
+        g.versicherungGewonnen();
+        
+        //Assert
+        assertEquals(100, g.versicherungGewonnen());
+    }
+    
 }

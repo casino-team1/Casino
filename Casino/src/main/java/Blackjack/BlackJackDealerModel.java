@@ -24,8 +24,8 @@ public class BlackJackDealerModel {
     
     private int xKoordinate = 0;
     private int yKoordinate = 6;
-    private int karteWidth = 149;
-    private int karteHeight = 201;
+    private int karteWidth = 167;
+    private int karteHeight = 237;
 
     Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();

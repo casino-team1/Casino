@@ -5,7 +5,6 @@
  */
 package Blackjack;
 
-import com.team1.casino.User.Util.UserCentral;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,44 +14,34 @@ import static org.junit.Assert.*;
  */
 public class BlackJackGameModelTest {
     BlackJackGameModel g = new BlackJackGameModel();
+    BlackJackSpielerModel s = new BlackJackSpielerModel();
+    BlackJackDealerModel d = new BlackJackDealerModel();
     
     public BlackJackGameModelTest() {
     }
-
+    
     @Test
-    public void testPlay() {
+    public void testGewinnBerechnungBlackJack() {
+        //Arrange
+        g.setEinsatz(50);
+        
+        //Act
+        g.gewinnBerechnungBlackJack();
+        
+        //Assert
+        assertEquals(125, g.gewinnBerechnungBlackJack());
     }
 
     @Test
-    public void testSpielerHit() {
-    }
-
-    @Test
-    public void testDealerRound() {
-    }
-
-    @Test
-    public void testVersichern() {
-    }
-
-    @Test
-    public void testEnd() {
-    }
-
-    @Test
-    public void testGewonnenDurchBlackJack() {
-    }
-
-    @Test
-    public void testGewonnen() {
-    }
-
-    @Test
-    public void testUnentschieden() {
-    }
-
-    @Test
-    public void testVerloren() {
+    public void testGewinnBerechnung() {
+        //Arrange
+        g.setEinsatz(50);
+        
+        //Act
+        g.gewinnBerechnung();
+        
+        //Assert
+        assertEquals(100, g.gewinnBerechnung());
     }
     
 }

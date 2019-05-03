@@ -68,7 +68,7 @@
       <Button fx:id="buttonStand" disable="true" layoutX="345.0" layoutY="590.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
       <Button fx:id="buttonHit" disable="true" layoutX="255.0" layoutY="590.0" mnemonicParsing="false" onAction="#hit" text="Hit" />
       <TextField fx:id="textfeldVersicherung" disable="true" layoutX="680.0" layoutY="591.0" opacity="0.75" promptText="Versicherungsbetrag" />
-      <Label fx:id="labelMöglichkeiten" layoutX="29.0" layoutY="590.0" text="Was möchten Sie tun?" textFill="WHITE">
+      <Label layoutX="29.0" layoutY="590.0" text="Was möchten Sie tun?" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>

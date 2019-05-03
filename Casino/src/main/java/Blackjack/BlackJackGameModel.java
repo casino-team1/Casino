@@ -9,15 +9,12 @@ import com.team1.casino.User.Util.UserCentral;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Random;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,9 +41,9 @@ public class BlackJackGameModel {
     private Button buttonStart;
     private Label labelKartenWertSpieler;
     private Label labelKartenWertDealer;
-    private Label labelLösung;
+    private Label labelLoesung;
     private TextField textfeldEinsatz;
-    private Button buttonPrüfung;
+    private Button buttonPruefung;
     private Button buttonVerlassen;
     private Button buttonHelp;
     private Button buttonVerdoppeln;
@@ -58,10 +55,13 @@ public class BlackJackGameModel {
     private Pane dealerKartenPane;
     private Label balanceLabel;
 
-    public BlackJackGameModel(Button buttonHelp, Button buttonHit, Button buttonPrüfung, Button buttonStand, Button buttonStart, Button buttonVerdoppeln, Button buttonVerlassen, Button buttonVersichern, Pane spielerKartenPane, Pane dealerKartenPane, Label labelKartenWertSpieler, Label labelKartenWertDealer, Label labelLösung, Label labelVerdoppeln, Label labelVersicherung, Label balanceLabel, TextField textfeldEinsatz, TextField textfeldVersicherung) {
+    public BlackJackGameModel() {
+    }
+
+    public BlackJackGameModel(Button buttonHelp, Button buttonHit, Button buttonPruefung, Button buttonStand, Button buttonStart, Button buttonVerdoppeln, Button buttonVerlassen, Button buttonVersichern, Pane spielerKartenPane, Pane dealerKartenPane, Label labelKartenWertSpieler, Label labelKartenWertDealer, Label labelLoesung, Label labelVerdoppeln, Label labelVersicherung, Label balanceLabel, TextField textfeldEinsatz, TextField textfeldVersicherung) {
         this.buttonHelp = buttonHelp;
         this.buttonHit = buttonHit;
-        this.buttonPrüfung = buttonPrüfung;
+        this.buttonPruefung = buttonPruefung;
         this.buttonStand = buttonStand;
         this.buttonStart = buttonStart;
         this.buttonVerdoppeln = buttonVerdoppeln;
@@ -73,7 +73,7 @@ public class BlackJackGameModel {
 
         this.labelKartenWertSpieler = labelKartenWertSpieler;
         this.labelKartenWertDealer = labelKartenWertDealer;
-        this.labelLösung = labelLösung;
+        this.labelLoesung = labelLoesung;
         this.labelVerdoppeln = labelVerdoppeln;
         this.labelVersicherung = labelVersicherung;
         this.balanceLabel = balanceLabel;
@@ -108,7 +108,7 @@ public class BlackJackGameModel {
         kartenSymbole.clear();
         karten.putAll(k.getKarten());
         kartenSymbole.addAll(k.getKartenSymbole());
-        labelLösung.setText("");
+        labelLoesung.setText("");
 
         //Karten mischen
         Collections.shuffle(kartenSymbole);
@@ -178,11 +178,6 @@ public class BlackJackGameModel {
             } while (dealer.getKartenWertDealer() < 17);
         }
 
-        for (String s : dealer.getKartenDealer()) {
-            System.out.println(s);
-        }
-        System.out.println("-----------");
-
         //Anzeige leeren
         dealerKartenPane.getChildren().clear();
         dealer.setxKoordinate(0);
@@ -234,9 +229,7 @@ public class BlackJackGameModel {
         dealer.setxKoordinate(0);
 
         //Alle Karten vom Dealer anzeigen
-        /*for (String s : dealer.getKartenDealer()) {
-        labelKartenDealer.setText(labelKartenDealer.getText() + " , " + s);
-        }*/
+        //erste Karte
         ImageView neueDealerKarte = new ImageView();
         dealerKartenPane.getChildren().add(neueDealerKarte);
         neueDealerKarte.setLayoutX(dealer.getxKoordinate());
@@ -245,6 +238,8 @@ public class BlackJackGameModel {
         neueDealerKarte.setFitHeight(dealer.getKarteHeight());
         neueDealerKarte.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(0) + ".png"));
         labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
+
+        //restliche Karten
         for (int i = 1; i < dealer.getKartenDealer().size(); i++) {
             ImageView neusteDealerKarte = new ImageView();
             dealerKartenPane.getChildren().add(neusteDealerKarte);
@@ -259,10 +254,10 @@ public class BlackJackGameModel {
 
         //Hat dealer BlackJack?
         if (dealer.getKartenWertDealer() == 21) {
-            labelLösung.setText("SPIELER HAT GEWONNEN!!");
+            labelLoesung.setText("SPIELER HAT GEWONNEN!!");
         }
         if (dealer.getKartenWertDealer() < 21 || dealer.getKartenWertDealer() > 21) {
-            labelLösung.setText("DEALER HAT GEWONNEN!!");
+            labelLoesung.setText("DEALER HAT GEWONNEN!!");
         }
 
         //Eingaben blockieren
@@ -271,7 +266,7 @@ public class BlackJackGameModel {
         buttonVersichern.setDisable(true);
         buttonVerdoppeln.setDisable(true);
         textfeldVersicherung.setDisable(true);
-        buttonPrüfung.setDisable(false);
+        buttonPruefung.setDisable(false);
         textfeldEinsatz.setDisable(false);
     }
 
@@ -282,50 +277,42 @@ public class BlackJackGameModel {
         buttonVersichern.setDisable(true);
         buttonVerdoppeln.setDisable(true);
         textfeldVersicherung.setDisable(true);
-        buttonPrüfung.setDisable(false);
+        buttonPruefung.setDisable(false);
         textfeldEinsatz.setDisable(false);
 
         //Hat jemand gewonnen?
         if (spieler.hasGewonnen()) {
             if (spieler.getKartenWertSpieler() == 21) {
-                gewonnenDurchBlackJack();
+                gewinnBerechnungBlackJack();
+                labelLoesung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
+                UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
+                balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
             } else {
-                gewonnen();
+                gewinnBerechnung();
+                labelLoesung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
+                UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
+                balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
             }
         }
         if (dealer.hasGewonnen()) {
-            verloren();
+            labelLoesung.setText("SIE HABEN VERLOREN!");
+            balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
 
         }
         if (unentschieden) {
-            unentschieden();
+            labelLoesung.setText("UNENTSCHIEDEN!");
+            balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
         }
     }
 
-    public void gewonnenDurchBlackJack() {
-        //Gewinnberechnung       
+    public int gewinnBerechnungBlackJack() {
         gewinn = einsatz + ((einsatz * 3) / 2);
-        labelLösung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
-        UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
+        return gewinn;
     }
 
-    public void gewonnen() {
-        //Gewinnberechnung
+    public int gewinnBerechnung() {
         gewinn = einsatz * 2;
-        labelLösung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
-        UserCentral.getInstance().getUser().setCurrentChips(UserCentral.getInstance().getUser().getCurrentChips() + gewinn);
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
-    }
-
-    public void unentschieden() {
-        labelLösung.setText("UNENTSCHIEDEN!");
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
-    }
-
-    public void verloren() {
-        labelLösung.setText("SIE HABEN VERLOREN!");
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChips());
+        return gewinn;
     }
 
     public int getEinsatz() {
@@ -343,13 +330,4 @@ public class BlackJackGameModel {
     public void setGewinn(int gewinn) {
         this.gewinn = gewinn;
     }
-
-    public Label getBalanceLabel() {
-        return balanceLabel;
-    }
-
-    //Damit Zugriffe auf Klasse für Tests möglich sind
-    public BlackJackGameModel() {
-    }
-
 }

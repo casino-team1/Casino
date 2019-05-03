@@ -19,6 +19,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.management.RuntimeErrorException;
 
 /**
  *
@@ -34,8 +35,11 @@ public class PasswordRecovery {
 
     private String getEmailAdress() throws SQLException {
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-        String userEmail = query.runQueryWithReturn("SELECT email FROM user WHERE username = ? ", this.username).get(0);
-        return userEmail;
+        if (username == "") {
+        } else {
+            String userEmail = query.runQueryWithReturn("SELECT email FROM user WHERE username = ? ", this.username).get(0);
+        }
+        return null;
     }
 
     private String randomPassword(int length) {
@@ -63,6 +67,9 @@ public class PasswordRecovery {
             Session session = MailConfig.getSessionByProperty(MailConfig.getMailProperties());
             try {
                 String emailAdresse = getEmailAdress();
+                if (emailAdresse == null) {
+                    throw new IndexOutOfBoundsException();
+                }
                 if (emailAdresse.equals("") || emailAdresse.isEmpty()) {
                     System.out.println("Invalid username");
                 } else {

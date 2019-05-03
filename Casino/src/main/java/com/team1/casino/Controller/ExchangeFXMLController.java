@@ -209,14 +209,12 @@ public class ExchangeFXMLController implements Initializable {
         }
         if (nothundred == false) {
             errorJetonsLabel.setText("");
-
             if (moneycalc < 0) {
                 errorMoneyLabel.setText("Zuwenig Geld");
                 insufficient = true;
             } else if (jetoncalc < 0) {
                 errorJetonsLabel.setText("Zuwenig Jetons");
                 insufficient = true;
-
             } else {
                 PlayerCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
                 PlayerCentral.getInstance().getUser().setNewMoney(moneycalc);

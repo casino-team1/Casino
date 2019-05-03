@@ -22,7 +22,7 @@
             <Image url="@../images/Baccara/BankerBackground.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="tieBet" fitHeight="63.0" fitWidth="200.0" layoutX="596.0" layoutY="548.0" onDragDropped="#setTieBet" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tieBet" fitHeight="61.0" fitWidth="236.0" layoutX="578.0" layoutY="544.0" onDragDropped="#setTieBet" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/TieBackground.png" />
          </image>

@@ -18,8 +18,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
@@ -168,11 +166,9 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private void centerImage(ImageView imageView) {
         Image img = imageView.getImage();
         if (img != null) {
-            double w = 0;
-            double h = 0;
+            double w, h, reducCoeff;
             double ratioX = imageView.getFitWidth() / img.getWidth();
             double ratioY = imageView.getFitHeight() / img.getHeight();
-            double reducCoeff = 0;
             if (ratioX >= ratioY) {
                 reducCoeff = ratioY;
             } else {
@@ -198,7 +194,14 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @FXML
     private void startBaccara(MouseEvent event) throws InterruptedException {
         if (this.gameModel.getTotalBet() == 0) {
-            return;
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Bitte setzen sie eine Wette");
+                alert.setHeaderText(null);
+                String userMessage = "Sie müssen zuerst eine Wette setzten";
+                alert.setContentText(userMessage);
+                alert.showAndWait();
+            });
         }
         this.bankerBetCoin.setImage(null);
         this.tieBetCoin.setImage(null);
@@ -240,11 +243,12 @@ public class BaccaraGameViewController implements Initializable, Observer {
                         rotateBack.play();
                         rotateBack.setOnFinished(imageBack -> {
                             try {
-                                Thread.sleep(1000);
+                                setCardCount();
+                                Thread.sleep(2000);
                                 this.gameModel.endGame();
                                 updateBalanceAndBet();
                             } catch (InterruptedException ex) {
-                                Logger.getLogger(BaccaraGameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                                ex.printStackTrace();
                             }
                         });
                     });
@@ -264,11 +268,12 @@ public class BaccaraGameViewController implements Initializable, Observer {
                         rotate.play();
                         rotate.setOnFinished(cardBack -> {
                             try {
-                                Thread.sleep(1000);
+                                setCardCount();
+                                Thread.sleep(2000);
                                 this.gameModel.endGame();
                                 updateBalanceAndBet();
                             } catch (InterruptedException ex) {
-                                Logger.getLogger(BaccaraGameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                                ex.printStackTrace();
                             }
                         });
                     });
@@ -297,11 +302,12 @@ public class BaccaraGameViewController implements Initializable, Observer {
                         returnBack.play();
                         returnBack.setOnFinished(backRotationFiniseh -> {
                             try {
-                                Thread.sleep(1000);
+                                setCardCount();
+                                Thread.sleep(2000);
                                 this.gameModel.endGame();
                                 updateBalanceAndBet();
                             } catch (InterruptedException ex) {
-                                Logger.getLogger(BaccaraGameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                                ex.printStackTrace();
                             }
                         });
                     });
@@ -309,7 +315,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
             }
         } catch (InterruptedException e) {
         }
-        setCardCount();
+
     }
 
     private TranslateTransition createTransitionTranslation(ImageView view) {
@@ -330,7 +336,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
      * @param format
      */
     private void rotateCards(ImageView[] playerView, ImageView[] dealerView, String format) {
-        this.bankerBetCoin = new ImageView();
         ImageView[][] views = {playerView, dealerView};
         RotateTransition[] rotators = new RotateTransition[2];
         int index = 0;
@@ -379,7 +384,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
         } catch (Exception e) {
             System.out.println(String.format(format, playerCards.get(pos).getImageLocation()));
             System.out.println(String.format(format, dealerCard.get(pos).getImageLocation()));
-            e.printStackTrace();
         }
     }
 
@@ -397,18 +401,17 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void setCardCount() {
+        System.out.println(this.gameModel.getPlayerCardCount());
+        System.out.println(this.gameModel.getDealerCardCount());
         //Update the card count for player and dealer by the gameModel values.
         int playerCardCount = this.gameModel.getPlayerCardCount();
         int dealerCardCount = this.gameModel.getDealerCardCount();
         this.playerCardCountLabel.setText("Spieler Kartenwert: " + String.valueOf(playerCardCount));
         this.dealerCardCountLabel.setText("Dealer Kartenwert: " + String.valueOf(dealerCardCount));
     }
-    private static int betAmont = 0;
 
     private boolean gameRunning = false;
 
-    private double lastX;
-    private double lastY;
     private ImageView draggable;
 
     @FXML
@@ -484,7 +487,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
         int value = -1;
         if (PlatformUtil.isMac() || PlatformUtil.isWindows()) {
             List<Integer> choices = new ArrayList<>();
-            for (int i = 20; i < 1000; i += 10) {
+            for (int i = 20; i < 1000; i += 5) {
                 choices.add(i);
             }
             ChoiceDialog<Integer> dialog = new ChoiceDialog<>(20, choices);

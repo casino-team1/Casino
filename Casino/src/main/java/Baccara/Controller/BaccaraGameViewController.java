@@ -482,7 +482,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     private int getBetToSet() {
         int value = -1;
-        if (PlatformUtil.isMac()) {
+        if (PlatformUtil.isMac() || PlatformUtil.isWindows()) {
             List<Integer> choices = new ArrayList<>();
             for (int i = 20; i < 1000; i += 10) {
                 choices.add(i);

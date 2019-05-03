@@ -29,6 +29,7 @@ public class BlackJackGameModel {
 
     private int einsatz;
     private int gewinn;
+    private int versicherung;
 
     private Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
@@ -89,6 +90,7 @@ public class BlackJackGameModel {
         double restlichesGeld = PlayerCentral.getInstance().getUser().getCurrentChipBalance() - einsatz;
         PlayerCentral.getInstance().getUser().setNewChipBalance(restlichesGeld);
         balanceLabel.setText("Konto: " + restlichesGeld + "$");
+
         //Vorbereitung
         k.kartenErstellen();
 
@@ -122,12 +124,7 @@ public class BlackJackGameModel {
         //Überprüfung, ob 21 überschritten wurde
         if (spieler.getKartenWertSpieler() > 21) {
             spieler.setKartenWertSpielerMinusTen();
-        }
-
-        if (spieler.getKartenWertSpieler() == 21) {
-            spieler.setGewonnen(true);
-            end();
-            return;
+            labelKartenWertDealer.setText(String.valueOf(spieler.getKartenWertSpieler()));
         }
 
         if (spieler.getKartenWertSpieler() == 9 || spieler.getKartenWertSpieler() == 10 || spieler.getKartenWertSpieler() == 11) {
@@ -146,7 +143,7 @@ public class BlackJackGameModel {
 
         //Überprüfung, ob 21 überschritten wurde
         if (spieler.getKartenWertSpieler() > 21) {
-            if (spieler.getKartenSpieler().contains("AC") || spieler.getKartenSpieler().contains("AD") || spieler.getKartenSpieler().contains("AH") || spieler.getKartenSpieler().contains("AS")) {
+            if (spieler.getZufallskarte().contains("A")) {
                 spieler.setKartenWertSpielerMinusTen();
                 String j = String.valueOf(spieler.getKartenWertSpieler());
                 labelKartenWertSpieler.setText("(" + j + ")");
@@ -159,18 +156,12 @@ public class BlackJackGameModel {
                 end();
             }
         }
-
-        //Überprüfung, ob 21 erreicht wurde wurde
-        if (spieler.getKartenWertSpieler() == 21) {
-            spieler.setGewonnen(true);
-            end();
-        }
     }
 
     public void dealerRound(Label labelKartenWertDealer) {
         //Zweite Karte mitberechnen
         dealer.kartenWertDealerPlusKarteZwei();
-
+        
         //dealer muss karten ziehen
         if (dealer.getKartenWertDealer() < 17) {
             do {
@@ -221,6 +212,11 @@ public class BlackJackGameModel {
     }
 
     public void versichern() {
+        //Versicherungseinsatz entgegennehmen
+        versicherung = Integer.parseInt(textfeldVersicherung.getText());
+        PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - versicherung);
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance());
+
         //Zweiter Wert von Karte mitberechnen
         dealer.kartenWertDealerPlusKarteZwei();
 
@@ -254,10 +250,12 @@ public class BlackJackGameModel {
 
         //Hat dealer BlackJack?
         if (dealer.getKartenWertDealer() == 21) {
-            labelLoesung.setText("SPIELER HAT GEWONNEN!!");
+            int i = versicherungGewonnen();
+            PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + i);
+            labelLoesung.setText("SIE HABEN " + i + " GEWONNEN!");
         }
         if (dealer.getKartenWertDealer() < 21 || dealer.getKartenWertDealer() > 21) {
-            labelLoesung.setText("DEALER HAT GEWONNEN!!");
+            labelLoesung.setText("SIE HABEN VERLOREN!");
         }
 
         //Eingaben blockieren
@@ -282,11 +280,7 @@ public class BlackJackGameModel {
 
         //Hat jemand gewonnen?
         if (spieler.hasGewonnen()) {
-            if (spieler.getKartenWertSpieler() == 21) {
-                gewinnBerechnungBlackJack();
-            } else {
-                gewinnBerechnung();
-            }
+            gewonnen();
         }
         if (dealer.hasGewonnen()) {
             verloren();
@@ -298,7 +292,7 @@ public class BlackJackGameModel {
 
     public void gewonnenDurchBlackJack() {
         //Gewinnberechnung       
-        int gewinn = einsatz + ((einsatz * 3) / 2);
+        gewinnBerechnungBlackJack();
         labelLoesung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
         PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChips() + gewinn);
         balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChips() + "$");
@@ -306,7 +300,7 @@ public class BlackJackGameModel {
 
     public void gewonnen() {
         //Gewinnberechnung
-        int gewinn = (Integer.parseInt(textfeldEinsatz.getText()) * 2);
+        gewinnBerechnung();
         labelLoesung.setText("SIE HABEN " + gewinn + "$ GEWONNEN!");
         PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChips() + gewinn);
         balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChips() + "$");
@@ -330,6 +324,18 @@ public class BlackJackGameModel {
     public int gewinnBerechnung() {
         gewinn = einsatz * 2;
         return gewinn;
+    }
+
+    public int versicherungGewonnen() {
+        return versicherung * 2;
+    }
+    
+    public int getVersicherung() {
+        return versicherung;
+    }
+
+    public void setVersicherung(int i) {
+        this.versicherung = i;
     }
 
     public int getEinsatz() {

@@ -21,7 +21,7 @@ import com.team1.casino.Model.PlayerStatisticModel;
 import com.team1.casino.Model.RegistrationModel;
 import com.team1.casino.Model.StatisticModel;
 import com.team1.casino.User.Spieler;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import com.team1.casino.database.Connection.DatabaseConnection;
 import com.team1.casino.database.Connection.DatabaseConnector;
 import java.io.IOException;
@@ -54,7 +54,7 @@ public class MainApp extends Application {
         this.stage = stage;
         switch (this.EXECUTION_MODE) {
             case DEBUG:
-                if (UserCentral.getInstance().getUser() != null) {
+                if (PlayerCentral.getInstance().getUser() != null) {
                 } else {
                     setupForDEBUG();
                     displayLoginView();
@@ -69,7 +69,7 @@ public class MainApp extends Application {
                 displayMainMenu();
                 break;
             default:
-                UserCentral.getInstance().setUser(new Spieler("THISISATEST", "THISISATEST"));
+                PlayerCentral.getInstance().setUser(new Spieler("THISISATEST", "THISISATEST"));
                 displayMainMenu();
                 break;
         }
@@ -134,7 +134,6 @@ public class MainApp extends Application {
             RegistrationModel model = new RegistrationModel(this);
             controller.setModel(model);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -149,6 +148,7 @@ public class MainApp extends Application {
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.show();
+            System.out.println(PlayerCentral.getInstance().getUser().toString());
             stage.setResizable(false);
             stage.centerOnScreen();
             CasinoController controller = loader.getController();
@@ -169,7 +169,7 @@ public class MainApp extends Application {
             stage.centerOnScreen();
             stage.show();
             AuthenticationController controller = loader.getController();
-            AuthenticationModel authModel = new AuthenticationModel(UserCentral.getInstance().getUser().getValidationCode());
+            AuthenticationModel authModel = new AuthenticationModel(PlayerCentral.getInstance().getUser().getValidationCode());
             authModel.setMainApplication(this);
             controller.setAuthenticationModel(authModel);
         } catch (IOException ex) {

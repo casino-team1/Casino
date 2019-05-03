@@ -6,34 +6,34 @@
  */
 package com.team1.casino.User.Util;
 
-import com.team1.casino.User.User;
+import com.team1.casino.User.Spieler;
 
 /**
  *
  * @author Nick Flückiger
  */
-public class UserCentral {
+public class PlayerCentral {
 
-    private static UserCentral userCentral;
+    private static PlayerCentral userCentral;
 
-    public static UserCentral getInstance() {
+    public static PlayerCentral getInstance() {
         if (userCentral == null) {
-            userCentral = new UserCentral();
+            userCentral = new PlayerCentral();
         }
         return userCentral;
     }
 
-    private UserCentral() {
+    private PlayerCentral() {
 
     }
 
-    private User user;
+    private Spieler spieler;
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Spieler user) {
+        this.spieler = user;
     }
 
-    public User getUser() {
-        return this.user;
+    public Spieler getUser() {
+        return this.spieler;
     }
 }

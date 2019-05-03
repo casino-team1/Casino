@@ -6,7 +6,7 @@
 package Yatzy;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -199,7 +199,7 @@ public class YatzyFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        balance = (int) UserCentral.getInstance().getUser().getCurrentChipBalance();
+        balance = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance();
         balanceLabel.setText("Konto: " + balance);
 
         btnthrowdices.setDisable(true);
@@ -844,19 +844,19 @@ public class YatzyFXMLController implements Initializable {
                     lblwin.setText("Gewonnen!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    UserCentral.getInstance().getUser().setNewChipBalance(balance);
+                    PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
                     break;
                 case 2:
                     lblwin.setText("Verloren!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    UserCentral.getInstance().getUser().setNewChipBalance(balance);
+                    PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
                     break;
                 case 3:
                     lblwin.setText("Unentschieden!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    UserCentral.getInstance().getUser().setNewChipBalance(balance);
+                    PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
                     break;
             }
             //the total balance gets updated

@@ -7,7 +7,6 @@
 package Baccara.Controller;
 
 import Baccara.Model.BaccaraMenuModel;
-import com.team1.casino.User.User;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
@@ -20,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import com.team1.casino.User.Spieler;
 
 /**
  * FXML Controller class
@@ -56,7 +56,7 @@ public class BaccaraMenuViewController implements Initializable, Observer {
 
     public void setMenuModel(BaccaraMenuModel menuModel) {
         this.menuModel = menuModel;
-        User player = this.menuModel.getPlayer();
+        Spieler player = this.menuModel.getPlayer();
         if (player != null) {
             this.welcomeMessage.setText(String.format("Wilkommen %s", player.getUsername()));
             this.currentBalance.setText(String.format("Sie haben %s CHF", String.valueOf(player.getCurrentChipBalance())));

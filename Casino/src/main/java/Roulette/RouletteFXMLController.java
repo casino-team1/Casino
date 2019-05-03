@@ -1,7 +1,7 @@
 package Roulette;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -144,11 +144,12 @@ public class RouletteFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if (UserCentral.getInstance().getUser() != null) {
-            playerBalance = (int) UserCentral.getInstance().getUser().getCurrentChips();
+        if (PlayerCentral.getInstance().getUser() != null) {
+            playerBalance = (int) PlayerCentral.getInstance().getUser().getCurrentChips();
         } else {
             playerBalance = 1000;
         }
+        balanceLabel.setText("Konto: " + Integer.toString(playerBalance));
         String playerBalanceString = String.valueOf(playerBalance);
         intBetBindLabel.setText(playerBalanceString);
 
@@ -1122,31 +1123,14 @@ public class RouletteFXMLController implements Initializable {
 
             if (radioTable.isSelected() == true) {
                 clickTable();
+                balanceLabel.setText("Konto: " + Integer.toString(playerBalance));
             } else {
                 clickNeighbor();
-
+                balanceLabel.setText("Konto: " + Integer.toString(playerBalance));
             }
 
             return;
         }
-        errorMessage.setText("");
-        if (betString.getText().trim().isEmpty()) {
-            stringBet.set("0");
-        }
-        wheels.generateRandom();
-        String wheelLocatioon = "/images/Roulette/rouletteWheelFast.gif";
-        rouletteWheel.setImage(new Image(wheelLocatioon));
-        PauseTransition transition = new PauseTransition(Duration.seconds(3));
-        transition.setOnFinished(x -> rouletteWheel.setImage(new Image(wheelLocatioon)));
-        transition.play();
-        int random = wheels.getRandomNumber();
-        String randomString = String.valueOf(random);
-        randomNumberLabel.setText(randomString);
-        if (isNumber == true) {
-            placeBet();
-            return;
-        }
-        placeBetArray(ArrayIdentify);
     }
     //    -------------------------------------------------------------------
 
@@ -1214,6 +1198,10 @@ public class RouletteFXMLController implements Initializable {
         coverPane.setPrefSize(221, 72);
         coverPane.setLayoutX(717);
         coverPane.setLayoutY(498);
+
+        betInt = 0;
+        isNumber = true;
+        stringBet.set(String.valueOf(betInt));
     }
 
     @FXML
@@ -1221,6 +1209,24 @@ public class RouletteFXMLController implements Initializable {
         coverPane.setPrefSize(630, 385);
         coverPane.setLayoutX(641);
         coverPane.setLayoutY(118);
+
+        String stringFromField1 = neighborField1.getText();
+
+        if (!stringFromField1.equals("")) {
+            String stringFromField2 = neighborField2.getValue();
+
+            int intFromF1 = Integer.parseInt(stringFromField1);
+            int intFromF2 = Integer.parseInt(stringFromField2);
+
+            neighborArray.add(intFromF1);
+            neighborArray.add(intFromF2);
+
+            betArray = neighborArray;
+
+            ArrayIdentify = 6;
+            stringBet.set(stringFromField1 + ", " + stringFromField2);
+            errorMessage.setText("");
+        }
     }
 
 }

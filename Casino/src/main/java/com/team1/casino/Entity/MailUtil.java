@@ -6,7 +6,7 @@
  */
 package com.team1.casino.Entity;
 
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -61,7 +61,7 @@ public class MailUtil {
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(emailAdress));
                 message.setSubject("Welcome to Casino MountainView");
-                message.setText("Sehr geehrter " + UserCentral.getInstance().getUser().getUsername() + "\n Wir freuen Sie auf unseren kleinen Platform wilkommen zu heissen\nIn diesem Email ist ihr Zugangscode mitgelegt.\n Wir danken für Ihr vertrauen und wünschen Ihnen einen schönen Tag. Ihr Zugangscode lautate:" + secureCode + "\n\n" + signature);
+                message.setText("Sehr geehrter " + PlayerCentral.getInstance().getUser().getUsername() + "\n Wir freuen Sie auf unseren kleinen Platform wilkommen zu heissen\nIn diesem Email ist ihr Zugangscode mitgelegt.\n Wir danken für Ihr vertrauen und wünschen Ihnen einen schönen Tag. Ihr Zugangscode lautate:" + secureCode + "\n\n" + signature);
                 Transport.send(message);
                 System.out.println("Message sent");
             } catch (MessagingException e) {

@@ -6,7 +6,7 @@
 package com.team1.casino.Controller;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ObservableValue;
@@ -67,9 +67,9 @@ public class ExchangeFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
-        balanceLabel.setText(Integer.toString((int)UserCentral.getInstance().getUser().getCurrentChipBalance()));
-        moneyLabel.setText(Integer.toString((int)UserCentral.getInstance().getUser().getCurrentMoney()));
-        
+        balanceLabel.setText(Integer.toString((int) PlayerCentral.getInstance().getUser().getCurrentChipBalance()));
+        moneyLabel.setText(Integer.toString((int) PlayerCentral.getInstance().getUser().getCurrentMoney()));
+
         Font.loadFont(getClass().getResourceAsStream("/resources/fonts/SqueakyChalkSound.ttf"), 14);
         balanceLabel.setStyle("-fx-font-family: 'squeaky chalk sound';");
 
@@ -94,19 +94,24 @@ public class ExchangeFXMLController implements Initializable {
                 } else {
                     if (jetonsField.getText().equals("")) {
                     } else {
-                        moneyField.setText(Integer.toString((int)Math.round(Double.parseDouble(jetonsField.getText()) / 100)));
+                        moneyField.setText(Integer.toString((int) Math.round(Double.parseDouble(jetonsField.getText()) / 100)));
                     }
                     acceptButton.setDisable(false);
                 }
             }
         });
-        balanceLabel.setText(Integer.toString((int) UserCentral.getInstance().getUser().getCurrentChipBalance()));
+        balanceLabel.setText(Integer.toString((int) PlayerCentral.getInstance().getUser().getCurrentChipBalance()));
     }
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
     }
 
+    @FXML
+    private void pressBackButton(ActionEvent event) {
+        PlayerCentral.getInstance().getUser().setNewChipBalance(5000);
+        this.mainApplication.displayMainMenu();
+    }
 
     @FXML
     private void typeJetonsField(KeyEvent event) {
@@ -183,62 +188,53 @@ public class ExchangeFXMLController implements Initializable {
     }
 
     private void processAcception() {
-        
-        
-        if(jetonsField.isDisabled() == true) {  
-            if(moneyField.getText() == ""){
+
+        if (jetonsField.isDisabled() == true) {
+            if (moneyField.getText() == "") {
                 errorJetonsLabel.setText("Bitte geben Sie eine Zahl ein");
             }
-            jetoncalc = (int)UserCentral.getInstance().getUser().getCurrentChipBalance() + Integer.parseInt(jetonsField.getText());
-            moneycalc = (int)UserCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());           
-        }
-        
-        else {
-            if(jetonsField.getText() == ""){
+            jetoncalc = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance() + Integer.parseInt(jetonsField.getText());
+            moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());
+        } else {
+            if (jetonsField.getText() == "") {
                 errorJetonsLabel.setText("Bitte geben Sie eine Zahl ein");
-            }
-            
-            else if(Integer.parseInt(jetonsField.getText()) < 100) {
+            } else if (Integer.parseInt(jetonsField.getText()) < 100) {
                 errorJetonsLabel.setText("Die Zahl muss höher als 100 sein 100");
                 nothundred = true;
-            }
-            
-            else {
-                jetoncalc = (int)UserCentral.getInstance().getUser().getCurrentChipBalance() - Integer.parseInt(jetonsField.getText());
-                moneycalc = (int)UserCentral.getInstance().getUser().getCurrentMoney() + (int)(Math.floor(Double.parseDouble(moneyField.getText())));
-                nothundred = false;
+
+            } else {
+                jetoncalc = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance() - Integer.parseInt(jetonsField.getText());
+                moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() + (int) (Math.round(Double.parseDouble(moneyField.getText())));
             }
         }
-        if(nothundred == false) {
+        if (nothundred == false) {
             errorJetonsLabel.setText("");
-            
+
             if (moneycalc < 0) {
                 errorMoneyLabel.setText("Zuwenig Geld");
                 insufficient = true;
-            }
-            else if (jetoncalc < 0){
+            } else if (jetoncalc < 0) {
                 errorJetonsLabel.setText("Zuwenig Jetons");
                 insufficient = true;
-                
-            }
-            else {
-                UserCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
-                UserCentral.getInstance().getUser().setNewMoney(moneycalc);
-                
+
+            } else {
+                PlayerCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
+                PlayerCentral.getInstance().getUser().setNewMoney(moneycalc);
+
                 errorJetonsLabel.setText("");
                 errorMoneyLabel.setText("");
                 insufficient = false;
             }
-            
-            if(insufficient == false) { 
-                balanceLabel.setText(Integer.toString((int)UserCentral.getInstance().getUser().getCurrentChipBalance()));
-                moneyLabel.setText(Integer.toString((int)UserCentral.getInstance().getUser().getCurrentMoney()));
+
+            if (insufficient == false) {
+                balanceLabel.setText(Integer.toString((int) PlayerCentral.getInstance().getUser().getCurrentChipBalance()));
+                moneyLabel.setText(Integer.toString((int) PlayerCentral.getInstance().getUser().getCurrentMoney()));
                 locked = false;
                 moneyField.setDisable(true);
                 jetonsField.setDisable(true);
                 acceptButton.setDisable(true);
                 moneyField.setText("");
-                jetonsField.setText("");         
+                jetonsField.setText("");
                 moneyToJetonLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
                 jetonToMoneyLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
             }

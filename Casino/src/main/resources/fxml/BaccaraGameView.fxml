@@ -10,24 +10,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="764.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
+<AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="764.0" prefWidth="1248.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
    <children>
-      <ImageView cache="true" fitHeight="774.0" fitWidth="1272.0" layoutY="-10.0" pickOnBounds="true">
+      <ImageView cache="true" fitHeight="774.0" fitWidth="1285.0" layoutY="-10.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Baccara/tableBackground.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="bankerBet" fitHeight="133.0" fitWidth="186.0" layoutX="608.0" layoutY="396.0" onMouseClicked="#setBankerBet" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bankerBet" fitHeight="107.0" fitWidth="134.0" layoutX="625.0" layoutY="422.0" onMouseClicked="#setBankerBet" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/BankerBackground.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="tieBet" fitHeight="63.0" fitWidth="200.0" layoutX="600.0" layoutY="552.0" onDragDropped="#setTieBet" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tieBet" fitHeight="63.0" fitWidth="200.0" layoutX="596.0" layoutY="548.0" onDragDropped="#setTieBet" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/TieBackground.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="playerBet" fitHeight="107.0" fitWidth="134.0" layoutX="643.0" layoutY="610.0" onDragDropped="#setPlayerBet" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="playerBet" fitHeight="107.0" fitWidth="134.0" layoutX="624.0" layoutY="614.0" onDragDropped="#setPlayerBet" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/PlayerBackground.png" />
          </image>
@@ -85,21 +85,27 @@
             <Image url="@../images/gameChipImage.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bankerBetCoin" fitHeight="101.0" fitWidth="148.0" layoutX="613.0" layoutY="412.0" onMouseClicked="#setBankerBet" pickOnBounds="true" preserveRatio="true" />
-      <Text fx:id="userBalance" fill="WHITE" layoutX="121.0" layoutY="689.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand: ">
+      <ImageView fx:id="bankerBetCoin" fitHeight="50.0" fitWidth="50.0" layoutX="667.0" layoutY="451.0" onMouseClicked="#setBankerBet" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="userBalance" fill="WHITE" layoutX="66.0" layoutY="685.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand: ">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
-      <Text fx:id="totalBet" fill="WHITE" layoutX="143.0" layoutY="723.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Einsatz:">
+      <Text fx:id="totalBet" fill="WHITE" layoutX="67.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Einsatz:">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
+<<<<<<< HEAD
+      <Button fx:id="menuButton" layoutX="66.0" layoutY="591.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: transparent; -fx-border-width: 3px; -fx-border-color: white;" text="Menu" textFill="WHITE">
+=======
       <Button fx:id="menuButton" layoutX="113.0" layoutY="539.0" mnemonicParsing="false" onAction="#backToMenu" onMouseEntered="#enterMenuButton" onMouseExited="#exitMenuButton" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: transparent; -fx-border-width: 3px; -fx-border-color: white;" text="Menu" textFill="WHITE">
+>>>>>>> 807e1aaccf3f592389a03ad8276b3fd33bfd90b5
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
+      <ImageView fx:id="tieBetCoin" fitHeight="50.0" fitWidth="50.0" layoutX="671.0" layoutY="544.0" onMouseClicked="#setTieBet" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerBetCoin" fitHeight="50.0" fitWidth="50.0" layoutX="662.0" layoutY="643.0" onMouseClicked="#setPlayerBet" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

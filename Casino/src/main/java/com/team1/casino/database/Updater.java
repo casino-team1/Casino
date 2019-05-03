@@ -7,7 +7,7 @@
 package com.team1.casino.database;
 
 import com.team1.casino.database.Connection.DatabaseConnection;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -91,7 +91,7 @@ public class Updater {
             public void run() {
                 try {
                     DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-                    int userID = UserCentral.getInstance().getUser().getID();
+                    int userID = PlayerCentral.getInstance().getUser().getID();
                     int gameID = Integer.parseInt(query.runQueryWithReturn("SELECT id FROM game WHERE gameName = ?", gameName).get(0));
                     String parameters = String.valueOf(amount);
                     int statID = query.runQueryGetAddedID("INSERT INTO statistic(game_id,bet,result,amount) VALUES(?,?,?,?)", String.valueOf(gameID) + ";" + String.valueOf(bet) + ";" + result + ";" + parameters);

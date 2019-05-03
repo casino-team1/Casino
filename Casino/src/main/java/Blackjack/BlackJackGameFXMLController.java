@@ -6,7 +6,7 @@
 package Blackjack;
 
 import com.team1.casino.MainApp;
-import com.team1.casino.User.Util.UserCentral;
+import com.team1.casino.User.Util.PlayerCentral;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -84,7 +84,7 @@ public class BlackJackGameFXMLController implements Initializable {
         game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPruefung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
                 labelKartenWertSpieler, labelKartenWertDealer, labelLoesung, labelVerdoppeln, labelVersicherung, balanceLabel, textfeldEinsatz, textfeldVersicherung);
 
-        balanceLabel.setText("Konto: " + UserCentral.getInstance().getUser().getCurrentChipBalance());
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance());
     }
 
     public void setMain(MainApp main) {
@@ -95,7 +95,7 @@ public class BlackJackGameFXMLController implements Initializable {
     private void pruefungEinsatz(ActionEvent event) {
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
-            if (einsatz < 50 || einsatz > UserCentral.getInstance().getUser().getCurrentChipBalance()) {
+            if (einsatz < 50 || einsatz > PlayerCentral.getInstance().getUser().getCurrentChipBalance()) {
                 labelLoesung.setText("Fehler beim Einsatz, erneut versuchen!");
             } else {
                 buttonStart.setDisable(false);

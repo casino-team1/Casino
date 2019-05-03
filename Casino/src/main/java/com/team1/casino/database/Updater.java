@@ -65,15 +65,14 @@ public class Updater {
         thread.start();
     }
 
-    public void performUpdateWithArgument(String query, String argument) throws SQLException {
+    public void performUpdateWithArgument(String query, String... arguments) throws SQLException {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     PreparedStatement statement = connection.prepareStatement(query);
-                    String[] arg = argument.split(";");
-                    for (int i = 0; i < arg.length; i++) {
-                        statement.setString(i + 1, arg[i]);
+                    for (int i = 0; i < arguments.length; i++) {
+                        statement.setString(i + 1, arguments[i]);
                     }
                     int queryResult = statement.executeUpdate();
                     int updates = statement.getUpdateCount();
@@ -94,9 +93,9 @@ public class Updater {
                     int userID = PlayerCentral.getInstance().getUser().getID();
                     int gameID = Integer.parseInt(query.runQueryWithReturn("SELECT id FROM game WHERE gameName = ?", gameName).get(0));
                     String parameters = String.valueOf(amount);
-                    int statID = query.runQueryGetAddedID("INSERT INTO statistic(game_id,bet,result,amount) VALUES(?,?,?,?)", String.valueOf(gameID) + ";" + String.valueOf(bet) + ";" + result + ";" + parameters);
-                    query.runQueryWithoutReturn("INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(?,?,?)", String.valueOf(userID) + ";-" + String.valueOf(statID)
-                            + ";-" + String.valueOf(gameID));
+                    int statID = query.runQueryGetAddedID("INSERT INTO statistic(game_id,bet,result,amount) VALUES(?,?,?,?)", String.valueOf(gameID), String.valueOf(bet), result, parameters);
+                    query.runQueryWithoutReturn("INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(?,?,?)", String.valueOf(userID), String.valueOf(statID),
+                            String.valueOf(gameID));
                 } catch (NumberFormatException | SQLException e) {
                     e.printStackTrace();
                 }

@@ -39,6 +39,7 @@ public class BlackJackGameFXMLController implements Initializable {
 
     @FXML
     private TextField textfeldEinsatz;
+    @FXML
     private Button buttonPruefung;
     @FXML
     private Button buttonStart;
@@ -47,19 +48,13 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private Button buttonHelp;
     @FXML
-    private Label labelKontostand;
-    @FXML
-    private Label labelKontostand1;
-    @FXML
-    private Button buttonVersichern;
-    @FXML
     private Button buttonVerdoppeln;
     @FXML
     private Button buttonStand;
     @FXML
     private Button buttonHit;
     @FXML
-    private TextField textfeldVersicherung;
+    private Button buttonVersichern;
     @FXML
     private Label labelVerdoppeln;
     private Label labelLoesung;
@@ -72,17 +67,28 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private Label labelKartenWertDealer;
     @FXML
-    private Pane spielerKartenPane;
+    private TextField textfeldVersicherung;
     @FXML
     private ImageView spielerKarte;
     @FXML
-    private Pane dealerKartenPane;
-    @FXML
     private ImageView dealerKarte;
+    @FXML
+    private Pane spielerKartenPane;
+    @FXML
+    private Pane dealerKartenPane;
     @FXML
     private Button buttonPrüfung;
     @FXML
     private Label labelLösung;
+    
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPruefung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
+                labelKartenWertSpieler, labelKartenWertDealer, labelLoesung, labelVerdoppeln, labelVersicherung, balanceLabel, textfeldEinsatz, textfeldVersicherung);
+
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance());
+    }
 
     public void setMain(MainApp main) {
         this.main = main;
@@ -198,15 +204,6 @@ public class BlackJackGameFXMLController implements Initializable {
         game.spielerHit();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPruefung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
-                labelKartenWertSpieler, labelKartenWertDealer, labelLoesung, labelVerdoppeln, labelVersicherung, balanceLabel, textfeldEinsatz, textfeldVersicherung);
-        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance() + "$");
-
-    }
-
     @FXML
     private void exitButtonVerlassen(MouseEvent event) {
         buttonVerlassen.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
@@ -220,5 +217,4 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private void prüfungEinsatz(ActionEvent event) {
     }
-
 }

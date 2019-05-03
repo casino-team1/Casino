@@ -73,7 +73,6 @@ public class BaccaraHandler {
             controller.setBaccaraHandler(this);
             controller.setBaccaraGameModel(this.gameModel);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

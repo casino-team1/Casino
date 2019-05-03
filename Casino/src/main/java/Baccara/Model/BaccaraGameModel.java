@@ -90,6 +90,8 @@ public class BaccaraGameModel extends BaccaraModel {
     }
     private String resultMessage;
 
+    private boolean won = true;
+    
     public void endGame() {
         String winner = determineWinner();
         String betMatch = checkForResult(winner);
@@ -111,6 +113,7 @@ public class BaccaraGameModel extends BaccaraModel {
                 changeUserBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + this.baccaraGame.getTieBet() * 8, "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
                 break;
             case "Lost":
+                won = false;
                 if (winner.equals("Tie") == true) {
                     this.resultMessage = String.format("Weder Dealer noch Spieler hat gewonnen Leider knapp daneben... Sie verlieren ihren Einsatz von %s ", totalBet);
                 } else {
@@ -128,6 +131,11 @@ public class BaccaraGameModel extends BaccaraModel {
         notifyObservers();
     }
 
+    public boolean isWon() {
+        return won;
+    }
+
+    
     private double accountChange = 0;
 
     public String getResultMessage() {

@@ -21,12 +21,14 @@ import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -139,7 +141,22 @@ public class BaccaraGameViewController implements Initializable, Observer {
         updateBalanceAndBet();
         resetImageViews();
         resetCardCount();
-        System.out.println(this.gameModel.getResultMessage());
+        final boolean isWon = this.gameModel.isWon();
+        final String result = this.gameModel.getResultMessage();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                if (isWon) {
+                    alert.setTitle("WON!!!!");
+                } else {
+                    alert.setTitle("Lost..");
+                }
+                alert.setHeaderText(null);
+                alert.setContentText(result);
+                alert.showAndWait();
+            }
+        });
         this.gameModel.resetGame();
     }
 
@@ -441,6 +458,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
             this.bankerBetCoin.setImage(this.draggable.getImage());
             this.bankerBetCoin.setFitHeight(50);
             this.bankerBetCoin.setFitWidth(50);
+            this.bankerBetCoin.toFront();
             this.draggable = null;
             this.gameModel.setCursor().setCursor(Cursor.DEFAULT);
             this.gameModel.setDealerBet(100);

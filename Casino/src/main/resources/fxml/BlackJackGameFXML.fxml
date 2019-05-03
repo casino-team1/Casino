@@ -52,12 +52,12 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="labelKontostand" layoutX="685.0" layoutY="170.0" text="Kontostand:" textFill="WHITE">
+      <Label layoutX="685.0" layoutY="170.0" text="Kontostand:" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label fx:id="labelKontostand1" layoutX="32.0" layoutY="170.0" text="Ihr eingesetztes Geld: " textFill="WHITE">
+      <Label layoutX="32.0" layoutY="170.0" text="Ihr eingesetztes Geld: " textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>

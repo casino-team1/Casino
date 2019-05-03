@@ -35,25 +35,26 @@ public class BlackJackGameModel {
     private ArrayList<String> kartenSymbole = new ArrayList<>();
 
     //FXML
-    private Button buttonStand;
-    private Button buttonHit;
-    private Label labelEinsatzFehler;
-    private Button buttonStart;
-    private Label labelKartenWertSpieler;
-    private Label labelKartenWertDealer;
-    private Label labelLoesung;
-    private TextField textfeldEinsatz;
     private Button buttonPruefung;
+    private Button buttonStart;
     private Button buttonVerlassen;
     private Button buttonHelp;
     private Button buttonVerdoppeln;
+    private Button buttonStand;
+    private Button buttonHit;
     private Button buttonVersichern;
-    private TextField textfeldVersicherung;
     private Label labelVerdoppeln;
+    private Label labelLoesung;
     private Label labelVersicherung;
+    private Label balanceLabel;
+    private Label labelKartenWertSpieler;
+    private Label labelKartenWertDealer;
+    private TextField textfeldEinsatz;
+    private TextField textfeldVersicherung;
+    private ImageView spielerKarte;
+    private ImageView dealerKarte;
     private Pane spielerKartenPane;
     private Pane dealerKartenPane;
-    private Label balanceLabel;
 
     public BlackJackGameModel() {
     }

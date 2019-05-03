@@ -36,7 +36,6 @@ public class BlackJackGameFXMLController implements Initializable {
     private MainApp main;
 
     private Stage stage;
-
     @FXML
     private Button buttonPruefung;
     @FXML

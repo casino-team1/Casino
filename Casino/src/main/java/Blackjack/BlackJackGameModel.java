@@ -336,15 +336,15 @@ public class BlackJackGameModel {
         return einsatz;
     }
 
-    public void setEinsatz(int einsatz) {
-        this.einsatz = einsatz;
+    public void setEinsatz(int i) {
+        this.einsatz = i;
     }
 
     public int getGewinn() {
         return gewinn;
     }
 
-    public void setGewinn(int gewinn) {
-        this.gewinn = gewinn;
+    public void setGewinn(int i) {
+        this.gewinn = i;
     }
 }

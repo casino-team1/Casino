@@ -78,16 +78,16 @@ public class Karten {
         this.anzahlKartenImKartenDeck--;
     }
 
-    public void setAnzahlKartenImKartenDeck(int anzahlKartenImKartenDeck) {
-        this.anzahlKartenImKartenDeck = anzahlKartenImKartenDeck;
+    public void setAnzahlKartenImKartenDeck(int i) {
+        this.anzahlKartenImKartenDeck = i;
     }
 
     public void subAnzahlKartenInKartenSymbole() {
         this.anzahlKartenInKartenSymbole--;
     }
 
-    public void setAnzahlKartenInKartenSymbole(int zahl) {
-        this.anzahlKartenInKartenSymbole = zahl;
+    public void setAnzahlKartenInKartenSymbole(int i) {
+        this.anzahlKartenInKartenSymbole = i;
     }
 
     public int getAnzahlKartenInKartenSymbole() {

@@ -32,11 +32,6 @@ public class BlackJackMainController implements Initializable {
     private MainApp main;
     @FXML
     private Label balanceLabel;
-
-    public void setMain(MainApp main) {
-        this.main = main;
-    }
-
     @FXML
     private Button buttonStart;
     @FXML
@@ -51,6 +46,10 @@ public class BlackJackMainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance() + "$");
+    }
+    
+    public void setMain(MainApp main) {
+        this.main = main;
     }
 
     @FXML

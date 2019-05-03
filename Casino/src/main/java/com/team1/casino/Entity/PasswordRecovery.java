@@ -54,7 +54,7 @@ public class PasswordRecovery {
         String newPasswordHash = UserUtil.getHashedPassword(passwordPlainText);
         String statement = "Update user SET password = ? WHERE username = ?";
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-        query.runQueryWithoutReturn(statement, newPasswordHash + ";-" + this.username);
+        query.runQueryWithoutReturn(statement, newPasswordHash, this.username);
         sendMail(passwordPlainText);
     }
 

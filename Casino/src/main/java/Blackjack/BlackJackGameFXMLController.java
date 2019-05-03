@@ -37,7 +37,6 @@ public class BlackJackGameFXMLController implements Initializable {
 
     private Stage stage;
 
-    @FXML
     private Button buttonPruefung;
     @FXML
     private Button buttonStart;
@@ -55,7 +54,6 @@ public class BlackJackGameFXMLController implements Initializable {
     private Button buttonVersichern;
     @FXML
     private Label labelVerdoppeln;
-    @FXML
     private Label labelLoesung;
     @FXML
     private Label labelVersicherung;
@@ -77,6 +75,10 @@ public class BlackJackGameFXMLController implements Initializable {
     private Pane spielerKartenPane;
     @FXML
     private Pane dealerKartenPane;
+    @FXML
+    private Button buttonPrüfung;
+    @FXML
+    private Label labelLösung;
     
     
     @Override
@@ -211,5 +213,6 @@ public class BlackJackGameFXMLController implements Initializable {
     private void enterButtonVerlassen(MouseEvent event) {
         buttonVerlassen.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
+
 
 }

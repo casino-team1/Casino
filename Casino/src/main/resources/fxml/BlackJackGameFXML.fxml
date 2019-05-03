@@ -32,7 +32,7 @@
          </font>
       </Label>
       <TextField fx:id="textfeldEinsatz" layoutX="401.0" layoutY="171.0" opacity="0.75" />
-      <Button fx:id="buttonPrüfung" layoutX="447.0" layoutY="206.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfung" />
+      <Button fx:id="buttonPrüfung" layoutX="447.0" layoutY="206.0" mnemonicParsing="false" onAction="#pruefungEinsatz" text="Prüfung" />
       <Label layoutX="345.0" layoutY="107.0" text="Teilnahme: mindestens 50 (ganze Zahlen)!" textFill="WHITE" underline="true">
          <opaqueInsets>
             <Insets />

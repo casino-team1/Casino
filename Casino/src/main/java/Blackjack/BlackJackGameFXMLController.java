@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -87,6 +86,7 @@ public class BlackJackGameFXMLController implements Initializable {
         this.main = main;
     }
 
+    @FXML
     private void pruefungEinsatz(ActionEvent event) {
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
@@ -209,7 +209,4 @@ public class BlackJackGameFXMLController implements Initializable {
         buttonVerlassen.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
 
-    @FXML
-    private void prüfungEinsatz(ActionEvent event) {
-    }
 }

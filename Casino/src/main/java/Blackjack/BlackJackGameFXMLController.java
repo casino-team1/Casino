@@ -183,6 +183,7 @@ public class BlackJackGameFXMLController implements Initializable {
         labelVerdoppeln.setText("Ihr Einsatz wurde erhöht auf " + s);
         textfeldEinsatz.setText(s);
         PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - i);
+        game.setEinsatz(game.getEinsatz()*2);
         game.spielerHit();
         game.dealerRound(labelKartenWertDealer);
     }

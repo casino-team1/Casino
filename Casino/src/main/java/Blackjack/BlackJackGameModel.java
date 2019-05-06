@@ -92,8 +92,6 @@ public class BlackJackGameModel {
         balanceLabel.setText("Konto: " + restlichesGeld + "$");
 
         //Vorbereitung
-        k.kartenErstellen();
-
         spieler.setGewonnen(false);
         dealer.setGewonnen(false);
         unentschieden = false;
@@ -108,6 +106,7 @@ public class BlackJackGameModel {
         dealer.clearKartenDealer();
         karten.clear();
         kartenSymbole.clear();
+        k.kartenErstellen();
         karten.putAll(k.getKarten());
         kartenSymbole.addAll(k.getKartenSymbole());
         labelLoesung.setText("");
@@ -128,12 +127,16 @@ public class BlackJackGameModel {
         }
 
         if (spieler.getKartenWertSpieler() == 9 || spieler.getKartenWertSpieler() == 10 || spieler.getKartenWertSpieler() == 11) {
-            buttonVerdoppeln.setDisable(false);
+            if (PlayerCentral.getInstance().getUser().getCurrentChipBalance() >= einsatz) {
+                buttonVerdoppeln.setDisable(false);
+            }
         }
 
         if (dealer.getKartenWertDealer() == 11) {
-            buttonVersichern.setDisable(false);
-            textfeldVersicherung.setDisable(false);
+            if (PlayerCentral.getInstance().getUser().getCurrentChipBalance() >= Integer.parseInt(textfeldVersicherung.getText())) {
+                buttonVersichern.setDisable(false);
+                textfeldVersicherung.setDisable(false);
+            }
         }
     }
 
@@ -156,12 +159,18 @@ public class BlackJackGameModel {
                 end();
             }
         }
+        
+        if (spieler.getKartenWertSpieler() == 9 || spieler.getKartenWertSpieler() == 10 || spieler.getKartenWertSpieler() == 11) {
+            if (PlayerCentral.getInstance().getUser().getCurrentChipBalance() >= einsatz) {
+                buttonVerdoppeln.setDisable(false);
+            }
+        }
     }
 
     public void dealerRound(Label labelKartenWertDealer) {
         //Zweite Karte mitberechnen
         dealer.kartenWertDealerPlusKarteZwei();
-        
+
         //dealer muss karten ziehen
         if (dealer.getKartenWertDealer() < 17) {
             do {
@@ -251,8 +260,8 @@ public class BlackJackGameModel {
         //Hat dealer BlackJack?
         if (dealer.getKartenWertDealer() == 21) {
             int i = versicherungGewonnen();
-            PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + i);
-            labelLoesung.setText("SIE HABEN " + i + " GEWONNEN!");
+            PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + i + einsatz);
+            labelLoesung.setText("SIE HABEN " + (i + einsatz) + " GEWONNEN!");
         }
         if (dealer.getKartenWertDealer() < 21 || dealer.getKartenWertDealer() > 21) {
             labelLoesung.setText("SIE HABEN VERLOREN!");
@@ -280,7 +289,11 @@ public class BlackJackGameModel {
 
         //Hat jemand gewonnen?
         if (spieler.hasGewonnen()) {
-            gewonnen();
+            if (spieler.getKartenWertSpieler() == 21) {
+                gewonnenDurchBlackJack();
+            } else {
+                gewonnen();
+            }
         }
         if (dealer.hasGewonnen()) {
             verloren();
@@ -329,7 +342,7 @@ public class BlackJackGameModel {
     public int versicherungGewonnen() {
         return versicherung * 2;
     }
-    
+
     public int getVersicherung() {
         return versicherung;
     }

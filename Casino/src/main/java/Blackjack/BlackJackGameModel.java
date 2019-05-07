@@ -133,7 +133,7 @@ public class BlackJackGameModel {
         }
 
         if (dealer.getKartenWertDealer() == 11) {
-            if (PlayerCentral.getInstance().getUser().getCurrentChipBalance() >= Integer.parseInt(textfeldVersicherung.getText())) {
+            if (PlayerCentral.getInstance().getUser().getCurrentChipBalance() >= 1) {
                 buttonVersichern.setDisable(false);
                 textfeldVersicherung.setDisable(false);
             }
@@ -179,20 +179,20 @@ public class BlackJackGameModel {
 
         //Anzeige leeren
         dealerKartenPane.getChildren().clear();
-        dealer.setxKoordinate(0);
+        dealer.setxKoordinate(-34);
 
         //Alle Karten vom Dealer anzeigen
         //erste Karte
-        ImageView neueDealerKarte = new ImageView();
+        /*ImageView neueDealerKarte = new ImageView();
         dealerKartenPane.getChildren().add(neueDealerKarte);
         neueDealerKarte.setLayoutX(dealer.getxKoordinate());
         neueDealerKarte.setLayoutY(dealer.getyKoordinate());
         neueDealerKarte.setFitWidth(dealer.getKarteWidth());
         neueDealerKarte.setFitHeight(dealer.getKarteHeight());
-        neueDealerKarte.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(0) + ".png"));
+        neueDealerKarte.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(0) + ".png"));*/
 
         //Restliche Karten
-        for (int i = 1; i < dealer.getKartenDealer().size(); i++) {
+        for (int i = 0; i < dealer.getKartenDealer().size(); i++) {
             ImageView neusteDealerKarte = new ImageView();
             dealerKartenPane.getChildren().add(neusteDealerKarte);
             neusteDealerKarte.setLayoutX(dealer.getxKoordinate() + 34);

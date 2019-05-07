@@ -872,7 +872,7 @@ public class YatzyFXMLController implements Initializable {
     public void updateButton(Button btn) {
         switch (btn.getId()) {
             case "btnthrowdices":
-                btnthrowdices.setStyle("-fx-font-size: 30; -fx-font-weight: BOLD");
+                btnthrowdices.setStyle("-fx-font-size: 43; -fx-font-weight: BOLD");
                 break;
             case "btnbet":
                 btnbet.setStyle("-fx-font-size: 18; -fx-font-weight: BOLD");

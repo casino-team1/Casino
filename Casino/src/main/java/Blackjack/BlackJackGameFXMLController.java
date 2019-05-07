@@ -72,8 +72,7 @@ public class BlackJackGameFXMLController implements Initializable {
     private Pane spielerKartenPane;
     @FXML
     private Pane dealerKartenPane;
-    
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPruefung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
@@ -183,7 +182,7 @@ public class BlackJackGameFXMLController implements Initializable {
         labelVerdoppeln.setText("Ihr Einsatz wurde erhöht auf " + s);
         textfeldEinsatz.setText(s);
         PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - i);
-        game.setEinsatz(game.getEinsatz()*2);
+        game.setEinsatz(game.getEinsatz() * 2);
         game.spielerHit();
         game.dealerRound(labelKartenWertDealer);
     }

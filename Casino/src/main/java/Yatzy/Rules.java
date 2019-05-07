@@ -168,6 +168,7 @@ public class Rules {
             winamount = betnum + betnum;
             newamount = balance + winamount;
             //newamount = UserCentral.getInstance().getUser().getCurrentBalance() + winamount;
+
             //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
         } else if (total < enemytotal) {
             win = 2;

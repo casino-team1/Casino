@@ -117,6 +117,7 @@ public class GameStatisticController implements Initializable, Observer {
         GameStatisticModel gameModel = (GameStatisticModel) o;
         this.gameStatTable.getItems().clear();
         int maxNumberOfEntries = evaluateMaxNumberOfEntries();
+        addStatistics(maxNumberOfEntries, gameModel);
         XYChart.Series<String, Double> series = getPopulatedProfitChart(maxNumberOfEntries);
         this.gameProfit.getData().add(series);
         this.gameProfit.setCreateSymbols(false);
@@ -138,6 +139,7 @@ public class GameStatisticController implements Initializable, Observer {
                 break;
             }
             this.gameStatTable.getItems().add(stat);
+            System.out.println(stat.toString());
         }
     }
 

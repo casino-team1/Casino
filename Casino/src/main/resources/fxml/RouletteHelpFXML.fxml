@@ -270,5 +270,13 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
+      <Label layoutX="62.0" layoutY="670.0" text="Wenn kein Einsatz festgelegt wird, wird automatisch die Zahl eins Ausgewählt">
+         <font>
+            <Font name="Droid Serif" size="26.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

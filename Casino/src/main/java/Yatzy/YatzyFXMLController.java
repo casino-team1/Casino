@@ -361,6 +361,7 @@ public class YatzyFXMLController implements Initializable {
                 updateButton(btnthrowdices);
                 betnum = Integer.parseInt(bettxt.getText());
                 balance -= betnum;
+                PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
                 lbltotalnum.setText(Integer.toString(balance));
                 balanceLabel.setText("Konto: " + balance);
                 lblbetnum.setText(Integer.toString(betnum));
@@ -845,19 +846,19 @@ public class YatzyFXMLController implements Initializable {
                     lblwin.setText("Gewonnen!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
+                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(balance, "Yatzy", betnum, "Won", (PlayerCentral.getInstance().getUser().getCurrentChipBalance()) - balance);
                     break;
                 case 2:
                     lblwin.setText("Verloren!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
+                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(PlayerCentral.getInstance().getUser().getCurrentChipBalance(), "Yatzy", betnum, "Lost", -1 * betnum);
                     break;
                 case 3:
                     lblwin.setText("Unentschieden!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
+                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(balance, "Yatzy", betnum, "Tie", 0);
                     break;
             }
             //the total balance gets updated

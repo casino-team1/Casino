@@ -12,7 +12,6 @@ import Baccara.Entity.BaccaraGame;
 import com.team1.casino.User.Util.PlayerCentral;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Scene;
 
 /**
@@ -109,7 +108,7 @@ public class BaccaraGameModel extends BaccaraModel {
                     );
                 }
                 accountChange = this.baccaraGame.getTotalBet();
-                changeUserBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance(), "Baccara", this.baccaraGame.getTotalBet(), "Lost", 0);
+                changeUserBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance(), "Baccara", this.baccaraGame.getTotalBet(), "Lost", -1 * this.baccaraGame.getTotalBet());
                 break;
             default:
                 System.out.println(betMatch);

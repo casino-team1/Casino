@@ -93,11 +93,10 @@ public class Updater {
                     int userID = PlayerCentral.getInstance().getUser().getID();
                     int gameID = Integer.parseInt(query.runQueryWithReturn("SELECT id FROM game WHERE gameName = ?", gameName).get(0));
                     String parameters = String.valueOf(amount);
-                    int statID = query.runQueryGetAddedID("INSERT INTO statistic(game_id,bet,result,amount) VALUES(?,?,?,?)", String.valueOf(gameID), String.valueOf(bet), result, parameters);
+                    int statID = query.runQueryGetAddedID("INSERT INTO statistic(bet,result,amount) VALUES(?,?,?)", String.valueOf(bet), result, parameters);
                     query.runQueryWithoutReturn("INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(?,?,?)", String.valueOf(userID), String.valueOf(statID),
                             String.valueOf(gameID));
                 } catch (NumberFormatException | SQLException e) {
-                    e.printStackTrace();
                 }
             }
         });

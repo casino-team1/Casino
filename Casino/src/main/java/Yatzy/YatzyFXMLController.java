@@ -361,6 +361,7 @@ public class YatzyFXMLController implements Initializable {
                 updateButton(btnthrowdices);
                 betnum = Integer.parseInt(bettxt.getText());
                 balance -= betnum;
+                PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
                 lbltotalnum.setText(Integer.toString(balance));
                 balanceLabel.setText("Konto: " + balance);
                 lblbetnum.setText(Integer.toString(betnum));
@@ -397,6 +398,7 @@ public class YatzyFXMLController implements Initializable {
         stageHelp.show();
     }
 
+    @FXML
     private void pressbtnback(ActionEvent event) {
         this.mainApplication.displayMainMenu();
     }
@@ -844,21 +846,22 @@ public class YatzyFXMLController implements Initializable {
                     lblwin.setText("Gewonnen!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
+                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(balance, "Yatzy", betnum, "WON", (PlayerCentral.getInstance().getUser().getCurrentChipBalance()) - balance);
                     break;
                 case 2:
                     lblwin.setText("Verloren!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
+                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(PlayerCentral.getInstance().getUser().getCurrentChipBalance(), "Yatzy", betnum, "LOST", 0);
                     break;
                 case 3:
                     lblwin.setText("Unentschieden!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    PlayerCentral.getInstance().getUser().setNewChipBalance(balance);
+                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(balance, "Yatzy", betnum, "Tie", betnum);
                     break;
             }
+
             //the total balance gets updated
             lbltotalnum.setText(Integer.toString(balance));
             balanceLabel.setText("Konto: " + balance);

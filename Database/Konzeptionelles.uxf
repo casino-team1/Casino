@@ -5,15 +5,17 @@
     <id>UMLClass</id>
     <coordinates>
       <x>220</x>
-      <y>290</y>
+      <y>220</y>
       <w>100</w>
-      <h>110</h>
+      <h>210</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Entit&gt;&gt;
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Balance
 --
 balance
 lastUpdate
+--
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -23,12 +25,14 @@ lastUpdate
       <x>750</x>
       <y>550</y>
       <w>120</w>
-      <h>210</h>
+      <h>70</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Entit&gt;&gt;
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Game
 --
-gameName</panel_attributes>
+gameName
+--
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -47,6 +51,8 @@ username
 password
 email
 role
+--
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -78,7 +84,9 @@ User
 Game
 Bet
 Result
-BalanceChange</panel_attributes>
+BalanceChange
+--
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

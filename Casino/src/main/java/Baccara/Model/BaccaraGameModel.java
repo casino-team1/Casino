@@ -12,7 +12,6 @@ import Baccara.Entity.BaccaraGame;
 import com.team1.casino.User.Util.PlayerCentral;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Scene;
 
 /**
@@ -45,13 +44,6 @@ public class BaccaraGameModel extends BaccaraModel {
         this.baccaraGame = new BaccaraGame();
     }
 
-    public boolean betsAreSet() {
-        if (playerBetSet.getValue() == true || dealerBetSet.getValue() == true || tieBetSet.getValue() == true) {
-            return true;
-        }
-        return false;
-    }
-
     public int getPlayerCardCount() {
         return this.baccaraGame.getPlayerCardCount();
     }
@@ -72,12 +64,6 @@ public class BaccaraGameModel extends BaccaraModel {
         return this.baccaraGame.getDealerCards();
     }
 
-    private SimpleBooleanProperty playerBetSet = new SimpleBooleanProperty();
-    private SimpleBooleanProperty dealerBetSet = new SimpleBooleanProperty();
-    private SimpleBooleanProperty playerDoubleBetSet = new SimpleBooleanProperty();
-    private SimpleBooleanProperty dealerDoubleBetSet = new SimpleBooleanProperty();
-    private SimpleBooleanProperty tieBetSet = new SimpleBooleanProperty();
-
     private int playerDoubleBet = 0;
     private int dealerDoubleBet = 0;
 
@@ -88,7 +74,10 @@ public class BaccaraGameModel extends BaccaraModel {
     public void setDealerBet(int betValue) {
         this.baccaraGame.setDealerBet(betValue);
     }
+
     private String resultMessage;
+
+    private boolean won = true;
 
     public void endGame() {
         String winner = determineWinner();
@@ -111,6 +100,7 @@ public class BaccaraGameModel extends BaccaraModel {
                 changeUserBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + this.baccaraGame.getTieBet() * 8, "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
                 break;
             case "Lost":
+                won = false;
                 if (winner.equals("Tie") == true) {
                     this.resultMessage = String.format("Weder Dealer noch Spieler hat gewonnen Leider knapp daneben... Sie verlieren ihren Einsatz von %s ", totalBet);
                 } else {
@@ -126,6 +116,10 @@ public class BaccaraGameModel extends BaccaraModel {
         }
         setChanged();
         notifyObservers();
+    }
+
+    public boolean isWon() {
+        return won;
     }
 
     private double accountChange = 0;
@@ -174,22 +168,6 @@ public class BaccaraGameModel extends BaccaraModel {
 
     public void setTieBet(int betValue) {
         this.baccaraGame.setTieBet(betValue);
-    }
-
-    public SimpleBooleanProperty getPlayerBetSet() {
-        return playerBetSet;
-    }
-
-    public SimpleBooleanProperty getDealerBetSet() {
-        return dealerBetSet;
-    }
-
-    public SimpleBooleanProperty getPlayerDoubleBetSet() {
-        return playerDoubleBetSet;
-    }
-
-    public SimpleBooleanProperty getDealerDoubleBetSet() {
-        return dealerDoubleBetSet;
     }
 
     public int getPlayerBet() {

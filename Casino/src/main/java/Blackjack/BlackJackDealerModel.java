@@ -24,8 +24,8 @@ public class BlackJackDealerModel {
     
     private int xKoordinate = 0;
     private int yKoordinate = 6;
-    private int karteWidth = 149;
-    private int karteHeight = 201;
+    private int karteWidth = 167;
+    private int karteHeight = 237;
 
     Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
@@ -135,8 +135,8 @@ public class BlackJackDealerModel {
         return kartenWertDealer;
     }
 
-    public void setKartenWertDealer(int kartenWertDealer) {
-        this.kartenWertDealer = kartenWertDealer;
+    public void setKartenWertDealer(int i) {
+        this.kartenWertDealer = i;
     }
 
     public void kartenWertDealerPlusKarteZwei() {
@@ -147,16 +147,16 @@ public class BlackJackDealerModel {
         return zufallskarte;
     }
 
-    public void setZufallskarte(String zufallskarte) {
-        this.zufallskarte = zufallskarte;
+    public void setZufallskarte(String s) {
+        this.zufallskarte = s;
     }
 
     public int getKarteZweiWert() {
         return karteZweiWert;
     }
 
-    public void setKarteZweiWert(int karteZweiDealer) {
-        this.karteZweiWert = karteZweiDealer;
+    public void setKarteZweiWert(int i) {
+        this.karteZweiWert = i;
     }
 
     public ArrayList<String> getKartenDealer() {
@@ -170,6 +170,10 @@ public class BlackJackDealerModel {
     public int getxKoordinate() {
         return xKoordinate;
     }
+    
+    public void setxKoordinate(int i) {
+        this.xKoordinate = i;
+    }
 
     public int getyKoordinate() {
         return yKoordinate;
@@ -182,11 +186,4 @@ public class BlackJackDealerModel {
     public int getKarteHeight() {
         return karteHeight;
     }
-
-    public void setxKoordinate(int xKoordinate) {
-        this.xKoordinate = xKoordinate;
-    }
-    
-    
-
 }

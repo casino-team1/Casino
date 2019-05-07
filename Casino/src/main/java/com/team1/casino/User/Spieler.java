@@ -32,7 +32,7 @@ public class Spieler {
     private String role;
     private String username;
     private String password;
-    private double currentChips = 1000;
+    private double currentChips = 999999;
     private boolean validated = false;
     private String validationCode = "";
     private String emailAdress;
@@ -47,9 +47,9 @@ public class Spieler {
         this.currentChips = 0;
         this.currentMoney = 5000;
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-        int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(chips,money,lastUpdated) VALUES(?,?,CURDATE())", "0.0;5000.0");
-        query.runQueryWithoutReturn("INSERT INTO user(username,password,role,balance_id,email) VALUES(?,?,?,?,?)", username + ";-" + password + ";-" + "Player" + ";-" + String.valueOf(balanceIndex) + ";-"
-                + email
+        int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(chips,money,lastUpdated) VALUES(?,?,CURDATE())", "0.0", "5000.0");
+        query.runQueryWithoutReturn("INSERT INTO user(username,password,role,balance_id,email) VALUES(?,?,?,?,?)", username, password, "Player", String.valueOf(balanceIndex),
+                email
         );
     }
 
@@ -58,7 +58,7 @@ public class Spieler {
         if (MainApp.EXECUTION_MODE != ExecutionMode.DEVELOPMENT) {
             try {
                 Updater updated = new Updater();
-                updated.performUpdateWithArgument("UPDATE balance b, user u SET b.chips = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(this.currentChips) + ";" + String.valueOf(this.ID));
+                updated.performUpdateWithArgument("UPDATE balance b, user u SET b.chips = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(this.currentChips), String.valueOf(this.ID));
             } catch (SQLException ex) {
                 Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -117,7 +117,7 @@ public class Spieler {
         if (MainApp.EXECUTION_MODE != ExecutionMode.DEVELOPMENT) {
             try {
                 Updater updated = new Updater();
-                updated.performUpdateWithArgument("UPDATE balance b, user u SET b.money = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(this.currentMoney) + ";" + String.valueOf(this.ID));
+                updated.performUpdateWithArgument("UPDATE balance b, user u SET b.money = ? WHERE b.id = u.balance_id AND u.id = ?", String.valueOf(this.currentMoney), String.valueOf(this.ID));
             } catch (SQLException ex) {
                 Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -2,14 +2,14 @@ DROP DATABASE Casino;
 CREATE DATABASE Casino;
 Use Casino;
 DROP USER 'casinoworker'@'localhost';
-CREATE USER 'casinoworker'@'localhost' IDENTIFIED BY '';
-GRANT ALL PRIVILEGES ON Casino.* TO 'casinoworker'@'localhost' WITH GRANT OPTION;
+CREATE USER 'casinoworker'@'localhost' IDENTIFIED BY 'Cernel_001_TP_02';
+GRANT INSERT,SELECT,UPDATE ON Casino.* TO 'casinoworker'@'localhost' WITH GRANT OPTION;
 
 CREATE TABLE balance(
     id integer auto_increment,
     chips double,
     money double,
-    lastUpdated Datetime,
+    lastUpdated Datetime,   
     PRIMARY KEY (id)
 );
 
@@ -21,12 +21,10 @@ CREATE TABLE game(
 
 CREATE TABLE statistic(
     id INTEGER auto_increment,
-    game_id integer,
     bet double,
     result varchar(255),
     amount double,
-    PRIMARY KEY (id),
-    FOREIGN KEY (game_id) REFERENCES game(id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE user(
@@ -56,24 +54,24 @@ INSERT INTO game(gameName) VALUES("Yatzy");
 
 INSERT INTO balance(chips,money,lastUpdated) VALUES(0,5000.0,CURDATE());
 INSERT INTO balance(chips,money,lastUpdated) VALUES(0,5000.0,CURDATE());
+INSERT INTO balance(chips,money,lastUpdated) VALUES(0,5000.0,CURDATE());
 
 
 INSERT INTO user(username,password,role,balance_id,email) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",2,"nick.flueckiger@outlook.de");
-INSERT INTO user(username,password,role,balance_id,email) VALUES("Lukas","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",2,"nick.flueckiger@outlook.de");
+INSERT INTO user(username,password,role,balance_id,email) VALUES("Lukas","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",3,"nick.flueckiger@outlook.de");
 INSERT INTO user(username,password,role,balance_id,email) VALUES("Admin","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Admin",1,"nick.flueckiger@outlook.de");
 
 
-
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",-50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Lost",-50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
-INSERT INTO statistic(game_id,bet,result,amount) VALUES(1,50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Lost",-50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Lost",-50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
 
 
 INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,1,1);

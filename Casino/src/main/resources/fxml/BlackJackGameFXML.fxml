@@ -32,7 +32,7 @@
          </font>
       </Label>
       <TextField fx:id="textfeldEinsatz" layoutX="401.0" layoutY="171.0" opacity="0.75" />
-      <Button fx:id="buttonPrüfung" layoutX="447.0" layoutY="206.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfung" />
+      <Button fx:id="buttonPruefung" layoutX="430.0" layoutY="209.0" mnemonicParsing="false" onAction="#pruefungEinsatz" text="Betrag prüfen" />
       <Label layoutX="345.0" layoutY="107.0" text="Teilnahme: mindestens 50 (ganze Zahlen)!" textFill="WHITE" underline="true">
          <opaqueInsets>
             <Insets />
@@ -52,16 +52,6 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="labelKontostand" layoutX="685.0" layoutY="170.0" text="Kontostand:" textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelKontostand1" layoutX="32.0" layoutY="170.0" text="Ihr eingesetztes Geld: " textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
       <Line endX="5.79998779296875" endY="220.60003662109375" layoutX="468.0" layoutY="268.0" startX="5.79998779296875" startY="24.600006103515625" stroke="#e5ff00" strokeWidth="5.0" />
       <Button fx:id="buttonVersichern" disable="true" layoutX="587.0" layoutY="591.0" mnemonicParsing="false" onAction="#versichern" text="Versichern" />
       <Button fx:id="buttonVerdoppeln" disable="true" layoutX="447.0" layoutY="591.0" mnemonicParsing="false" onAction="#verdoppeln" text="Verdoppeln" />
@@ -74,46 +64,38 @@
          </font>
       </Label>
       <Label fx:id="labelVerdoppeln" layoutX="403.0" layoutY="634.0" textFill="WHITE" />
-      <Label fx:id="labelLösung" layoutX="286.0" layoutY="672.0" prefHeight="53.0" prefWidth="511.0" textFill="WHITE">
+      <Label fx:id="labelLoesung" layoutX="231.0" layoutY="670.0" prefHeight="53.0" prefWidth="662.0" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font></Label>
       <Label fx:id="labelVersicherung" layoutX="587.0" layoutY="626.0" textFill="WHITE" />
-      <Label layoutX="115.0" layoutY="251.0" text="Spieler Karten" textFill="#ffc200">
+      <Label layoutX="112.0" layoutY="221.0" text="Spieler Karten" textFill="#ffc200">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label layoutX="650.0" layoutY="251.0" text="Dealer Karten" textFill="#ffc200">
+      <Label layoutX="645.0" layoutY="221.0" text="Dealer Karten" textFill="#ffc200">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0$" textFill="WHITE">
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="244.0" text="Konto: 0" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="labelKartenWertSpieler" layoutX="263.0" layoutY="251.0" prefHeight="17.0" prefWidth="46.0" textFill="#ffc200">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelKartenWertDealer" layoutX="794.0" layoutY="251.0" prefHeight="17.0" prefWidth="46.0" textFill="#ffc200">
+      <Label fx:id="labelKartenWertSpieler" layoutX="263.0" layoutY="221.0" prefHeight="17.0" prefWidth="46.0" textFill="#ffc200">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Pane fx:id="spielerKartenPane" layoutX="5.0" layoutY="287.0" prefHeight="213.0" prefWidth="457.0">
-         <children>
-            <ImageView fx:id="spielerKarte" fitHeight="201.0" fitWidth="149.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </Pane>
-      <Pane fx:id="dealerKartenPane" layoutX="486.0" layoutY="287.0" prefHeight="213.0" prefWidth="457.0">
-         <children>
-            <ImageView fx:id="dealerKarte" fitHeight="201.0" fitWidth="149.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </Pane>
+      <Label fx:id="labelKartenWertDealer" layoutX="792.0" layoutY="221.0" prefHeight="17.0" prefWidth="46.0" textFill="#ffc200">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Pane fx:id="spielerKartenPane" layoutX="8.0" layoutY="274.0" prefHeight="237.0" prefWidth="447.0" />
+      <Pane fx:id="dealerKartenPane" layoutX="505.0" layoutY="274.0" prefHeight="237.0" prefWidth="447.0" />
       <Button fx:id="buttonVerlassen" layoutX="14.0" layoutY="731.0" mnemonicParsing="false" onAction="#zurueck" onMouseEntered="#enterButtonVerlassen" onMouseExited="#exitButtonVerlassen" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />

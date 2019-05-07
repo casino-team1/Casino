@@ -1,0 +1,2344 @@
+{
+    ".fxml": [
+        "fxml/AuthenticationView.fxml",
+        "fxml/BaccaraGameView.fxml",
+        "fxml/BaccaraMenuView.fxml",
+        "fxml/BlackJackFXML.fxml",
+        "fxml/BlackJackGameFXML.fxml",
+        "fxml/BlackJackHelp1FXML.fxml",
+        "fxml/BlackJackHelp2FXML.fxml",
+        "fxml/BlackJackHelp3FXML.fxml",
+        "fxml/BlackJackMainFXML.fxml",
+        "fxml/ExchangeFXML.fxml",
+        "fxml/GameStatisticView.fxml",
+        "fxml/LoginView.fxml",
+        "fxml/MainMenuRouletteFXML.fxml",
+        "fxml/PasswordRecovery.fxml",
+        "fxml/PlayerStatisticView.fxml",
+        "fxml/RegistrationView.fxml",
+        "fxml/RouletteFXML.fxml",
+        "fxml/RouletteHelpFXML.fxml",
+        "fxml/Scene.fxml",
+        "fxml/StatisticView.fxml",
+        "fxml/YatzyFXML.fxml",
+        "fxml/YatzyFXMLMenu.fxml",
+        "fxml/YatzyhelpFXML.fxml"
+    ]
+}
+
+
++ -----------------------------+
+| fxml/AuthenticationView.fxml |
++ -----------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="522.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.AuthenticationController">
+   <children>
+      <ImageView fitHeight="582.0" fitWidth="609.0" layoutX="-2.0" layoutY="-50.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/loginBackground.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="accessCodeInput" layoutX="219.0" layoutY="228.0" promptText="Access Code" />
+      <Text fill="WHITE" layoutX="109.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We have sent you your AccessCode">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="submitButton" layoutX="215.0" layoutY="329.0" mnemonicParsing="false" onAction="#checkAccessCode" text="Zugangscode überprüfen" />
+   </children>
+</AnchorPane>
+
+
+
++ --------------------------+
+| fxml/BaccaraGameView.fxml |
++ --------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="anchro" prefHeight="764.0" prefWidth="1248.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraGameViewController">
+   <children>
+      <ImageView cache="true" fitHeight="774.0" fitWidth="1285.0" layoutY="-10.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bankerBet" fitHeight="107.0" fitWidth="134.0" layoutX="625.0" layoutY="422.0" onMouseClicked="#setBankerBet" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/BankerBackground.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tieBet" fitHeight="61.0" fitWidth="236.0" layoutX="578.0" layoutY="544.0" onDragDropped="#setTieBet" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/TieBackground.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="playerBet" fitHeight="107.0" fitWidth="134.0" layoutX="624.0" layoutY="614.0" onDragDropped="#setPlayerBet" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/PlayerBackground.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="687.0" layoutY="54.0" prefHeight="328.0" prefWidth="9.0" style="-fx-background-color: #DCCC88#DCCC88;" />
+      <HBox fx:id="playerSide" layoutX="128.0" layoutY="106.0" prefHeight="226.0" prefWidth="528.0" spacing="10.0">
+         <children>
+            <ImageView fx:id="thirdLeftCard" fitHeight="209.0" fitWidth="159.0" pickOnBounds="true" />
+            <ImageView fx:id="secondLeftCard" fitHeight="209.0" fitWidth="149.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/GameCards/cardBack.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="firstLeftCard" fitHeight="209.0" fitWidth="155.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/GameCards/cardBack.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox fx:id="dealerSide" layoutX="777.0" layoutY="106.0" prefHeight="223.0" prefWidth="494.0" spacing="10.0">
+         <children>
+            <ImageView fx:id="firstRightCard" fitHeight="209.0" fitWidth="155.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/GameCards/cardBack.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="secondRightCard" fitHeight="209.0" fitWidth="155.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/GameCards/cardBack.png" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="thirdRightImage" fitHeight="209.0" fitWidth="148.0" pickOnBounds="true" />
+         </children></HBox>
+      <ImageView fx:id="startGameView" fitHeight="90.0" fitWidth="268.0" layoutX="897.0" layoutY="600.0" onMouseClicked="#startBaccara" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/startGameButton.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="playerCardCountLabel" fill="WHITE" layoutX="270.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Card Count: ">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Text>
+      <Text fx:id="dealerCardCountLabel" fill="WHITE" layoutX="787.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dealer Card Count: ">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="chipImage" fitHeight="101.0" fitWidth="100.0" layoutX="366.0" layoutY="607.0" onMouseClicked="#clipChip" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/gameChipImage.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bankerBetCoin" fitHeight="50.0" fitWidth="50.0" layoutX="667.0" layoutY="451.0" onMouseClicked="#setBankerBet" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="userBalance" fill="WHITE" layoutX="66.0" layoutY="685.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand: ">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="totalBet" fill="WHITE" layoutX="67.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Einsatz:">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="menuButton" layoutX="113.0" layoutY="539.0" mnemonicParsing="false" onAction="#backToMenu" onMouseEntered="#enterMenuButton" onMouseExited="#exitMenuButton" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: transparent; -fx-border-width: 3px; -fx-border-color: white;" text="Menu" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="tieBetCoin" fitHeight="50.0" fitWidth="50.0" layoutX="671.0" layoutY="544.0" onMouseClicked="#setTieBet" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerBetCoin" fitHeight="50.0" fitWidth="50.0" layoutX="662.0" layoutY="643.0" onMouseClicked="#setPlayerBet" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
+
+
+
++ --------------------------+
+| fxml/BaccaraMenuView.fxml |
++ --------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="612.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraMenuViewController">
+   <children>
+      <ImageView fitHeight="617.0" fitWidth="824.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="baccaraButton" layoutX="246.0" layoutY="348.0" mnemonicParsing="false" onAction="#startBaccara" prefHeight="55.0" prefWidth="289.0" style="-fx-background-color: transparent; -fx-border-color: White; -fx-border-width: 4px;" text="Play Baccara" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="27.0" />
+         </font></Button>
+      <Text fx:id="baccaraText" layoutX="266.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baccara">
+         <font>
+            <Font name="Arial Bold" size="64.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startY="0.27817745803357313">
+               <stops>
+                  <Stop color="#ffd500" />
+                  <Stop color="#ffd500" offset="0.17132216014897578" />
+                  <Stop color="#e81212" offset="0.7355679702048415" />
+                  <Stop color="#e81212" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Label fx:id="welcomeMessage" layoutX="191.0" layoutY="173.0" prefHeight="27.0" prefWidth="411.0" text="PLACEHOLDER" textFill="WHITE" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="174.0">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="currentBalance" layoutX="142.0" layoutY="233.0" prefHeight="29.0" prefWidth="471.0" text="PLACEHOLDER CURRENTBALANCE" textFill="WHITE" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="138.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="cardView12" fitHeight="164.0" fitWidth="170.0" layoutX="602.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/baccaraCoint.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardView121" fitHeight="164.0" fitWidth="170.0" layoutX="586.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/baccaraCoint.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardView122" fitHeight="164.0" fitWidth="170.0" layoutX="566.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/baccaraCoint.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="backToMenuButton" layoutX="14.0" layoutY="562.0" mnemonicParsing="false" onAction="#backToMenu" onMouseEntered="#enterBackToMenuButton" onMouseExited="#exitBackToMenuButton" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
+
+
+
++ ------------------------+
+| fxml/BlackJackFXML.fxml |
++ ------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="130.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackFXMLController">
+   <children>
+      <ImageView fitHeight="475.0" fitWidth="796.0" layoutY="-13.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="240.0" layoutY="26.0" text="♥♦BlackJack♣♠">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="293.0" text="Deine Karten:" textFill="WHITE" />
+      <Label layoutX="98.0" layoutY="329.0" text="Dealer Karten:" textFill="WHITE" />
+      <Label fx:id="labelKartenSpieler" layoutX="191.0" layoutY="293.0" prefHeight="18.0" prefWidth="298.0" textFill="WHITE" />
+      <Label fx:id="labelKartenDealer" layoutX="199.0" layoutY="329.0" prefHeight="18.0" prefWidth="298.0" textFill="WHITE" />
+      <Button fx:id="buttonStand" disable="true" layoutX="167.0" layoutY="190.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
+      <Button fx:id="buttonHit" disable="true" layoutX="267.0" layoutY="190.0" mnemonicParsing="false" onAction="#hit" text="Hit" />
+      <Button fx:id="buttonStart" disable="true" layoutX="267.0" layoutY="142.0" mnemonicParsing="false" onAction="#startGame" text="Neues Spiel" />
+      <Label fx:id="labelLösung" layoutX="513.0" layoutY="302.0" prefHeight="18.0" prefWidth="198.0" textFill="WHITE" />
+      <Label layoutX="87.0" layoutY="110.0" text="Ihr Einsatz:" textFill="WHITE" />
+      <TextField fx:id="textfeldEinsatz" layoutX="166.0" layoutY="106.0" />
+      <Label fx:id="labelEinsatzFehler" layoutX="364.0" layoutY="109.0" prefHeight="18.0" prefWidth="298.0" textFill="WHITE" />
+      <Button fx:id="buttonPrüfung" layoutX="166.0" layoutY="142.0" mnemonicParsing="false" onAction="#prüfungEinsatz" text="Prüfen" />
+      <Button fx:id="buttonVerlassen" layoutX="61.0" layoutY="404.0" mnemonicParsing="false" onAction="#zurueck" text="BlackJack verlassen" />
+      <Button fx:id="buttonHelp" layoutX="746.0" layoutY="13.0" mnemonicParsing="false" onAction="#help" text="?" />
+      <Button fx:id="buttonVerdoppeln" disable="true" layoutX="359.0" layoutY="190.0" mnemonicParsing="false" onAction="#verdoppeln" text="Verdoppeln" />
+      <Button fx:id="buttonVersichern" disable="true" layoutX="217.0" layoutY="250.0" mnemonicParsing="false" onAction="#versichern" text="Versichern" />
+      <TextField fx:id="textfeldVersicherung" disable="true" layoutX="330.0" layoutY="250.0" promptText="Versicherungsbetrag" />
+      <Label fx:id="labelVerdoppeln" layoutX="469.0" layoutY="193.0" prefHeight="18.0" prefWidth="274.0" textFill="WHITE" />
+      <Label fx:id="labelVersicherung" layoutX="504.0" layoutY="253.0" prefHeight="18.0" prefWidth="274.0" textFill="WHITE" />
+   </children>
+</AnchorPane>
+
+
+
++ ----------------------------+
+| fxml/BlackJackGameFXML.fxml |
++ ----------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackGameFXMLController">
+   <children>
+      <ImageView fitHeight="804.0" fitWidth="976.0" layoutX="-12.0" layoutY="-15.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="291.0" layoutY="10.0" text="♥♦Black Jack♣♠">
+         <font>
+            <Font name="System Bold" size="49.0" />
+         </font>
+      </Label>
+      <Label layoutX="349.0" layoutY="81.0" text="Dealer must draw to 16 and stand on 17." textFill="WHITE" underline="true">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textfeldEinsatz" layoutX="401.0" layoutY="171.0" opacity="0.75" />
+      <Button fx:id="buttonPruefung" layoutX="447.0" layoutY="206.0" mnemonicParsing="false" onAction="#pruefungEinsatz" text="Prüfung" />
+      <Label layoutX="345.0" layoutY="107.0" text="Teilnahme: mindestens 50 (ganze Zahlen)!" textFill="WHITE" underline="true">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonStart" disable="true" layoutX="456.0" layoutY="255.0" mnemonicParsing="false" onAction="#startGame" text="Start" />
+      <Label layoutX="447.0" layoutY="154.0" prefHeight="17.0" prefWidth="78.0" text="Ihr Einsatz:" textFill="WHITE" underline="true">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Button fx:id="buttonHelp" layoutX="904.0" layoutY="14.0" mnemonicParsing="false" onAction="#help" text="?">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="685.0" layoutY="170.0" text="Kontostand:" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="170.0" text="Ihr eingesetztes Geld: " textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Line endX="5.79998779296875" endY="220.60003662109375" layoutX="468.0" layoutY="268.0" startX="5.79998779296875" startY="24.600006103515625" stroke="#e5ff00" strokeWidth="5.0" />
+      <Button fx:id="buttonVersichern" disable="true" layoutX="587.0" layoutY="591.0" mnemonicParsing="false" onAction="#versichern" text="Versichern" />
+      <Button fx:id="buttonVerdoppeln" disable="true" layoutX="447.0" layoutY="591.0" mnemonicParsing="false" onAction="#verdoppeln" text="Verdoppeln" />
+      <Button fx:id="buttonStand" disable="true" layoutX="345.0" layoutY="590.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
+      <Button fx:id="buttonHit" disable="true" layoutX="255.0" layoutY="590.0" mnemonicParsing="false" onAction="#hit" text="Hit" />
+      <TextField fx:id="textfeldVersicherung" disable="true" layoutX="680.0" layoutY="591.0" opacity="0.75" promptText="Versicherungsbetrag" />
+      <Label layoutX="29.0" layoutY="590.0" text="Was möchten Sie tun?" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelVerdoppeln" layoutX="403.0" layoutY="634.0" textFill="WHITE" />
+      <Label fx:id="labelLoesung" layoutX="231.0" layoutY="670.0" prefHeight="53.0" prefWidth="662.0" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font></Label>
+      <Label fx:id="labelVersicherung" layoutX="587.0" layoutY="626.0" textFill="WHITE" />
+      <Label layoutX="115.0" layoutY="251.0" text="Spieler Karten" textFill="#ffc200">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="650.0" layoutY="251.0" text="Dealer Karten" textFill="#ffc200">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0$" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelKartenWertSpieler" layoutX="263.0" layoutY="251.0" prefHeight="17.0" prefWidth="46.0" textFill="#ffc200">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelKartenWertDealer" layoutX="794.0" layoutY="251.0" prefHeight="17.0" prefWidth="46.0" textFill="#ffc200">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Pane fx:id="spielerKartenPane" layoutX="5.0" layoutY="287.0" prefHeight="213.0" prefWidth="457.0">
+         <children>
+            <ImageView fx:id="spielerKarte" fitHeight="201.0" fitWidth="149.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Pane fx:id="dealerKartenPane" layoutX="486.0" layoutY="287.0" prefHeight="213.0" prefWidth="457.0">
+         <children>
+            <ImageView fx:id="dealerKarte" fitHeight="201.0" fitWidth="149.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Button fx:id="buttonVerlassen" layoutX="14.0" layoutY="731.0" mnemonicParsing="false" onAction="#zurueck" onMouseEntered="#enterButtonVerlassen" onMouseExited="#exitButtonVerlassen" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</Pane>
+
+
+
++ -----------------------------+
+| fxml/BlackJackHelp1FXML.fxml |
++ -----------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackHelp1FXMLController">
+   <children>
+      <ImageView fitHeight="529.0" fitWidth="776.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="290.0" layoutY="65.0" text="How to play Black Jack" underline="true">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="260.0" layoutY="14.0" text="♥♦Black Jack♣♠">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="181.0" layoutY="101.0" text="Wer näher an 21 ist, hat gewonnen!" textFill="WHITE" underline="true">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="201.0" fitWidth="514.0" layoutX="145.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/BlackJack/Blackjack-values-gr.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="167.0" layoutY="353.0" text="Die Kartenwerte vom Spieler und Dealer werden zusammengezählt" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="374.0" text="Derjenige, der am Schluss näher an 21 ist oder 21 besitzt, hat gewonnen" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="153.0" layoutY="395.0" text="Beim Zählen haben alle Karten einen bestimmten Wert bis auf das Ass, " textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="221.0" layoutY="416.0" text="das Ass kann entweder den Wert 1 oder 11 haben." textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonWeiter" layoutX="362.0" layoutY="483.0" mnemonicParsing="false" onAction="#weiter" text="Weiter" />
+      <Label layoutX="68.0" layoutY="437.0" text="Hat man von Anfang an den Kartenwert 21, hat man ein Black Jack. Der Spieler gewinnt das Spiel." textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
+
+
+
++ -----------------------------+
+| fxml/BlackJackHelp2FXML.fxml |
++ -----------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackHelp2FXMLController">
+   <children>
+      <ImageView fitHeight="565.0" fitWidth="778.0" layoutX="-6.0" layoutY="-4.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="303.0" layoutY="65.0" text="How to play Black Jack" underline="true">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="272.0" layoutY="14.0" text="♥♦Black Jack♣♠">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonZurueck" layoutX="14.0" layoutY="518.0" mnemonicParsing="false" onAction="#zurueck" text="Zurück" />
+      <Label layoutX="347.0" layoutY="413.0" text="Versichern" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="341.0" layoutY="316.0" text="Verdoppeln" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="370.0" layoutY="210.0" text="Stand" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="383.0" layoutY="103.0" text="Hit" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="269.0" layoutY="135.0" text="Beim Hit zieht man eine neue Karte. " textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="118.0" layoutY="154.0" text="Wenn man aber dann mit dem Kartenwert über 21 gerät, verliert man das Spiel." textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="238.0" layoutY="242.0" text="Beim Stand wird keine weitere Karte gezogen" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="159.0" layoutY="261.0" text="Der Dealer zeigt jetzt die Karten und der Kartenwert wird verglichen" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="173.0" text="Gerät man durch ein Ass über 21, wird das Ass nur als 1 gezählt und es wird nicht mehr gezogen " textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="348.0" text="Beim Verdoppeln wird der ursprüngliche Einsatz verdoppelt und die Runde geht zu Ende, " textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="275.0" layoutY="370.0" text="die Karten werden dann verglichen" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="445.0" text="Wenn die erste Karte vom Dealer ein Ass ist, kann man sich mit einem Betrag versichern." textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="99.0" layoutY="471.0" text="Hat der Dealer dann ein BlackJack, gewinnt der Spieler, falls nicht, verliert der Spieler." textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonWeiter" layoutX="371.0" layoutY="518.0" mnemonicParsing="false" onAction="#weiter" text="Weiter" />
+   </children>
+</Pane>
+
+
+
++ -----------------------------+
+| fxml/BlackJackHelp3FXML.fxml |
++ -----------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackHelp3FXMLController">
+   <children>
+      <ImageView fitHeight="533.0" fitWidth="776.0" layoutX="-4.0" layoutY="-2.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="300.0" layoutY="75.0" text="How to play Black Jack" underline="true">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="270.0" layoutY="24.0" text="♥♦Black Jack♣♠">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="310.0" layoutY="128.0" text="Gewinn/Verlust" textFill="WHITE" underline="true">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonZurueck" layoutX="14.0" layoutY="483.0" mnemonicParsing="false" onAction="#zurueck" text="Zurück" />
+      <Label layoutX="285.0" layoutY="184.0" text="Gewinnen durch Black Jack" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="210.0" layoutY="208.0" text="Auzahlung vom eingesetzten Betrag im Verhältnis 3:2" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="365.0" layoutY="384.0" text="Verlieren" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="286.0" layoutY="408.0" text="Eingesetzter Betrag geht verloren" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="338.0" layoutY="316.0" text="Unentschieden" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="267.0" layoutY="340.0" text="Eingestzter Betrag wird zurückgegeben" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="289.0" layoutY="246.0" text="Gewinnen ohne Black Jack" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="216.0" layoutY="274.0" text="Auzahlung vom eingesetzten Betrag im Verhältnis 2:1" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
+
+
+
++ ----------------------------+
+| fxml/BlackJackMainFXML.fxml |
++ ----------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Blackjack.BlackJackMainController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/BlackJack/blackjackTitlel.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="69.0" layoutY="75.0" text="Black Jack" textFill="WHITE">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonStart" layoutX="91.0" layoutY="163.0" mnemonicParsing="false" onAction="#startGame" prefHeight="74.0" prefWidth="176.0" text="Spiel starten">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0$" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonZurueck" layoutX="14.0" layoutY="346.0" mnemonicParsing="false" onAction="#zurueck" onMouseEntered="#enterButtonZurueck" onMouseExited="#exitButtonZurueck" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: black; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
+
+
+
++ -----------------------+
+| fxml/ExchangeFXML.fxml |
++ -----------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.ExchangeFXMLController">
+   <children>
+      <ImageView fitHeight="527.0" fitWidth="804.0" layoutX="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/MainScreen/black.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="527.0" fitWidth="804.0" layoutX="-1.0" opacity="0.7" pickOnBounds="true">
+         <image>
+            <Image url="@../images/MainScreen/Kasse/chalkboard.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="jetonsField" disable="true" layoutX="516.0" layoutY="294.0" onKeyPressed="#typeJetonsField" prefHeight="43.0" prefWidth="184.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="moneyField" disable="true" layoutX="125.0" layoutY="294.0" onKeyPressed="#typeMoneyField" prefHeight="43.0" prefWidth="184.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label fx:id="moneyToJetonLabel" alignment="CENTER" layoutX="345.0" layoutY="139.0" onMouseClicked="#pressGJLabel" onMouseEntered="#enterGJLabel" onMouseExited="#exitGJLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Geld -&gt; Jetons">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="jetonToMoneyLabel" alignment="CENTER" layoutX="345.0" layoutY="187.0" onMouseClicked="#pressJGLabel" onMouseEntered="#enterJGLabel" onMouseExited="#exitJGLabel" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;" text="Jetons -&gt; Geld">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="acceptButton" alignment="CENTER" disable="true" layoutX="309.0" layoutY="433.0" onKeyPressed="#pressAcceptButton" onMouseClicked="#clickedAcceptButton" onMouseEntered="#enterAcceptButton" onMouseExited="#exitAcceptButton" prefHeight="82.0" prefWidth="207.0" style="-fx-background-color: #01DF01; -fx-border-color: black; -fx-border-width: 3;" text="Bestätigen">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnback" layoutX="14.0" layoutY="474.0" mnemonicParsing="false" onAction="#pressbtnback" onMouseEntered="#enterbtnback" onMouseExited="#exitbtnback" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="moneyLabel" alignment="CENTER" layoutX="112.0" layoutY="232.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="balanceLabel" alignment="CENTER" layoutX="553.0" layoutY="232.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorJetonsLabel" alignment="CENTER" layoutX="462.0" layoutY="337.0" prefHeight="18.0" prefWidth="291.0" textFill="RED" />
+      <Label fx:id="errorMoneyLabel" alignment="CENTER" layoutX="125.0" layoutY="337.0" prefHeight="18.0" prefWidth="184.0" textFill="RED" />
+   </children>
+</AnchorPane>
+
+
+
++ ----------------------------+
+| fxml/GameStatisticView.fxml |
++ ----------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="746.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.Statistic.GameStatisticController">
+   <children>
+      <TableView fx:id="gameStatTable" layoutX="41.0" layoutY="173.0" prefHeight="516.0" prefWidth="312.0">
+        <columns>
+          <TableColumn fx:id="userCol" prefWidth="75.0" text="Nutzer" />
+          <TableColumn fx:id="betCol" prefWidth="75.0" text="Einsatz" />
+            <TableColumn fx:id="resultCol" prefWidth="75.0" text="Resultat" />
+            <TableColumn fx:id="changeCol" prefWidth="75.0" text="Change" />
+        </columns>
+      </TableView>
+      <LineChart fx:id="gameProfit" layoutX="360.0" layoutY="173.0" prefHeight="516.0" prefWidth="500.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Text layoutX="86.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GameName" />
+      <ComboBox fx:id="gameNames" layoutX="47.0" layoutY="83.0" onAction="#selectionChanged" prefWidth="150.0" />
+      <ComboBox fx:id="statCounter" layoutX="47.0" layoutY="126.0" onAction="#selectedStatCount" prefWidth="150.0" />
+      <Button fx:id="back" layoutX="781.0" layoutY="49.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Go back" />
+   </children>
+</AnchorPane>
+
+
+
++ --------------------+
+| fxml/LoginView.fxml |
++ --------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="518.0" scaleShape="false" style="-fx-background-image: ../images/loginBackground.jpg../images/loginBackground.jpg;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.LoginController">
+
+    <children>
+        <ImageView fitHeight="631.0" fitWidth="540.0" pickOnBounds="true">
+            <image>
+                <Image url="@../images/loginBackground.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="469.0" fitWidth="458.0" layoutX="35.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/MainScreen/LoginScreen2.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="registerButton" layoutX="93.0" layoutY="564.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="51.0" prefWidth="118.0" text="Register">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <TextField fx:id="usernameField" layoutX="104.0" layoutY="461.0" prefHeight="33.0" prefWidth="176.0" promptText="Benutzername">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </TextField>
+        <PasswordField fx:id="passwordField" layoutX="292.0" layoutY="461.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pressPasswordField" prefHeight="33.0" prefWidth="152.0" promptText="Passwort">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </PasswordField>
+        <Button fx:id="loginButton" layoutX="354.0" layoutY="563.0" mnemonicParsing="false" onAction="#loginUser" opacity="0.0" prefHeight="51.0" prefWidth="108.0" text="Login">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <Button fx:id="recoverPasswordButton" layoutX="232.0" layoutY="565.0" mnemonicParsing="false" onAction="#displayPasswordRecovery" opacity="0.0" prefHeight="51.0" prefWidth="102.0" text="Recover">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label fx:id="errorLabel" layoutX="101.0" layoutY="498.0" text="Der Benutzername oder das Passwort ist falsch" textFill="RED" visible="false" />
+      
+
+    </children>
+</AnchorPane>
+
+
+
++ -------------------------------+
+| fxml/MainMenuRouletteFXML.fxml |
++ -------------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="946.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Roulette.MainMenuRouletteFXMLController">
+   <children>
+      <ImageView fitHeight="579.0" fitWidth="1008.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/vegas.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rouletteLogo" fitHeight="127.0" fitWidth="357.0" layoutX="612.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/vegasRoulette.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rouletteButtons" fitHeight="126.0" fitWidth="925.0" layoutX="51.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/banners.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="rouletteStartButton" layoutX="543.0" layoutY="451.0" mnemonicParsing="false" onAction="#rouletteStart" opacity="0.0" prefHeight="79.0" prefWidth="387.0" text="Start Roulette">
+         <font>
+            <Font name="Lucida Calligraphy Italic" size="35.0" />
+         </font></Button>
+      <Button fx:id="rouletteEndButton" layoutX="87.0" layoutY="451.0" mnemonicParsing="false" onAction="#endGame" opacity="0.0" prefHeight="70.0" prefWidth="343.0" text="Go back">
+         <font>
+            <Font name="Lucida Calligraphy Italic" size="35.0" />
+         </font>
+      </Button>
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="mountainviewLogo" fitHeight="266.0" fitWidth="378.0" layoutX="591.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/logo.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>
+
+
+
++ ---------------------------+
+| fxml/PasswordRecovery.fxml |
++ ---------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="475.0" prefWidth="483.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.team1.casino.Controller.PasswordRecoveryController">
+   <children>
+      <Button fx:id="passwordRecoveryButton" layoutX="151.0" layoutY="368.0" mnemonicParsing="false" onAction="#sendUserANewPassword" text="Neues Passwort anfordern" />
+      <TextField fx:id="username" layoutX="153.0" layoutY="157.0" promptText="Nutzername">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
+
+
+
++ ------------------------------+
+| fxml/PlayerStatisticView.fxml |
++ ------------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.Statistic.PlayerStatisticController">
+   <children>
+      <ComboBox fx:id="nutzernamen" layoutX="63.0" layoutY="94.0" onAction="#selectionChanged" prefHeight="27.0" prefWidth="210.0" />
+      <Text layoutX="127.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutzernamen" />
+      <TableView fx:id="statisticTable" layoutX="17.0" layoutY="208.0" prefHeight="351.0" prefWidth="331.0">
+        <columns>
+          <TableColumn fx:id="gameCol" prefWidth="75.0" text="Spiel" />
+          <TableColumn fx:id="betCol" prefWidth="75.0" text="Einsatz" />
+            <TableColumn fx:id="ResCol" prefWidth="75.0" text="Resultat" />
+            <TableColumn fx:id="ChangeCol" prefWidth="106.0" text="Kontoänderung" />
+        </columns>
+      </TableView>
+      <LineChart fx:id="kontostandChart" layoutX="352.0" layoutY="208.0" prefHeight="369.0" prefWidth="448.0" style="-fx-stroke: black;">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Text layoutX="511.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="back" layoutX="741.0" layoutY="60.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Button" />
+   </children>
+</AnchorPane>
+
+
+
++ ---------------------------+
+| fxml/RegistrationView.fxml |
++ ---------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="531.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.RegistrationViewController">
+   <children>
+      <ImageView fitHeight="531.0" fitWidth="583.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/loginBackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="477.0" fitWidth="383.0" layoutX="104.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MainScreen/registrationScreen.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="registerButton" layoutX="276.0" layoutY="467.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="50.0" prefWidth="168.0" text="Register" />
+      <TextField fx:id="username" layoutX="151.0" layoutY="293.0" prefHeight="30.0" prefWidth="282.0" promptText="Benutzername" />
+      <TextField fx:id="password" layoutX="151.0" layoutY="383.0" prefHeight="30.0" prefWidth="282.0" promptText="Passwort" />
+      <Text fx:id="errorMessage" fill="RED" layoutX="219.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error-Message">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Text>
+      <Button fx:id="backButton" layoutX="143.0" layoutY="467.0" mnemonicParsing="false" onAction="#backToLogin" opacity="0.0" prefHeight="50.0" prefWidth="117.0" text="Go back" />
+      <TextField fx:id="emailAdress" layoutX="151.0" layoutY="339.0" prefHeight="30.0" prefWidth="282.0" promptText="Email" />
+   </children>
+</AnchorPane>
+
+
+
++ -----------------------+
+| fxml/RouletteFXML.fxml |
++ -----------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="679.0" prefWidth="1177.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Roulette.RouletteFXMLController">
+   <children>
+      <ImageView fitHeight="748.0" fitWidth="1280.0" layoutX="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Roulette/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rouletteWheel" fitHeight="254.0" fitWidth="233.0" layoutX="110.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/rouletteWheel.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="placeYourBet" fitHeight="144.0" fitWidth="149.0" layoutX="156.0" layoutY="302.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="980.0212707519531">
+         <image>
+            <Image url="@../images/Roulette/button.png" />
+         </image>
+         <effect>
+            <DropShadow height="136.64" radius="66.3375" width="130.71" />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="1053.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/blackBet.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="888.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/pair.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="725.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/passe.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="1052.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/redBet.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="725.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/manque.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="226.0" layoutX="888.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/impair.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="125.0" fitWidth="489.0" layoutX="725.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/rouletteboard1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="124.0" fitWidth="51.0" layoutX="673.0" layoutY="195.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Roulette/green0.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="726.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/d1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="888.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/d2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="1051.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/d3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="485.0" layoutX="728.0" layoutY="320.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Roulette/collumnSelect.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="127.0" fitWidth="40.0" layoutX="1216.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/rowSelect.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="53.0" layoutX="673.0" layoutY="320.0" onMouseClicked="#clickFiveBet" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Roulette/fiveBet.png" />
+         </image>
+      </ImageView>
+      <Line endX="140.0" layoutX="1114.0" layoutY="195.0" startX="-388.0" />
+      <Line endX="140.0" layoutX="1114.0" layoutY="237.0" startX="-388.0" startY="-1.0" />
+      <Line endX="140.0" layoutX="1114.0" layoutY="278.0" startX="-390.0" />
+      <Line endX="140.0" endY="0.2874755859375" layoutX="1114.0" layoutY="320.0" startX="-389.0" />
+      <Line endX="98.5" endY="-19.5" layoutX="1116.0" layoutY="155.0" startX="98.5" startY="330.0" />
+      <Line endX="98.5" endY="41.5" layoutX="1074.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="41.5" layoutX="1033.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="41.5" layoutX="994.0" layoutY="153.0" startX="98.5" startY="207.0" />
+      <Line endX="98.5" endY="-19.5" layoutX="953.0" layoutY="155.0" startX="98.5" startY="329.0" />
+      <Line endX="98.5" endY="41.5" layoutX="912.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="41.5" layoutX="871.0" layoutY="153.0" startX="100.5" startY="207.0" />
+      <Line endX="98.5" endY="41.5" layoutX="830.0" layoutY="153.0" startX="98.5" startY="207.0" />
+      <Line endX="98.5" endY="-17.5" layoutX="789.0" layoutY="153.0" startX="99.0" startY="331.0" />
+      <Line endX="98.5" endY="41.5" layoutX="749.0" layoutY="153.0" startX="98.5" startY="207.0" />
+      <Line endX="98.5" endY="41.5" layoutX="708.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="41.5" layoutX="667.0" layoutY="155.0" startX="98.5" startY="205.0" />
+      <Line endX="98.5" endY="-20.0" layoutX="627.0" layoutY="153.0" startX="98.5" startY="331.0" />
+      <Pane layoutX="1173.0" layoutY="196.0" onMouseClicked="#clickPane36" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1132.0" layoutY="196.0" onMouseClicked="#clickPane33" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1093.0" layoutY="196.0" onMouseClicked="#clickPane30" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1052.0" layoutY="196.0" onMouseClicked="#clickPane27" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1011.0" layoutY="196.0" onMouseClicked="#clickPane24" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="970.0" layoutY="196.0" onMouseClicked="#clickPane21" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="929.0" layoutY="196.0" onMouseClicked="#clickPane18" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="888.0" layoutY="196.0" onMouseClicked="#clickPane15" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="848.0" layoutY="196.0" onMouseClicked="#clickPane12" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="807.0" layoutY="196.0" onMouseClicked="#clickPane9" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="766.0" layoutY="196.0" onMouseClicked="#clickPane6" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="726.0" layoutY="196.0" onMouseClicked="#clickPane3" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1174.0" layoutY="237.0" onMouseClicked="#clickPane35" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1133.0" layoutY="237.0" onMouseClicked="#clickPane32" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1094.0" layoutY="237.0" onMouseClicked="#clickPane29" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1053.0" layoutY="237.0" onMouseClicked="#clickPane26" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1012.0" layoutY="237.0" onMouseClicked="#clickPane23" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="971.0" layoutY="237.0" onMouseClicked="#clickPane20" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="930.0" layoutY="237.0" onMouseClicked="#clickPane17" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="889.0" layoutY="237.0" onMouseClicked="#clickPane14" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="849.0" layoutY="237.0" onMouseClicked="#clickPane11" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="808.0" layoutY="237.0" onMouseClicked="#clickPane8" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="767.0" layoutY="237.0" onMouseClicked="#clickPane5" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="727.0" layoutY="237.0" onMouseClicked="#clickPane2" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1173.0" layoutY="279.0" onMouseClicked="#clickPane34" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1132.0" layoutY="279.0" onMouseClicked="#clickPane31" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1093.0" layoutY="279.0" onMouseClicked="#clickPane28" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1011.0" layoutY="279.0" onMouseClicked="#clickPane22" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="970.0" layoutY="279.0" onMouseClicked="#clickPane19" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="929.0" layoutY="279.0" onMouseClicked="#clickPane16" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="888.0" layoutY="279.0" onMouseClicked="#clickPane13" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="848.0" layoutY="279.0" onMouseClicked="#clickPane10" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="807.0" layoutY="279.0" onMouseClicked="#clickPane7" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="766.0" layoutY="279.0" onMouseClicked="#clickPane4" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="726.0" layoutY="279.0" onMouseClicked="#clickPane1" prefHeight="40.0" prefWidth="40.0" />
+      <Line endX="100.0" layoutX="624.0" layoutY="195.0" startX="50.0" />
+      <Line endX="100.0" layoutX="624.0" layoutY="320.0" startX="50.0" />
+      <Line endX="98.5" endY="41.5" layoutX="574.0" layoutY="153.0" startX="98.5" startY="210.0" />
+      <Line endX="100.0" layoutX="1114.0" layoutY="135.0" startX="-388.0" />
+      <Pane layoutX="724.0" layoutY="134.0" onMouseClicked="#clickPaneManque" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="890.0" layoutY="134.0" onMouseClicked="#clickPaneImpair" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="1053.0" layoutY="134.0" onMouseClicked="#clickPaneRed" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="726.0" layoutY="363.0" onMouseClicked="#clickPanePasse" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="888.0" layoutY="363.0" onMouseClicked="#clickPanePair" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="1053.0" layoutY="279.0" onMouseClicked="#clickPane25" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1053.0" layoutY="363.0" onMouseClicked="#clickPaneBlack" prefHeight="60.0" prefWidth="162.0" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="56.0" startX="1226.5" startY="-1.52587890625E-5" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="61.0" startX="1226.0" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="688.0" startX="1227.0" />
+      <Line endX="-51.0" layoutX="51.0" layoutY="683.0" startX="1227.0" />
+      <Button layoutX="1234.0" layoutY="15.0" mnemonicParsing="false" onAction="#getHelp" text="?" />
+      <Button layoutX="14.0" layoutY="705.0" mnemonicParsing="false" onAction="#rouletteVerlassen" text="Den Roulettetisch verlassen" />
+      <Line endX="172.0" endY="30.0" layoutX="1084.0" layoutY="165.0" startX="172.0" startY="156.0" />
+      <Pane layoutX="1216.0" layoutY="198.0" onMouseClicked="#clickRow3" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1216.0" layoutY="279.0" onMouseClicked="#clickRow1" prefHeight="40.0" prefWidth="40.0" />
+      <Pane layoutX="1216.0" layoutY="237.0" onMouseClicked="#clickRow2" prefHeight="40.0" prefWidth="40.0" />
+      <Label layoutX="34.0" layoutY="579.0" text="Betrag eingeben:">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="728.0" layoutY="77.0" text="Die Standartwette ist die Zahl 0">
+         <font>
+            <Font size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Pane layoutX="673.0" layoutY="261.0" onMouseClicked="#clickPane0" prefHeight="60.0" prefWidth="51.0" />
+      <Pane layoutX="673.0" layoutY="197.0" onMouseClicked="#clickPane00" prefHeight="60.0" prefWidth="51.0" />
+      <Line endX="101.0" endY="43.0" layoutX="1114.0" layoutY="380.0" startX="-388.0" startY="45.0" />
+      <Line endX="101.0" endY="45.0" layoutX="1113.0" layoutY="440.0" startX="-385.0" startY="45.0" />
+      <Pane layoutX="726.0" layoutY="424.0" onMouseClicked="#clickPaneD1" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="888.0" layoutY="424.0" onMouseClicked="#clickPaneD2" prefHeight="60.0" prefWidth="162.0" />
+      <Pane layoutX="1050.0" layoutY="425.0" onMouseClicked="#clickPaneD3" prefHeight="60.0" prefWidth="162.0" />
+      <Label layoutX="605.0" layoutY="631.0" text="Ihre momentane Wette:">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label fx:id="betString" layoutX="997.0" layoutY="608.0" prefHeight="82.0" prefWidth="255.0" text="0">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <TextField fx:id="numberField" layoutX="311.0" layoutY="584.0" />
+      <Pane layoutX="727.0" layoutY="322.0" onMouseClicked="#clickColumn1" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="766.0" layoutY="322.0" onMouseClicked="#clickColumn2" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="807.0" layoutY="322.0" onMouseClicked="#clickColumn3" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="848.0" layoutY="322.0" onMouseClicked="#clickColumn4" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="888.0" layoutY="322.0" onMouseClicked="#clickColumn5" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="929.0" layoutY="322.0" onMouseClicked="#clickColumn6" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="971.0" layoutY="322.0" onMouseClicked="#clickColumn7" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="1011.0" layoutY="322.0" onMouseClicked="#clickColumn8" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="1053.0" layoutY="322.0" onMouseClicked="#clickColumn9" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="1094.0" layoutY="322.0" onMouseClicked="#clickColumn10" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="1133.0" layoutY="322.0" onMouseClicked="#clickColumn11" prefHeight="42.0" prefWidth="40.0" />
+      <Pane layoutX="1173.0" layoutY="322.0" onMouseClicked="#clickColumn12" prefHeight="42.0" prefWidth="40.0" />
+      <Label layoutX="604.0" layoutY="580.0" text="Die Zufallszahl ist:">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label fx:id="gewonnenVerloren" layoutX="22.0" layoutY="486.0" prefHeight="94.0" prefWidth="410.0">
+         <font>
+            <Font name="Droid Serif" size="66.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label fx:id="randomNumberLabel" layoutX="987.0" layoutY="554.0" prefHeight="82.0" prefWidth="62.0">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label fx:id="errorMessage" layoutX="41.0" layoutY="447.0" textFill="RED">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="intBetBindLabel" layoutX="311.0" layoutY="633.0">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="34.0" layoutY="633.0" text="Verfügbares Geld:">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Line endX="186.0" endY="45.0" layoutX="1027.0" layoutY="320.0" startX="-354.0" startY="45.0" />
+      <RadioButton fx:id="radioTable" layoutX="513.0" layoutY="99.0" mnemonicParsing="false" onAction="#setPaneNeighbor" text="Tisch">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </RadioButton>
+      <RadioButton fx:id="radioNeighbor" layoutX="513.0" layoutY="518.0" mnemonicParsing="false" onAction="#setPaneBoard" text="Zwei Nachbarn">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </RadioButton>
+      <TextField fx:id="neighborField1" layoutX="725.0" layoutY="522.0" prefHeight="25.0" prefWidth="72.0" />
+      <ComboBox fx:id="neighborField2" layoutX="828.0" layoutY="521.0" opacity="0.5" prefHeight="25.0" prefWidth="89.0" />
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Pane layoutX="757.0" layoutY="269.0" onMouseClicked="#clickPaneQ1" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="757.0" layoutY="229.0" onMouseClicked="#clickPaneQ2" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="797.0" layoutY="269.0" onMouseClicked="#clickPaneQ3" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="797.0" layoutY="229.0" onMouseClicked="#clickPaneQ4" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="837.0" layoutY="269.0" onMouseClicked="#clickPaneQ5" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="837.0" layoutY="229.0" onMouseClicked="#clickPaneQ6" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="877.0" layoutY="269.0" onMouseClicked="#clickPaneQ7" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="877.0" layoutY="229.0" onMouseClicked="#clickPaneQ8" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="917.0" layoutY="269.0" onMouseClicked="#clickPaneQ9" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="917.0" layoutY="229.0" onMouseClicked="#clickPaneQ10" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="957.0" layoutY="269.0" onMouseClicked="#clickPaneQ11" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="957.0" layoutY="229.0" onMouseClicked="#clickPaneQ12" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="997.0" layoutY="269.0" onMouseClicked="#clickPaneQ13" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="997.0" layoutY="229.0" onMouseClicked="#clickPaneQ14" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1040.0" layoutY="269.0" onMouseClicked="#clickPaneQ15" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1040.0" layoutY="229.0" onMouseClicked="#clickPaneQ16" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1080.0" layoutY="269.0" onMouseClicked="#clickPaneQ17" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1080.0" layoutY="229.0" onMouseClicked="#clickPaneQ18" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1120.0" layoutY="269.0" onMouseClicked="#clickPaneQ19" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1120.0" layoutY="229.0" onMouseClicked="#clickPaneQ20" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1160.0" layoutY="269.0" onMouseClicked="#clickPaneQ21" prefHeight="20.0" prefWidth="20.0" />
+      <Pane layoutX="1160.0" layoutY="229.0" onMouseClicked="#clickPaneQ22" prefHeight="20.0" prefWidth="20.0" />
+      <Pane fx:id="coverPane" layoutX="717.0" layoutY="498.0" prefHeight="72.0" prefWidth="221.0" />
+   </children>
+</AnchorPane>
+
+
+
++ ---------------------------+
+| fxml/RouletteHelpFXML.fxml |
++ ---------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1433.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Roulette.RouletteHelpFXMLController">
+   <children>
+      <ImageView fitHeight="755.0" fitWidth="1433.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Roulette/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="690.0" layoutX="42.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/rouletteHelpBanner.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label layoutX="68.0" layoutY="179.0" text="Schritt 1:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="68.0" layoutY="221.0" text="Schritt 2:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="223.0" layoutY="179.0" text="Betrag festlegen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="223.0" layoutY="221.0" text="Feld oder Felder auswählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <ImageView fitHeight="290.0" fitWidth="629.0" layoutX="62.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Roulette/rouletteFieldsHelp.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label layoutX="662.0" layoutY="25.0" text="Oranges Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="662.0" layoutY="75.0" text="Grünes Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="25.0" text="Auf Gruppe klicken, um die Zahlen auszuwählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="75.0" text="Auf einen unteren Pfeil klicken um drei Zahlen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="105.0" text="auszuwählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="175.0" text="In der Mitte von vier Zahlen klicken, um diese">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="662.0" layoutY="175.0" text="Purpures Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="205.0" text="auszuwählen.">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="135.0" text="Ertrag bei Gewinn: 11:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="235.0" text="Ertrag bei Gewinn: 8:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="662.0" layoutY="275.0" text="Blaues Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="275.0" text="Eine Zahl auswählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="305.0" text="Ertrag bei Gewinn: 35:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="662.0" layoutY="345.0" text="Schwarzes Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="345.0" text="In Textfeld eine Zahl eingeben und ein Nachbar">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="375.0" text="auswählen.">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="405.0" text="Ertrag bei Gewinn: 17:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="662.0" layoutY="455.0" text="Pinkes Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="455.0" text="Zwischen 1, 0 und Passe klicken, um fünf Zahlen ">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="485.0" text="auszuwählen.">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="68.0" layoutY="588.0" text="Schritt 3:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="223.0" layoutY="588.0" text="Einsatz bestätigen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="662.0" layoutY="565.0" text="Türkises Feld:">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="565.0" text="Eine Reihe auswählen">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="595.0" prefHeight="29.0" prefWidth="270.0" text="Ertrag bei Gewinn: 2:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="515.0" text="Ertrag bei Gewinn: 6:1">
+         <font>
+            <Font name="Droid Serif" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+   </children>
+</AnchorPane>
+
+
+
++ ----------------+
+| fxml/Scene.fxml |
++ ----------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="793.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.CasinoController">
+    <children>
+        <ImageView fitHeight="575.0" fitWidth="793.0" pickOnBounds="true">
+            <image>
+                <Image url="@../images/MainScreen/black.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="575.0" fitWidth="793.0" opacity="0.7" pickOnBounds="true">
+            <image>
+                <Image url="@../images/MainScreen/woodenWall.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="150.0" fitWidth="198.0" layoutX="125.0" layoutY="65.0" onMouseClicked="#mouseClickBlackJack" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/MainScreen/blackjackButton.png" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow height="100.0" radius="49.5" width="100.0" />
+            </effect>
+        </ImageView>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="468.0" layoutY="65.0" onMouseClicked="#mouseClickBaccara" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/MainScreen/baccaraButton.png" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow height="100.0" radius="49.5" width="100.0" />
+            </effect>
+        </ImageView>
+        <ImageView fitHeight="224.0" fitWidth="224.0" layoutX="125.0" layoutY="306.0" onMouseClicked="#clickMouseRoulette" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/MainScreen/roulette_wheel.png" />
+            </image>
+            <effect>
+                <DropShadow height="100.0" radius="49.5" width="100.0" />
+            </effect>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <ImageView fitHeight="178.0" fitWidth="270.0" layoutX="427.0" layoutY="328.0" onMouseClicked="#clickMouseYatzy" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/MainScreen/YatzyButton.png" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow height="100.0" radius="49.5" width="100.0" />
+            </effect>
+        </ImageView>
+        <Label layoutX="185.0" layoutY="237.0" text="SELECT YOUR GAME" textOverrun="WORD_ELLIPSIS">
+            <font>
+                <Font name="Times New Roman Bold" size="42.0" />
+            </font>
+            <effect>
+                <DropShadow color="WHITE" />
+            </effect>
+        </Label>
+        <Button fx:id="logOutButton" layoutX="14.0" layoutY="530.0" mnemonicParsing="false" onAction="#logUserOut" onMouseEntered="#enterLogOutButton" onMouseExited="#exitLogOutButton" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Logout" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+        </Button>
+        <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Button fx:id="kasseButton" layoutX="483.0" layoutY="530.0" mnemonicParsing="false" onAction="#pressKasseButton" onMouseEntered="#enterKasseButton" onMouseExited="#exitKasseButton" prefHeight="39.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Kasse" textFill="WHITE">
+         <font>
+            <Font name="Arial Nova Bold" size="18.0" />
+         </font></Button>
+        <Button fx:id="changePasswordButton" layoutX="591.0" layoutY="530.0" mnemonicParsing="false" onAction="#changePassword" onMouseEntered="#enterChangePasswordButton" onMouseExited="#exitChangePasswordButton" prefHeight="39.0" prefWidth="188.0" style="-fx-border-color: white; -fx-background-color: transparent; -fx-border-width: 3px;" text="Change Password" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
+
+
+
++ ------------------------+
+| fxml/StatisticView.fxml |
++ ------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="547.0" prefWidth="702.0" style="-fx-background-color: #8fe8da;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.Statistic.StatisticController">
+   <children>
+      <ImageView fx:id="playerStat" fitHeight="198.0" fitWidth="225.0" layoutX="109.0" layoutY="175.0" onMouseClicked="#displayPlayerStat" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MainScreen/playerIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="gameStat" fitHeight="198.0" fitWidth="198.0" layoutX="406.0" layoutY="175.0" onMouseClicked="#displayGameStat" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MainScreen/gameIcon.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="472.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game">
+         <font>
+            <Font name="Arimo Bold for Powerline" size="24.0" />
+         </font></Text>
+      <Pane prefHeight="85.0" prefWidth="702.0" style="-fx-border-color: Grey; -fx-border-width: 10;">
+         <children>
+            <Text layoutX="253.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+               <font>
+                  <Font name="Hack Bold" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Text fill="WHITE" layoutX="175.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
+         <font>
+            <Font name="Arimo Bold for Powerline" size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="logoutButton" layoutX="41.0" layoutY="465.0" mnemonicParsing="false" onAction="#logUserOut" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
+
+
+
++ --------------------+
+| fxml/YatzyFXML.fxml |
++ --------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="654.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLController">
+   <children>
+      <ImageView fitHeight="634.0" fitWidth="654.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Yatzy/paperBackground.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="geback" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="13.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: white;" width="407.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="13.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
+      <ImageView fx:id="ge1" fitHeight="55.0" fitWidth="52.0" layoutX="115.0" layoutY="66.0" onMouseClicked="#pressGe1" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D1.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="ge2" fitHeight="51.0" fitWidth="66.0" layoutX="175.0" layoutY="66.0" onMouseClicked="#pressGe2" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D2.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="ge3" fitHeight="55.0" fitWidth="52.0" layoutX="235.0" layoutY="66.0" onMouseClicked="#pressGe3" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D3.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="ge4" fitHeight="51.0" fitWidth="52.0" layoutX="295.0" layoutY="66.0" onMouseClicked="#pressGe4" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D4.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="ge5" fitHeight="51.0" fitWidth="52.0" layoutX="355.0" layoutY="66.0" onMouseClicked="#pressGe5" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D5.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="be1" fitHeight="51.0" fitWidth="52.0" layoutX="115.0" layoutY="153.0" onMouseClicked="#pressBe1" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D6.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="be2" fitHeight="67.0" fitWidth="52.0" layoutX="175.0" layoutY="153.0" onMouseClicked="#pressBe2" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D1.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="be3" fitHeight="51.0" fitWidth="52.0" layoutX="235.0" layoutY="153.0" onMouseClicked="#pressBe3" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D2.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="be4" fitHeight="55.0" fitWidth="52.0" layoutX="295.0" layoutY="153.0" onMouseClicked="#pressBe4" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D3.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="be5" fitHeight="55.0" fitWidth="52.0" layoutX="355.0" layoutY="153.0" onMouseClicked="#pressBe5" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/D4.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="24.0" layoutY="79.0" text="Gewürfelt:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="166.0" text="Behalten:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnhelp" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#presshelp" text="?" />
+      <Label fx:id="sclblup1" alignment="CENTER" layoutX="604.0" layoutY="53.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup2" alignment="CENTER" layoutX="604.0" layoutY="83.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup3" alignment="CENTER" layoutX="604.0" layoutY="113.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup4" alignment="CENTER" layoutX="604.0" layoutY="143.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup5" alignment="CENTER" layoutX="604.0" layoutY="173.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup6" alignment="CENTER" layoutX="604.0" layoutY="203.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup7" alignment="CENTER" layoutX="604.0" layoutY="233.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclblup8" alignment="CENTER" layoutX="604.0" layoutY="263.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblup1" layoutX="432.0" layoutY="53.0" onMouseClicked="#presslblup1" onMouseEntered="#enterlblup1" onMouseExited="#exitlblup1" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" EINER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup2" layoutX="432.0" layoutY="83.0" onMouseClicked="#presslblup2" onMouseEntered="#enterlblup2" onMouseExited="#exitlblup2" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" ZWEIER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup3" layoutX="432.0" layoutY="113.0" onMouseClicked="#presslblup3" onMouseEntered="#enterlblup3" onMouseExited="#exitlblup3" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" DREIER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup4" layoutX="432.0" layoutY="143.0" onMouseClicked="#presslblup4" onMouseEntered="#enterlblup4" onMouseExited="#exitlblup4" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" VIERER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup5" layoutX="432.0" layoutY="173.0" onMouseClicked="#presslblup5" onMouseEntered="#enterlblup5" onMouseExited="#exitlblup5" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" FÜNFER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup6" layoutX="432.0" layoutY="203.0" onMouseClicked="#presslblup6" onMouseEntered="#enterlblup6" onMouseExited="#exitlblup6" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" SECHSER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblup7" layoutX="432.0" layoutY="233.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" ZWISCHENTOTAL OBEN">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblup8" layoutX="432.0" layoutY="263.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" TOTAL OBEN">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo1" alignment="CENTER" layoutX="604.0" layoutY="304.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo2" alignment="CENTER" layoutX="604.0" layoutY="334.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo3" alignment="CENTER" layoutX="604.0" layoutY="364.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo4" alignment="CENTER" layoutX="604.0" layoutY="394.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo5" alignment="CENTER" layoutX="604.0" layoutY="424.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo6" alignment="CENTER" layoutX="604.0" layoutY="454.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo7" alignment="CENTER" layoutX="604.0" layoutY="484.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo8" alignment="CENTER" layoutX="604.0" layoutY="514.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbllo1" layoutX="432.0" layoutY="304.0" onMouseClicked="#presslbllo1" onMouseEntered="#enterlbllo1" onMouseExited="#exitlbllo1" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" DREI GLEICHE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo2" layoutX="432.0" layoutY="334.0" onMouseClicked="#presslbllo2" onMouseEntered="#enterlbllo2" onMouseExited="#exitlbllo2" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" VIER GLEICHE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo3" layoutX="432.0" layoutY="364.0" onMouseClicked="#presslbllo3" onMouseEntered="#enterlbllo3" onMouseExited="#exitlbllo3" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" FULL HOUSE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo4" layoutX="432.0" layoutY="394.0" onMouseClicked="#presslbllo4" onMouseEntered="#enterlbllo4" onMouseExited="#exitlbllo4" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" KLEINE STRASSE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo5" layoutX="432.0" layoutY="424.0" onMouseClicked="#presslbllo5" onMouseEntered="#enterlbllo5" onMouseExited="#exitlbllo5" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" GROSSE STRASSE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo6" layoutX="432.0" layoutY="454.0" onMouseClicked="#presslbllo6" onMouseEntered="#enterlbllo6" onMouseExited="#exitlbllo6" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" YATZY">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo7" layoutX="432.0" layoutY="484.0" onMouseClicked="#presslbllo7" onMouseEntered="#enterlbllo7" onMouseExited="#exitlbllo7" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" CHANCE">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lbllo8" layoutX="432.0" layoutY="514.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" TOTAL UNTEN">
+         <font>
+            <Font name="Arial Nova Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbllo9" layoutX="432.0" layoutY="558.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" ENDSUMME">
+         <font>
+            <Font name="Arial Nova Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="sclbllo9" alignment="CENTER" layoutX="604.0" layoutY="558.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" underline="true">
+         <font>
+            <Font name="Arial Nova Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblwin" alignment="CENTER" layoutX="13.0" layoutY="390.0" prefHeight="82.0" prefWidth="407.0" underline="true">
+         <font>
+            <Font name="Arial Nova Bold" size="52.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="544.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gesamt Kontostand:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbltotalnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="544.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="484.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gesetzter Betrag:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblbetnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="484.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="514.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-color: black;" text="Gewonnener Betrag:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblwinnum" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="514.0" prefHeight="30.0" prefWidth="112.0" style="-fx-border-color: black;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblenemy" layoutX="432.0" layoutY="588.0" prefHeight="30.0" prefWidth="172.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text=" ENDSUMME GEGNER">
+         <font>
+            <Font name="Arial Nova" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="sclblenemy" alignment="CENTER" layoutX="604.0" layoutY="588.0" prefHeight="30.0" prefWidth="30.0" scaleShape="false" style="-fx-border-color: black; -fx-background-color: white;" text="150" />
+      <Button fx:id="btnbet" layoutX="19.0" layoutY="270.0" mnemonicParsing="false" onAction="#pressbtnbet" onMouseEntered="#enterbtnbet" prefHeight="66.0" prefWidth="140.0" text="Betrag setzen">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="bettxt" layoutX="19.0" layoutY="234.0" prefHeight="26.0" prefWidth="140.0" />
+      <Label fx:id="lblerror" layoutX="19.0" layoutY="339.0" prefHeight="26.0" prefWidth="407.0" textFill="RED" />
+      <Button fx:id="btnthrowdices" alignment="CENTER" layoutX="166.0" layoutY="232.0" mnemonicParsing="false" onAction="#pressthrowdices" onMouseEntered="#enterbtnthrowdices" prefHeight="104.0" prefWidth="258.0" style="-fx-font-weight: italic;" text="Würfel werfen" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fx:id="imgwurf3" fitHeight="44.0" fitWidth="314.0" layoutX="389.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/Cup.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgwurf2" fitHeight="44.0" fitWidth="314.0" layoutX="355.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/Cup.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgwurf1" fitHeight="44.0" fitWidth="314.0" layoutX="321.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Yatzy/Cup.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnback" layoutX="19.0" layoutY="583.0" mnemonicParsing="false" onAction="#pressbtnback" onMouseEntered="#enterbtnback" onMouseExited="#exitbtnback" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: black; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
+
+
+
++ ------------------------+
+| fxml/YatzyFXMLMenu.fxml |
++ ------------------------+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="menuwindow" cacheShape="false" prefHeight="400.0" prefWidth="627.0" scaleShape="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yatzy.YatzyFXMLMenuController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="644.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Yatzy/paperBackground.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnstart" layoutX="231.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnstartPress" prefHeight="102.0" prefWidth="180.0" text="Spielen">
+         <font>
+            <Font size="38.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="60.0" radius="29.5" spread="0.1" width="60.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fitHeight="191.0" fitWidth="377.0" layoutX="132.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Yatzy/yatzy_logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnback" layoutX="14.0" layoutY="346.0" mnemonicParsing="false" onAction="#pressbtnback" onMouseEntered="#enterbtnback" onMouseExited="#exitbtnback" prefHeight="27.0" prefWidth="97.0" style="-fx-border-color: black; -fx-background-color: transaprent; -fx-border-width: 3;" text="Zurück">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
+
+
+
+--------------------------------------------------------------------------------

@@ -188,20 +188,19 @@ public class ExchangeFXMLController implements Initializable {
     }
 
     private void processAcception() {
-
         if (jetonsField.isDisabled() == true) {
-            if (moneyField.getText() == "") {
+            if ("".equals(moneyField.getText())) {
                 errorJetonsLabel.setText("Bitte geben Sie eine Zahl ein");
+            } else {
+                jetoncalc = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance() + Integer.parseInt(jetonsField.getText());
+                moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());
             }
-            jetoncalc = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance() + Integer.parseInt(jetonsField.getText());
-            moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() - Integer.parseInt(moneyField.getText());
         } else {
-            if (jetonsField.getText() == "") {
+            if ("".equals(jetonsField.getText())) {
                 errorJetonsLabel.setText("Bitte geben Sie eine Zahl ein");
             } else if (Integer.parseInt(jetonsField.getText()) < 100) {
-                errorJetonsLabel.setText("Die Zahl muss höher als 100 sein 100");
+                errorJetonsLabel.setText("Die Zahl muss höher als 100 sein");
                 nothundred = true;
-
             } else {
                 jetoncalc = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance() - Integer.parseInt(jetonsField.getText());
                 moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() + (int) (Math.round(Double.parseDouble(moneyField.getText())));
@@ -209,24 +208,21 @@ public class ExchangeFXMLController implements Initializable {
         }
         if (nothundred == false) {
             errorJetonsLabel.setText("");
-
             if (moneycalc < 0) {
                 errorMoneyLabel.setText("Zuwenig Geld");
                 insufficient = true;
             } else if (jetoncalc < 0) {
                 errorJetonsLabel.setText("Zuwenig Jetons");
                 insufficient = true;
-
             } else {
-                PlayerCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
-                PlayerCentral.getInstance().getUser().setNewMoney(moneycalc);
-
                 errorJetonsLabel.setText("");
                 errorMoneyLabel.setText("");
                 insufficient = false;
             }
-
             if (insufficient == false) {
+                //Update player if entries are valid and player is not insufficient
+                PlayerCentral.getInstance().getUser().setNewChipBalance(jetoncalc);
+                PlayerCentral.getInstance().getUser().setNewMoney(moneycalc);
                 balanceLabel.setText(Integer.toString((int) PlayerCentral.getInstance().getUser().getCurrentChipBalance()));
                 moneyLabel.setText(Integer.toString((int) PlayerCentral.getInstance().getUser().getCurrentMoney()));
                 locked = false;

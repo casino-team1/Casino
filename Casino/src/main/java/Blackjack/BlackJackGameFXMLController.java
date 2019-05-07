@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -48,19 +47,13 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private Button buttonHelp;
     @FXML
-    private Label labelKontostand;
-    @FXML
-    private Label labelKontostand1;
-    @FXML
-    private Button buttonVersichern;
-    @FXML
     private Button buttonVerdoppeln;
     @FXML
     private Button buttonStand;
     @FXML
     private Button buttonHit;
     @FXML
-    private TextField textfeldVersicherung;
+    private Button buttonVersichern;
     @FXML
     private Label labelVerdoppeln;
     @FXML
@@ -74,13 +67,19 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private Label labelKartenWertDealer;
     @FXML
+    private TextField textfeldVersicherung;
+    @FXML
     private Pane spielerKartenPane;
     @FXML
-    private ImageView spielerKarte;
-    @FXML
     private Pane dealerKartenPane;
-    @FXML
-    private ImageView dealerKarte;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPruefung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
+                labelKartenWertSpieler, labelKartenWertDealer, labelLoesung, labelVerdoppeln, labelVersicherung, balanceLabel, textfeldEinsatz, textfeldVersicherung);
+
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance());
+    }
 
     public void setMain(MainApp main) {
         this.main = main;
@@ -181,6 +180,9 @@ public class BlackJackGameFXMLController implements Initializable {
         int i = Integer.parseInt(textfeldEinsatz.getText());
         String s = String.valueOf(i * 2);
         labelVerdoppeln.setText("Ihr Einsatz wurde erhöht auf " + s);
+        textfeldEinsatz.setText(s);
+        PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - i);
+        game.setEinsatz(game.getEinsatz() * 2);
         game.spielerHit();
         game.dealerRound(labelKartenWertDealer);
     }
@@ -195,15 +197,6 @@ public class BlackJackGameFXMLController implements Initializable {
     @FXML
     private void hit(ActionEvent event) {
         game.spielerHit();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPruefung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
-                labelKartenWertSpieler, labelKartenWertDealer, labelLoesung, labelVerdoppeln, labelVersicherung, balanceLabel, textfeldEinsatz, textfeldVersicherung);
-        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance() + "$");
-
     }
 
     @FXML

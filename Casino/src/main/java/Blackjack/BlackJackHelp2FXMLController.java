@@ -26,25 +26,24 @@ import javafx.stage.Stage;
 public class BlackJackHelp2FXMLController implements Initializable {
     
     private MainApp main = new MainApp();
-
-    public void setMain(MainApp main) {
-        this.main = main;
-    }
-
+    private Stage stage;
+    
     @FXML
     private Button buttonZurueck;
     @FXML
     private Button buttonWeiter;
     
-    private Stage stage;
-
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }   
+    
+    public void setMain(MainApp main) {
+        this.main = main;
+    } 
 
     public void setStage(Stage stage) {
         this.stage = stage;

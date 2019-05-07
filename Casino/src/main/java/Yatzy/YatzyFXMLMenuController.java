@@ -27,7 +27,6 @@ public class YatzyFXMLMenuController implements Initializable {
     /**
      * Initialises the controller class.
      */
-    
     private MainApp mainApplication;
     private Yatzy yatzy;
     @FXML
@@ -38,20 +37,21 @@ public class YatzyFXMLMenuController implements Initializable {
     private Label balanceLabel;
     @FXML
     private Button btnback;
-    
-    public void setYatzy(Yatzy yatzy){
+
+    public void setYatzy(Yatzy yatzy) {
         this.yatzy = yatzy;
     }
-    
+
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println("Started");
         balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance());
-    }    
+    }
 
     @FXML
     private void btnstartPress(ActionEvent event) {
@@ -73,5 +73,4 @@ public class YatzyFXMLMenuController implements Initializable {
         btnback.setStyle("-fx-background-color: rgba(1, 1, 1, .1); -fx-border-color: black; -fx-border-width: 3;");
     }
 
-    
 }

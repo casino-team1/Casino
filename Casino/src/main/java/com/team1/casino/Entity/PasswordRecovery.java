@@ -34,8 +34,11 @@ public class PasswordRecovery {
 
     private String getEmailAdress() throws SQLException {
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-        String userEmail = query.runQueryWithReturn("SELECT email FROM user WHERE username = ? ", this.username).get(0);
-        return userEmail;
+        if ("".equals(username)) {
+        } else {
+            String userEmail = query.runQueryWithReturn("SELECT email FROM user WHERE username = ? ", this.username).get(0);
+        }
+        return null;
     }
 
     private String randomPassword(int length) {
@@ -54,7 +57,7 @@ public class PasswordRecovery {
         String newPasswordHash = UserUtil.getHashedPassword(passwordPlainText);
         String statement = "Update user SET password = ? WHERE username = ?";
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-        query.runQueryWithoutReturn(statement, newPasswordHash + ";-" + this.username);
+        query.runQueryWithoutReturn(statement, newPasswordHash, this.username);
         sendMail(passwordPlainText);
     }
 
@@ -63,6 +66,9 @@ public class PasswordRecovery {
             Session session = MailConfig.getSessionByProperty(MailConfig.getMailProperties());
             try {
                 String emailAdresse = getEmailAdress();
+                if (emailAdresse == null) {
+                    throw new IndexOutOfBoundsException();
+                }
                 if (emailAdresse.equals("") || emailAdresse.isEmpty()) {
                     System.out.println("Invalid username");
                 } else {

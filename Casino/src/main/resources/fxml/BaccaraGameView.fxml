@@ -22,7 +22,7 @@
             <Image url="@../images/Baccara/BankerBackground.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="tieBet" fitHeight="63.0" fitWidth="200.0" layoutX="596.0" layoutY="548.0" onDragDropped="#setTieBet" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tieBet" fitHeight="61.0" fitWidth="236.0" layoutX="578.0" layoutY="544.0" onDragDropped="#setTieBet" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Baccara/TieBackground.png" />
          </image>
@@ -96,11 +96,7 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
-<<<<<<< HEAD
-      <Button fx:id="menuButton" layoutX="66.0" layoutY="591.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: transparent; -fx-border-width: 3px; -fx-border-color: white;" text="Menu" textFill="WHITE">
-=======
       <Button fx:id="menuButton" layoutX="113.0" layoutY="539.0" mnemonicParsing="false" onAction="#backToMenu" onMouseEntered="#enterMenuButton" onMouseExited="#exitMenuButton" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: transparent; -fx-border-width: 3px; -fx-border-color: white;" text="Menu" textFill="WHITE">
->>>>>>> 807e1aaccf3f592389a03ad8276b3fd33bfd90b5
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

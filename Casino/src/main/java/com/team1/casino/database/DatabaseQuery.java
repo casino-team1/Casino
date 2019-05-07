@@ -16,10 +16,12 @@ public class DatabaseQuery extends Query {
     }
 
     @Override
-    public ArrayList<String> runQueryWithReturn(String querySequence, String arguments) throws SQLException {
+    public ArrayList<String> runQueryWithReturn(String querySequence, String... arguments) throws SQLException {
         PreparedStatement statement = super.getDATABASE_CONNECTION().prepareStatement(querySequence);
         ArrayList<String> resultSet = new ArrayList<>();
-        statement.setString(1, arguments);
+        for (int i = 0; i < arguments.length; i++) {
+            statement.setString(i + 1, arguments[i]);
+        }
         ResultSet queryResult = statement.executeQuery();
         try {
             while (queryResult.next()) {
@@ -32,7 +34,6 @@ public class DatabaseQuery extends Query {
             try {
                 queryResult.close();
             } catch (SQLException ignore) {
-                ignore.printStackTrace();
                 return null;
             }
         }
@@ -40,13 +41,12 @@ public class DatabaseQuery extends Query {
     }
 
     @Override
-    public void runQueryWithoutReturn(String querySequence, String parameter) {
+    public void runQueryWithoutReturn(String querySequence, String... parameter) {
         try {
             PreparedStatement statement = super.getDATABASE_CONNECTION().prepareStatement(querySequence);
             ArrayList<String> resultSet = new ArrayList<>();
             int counter = 1;
-            String[] elements = parameter.split(";-");
-            for (String argument : elements) {
+            for (String argument : parameter) {
                 statement.setString(counter, argument);
                 counter++;
             }
@@ -57,13 +57,13 @@ public class DatabaseQuery extends Query {
     }
 
     @Override
-    public int runQueryGetAddedID(String query, String parameters) {
+    public int runQueryGetAddedID(String query, String... parameters) {
         PreparedStatement statement;
         try {
             statement = super.getDATABASE_CONNECTION().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            String[] para = parameters.split(";");
-            for (int i = 0; i < para.length; i++) {
-                statement.setString(i + 1, para[i]);
+            for (int i = 0; i < parameters.length; i++) {
+                System.out.println(parameters[i]);
+                statement.setString(i + 1, parameters[i]);
             }
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {

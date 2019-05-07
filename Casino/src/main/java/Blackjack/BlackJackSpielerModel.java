@@ -23,8 +23,8 @@ public class BlackJackSpielerModel {
 
     private int xKoordinate = 0;
     private int yKoordinate = 6;
-    private int karteWidth = 149;
-    private int karteHeight = 201;
+    private int karteWidth = 167;
+    private int karteHeight = 237;
 
     private Karten k = new Karten();
     private HashMap<String, Integer> karten = new HashMap<>();
@@ -40,7 +40,7 @@ public class BlackJackSpielerModel {
         this.kartenSymbole = kartenSymbole;
 
         //Hat es genügend Karten?
-        if (k.getAnzahlKartenImKartenDeck() < 1) {
+        if (k.getAnzahlKartenImKartenDeck() < 1 || k.getAnzahlKartenInKartenSymbole() < 1) {
             k.kartenErstellen();
             this.karten = k.getKarten();
         }
@@ -111,6 +111,12 @@ public class BlackJackSpielerModel {
     }
 
     public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Pane spielerKartenPane, Label labelKartenWertSpieler) {
+        
+        //Hat es genügend Karten?
+        if (k.getAnzahlKartenImKartenDeck() < 1) {
+            k.kartenErstellen();
+            this.karten = k.getKarten();
+        }
 
         int zufallszahl = 0;
         Random r = new Random();
@@ -156,8 +162,8 @@ public class BlackJackSpielerModel {
         return kartenWertSpieler;
     }
 
-    public void setKartenWertSpieler(int kartenWertSpieler) {
-        this.kartenWertSpieler = kartenWertSpieler;
+    public void setKartenWertSpieler(int i) {
+        this.kartenWertSpieler = i;
     }
 
     public void setKartenWertSpielerMinusTen() {
@@ -179,6 +185,10 @@ public class BlackJackSpielerModel {
     public int getxKoordinate() {
         return xKoordinate;
     }
+    
+    public void setxKoordinate(int i) {
+        this.xKoordinate = i;
+    }
 
     public int getyKoordinate() {
         return yKoordinate;
@@ -190,10 +200,6 @@ public class BlackJackSpielerModel {
 
     public int getKarteHeight() {
         return karteHeight;
-    }
-
-    public void setxKoordinate(int xKoordinate) {
-        this.xKoordinate = xKoordinate;
     }
 
 }

@@ -40,6 +40,10 @@ public class RouletteFXMLController implements Initializable {
     private MainApp mainApplication;
     @FXML
     private Pane coverPane;
+    @FXML
+    private Label intBetAmountLabel;
+    @FXML
+    private ImageView fish;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -175,7 +179,7 @@ public class RouletteFXMLController implements Initializable {
                     }
                 }
 
-                //Check if field is empty / not empty
+                //Check if field is empty / not empty and set opacity to zero
                 if (neighborField1.getText().isEmpty()) {
                     neighborField2.setEditable(false);
                     neighborField2.setOpacity(0.5);
@@ -243,6 +247,7 @@ public class RouletteFXMLController implements Initializable {
         gewonnenVerloren.setText(isWon == true ? "Gewonnen" : "Verloren");
 
         intBetBindLabel.setText(String.valueOf(playerBalance));
+        intBetAmountLabel.setText(String.valueOf(difference));
     }
 
     private void wonGame(int setBet, int newBalance) {
@@ -264,6 +269,7 @@ public class RouletteFXMLController implements Initializable {
         }
         gewonnenVerloren.setText(isWon == true ? "Gewonnen" : "Verloren");
         intBetBindLabel.setText(String.valueOf(playerBalance));
+        intBetAmountLabel.setText(String.valueOf(difference));
     }
 
     public void gameEnd() {
@@ -1114,7 +1120,7 @@ public class RouletteFXMLController implements Initializable {
     private void clickPlaceBet(MouseEvent event) {
         String betIntFromPlayerString = numberField.getText();
 
-        if ("".equals(betIntFromPlayerString)) {
+        if ("".equals(betIntFromPlayerString) || "0".equals(betIntFromPlayerString)) {
             betIntFromPlayerString = "1";
         }
         betIntFromPlayer = Integer.parseInt(betIntFromPlayerString);
@@ -1124,6 +1130,7 @@ public class RouletteFXMLController implements Initializable {
             errorMessage.setText("Sie haben zu wenig Geld verfügbar");
         } else {
             errorMessage.setText("");
+
             if (betString.getText().trim().isEmpty()) {
                 stringBet.set("0");
             }
@@ -1150,7 +1157,7 @@ public class RouletteFXMLController implements Initializable {
             return;
         }
     }
-    //    -------------------------------------------------------------------
+    //-------------------------------------------------------------------
 
     public void clickTable() {
 
@@ -1168,18 +1175,25 @@ public class RouletteFXMLController implements Initializable {
         if (!stringFromField1.equals("")) {
             String stringFromField2 = neighborField2.getValue();
 
-            int intFromF1 = Integer.parseInt(stringFromField1);
-            int intFromF2 = Integer.parseInt(stringFromField2);
+            if (stringFromField2 == null) {
+                errorMessage.setText("Geben sie zwei Zahlen an");
+                String wheelLocatioon = "/images/Roulette/rouletteWheel.png";
+                rouletteWheel.setImage(new Image(wheelLocatioon));
+            } else {
+                int intFromF1 = Integer.parseInt(stringFromField1);
+                int intFromF2 = Integer.parseInt(stringFromField2);
 
-            neighborArray.add(intFromF1);
-            neighborArray.add(intFromF2);
+                neighborArray.add(intFromF1);
+                neighborArray.add(intFromF2);
 
-            betArray = neighborArray;
+                betArray = neighborArray;
 
-            ArrayIdentify = 6;
+                ArrayIdentify = 6;
 
-            placeBetArray(ArrayIdentify);
-            errorMessage.setText("");
+                placeBetArray(ArrayIdentify);
+                errorMessage.setText("");
+            }
+
         } else {
             errorMessage.setText("Geben sie zwei Zahlen an");
             String wheelLocatioon = "/images/Roulette/rouletteWheel.png";
@@ -1245,6 +1259,18 @@ public class RouletteFXMLController implements Initializable {
             stringBet.set(stringFromField1 + ", " + stringFromField2);
             errorMessage.setText("");
         }
+    }
+
+    @FXML
+    private void hideImageF(MouseEvent event) {
+        fish.setImage(null);
+
+    }
+
+    @FXML
+    private void showImageF(MouseEvent event) {
+        String fishLoco = "/images/MainScreen/fish.png";
+        fish.setImage(new Image(fishLoco));
     }
 
 }

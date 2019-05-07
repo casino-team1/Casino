@@ -20,12 +20,12 @@
             <Image url="@../images/Roulette/tableBackground.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="rouletteWheel" fitHeight="254.0" fitWidth="233.0" layoutX="110.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rouletteWheel" fitHeight="254.0" fitWidth="233.0" layoutX="22.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Roulette/rouletteWheel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="placeYourBet" fitHeight="144.0" fitWidth="149.0" layoutX="156.0" layoutY="302.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="980.0212707519531">
+      <ImageView fx:id="placeYourBet" fitHeight="144.0" fitWidth="149.0" layoutX="302.0" layoutY="92.0" onMouseClicked="#clickPlaceBet" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.rightAnchor="834.0212707519531">
          <image>
             <Image url="@../images/Roulette/button.png" />
          </image>
@@ -98,7 +98,7 @@
             <Image url="@../images/Roulette/rowSelect.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="53.0" layoutX="673.0" layoutY="320.0" onMouseClicked="#clickFiveBet" pickOnBounds="true">
+      <ImageView fitHeight="44.0" fitWidth="53.0" layoutX="673.0" layoutY="320.0" onMouseClicked="#clickFiveBet" pickOnBounds="true">
          <image>
             <Image url="@../images/Roulette/fiveBet.png" />
          </image>
@@ -176,7 +176,7 @@
       <Pane layoutX="1216.0" layoutY="198.0" onMouseClicked="#clickRow3" prefHeight="40.0" prefWidth="40.0" />
       <Pane layoutX="1216.0" layoutY="279.0" onMouseClicked="#clickRow1" prefHeight="40.0" prefWidth="40.0" />
       <Pane layoutX="1216.0" layoutY="237.0" onMouseClicked="#clickRow2" prefHeight="40.0" prefWidth="40.0" />
-      <Label layoutX="34.0" layoutY="579.0" text="Betrag eingeben:">
+      <Label layoutX="34.0" layoutY="510.0" text="Betrag eingeben:">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -192,8 +192,8 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Pane layoutX="673.0" layoutY="261.0" onMouseClicked="#clickPane0" prefHeight="60.0" prefWidth="51.0" />
-      <Pane layoutX="673.0" layoutY="197.0" onMouseClicked="#clickPane00" prefHeight="60.0" prefWidth="51.0" />
+      <Pane layoutX="673.0" layoutY="259.0" onMouseClicked="#clickPane0" prefHeight="62.0" prefWidth="51.0" />
+      <Pane layoutX="673.0" layoutY="197.0" onMouseClicked="#clickPane00" prefHeight="62.0" prefWidth="51.0" />
       <Line endX="101.0" endY="43.0" layoutX="1114.0" layoutY="380.0" startX="-388.0" startY="45.0" />
       <Line endX="101.0" endY="45.0" layoutX="1113.0" layoutY="440.0" startX="-385.0" startY="45.0" />
       <Pane layoutX="726.0" layoutY="424.0" onMouseClicked="#clickPaneD1" prefHeight="60.0" prefWidth="162.0" />
@@ -215,7 +215,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <TextField fx:id="numberField" layoutX="311.0" layoutY="584.0" />
+      <TextField fx:id="numberField" layoutX="311.0" layoutY="515.0" />
       <Pane layoutX="727.0" layoutY="322.0" onMouseClicked="#clickColumn1" prefHeight="42.0" prefWidth="40.0" />
       <Pane layoutX="766.0" layoutY="322.0" onMouseClicked="#clickColumn2" prefHeight="42.0" prefWidth="40.0" />
       <Pane layoutX="807.0" layoutY="322.0" onMouseClicked="#clickColumn3" prefHeight="42.0" prefWidth="40.0" />
@@ -236,7 +236,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label fx:id="gewonnenVerloren" layoutX="22.0" layoutY="486.0" prefHeight="94.0" prefWidth="410.0">
+      <Label fx:id="gewonnenVerloren" layoutX="14.0" layoutY="376.0" prefHeight="94.0" prefWidth="410.0">
          <font>
             <Font name="Droid Serif" size="66.0" />
          </font>
@@ -252,12 +252,12 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label fx:id="errorMessage" layoutX="41.0" layoutY="447.0" textFill="RED">
+      <Label fx:id="errorMessage" layoutX="34.0" layoutY="324.0" prefHeight="35.0" prefWidth="548.0" textFill="RED">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="intBetBindLabel" layoutX="311.0" layoutY="633.0">
+      <Label fx:id="intBetBindLabel" layoutX="311.0" layoutY="564.0">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -265,7 +265,7 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <Label layoutX="34.0" layoutY="633.0" text="Verfügbares Geld:">
+      <Label layoutX="34.0" layoutY="564.0" text="Verfügbares Geld:">
          <font>
             <Font name="Droid Serif" size="29.0" />
          </font>
@@ -320,5 +320,22 @@
       <Pane layoutX="1160.0" layoutY="269.0" onMouseClicked="#clickPaneQ21" prefHeight="20.0" prefWidth="20.0" />
       <Pane layoutX="1160.0" layoutY="229.0" onMouseClicked="#clickPaneQ22" prefHeight="20.0" prefWidth="20.0" />
       <Pane fx:id="coverPane" layoutX="717.0" layoutY="498.0" prefHeight="72.0" prefWidth="221.0" />
+      <Label layoutX="34.0" layoutY="618.0" text="Gewonnenes Geld:">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label fx:id="intBetAmountLabel" layoutX="311.0" layoutY="618.0">
+         <font>
+            <Font name="Droid Serif" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <ImageView fx:id="fish" fitHeight="46.0" fitWidth="89.0" layoutX="1181.0" layoutY="695.0" onMouseEntered="#showImageF" onMouseExited="#hideImageF" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -47,7 +47,7 @@ public class MainApp extends Application {
         return this.stage;
     }
 
-    public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEVELOPMENT;
+    public static final ExecutionMode EXECUTION_MODE = ExecutionMode.DEBUG;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -88,16 +88,15 @@ public class MainApp extends Application {
             PasswordRecoveryController controller = loader.getController();
             controller.setMainApplication(this);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
     public void setupForProduction() {
-        DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "casinoworker", "", false).connectToDatabase();
+        DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "casinoworker", "Cernel_001_TP_02", false).connectToDatabase();
     }
 
     public void setupForDEBUG() {
-        DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "casinoworker", "", false).connectToDatabase();
+        DatabaseConnection connection = new DatabaseConnector("localhost", "3306", "Casino", "casinoworker", "Cernel_001_TP_02", false).connectToDatabase();
     }
 
     public void displayLoginView() {

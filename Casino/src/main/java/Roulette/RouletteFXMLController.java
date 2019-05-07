@@ -234,14 +234,34 @@ public class RouletteFXMLController implements Initializable {
         int difference = wheels.decideResult(betInt, betIntFromPlayer);
         playerBalance += difference;
         boolean isWon = wheels.getResult();
+        if (isWon) {
+            wonGame(betIntFromPlayer, playerBalance);
+        } else {
+            lostGame(betIntFromPlayer, playerBalance);
+        }
+
         gewonnenVerloren.setText(isWon == true ? "Gewonnen" : "Verloren");
+
         intBetBindLabel.setText(String.valueOf(playerBalance));
+    }
+
+    private void wonGame(int setBet, int newBalance) {
+        PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(newBalance, "Roueltte", setBet, "WON", newBalance - (PlayerCentral.getInstance().getUser().getCurrentChipBalance()));
+    }
+
+    private void lostGame(int setBet, int newBalance) {
+        PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(newBalance, "Roulette", setBet, "WON", 0);
     }
 
     public void placeBetArray(int AI) {
         int difference = wheels.decideResult(betArray, AI, betIntFromPlayer);
-        playerBalance = playerBalance + difference;
+        playerBalance += difference;
         boolean isWon = wheels.getResult();
+        if (isWon) {
+            wonGame(betIntFromPlayer, playerBalance);
+        } else {
+            lostGame(betIntFromPlayer, playerBalance);
+        }
         gewonnenVerloren.setText(isWon == true ? "Gewonnen" : "Verloren");
         intBetBindLabel.setText(String.valueOf(playerBalance));
     }
@@ -1107,6 +1127,7 @@ public class RouletteFXMLController implements Initializable {
             if (betString.getText().trim().isEmpty()) {
                 stringBet.set("0");
             }
+            PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - betIntFromPlayer);
             wheels.generateRandom();
             rouletteWheel.setImage(new Image("/images/Roulette/rouletteWheelFast.gif"));
             PauseTransition transition = new PauseTransition(Duration.seconds(3));
@@ -1118,9 +1139,7 @@ public class RouletteFXMLController implements Initializable {
                 randomNumberLabel.setText("00");
             } else {
                 randomNumberLabel.setText(randomString);
-
             }
-
             if (radioTable.isSelected() == true) {
                 clickTable();
                 balanceLabel.setText("Konto: " + Integer.toString(playerBalance));
@@ -1128,7 +1147,6 @@ public class RouletteFXMLController implements Initializable {
                 clickNeighbor();
                 balanceLabel.setText("Konto: " + Integer.toString(playerBalance));
             }
-
             return;
         }
     }

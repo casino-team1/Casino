@@ -12,7 +12,6 @@ import Baccara.Entity.BaccaraGame;
 import com.team1.casino.User.Util.PlayerCentral;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Scene;
 
 /**

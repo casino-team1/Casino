@@ -19,7 +19,6 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.management.RuntimeErrorException;
 
 /**
  *
@@ -35,7 +34,7 @@ public class PasswordRecovery {
 
     private String getEmailAdress() throws SQLException {
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
-        if (username == "") {
+        if ("".equals(username)) {
         } else {
             String userEmail = query.runQueryWithReturn("SELECT email FROM user WHERE username = ? ", this.username).get(0);
         }

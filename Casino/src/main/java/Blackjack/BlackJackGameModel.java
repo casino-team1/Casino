@@ -159,7 +159,7 @@ public class BlackJackGameModel {
                 end();
             }
         }
-        
+
         if (spieler.getKartenWertSpieler() == 9 || spieler.getKartenWertSpieler() == 10 || spieler.getKartenWertSpieler() == 11) {
             if (PlayerCentral.getInstance().getUser().getCurrentChipBalance() >= einsatz) {
                 buttonVerdoppeln.setDisable(false);
@@ -294,13 +294,17 @@ public class BlackJackGameModel {
             } else {
                 gewonnen();
             }
+            PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + gewinn, "BlackJack", einsatz, "WON", gewinn - (einsatz));
         }
         if (dealer.hasGewonnen()) {
             verloren();
+            PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(PlayerCentral.getInstance().getUser().getCurrentChipBalance(), "BlackJack", einsatz, "LOST", 0);
         }
         if (unentschieden) {
             unentschieden();
+            PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + einsatz, "BlackJack", einsatz, "LOST", einsatz);
         }
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance() + "$");
     }
 
     public void gewonnenDurchBlackJack() {

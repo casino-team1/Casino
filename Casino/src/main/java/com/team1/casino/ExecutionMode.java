@@ -11,5 +11,5 @@ package com.team1.casino;
  * @author Nick Flückiger
  */
 public enum ExecutionMode {
-    DEBUG, PRODUCTION, TESTING, DEVELOPMENT, ADMINISTRATOR_TEST
+    DEBUG, PRODUCTION, DEVELOPMENT, ADMINISTRATOR_TEST
 }

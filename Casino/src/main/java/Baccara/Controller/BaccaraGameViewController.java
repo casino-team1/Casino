@@ -9,7 +9,6 @@ package Baccara.Controller;
 import Baccara.BaccaraHandler;
 import Baccara.Entity.BaccaraCard;
 import Baccara.Model.BaccaraGameModel;
-import com.sun.javafx.PlatformUtil;
 import com.team1.casino.User.Util.PlayerCentral;
 import java.net.URL;
 import java.util.ArrayList;
@@ -74,8 +73,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private Text playerCardCountLabel;
     @FXML
     private Text dealerCardCountLabel;
-    @FXML
-    private ImageView chipImage;
 
     private Dragboard content;
     @FXML
@@ -98,8 +95,19 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private ImageView tieBetCoin;
     @FXML
     private ImageView playerBetCoin;
+    @FXML
+    private ImageView hundretBetCoin;
+    @FXML
+    private ImageView fiveBetCoin;
+    @FXML
+    private ImageView tenBetCoin;
+    @FXML
+    private ImageView twentyfiveBetCoin;
+
+    private int coinSelected;
 
     /**
+     *
      * Initializes the controller class.
      *
      * @param url
@@ -108,7 +116,62 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setCardBacks();
+        ImageView[] coins = {hundretBetCoin, fiveBetCoin, twentyfiveBetCoin, tenBetCoin};
+        for (ImageView view : coins) {
+            view.setOnMouseClicked(event -> {
+                if (this.gameRunning == false) {
+                    if (view.equals(hundretBetCoin)) {
+                        coinSelected = 100;
+                    } else if (view.equals(fiveBetCoin)) {
+                        coinSelected = 5;
+                    } else if (view.equals(twentyfiveBetCoin)) {
+                        coinSelected = 25;
+                    } else {
+                        coinSelected = 10;
+                    }
+                    this.draggable = new ImageView();
+                    this.draggable.setImage(view.getImage());
+                    Image cursorImage = this.draggable.getImage();
+                    ImageCursor cursor = new ImageCursor(cursorImage);
+                    this.gameModel.setCursor().setCursor(cursor);
+                }
+            });
+        }
+        ImageView[] betAreas = {bankerBet, playerBet, tieBet, playerBetCoin, tieBetCoin, bankerBetCoin};
+        for (ImageView area : betAreas) {
+            area.setOnMouseClicked(event -> {
+                if (this.draggable != null) {
+                    area.setVisible(true);
+                    int betValue = getBetToSet();
+                    if (betValue > 0 == true) {
+                        if (area.equals(bankerBet) || area.equals(bankerBetCoin)) {
+                            bankerBetCoin.setImage(this.draggable.getImage());
+                            bankerBetCoin.toFront();
+                            this.gameModel.setDealerBet(betValue);
+                        } else if (area.equals(playerBet) || area.equals(playerBetCoin)) {
+                            this.gameModel.setPlayerBet(betValue);
+                            playerBetCoin.setImage(this.draggable.getImage());
+                            playerBetCoin.toFront();
+                        } else {
+                            tieBetCoin.setImage(this.draggable.getImage());
+                            tieBetCoin.toFront();
+                            this.gameModel.setTieBet(betValue);
+                        }
+                        PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - betValue);
+                        updateBalanceAndBet();
+                    }
+                    coinSelected = 0;
+                    this.draggable = null;
+                    this.gameModel.setCursor().setCursor(Cursor.DEFAULT);
+                }
+            });
+        }
         /*
+        System.out.println(event.getSource().toString());
+        
+         */
+
+ /*
             Code below checks for drag and drop and sets image at new position.
          */
     }
@@ -140,9 +203,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        this.setCardBacks();
+        setCardCount();
         updateBalanceAndBet();
-
         final int totaleWette = (int) this.gameModel.getTotalBet();
         final boolean isWon = this.gameModel.isWon();
         final String result = this.gameModel.getResultMessage();
@@ -159,6 +221,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
             alert.setContentText(userMessage);
             alert.showAndWait();
             resetImageViews();
+            this.setCardBacks();
             resetCardCount();
         });
         this.gameModel.resetGame();
@@ -394,82 +457,17 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     private ImageView draggable;
 
-    @FXML
-    private void setTieBet(MouseEvent event) {
-        if (this.draggable != null) {
-            int betValue = getBetToSet();
-            if (betValue > 0 == true) {
-                this.tieBetCoin.setImage(this.draggable.getImage());
-                this.tieBetCoin.setFitHeight(50);
-                this.tieBetCoin.setFitWidth(50);
-                this.tieBetCoin.setVisible(true);
-                this.gameModel.setTieBet(betValue);
-                PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - betValue);
-                updateBalanceAndBet();
-            }
-            this.draggable = null;
-            this.gameModel.setCursor().setCursor(Cursor.DEFAULT);
-        }
-    }
-
-    @FXML
-    private void setPlayerBet(MouseEvent event) {
-        if (this.draggable != null) {
-            int betValue = getBetToSet();
-            if (betValue > 0 == true) {
-                this.playerBetCoin.setImage(this.draggable.getImage());
-                this.playerBetCoin.setVisible(true);
-                this.playerBetCoin.setFitHeight(50);
-                this.playerBetCoin.setFitWidth(50);
-                this.gameModel.setPlayerBet(betValue);
-                PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - betValue);
-                updateBalanceAndBet();
-            }
-            this.draggable = null;
-            this.gameModel.setCursor().setCursor(Cursor.DEFAULT);
-        }
-    }
-
     private void dropCoin(MouseDragEvent event) {
         this.draggable = null;
-    }
-
-    @FXML
-    private void clipChip(MouseEvent event) {
-        if (this.gameRunning == false) {
-            this.draggable = new ImageView();
-            this.draggable.setImage(this.chipImage.getImage());
-            ImageCursor cursor = new ImageCursor(this.draggable.getImage());
-            this.gameModel.setCursor().setCursor(cursor);
-        }
-    }
-
-    @FXML
-    private void setBankerBet(MouseEvent event) {
-        if (this.draggable != null) {
-            this.bankerBetCoin.setVisible(true);
-            int betValue = getBetToSet();
-            if (betValue > 0 == true) {
-                this.bankerBetCoin.setImage(this.draggable.getImage());
-                this.bankerBetCoin.setFitHeight(50);
-                this.bankerBetCoin.setFitWidth(50);
-                this.bankerBetCoin.toFront();
-                this.gameModel.setDealerBet(betValue);
-                PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - betValue);
-                updateBalanceAndBet();
-            }
-            this.draggable = null;
-            this.gameModel.setCursor().setCursor(Cursor.DEFAULT);
-        }
     }
 
     private int getBetToSet() {
         int value = -1;
         List<Integer> choices = new ArrayList<>();
-        for (int i = 20; i < 1000; i += 5) {
+        for (int i = coinSelected; i < 1000; i += coinSelected) {
             choices.add(i);
         }
-        ChoiceDialog<Integer> dialog = new ChoiceDialog<>(20, choices);
+        ChoiceDialog<Integer> dialog = new ChoiceDialog<>(coinSelected, choices);
         dialog.setTitle("Wettbetrag setzen");
         dialog.setHeaderText(null);
         dialog.setContentText("Betrag wählen");
@@ -494,4 +492,5 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private void enterMenuButton(MouseEvent event) {
         menuButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
+
 }

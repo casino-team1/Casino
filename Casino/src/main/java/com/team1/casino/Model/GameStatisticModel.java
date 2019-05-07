@@ -60,7 +60,6 @@ public class GameStatisticModel extends Observable {
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
         try {
             this.gameNames = query.runQueryWithReturn("SELECT gameName FROM game WHERE 1 = ?", "1");
-            System.out.println(this.gameNames);
         } catch (SQLException ex) {
             Logger.getLogger(GameStatisticModel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -82,7 +81,7 @@ public class GameStatisticModel extends Observable {
         this.gameStats.clear();
         for (int i = 0; i < retreavedDatabaseInfromation.size() - 5; i++) {
             Statistic currentStat = new Statistic(retreavedDatabaseInfromation.get(i + 3), Double.valueOf(retreavedDatabaseInfromation.get(i + 2)), Double.valueOf(retreavedDatabaseInfromation.get(i + 4)), retreavedDatabaseInfromation.get(i));
-            currentStat.setUseranme(retreavedDatabaseInfromation.get(i + 1));
+            currentStat.setUsername(retreavedDatabaseInfromation.get(i + 1));
             this.gameStats.add(currentStat);
             i += 4;
         }
@@ -93,7 +92,7 @@ public class GameStatisticModel extends Observable {
             if (stat.getResult().equals("Won")) {
                 value -= stat.getUserAccountChange();
             } else if (stat.getResult().equals("Lost")) {
-                value += Math.abs(stat.getUserAccountChange());
+                value += Math.abs(-1 * stat.getBet());
             } else {
                 value += 0;
             }

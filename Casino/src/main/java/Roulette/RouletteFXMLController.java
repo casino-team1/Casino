@@ -246,11 +246,11 @@ public class RouletteFXMLController implements Initializable {
     }
 
     private void wonGame(int setBet, int newBalance) {
-        PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(newBalance, "Roueltte", setBet, "WON", newBalance - (PlayerCentral.getInstance().getUser().getCurrentChipBalance()));
+        PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(newBalance, "Roueltte", setBet, "Won", newBalance - (PlayerCentral.getInstance().getUser().getCurrentChipBalance()));
     }
 
     private void lostGame(int setBet, int newBalance) {
-        PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(newBalance, "Roulette", setBet, "WON", 0);
+        PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(newBalance, "Roulette", setBet, "Lost", -1 * setBet);
     }
 
     public void placeBetArray(int AI) {

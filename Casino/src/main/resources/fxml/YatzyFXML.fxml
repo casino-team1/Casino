@@ -370,9 +370,9 @@
       </Button>
       <TextField fx:id="bettxt" layoutX="19.0" layoutY="234.0" prefHeight="26.0" prefWidth="140.0" />
       <Label fx:id="lblerror" layoutX="19.0" layoutY="339.0" prefHeight="26.0" prefWidth="407.0" textFill="RED" />
-      <Button fx:id="btnthrowdices" alignment="CENTER" layoutX="166.0" layoutY="232.0" mnemonicParsing="false" onAction="#pressthrowdices" onMouseEntered="#enterbtnthrowdices" prefHeight="104.0" prefWidth="258.0" style="-fx-font-weight: italic;" text="Würfel werfen" textAlignment="CENTER">
+      <Button fx:id="btnthrowdices" alignment="CENTER" layoutX="166.0" layoutY="232.0" mnemonicParsing="false" onAction="#pressthrowdices" onMouseEntered="#enterbtnthrowdices" prefHeight="104.0" prefWidth="258.0" style="-fx-font-weight: italic;" text="Würfeln" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="System Bold" size="43.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

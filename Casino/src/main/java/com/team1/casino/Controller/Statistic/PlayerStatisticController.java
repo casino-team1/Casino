@@ -123,6 +123,8 @@ public class PlayerStatisticController implements Initializable, Observer {
         XYChart.Series<String, Double> series = new XYChart.Series<>();
         int counter = 0;
         this.kontostandChart.getData().clear();
+        series.getData().add(new XYChart.Data<>(String.valueOf(counter + 20), 0.0));
+        counter++;
         for (double value : accountbalances) {
             series.getData().add(new XYChart.Data<>(String.valueOf(counter + 20), value));
             counter++;

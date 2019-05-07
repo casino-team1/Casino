@@ -73,6 +73,18 @@ INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
 INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
 INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
 
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Lost",-50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Lost",-50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+
+
 
 INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,1,1);
 INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,2,1);
@@ -84,9 +96,20 @@ INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,7,1);
 INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,8,1);
 INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,9,1);
 INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,10,1);
+
+
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,1,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,2,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,3,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,4,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,5,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,6,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,7,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,8,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,9,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,10,2);
+INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(2,10,3);
 -- Username == "Muster" -- Password: "1234"
 -- Hash $2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK
-
-
 
 -- SELECT

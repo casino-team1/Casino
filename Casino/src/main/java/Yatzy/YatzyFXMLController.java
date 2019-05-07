@@ -846,22 +846,21 @@ public class YatzyFXMLController implements Initializable {
                     lblwin.setText("Gewonnen!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(balance, "Yatzy", betnum, "WON", (PlayerCentral.getInstance().getUser().getCurrentChipBalance()) - balance);
+                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(balance, "Yatzy", betnum, "Won", (PlayerCentral.getInstance().getUser().getCurrentChipBalance()) - balance);
                     break;
                 case 2:
                     lblwin.setText("Verloren!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(PlayerCentral.getInstance().getUser().getCurrentChipBalance(), "Yatzy", betnum, "LOST", 0);
+                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(PlayerCentral.getInstance().getUser().getCurrentChipBalance(), "Yatzy", betnum, "Lost", -1 * betnum);
                     break;
                 case 3:
                     lblwin.setText("Unentschieden!");
                     lblwinnum.setText(Integer.toString(rules.getWinAmount()));
                     balance = rules.getNewAmount();
-                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(balance, "Yatzy", betnum, "Tie", betnum);
+                    PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(balance, "Yatzy", betnum, "Tie", 0);
                     break;
             }
-
             //the total balance gets updated
             lbltotalnum.setText(Integer.toString(balance));
             balanceLabel.setText("Konto: " + balance);
@@ -873,7 +872,7 @@ public class YatzyFXMLController implements Initializable {
     public void updateButton(Button btn) {
         switch (btn.getId()) {
             case "btnthrowdices":
-                btnthrowdices.setStyle("-fx-font-size: 30; -fx-font-weight: BOLD");
+                btnthrowdices.setStyle("-fx-font-size: 43; -fx-font-weight: BOLD");
                 break;
             case "btnbet":
                 btnbet.setStyle("-fx-font-size: 18; -fx-font-weight: BOLD");

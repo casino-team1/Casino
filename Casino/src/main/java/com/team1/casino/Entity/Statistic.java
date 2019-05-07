@@ -22,7 +22,7 @@ public class Statistic {
     private final double accountChange;
     private final String gameName;
 
-    public void setUseranme(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

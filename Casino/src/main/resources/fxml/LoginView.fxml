@@ -23,25 +23,25 @@
                 <Image url="@../images/MainScreen/LoginScreen2.png" />
             </image>
         </ImageView>
-        <Button fx:id="registerButton" layoutX="93.0" layoutY="564.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="51.0" prefWidth="118.0" text="Register">
+        <Button fx:id="registerButton" layoutX="93.0" layoutY="563.0" mnemonicParsing="false" onAction="#registerUser" opacity="0.0" prefHeight="51.0" prefWidth="118.0" text="Register" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
         <TextField fx:id="usernameField" layoutX="104.0" layoutY="461.0" prefHeight="33.0" prefWidth="176.0" promptText="Benutzername">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="16.0" />
             </font>
         </TextField>
         <PasswordField fx:id="passwordField" layoutX="292.0" layoutY="461.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pressPasswordField" prefHeight="33.0" prefWidth="152.0" promptText="Passwort">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="16.0" />
             </font>
         </PasswordField>
-        <Button fx:id="loginButton" layoutX="354.0" layoutY="563.0" mnemonicParsing="false" onAction="#loginUser" opacity="0.0" prefHeight="51.0" prefWidth="108.0" text="Login">
+        <Button fx:id="loginButton" layoutX="354.0" layoutY="563.0" mnemonicParsing="false" onAction="#loginUser" opacity="0.0" prefHeight="51.0" prefWidth="108.0" text="Login" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button fx:id="recoverPasswordButton" layoutX="232.0" layoutY="565.0" mnemonicParsing="false" onAction="#displayPasswordRecovery" opacity="0.0" prefHeight="51.0" prefWidth="102.0" text="Recover">
+        <Button fx:id="recoverPasswordButton" layoutX="232.0" layoutY="565.0" mnemonicParsing="false" onAction="#displayPasswordRecovery" opacity="0.0" prefHeight="51.0" prefWidth="102.0" text="Recover" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

@@ -40,7 +40,7 @@ public class BlackJackSpielerModel {
         this.kartenSymbole = kartenSymbole;
 
         //Hat es genügend Karten?
-        if (k.getAnzahlKartenImKartenDeck() < 1) {
+        if (k.getAnzahlKartenImKartenDeck() < 1 || k.getAnzahlKartenInKartenSymbole() < 1) {
             k.kartenErstellen();
             this.karten = k.getKarten();
         }

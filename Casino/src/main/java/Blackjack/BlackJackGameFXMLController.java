@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -73,8 +72,7 @@ public class BlackJackGameFXMLController implements Initializable {
     private Pane spielerKartenPane;
     @FXML
     private Pane dealerKartenPane;
-    
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         game = new BlackJackGameModel(buttonHelp, buttonHit, buttonPruefung, buttonStand, buttonStart, buttonVerdoppeln, buttonVerlassen, buttonVersichern, spielerKartenPane, dealerKartenPane,
@@ -87,6 +85,7 @@ public class BlackJackGameFXMLController implements Initializable {
         this.main = main;
     }
 
+    @FXML
     private void pruefungEinsatz(ActionEvent event) {
         try {
             einsatz = Integer.parseInt(textfeldEinsatz.getText());
@@ -183,6 +182,7 @@ public class BlackJackGameFXMLController implements Initializable {
         labelVerdoppeln.setText("Ihr Einsatz wurde erhöht auf " + s);
         textfeldEinsatz.setText(s);
         PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - i);
+        game.setEinsatz(game.getEinsatz() * 2);
         game.spielerHit();
         game.dealerRound(labelKartenWertDealer);
     }
@@ -209,7 +209,4 @@ public class BlackJackGameFXMLController implements Initializable {
         buttonVerlassen.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
 
-    @FXML
-    private void prüfungEinsatz(ActionEvent event) {
-    }
 }

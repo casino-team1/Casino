@@ -34,7 +34,6 @@ public class DatabaseQuery extends Query {
             try {
                 queryResult.close();
             } catch (SQLException ignore) {
-                ignore.printStackTrace();
                 return null;
             }
         }

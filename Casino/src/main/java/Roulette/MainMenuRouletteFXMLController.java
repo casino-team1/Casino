@@ -6,6 +6,7 @@
 package Roulette;
 
 import com.team1.casino.MainApp;
+import com.team1.casino.User.Util.PlayerCentral;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
@@ -61,6 +62,7 @@ public class MainMenuRouletteFXMLController implements Initializable {
         rouletteLogo.setOpacity(0);
         mountainviewLogo.setOpacity(0);
         rouletteButtons.setOpacity(0);
+        balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance());
         // TODO
         PauseTransition transition = new PauseTransition(Duration.millis(200));
         PauseTransition transition2 = new PauseTransition(Duration.millis(500));
@@ -75,15 +77,15 @@ public class MainMenuRouletteFXMLController implements Initializable {
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.play();
-        
+
         FadeTransition ft2 = new FadeTransition(Duration.millis(2500), mountainviewLogo);
         ft2.setFromValue(0);
         ft2.setToValue(1);
         ft2.play();
-        
-        
+
     }
-    public void showButtons(){
+
+    public void showButtons() {
         FadeTransition ft3 = new FadeTransition(Duration.millis(2500), rouletteButtons);
         ft3.setFromValue(0);
         ft3.setToValue(1);

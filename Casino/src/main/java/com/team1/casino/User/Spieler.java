@@ -32,7 +32,7 @@ public class Spieler {
     private String role;
     private String username;
     private String password;
-    private double currentChips = 1000;
+    private double currentChips = 999999;
     private boolean validated = false;
     private String validationCode = "";
     private String emailAdress;

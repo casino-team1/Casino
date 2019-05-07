@@ -79,12 +79,39 @@ public class GameStatisticModel extends Observable {
 
     private void populateCurrentList(ArrayList<String> retreavedDatabaseInfromation) {
         this.gameStats.clear();
-        for (int i = 0; i < retreavedDatabaseInfromation.size() - 5; i++) {
-            Statistic currentStat = new Statistic(retreavedDatabaseInfromation.get(i + 3), Double.valueOf(retreavedDatabaseInfromation.get(i + 2)), Double.valueOf(retreavedDatabaseInfromation.get(i + 4)), retreavedDatabaseInfromation.get(i));
-            currentStat.setUsername(retreavedDatabaseInfromation.get(i + 1));
-            this.gameStats.add(currentStat);
-            i += 4;
+        int counter = 0;
+        String result = "";
+        double bet = 0;
+        double endAmount;
+        String gameName = "";
+        String username = "";
+        for (String element : retreavedDatabaseInfromation) {
+            switch (counter) {
+                case 0:
+                    gameName = element;
+                    counter++;
+                    break;
+                case 1:
+                    username = element;
+                    counter++;
+                    break;
+                case 2:
+                    bet = Double.valueOf(element);
+                    counter++;
+                    break;
+                case 3:
+                    result = element;
+                    counter++;
+                    break;
+                case 4:
+                    endAmount = Double.valueOf(element);
+                    Statistic currentStatistic = new Statistic(result, bet, endAmount, gameName);
+                    currentStatistic.setUsername(username);
+                    this.gameStats.add(currentStatistic);
+                    counter = 0;
+            }
         }
+
         double value = 0;
         this.gameProfits.clear();
         this.gameProfits.add(0.0);

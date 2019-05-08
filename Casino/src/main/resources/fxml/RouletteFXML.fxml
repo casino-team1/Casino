@@ -336,6 +336,5 @@
             <DropShadow color="WHITE" />
          </effect>
       </Label>
-      <ImageView fx:id="fish" fitHeight="46.0" fitWidth="89.0" layoutX="1181.0" layoutY="695.0" onMouseEntered="#showImageF" onMouseExited="#hideImageF" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

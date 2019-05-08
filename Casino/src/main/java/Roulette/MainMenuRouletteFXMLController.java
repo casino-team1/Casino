@@ -73,12 +73,12 @@ public class MainMenuRouletteFXMLController implements Initializable {
     }
 
     public void showLogo() {
-        FadeTransition ft = new FadeTransition(Duration.millis(2500), rouletteLogo);
+        FadeTransition ft = new FadeTransition(Duration.millis(1500), rouletteLogo);
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.play();
 
-        FadeTransition ft2 = new FadeTransition(Duration.millis(2500), mountainviewLogo);
+        FadeTransition ft2 = new FadeTransition(Duration.millis(1500), mountainviewLogo);
         ft2.setFromValue(0);
         ft2.setToValue(1);
         ft2.play();
@@ -86,7 +86,7 @@ public class MainMenuRouletteFXMLController implements Initializable {
     }
 
     public void showButtons() {
-        FadeTransition ft3 = new FadeTransition(Duration.millis(2500), rouletteButtons);
+        FadeTransition ft3 = new FadeTransition(Duration.millis(1500), rouletteButtons);
         ft3.setFromValue(0);
         ft3.setToValue(1);
         ft3.play();

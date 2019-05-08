@@ -65,7 +65,6 @@ public class MailUtil {
                 Transport.send(message);
                 System.out.println("Message sent");
             } catch (MessagingException e) {
-                throw new RuntimeException(e);
             }
         });
         //Registration email will not be sent if the programm is interupted or shutdown.

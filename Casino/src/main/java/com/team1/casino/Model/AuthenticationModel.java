@@ -58,4 +58,8 @@ public class AuthenticationModel extends Observable {
             notifyObservers();
         }
     }
+
+    public void RegistrationView() {
+        this.mainApplication.displayRegistrationView();
+    }
 }

@@ -6,10 +6,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="522.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.AuthenticationController">
    <children>
-      <ImageView fitHeight="582.0" fitWidth="609.0" layoutX="174.0" layoutY="266.0" pickOnBounds="true">
+      <ImageView fitHeight="582.0" fitWidth="609.0" layoutX="-12.0" layoutY="-11.0" pickOnBounds="true">
          <image>
             <Image url="@../images/loginBackground.jpg" />
          </image>
@@ -32,5 +33,10 @@
          <effect>
             <DropShadow />
          </effect></Button>
+      <Button fx:id="goBackButton" layoutX="28.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#goToLoginView" prefHeight="27.0" prefWidth="105.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 4px;" text="Zurück" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -69,6 +69,11 @@ public class RegistrationModel extends Observable {
             notifyObservers();
         } else {
             if (isValidEmail(this.emailAdress.getValue()) == true) {
+                if (password.getValue().length() < 6) {
+                    this.errorMessage = "Das Passwort ist zu kurz.";
+                    setChanged();
+                    notifyObservers();
+                }
                 new MailUtil(this.emailAdress.getValue(), PlayerCentral.getInstance().getUser().getValidationCode(), "").sendRegistrationMail();
                 PlayerCentral.getInstance().getUser().setEmailAdress(this.emailAdress.getValue());
                 this.mainApplicatin.displayAuthenticationWindow();

@@ -25,14 +25,17 @@
             <Image url="@../images/MainScreen/phoneBorder.png" />
          </image>
       </ImageView>
-      <TextField fx:id="accessCodeInput" layoutX="229.0" layoutY="268.0" promptText="Access Code">
+      <TextField fx:id="accessCodeInput" alignment="CENTER" layoutX="220.0" layoutY="231.0" promptText="Zugangscode">
          <effect>
             <DropShadow />
          </effect></TextField>
-      <Button fx:id="submitButton" layoutX="228.0" layoutY="396.0" mnemonicParsing="false" onAction="#checkAccessCode" text="Zugangscode überprüfen">
+      <Button fx:id="submitButton" layoutX="207.0" layoutY="296.0" mnemonicParsing="false" onAction="#checkAccessCode" prefHeight="41.0" prefWidth="193.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 2;" text="Zugangscode überprüfen" textAlignment="CENTER">
          <effect>
             <DropShadow />
-         </effect></Button>
+         </effect>
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font></Button>
       <Button fx:id="goBackButton" layoutX="28.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#goToLoginView" prefHeight="27.0" prefWidth="105.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 4px;" text="Zurück" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />

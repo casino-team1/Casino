@@ -275,6 +275,8 @@ public class YatzyFXMLController implements Initializable {
             for (Label lbl : sclolabels) {
                 lbl.setText("");
             }
+            scuplabels.clear();
+            sclolabels.clear();
 
             lblbetnum.setText("");
             lblwinnum.setText("");
@@ -488,6 +490,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclblup1.getText().equals("") || sclblup1.getText() == null) {
             sclblup1.setText(Integer.toString(rules.createSubresult("EINER", finalarray)));
+            scuplabels.add(sclblup1);
             newTurn();
         } else {
             notPressable(lblup1);
@@ -499,6 +502,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclblup2.getText().equals("") || sclblup2.getText() == null) {
             sclblup2.setText(Integer.toString(rules.createSubresult("ZWEIER", finalarray)));
+            scuplabels.add(sclblup2);
             newTurn();
         } else {
             notPressable(lblup2);
@@ -510,6 +514,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclblup3.getText().equals("") || sclblup3.getText() == null) {
             sclblup3.setText(Integer.toString(rules.createSubresult("DREIER", finalarray)));
+            scuplabels.add(sclblup3);
             newTurn();
         } else {
             notPressable(lblup3);
@@ -521,6 +526,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclblup4.getText().equals("") || sclblup4.getText() == null) {
             sclblup4.setText(Integer.toString(rules.createSubresult("VIERER", finalarray)));
+            scuplabels.add(sclblup4);
             newTurn();
         } else {
             notPressable(lblup4);
@@ -532,6 +538,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclblup5.getText().equals("") || sclblup5.getText() == null) {
             sclblup5.setText(Integer.toString(rules.createSubresult("FÜNFER", finalarray)));
+            scuplabels.add(sclblup5);
             newTurn();
         } else {
             notPressable(lblup5);
@@ -543,6 +550,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclblup6.getText().equals("") || sclblup6.getText() == null) {
             sclblup6.setText(Integer.toString(rules.createSubresult("SECHSER", finalarray)));
+            scuplabels.add(sclblup6);
             newTurn();
         } else {
             notPressable(lblup6);
@@ -554,6 +562,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclbllo1.getText().equals("") || sclbllo1.getText() == null) {
             sclbllo1.setText(Integer.toString(rules.createSubresult("DREI GLEICHE", finalarray)));
+            sclolabels.add(sclbllo1);
             newTurn();
         } else {
             notPressable(lbllo1);
@@ -565,6 +574,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclbllo2.getText().equals("") || sclbllo2.getText() == null) {
             sclbllo2.setText(Integer.toString(rules.createSubresult("VIER GLEICHE", finalarray)));
+            sclolabels.add(sclbllo2);
             newTurn();
         } else {
             notPressable(lbllo2);
@@ -576,6 +586,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclbllo3.getText().equals("") || sclbllo3.getText() == null) {
             sclbllo3.setText(Integer.toString(rules.createSubresult("FULL HOUSE", finalarray)));
+            sclolabels.add(sclbllo3);
             newTurn();
         } else {
             notPressable(lbllo3);
@@ -587,6 +598,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclbllo4.getText().equals("") || sclbllo4.getText() == null) {
             sclbllo4.setText(Integer.toString(rules.createSubresult("KLEINE STRASSE", finalarray)));
+            sclolabels.add(sclbllo4);
             newTurn();
         } else {
             notPressable(lbllo4);
@@ -598,6 +610,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclbllo5.getText().equals("") || sclbllo5.getText() == null) {
             sclbllo5.setText(Integer.toString(rules.createSubresult("GROSSE STRASSE", finalarray)));
+            sclolabels.add(sclbllo5);
             newTurn();
         } else {
             notPressable(lbllo5);
@@ -609,6 +622,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclbllo6.getText().equals("") || sclbllo6.getText() == null) {
             sclbllo6.setText(Integer.toString(rules.createSubresult("YATZY", finalarray)));
+            sclolabels.add(sclbllo6);
             newTurn();
         } else {
             notPressable(lbllo6);
@@ -620,6 +634,7 @@ public class YatzyFXMLController implements Initializable {
         if (locklabels == true) {
         } else if (sclbllo7.getText().equals("") || sclbllo7.getText() == null) {
             sclbllo7.setText(Integer.toString(rules.createSubresult("CHANCE", finalarray)));
+            sclolabels.add(sclbllo7);
             newTurn();
         } else {
             notPressable(lbllo7);

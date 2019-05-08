@@ -92,9 +92,22 @@ public class BlackJackGameFXMLController implements Initializable {
             if (einsatz < 50 || einsatz > PlayerCentral.getInstance().getUser().getCurrentChipBalance()) {
                 labelLoesung.setText("Fehler beim Einsatz, erneut versuchen!");
             } else {
-                buttonStart.setDisable(false);
-                buttonPruefung.setDisable(true);
+                //Vorbereitung
+                spielerKartenPane.getChildren().clear();
+                dealerKartenPane.getChildren().clear();
+
+                buttonStart.setDisable(true);
                 textfeldEinsatz.setDisable(true);
+                buttonPruefung.setDisable(true);
+                buttonHit.setDisable(false);
+                buttonStand.setDisable(false);
+                buttonVerdoppeln.setDisable(true);
+                buttonVersichern.setDisable(true);
+                labelKartenWertDealer.setText("");
+                labelKartenWertSpieler.setText("");
+                labelLoesung.setText("");
+                labelVerdoppeln.setText("");
+                labelVersicherung.setText("");
 
             }
         } catch (NumberFormatException e) {
@@ -104,24 +117,6 @@ public class BlackJackGameFXMLController implements Initializable {
 
     @FXML
     private void startGame(ActionEvent event) {
-
-        //Vorbereitung
-        spielerKartenPane.getChildren().clear();
-        dealerKartenPane.getChildren().clear();
-
-        buttonStart.setDisable(true);
-        textfeldEinsatz.setDisable(true);
-        buttonPruefung.setDisable(true);
-        buttonHit.setDisable(false);
-        buttonStand.setDisable(false);
-        buttonVerdoppeln.setDisable(true);
-        buttonVersichern.setDisable(true);
-        labelKartenWertDealer.setText("");
-        labelKartenWertSpieler.setText("");
-        labelLoesung.setText("");
-        labelVerdoppeln.setText("");
-        labelVersicherung.setText("");
-
         game.play();
     }
 

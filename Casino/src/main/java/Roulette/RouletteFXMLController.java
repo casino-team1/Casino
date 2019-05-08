@@ -197,7 +197,15 @@ public class RouletteFXMLController implements Initializable {
 
             }
         });
-
+        neighborField2.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                String stringFromField1 = neighborField1.getText();
+                String stringFromField2 = String.valueOf(neighborField2.getValue());
+                
+                stringBet.set(stringFromField1 + ", " + stringFromField2);
+            }
+        });
         radioTable.setToggleGroup(group);
         radioTable.setSelected(true);
         radioNeighbor.setToggleGroup(group);
@@ -1258,6 +1266,9 @@ public class RouletteFXMLController implements Initializable {
             ArrayIdentify = 6;
             stringBet.set(stringFromField1 + ", " + stringFromField2);
             errorMessage.setText("");
+        }
+        else {
+            stringBet.set("");
         }
     }
 

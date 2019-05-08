@@ -209,10 +209,10 @@ public class ExchangeFXMLController implements Initializable {
         if (nothundred == false) {
             errorJetonsLabel.setText("");
             if (moneycalc < 0) {
-                errorMoneyLabel.setText("Zuwenig Geld");
+                errorMoneyLabel.setText("Zu wenig Geld");
                 insufficient = true;
             } else if (jetoncalc < 0) {
-                errorJetonsLabel.setText("Zuwenig Jetons");
+                errorJetonsLabel.setText("Zu wenig Jetons");
                 insufficient = true;
             } else {
                 errorJetonsLabel.setText("");

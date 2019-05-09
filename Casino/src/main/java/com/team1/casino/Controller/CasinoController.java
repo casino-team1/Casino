@@ -93,7 +93,7 @@ public class CasinoController implements Initializable, Observer {
                 thread.start();
                 changer.displayMessage("Ihr neues Passwort", String.format("Sie haben Ihr Passwort zu: %s geändert", newPassword));
             } else {
-                changer.displayMessage("Das scheint mir aber sehr verwandt", "Sie können nicht das gleicher Passwort setzen, welches Sie vorher bereits hatten");
+                changer.displayMessage("Das scheint mir aber sehr verwandt", "Sie können nicht das gleiche Passwort setzen, welches Sie vorher bereits hatten");
             }
         }
     }

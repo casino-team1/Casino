@@ -42,8 +42,6 @@ public class RouletteFXMLController implements Initializable {
     private Pane coverPane;
     @FXML
     private Label intBetAmountLabel;
-    @FXML
-    private ImageView fish;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -1270,18 +1268,6 @@ public class RouletteFXMLController implements Initializable {
         else {
             stringBet.set("");
         }
-    }
-
-    @FXML
-    private void hideImageF(MouseEvent event) {
-        fish.setImage(null);
-
-    }
-
-    @FXML
-    private void showImageF(MouseEvent event) {
-        String fishLoco = "/images/MainScreen/fish.png";
-        fish.setImage(new Image(fishLoco));
     }
 
 }

@@ -8,13 +8,12 @@ Umsetzung:
 * Ebenfalls können dadurch gloable Einstellungen und Regeln in der Hauptapplikation festgelegt werden, danach werden diese an die einzelnen Spiele weiter gegebenen.
 
 
-
 Wichtige Mittel der Implementation:
 
 * Bcrypt
   * Die Passwörter werden nach erfolgreicher Validierung und Registrierung des Nutzers mit bcrypt gehasht und in der Datenbank gespeichert. Dadurch können die Daten in der Datenbank auch bei erhalt nicht entschlüsselt werden.
 * Ebenfalls haben wir die Registrierung mit einer Email umgesetzt.  Beim Erstellen eines neuen Spielers, bekommt dieser eine Email mit einem Zugangscode. Ohne diesen kann der Account nicht erstellt werden.
-
+* Diese Email wird auch verwendet, wenn der Nutzer sein Passwort vergessen hat. Diese Zurücksetzung erfolgt über die Identifikation des Nutzernamens.
 
 
 Datenbank:
@@ -35,6 +34,14 @@ Balance:
 Statistic:
 
     Sicherung der Daten für die bereits gespielten Spiele. Umfasst den Einsatz, den Ausgang und die Änderung im Spielerkonto.
+
+
+StatisticToPlayer:
+
+    StatisticToPlayer verbindet die gespielten Spiele   
+
+Game
+
 
 
 

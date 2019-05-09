@@ -39,17 +39,12 @@ public class Spieler {
     private double currentMoney;
 
     public void writeUserToDatabase() {
-        String username = this.username;
-        String password = UserUtil.getHashedPassword(this.password);
-        String email = this.emailAdress;
-        //Create new Class, that handles the creation of the user.
-        //The class should also handle Statupdate and other actions related to the player.
         this.currentChips = 0;
         this.currentMoney = 5000;
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
         int balanceIndex = query.runQueryGetAddedID("INSERT INTO balance(chips,money,lastUpdated) VALUES(?,?,CURDATE())", "0.0", "5000.0");
         query.runQueryWithoutReturn("INSERT INTO user(username,password,role,balance_id,email) VALUES(?,?,?,?,?)", username, password, "Player", String.valueOf(balanceIndex),
-                email
+                emailAdress
         );
     }
 

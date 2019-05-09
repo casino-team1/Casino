@@ -36,6 +36,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="back" layoutX="715.0" layoutY="60.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Dashboard" />
+      <Button fx:id="back" layoutX="701.0" layoutY="60.0" mnemonicParsing="false" onAction="#goBackToMenu" prefHeight="27.0" prefWidth="99.0" text="Dashboard" />
    </children>
 </AnchorPane>

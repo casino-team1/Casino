@@ -83,28 +83,31 @@ public class BaccaraGameModel extends BaccaraModel {
         String winner = determineWinner();
         String betMatch = checkForResult(winner);
         String totalBet = String.valueOf(getTotalBet());
+        if (winner.equals("Banker")) {
+            winner = "Banker";
+        }
         switch (betMatch) {
             case "Player":
-                this.resultMessage = String.format("Der Spieler hat gewonnen, gut gewettet... Sie erhalten ihren Einsatz von %s plus weitere %s chips", String.valueOf(this.baccaraGame.getPlayerBet()), String.valueOf(this.baccaraGame.getPlayerBet()));
+                this.resultMessage = String.format("Der Spieler hat gewonnen. Gut gewettet... Sie erhalten ihren Einsatz von %s plus weitere %s chips", String.valueOf(this.baccaraGame.getPlayerBet()), String.valueOf(this.baccaraGame.getPlayerBet()));
                 accountChange = (this.baccaraGame.getPlayerBet() * 2) - (this.baccaraGame.getTotalBet());
                 changeUserBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + (this.baccaraGame.getPlayerBet() * 2), "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
                 break;
             case "Dealer":
-                this.resultMessage = String.format("Der Dealer hat gewonnen, gut gewettet... Sie erhalten ihren Einsatz von %s plus weitere %s chips", String.valueOf(this.baccaraGame.getDealerBet()), String.valueOf(this.baccaraGame.getDealerBet()));
+                this.resultMessage = String.format("Der Banker hat gewonnen. Gut gewettet... Sie erhalten ihren Einsatz von %s Jetons plus weitere %s Jetons", String.valueOf(this.baccaraGame.getDealerBet()), String.valueOf(this.baccaraGame.getDealerBet()));
                 accountChange = (this.baccaraGame.getDealerBet() * 2) - (this.baccaraGame.getTotalBet());
                 changeUserBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + (this.baccaraGame.getDealerBet() * 2), "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
                 break;
             case "Tie":
-                this.resultMessage = String.format("Weder Spieler noch Dealer hat gewonnen, gut gewettet... Sie erhalten ihren Einsatz von %s plus weitere %s chips", String.valueOf((this.baccaraGame.getTieBet())), String.valueOf((this.baccaraGame.getTieBet())));
+                this.resultMessage = String.format("Weder Spieler noch Dealer hat gewonnen. Gut gewettet... Sie erhalten ihren Einsatz von %s Jetons plus weitere %s Jetons", String.valueOf((this.baccaraGame.getTieBet())), String.valueOf((this.baccaraGame.getTieBet())));
                 accountChange = (this.baccaraGame.getTieBet() * 8) - (this.baccaraGame.getTotalBet());
                 changeUserBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + this.baccaraGame.getTieBet() * 8, "Baccara", this.baccaraGame.getTotalBet(), "Won", accountChange);
                 break;
             case "Lost":
                 won = false;
                 if (winner.equals("Tie") == true) {
-                    this.resultMessage = String.format("Weder Dealer noch Spieler hat gewonnen Leider knapp daneben... Sie verlieren ihren Einsatz von %s ", totalBet);
+                    this.resultMessage = String.format("Weder Dealer noch Spieler hat gewonnen. Leider knapp daneben... Sie verlieren ihren Einsatz von %s Jetons", totalBet);
                 } else {
-                    this.resultMessage = String.format("Der %s hat gewonnen.Leider knapp daneben... Sie verlieren ihren Einsatz von %s ", winner, totalBet
+                    this.resultMessage = String.format("Der %s hat gewonnen. Leider knapp daneben... Sie verlieren ihren Einsatz von %s Jetons", winner, totalBet
                     );
                 }
                 accountChange = this.baccaraGame.getTotalBet();
@@ -204,7 +207,6 @@ public class BaccaraGameModel extends BaccaraModel {
         try {
             super.getBaccaraGame().displayMainMenu();
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

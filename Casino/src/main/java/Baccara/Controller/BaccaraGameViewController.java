@@ -187,12 +187,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
                 }
             });
         }
-        /*
-        System.out.println(event.getSource().toString());
-        
-         */
 
- /*
+        /*
             Code below checks for drag and drop and sets image at new position.
          */
     }
@@ -219,7 +215,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     private void resetCardCount() {
         this.playerCardCountLabel.setText("Spieler Kartenwert: ");
-        this.dealerCardCountLabel.setText("Dealer Kartenwert: ");
+        this.dealerCardCountLabel.setText("Banker Kartenwert: ");
     }
 
     @Override
@@ -231,14 +227,15 @@ public class BaccaraGameViewController implements Initializable, Observer {
         final String result = this.gameModel.getResultMessage();
         final int totalerGewinn = (int) this.gameModel.getAccountChange();
         Platform.runLater(() -> {
+            String userMessage = "";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             if (isWon) {
-                alert.setTitle("WON!!!!");
+                alert.setTitle("Gewonnen");
             } else {
-                alert.setTitle("Lost..");
+                alert.setTitle("Verloren");
             }
+            userMessage = String.format("%s", result);
             alert.setHeaderText(null);
-            String userMessage = String.format("%s\n%s\n", result, totalerGewinn <= 0 ? String.format("Sie verlieren gesammt %s chips", String.valueOf(totalerGewinn * -1)) : String.format("Sie gewinnen gesammt %s chips", String.valueOf(totalerGewinn)));
             alert.setContentText(userMessage);
             alert.showAndWait();
             resetImageViews();
@@ -299,7 +296,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
             if (playerCards.size() == 3 && dealerCards.size() != 3) {
                 thirdLeftCard.setImage(new Image(String.format(linkFormat, "cardBack.png")));
                 this.thirdLeftCard.setVisible(true);
-                TranslateTransition translateTransition = createTransitionTranslation(this.thirdRightImage);
+                TranslateTransition translateTransition = createTransitionForCad(this.thirdRightImage);
                 translateTransition.play();
                 translateTransition.setOnFinished(hanlder -> {
                     RotateTransition trans = createRotator(this.thirdLeftCard, 0, -90, 750, 1);
@@ -323,7 +320,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
             if (dealerCards.size() == 3 && playerCards.size() != 3) {
                 this.thirdRightImage.setImage(new Image(String.format(linkFormat, "cardBack.png")));
                 this.thirdRightImage.setVisible(true);
-                TranslateTransition translateTransition = createTransitionTranslation(this.thirdRightImage);
+                TranslateTransition translateTransition = createTransitionForCad(this.thirdRightImage);
                 translateTransition.play();
                 translateTransition.setOnFinished(hanlder -> {
                     RotateTransition trans = createRotator(this.thirdRightImage, 0, -90, 750, 1);
@@ -353,8 +350,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
                     } catch (Exception e) {
                     }
                 }
-                TranslateTransition left = createTransitionTranslation(this.thirdLeftCard);
-                TranslateTransition right = createTransitionTranslation(this.thirdRightImage);
+                TranslateTransition left = createTransitionForCad(this.thirdLeftCard);
+                TranslateTransition right = createTransitionForCad(this.thirdRightImage);
                 ParallelTransition parTrans = new ParallelTransition(left, right);
                 parTrans.play();
                 parTrans.setOnFinished(parFinished -> {
@@ -382,7 +379,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
 
     }
 
-    private TranslateTransition createTransitionTranslation(ImageView view) {
+    private TranslateTransition createTransitionForCad(ImageView view) {
         TranslateTransition translateTransition = new TranslateTransition();
         translateTransition.setDuration(Duration.millis(1500));
         translateTransition.setNode(view);
@@ -394,6 +391,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
     /**
      * Rotate inner and outer cards in paralell and check if a third card is
      * needed for player and/or dealer.
+     *
+     *
      *
      * @param playerView
      * @param dealerView
@@ -426,6 +425,17 @@ public class BaccaraGameViewController implements Initializable, Observer {
         });
     }
 
+    /**
+     * Code copied and modified from:
+     * https://stackoverflow.com/questions/19896562/flip-a-card-animation
+     *
+     * @param card
+     * @param startAngle
+     * @param endAngle
+     * @param duration
+     * @param cicle
+     * @return
+     */
     private RotateTransition createRotator(Node card, int startAngle, int endAngle, int duration, int cicle) {
         RotateTransition rotator = new RotateTransition(Duration.millis(duration), card);
         rotator.setAxis(Rotate.Y_AXIS);
@@ -465,9 +475,6 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     private void setCardCount() {
-        System.out.println(this.gameModel.getPlayerCardCount());
-        System.out.println(this.gameModel.getDealerCardCount());
-        //Update the card count for player and dealer by the gameModel values.
         int playerCardCount = this.gameModel.getPlayerCardCount();
         int dealerCardCount = this.gameModel.getDealerCardCount();
         this.playerCardCountLabel.setText("Spieler Kartenwert: " + String.valueOf(playerCardCount));
@@ -485,7 +492,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private int getBetToSet() {
         int value = -1;
         List<Integer> choices = new ArrayList<>();
-        for (int i = coinSelected; i < 1000; i += coinSelected) {
+        for (int i = coinSelected; i <= 1000; i += coinSelected) {
             choices.add(i);
         }
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(coinSelected, choices);

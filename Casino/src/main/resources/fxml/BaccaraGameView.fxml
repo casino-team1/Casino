@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -69,6 +70,9 @@
          <image>
             <Image url="@../images/Baccara/startGameButton.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <Text fx:id="playerCardCountLabel" fill="WHITE" layoutX="270.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Card Count: ">
          <font>
@@ -95,6 +99,9 @@
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <ImageView fx:id="tieBetCoin" fitHeight="75.0" fitWidth="75.0" layoutX="654.0" layoutY="537.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="playerBetCoin" fitHeight="75.0" fitWidth="75.0" layoutX="652.0" layoutY="641.0" pickOnBounds="true" preserveRatio="true" />

@@ -31,8 +31,14 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="textfeldEinsatz" layoutX="401.0" layoutY="171.0" opacity="0.75" />
-      <Button fx:id="buttonPruefung" layoutX="430.0" layoutY="209.0" mnemonicParsing="false" onAction="#pruefungEinsatz" text="Betrag prüfen" />
+      <TextField fx:id="textfeldEinsatz" layoutX="401.0" layoutY="171.0" opacity="0.75">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Button fx:id="buttonPruefung" layoutX="430.0" layoutY="209.0" mnemonicParsing="false" onAction="#pruefungEinsatz" text="Betrag prüfen">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label layoutX="345.0" layoutY="107.0" text="Teilnahme: mindestens 50 (ganze Zahlen)!" textFill="WHITE" underline="true">
          <opaqueInsets>
             <Insets />
@@ -41,7 +47,10 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="buttonStart" disable="true" layoutX="456.0" layoutY="255.0" mnemonicParsing="false" onAction="#startGame" text="Start" />
+      <Button fx:id="buttonStart" disable="true" layoutX="456.0" layoutY="255.0" mnemonicParsing="false" onAction="#startGame" text="Start">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label layoutX="447.0" layoutY="154.0" prefHeight="17.0" prefWidth="78.0" text="Ihr Einsatz:" textFill="WHITE" underline="true">
          <opaqueInsets>
             <Insets />
@@ -51,13 +60,31 @@
          <font>
             <Font size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Line endX="5.79998779296875" endY="220.60003662109375" layoutX="468.0" layoutY="268.0" startX="5.79998779296875" startY="24.600006103515625" stroke="#e5ff00" strokeWidth="5.0" />
-      <Button fx:id="buttonVersichern" disable="true" layoutX="587.0" layoutY="591.0" mnemonicParsing="false" onAction="#versichern" text="Versichern" />
-      <Button fx:id="buttonVerdoppeln" disable="true" layoutX="447.0" layoutY="591.0" mnemonicParsing="false" onAction="#verdoppeln" text="Verdoppeln" />
-      <Button fx:id="buttonStand" disable="true" layoutX="345.0" layoutY="590.0" mnemonicParsing="false" onAction="#stand" text="Stand" />
-      <Button fx:id="buttonHit" disable="true" layoutX="255.0" layoutY="590.0" mnemonicParsing="false" onAction="#hit" text="Hit" />
-      <TextField fx:id="textfeldVersicherung" disable="true" layoutX="680.0" layoutY="591.0" opacity="0.75" promptText="Versicherungsbetrag" />
+      <Button fx:id="buttonVersichern" disable="true" layoutX="587.0" layoutY="591.0" mnemonicParsing="false" onAction="#versichern" text="Versichern">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="buttonVerdoppeln" disable="true" layoutX="447.0" layoutY="591.0" mnemonicParsing="false" onAction="#verdoppeln" text="Verdoppeln">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="buttonStand" disable="true" layoutX="345.0" layoutY="590.0" mnemonicParsing="false" onAction="#stand" text="Stand">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="buttonHit" disable="true" layoutX="255.0" layoutY="590.0" mnemonicParsing="false" onAction="#hit" text="Hit">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TextField fx:id="textfeldVersicherung" disable="true" layoutX="680.0" layoutY="591.0" opacity="0.75" promptText="Versicherungsbetrag">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
       <Label layoutX="29.0" layoutY="590.0" text="Was möchten Sie tun?" textFill="WHITE">
          <font>
             <Font size="17.0" />

@@ -74,7 +74,7 @@ public class BaccaraGame {
     }
 
     public void setPlayerBet(int playerBet) {
-        this.playerBet = playerBet;
+        this.playerBet += playerBet;
     }
 
     public void resetGame() {
@@ -165,7 +165,7 @@ public class BaccaraGame {
     }
 
     public void setDealerBet(int dealerBet) {
-        this.dealerBet = dealerBet;
+        this.dealerBet += dealerBet;
     }
 
     public List<String> getSetBets() {
@@ -183,7 +183,7 @@ public class BaccaraGame {
     }
 
     public void setTieBet(int tieBet) {
-        this.tieBet = tieBet;
+        this.tieBet += tieBet;
     }
 
     public ArrayList<BaccaraCard> getDealerCards() {

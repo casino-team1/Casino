@@ -72,6 +72,7 @@ public class ExchangeFXMLController implements Initializable {
 
         Font.loadFont(getClass().getResourceAsStream("/resources/fonts/SqueakyChalkSound.ttf"), 14);
         balanceLabel.setStyle("-fx-font-family: 'squeaky chalk sound';");
+        moneyLabel.setStyle("-fx-font-family: 'squeaky chalk sound';");
 
         moneyField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (moneyfieldlocked == false) {
@@ -82,7 +83,6 @@ public class ExchangeFXMLController implements Initializable {
                     } else {
                         jetonsField.setText(Integer.toString(Integer.parseInt(moneyField.getText()) * 100));
                     }
-                    acceptButton.setDisable(false);
                 }
             }
         });
@@ -94,9 +94,8 @@ public class ExchangeFXMLController implements Initializable {
                 } else {
                     if (jetonsField.getText().equals("")) {
                     } else {
-                        moneyField.setText(Integer.toString((int) Math.round(Double.parseDouble(jetonsField.getText()) / 100)));
+                        moneyField.setText(Integer.toString((int)(Double.parseDouble(jetonsField.getText()) / 100)));
                     }
-                    acceptButton.setDisable(false);
                 }
             }
         });
@@ -116,7 +115,7 @@ public class ExchangeFXMLController implements Initializable {
     @FXML
     private void typeJetonsField(KeyEvent event) {
         if (jetonsField.getText().equals("") == false) {
-            moneyField.setText(Integer.toString(Integer.parseInt(jetonsField.getText()) / 100));
+            moneyField.setText(Integer.toString((int)(Double.parseDouble(jetonsField.getText()) / 100)));
         }
     }
 
@@ -146,7 +145,7 @@ public class ExchangeFXMLController implements Initializable {
         locked = true;
         moneyField.setDisable(false);
         jetonsField.setDisable(true);
-        acceptButton.setDisable(true);
+        acceptButton.setDisable(false);
         jetonsfieldlocked = true;
         moneyfieldlocked = false;
         moneyField.setText("");
@@ -176,7 +175,7 @@ public class ExchangeFXMLController implements Initializable {
         locked = true;
         moneyField.setDisable(true);
         jetonsField.setDisable(false);
-        acceptButton.setDisable(true);
+        acceptButton.setDisable(false);
         jetonsfieldlocked = false;
         moneyfieldlocked = true;
         moneyField.setText("");
@@ -188,6 +187,7 @@ public class ExchangeFXMLController implements Initializable {
     }
 
     private void processAcception() {
+        nothundred = false;
         if (jetonsField.isDisabled() == true) {
             if ("".equals(moneyField.getText())) {
                 errorJetonsLabel.setText("Bitte geben Sie eine Zahl ein");
@@ -203,7 +203,7 @@ public class ExchangeFXMLController implements Initializable {
                 nothundred = true;
             } else {
                 jetoncalc = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance() - Integer.parseInt(jetonsField.getText());
-                moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() + (int) (Math.round(Double.parseDouble(moneyField.getText())));
+                moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() +(Integer.parseInt(moneyField.getText()));
             }
         }
         if (nothundred == false) {
@@ -233,7 +233,7 @@ public class ExchangeFXMLController implements Initializable {
                 jetonsField.setText("");
                 moneyToJetonLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
                 jetonToMoneyLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
-            }
+            }   
         }
     }
 

@@ -38,22 +38,22 @@ public class PasswordChanger {
     public boolean displayDialog() {
         // Create the custom dialog.
         Dialog<Pair<String, String>> dialog = new Dialog<>();
-        dialog.setTitle("Change your password");
-        dialog.setHeaderText("Password Changer");
+        dialog.setTitle("Ändere dein Passwort");
+        dialog.setHeaderText("Passwort ändern");
 
-        ButtonType loginButtonType = new ButtonType("Change", ButtonData.OK_DONE);
+        ButtonType loginButtonType = new ButtonType("Ändern", ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
         PasswordField password = new PasswordField();
-        password.setPromptText("Password");
+        password.setPromptText("Passwort");
         PasswordField repeat = new PasswordField();
-        repeat.setPromptText("Repeat");
-        grid.add(new Label("Password:"), 0, 0);
+        repeat.setPromptText("Wiederholen");
+        grid.add(new Label("Passwort:"), 0, 0);
         grid.add(password, 1, 0);
-        grid.add(new Label("Repeat:"), 0, 1);
+        grid.add(new Label("Wiederholen:"), 0, 1);
         grid.add(repeat, 1, 1);
         Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
         loginButton.setDisable(true);

@@ -28,6 +28,7 @@ public class CasinoController implements Initializable, Observer {
     private Button kasseButton;
     @FXML
     private Button changePasswordButton;
+    @FXML
     private Label usernameLabel;
     
     public void setCasinoModel(CasinoModel model) {

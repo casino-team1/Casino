@@ -15,12 +15,12 @@
             <Image url="@../images/BlackJack/blackjackTitlel.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="69.0" layoutY="75.0" text="Black Jack" textFill="WHITE">
+      <Label layoutX="63.0" layoutY="139.0" text="Black Jack" textFill="WHITE">
          <font>
             <Font size="50.0" />
          </font>
       </Label>
-      <Button fx:id="buttonStart" layoutX="91.0" layoutY="163.0" mnemonicParsing="false" onAction="#startGame" prefHeight="74.0" prefWidth="176.0" text="Spiel starten">
+      <Button fx:id="buttonStart" layoutX="85.0" layoutY="213.0" mnemonicParsing="false" onAction="#startGame" prefHeight="74.0" prefWidth="176.0" text="Spiel starten">
          <font>
             <Font size="25.0" />
          </font>
@@ -38,5 +38,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ImageView fitHeight="133.0" fitWidth="204.0" layoutX="71.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

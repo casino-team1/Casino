@@ -73,7 +73,7 @@ public class Karten {
         return anzahlKartenImKartenDeck;
     }
 
-    public void subAnzahlKartenImKartenDeck() {
+    public void subAmountOfCardsInDeck() {
         this.anzahlKartenImKartenDeck--;
     }
 
@@ -81,7 +81,7 @@ public class Karten {
         this.anzahlKartenImKartenDeck = i;
     }
 
-    public void subAnzahlKartenInKartenSymbole() {
+    public void subAmountOfCardSymbols() {
         this.anzahlKartenInKartenSymbole--;
     }
 

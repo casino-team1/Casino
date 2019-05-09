@@ -19,7 +19,7 @@ import javafx.scene.layout.Pane;
  */
 public class BlackJackSpielerModel {
 
-    private int kartenWertSpieler = 0;
+    private int cardsValuePlayer = 0;
 
     private int xKoordinate = 0;
     private int yKoordinate = 6;
@@ -55,17 +55,17 @@ public class BlackJackSpielerModel {
         zufallskarte = kartenSymbole.get(zufallszahl);
 
         if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
-            kartenWertSpieler += 10;
+            cardsValuePlayer += 10;
         } else if (zufallskarte.contains("A")) {
-            kartenWertSpieler += 11;
+            cardsValuePlayer += 11;
         } else {
-            kartenWertSpieler += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
+            cardsValuePlayer += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
         }
         kartenSpieler.add(zufallskarte);
         karten.remove("/images/GameCards/" + zufallskarte + ".png");
         kartenSymbole.remove(zufallskarte);
-        k.subAnzahlKartenImKartenDeck();
-        k.subAnzahlKartenInKartenSymbole();
+        k.subAmountOfCardsInDeck();
+        k.subAmountOfCardSymbols();
 
         //Karte anzeigen
         ImageView spielerKarte = new ImageView();
@@ -87,17 +87,17 @@ public class BlackJackSpielerModel {
         zufallskarte = kartenSymbole.get(zufallszahl);
 
         if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
-            kartenWertSpieler += 10;
+            cardsValuePlayer += 10;
         } else if (zufallskarte.contains("A")) {
-            kartenWertSpieler += 11;
+            cardsValuePlayer += 11;
         } else {
-            kartenWertSpieler += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
+            cardsValuePlayer += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
         }
         kartenSpieler.add(zufallskarte);
         karten.remove("/images/GameCards/" + zufallskarte + ".png");
         kartenSymbole.remove(zufallskarte);
-        k.subAnzahlKartenImKartenDeck();
-        k.subAnzahlKartenInKartenSymbole();
+        k.subAmountOfCardsInDeck();
+        k.subAmountOfCardSymbols();
 
         //Karte anzeigen
         ImageView neusteSpielerKarte = new ImageView();
@@ -107,11 +107,11 @@ public class BlackJackSpielerModel {
         neusteSpielerKarte.setFitWidth(karteWidth);
         neusteSpielerKarte.setFitHeight(karteHeight);
         neusteSpielerKarte.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
+        labelKartenWertSpieler.setText("(" + cardsValuePlayer + ")");
     }
 
     public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Pane spielerKartenPane, Label labelKartenWertSpieler) {
-        
+
         //Hat es genügend Karten?
         if (k.getAnzahlKartenImKartenDeck() < 1) {
             k.kartenErstellen();
@@ -127,17 +127,17 @@ public class BlackJackSpielerModel {
         zufallskarte = kartenSymbole.get(zufallszahl);
 
         if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
-            kartenWertSpieler += 10;
+            cardsValuePlayer += 10;
         } else if (zufallskarte.contains("A")) {
-            kartenWertSpieler += 11;
+            cardsValuePlayer += 11;
         } else {
-            kartenWertSpieler += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
+            cardsValuePlayer += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
         }
         kartenSpieler.add(zufallskarte);
         karten.remove("/images/GameCards/" + zufallskarte + ".png");
         kartenSymbole.remove(zufallskarte);
-        k.subAnzahlKartenImKartenDeck();
-        k.subAnzahlKartenInKartenSymbole();
+        k.subAmountOfCardsInDeck();
+        k.subAmountOfCardSymbols();
 
         //Karte anzeigen
         ImageView neusteSpielerKarte = new ImageView();
@@ -147,7 +147,7 @@ public class BlackJackSpielerModel {
         neusteSpielerKarte.setFitWidth(karteWidth);
         neusteSpielerKarte.setFitHeight(karteHeight);
         neusteSpielerKarte.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertSpieler.setText("(" + kartenWertSpieler + ")");
+        labelKartenWertSpieler.setText("(" + cardsValuePlayer + ")");
     }
 
     public void setGewonnen(boolean g) {
@@ -159,15 +159,15 @@ public class BlackJackSpielerModel {
     }
 
     public int getKartenWertSpieler() {
-        return kartenWertSpieler;
+        return cardsValuePlayer;
     }
 
     public void setKartenWertSpieler(int i) {
-        this.kartenWertSpieler = i;
+        this.cardsValuePlayer = i;
     }
 
     public void setKartenWertSpielerMinusTen() {
-        kartenWertSpieler -= 10;
+        cardsValuePlayer -= 10;
     }
 
     public String getZufallskarte() {
@@ -185,7 +185,7 @@ public class BlackJackSpielerModel {
     public int getxKoordinate() {
         return xKoordinate;
     }
-    
+
     public void setxKoordinate(int i) {
         this.xKoordinate = i;
     }

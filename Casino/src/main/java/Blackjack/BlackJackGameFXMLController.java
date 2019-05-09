@@ -95,7 +95,6 @@ public class BlackJackGameFXMLController implements Initializable {
                 //Vorbereitung
                 spielerKartenPane.getChildren().clear();
                 dealerKartenPane.getChildren().clear();
-
                 buttonStart.setDisable(false);
                 textfeldEinsatz.setDisable(true);
                 buttonPruefung.setDisable(true);

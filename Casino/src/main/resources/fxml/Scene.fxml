@@ -80,7 +80,7 @@
         </Button>
         <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0" textFill="WHITE">
             <font>
-                <Font size="14.0" />
+                <Font name="Arial Bold" size="14.0" />
             </font>
         </Label>
         <Button fx:id="kasseButton" layoutX="483.0" layoutY="530.0" mnemonicParsing="false" onAction="#pressKasseButton" onMouseEntered="#enterKasseButton" onMouseExited="#exitKasseButton" prefHeight="39.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Kasse" textFill="WHITE">
@@ -92,5 +92,10 @@
                 <Font name="Arial Bold" size="18.0" />
             </font>
         </Button>
+      <Label fx:id="usernameLabel" layoutX="491.0" layoutY="13.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

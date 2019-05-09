@@ -52,8 +52,7 @@ public class AuthenticationModel extends Observable {
             PlayerCentral.getInstance().getUser().loadUserInformation();
             this.mainApplication.displayMainMenu();
         } else {
-            System.out.println("invalid");
-            this.errorMessage = "Ungülteriger Zugangscode, bitte versuchen sie es erneut";
+            this.errorMessage = "Ungültiger Zugangscode";
             setChanged();
             notifyObservers();
         }

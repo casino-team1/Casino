@@ -143,22 +143,36 @@ public class BaccaraGameViewController implements Initializable, Observer {
                 if (this.draggable != null) {
                     area.setVisible(true);
                     int betValue = getBetToSet();
-                    if (betValue > 0 == true) {
-                        if (area.equals(bankerBet) || area.equals(bankerBetCoin)) {
-                            bankerBetCoin.setImage(this.draggable.getImage());
-                            bankerBetCoin.toFront();
-                            this.gameModel.setDealerBet(betValue);
-                        } else if (area.equals(playerBet) || area.equals(playerBetCoin)) {
-                            this.gameModel.setPlayerBet(betValue);
-                            playerBetCoin.setImage(this.draggable.getImage());
-                            playerBetCoin.toFront();
-                        } else {
-                            tieBetCoin.setImage(this.draggable.getImage());
-                            tieBetCoin.toFront();
-                            this.gameModel.setTieBet(betValue);
+                    if (betValue > PlayerCentral.getInstance().getUser().getCurrentChipBalance()) {
+                        Platform.runLater(() -> {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setHeaderText("Zu wenig Chips in ihrem Konto");
+                            alert.setHeaderText(null);
+                            String userMessage = String.format("Die Wette überschreitet ihren momentanen Chipbestand. Sie können Chips an der Kasse umtauschen");
+                            alert.setContentText(userMessage);
+                            alert.showAndWait();
+                            resetImageViews();
+                            this.setCardBacks();
+                            resetCardCount();
+                        });
+                    } else {
+                        if (betValue > 0 == true) {
+                            if (area.equals(bankerBet) || area.equals(bankerBetCoin)) {
+                                bankerBetCoin.setImage(this.draggable.getImage());
+                                bankerBetCoin.toFront();
+                                this.gameModel.setDealerBet(betValue);
+                            } else if (area.equals(playerBet) || area.equals(playerBetCoin)) {
+                                this.gameModel.setPlayerBet(betValue);
+                                playerBetCoin.setImage(this.draggable.getImage());
+                                playerBetCoin.toFront();
+                            } else {
+                                tieBetCoin.setImage(this.draggable.getImage());
+                                tieBetCoin.toFront();
+                                this.gameModel.setTieBet(betValue);
+                            }
+                            PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - betValue);
+                            updateBalanceAndBet();
                         }
-                        PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - betValue);
-                        updateBalanceAndBet();
                     }
                     coinSelected = 0;
                     this.draggable = null;
@@ -217,7 +231,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
                 alert.setTitle("Lost..");
             }
             alert.setHeaderText(null);
-            String userMessage = String.format("%s\n%s\n%s", result, String.format("Totaler Wettbetrag: %s", String.valueOf(totaleWette)), totalerGewinn <= 0 ? String.format("Sie verlieren gesammt %s chips", String.valueOf(totalerGewinn * -1)) : String.format("Sie gewinnen gesammt %s chips", String.valueOf(totalerGewinn)));
+            String userMessage = String.format("%s\n%s\n", result, totalerGewinn <= 0 ? String.format("Sie verlieren gesammt %s chips", String.valueOf(totalerGewinn * -1)) : String.format("Sie gewinnen gesammt %s chips", String.valueOf(totalerGewinn)));
             alert.setContentText(userMessage);
             alert.showAndWait();
             resetImageViews();
@@ -244,7 +258,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Bitte setzen sie eine Wette");
                 alert.setHeaderText(null);
-                String userMessage = "Sie müssen zuerst eine Wette setzten";
+                String userMessage = "Sie müssen zuerst eine Betrag setzten";
                 alert.setContentText(userMessage);
                 alert.showAndWait();
             });

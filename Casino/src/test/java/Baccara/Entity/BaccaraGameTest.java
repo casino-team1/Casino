@@ -161,7 +161,6 @@ public class BaccaraGameTest {
         double EXPECTED_RESULT = 00.0;
         game.resetGame();
         assertEquals(EXPECTED_RESULT, game.getTieBet(), 0.00);
-
     }
 
     /**

@@ -80,9 +80,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private void pressPasswordField(KeyEvent event) {
-        if (event.getCode().equals(KeyCode.ENTER))
-            {
-                loginUser(null);
-            }
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            loginUser(null);
+        }
     }
 }

@@ -70,7 +70,7 @@ public class RegistrationModel extends Observable {
         } else {
             if (isValidEmail(this.emailAdress.getValue()) == true) {
                 if (password.getValue().length() < 6) {
-                    this.errorMessage = "Das Passwort ist zu kurz.";
+                    this.errorMessage = "Das Passwort ist zu kurz. (min. 6 Zeichen)";
                     setChanged();
                     notifyObservers();
                 }

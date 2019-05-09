@@ -63,12 +63,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="moneyLabel" alignment="CENTER" layoutX="111.0" layoutY="242.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
+      <Label fx:id="moneyLabel" alignment="CENTER" layoutX="117.0" layoutY="229.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="balanceLabel" alignment="CENTER" layoutX="551.0" layoutY="242.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
+      <Label fx:id="balanceLabel" alignment="CENTER" layoutX="561.0" layoutY="229.0" prefHeight="20.0" prefWidth="149.0" text="0" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

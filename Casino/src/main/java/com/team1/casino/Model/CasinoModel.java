@@ -42,7 +42,7 @@ public class CasinoModel extends Observable {
         PlayerCentral.getInstance().setUser(null);
         this.mainApplication.displayLoginView();
     }
-    
+
     public void displayExchange() {
         this.mainApplication.displayExchange();
     }

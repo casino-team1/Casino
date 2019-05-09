@@ -5,7 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -26,24 +26,25 @@
             <Font name="Arial Bold" size="64.0" />
          </font>
          <fill>
-            <LinearGradient endX="1.0" endY="1.0" startY="0.27817745803357313">
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                <stops>
-                  <Stop color="#ffd500" />
-                  <Stop color="#ffd500" offset="0.17132216014897578" />
-                  <Stop color="#e81212" offset="0.7355679702048415" />
-                  <Stop color="#e81212" offset="1.0" />
+                  <Stop color="#00dcff" />
+                  <Stop color="#00dcff" offset="0.32806577683454186" />
+                  <Stop color="#00ddff" offset="0.5254578291831598" />
+                  <Stop color="#0004ff" offset="0.5884543761638734" />
+                  <Stop color="#0004ff" offset="1.0" />
                </stops>
-            </LinearGradient>
+            </RadialGradient>
          </fill>
       </Text>
       <Label fx:id="welcomeMessage" layoutX="191.0" layoutY="173.0" prefHeight="27.0" prefWidth="411.0" text="PLACEHOLDER" textFill="WHITE" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="174.0">
          <font>
-            <Font name="Arial" size="24.0" />
+            <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
       <Label fx:id="currentBalance" layoutX="142.0" layoutY="233.0" prefHeight="29.0" prefWidth="471.0" text="PLACEHOLDER CURRENTBALANCE" textFill="WHITE" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="138.0">
          <font>
-            <Font size="24.0" />
+            <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
       <ImageView fx:id="cardView12" fitHeight="164.0" fitWidth="170.0" layoutX="602.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
@@ -66,5 +67,20 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
+      <ImageView fitHeight="102.0" fitWidth="153.0" layoutX="38.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="95.0" fitWidth="97.0" layoutX="111.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/100Coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="95.0" fitWidth="97.0" layoutX="31.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/25Coin.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

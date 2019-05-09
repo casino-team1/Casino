@@ -179,19 +179,11 @@ public class BlackJackGameModel {
 
         //Anzeige leeren
         dealerKartenPane.getChildren().clear();
+        
+        //x-Koordinate anpassen
         dealer.setxKoordinate(-34);
 
         //Alle Karten vom Dealer anzeigen
-        //erste Karte
-        /*ImageView neueDealerKarte = new ImageView();
-        dealerKartenPane.getChildren().add(neueDealerKarte);
-        neueDealerKarte.setLayoutX(dealer.getxKoordinate());
-        neueDealerKarte.setLayoutY(dealer.getyKoordinate());
-        neueDealerKarte.setFitWidth(dealer.getKarteWidth());
-        neueDealerKarte.setFitHeight(dealer.getKarteHeight());
-        neueDealerKarte.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(0) + ".png"));*/
-
-        //Restliche Karten
         for (int i = 0; i < dealer.getKartenDealer().size(); i++) {
             ImageView neusteDealerKarte = new ImageView();
             dealerKartenPane.getChildren().add(neusteDealerKarte);
@@ -213,8 +205,7 @@ public class BlackJackGameModel {
             unentschieden = true;
         } else if (dealer.getKartenWertDealer() < spieler.getKartenWertSpieler()) {
             spieler.setGewonnen(true);
-        } else {
-        }
+        } 
 
         end();
     }
@@ -230,20 +221,11 @@ public class BlackJackGameModel {
 
         //Anzeige zurücksetzen
         dealerKartenPane.getChildren().clear();
-        dealer.setxKoordinate(0);
+        
+        //x-Koordinate anpassen
+        dealer.setxKoordinate(-34);
 
         //Alle Karten vom Dealer anzeigen
-        //erste Karte
-        ImageView neueDealerKarte = new ImageView();
-        dealerKartenPane.getChildren().add(neueDealerKarte);
-        neueDealerKarte.setLayoutX(dealer.getxKoordinate());
-        neueDealerKarte.setLayoutY(dealer.getyKoordinate());
-        neueDealerKarte.setFitWidth(dealer.getKarteWidth());
-        neueDealerKarte.setFitHeight(dealer.getKarteHeight());
-        neueDealerKarte.setImage(new Image("/images/GameCards/" + dealer.getKartenDealer().get(0) + ".png"));
-        labelKartenWertDealer.setText("(" + dealer.getKartenWertDealer() + ")");
-
-        //restliche Karten
         for (int i = 1; i < dealer.getKartenDealer().size(); i++) {
             ImageView neusteDealerKarte = new ImageView();
             dealerKartenPane.getChildren().add(neusteDealerKarte);
@@ -261,9 +243,11 @@ public class BlackJackGameModel {
             int i = versicherungGewonnen();
             PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + i + einsatz);
             labelLoesung.setText("SIE HABEN " + (i + einsatz) + " GEWONNEN!");
+            PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(PlayerCentral.getInstance().getUser().getCurrentChipBalance() + gewinn, "BlackJack", einsatz, "Won", gewinn - (einsatz));
         }
         if (dealer.getKartenWertDealer() < 21 || dealer.getKartenWertDealer() > 21) {
             labelLoesung.setText("SIE HABEN VERLOREN!");
+            PlayerCentral.getInstance().getUser().setCurrentBalanceAndAddStatistic(PlayerCentral.getInstance().getUser().getCurrentChipBalance(), "BlackJack", einsatz, "Lost", -1 * einsatz);
         }
 
         //Eingaben blockieren

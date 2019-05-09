@@ -31,11 +31,11 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Text layoutX="511.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kontostand">
+      <Text layoutX="511.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wettentwicklung">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="back" layoutX="741.0" layoutY="60.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Button" />
+      <Button fx:id="back" layoutX="715.0" layoutY="60.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Dashboard" />
    </children>
 </AnchorPane>

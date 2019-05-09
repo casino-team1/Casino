@@ -10,6 +10,7 @@ import Baccara.BaccaraHandler;
 import Baccara.Entity.BaccaraCard;
 import Baccara.Model.BaccaraGameModel;
 import com.team1.casino.User.Util.PlayerCentral;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,13 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
@@ -41,6 +45,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.swing.JOptionPane;
 
@@ -105,6 +110,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
     private ImageView twentyfiveBetCoin;
 
     private int coinSelected;
+    @FXML
+    private Button helpButton;
 
     /**
      *
@@ -505,6 +512,18 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @FXML
     private void enterMenuButton(MouseEvent event) {
         menuButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void helpRequested(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BaccaraRulesView.fxml"));
+        Parent root;
+        root = (Parent) loader.load();
+        Scene scene = new Scene(root);
+        stage.setTitle("Baccara Spielanleitung");
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

@@ -33,8 +33,8 @@
             <Image url="@../images/Baccara/PlayerBackground.png" />
          </image>
       </ImageView>
-      <Pane layoutX="687.0" layoutY="54.0" prefHeight="328.0" prefWidth="9.0" style="-fx-background-color: #DCCC88#DCCC88;" />
-      <HBox fx:id="playerSide" layoutX="128.0" layoutY="106.0" prefHeight="226.0" prefWidth="528.0" spacing="10.0">
+      <Pane layoutX="667.0" layoutY="54.0" prefHeight="328.0" prefWidth="9.0" style="-fx-background-color: #DCCC88#DCCC88;" />
+      <HBox fx:id="playerSide" layoutX="86.0" layoutY="105.0" prefHeight="226.0" prefWidth="528.0" spacing="10.0">
          <children>
             <ImageView fx:id="thirdLeftCard" fitHeight="209.0" fitWidth="159.0" pickOnBounds="true" />
             <ImageView fx:id="secondLeftCard" fitHeight="209.0" fitWidth="149.0" pickOnBounds="true">
@@ -49,7 +49,7 @@
             </ImageView>
          </children>
       </HBox>
-      <HBox fx:id="dealerSide" layoutX="777.0" layoutY="106.0" prefHeight="223.0" prefWidth="494.0" spacing="10.0">
+      <HBox fx:id="dealerSide" layoutX="744.0" layoutY="106.0" prefHeight="223.0" prefWidth="494.0" spacing="10.0">
          <children>
             <ImageView fx:id="firstRightCard" fitHeight="209.0" fitWidth="155.0" pickOnBounds="true">
                <image>
@@ -74,12 +74,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Text fx:id="playerCardCountLabel" fill="WHITE" layoutX="270.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Card Count: ">
+      <Text fx:id="playerCardCountLabel" fill="WHITE" layoutX="241.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler Kartenwert: ">
          <font>
             <Font name="Arial Bold" size="36.0" />
          </font>
       </Text>
-      <Text fx:id="dealerCardCountLabel" fill="WHITE" layoutX="787.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dealer Card Count: ">
+      <Text fx:id="dealerCardCountLabel" fill="WHITE" layoutX="744.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banker Kartenwert: ">
          <font>
             <Font name="Arial Bold" size="36.0" />
          </font>
@@ -125,5 +125,10 @@
             <Image url="@../images/25Coin.png" />
          </image>
       </ImageView>
+      <Button fx:id="helpButton" layoutX="1210.0" layoutY="29.0" mnemonicParsing="false" onAction="#helpRequested" prefHeight="42.0" prefWidth="56.0" style="-fx-background-color: transparent; -fx-border-color: White; -fx-border-width: 4px;" text="?" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

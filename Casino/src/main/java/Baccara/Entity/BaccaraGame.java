@@ -116,9 +116,13 @@ public class BaccaraGame {
         /**
          * These are implementations of the baccara roules according to the
          * wikipedia entry. For informaton or further knowledge of the used
-         * rules, consult wikipedia: Baccar.
+         * rules, consult wikipedia: Baccara.
          */
-        if (this.playerCardCount == 8 || this.playerCardCount == 9 || this.playerCardCount == 6 || this.playerCardCount == 7) {
+
+        if (this.playerCardCount == 8 || this.playerCardCount == 9 || this.dealerCardCount == 9 || this.dealerCardCount == 8) {
+            return;
+        }
+        if (this.playerCardCount == 6 || this.playerCardCount == 7) {
             if (this.dealerCardCount >= 0 && this.dealerCardCount <= 5) {
                 this.dealerThirdDraw();
             }

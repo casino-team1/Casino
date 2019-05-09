@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="599.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Baccara.Controller.BaccaraRulesController">
+   <children>
+      <ImageView fitHeight="895.0" fitWidth="1120.0" layoutX="-71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Baccara/tableBackground.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="436.0" layoutY="48.0" text="Spielanleitung" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Pane layoutX="277.0" layoutY="97.0" prefHeight="271.0" prefWidth="496.0" style="-fx-background-color: White;">
+         <children>
+            <ImageView fitHeight="284.0" fitWidth="508.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Baccara/baccaraCardValues.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label fx:id="gameText" layoutX="27.0" layoutY="386.0" prefHeight="158.0" prefWidth="688.0" text="Placeholder" textFill="WHITE" wrapText="true" />
+   </children>
+</AnchorPane>

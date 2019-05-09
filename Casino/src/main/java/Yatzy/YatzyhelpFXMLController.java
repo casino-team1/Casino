@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -35,6 +36,16 @@ public class YatzyhelpFXMLController implements Initializable {
     private void pressbtnclose(ActionEvent event) {
         Stage stage = (Stage) btnclose.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void exitbtnclose(MouseEvent event) {
+        btnclose.setStyle("-fx-background-color: rgba(1, 1, 1, 0); -fx-border-color: black; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterbtnclose(MouseEvent event) {
+        btnclose.setStyle("-fx-background-color: rgba(1, 1, 1, .1); -fx-border-color: black; -fx-border-width: 3;");
     }
     
 }

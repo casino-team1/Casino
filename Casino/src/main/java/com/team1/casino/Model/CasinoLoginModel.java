@@ -44,10 +44,10 @@ public class CasinoLoginModel {
         this.currentPlayer = new Spieler(username.getValue(), password.getValue());
         UserUtil playerUtil = new UserUtil();
         if (playerUtil.isUniqueUsername(currentPlayer.getUsername()) == true) {
-            return "Gegebener Nutzernamen ist nicht vergeben";
+            return "Gegebener Nutzername ist nicht vergeben";
         }
         if (currentPlayer.isValidPlayer() == false) {
-            return "Gegebens Passwort ist ungültig.";
+            return "Gegebenes Passwort ist ungültig.";
         }
         currentPlayer.loadUserInformation();
         PlayerCentral.getInstance().setUser(currentPlayer);

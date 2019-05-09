@@ -24,9 +24,9 @@ public class MailUtil {
     private final String secureCode;
     private final String preparedMessage;
 
-    private String signature = "Wilkommen zum MountainnView Casino in Los Angeles.\n"
+    private String signature = "Willkommen zum MountainView Casino in Baden.\n"
             + "Wir sind erreichbar unter:\nEmail: mountainviewcasino@gmail.com \n"
-            + "Tel: In Arbeit \n Wir bieten Ihnen die besten Spiele und die besten Gewinnchangen der ganzen Stadt."
+            + "Tel: In Arbeit \n Wir bieten Ihnen die besten Spiele und die besten Gewinnchancen der ganzen Stadt."
             + " Bei uns sitzen Sie nie auf dem Trocknen.";
 
     public MailUtil(String emailAdress, String secureCode, String preparedMessage) {
@@ -60,8 +60,8 @@ public class MailUtil {
                 message.setFrom(new InternetAddress("mountainviewcasino@gmail.com"));
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(emailAdress));
-                message.setSubject("Welcome to Casino MountainView");
-                message.setText("Sehr geehrter " + PlayerCentral.getInstance().getUser().getUsername() + "\n Wir freuen Sie auf unseren kleinen Platform wilkommen zu heissen\nIn diesem Email ist ihr Zugangscode mitgelegt.\n Wir danken für Ihr vertrauen und wünschen Ihnen einen schönen Tag. Ihr Zugangscode lautet:" + secureCode + "\n\n" + signature);
+                message.setSubject("Willkommen beim Casino MountainView");
+                message.setText("Sehr geehrter " + PlayerCentral.getInstance().getUser().getUsername() + "\n Wir freuen uns, Sie auf unseren kleinen Plattform willkommen zu heissen\nIn diesem Email ist ihr Zugangscode mitgelegt.\n Wir danken Ihnen für Ihr Vertrauen und wünschen Ihnen einen schönen Tag. Ihr Zugangscode lautet:\n" + secureCode + "\n\n" + signature);
                 Transport.send(message);
                 System.out.println("Message sent");
             } catch (MessagingException e) {

@@ -94,7 +94,7 @@ public class ExchangeFXMLController implements Initializable {
                 } else {
                     if (jetonsField.getText().equals("")) {
                     } else {
-                        moneyField.setText(Integer.toString((int) Math.round(Double.parseDouble(jetonsField.getText()) / 100)));
+                        moneyField.setText(Integer.toString((int)(Double.parseDouble(jetonsField.getText()) / 100)));
                     }
                 }
             }
@@ -115,7 +115,7 @@ public class ExchangeFXMLController implements Initializable {
     @FXML
     private void typeJetonsField(KeyEvent event) {
         if (jetonsField.getText().equals("") == false) {
-            moneyField.setText(Integer.toString(Integer.parseInt(jetonsField.getText()) / 100));
+            moneyField.setText(Integer.toString((int)(Double.parseDouble(jetonsField.getText()) / 100)));
         }
     }
 
@@ -203,7 +203,7 @@ public class ExchangeFXMLController implements Initializable {
                 nothundred = true;
             } else {
                 jetoncalc = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance() - Integer.parseInt(jetonsField.getText());
-                moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() + (int) (Math.floor(Double.parseDouble(moneyField.getText())));
+                moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() +(Integer.parseInt(moneyField.getText()));
             }
         }
         if (nothundred == false) {

@@ -271,7 +271,7 @@ public class BlackJackGameModel {
         textfeldEinsatz.setDisable(false);
         //Hat jemand gewonnen?
         if (spieler.hasGewonnen()) {
-            if (spieler.getKartenSpieler().size() == 2) {
+            if (spieler.getKartenSpieler().size() == 2 && spieler.getKartenWertSpieler() == 21) {
                 gewonnenDurchBlackJack();
             } else {
                 gewonnen();

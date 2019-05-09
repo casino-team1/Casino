@@ -187,6 +187,7 @@ public class ExchangeFXMLController implements Initializable {
     }
 
     private void processAcception() {
+        nothundred = false;
         if (jetonsField.isDisabled() == true) {
             if ("".equals(moneyField.getText())) {
                 errorJetonsLabel.setText("Bitte geben Sie eine Zahl ein");
@@ -202,7 +203,7 @@ public class ExchangeFXMLController implements Initializable {
                 nothundred = true;
             } else {
                 jetoncalc = (int) PlayerCentral.getInstance().getUser().getCurrentChipBalance() - Integer.parseInt(jetonsField.getText());
-                moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() + (int) (Math.round(Double.parseDouble(moneyField.getText())));
+                moneycalc = (int) PlayerCentral.getInstance().getUser().getCurrentMoney() + (int) (Math.floor(Double.parseDouble(moneyField.getText())));
             }
         }
         if (nothundred == false) {
@@ -232,7 +233,7 @@ public class ExchangeFXMLController implements Initializable {
                 jetonsField.setText("");
                 moneyToJetonLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
                 jetonToMoneyLabel.setStyle("-fx-border-width: 3; -fx-background-color: white; -fx-border-color: black;");
-            }
+            }   
         }
     }
 

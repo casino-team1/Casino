@@ -42,8 +42,6 @@ public class RouletteFXMLController implements Initializable {
     private Pane coverPane;
     @FXML
     private Label intBetAmountLabel;
-    @FXML
-    private ImageView fish;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -197,7 +195,15 @@ public class RouletteFXMLController implements Initializable {
 
             }
         });
-
+        neighborField2.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                String stringFromField1 = neighborField1.getText();
+                String stringFromField2 = String.valueOf(neighborField2.getValue());
+                
+                stringBet.set(stringFromField1 + ", " + stringFromField2);
+            }
+        });
         radioTable.setToggleGroup(group);
         radioTable.setSelected(true);
         radioNeighbor.setToggleGroup(group);
@@ -1259,18 +1265,9 @@ public class RouletteFXMLController implements Initializable {
             stringBet.set(stringFromField1 + ", " + stringFromField2);
             errorMessage.setText("");
         }
-    }
-
-    @FXML
-    private void hideImageF(MouseEvent event) {
-        fish.setImage(null);
-
-    }
-
-    @FXML
-    private void showImageF(MouseEvent event) {
-        String fishLoco = "/images/MainScreen/fish.png";
-        fish.setImage(new Image(fishLoco));
+        else {
+            stringBet.set("");
+        }
     }
 
 }

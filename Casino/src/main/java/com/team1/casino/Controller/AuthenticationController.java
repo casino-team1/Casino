@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -29,6 +30,8 @@ public class AuthenticationController implements Initializable, Observer {
     private Button submitButton;
     @FXML
     private TextField accessCodeInput;
+    @FXML
+    private Button goBackButton;
 
     public void setAuthenticationModel(AuthenticationModel model) {
         this.model = model;
@@ -52,6 +55,11 @@ public class AuthenticationController implements Initializable, Observer {
     public void update(Observable o, Object arg) {
         AuthenticationModel model = (AuthenticationModel) o;
         String errorMessage = model.getErrorMessage();
+    }
+
+    @FXML
+    private void goToLoginView(MouseEvent event) {
+        this.model.RegistrationView();
     }
 
 }

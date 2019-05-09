@@ -19,7 +19,23 @@ Wichtige Mittel der Implementation:
 
 Datenbank:
 
-* Wir haben in der Datenbank die 
+* Tabellen:
+  * User
+  * Balance
+  * Statistic
+  * StatisticToPlayser
+  * Game
+
+User:
+    Speichert Informationen über den Spieler, dessen gehashtes Passwort sowie seine Email-Adresse und seinen Nutzernamen. 
+
+Balance:
+    Bildet den Geldbeutel des Spielers ab. Hält information über sein Geld und seine Chips/Jetons. 
+
+Statistic:
+
+    Sicherung der Daten für die bereits gespielten Spiele. Umfasst den Einsatz, den Ausgang und die Änderung im Spielerkonto.
+
 
 
 

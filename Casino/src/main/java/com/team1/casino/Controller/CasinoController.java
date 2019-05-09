@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 public class CasinoController implements Initializable, Observer {
-    
+
     private CasinoModel casinoModel;
     @FXML
     private Button logOutButton;
@@ -30,52 +30,52 @@ public class CasinoController implements Initializable, Observer {
     private Button changePasswordButton;
     @FXML
     private Label usernameLabel;
-    
+
     public void setCasinoModel(CasinoModel model) {
         this.casinoModel = model;
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         balanceLabel.setText("Konto: " + PlayerCentral.getInstance().getUser().getCurrentChipBalance());
         this.usernameLabel.setText(String.format("Wilkommen %s", PlayerCentral.getInstance().getUser().getUsername()));
     }
-    
+
     @Override
     public void update(Observable o, Object arg) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @FXML
     private void mouseClickBlackJack(MouseEvent event) {
         this.casinoModel.startBlackJack();
     }
-    
+
     @FXML
     private void mouseClickBaccara(MouseEvent event) {
         this.casinoModel.startBaccara();
     }
-    
+
     @FXML
     private void clickMouseRoulette(MouseEvent event) {
         this.casinoModel.startRoulette();
     }
-    
+
     @FXML
     private void clickMouseYatzy(MouseEvent event) {
         this.casinoModel.startYatzy();
     }
-    
+
     @FXML
     private void logUserOut(ActionEvent event) {
         this.casinoModel.logOutUser();
     }
-    
+
     @FXML
     private void pressKasseButton(ActionEvent event) {
         this.casinoModel.displayExchange();
     }
-    
+
     @FXML
     private void changePassword(ActionEvent event) {
         PasswordChanger changer = new PasswordChanger();
@@ -97,32 +97,32 @@ public class CasinoController implements Initializable, Observer {
             }
         }
     }
-    
+
     @FXML
     private void exitLogOutButton(MouseEvent event) {
         logOutButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
     }
-    
+
     @FXML
     private void enterLogOutButton(MouseEvent event) {
         logOutButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
-    
+
     @FXML
     private void exitKasseButton(MouseEvent event) {
         kasseButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
     }
-    
+
     @FXML
     private void enterKasseButton(MouseEvent event) {
         kasseButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
-    
+
     @FXML
     private void exitChangePasswordButton(MouseEvent event) {
         changePasswordButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
     }
-    
+
     @FXML
     private void enterChangePasswordButton(MouseEvent event) {
         changePasswordButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");

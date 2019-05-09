@@ -42,7 +42,8 @@ public class PasswordChanger {
         dialog.setHeaderText("Passwort ändern");
 
         ButtonType loginButtonType = new ButtonType("Ändern", ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+        ButtonType cancelButton = new ButtonType("Abbrechen", ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, cancelButton);
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);

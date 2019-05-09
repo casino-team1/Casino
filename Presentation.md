@@ -1,18 +1,26 @@
 # Presentations
 
-Erik:
 
-Herzlich wilkommen zu unserem Vortrag über das Casino was wir über die Programmierwochen implementiert haben.
+Umsetzung:
 
-Zum Inhalt, kurz zeugen wir euch den Leitfaden: Ausgangsalge und das Ziel.
-Der Vorgang sowie die Umsetzt und zuletzt ein Faizt.
-
-Leitfaden:
-
-Als Berufslernende sollen wir eine Digitales Casino mit der Hilfe von Java und JavaFx entwickeln, in welcher die Spieler aus mehreren Spielen auswählen kann. 
+* Spiele sind voneinander unabhängig. Die Spiele interagieren mit der Hauptapplikation und bekommen Ihre Informationen und Ihre Abhängigkeiten von der Hauptapplikation mit gegeben.
+* Somit können ganz einfach neue Spiele an die Applikaiton angehänt werden. Das neue Spiel muss einfach die Abstrakte Klasse Spiel implementieren und kann sofort angehängt werden.
+* Ebenfalls können dadurch gloable Einstellungen und Regeln in der Hauptapplikation festgelegt werden, danach werden diese an die einzelnen Spiele weiter gegebenen.
 
 
-Wir haben zur Umsetztung des Projektes das Vorgensmodell IPERKA benutzt. Dies steht für Informieren, Planen, Entscheiden, Realisieren, Kontrollieren und Auswerten. Diese Punkte haben wir als Grundstruktur für die Umsetzung der Applikation genutzt.
+
+Wichtige Mittel der Implementation:
+
+* Bcrypt
+  * Die Passwörter werden nach erfolgreicher Validierung und Registrierung des Nutzers mit bcrypt gehasht und in der Datenbank gespeichert. Dadurch können die Daten in der Datenbank auch bei erhalt nicht entschlüsselt werden.
+* Ebenfalls haben wir die Registrierung mit einer Email umgesetzt.  Beim Erstellen eines neuen Spielers, bekommt dieser eine Email mit einem Zugangscode. Ohne diesen kann der Account nicht erstellt werden.
 
 
-Den Zeitplan haben wir ebenfalls in die einzelnen Schritte von IPERKA aufgeteilt. Um eine einfache Übersicht zuerhalten, haben wir einen farblich unterstützen Ist und Soll vergleich gemacht.
+
+Datenbank:
+
+* Wir haben in der Datenbank die 
+
+
+
+

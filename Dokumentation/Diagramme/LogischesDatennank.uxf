@@ -49,7 +49,6 @@ gameName varchar(255)
 statistic
 --
 &lt;&lt;PK&gt;&gt; id integer {auto}
-&lt;&lt;FK&gt;&gt; gameID integer {not null}
 bet double
 result varchar(255)
 accountChange double

@@ -40,7 +40,7 @@ public class KartenTest {
         k.kartenErstellen();
         
         //Assert
-        assertEquals(erwarteteAnzahl, k.getKartenSymbole().size());
+        assertEquals(erwarteteAnzahl, k.getCardsSymbole().size());
     }
 
 }

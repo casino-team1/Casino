@@ -40,14 +40,14 @@ public class BlackJackDealerModel {
         this.cards = cards;
         this.cardSymbols = cardSymbol;
         //Hat es genügend Karten?
-        if (k.getAnzahlKartenImKartenDeck() < 1) {
+        if (k.getCardsInDeck() < 1) {
             k.kartenErstellen();
             this.cards = k.getKarten();
         }
         //zufällige Werte
         int randomNumber = 0;
         //Erste Karte an Dealer verteilen
-        randomNumber = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+        randomNumber = r.nextInt(k.getAmountOfCardsInCardsSymbole());
         randomCard = cardSymbol.get(randomNumber);
         if (randomCard.contains("10") || randomCard.contains("J") || randomCard.contains("Q") || randomCard.contains("K")) {
             cardValueDealer += 10;
@@ -71,7 +71,7 @@ public class BlackJackDealerModel {
         dealerCard.setImage(new Image("/images/GameCards/" + randomCard + ".png"));
         labelCardValue.setText("(" + cardValueDealer + ")");
         //Zweite unbekannte Karte an Dealer verteilen
-        randomNumber = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+        randomNumber = r.nextInt(k.getAmountOfCardsInCardsSymbole());
         randomCard = cardSymbol.get(randomNumber);
         if (randomCard.contains("10") || randomCard.contains("J") || randomCard.contains("Q") || randomCard.contains("K")) {
             secondCardValue += 10;
@@ -89,7 +89,7 @@ public class BlackJackDealerModel {
 
     public void secondHit() {
         //Hat es genügend Karten?
-        if (k.getAnzahlKartenImKartenDeck() < 1) {
+        if (k.getCardsInDeck() < 1) {
             k.kartenErstellen();
             this.cards = k.getKarten();
         }
@@ -97,7 +97,7 @@ public class BlackJackDealerModel {
         int randomNumber = 0;
         randomCard = "";
         //Wenn Dealer unter 17 hat, muss er ziehen
-        randomNumber = r.nextInt(k.getAnzahlKartenInKartenSymbole());
+        randomNumber = r.nextInt(k.getAmountOfCardsInCardsSymbole());
         randomCard = cardSymbols.get(randomNumber);
         if (randomCard.contains("10") || randomCard.contains("J") || randomCard.contains("Q") || randomCard.contains("K")) {
             cardValueDealer += 10;

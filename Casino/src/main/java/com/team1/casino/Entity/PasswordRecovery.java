@@ -77,7 +77,7 @@ public class PasswordRecovery {
                     message.setRecipients(Message.RecipientType.TO,
                             InternetAddress.parse(emailAdresse));
                     message.setSubject("Ihr neues Passwort für das MountainView Casino");
-                    message.setText(String.format("Sehr geehrter %s,\n da Sie angegeben haben, dass Sie ihr Passwort vergessen haben, senden wir Ihnen nun ein neues.\n\nIhr Passwort: %s", this.username, newPlainTextPassword));
+                    message.setText(String.format("Sehr geehrter %s,\n da Sie angegeben haben, dass Sie ihr Passwort vergessen haben, senden wir Ihnen nun ein neues.\n\nIhr Passwort lautet:\n%s", this.username, newPlainTextPassword));
                     Transport.send(message);
                 }
             } catch (MessagingException e) {

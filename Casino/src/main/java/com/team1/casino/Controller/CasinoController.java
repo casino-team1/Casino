@@ -82,18 +82,22 @@ public class CasinoController implements Initializable, Observer {
         boolean isValidChange = changer.displayDialog();
         if (isValidChange == true) {
             String newPassword = changer.getNewPassword();
-            if (newPassword.equals(PlayerCentral.getInstance().getUser().getPassword()) == false) {
-                //Run a new thread that changes the password, even if the programm is terminated.
-                Thread thread = new Thread() {
-                    @Override
-                    public void run() {
-                        PlayerCentral.getInstance().getUser().setNewPassword(UserUtil.getHashedPassword(newPassword), newPassword);
-                    }
-                };
-                thread.start();
-                changer.displayMessage("Ihr neues Passwort", String.format("Sie haben Ihr Passwort zu: %s geändert", newPassword));
+            if (newPassword.length() < 6) {
+                changer.displayMessage("Kurzes Passwort.", "Bitte verwenden sie ein Passwort mit mindestens 6 Zeichen.");
             } else {
-                changer.displayMessage("Das scheint mir aber sehr verwandt", "Sie können nicht das gleiche Passwort setzen, welches Sie vorher bereits hatten");
+                if (newPassword.equals(PlayerCentral.getInstance().getUser().getPassword()) == false) {
+                    //Run a new thread that changes the password, even if the programm is terminated.
+                    Thread thread = new Thread() {
+                        @Override
+                        public void run() {
+                            PlayerCentral.getInstance().getUser().setNewPassword(UserUtil.getHashedPassword(newPassword), newPassword);
+                        }
+                    };
+                    thread.start();
+                    changer.displayMessage("Ihr neues Passwort", String.format("Sie haben Ihr Passwort zu: %s geändert", newPassword));
+                } else {
+                    changer.displayMessage("Das scheint mir aber sehr verwandt", "Sie können nicht das gleiche Passwort setzen, welches Sie vorher bereits hatten");
+                }
             }
         }
     }

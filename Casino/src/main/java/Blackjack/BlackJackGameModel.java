@@ -92,23 +92,23 @@ public class BlackJackGameModel {
         balanceLabel.setText("Konto: " + restlichesGeld + "$");
 
         //Vorbereitung
-        spieler.setGewonnen(false);
+        spieler.setWon(false);
         dealer.setWon(false);
         unentschieden = false;
-        k.setAnzahlKartenImKartenDeck(52);
-        k.setAnzahlKartenInKartenSymbole(51);
-        spieler.setKartenWertSpieler(0);
-        spieler.setxKoordinate(0);
+        k.setAmountOfCardsInDeck(52);
+        k.setAmountOfCardsInCardsSymbole(51);
+        spieler.setPlayerCardValues(0);
+        spieler.setxCord(0);
         dealer.setDealerCardValue(0);
         dealer.setSecondCardValue(0);
         dealer.setxKoordinate(0);
-        spieler.clearKartenSpieler();
+        spieler.clearPlayerCards();
         dealer.clearDealerCards();
         karten.clear();
         kartenSymbole.clear();
         k.kartenErstellen();
         karten.putAll(k.getKarten());
-        kartenSymbole.addAll(k.getKartenSymbole());
+        kartenSymbole.addAll(k.getCardsSymbole());
         labelLoesung.setText("");
 
         //Karten mischen
@@ -121,12 +121,12 @@ public class BlackJackGameModel {
         dealer.firstHit(karten, kartenSymbole, dealerKartenPane, labelKartenWertDealer);
 
         //Überprüfung, ob 21 überschritten wurde
-        if (spieler.getKartenWertSpieler() > 21) {
-            spieler.setKartenWertSpielerMinusTen();
-            labelKartenWertDealer.setText(String.valueOf(spieler.getKartenWertSpieler()));
+        if (spieler.getPlayerCardValues() > 21) {
+            spieler.subPlayerCardValuesByTen();
+            labelKartenWertDealer.setText(String.valueOf(spieler.getPlayerCardValues()));
         }
 
-        if (spieler.getKartenWertSpieler() == 9 || spieler.getKartenWertSpieler() == 10 || spieler.getKartenWertSpieler() == 11) {
+        if (spieler.getPlayerCardValues() == 9 || spieler.getPlayerCardValues() == 10 || spieler.getPlayerCardValues() == 11) {
             if (PlayerCentral.getInstance().getUser().getCurrentChipBalance() >= einsatz) {
                 buttonVerdoppeln.setDisable(false);
             }
@@ -145,12 +145,12 @@ public class BlackJackGameModel {
         spieler.hit(karten, kartenSymbole, spielerKartenPane, labelKartenWertSpieler);
 
         //Überprüfung, ob 21 überschritten wurde
-        if (spieler.getKartenWertSpieler() > 21) {
-            if (spieler.getZufallskarte().contains("A")) {
-                spieler.setKartenWertSpielerMinusTen();
-                String j = String.valueOf(spieler.getKartenWertSpieler());
+        if (spieler.getPlayerCardValues() > 21) {
+            if (spieler.getRandomNumber().contains("A")) {
+                spieler.subPlayerCardValuesByTen();
+                String j = String.valueOf(spieler.getPlayerCardValues());
                 labelKartenWertSpieler.setText("(" + j + ")");
-                if (spieler.getKartenWertSpieler() > 21) {
+                if (spieler.getPlayerCardValues() > 21) {
                     dealer.setWon(true);
                     end();
                 }
@@ -159,7 +159,7 @@ public class BlackJackGameModel {
                 end();
             }
         }
-        if (spieler.getKartenWertSpieler() == 9 || spieler.getKartenWertSpieler() == 10 || spieler.getKartenWertSpieler() == 11) {
+        if (spieler.getPlayerCardValues() == 9 || spieler.getPlayerCardValues() == 10 || spieler.getPlayerCardValues() == 11) {
             if (PlayerCentral.getInstance().getUser().getCurrentChipBalance() >= einsatz) {
                 buttonVerdoppeln.setDisable(false);
             }
@@ -198,13 +198,13 @@ public class BlackJackGameModel {
 
         //Werte überprüfen
         if (dealer.getDealerCardValue() > 21) {
-            spieler.setGewonnen(true);
-        } else if (dealer.getDealerCardValue() > spieler.getKartenWertSpieler()) {
+            spieler.setWon(true);
+        } else if (dealer.getDealerCardValue() > spieler.getPlayerCardValues()) {
             dealer.setWon(true);
-        } else if (dealer.getDealerCardValue() == spieler.getKartenWertSpieler()) {
+        } else if (dealer.getDealerCardValue() == spieler.getPlayerCardValues()) {
             unentschieden = true;
-        } else if (dealer.getDealerCardValue() < spieler.getKartenWertSpieler()) {
-            spieler.setGewonnen(true);
+        } else if (dealer.getDealerCardValue() < spieler.getPlayerCardValues()) {
+            spieler.setWon(true);
         } 
 
         end();
@@ -270,8 +270,8 @@ public class BlackJackGameModel {
         buttonPruefung.setDisable(false);
         textfeldEinsatz.setDisable(false);
         //Hat jemand gewonnen?
-        if (spieler.hasGewonnen()) {
-            if (spieler.getKartenSpieler().size() == 2 && spieler.getKartenWertSpieler() == 21) {
+        if (spieler.hasWon()) {
+            if (spieler.getPlayerCards().size() == 2 && spieler.getPlayerCardValues() == 21) {
                 gewonnenDurchBlackJack();
             } else {
                 gewonnen();

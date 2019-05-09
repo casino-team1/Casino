@@ -21,185 +21,173 @@ public class BlackJackSpielerModel {
 
     private int cardsValuePlayer = 0;
 
-    private int xKoordinate = 0;
-    private int yKoordinate = 6;
-    private int karteWidth = 167;
-    private int karteHeight = 237;
+    private int xCord = 0;
+    private int yCord = 6;
+    private int cardWidth = 167;
+    private int cardHeigth = 237;
 
     private Karten k = new Karten();
-    private HashMap<String, Integer> karten = new HashMap<>();
-    private ArrayList<String> kartenSymbole = new ArrayList<>();
-    private ArrayList<String> kartenSpieler = new ArrayList<>();
-    private String zufallskarte = "";
+    private HashMap<String, Integer> cards = new HashMap<>();
+    private ArrayList<String> cardSymbols = new ArrayList<>();
+    private ArrayList<String> playerCards = new ArrayList<>();
+    private String randomCard = "";
 
-    private boolean gewonnen = false;
+    private boolean won = false;
 
-    public void firstHit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Pane spielerKartenPane, Label labelKartenWertSpieler) {
+    public void firstHit(HashMap<String, Integer> cards, ArrayList<String> cardSymbols, Pane playerCardPane, Label playerCardValueLabel) {
         //Parameter einfangen
-        this.karten = karten;
-        this.kartenSymbole = kartenSymbole;
-
+        this.cards = cards;
+        this.cardSymbols = cardSymbols;
         //Hat es genügend Karten?
-        if (k.getAnzahlKartenImKartenDeck() < 1 || k.getAnzahlKartenInKartenSymbole() < 1) {
+        if (k.getCardsInDeck() < 1 || k.getAmountOfCardsInCardsSymbole() < 1) {
             k.kartenErstellen();
-            this.karten = k.getKarten();
+            this.cards = k.getKarten();
         }
-
         //Zufällige Werte
-        int zufallszahl = 0;
+        int randomNumber = 0;
         Random r = new Random();
-        zufallskarte = "";
-
+        randomCard = "";
         //Spieler zieht Karten
-        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
-        zufallskarte = kartenSymbole.get(zufallszahl);
-
-        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+        randomNumber = r.nextInt(k.getAmountOfCardsInCardsSymbole());
+        randomCard = cardSymbols.get(randomNumber);
+        if (randomCard.contains("10") || randomCard.contains("J") || randomCard.contains("Q") || randomCard.contains("K")) {
             cardsValuePlayer += 10;
-        } else if (zufallskarte.contains("A")) {
+        } else if (randomCard.contains("A")) {
             cardsValuePlayer += 11;
         } else {
-            cardsValuePlayer += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
+            cardsValuePlayer += cards.get(("/images/GameCards/" + randomCard + ".png"));
         }
-        kartenSpieler.add(zufallskarte);
-        karten.remove("/images/GameCards/" + zufallskarte + ".png");
-        kartenSymbole.remove(zufallskarte);
+        playerCards.add(randomCard);
+        cards.remove("/images/GameCards/" + randomCard + ".png");
+        cardSymbols.remove(randomCard);
         k.subAmountOfCardsInDeck();
         k.subAmountOfCardSymbols();
 
         //Karte anzeigen
-        ImageView spielerKarte = new ImageView();
-        spielerKartenPane.getChildren().add(spielerKarte);
-        spielerKarte.setLayoutX(xKoordinate);
-        spielerKarte.setLayoutY(yKoordinate);
-        spielerKarte.setFitWidth(karteWidth);
-        spielerKarte.setFitHeight(karteHeight);
-        spielerKarte.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-
+        ImageView playerCard = new ImageView();
+        playerCardPane.getChildren().add(playerCard);
+        playerCard.setLayoutX(xCord);
+        playerCard.setLayoutY(yCord);
+        playerCard.setFitWidth(cardWidth);
+        playerCard.setFitHeight(cardHeigth);
+        playerCard.setImage(new Image("/images/GameCards/" + randomCard + ".png"));
         //zweites Mal Karte ziehen
         //Zufällige Werte
-        zufallszahl = 0;
+        randomNumber = 0;
         r = new Random();
-        zufallskarte = "";
-
+        randomCard = "";
         //Spieler zieht Karten
-        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
-        zufallskarte = kartenSymbole.get(zufallszahl);
-
-        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+        randomNumber = r.nextInt(k.getAmountOfCardsInCardsSymbole());
+        randomCard = cardSymbols.get(randomNumber);
+        if (randomCard.contains("10") || randomCard.contains("J") || randomCard.contains("Q") || randomCard.contains("K")) {
             cardsValuePlayer += 10;
-        } else if (zufallskarte.contains("A")) {
+        } else if (randomCard.contains("A")) {
             cardsValuePlayer += 11;
         } else {
-            cardsValuePlayer += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
+            cardsValuePlayer += cards.get(("/images/GameCards/" + randomCard + ".png"));
         }
-        kartenSpieler.add(zufallskarte);
-        karten.remove("/images/GameCards/" + zufallskarte + ".png");
-        kartenSymbole.remove(zufallskarte);
+        playerCards.add(randomCard);
+        cards.remove("/images/GameCards/" + randomCard + ".png");
+        cardSymbols.remove(randomCard);
         k.subAmountOfCardsInDeck();
         k.subAmountOfCardSymbols();
 
         //Karte anzeigen
-        ImageView neusteSpielerKarte = new ImageView();
-        spielerKartenPane.getChildren().add(neusteSpielerKarte);
-        neusteSpielerKarte.setLayoutX(xKoordinate += 34);
-        neusteSpielerKarte.setLayoutY(yKoordinate);
-        neusteSpielerKarte.setFitWidth(karteWidth);
-        neusteSpielerKarte.setFitHeight(karteHeight);
-        neusteSpielerKarte.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertSpieler.setText("(" + cardsValuePlayer + ")");
+        ImageView latestPlayerCard = new ImageView();
+        playerCardPane.getChildren().add(latestPlayerCard);
+        latestPlayerCard.setLayoutX(xCord += 34);
+        latestPlayerCard.setLayoutY(yCord);
+        latestPlayerCard.setFitWidth(cardWidth);
+        latestPlayerCard.setFitHeight(cardHeigth);
+        latestPlayerCard.setImage(new Image("/images/GameCards/" + randomCard + ".png"));
+        playerCardValueLabel.setText("(" + cardsValuePlayer + ")");
     }
 
-    public void hit(HashMap<String, Integer> karten, ArrayList<String> kartenSymbole, Pane spielerKartenPane, Label labelKartenWertSpieler) {
-
+    public void hit(HashMap<String, Integer> cards, ArrayList<String> cardSymbols, Pane playerCardPane, Label playerCardValueLabel) {
         //Hat es genügend Karten?
-        if (k.getAnzahlKartenImKartenDeck() < 1) {
+        if (k.getCardsInDeck() < 1) {
             k.kartenErstellen();
-            this.karten = k.getKarten();
+            this.cards = k.getKarten();
         }
-
         int zufallszahl = 0;
         Random r = new Random();
-        zufallskarte = "";
-
+        randomCard = "";
         //Spieler zieht Karten
-        zufallszahl = r.nextInt(k.getAnzahlKartenInKartenSymbole());
-        zufallskarte = kartenSymbole.get(zufallszahl);
-
-        if (zufallskarte.contains("10") || zufallskarte.contains("J") || zufallskarte.contains("Q") || zufallskarte.contains("K")) {
+        zufallszahl = r.nextInt(k.getAmountOfCardsInCardsSymbole());
+        randomCard = cardSymbols.get(zufallszahl);
+        if (randomCard.contains("10") || randomCard.contains("J") || randomCard.contains("Q") || randomCard.contains("K")) {
             cardsValuePlayer += 10;
-        } else if (zufallskarte.contains("A")) {
+        } else if (randomCard.contains("A")) {
             cardsValuePlayer += 11;
         } else {
-            cardsValuePlayer += karten.get(("/images/GameCards/" + zufallskarte + ".png"));
+            cardsValuePlayer += cards.get(("/images/GameCards/" + randomCard + ".png"));
         }
-        kartenSpieler.add(zufallskarte);
-        karten.remove("/images/GameCards/" + zufallskarte + ".png");
-        kartenSymbole.remove(zufallskarte);
+        playerCards.add(randomCard);
+        cards.remove("/images/GameCards/" + randomCard + ".png");
+        cardSymbols.remove(randomCard);
         k.subAmountOfCardsInDeck();
         k.subAmountOfCardSymbols();
-
         //Karte anzeigen
-        ImageView neusteSpielerKarte = new ImageView();
-        spielerKartenPane.getChildren().add(neusteSpielerKarte);
-        neusteSpielerKarte.setLayoutX(xKoordinate += 34);
-        neusteSpielerKarte.setLayoutY(yKoordinate);
-        neusteSpielerKarte.setFitWidth(karteWidth);
-        neusteSpielerKarte.setFitHeight(karteHeight);
-        neusteSpielerKarte.setImage(new Image("/images/GameCards/" + zufallskarte + ".png"));
-        labelKartenWertSpieler.setText("(" + cardsValuePlayer + ")");
+        ImageView latestPlayerCardValues = new ImageView();
+        playerCardPane.getChildren().add(latestPlayerCardValues);
+        latestPlayerCardValues.setLayoutX(xCord += 34);
+        latestPlayerCardValues.setLayoutY(yCord);
+        latestPlayerCardValues.setFitWidth(cardWidth);
+        latestPlayerCardValues.setFitHeight(cardHeigth);
+        latestPlayerCardValues.setImage(new Image("/images/GameCards/" + randomCard + ".png"));
+        playerCardValueLabel.setText("(" + cardsValuePlayer + ")");
     }
 
-    public void setGewonnen(boolean g) {
-        this.gewonnen = g;
+    public void setWon(boolean g) {
+        this.won = g;
     }
 
-    public boolean hasGewonnen() {
-        return gewonnen;
+    public boolean hasWon() {
+        return won;
     }
 
-    public int getKartenWertSpieler() {
+    public int getPlayerCardValues() {
         return cardsValuePlayer;
     }
 
-    public void setKartenWertSpieler(int i) {
+    public void setPlayerCardValues(int i) {
         this.cardsValuePlayer = i;
     }
 
-    public void setKartenWertSpielerMinusTen() {
+    public void subPlayerCardValuesByTen() {
         cardsValuePlayer -= 10;
     }
 
-    public String getZufallskarte() {
-        return zufallskarte;
+    public String getRandomNumber() {
+        return randomCard;
     }
 
-    public ArrayList<String> getKartenSpieler() {
-        return kartenSpieler;
+    public ArrayList<String> getPlayerCards() {
+        return playerCards;
     }
 
-    public void clearKartenSpieler() {
-        kartenSpieler.clear();
+    public void clearPlayerCards() {
+        playerCards.clear();
     }
 
-    public int getxKoordinate() {
-        return xKoordinate;
+    public int getxCord() {
+        return xCord;
     }
 
-    public void setxKoordinate(int i) {
-        this.xKoordinate = i;
+    public void setxCord(int i) {
+        this.xCord = i;
     }
 
-    public int getyKoordinate() {
-        return yKoordinate;
+    public int getyCord() {
+        return yCord;
     }
 
-    public int getKarteWidth() {
-        return karteWidth;
+    public int getCardWidth() {
+        return cardWidth;
     }
 
-    public int getKarteHeight() {
-        return karteHeight;
+    public int getCardHeigth() {
+        return cardHeigth;
     }
 
 }

@@ -40,7 +40,6 @@ public class PasswordChanger {
         Dialog<Pair<String, String>> dialog = new Dialog<>();
         dialog.setTitle("Ändere dein Passwort");
         dialog.setHeaderText("Passwort ändern");
-
         ButtonType loginButtonType = new ButtonType("Ändern", ButtonData.OK_DONE);
         ButtonType cancelButton = new ButtonType("Abbrechen", ButtonData.CANCEL_CLOSE);
         dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, cancelButton);

@@ -14,83 +14,81 @@ import java.util.HashMap;
  */
 public class Karten {
 
-    private HashMap<String, Integer> karten = new HashMap<>();
-    private ArrayList<String> kartenSymbole = new ArrayList<String>();
+    private HashMap<String, Integer> cards = new HashMap<>();
+    private ArrayList<String> cardsSymbols = new ArrayList<String>();
 
-    private int anzahlKartenImKartenDeck = 52;
-    private int anzahlKartenInKartenSymbole = 51;
+    private int cardsInDeck = 52;
+    private int cardsInSymboles = 51;
 
     public void kartenErstellen() {
-        karten.clear();
-        kartenSymbole.clear();
-
+        cards.clear();
+        cardsSymbols.clear();
         String[] special = {"J", "K", "Q"};
         String[] symbols = {"C", "H", "S", "D"};
         String format = "/images/GameCards/%s%s.png";
-
         //kartendeck
         for (int i = 1; i < 10; i++) {
             for (String symbol : symbols) {
-                karten.put((String.format(format, String.valueOf(i + 1), symbol)), i + 1);
+                cards.put((String.format(format, String.valueOf(i + 1), symbol)), i + 1);
             }
         }
         for (String speci : special) {
             for (String symbol : symbols) {
-                karten.put((String.format(format, speci, symbol)), 10);
+                cards.put((String.format(format, speci, symbol)), 10);
             }
         }
         for (String symb : symbols) {
-            karten.put((String.format(format, "A", symb)), 11);
+            cards.put((String.format(format, "A", symb)), 11);
         }
 
         //kartenSymbole
         for (int i = 2; i <= 10; i++) {
             for (String j : symbols) {
-                kartenSymbole.add(i + j);
+                cardsSymbols.add(i + j);
             }
         }
 
         for (String s : special) {
             for (String sy : symbols) {
-                kartenSymbole.add(s + sy);
+                cardsSymbols.add(s + sy);
             }
         }
 
         for (String sy : symbols) {
-            kartenSymbole.add("A" + sy);
+            cardsSymbols.add("A" + sy);
         }
     }
 
     public HashMap<String, Integer> getKarten() {
-        return karten;
+        return cards;
     }
 
-    public ArrayList<String> getKartenSymbole() {
-        return kartenSymbole;
+    public ArrayList<String> getCardsSymbole() {
+        return cardsSymbols;
     }
 
-    public int getAnzahlKartenImKartenDeck() {
-        return anzahlKartenImKartenDeck;
+    public int getCardsInDeck() {
+        return cardsInDeck;
     }
 
     public void subAmountOfCardsInDeck() {
-        this.anzahlKartenImKartenDeck--;
+        this.cardsInDeck--;
     }
 
-    public void setAnzahlKartenImKartenDeck(int i) {
-        this.anzahlKartenImKartenDeck = i;
+    public void setAmountOfCardsInDeck(int i) {
+        this.cardsInDeck = i;
     }
 
     public void subAmountOfCardSymbols() {
-        this.anzahlKartenInKartenSymbole--;
+        this.cardsInSymboles--;
     }
 
-    public void setAnzahlKartenInKartenSymbole(int i) {
-        this.anzahlKartenInKartenSymbole = i;
+    public void setAmountOfCardsInCardsSymbole(int i) {
+        this.cardsInSymboles = i;
     }
 
-    public int getAnzahlKartenInKartenSymbole() {
-        return anzahlKartenInKartenSymbole;
+    public int getAmountOfCardsInCardsSymbole() {
+        return cardsInSymboles;
     }
 
 }

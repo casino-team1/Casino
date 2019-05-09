@@ -14,23 +14,23 @@ import java.util.HashMap;
  */
 public class Rules {
 
-    private int subresult;
+    private int subResult;
     private int total;
-    private int uppertotal;
-    private int lowertotal;
-    private int uppercounter = 0;
-    private int bonusuppertotal;
-    private int lowercounter = 0;
-    private int betnum = 0;
+    private int upperTotal;
+    private int lowerTotal;
+    private int upperCounter = 0;
+    private int bonusUpperTotal;
+    private int lowerCounter = 0;
+    private int betNum = 0;
     private int win;
-    private int winamount;
-    private int newamount;
+    private int winAmount;
+    private int newAmount;
     private int balance;
-    private boolean upperbool = false;
-    private boolean lowerbool = false;
+    private boolean upperBool = false;
+    private boolean lowerBool = false;
 
-    public int createSubresult(String label, ArrayList<Dice> dicearray) {
-        subresult = 0;
+    public int createSubResult(String label, ArrayList<Dice> dicearray) {
+        subResult = 0;
         HashMap<Integer, Integer> dicemap = new HashMap<>();
         for (int i = 1; i < 7; i++) {
             dicemap.put(i, 0);
@@ -46,52 +46,52 @@ public class Rules {
         switch (label) {
 
             case "EINER":
-                subresult = dicemap.get(1);
-                uppertotal += subresult;
-                uppercounter++;
+                subResult = dicemap.get(1);
+                upperTotal += subResult;
+                upperCounter++;
                 break;
             case "ZWEIER":
-                subresult = 2 * dicemap.get(2);
-                uppertotal += subresult;
-                uppercounter++;
+                subResult = 2 * dicemap.get(2);
+                upperTotal += subResult;
+                upperCounter++;
                 break;
             case "DREIER":
-                subresult = 3 * dicemap.get(3);
-                uppertotal += subresult;
-                uppercounter++;
+                subResult = 3 * dicemap.get(3);
+                upperTotal += subResult;
+                upperCounter++;
                 break;
             case "VIERER":
-                subresult = 4 * dicemap.get(4);
-                uppertotal += subresult;
-                uppercounter++;
+                subResult = 4 * dicemap.get(4);
+                upperTotal += subResult;
+                upperCounter++;
                 break;
             case "FÜNFER":
-                subresult = 5 * dicemap.get(5);
-                uppertotal += subresult;
-                uppercounter++;
+                subResult = 5 * dicemap.get(5);
+                upperTotal += subResult;
+                upperCounter++;
                 break;
             case "SECHSER":
-                subresult = 6 * dicemap.get(6);
-                uppertotal += subresult;
-                uppercounter++;
+                subResult = 6 * dicemap.get(6);
+                upperTotal += subResult;
+                upperCounter++;
                 break;
             case "DREI GLEICHE":
                 for (int i = 1; i < 7; i++) {
                     if (dicemap.get(i) == 3 || dicemap.get(i) == 4 || dicemap.get(i) == 5) {
-                        subresult = i * 3;
+                        subResult = i * 3;
                     }
                 }
-                lowertotal += subresult;
-                lowercounter++;
+                lowerTotal += subResult;
+                lowerCounter++;
                 break;
             case "VIER GLEICHE":
                 for (int i = 1; i < 7; i++) {
                     if (dicemap.get(i) == 4 || dicemap.get(i) == 5) {
-                        subresult = i * 4;
+                        subResult = i * 4;
                     }
                 }
-                lowertotal += subresult;
-                lowercounter++;
+                lowerTotal += subResult;
+                lowerCounter++;
                 break;
             case "FULL HOUSE":
                 int re;
@@ -102,107 +102,107 @@ public class Rules {
                         for (int j = 1; j < 7; j++) {
                             if (dicemap.get(j) == 2) {
                                 sult = j * 2;
-                                subresult = re + sult;
+                                subResult = re + sult;
                             }
                         }
                     }
                 }
-                lowertotal += subresult;
-                lowercounter++;
+                lowerTotal += subResult;
+                lowerCounter++;
                 break;
             case "KLEINE STRASSE":
                 if (dicemap.get(1) == 1 && dicemap.get(2) == 1 && dicemap.get(3) == 1 && dicemap.get(4) == 1 && dicemap.get(5) == 1) {
-                    subresult = 15;
+                    subResult = 15;
                 }
-                lowertotal += subresult;
-                lowercounter++;
+                lowerTotal += subResult;
+                lowerCounter++;
                 break;
             case "GROSSE STRASSE":
                 if (dicemap.get(2) == 1 && dicemap.get(3) == 1 && dicemap.get(4) == 1 && dicemap.get(5) == 1 && dicemap.get(6) == 1) {
-                    subresult = 20;
+                    subResult = 20;
                 }
-                lowertotal += subresult;
-                lowercounter++;
+                lowerTotal += subResult;
+                lowerCounter++;
                 break;
             case "YATZY":
                 for (int i = 1; i < 7; i++) {
                     if (dicemap.get(i) == 5) {
-                        subresult = 50;
+                        subResult = 50;
                     }
                 }
-                lowertotal += subresult;
-                lowercounter++;
+                lowerTotal += subResult;
+                lowerCounter++;
                 break;
             case "CHANCE":
                 for (int i = 0; i < 5; i++) {
-                    subresult += dicearray.get(i).getValue();
+                    subResult += dicearray.get(i).getValue();
                 }
-                lowertotal += subresult;
-                lowercounter++;
+                lowerTotal += subResult;
+                lowerCounter++;
                 break;
         }
-        return subresult;
+        return subResult;
     }
 
     public void totalChecker() {
-        if (uppercounter == 6) {
-            upperbool = true;
-            if (uppertotal >= 63) {
-                bonusuppertotal = uppertotal + 35;
+        if (upperCounter == 6) {
+            upperBool = true;
+            if (upperTotal >= 63) {
+                bonusUpperTotal = upperTotal + 35;
             } else {
-                bonusuppertotal = uppertotal;
+                bonusUpperTotal = upperTotal;
             }
         }
-        if (lowercounter == 7) {
-            lowerbool = true;
+        if (lowerCounter == 7) {
+            lowerBool = true;
         }
 
-        if (upperbool == true && lowerbool == true) {
-            total = lowertotal + bonusuppertotal;
+        if (upperBool == true && lowerBool == true) {
+            total = lowerTotal + bonusUpperTotal;
         }
     }
 
     public void checkwin(int enemytotal) {
         if (total > enemytotal) {
             win = 1;
-            winamount = betnum + betnum;
-            newamount = balance + winamount;
-            //newamount = UserCentral.getInstance().getUser().getCurrentBalance() + winamount;
+            winAmount = betNum + betNum;
+            newAmount = balance + winAmount;
+            //newamount = UserCentral.getInstance().getUser().getCurrentBalance() + winAmount;
 
-            //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
+            //UserCentral.getInstance().getUser().setCurrentBalance(newAmount);
         } else if (total < enemytotal) {
             win = 2;
-            winamount = 0;
-            newamount = balance + winamount;
-            //newamount = UserCentral.getInstance().getUser().getCurrentBalance() - winamount;
-            //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
+            winAmount = 0;
+            newAmount = balance + winAmount;
+            //newamount = UserCentral.getInstance().getUser().getCurrentBalance() - winAmount;
+            //UserCentral.getInstance().getUser().setCurrentBalance(newAmount);
         } else {
             win = 3;
-            winamount = betnum;
-            newamount = balance + winamount;
-            //newamount = UserCentral.getInstance().getUser().getCurrentBalance() + winamount;
-            //UserCentral.getInstance().getUser().setCurrentBalance(newamount);
+            winAmount = betNum;
+            newAmount = balance + winAmount;
+            //newamount = UserCentral.getInstance().getUser().getCurrentBalance() + winAmount;
+            //UserCentral.getInstance().getUser().setCurrentBalance(newAmount);
         }
     }
 
     public int getUppertotal() {
-        return uppertotal;
+        return upperTotal;
     }
 
     public int getLowertotal() {
-        return lowertotal;
+        return lowerTotal;
     }
 
     public int getBonusUppertotal() {
-        return bonusuppertotal;
+        return bonusUpperTotal;
     }
 
     public boolean isUpperbool() {
-        return upperbool;
+        return upperBool;
     }
 
     public boolean isLowerbool() {
-        return lowerbool;
+        return lowerBool;
     }
 
     public int getTotal() {
@@ -210,35 +210,35 @@ public class Rules {
     }
 
     public void setUppercounter(int uppercounter) {
-        this.uppercounter = uppercounter;
+        this.upperCounter = uppercounter;
     }
 
     public void setLowercounter(int lowercounter) {
-        this.lowercounter = lowercounter;
+        this.lowerCounter = lowercounter;
     }
 
     public void setUpperbool(boolean upperbool) {
-        this.upperbool = upperbool;
+        this.upperBool = upperbool;
     }
 
     public void setLowerbool(boolean lowerbool) {
-        this.lowerbool = lowerbool;
+        this.lowerBool = lowerbool;
     }
 
     public void setUppertotal(int uppertotal) {
-        this.uppertotal = uppertotal;
+        this.upperTotal = uppertotal;
     }
 
     public void setLowertotal(int lowertotal) {
-        this.lowertotal = lowertotal;
+        this.lowerTotal = lowertotal;
     }
 
     public int getBetnum() {
-        return betnum;
+        return betNum;
     }
 
     public void setBetnum(int betnum) {
-        this.betnum = betnum;
+        this.betNum = betnum;
     }
 
     public int getWin() {
@@ -246,11 +246,11 @@ public class Rules {
     }
 
     public int getWinAmount() {
-        return winamount;
+        return winAmount;
     }
 
     public int getNewAmount() {
-        return newamount;
+        return newAmount;
     }
 
     public void setBalance(int balance) {

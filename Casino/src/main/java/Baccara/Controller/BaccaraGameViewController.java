@@ -42,6 +42,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
@@ -112,6 +113,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
     @FXML
     private Button helpButton;
 
+    private JFXCustomCursor customCursor;
+
     /**
      *
      * Initializes the controller class.
@@ -138,14 +141,16 @@ public class BaccaraGameViewController implements Initializable, Observer {
                     this.draggable = new ImageView();
                     this.draggable.setImage(view.getImage());
                     Image cursorImage = this.draggable.getImage();
-                    ImageCursor cursor;
                     int imageSize = 100;
                     if (PlatformUtil.isWindows()) {
-                        cursor = new ImageCursor(cursorImage, imageSize * 2, imageSize * 2);
+                        BorderPane borderPane = new BorderPane();
+                        borderPane.getChildren().add(new ImageView(view.getImage()));
+                        customCursor = new JFXCustomCursor(this.gameModel.setCursor(), this.anchro, borderPane, 0, 0);
                     } else {
+                        ImageCursor cursor;
                         cursor = new ImageCursor(cursorImage);
+                        this.gameModel.setCursor().setCursor(cursor);
                     }
-                    this.gameModel.setCursor().setCursor(cursor);
                 }
             });
         }
@@ -185,6 +190,9 @@ public class BaccaraGameViewController implements Initializable, Observer {
                             PlayerCentral.getInstance().getUser().setNewChipBalance(PlayerCentral.getInstance().getUser().getCurrentChipBalance() - betValue);
                             updateBalanceAndBet();
                         }
+                    }
+                    if (PlatformUtil.isWin7OrLater()) {
+                        customCursor.unRegister();
                     }
                     coinSelected = 0;
                     this.draggable = null;

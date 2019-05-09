@@ -32,7 +32,7 @@ public class BaccaraRulesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.gameText.setAlignment(Pos.BASELINE_CENTER);
-        String gameRules = "Bei Baccara kann der Spieler drei Aktionen tätigen. Diese sind: \n*    Jetons auf den Spieler setzen\n*    Jetons auf den Dealer setzen\n*     Jetons auf ein Unentschieden setzen.\n\nBis auf das setzen der Jetons"
+        String gameRules = "Bei Baccara kann der Spieler drei Aktionen tätigen. Diese sind: \n*    Jetons auf den Spieler setzen\n*    Jetons auf den Dealer setzen\n*    Jetons auf ein Unentschieden setzen.\n\nBis auf das setzen der Jetons"
                 + "hat der Spieler keinen Einfluss auf den Ausgang des Spieles.\nDie Karten für Spieler und Dealer werden nach den Regeln von Baccara gezogen.\nDas Ziel von Baccara ist es, mit den gegebenen Karten näher an den Kartenwert 9 heranzukommen.\n"
                 + "Folgend sind die Regeln der Kartenziehung.\n";
         gameRules += "Spieler \n\n";

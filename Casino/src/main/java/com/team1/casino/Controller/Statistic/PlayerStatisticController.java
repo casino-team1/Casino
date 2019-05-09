@@ -15,7 +15,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,7 +24,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -37,9 +35,9 @@ public class PlayerStatisticController implements Initializable, Observer {
     private PlayerStatisticModel model;
 
     @FXML
-    private ComboBox<String> nutzernamen;
+    private ComboBox<String> userName;
     @FXML
-    private LineChart<String, Double> kontostandChart;
+    private LineChart<Number, Double> bettChangeChart;
     @FXML
     private TableView<Statistic> statisticTable;
     @FXML
@@ -51,44 +49,44 @@ public class PlayerStatisticController implements Initializable, Observer {
     @FXML
     private TableColumn<Statistic, String> ChangeCol;
     @FXML
-    private Button back;
+    private Button goBackButton;
 
     public void setPlayerStatisticModel(PlayerStatisticModel model) {
         this.model = model;
         for (String username : model.getUsernameListing()) {
-            this.nutzernamen.getItems().add(username);
+            this.userName.getItems().add(username);
         }
     }
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setHandlingOfStatsForTable();
+
     }
 
     private void setHandlingOfStatsForTable() {
-        gameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Statistic, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Statistic, String> p) {
-                if (p.getValue() != null) {
-                    return new SimpleStringProperty(p.getValue().getGameName());
-                } else {
-                    return new SimpleStringProperty("No Game");
-                }
+        gameCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
+            if (p.getValue() != null) {
+                return new SimpleStringProperty(p.getValue().getGameName());
+            } else {
+                return new SimpleStringProperty("No Game");
             }
         });
-        ResCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Statistic, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Statistic, String> p) {
-                if (p.getValue() != null) {
-                    return new SimpleStringProperty(p.getValue().getResult());
-                } else {
-                    return new SimpleStringProperty("No Result");
-                }
+        gameCol.setSortable(false);
+        ResCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
+            if (p.getValue() != null) {
+                return new SimpleStringProperty(p.getValue().getResult());
+            } else {
+                return new SimpleStringProperty("No Result");
             }
         });
+        ResCol.setSortable(false);
         betCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
             if (p.getValue() != null) {
                 return new SimpleStringProperty(String.valueOf(p.getValue().getBet()));
@@ -96,6 +94,7 @@ public class PlayerStatisticController implements Initializable, Observer {
                 return new SimpleStringProperty("No Bet");
             }
         });
+        betCol.setSortable(false);
         ChangeCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
             if (p.getValue() != null) {
                 return new SimpleStringProperty(String.valueOf(p.getValue().getUserAccountChange()));
@@ -103,38 +102,40 @@ public class PlayerStatisticController implements Initializable, Observer {
                 return new SimpleStringProperty("No Change");
             }
         });
+        ChangeCol.setSortable(false);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void update(Observable o, Object arg) {
         PlayerStatisticModel playerModel = (PlayerStatisticModel) o;
-        XYChart.Series<String, Double> series = getPopulatedPlayerBalanceSeries();
-        this.kontostandChart.getData().add(series);
-        this.kontostandChart.setCreateSymbols(false);
+        XYChart.Series<Number, Double> series = getPopulatedPlayerBalanceSeries();
+        this.bettChangeChart.getData().add(series);
+        this.bettChangeChart.setCreateSymbols(false);
         this.statisticTable.getItems().clear();
-        for (Statistic stat : playerModel.getStats()) {
+        playerModel.getStats().forEach((stat) -> {
             this.statisticTable.getItems().add(stat);
-        }
+        });
     }
 
-    private XYChart.Series<String, Double> getPopulatedPlayerBalanceSeries() {
+    private XYChart.Series<Number, Double> getPopulatedPlayerBalanceSeries() {
         ArrayList<Double> accountbalances = model.getAccountValues();
-        XYChart.Series<String, Double> series = new XYChart.Series<>();
+        XYChart.Series<Number, Double> series = new XYChart.Series<>();
         int counter = 0;
-        this.kontostandChart.getData().clear();
-        series.getData().add(new XYChart.Data<>(String.valueOf(counter + 20), 0.0));
+        this.bettChangeChart.getData().clear();
+        series.getData().add(new XYChart.Data<>(counter, 0.0));
         counter++;
         for (double value : accountbalances) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(counter + 20), value));
+            series.getData().add(new XYChart.Data<>(counter, value));
             counter++;
         }
+        series.setName(String.format("Statistik für %s", this.model.getSelectedPlayer().getValue()));
         return series;
     }
 
     @FXML
     private void selectionChanged(ActionEvent event) throws SQLException {
-        this.model.setSelectePlayer(this.nutzernamen.getValue());
+        this.model.setSelectePlayer(this.userName.getValue());
         this.model.displayStatsForSelectedPlayer();
     }
 

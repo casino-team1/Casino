@@ -31,12 +31,12 @@ import javafx.scene.control.TableView;
  * @author Nick Flückiger
  */
 public class GameStatisticController implements Initializable, Observer {
-
+    
     private GameStatisticModel model;
     @FXML
     private TableView<Statistic> gameStatTable;
     @FXML
-    private LineChart<String, Double> gameProfit;
+    private LineChart<Number, Double> gameProfit;
     @FXML
     private ComboBox<String> gameNames;
     @FXML
@@ -51,7 +51,7 @@ public class GameStatisticController implements Initializable, Observer {
     private ComboBox<String> statCounter;
     @FXML
     private Button back;
-
+    
     public void setGameStatistics(GameStatisticModel model) throws SQLException {
         this.model = model;
         this.gameNames.getItems().addAll(model.getGameNames());
@@ -68,7 +68,7 @@ public class GameStatisticController implements Initializable, Observer {
         setHandlingOfStatInformationForTable();
         addPossibleStatRanges();
     }
-
+    
     private void addPossibleStatRanges() {
         this.statCounter.getItems().add(String.valueOf(10));
         this.statCounter.getItems().add(String.valueOf(20));
@@ -79,7 +79,7 @@ public class GameStatisticController implements Initializable, Observer {
         this.statCounter.getItems().add(String.valueOf(500));
         this.statCounter.getItems().add("All");
     }
-
+    
     private void setHandlingOfStatInformationForTable() {
         userCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
             if (p.getValue() != null) {
@@ -88,7 +88,7 @@ public class GameStatisticController implements Initializable, Observer {
                 return new SimpleStringProperty("No Game");
             }
         });
-
+        userCol.setSortable(false);
         resultCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
             if (p.getValue() != null) {
                 return new SimpleStringProperty(p.getValue().getResult());
@@ -96,6 +96,7 @@ public class GameStatisticController implements Initializable, Observer {
                 return new SimpleStringProperty("No Result");
             }
         });
+        resultCol.setSortable(false);
         betCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
             if (p.getValue() != null) {
                 return new SimpleStringProperty(String.valueOf(p.getValue().getBet()));
@@ -103,6 +104,7 @@ public class GameStatisticController implements Initializable, Observer {
                 return new SimpleStringProperty("No Bet");
             }
         });
+        betCol.setSortable(false);
         changeCol.setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
             if (p.getValue() != null) {
                 return new SimpleStringProperty(String.valueOf(p.getValue().getUserAccountChange()));
@@ -110,19 +112,20 @@ public class GameStatisticController implements Initializable, Observer {
                 return new SimpleStringProperty("No Change");
             }
         });
+        changeCol.setSortable(false);
     }
-
+    
     @Override
     public void update(Observable o, Object arg) {
         GameStatisticModel gameModel = (GameStatisticModel) o;
         this.gameStatTable.getItems().clear();
         int maxNumberOfEntries = evaluateMaxNumberOfEntries();
         addStatistics(maxNumberOfEntries, gameModel);
-        XYChart.Series<String, Double> series = getPopulatedProfitChart(maxNumberOfEntries);
+        XYChart.Series<Number, Double> series = getPopulatedProfitChart(maxNumberOfEntries);
         this.gameProfit.getData().add(series);
         this.gameProfit.setCreateSymbols(false);
     }
-
+    
     private int evaluateMaxNumberOfEntries() {
         int maxNumberOfEntries = -1;
         if (this.statCounter.getSelectionModel().getSelectedItem() != null) {
@@ -132,7 +135,7 @@ public class GameStatisticController implements Initializable, Observer {
         }
         return maxNumberOfEntries;
     }
-
+    
     private void addStatistics(int maxNumberOfEntries, GameStatisticModel gameModel) {
         for (Statistic stat : gameModel.getGameStats()) {
             if (maxNumberOfEntries != -1 && this.gameStatTable.getItems().size() >= maxNumberOfEntries) {
@@ -142,9 +145,9 @@ public class GameStatisticController implements Initializable, Observer {
             System.out.println(stat.toString());
         }
     }
-
-    private XYChart.Series<String, Double> getPopulatedProfitChart(int maxNumberOfEntries) {
-        XYChart.Series<String, Double> series = new XYChart.Series<>();
+    
+    private XYChart.Series<Number, Double> getPopulatedProfitChart(int maxNumberOfEntries) {
+        XYChart.Series<Number, Double> series = new XYChart.Series<>();
         int counter = 0;
         ArrayList<Double> loadedGameProfits = model.getGameProfits();
         this.gameProfit.getData().clear();
@@ -152,27 +155,29 @@ public class GameStatisticController implements Initializable, Observer {
             if (series.getData().size() >= maxNumberOfEntries && maxNumberOfEntries != -1) {
                 break;
             }
-            series.getData().add(new XYChart.Data<>(String.valueOf(counter + 1), value));
+            series.getData().add(new XYChart.Data<>(counter + 1, value));
             counter++;
         }
+        series.setName(String.format("Statistik zu %s", this.model.getSelectedGame()));
+        this.gameStatTable.setStyle("-fx-tick-labyel-fill:#fff");
         return series;
     }
-
+    
     @FXML
     private void selectionChanged(ActionEvent event) throws SQLException {
         this.model.setSelectedGame(this.gameNames.getSelectionModel().getSelectedItem());
         this.model.loadGameStats();
     }
-
+    
     @FXML
     private void selectedStatCount(ActionEvent event) throws SQLException {
         this.model.setSelectedGame(this.gameNames.getSelectionModel().getSelectedItem());
         this.model.loadGameStats();
     }
-
+    
     @FXML
     private void goBackToMenu(ActionEvent event) {
         this.model.goBackToMenu();
     }
-
+    
 }

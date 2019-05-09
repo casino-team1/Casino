@@ -26,7 +26,6 @@ public class BaccaraHandler {
     private final MainApp mainApplication;
     private Stage stage;
     private BaccaraMenuModel menuModel;
-    private BaccaraGameModel gameModel;
     private Scene scene;
 
     public BaccaraHandler(MainApp mainApplication) {
@@ -35,7 +34,6 @@ public class BaccaraHandler {
         //in order to preserve the ratio of the images, the user is not allowed to change the size of the window.
         this.stage.setResizable(false);
         this.menuModel = new BaccaraMenuModel(this);
-        this.gameModel = new BaccaraGameModel(this);
     }
 
     public Scene getScene() {
@@ -60,7 +58,6 @@ public class BaccaraHandler {
 
     public void displayGame() {
         try {
-            this.gameModel = new BaccaraGameModel(this);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BaccaraGameView.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -71,7 +68,7 @@ public class BaccaraHandler {
             stage.show();
             BaccaraGameViewController controller = loader.getController();
             controller.setBaccaraHandler(this);
-            controller.setBaccaraGameModel(this.gameModel);
+            controller.setBaccaraGameModel(new BaccaraGameModel(this));
         } catch (IOException e) {
         }
     }

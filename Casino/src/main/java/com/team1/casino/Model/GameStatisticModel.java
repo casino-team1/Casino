@@ -111,15 +111,16 @@ public class GameStatisticModel extends Observable {
                     counter = 0;
             }
         }
-
         double value = 0;
         this.gameProfits.clear();
         this.gameProfits.add(0.0);
         for (Statistic stat : this.gameStats) {
             if (stat.getResult().equals("Won")) {
                 value -= stat.getUserAccountChange();
+                stat.setResult("Gewonnen");
             } else if (stat.getResult().equals("Lost")) {
                 value += Math.abs(-1 * stat.getBet());
+                stat.setResult("Verloren");
             } else {
                 value += 0;
             }

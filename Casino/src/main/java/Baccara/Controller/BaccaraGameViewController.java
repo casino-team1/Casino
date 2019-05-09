@@ -9,6 +9,7 @@ package Baccara.Controller;
 import Baccara.BaccaraHandler;
 import Baccara.Entity.BaccaraCard;
 import Baccara.Model.BaccaraGameModel;
+import com.sun.javafx.PlatformUtil;
 import com.team1.casino.User.Util.PlayerCentral;
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +38,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
@@ -47,7 +47,6 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -139,7 +138,13 @@ public class BaccaraGameViewController implements Initializable, Observer {
                     this.draggable = new ImageView();
                     this.draggable.setImage(view.getImage());
                     Image cursorImage = this.draggable.getImage();
-                    ImageCursor cursor = new ImageCursor(cursorImage);
+                    ImageCursor cursor;
+                    int imageSize = 100;
+                    if (PlatformUtil.isWindows()) {
+                        cursor = new ImageCursor(cursorImage, imageSize * 2, imageSize * 2);
+                    } else {
+                        cursor = new ImageCursor(cursorImage);
+                    }
                     this.gameModel.setCursor().setCursor(cursor);
                 }
             });

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -11,31 +10,37 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.Statistic.PlayerStatisticController">
+<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="831.0" style="-fx-background-color: #51a094;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.Statistic.PlayerStatisticController">
    <children>
-      <ComboBox fx:id="nutzernamen" layoutX="63.0" layoutY="94.0" onAction="#selectionChanged" prefHeight="27.0" prefWidth="210.0" />
-      <Text layoutX="127.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutzernamen" />
-      <TableView fx:id="statisticTable" layoutX="17.0" layoutY="208.0" prefHeight="351.0" prefWidth="331.0">
+      <ComboBox fx:id="userName" layoutX="63.0" layoutY="100.0" onAction="#selectionChanged" prefHeight="36.0" prefWidth="210.0" style="-fx-border-color: Black; -fx-border-width: 2px;" />
+      <Text fill="WHITE" layoutX="111.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutzernamen">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font></Text>
+      <TableView fx:id="statisticTable" layoutX="17.0" layoutY="208.0" prefHeight="351.0" prefWidth="338.0" style="-fx-background-color: transparent;">
         <columns>
-          <TableColumn fx:id="gameCol" prefWidth="75.0" text="Spiel" />
-          <TableColumn fx:id="betCol" prefWidth="75.0" text="Einsatz" />
-            <TableColumn fx:id="ResCol" prefWidth="75.0" text="Resultat" />
-            <TableColumn fx:id="ChangeCol" prefWidth="106.0" text="Kontoänderung" />
+          <TableColumn fx:id="gameCol" prefWidth="70.0" text="Spiel" />
+          <TableColumn fx:id="betCol" prefWidth="82.0" text="Einsatz" />
+            <TableColumn fx:id="ResCol" prefWidth="78.0" text="Resultat" />
+            <TableColumn fx:id="ChangeCol" prefWidth="107.0" text="Kontoänderung" />
         </columns>
       </TableView>
-      <LineChart fx:id="kontostandChart" layoutX="352.0" layoutY="208.0" prefHeight="369.0" prefWidth="448.0" style="-fx-stroke: black;">
+      <LineChart fx:id="bettChangeChart" layoutX="352.0" layoutY="203.0" prefHeight="374.0" prefWidth="448.0" style="-fx-fill: black;">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <NumberAxis side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Text layoutX="511.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wettentwicklung">
+      <Text fill="WHITE" layoutX="510.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wettentwicklung">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="back" layoutX="701.0" layoutY="60.0" mnemonicParsing="false" onAction="#goBackToMenu" prefHeight="27.0" prefWidth="99.0" text="Dashboard" />
+      <Button fx:id="goBackButton" layoutX="671.0" layoutY="59.0" mnemonicParsing="false" onAction="#goBackToMenu" prefHeight="33.0" prefWidth="129.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 4px;" text="Dashboard" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

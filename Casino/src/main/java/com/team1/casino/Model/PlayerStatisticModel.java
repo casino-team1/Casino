@@ -107,6 +107,11 @@ public class PlayerStatisticModel extends Observable {
         double value = 0;
         for (Statistic stat : stats) {
             value += stat.getUserAccountChange();
+            if (stat.getResult().equals("Won")) {
+                stat.setResult("Gewonnen");
+            } else if (stat.getResult().equals("Lost")) {
+                stat.setResult("Verloren");
+            }
             accountBalance.add(value);
         }
         this.accountValues = accountBalance;

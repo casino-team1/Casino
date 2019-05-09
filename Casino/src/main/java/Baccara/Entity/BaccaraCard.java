@@ -45,13 +45,13 @@ public class BaccaraCard {
             return false;
         }
         final BaccaraCard other = (BaccaraCard) obj;
-        if (this.cardValue != other.cardValue) {
+        if (this.cardValue != other.getCardValue()) {
             return false;
         }
-        if (!Objects.equals(this.imageLocation, other.imageLocation)) {
+        if (!Objects.equals(this.imageLocation, other.getImageLocation())) {
             return false;
         }
-        if (!Objects.equals(this.cardName, other.cardName)) {
+        if (!Objects.equals(this.cardName, other.getCardName())) {
             return false;
         }
         if (this.cardColor != other.cardColor) {

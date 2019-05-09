@@ -8,39 +8,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="547.0" prefWidth="702.0" style="-fx-background-color: #8fe8da;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.Statistic.StatisticController">
+<AnchorPane id="AnchorPane" prefHeight="547.0" prefWidth="702.0" style="-fx-background-color: #51a094;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team1.casino.Controller.Statistic.StatisticController">
    <children>
-      <ImageView fx:id="playerStat" fitHeight="198.0" fitWidth="225.0" layoutX="109.0" layoutY="175.0" onMouseClicked="#displayPlayerStat" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="playerStat" fitHeight="198.0" fitWidth="225.0" layoutX="109.0" layoutY="163.0" onMouseClicked="#displayPlayerStat" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/MainScreen/playerIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="gameStat" fitHeight="198.0" fitWidth="198.0" layoutX="406.0" layoutY="175.0" onMouseClicked="#displayGameStat" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="gameStat" fitHeight="198.0" fitWidth="198.0" layoutX="406.0" layoutY="163.0" onMouseClicked="#displayGameStat" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/MainScreen/gameIcon.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="472.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game">
+      <Text fill="WHITE" layoutX="476.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spiel">
          <font>
             <Font name="Arimo Bold for Powerline" size="24.0" />
          </font></Text>
-      <Pane prefHeight="85.0" prefWidth="702.0" style="-fx-border-color: Grey; -fx-border-width: 10;">
+      <Pane prefHeight="85.0" prefWidth="702.0" style="-fx-border-color: White; -fx-border-width: 10;">
          <children>
-            <Text layoutX="253.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+            <Text fill="WHITE" layoutX="253.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
                <font>
                   <Font name="Hack Bold" size="36.0" />
                </font>
             </Text>
          </children>
       </Pane>
-      <Text fill="WHITE" layoutX="175.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
+      <Text fill="WHITE" layoutX="168.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler">
          <font>
             <Font name="Arimo Bold for Powerline" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="logoutButton" layoutX="41.0" layoutY="465.0" mnemonicParsing="false" onAction="#logUserOut" text="Logout" textFill="WHITE">
+      <Button fx:id="logoutButton" layoutX="41.0" layoutY="465.0" mnemonicParsing="false" onAction="#logUserOut" style="-fx-background-color: transparent; -fx-border-color: White; -fx-border-width: 4px;" text="Logout" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="Arial Bold" size="24.0" />
          </font>
       </Button>
    </children>

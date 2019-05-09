@@ -16,8 +16,12 @@ public class Statistic {
         return gameName;
     }
 
+    public void setResult(String newResult) {
+        this.gameResult = newResult;
+    }
+
     private String username;
-    private final String gameResult;
+    private String gameResult;
     private final double bet;
     private final double accountChange;
     private final String gameName;

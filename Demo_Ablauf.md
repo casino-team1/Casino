@@ -1,5 +1,7 @@
 # Ablauf der Demonstration
 
+
+
 Registrierung eines neuen Nutzers
 
     Nutzername: Sascha
@@ -21,6 +23,8 @@ Aufzeigen der Kassenfuntkion
 
 Demonstration der Spiele
 
+--
+Albion
 Spielen einer Runde BlackJack
 
     Öffnen des Menus
@@ -29,6 +33,28 @@ Spielen einer Runde BlackJack
     Versuchen Sie zu gewinnen.
 
 Das Spiel verlassen
+
+-- Nick
+Baccara öffnen
+
+    100 Jetons auf Dealer setzen
+    Start Game
+    Die Runde zusehen.
+    Die Regeln öffnen.
+
+--
+Erik
+Yatzy öffnen 
+
+    100 Jetons setzen
+    Einmal Würfeln
+    2 Würfel auswählen 
+    Neu Würfeln
+    Eine Figur auswählen
+
+Yatzy verlassen
+--
+Lukas
 
 Roueltte öffnen
 
@@ -39,25 +65,10 @@ Roueltte öffnen
 
 Das Spiel verlassen
 
-Yatzy öffnen 
-
-    100 Jetons setzen
-    Einmal Würfeln
-    2 Würfel auswählen 
-    Neu Würfeln
-    Eine Figur auswählen
-
-Yatzy verlassen
-
-Baccara öffnen
-
-    100 Jetons auf Dealer setzen
-    Start Game
-    Die Runde zusehen.
-    Die Regeln öffnen.
-
-Spiel beenden
 Logout
+
+--
+Nick
 
 Login Administrator
 

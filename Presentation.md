@@ -8,7 +8,7 @@ Umsetzung:
 * Ebenfalls können dadurch gloable Einstellungen und Regeln in der Hauptapplikation festgelegt werden, danach werden diese an die einzelnen Spiele weiter gegebenen.
 
 
-Wichtige Mittel der Implementation:
+Wichstige Mittel der Implementation:
 
 * Bcrypt
   * Die Passwörter werden nach erfolgreicher Validierung und Registrierung des Nutzers mit bcrypt gehasht und in der Datenbank gespeichert. Dadurch können die Daten in der Datenbank auch bei erhalt nicht entschlüsselt werden.

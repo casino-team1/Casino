@@ -25,7 +25,7 @@
             <Image url="@../images/MainScreen/phoneBorder.png" />
          </image>
       </ImageView>
-      <TextField fx:id="accessCodeInput" alignment="CENTER" layoutX="220.0" layoutY="231.0" promptText="Zugangscode">
+      <TextField fx:id="accessCodeInput" alignment="CENTER" layoutX="227.0" layoutY="229.0" promptText="Zugangscode">
          <effect>
             <DropShadow />
          </effect></TextField>

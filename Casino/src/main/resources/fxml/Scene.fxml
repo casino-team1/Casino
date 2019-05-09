@@ -21,7 +21,7 @@
                 <Image url="@../images/MainScreen/woodenWall.jpg" />
             </image>
         </ImageView>
-        <ImageView fitHeight="150.0" fitWidth="198.0" layoutX="125.0" layoutY="65.0" onMouseClicked="#mouseClickBlackJack" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="150.0" fitWidth="198.0" layoutX="31.0" layoutY="61.0" onMouseClicked="#mouseClickBlackJack" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/MainScreen/blackjackButton.png" />
             </image>
@@ -29,10 +29,10 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
             <effect>
-                <DropShadow height="100.0" radius="49.5" width="100.0" />
+                <DropShadow height="100.0" radius="49.5" spread="0.11" width="100.0" />
             </effect>
         </ImageView>
-        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="468.0" layoutY="65.0" onMouseClicked="#mouseClickBaccara" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="569.0" layoutY="61.0" onMouseClicked="#mouseClickBaccara" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/MainScreen/baccaraButton.png" />
             </image>
@@ -40,21 +40,21 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
             <effect>
-                <DropShadow height="100.0" radius="49.5" width="100.0" />
+                <DropShadow height="100.0" radius="49.5" spread="0.12" width="100.0" />
             </effect>
         </ImageView>
-        <ImageView fitHeight="224.0" fitWidth="224.0" layoutX="125.0" layoutY="306.0" onMouseClicked="#clickMouseRoulette" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="224.0" fitWidth="224.0" layoutX="81.0" layoutY="295.0" onMouseClicked="#clickMouseRoulette" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/MainScreen/roulette_wheel.png" />
             </image>
             <effect>
-                <DropShadow height="100.0" radius="49.5" width="100.0" />
+                <DropShadow height="100.0" radius="49.5" spread="0.13" width="100.0" />
             </effect>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ImageView>
-        <ImageView fitHeight="178.0" fitWidth="270.0" layoutX="427.0" layoutY="328.0" onMouseClicked="#clickMouseYatzy" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="178.0" fitWidth="270.0" layoutX="446.0" layoutY="326.0" onMouseClicked="#clickMouseYatzy" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/MainScreen/YatzyButton.png" />
             </image>
@@ -62,10 +62,10 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
             <effect>
-                <DropShadow height="100.0" radius="49.5" width="100.0" />
+                <DropShadow height="100.0" radius="49.5" spread="0.11" width="100.0" />
             </effect>
         </ImageView>
-        <Label layoutX="185.0" layoutY="237.0" text="SELECT YOUR GAME" textOverrun="WORD_ELLIPSIS">
+        <Label layoutX="185.0" layoutY="237.0" text="SPIEL AUSWÄHLEN" textOverrun="WORD_ELLIPSIS">
             <font>
                 <Font name="Times New Roman Bold" size="42.0" />
             </font>
@@ -77,24 +77,41 @@
             <font>
                 <Font name="Arial Bold" size="18.0" />
             </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
         <Label fx:id="balanceLabel" layoutX="14.0" layoutY="14.0" text="Konto: 0" textFill="WHITE">
             <font>
                 <Font name="Arial Bold" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="kasseButton" layoutX="483.0" layoutY="530.0" mnemonicParsing="false" onAction="#pressKasseButton" onMouseEntered="#enterKasseButton" onMouseExited="#exitKasseButton" prefHeight="39.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Kasse" textFill="WHITE">
+        <Button fx:id="kasseButton" layoutX="681.0" layoutY="529.0" mnemonicParsing="false" onAction="#pressKasseButton" onMouseEntered="#enterKasseButton" onMouseExited="#exitKasseButton" prefHeight="39.0" prefWidth="97.0" style="-fx-border-color: White; -fx-background-color: transaprent; -fx-border-width: 3;" text="Kasse" textFill="WHITE">
          <font>
             <Font name="Arial Nova Bold" size="18.0" />
-         </font></Button>
-        <Button fx:id="changePasswordButton" layoutX="591.0" layoutY="530.0" mnemonicParsing="false" onAction="#changePassword" onMouseEntered="#enterChangePasswordButton" onMouseExited="#exitChangePasswordButton" prefHeight="39.0" prefWidth="188.0" style="-fx-border-color: white; -fx-background-color: transparent; -fx-border-width: 3px;" text="Change Password" textFill="WHITE">
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <Button fx:id="changePasswordButton" layoutX="125.0" layoutY="530.0" mnemonicParsing="false" onAction="#changePassword" onMouseEntered="#enterChangePasswordButton" onMouseExited="#exitChangePasswordButton" prefHeight="39.0" prefWidth="177.0" style="-fx-border-color: white; -fx-background-color: transparent; -fx-border-width: 3px;" text="Passwort ändern" textFill="WHITE">
             <font>
                 <Font name="Arial Bold" size="18.0" />
             </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
-      <Label fx:id="usernameLabel" layoutX="491.0" layoutY="13.0" text="Label" textFill="WHITE">
+      <ImageView fitHeight="202.0" fitWidth="316.0" layoutX="242.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../target/classes/images/logo.png" />
+         </image>
+         <effect>
+            <DropShadow radius="9.405000000000001" spread="0.16" width="18.62" />
+         </effect>
+      </ImageView>
+      <Label fx:id="usernameLabel" layoutX="569.0" layoutY="14.0" text="Accountname" textFill="WHITE">
          <font>
-            <Font name="Arial Bold" size="16.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
     </children>

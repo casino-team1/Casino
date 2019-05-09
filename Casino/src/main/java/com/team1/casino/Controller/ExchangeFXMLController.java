@@ -72,6 +72,7 @@ public class ExchangeFXMLController implements Initializable {
 
         Font.loadFont(getClass().getResourceAsStream("/resources/fonts/SqueakyChalkSound.ttf"), 14);
         balanceLabel.setStyle("-fx-font-family: 'squeaky chalk sound';");
+        moneyLabel.setStyle("-fx-font-family: 'squeaky chalk sound';");
 
         moneyField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (moneyfieldlocked == false) {
@@ -82,7 +83,6 @@ public class ExchangeFXMLController implements Initializable {
                     } else {
                         jetonsField.setText(Integer.toString(Integer.parseInt(moneyField.getText()) * 100));
                     }
-                    acceptButton.setDisable(false);
                 }
             }
         });
@@ -96,7 +96,6 @@ public class ExchangeFXMLController implements Initializable {
                     } else {
                         moneyField.setText(Integer.toString((int) Math.round(Double.parseDouble(jetonsField.getText()) / 100)));
                     }
-                    acceptButton.setDisable(false);
                 }
             }
         });
@@ -146,7 +145,7 @@ public class ExchangeFXMLController implements Initializable {
         locked = true;
         moneyField.setDisable(false);
         jetonsField.setDisable(true);
-        acceptButton.setDisable(true);
+        acceptButton.setDisable(false);
         jetonsfieldlocked = true;
         moneyfieldlocked = false;
         moneyField.setText("");
@@ -176,7 +175,7 @@ public class ExchangeFXMLController implements Initializable {
         locked = true;
         moneyField.setDisable(true);
         jetonsField.setDisable(false);
-        acceptButton.setDisable(true);
+        acceptButton.setDisable(false);
         jetonsfieldlocked = false;
         moneyfieldlocked = true;
         moneyField.setText("");

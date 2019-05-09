@@ -74,7 +74,7 @@ public class BaccaraGame {
     }
 
     public void setPlayerBet(int playerBet) {
-        this.playerBet = playerBet;
+        this.playerBet += playerBet;
     }
 
     public void resetGame() {
@@ -116,9 +116,13 @@ public class BaccaraGame {
         /**
          * These are implementations of the baccara roules according to the
          * wikipedia entry. For informaton or further knowledge of the used
-         * rules, consult wikipedia: Baccar.
+         * rules, consult wikipedia: Baccara.
          */
-        if (this.playerCardCount == 8 || this.playerCardCount == 9 || this.playerCardCount == 6 || this.playerCardCount == 7) {
+
+        if (this.playerCardCount == 8 || this.playerCardCount == 9 || this.dealerCardCount == 9 || this.dealerCardCount == 8) {
+            return;
+        }
+        if (this.playerCardCount == 6 || this.playerCardCount == 7) {
             if (this.dealerCardCount >= 0 && this.dealerCardCount <= 5) {
                 this.dealerThirdDraw();
             }
@@ -165,7 +169,7 @@ public class BaccaraGame {
     }
 
     public void setDealerBet(int dealerBet) {
-        this.dealerBet = dealerBet;
+        this.dealerBet += dealerBet;
     }
 
     public List<String> getSetBets() {
@@ -183,7 +187,7 @@ public class BaccaraGame {
     }
 
     public void setTieBet(int tieBet) {
-        this.tieBet = tieBet;
+        this.tieBet += tieBet;
     }
 
     public ArrayList<BaccaraCard> getDealerCards() {

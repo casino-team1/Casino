@@ -13,13 +13,11 @@ Zeigen des Hauptmenus
     Logout
     Sowie Passwort Ändern
 
-
 Aufzeigen der Kassenfuntkion
 
     2000 Geld in Jetons umwandeln.
     1000 Jetons in Geld umwandeln.
     Verlassen der Kasse
-
 
 Demonstration der Spiele
 
@@ -33,9 +31,11 @@ Spielen einer Runde BlackJack
 Das Spiel verlassen
 
 Roueltte öffnen
+
     Die Regeln einsehen
     50 Jetons setzen
-    eine Runde spielen
+    Zahl wählen
+    Eine Runde starten
 
 Das Spiel verlassen
 
@@ -51,9 +51,28 @@ Yatzy verlassen
 
 Baccara öffnen
 
-    100 Jetons setzten
-    Eine Runde starten
-    
+    100 Jetons auf Dealer setzen
+    Start Game
+    Die Runde zusehen.
+    Die Regeln öffnen.
 
+Spiel beenden
+Logout
 
+Login Administrator
 
+    Username: Admin
+    Passwort: 1234
+    Login
+
+Zeigen der Spielerstatistik
+
+    Auswahl von Muster aus DropDown
+
+Zurück
+
+Zeigen der Spielstatistik
+
+    Auswahl von Baccara aus DropDown
+
+Zurück und Logout

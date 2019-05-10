@@ -54,7 +54,8 @@ public class PasswordRecoveryController implements Initializable {
         this.mainApplication.displayLoginView();
     }
 
-    public void goBack() {
+    @FXML
+    private void goToLoginView(MouseEvent event) {
         this.mainApplication.displayMainMenu();
     }
 }

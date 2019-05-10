@@ -24,6 +24,7 @@ CREATE TABLE statistic(
     bet double,
     result varchar(255),
     amount double,
+    playDate Datetime,
     PRIMARY KEY (id)
 );
 
@@ -52,22 +53,22 @@ INSERT INTO game(gameName) VALUES("Roulette");
 INSERT INTO game(gameName) VALUES("BlackJack");
 INSERT INTO game(gameName) VALUES("Yatzy");
 
-INSERT INTO balance(chips,money,lastUpdated) VALUES(0,5000.0,CURDATE());
-INSERT INTO balance(chips,money,lastUpdated) VALUES(0,5000.0,CURDATE());
+INSERT INTO balance(chips,money,lastUpdated) VALUES(0,5000.0,NOW());
+INSERT INTO balance(chips,money,lastUpdated) VALUES(0,5000.0,NOW());
 
 INSERT INTO user(username,password,role,balance_id,email) VALUES("Muster","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Player",1,"nick.flueckiger@outlook.de");
 INSERT INTO user(username,password,role,balance_id,email) VALUES("Admin","$2a$10$VeufAquh14j2F7GVuQa/.uHT0TGfg3yejOdPPvKN0RMjR6IL9ibeK","Admin",2,"nick.flueckiger@outlook.de");
 
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Lost",-50);
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Lost",-50);
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
-INSERT INTO statistic(bet,result,amount) VALUES(50,"Won",50);
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Won",50,NOW());
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Won",50,NOW());
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Lost",-50,NOW());
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Won",50,NOW());
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Won",50,NOW());
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Lost",-50,NOW());
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Won",50,NOW());
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Won",50,NOW());
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Won",50,NOW());
+INSERT INTO statistic(bet,result,amount,playDate) VALUES(50,"Won",50,NOW());
 
 INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,1,1);
 INSERT INTO statistictoplayer(user_id,statistic_id,game_id) VALUES(1,2,1);

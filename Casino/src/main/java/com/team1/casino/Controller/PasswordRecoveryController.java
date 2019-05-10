@@ -49,4 +49,8 @@ public class PasswordRecoveryController implements Initializable {
         this.mainApplication.displayLoginView();
     }
 
+    public void goBack() {
+        this.mainApplication.displayMainMenu();
+    }
+
 }

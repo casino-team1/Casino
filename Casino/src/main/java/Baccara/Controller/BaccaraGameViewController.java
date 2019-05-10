@@ -491,7 +491,7 @@ public class BaccaraGameViewController implements Initializable, Observer {
         int playerCardCount = this.gameModel.getPlayerCardCount();
         int dealerCardCount = this.gameModel.getDealerCardCount();
         this.playerCardCountLabel.setText("Spieler Kartenwert: " + String.valueOf(playerCardCount));
-        this.dealerCardCountLabel.setText("Dealer Kartenwert: " + String.valueOf(dealerCardCount));
+        this.dealerCardCountLabel.setText("Banker Kartenwert: " + String.valueOf(dealerCardCount));
     }
 
     private boolean gameRunning = false;
@@ -520,8 +520,8 @@ public class BaccaraGameViewController implements Initializable, Observer {
     }
 
     @FXML
-    private void backToMenu(ActionEvent event) {
-        this.handler.displayMenu();
+    private void backToMenu(ActionEvent event) throws Exception {
+        this.handler.displayMainMenu();
     }
 
     @FXML

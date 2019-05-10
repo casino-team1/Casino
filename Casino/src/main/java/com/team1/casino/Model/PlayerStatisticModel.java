@@ -56,7 +56,7 @@ public class PlayerStatisticModel extends Observable {
         this.accountValues.clear();
         DatabaseQuery query = new DatabaseQuery(DatabaseConnection.getInstance().getDatabaseConnection(), false);
         String playerID = String.valueOf(new UserUtil().getIDFromUserByUsername(this.selectedPlayer.getValue()));
-        this.statistics = query.runQueryWithReturn("SELECT stat.bet,stat.amount,ga.gameName,stat.result FROM statistic stat, statistictoplayer sp, game ga WHERE sp.user_id = ? AND sp.statistic_id = stat.id AND sp.game_id = ga.id", playerID);
+        this.statistics = query.runQueryWithReturn("SELECT stat.bet,stat.amount,ga.gameName,stat.result,stat.playDate FROM statistic stat, statistictoplayer sp, game ga WHERE sp.user_id = ? AND sp.statistic_id = stat.id AND sp.game_id = ga.id", playerID);
         calculateAccountValues(this.statistics);
         setChanged();
         notifyObservers();
@@ -77,6 +77,7 @@ public class PlayerStatisticModel extends Observable {
         double bet = 0;
         double endAmount = 0;
         String gameName = "";
+        Statistic curStat = null;
         for (String statistic : statisticInformation) {
             switch (counter) {
                 case 0:
@@ -93,11 +94,13 @@ public class PlayerStatisticModel extends Observable {
                     break;
                 case 3:
                     result = statistic;
-                    stats.add(new Statistic(result, bet, endAmount, gameName));
-                    gameName = "";
-                    result = "";
-                    bet = 0.0;
-                    endAmount = 0.0;
+                    curStat = new Statistic(result, bet, endAmount, gameName);
+                    counter++;
+                    break;
+                case 4:
+                    curStat.setDate(statistic);
+                    stats.add(curStat);
+                    curStat = null;
                     counter = 0;
                     break;
             }

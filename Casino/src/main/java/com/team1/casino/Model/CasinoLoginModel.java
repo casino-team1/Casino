@@ -24,6 +24,7 @@ public class CasinoLoginModel {
 
     public CasinoLoginModel() {
     }
+    
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -73,5 +74,7 @@ public class CasinoLoginModel {
     public void displayPasswordRecovery() {
         this.mainApplication.displayPasswordRecovery();
     }
+    
+    
 
 }

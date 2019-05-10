@@ -9,6 +9,7 @@ package com.team1.casino.Controller.Statistic;
 import com.team1.casino.Entity.Statistic;
 import com.team1.casino.Model.PlayerStatisticModel;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -50,6 +51,8 @@ public class PlayerStatisticController implements Initializable, Observer {
     private TableColumn<Statistic, String> ChangeCol;
     @FXML
     private Button goBackButton;
+    @FXML
+    private TableColumn<Statistic, String> dateColumn;
 
     public void setPlayerStatisticModel(PlayerStatisticModel model) {
         this.model = model;
@@ -103,6 +106,15 @@ public class PlayerStatisticController implements Initializable, Observer {
             }
         });
         ChangeCol.setSortable(false);
+        dateColumn
+                .setCellValueFactory((TableColumn.CellDataFeatures<Statistic, String> p) -> {
+                    if (p.getValue() != null) {
+                        return new SimpleStringProperty(String.valueOf(p.getValue().getDate()));
+                    } else {
+                        return new SimpleStringProperty("No Change");
+                    }
+                });
+        dateColumn.setSortable(false);
     }
 
     @Override

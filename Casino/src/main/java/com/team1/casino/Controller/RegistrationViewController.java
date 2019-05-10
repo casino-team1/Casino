@@ -49,6 +49,7 @@ public class RegistrationViewController implements Initializable, Observer {
         this.model.getPassword().bind(this.password.textProperty());
         this.model.getUsername().bind(this.username.textProperty());
         this.model.getEmailAdress().bind(this.emailAdress.textProperty());
+        
     }
 
     /**
@@ -60,6 +61,7 @@ public class RegistrationViewController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.errorMessage.setVisible(false);
+        this.errorMessage.toFront();
     }
 
     @FXML

@@ -135,7 +135,8 @@ public class MainApp extends Application {
 			stage.show();
 			RegistrationViewController controller = loader.getController();
 			RegistrationModel model = new RegistrationModel(this);
-			controller.setModel(model);
+                        model.addObserver(controller);
+                        controller.setModel(model);
 		} catch (IOException e) {
 		}
 	}

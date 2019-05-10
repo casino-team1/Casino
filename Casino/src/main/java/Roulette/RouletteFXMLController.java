@@ -481,7 +481,7 @@ public class RouletteFXMLController implements Initializable {
     private void clickPane25(MouseEvent event) {
         betInt = 25;
         isNumber = true;
-        stringBet.set(String.valueOf(betInt));
+        stringBet.set(String.valueOf(betInt)); 
     }
 
     @FXML

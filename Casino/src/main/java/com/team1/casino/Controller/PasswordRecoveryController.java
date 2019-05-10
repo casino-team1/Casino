@@ -8,6 +8,7 @@ package com.team1.casino.Controller;
 
 import com.team1.casino.Entity.PasswordRecovery;
 import com.team1.casino.MainApp;
+import com.team1.casino.Model.AuthenticationModel;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -23,12 +25,15 @@ import javafx.scene.control.TextField;
  */
 public class PasswordRecoveryController implements Initializable {
 
+    private AuthenticationModel model;
     @FXML
     private Button passwordRecoveryButton;
     @FXML
     private TextField username;
 
     private MainApp mainApplication;
+    @FXML
+    private Button goBackButton;
 
     public void setMainApplication(MainApp mainApplication) {
         this.mainApplication = mainApplication;
@@ -52,5 +57,4 @@ public class PasswordRecoveryController implements Initializable {
     public void goBack() {
         this.mainApplication.displayMainMenu();
     }
-
 }

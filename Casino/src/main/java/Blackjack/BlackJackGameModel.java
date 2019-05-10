@@ -226,7 +226,7 @@ public class BlackJackGameModel {
         dealer.setxKoordinate(-34);
 
         //Alle Karten vom Dealer anzeigen
-        for (int i = 1; i < dealer.getDealerCards().size(); i++) {
+        for (int i = 0; i < dealer.getDealerCards().size(); i++) {
             ImageView neusteDealerKarte = new ImageView();
             dealerKartenPane.getChildren().add(neusteDealerKarte);
             neusteDealerKarte.setLayoutX(dealer.getxKoordinate() + 34);

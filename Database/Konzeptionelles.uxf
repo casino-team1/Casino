@@ -5,9 +5,9 @@
     <id>UMLClass</id>
     <coordinates>
       <x>220</x>
-      <y>220</y>
+      <y>240</y>
       <w>100</w>
-      <h>210</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Balance
@@ -60,7 +60,7 @@ role
     <id>Relation</id>
     <coordinates>
       <x>310</x>
-      <y>340</y>
+      <y>320</y>
       <w>150</w>
       <h>40</h>
     </coordinates>
@@ -83,6 +83,7 @@ Statistic
 User
 Game
 Bet
+PlayDate
 Result
 BalanceChange
 --

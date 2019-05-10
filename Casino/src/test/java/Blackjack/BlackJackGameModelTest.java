@@ -26,9 +26,6 @@ public class BlackJackGameModelTest {
         //Arrange
         g.setEinsatz(50);
 
-        //Act
-        g.gewinnBerechnungBlackJack();
-
         //Assert
         assertEquals(125, g.gewinnBerechnungBlackJack());
     }
@@ -37,9 +34,6 @@ public class BlackJackGameModelTest {
     public void testGewinnBerechnung() {
         //Arrange
         g.setEinsatz(50);
-
-        //Act
-        g.gewinnBerechnung();
 
         //Assert
         assertEquals(100, g.gewinnBerechnung());
@@ -50,11 +44,35 @@ public class BlackJackGameModelTest {
         //Arrange
         g.setVersicherung(50);
 
-        //Act
-        g.versicherungGewonnen();
-
         //Assert
         assertEquals(100, g.versicherungGewonnen());
+    }
+
+    @Test
+    public void testSetVersicherung() {
+        //Arrange
+        g.setVersicherung(50);
+                
+        //Assert
+        assertEquals(50, g.getVersicherung());
+    }
+
+    @Test
+    public void testSetEinsatz() {
+        //Arrange
+        g.setEinsatz(50);
+                
+        //Assert
+        assertEquals(50, g.getEinsatz());
+    }
+    
+    @Test
+    public void testSetGewinn() {
+        //Arrange
+        g.setGewinn(50);
+                
+        //Assert
+        assertEquals(50, g.getGewinn());
     }
 
 }

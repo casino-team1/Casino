@@ -56,7 +56,27 @@ public class PasswordRecoveryController implements Initializable {
 
     @FXML
     private void goToLoginView(MouseEvent event) {
-//        this.model.backToLogin();
+        this.mainApplication.displayMainMenu();
+    }
+
+    @FXML
+    private void exitPasswordRecoveryButton(MouseEvent event) {
+        passwordRecoveryButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterPasswordRecoveryButton(MouseEvent event) {
+        passwordRecoveryButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void exitGoBackButton(MouseEvent event) {
+        goBackButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0); -fx-border-color: white; -fx-border-width: 3;");
+    }
+
+    @FXML
+    private void enterGoBackButton(MouseEvent event) {
+        goBackButton.setStyle("-fx-background-color: rgba(255, 255, 255, .1); -fx-border-color: white; -fx-border-width: 3;");
     }
 
 }

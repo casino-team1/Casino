@@ -6,6 +6,8 @@
  */
 package com.team1.casino.Entity;
 
+import java.sql.Date;
+
 /**
  *
  * @author Nick Flückiger
@@ -25,6 +27,7 @@ public class Statistic {
     private final double bet;
     private final double accountChange;
     private final String gameName;
+    private String date;
 
     public void setUsername(String username) {
         this.username = username;
@@ -52,6 +55,14 @@ public class Statistic {
 
     public double getBet() {
         return bet;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public double getUserAccountChange() {

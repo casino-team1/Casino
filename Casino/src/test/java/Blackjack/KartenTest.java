@@ -18,17 +18,14 @@ public class KartenTest {
 
     public KartenTest() {
     }
-
+    
     @Test
-    public void testGetAnzahlKartenImKartenDeck() {
+    public void testKartenErstellen() {
         //Arrange
-        int erwarteteAnzahl = 52;
-
-        //Act
         k.kartenErstellen();
-
+                
         //Assert
-        assertEquals(erwarteteAnzahl, k.getKarten().size());
+        assertEquals(52, k.getCardsInDeck());
     }
 
     @Test
@@ -43,4 +40,57 @@ public class KartenTest {
         assertEquals(erwarteteAnzahl, k.getCardsSymbole().size());
     }
 
+    @Test
+    public void testGetCardsInDeck() {
+        //Arrange
+        int erwarteteAnzahl = 52;
+
+        //Act
+        k.kartenErstellen();
+
+        //Assert
+        assertEquals(erwarteteAnzahl, k.getKarten().size());
+    }
+
+    @Test
+    public void testSubAmountOfCardsInDeck() {
+        //Arrange
+        k.setAmountOfCardsInDeck(52);
+        
+        //Act
+        k.subAmountOfCardsInDeck();
+        
+        //Assert
+        assertEquals(51, k.getCardsInDeck());
+    }
+
+    @Test
+    public void testSetAmountOfCardsInDeck() {
+        //Arrange
+        k.setAmountOfCardsInDeck(10);
+        
+        //Assert
+        assertEquals(10, k.getCardsInDeck());
+    }
+
+    @Test
+    public void testSubAmountOfCardSymbols() {
+        //Arrange
+        k.setAmountOfCardsInCardsSymbole(52);
+        
+        //Act
+        k.subAmountOfCardSymbols();
+        
+        //Assert
+        assertEquals(51, k.getAmountOfCardsInCardsSymbole());
+    }
+
+    @Test
+    public void testSetAmountOfCardsInCardsSymbole() {
+        //Arrange
+        k.setAmountOfCardsInCardsSymbole(10);
+        
+        //Assert
+        assertEquals(10, k.getAmountOfCardsInCardsSymbole());
+    }
 }
